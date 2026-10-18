@@ -25,8 +25,8 @@ After that, new versions show up as normal WordPress updates.
 
 1. Bump the version in `plugin/marquee/marquee.php` (header **and** `MARQUEE_VERSION`) and `plugin/marquee/readme.txt` (Stable tag + changelog).
 2. If the theme changed, bump `Version:` in `theme/ridgeroad/style.css`, `theme/ridgeroad/readme.txt` and `RIDGEROAD_VERSION` in `functions.php`.
-3. Run `./build.sh`. It writes both zips to `dist/`.
-4. On GitHub, create a release tagged `vX.Y.Z` (the plugin version), paste the notes, and attach **both** zips. The names must stay `marquee-<version>.zip` and `marquee-festive-<version>.zip`.
+3. Add the notes as `release-notes/vX.Y.Z.md`, commit, and push.
+4. Tag and push: `git tag vX.Y.Z && git push origin vX.Y.Z`. The **Release** workflow (`.github/workflows/release.yml`) checks the tag matches the plugin version, runs `./build.sh`, and publishes the release with both zips (`marquee-<version>.zip` and `marquee-festive-<version>.zip`, the names the update checker looks for).
 
 WordPress sites check for a new release every 6 hours, or right away from Dashboard → Updates → Check again. The theme update is only offered to sites running Marquee Festive (it has a `.marquee-dist` marker file), never to a show's own custom copy of the theme.
 

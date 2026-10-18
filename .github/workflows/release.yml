@@ -1,0 +1,27 @@
+# Push a tag like v0.7.2 and this builds both zips and publishes the GitHub release.
+# Notes come from release-notes/<tag>.md. Marquee sites see the update within 6 hours
+# (or right away from Dashboard -> Updates -> Check again).
+name: Release
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check the tag matches the plugin version
+        run: |
+          pv=$(sed -n "s/^define( 'MARQUEE_VERSION', '\(.*\)' );/\1/p" plugin/marquee/marquee.php)
+          test "v$pv" = "$GITHUB_REF_NAME" || { echo "Tag $GITHUB_REF_NAME does not match MARQUEE_VERSION $pv"; exit 1; }
+      - name: Build zips
+        run: ./build.sh
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          notes="release-notes/$GITHUB_REF_NAME.md"
+          test -f "$notes" || { echo "Missing $notes"; exit 1; }
+          gh release create "$GITHUB_REF_NAME" dist/*.zip --title "Marquee ${GITHUB_REF_NAME#v}" --notes-file "$notes"
