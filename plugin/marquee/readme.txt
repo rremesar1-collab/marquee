@@ -4,7 +4,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.7.3
+Stable tag: 0.7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,6 +50,9 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.7.4 =
+* Maintenance release to confirm automatic updates. No changes to how your site works.
 
 = 0.7.3 =
 * Updates work on shared hosting: when GitHub's hourly limit for your server is used up, Marquee reads the public release page instead.
