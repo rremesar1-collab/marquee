@@ -201,3 +201,29 @@ if ( ! function_exists( 'ridgeroad_door_url' ) ) {
 		return ridgeroad_asset_url( 'img/kids/' ) . $file . '?v=' . RIDGEROAD_VERSION;
 	}
 }
+
+/** Social networks the show can link to: key => array( label, button class ). */
+if ( ! function_exists( 'ridgeroad_social_networks' ) ) {
+	function ridgeroad_social_networks() {
+		return array(
+			'facebook'  => array( 'Facebook', 'fb' ),
+			'instagram' => array( 'Instagram', 'ig' ),
+			'youtube'   => array( 'YouTube', 'yt' ),
+			'tiktok'    => array( 'TikTok', 'tt' ),
+		);
+	}
+}
+
+/** The social links to show: turned on and with a link. */
+if ( ! function_exists( 'ridgeroad_social_links' ) ) {
+	function ridgeroad_social_links() {
+		$out = array();
+		foreach ( ridgeroad_social_networks() as $net => $n ) {
+			$url = (string) ridgeroad_mod( $net . '_url' );
+			if ( '' !== $url && ridgeroad_mod( $net . '_show' ) ) {
+				$out[ $net ] = array( 'label' => $n[0], 'class' => $n[1], 'url' => $url );
+			}
+		}
+		return $out;
+	}
+}

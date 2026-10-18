@@ -152,6 +152,20 @@ function marquee_admin_page() {
 					<p><label for="mq-don"><?php esc_html_e( 'Donation link (optional)', 'marquee' ); ?></label><input id="mq-don" name="cashapp_url" type="url" placeholder="https://cash.app/$yourshow" value="<?php echo esc_attr( $tm( 'cashapp_url' ) ); ?>"><small><?php esc_html_e( 'Cash App, PayPal, Venmo or any link. Empty hides the donation box.', 'marquee' ); ?></small></p>
 				</div>
 				<p><label for="mq-logo"><?php esc_html_e( 'Logo (optional)', 'marquee' ); ?></label><input id="mq-logo" name="logo" type="file" accept="image/png,image/jpeg,image/webp"><small><?php esc_html_e( 'PNG with a see-through background works best.', 'marquee' ); ?><?php echo get_theme_mod( 'custom_logo' ) ? ' ' . esc_html__( 'A logo is already set; choose a file only to replace it.', 'marquee' ) : ''; ?></small></p>
+				<?php if ( function_exists( 'ridgeroad_social_networks' ) ) : ?>
+					<h3><?php esc_html_e( 'Social links', 'marquee' ); ?></h3>
+					<p class="mq__fine"><?php esc_html_e( 'Buttons in Stay Connected and small icons at the bottom of every page. A button shows when it is turned on and has a link.', 'marquee' ); ?></p>
+					<input type="hidden" name="social_sent" value="1">
+					<?php foreach ( ridgeroad_social_networks() as $net => $n ) : ?>
+						<p class="mq__social">
+							<label for="mq-so-<?php echo esc_attr( $net ); ?>"><?php echo esc_html( sprintf( __( '%s link', 'marquee' ), $n[0] ) ); ?></label>
+							<span class="mq__social-row">
+								<input id="mq-so-<?php echo esc_attr( $net ); ?>" name="<?php echo esc_attr( $net ); ?>_url" type="url" placeholder="https://" value="<?php echo esc_attr( $tm( $net . '_url' ) ); ?>">
+								<label class="mq__on"><input type="checkbox" name="social_on[]" value="<?php echo esc_attr( $net ); ?>" <?php checked( (bool) $tm( $net . '_show' ) ); ?>> <?php esc_html_e( 'Show', 'marquee' ); ?></label>
+							</span>
+						</p>
+					<?php endforeach; ?>
+				<?php endif; ?>
 			</section>
 
 			<section class="mq__pane" data-pane="1">

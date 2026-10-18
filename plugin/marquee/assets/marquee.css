@@ -172,6 +172,11 @@
 .mq-skin:not(#mq-0) .rr-btn--tt { background: linear-gradient(180deg, #ff4f8b, #e0245e); }
 .mq-skin:not(#mq-0) .rr-btn--fb .rr-icon, .mq-skin:not(#mq-0) .rr-btn--tt .rr-icon { width: 22px; height: 22px; padding: 2px; border-radius: 50%; background: #fff; color: #1659d6; }
 .mq-skin:not(#mq-0) .rr-btn--tt .rr-icon { color: #111; }
+.mq-skin:not(#mq-0) .rr-btn--ig { background: linear-gradient(180deg, #f7774a, #d62976 55%, #962fbf); }
+.mq-skin:not(#mq-0) .rr-btn--yt { background: linear-gradient(180deg, #ff3b3b, #cc0000); }
+.mq-skin:not(#mq-0) .rr-btn--ig .rr-icon, .mq-skin:not(#mq-0) .rr-btn--yt .rr-icon { width: 22px; height: 22px; padding: 2px; border-radius: 50%; background: #fff; }
+.mq-skin:not(#mq-0) .rr-btn--ig .rr-icon { color: #d62976; }
+.mq-skin:not(#mq-0) .rr-btn--yt .rr-icon { color: #e00; }
 .mq-skin:not(#mq-0) .rr-visit { margin-top: 40px; }
 .mq-skin:not(#mq-0) .rr-ribbon { display: flex; align-items: center; justify-content: center; gap: 0; margin: 0 0 22px; text-align: center; }
 .mq-skin:not(#mq-0) .rr-ribbon::before, .mq-skin:not(#mq-0) .rr-ribbon::after {

@@ -120,7 +120,13 @@ function ridgeroad_defaults() {
 		'social_hashtag'    => '',
 		'social_share'      => 1,
 		'facebook_url'      => '',
+		'instagram_url'     => '',
+		'youtube_url'       => '',
 		'tiktok_url'        => '',
+		'facebook_show'     => 1,
+		'instagram_show'    => 1,
+		'youtube_show'      => 1,
+		'tiktok_show'       => 1,
 		'guestbook_url'     => '',
 		// Guestbook (RF Page Builder).
 		'gb_show'           => 1,
@@ -148,6 +154,8 @@ function ridgeroad_defaults() {
 			'donate_text'    => 'Donations help keep the lights on and add new surprises each year. They’re never required to enjoy the show.',
 			'social_hashtag' => '',
 			'facebook_url'   => '',
+			'instagram_url'  => '',
+			'youtube_url'    => '',
 			'tiktok_url'     => '',
 			'gb_site_key'    => '',
 			'stats_show'     => 0,
@@ -377,8 +385,10 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp ) {
 	$add( 'social_text', 'rr_support', __( 'Social text', 'ridgeroad' ), 'textarea' );
 	$add( 'social_hashtag', 'rr_support', __( 'Hashtag for visitor photos (leave empty to hide)', 'ridgeroad' ) );
 	$add( 'social_share', 'rr_support', __( 'Show a “Share the Show” button', 'ridgeroad' ), 'checkbox' );
-	$add( 'facebook_url', 'rr_support', __( 'Facebook page link', 'ridgeroad' ), 'url' );
-	$add( 'tiktok_url', 'rr_support', __( 'TikTok link', 'ridgeroad' ), 'url' );
+	foreach ( ridgeroad_social_networks() as $net => $n ) {
+		$add( $net . '_show', 'rr_support', sprintf( __( 'Show the %s button', 'ridgeroad' ), $n[0] ), 'checkbox' );
+		$add( $net . '_url', 'rr_support', sprintf( __( '%s link', 'ridgeroad' ), $n[0] ), 'url' );
+	}
 	$add( 'guestbook_url', 'rr_support', __( 'Guestbook link (menu)', 'ridgeroad' ), 'url', array( 'description' => __( 'Leave empty to jump to the guestbook section on the home page.', 'ridgeroad' ) ) );
 	$add( 'gb_show', 'rr_guestbook', __( 'Show the guestbook section', 'ridgeroad' ), 'checkbox' );
 	$add( 'gb_source', 'rr_guestbook', __( 'Where messages are kept', 'ridgeroad' ), 'select', array(

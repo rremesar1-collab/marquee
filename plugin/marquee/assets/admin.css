@@ -100,3 +100,6 @@
 .mq__feat--sub small { flex-basis: 100%; color: #50575e; }
 .mq__feat--sub .mq__warn { color: #b32d2e; }
 .mq__geo-mi input { width: 4.5em; }
+.mq__social-row { display: flex; gap: 12px; align-items: center; }
+.mq__social-row input[type=url] { flex: 1; }
+.mq__pane label.mq__on { display: inline-flex; align-items: center; gap: 6px; margin: 0; font-weight: 400; white-space: nowrap; }

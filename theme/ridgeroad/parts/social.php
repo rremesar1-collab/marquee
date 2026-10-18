@@ -12,12 +12,9 @@ extract( ridgeroad_home_ctx(), EXTR_SKIP ); // $status, $np, $wx, $opts, $b_titl
 	<h2 class="rr-h"><span class="rr-h__tree"><?php echo ridgeroad_cicon( 'tree' ); ?></span><?php echo esc_html( ridgeroad_mod( 'social_title' ) ); ?></h2>
 	<p class="rr-social__text"><?php echo esc_html( ridgeroad_mod( 'social_text' ) ); ?></p>
 	<div class="rr-social__btns">
-		<?php if ( ridgeroad_mod( 'facebook_url' ) ) : ?>
-			<a class="rr-btn rr-btn--fb" href="<?php echo esc_url( ridgeroad_mod( 'facebook_url' ) ); ?>" target="_blank" rel="noopener"><?php echo ridgeroad_cicon( 'facebook' ); ?>Facebook</a>
-		<?php endif; ?>
-		<?php if ( ridgeroad_mod( 'tiktok_url' ) ) : ?>
-			<a class="rr-btn rr-btn--tt" href="<?php echo esc_url( ridgeroad_mod( 'tiktok_url' ) ); ?>" target="_blank" rel="noopener"><?php echo ridgeroad_cicon( 'tiktok' ); ?>TikTok</a>
-		<?php endif; ?>
+		<?php foreach ( ridgeroad_social_links() as $net => $l ) : ?>
+			<a class="rr-btn rr-btn--<?php echo esc_attr( $l['class'] ); ?>" href="<?php echo esc_url( $l['url'] ); ?>" target="_blank" rel="noopener"><?php echo ridgeroad_cicon( $net ); ?><?php echo esc_html( $l['label'] ); ?></a>
+		<?php endforeach; ?>
 		<?php if ( ridgeroad_mod( 'social_share' ) ) : ?>
 			<button class="rr-btn rr-btn--gold" type="button" data-rr-share data-title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" data-url="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo ridgeroad_cicon( 'gift' ); ?><span><?php esc_html_e( 'Share the Show', 'ridgeroad' ); ?></span></button>
 		<?php endif; ?>

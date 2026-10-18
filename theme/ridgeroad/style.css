@@ -4,7 +4,7 @@ Theme URI: https://alateka.com/
 Author: Alateka Corporation
 Author URI: https://alateka.com/
 Description: The festive Christmas look for the Marquee light show plugin: garlands, bows, a night-sky scene and glowing show cards for your status, Now Playing, weather, Kids’ Corner and more. Needs the free Marquee plugin (it holds all the show features and settings).
-Version: 2.9.8
+Version: 2.9.9
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -353,8 +353,12 @@ body.rr-scene .rr-scroll::-webkit-scrollbar-thumb { background: rgba(247, 201, 9
 .rr-btn--red { background: linear-gradient(180deg, #ff2b3d, #c70d1e); box-shadow: 0 0 14px rgba(255, 40, 60, .4); }
 .rr-btn--fb { background: linear-gradient(180deg, #2f7bf5, #1659d6); }
 .rr-btn--tt { background: linear-gradient(180deg, #ff4f8b, #e0245e); }
-.rr-btn--fb .rr-icon, .rr-btn--tt .rr-icon { width: 22px; height: 22px; padding: 2px; border-radius: 50%; background: #fff; color: #1659d6; }
+.rr-btn--ig { background: linear-gradient(180deg, #f7774a, #d62976 55%, #962fbf); }
+.rr-btn--yt { background: linear-gradient(180deg, #ff3b3b, #cc0000); }
+.rr-btn--fb .rr-icon, .rr-btn--tt .rr-icon, .rr-btn--ig .rr-icon, .rr-btn--yt .rr-icon { width: 22px; height: 22px; padding: 2px; border-radius: 50%; background: #fff; color: #1659d6; }
 .rr-btn--tt .rr-icon { color: #111; }
+.rr-btn--ig .rr-icon { color: #d62976; }
+.rr-btn--yt .rr-icon { color: #e00; }
 
 /* ---------- Before you visit ---------- */
 .rr-visit { margin-top: 40px; }
@@ -652,6 +656,8 @@ body.rr-scene .rr-scroll::-webkit-scrollbar-thumb { background: rgba(247, 201, 9
 .rr-btn--red { background: linear-gradient(180deg, #ff2a3a, #d00c1c); box-shadow: 0 0 14px rgba(255, 30, 50, .65); }
 .rr-btn--fb { box-shadow: 0 0 12px rgba(40, 120, 255, .6); }
 .rr-btn--tt { box-shadow: 0 0 12px rgba(255, 40, 120, .6); }
+.rr-btn--ig { box-shadow: 0 0 12px rgba(214, 41, 118, .6); }
+.rr-btn--yt { box-shadow: 0 0 12px rgba(230, 0, 0, .6); }
 .rr-btn--blue { background: linear-gradient(180deg, #0f3f8f, #082a66); box-shadow: 0 0 12px rgba(70, 150, 255, .5); }
 
 /* Font for panel headings (bold serif like the mockup) */
