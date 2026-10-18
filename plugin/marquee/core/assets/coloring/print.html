@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Coloring Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style id="pg">@page { size: letter landscape; margin: 0.35in; }</style>
+<style>
+html, body { margin: 0; background: #fff; }
+.bar { font: 16px Arial, sans-serif; text-align: center; padding: 12px; background: #8a1219; color: #fff; }
+.bar button { font: bold 16px Arial, sans-serif; padding: 8px 18px; margin-left: 10px; border: 0; border-radius: 8px; background: #ffd45c; color: #3a1a00; cursor: pointer; }
+.sheet { position: relative; margin: 0 auto; container-type: inline-size; }
+.land .sheet { max-width: 10.5in; }
+.port .sheet { max-width: 7.6in; }
+.sheet img#pic { display: block; width: 100%; height: auto; }
+/* the show's name or logo, printed in the corner where the standard pages leave room */
+.tag { position: absolute; display: flex; align-items: center; justify-content: flex-end; text-align: right; color: #111; font: 800 2.5cqw/1.1 "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif; overflow: hidden; }
+.land .tag { left: 71.5%; right: 3%; top: 85%; bottom: 3.2%; }
+.port .tag { left: 66%; right: 5%; top: 90.4%; bottom: 2.9%; font-size: 3.3cqw; }
+.tag img { max-width: 100%; max-height: 100%; filter: grayscale(1) contrast(1.15); }
+.custom .tag { display: none; }
+@media print {
+	.bar { display: none; }
+	.land .sheet { max-width: none; width: 10.2in; }
+	.port .sheet { max-width: none; width: 7.48in; }
+}
+</style></head>
+<body>
+<div class="bar">Print this page and grab your crayons! <button type="button" onclick="window.print()">Print</button></div>
+<div class="sheet"><img id="pic" alt=""><div class="tag" id="tag"></div></div>
+<script>
+(function () {
+	var PAGES = {
+		'snowman': ['Happy Holidays snowman', 'land'],
+		'reindeer': ['Little reindeer', 'land'],
+		'gingerbread': ['Gingerbread friend', 'land'],
+		'merry-christmas': ['Merry Christmas snowmen', 'land'],
+		'santa-tree': ['Santa and the Christmas tree', 'port'],
+		'santa-cookies': ['Santa baking cookies', 'port']
+	};
+	var q = new URLSearchParams(location.search);
+	// only pictures from this website
+	var same = function (u) { try { return new URL(u, location.href).origin === location.origin; } catch (e) { return false; } };
+	var name = (q.get('n') || '').slice(0, 60), logo = q.get('l') || '', custom = q.get('img') || '';
+	var key = PAGES[q.get('p')] ? q.get('p') : 'snowman', title, orient, src;
+	if (custom && same(custom)) {
+		title = (q.get('t') || 'Coloring page').slice(0, 80); orient = q.get('o') === 'port' ? 'port' : 'land'; src = custom;
+		document.body.classList.add('custom'); // a show's own page: it already has whatever it needs printed on it
+	} else {
+		title = PAGES[key][0]; orient = PAGES[key][1]; src = key + '.png?v=' + ((q.get('v') || '1').replace(/[^\w.]/g, ''));
+	}
+	document.body.classList.add(orient);
+	document.getElementById('pg').textContent = '@page { size: letter ' + (orient === 'port' ? 'portrait' : 'landscape') + '; margin: 0.35in; }';
+	document.title = 'Coloring Page: ' + title + (name ? ' – ' + name : '');
+	var tag = document.getElementById('tag');
+	if (logo && same(logo)) {
+		var li = document.createElement('img'); li.alt = name; li.src = logo; tag.appendChild(li);
+	} else if (name) {
+		tag.textContent = name;
+	}
+	var img = document.getElementById('pic');
+	img.alt = 'Coloring page: ' + title;
+	img.onload = function () { setTimeout(function () { window.print(); }, 400); };
+	img.src = src;
+})();
+</script>
+</body></html>

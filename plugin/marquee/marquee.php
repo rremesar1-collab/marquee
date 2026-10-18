@@ -1,0 +1,91 @@
+<?php
+/**
+ * Plugin Name: Marquee – Show Website for xLights & FPP
+ * Description: Show status, Remote Falcon, Your Name in Lights, Kids' Corner, app and alerts for Christmas light shows. Start with Marquee → Setup.
+ * Version: 0.7.2
+ * Requires at least: 6.0
+ * Requires PHP: 7.4
+ * Author: Alateka Corporation
+ * Author URI: https://alateka.com
+ * License: GPLv2 or later
+ * Text Domain: marquee
+ */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+define( 'MARQUEE_VERSION', '0.7.2' );
+define( 'MARQUEE_DIR', plugin_dir_path( __FILE__ ) );
+define( 'MARQUEE_URL', plugin_dir_url( __FILE__ ) );
+// GitHub "owner/repo" where new versions are published (empty = no update checks).
+defined( 'MARQUEE_GITHUB_REPO' ) || define( 'MARQUEE_GITHUB_REPO', 'rremesar1-collab/marquee' );
+
+require MARQUEE_DIR . 'inc/settings.php';
+require MARQUEE_DIR . 'inc/remote-falcon.php';
+require MARQUEE_DIR . 'inc/lookup.php';
+require MARQUEE_DIR . 'inc/admin.php';
+require MARQUEE_DIR . 'inc/blocks.php';
+require MARQUEE_DIR . 'inc/updates.php';
+require MARQUEE_DIR . 'inc/manager.php';
+
+/* -------------------------------------------------------------------------
+ * The show features (status, Remote Falcon, names, Kids' Corner, contest, songs,
+ * videos, app and alerts, Show Control, share/Google). The festive theme uses
+ * these when Marquee is active instead of its own copy.
+ * ---------------------------------------------------------------------- */
+/*
+ * Never crash, whatever theme or theme version is active and whatever order
+ * things were installed in: tell the theme Marquee is here (MARQUEE_CORE), then
+ * load the features only AFTER the theme has loaded, and only if the theme has
+ * not already loaded its own copy (an older Ridge Road theme always does).
+ */
+function marquee_old_theme() {
+	if ( 'ridgeroad' !== get_template() ) {
+		return false;
+	}
+	$v = get_file_data( get_template_directory() . '/style.css', array( 'v' => 'Version' ) );
+	return '' !== $v['v'] && version_compare( $v['v'], '2.9.0', '<' );
+}
+if ( ! function_exists( 'ridgeroad_mod' ) && ! marquee_old_theme() ) {
+	defined( 'MARQUEE_CORE' ) || define( 'MARQUEE_CORE', true );
+	defined( 'RR_FEAT_URL' ) || define( 'RR_FEAT_URL', MARQUEE_URL . 'core/' );
+	defined( 'RR_FEAT_DIR' ) || define( 'RR_FEAT_DIR', MARQUEE_DIR . 'core/' );
+	$marquee_loc = marquee_get();
+	defined( 'RIDGEROAD_LAT' ) || define( 'RIDGEROAD_LAT', '' !== $marquee_loc['lat'] ? (float) $marquee_loc['lat'] : 0.0 );
+	defined( 'RIDGEROAD_LON' ) || define( 'RIDGEROAD_LON', '' !== $marquee_loc['lon'] ? (float) $marquee_loc['lon'] : 0.0 );
+	unset( $marquee_loc );
+}
+function marquee_load_core() {
+	if ( function_exists( 'ridgeroad_mod' ) ) { // the theme brought its own copy → use that, no double load
+		$GLOBALS['marquee_core_by_theme'] = true;
+		return;
+	}
+	defined( 'RIDGEROAD_VERSION' ) || define( 'RIDGEROAD_VERSION', MARQUEE_VERSION );
+	foreach ( array( 'helpers', 'customizer', 'live', 'icons', 'cicons', 'guestbook', 'contest', 'songs', 'sequences', 'shoutouts', 'control', 'app', 'seo', 'assets' ) as $f ) {
+		require_once MARQUEE_DIR . 'core/' . $f . '.php';
+	}
+}
+add_action( 'after_setup_theme', 'marquee_load_core', -1000 );
+
+/* An older version of the festive theme (folder "ridgeroad") is active: say so instead of breaking anything. */
+add_action( 'admin_notices', function () {
+	if ( empty( $GLOBALS['marquee_core_by_theme'] ) || ! current_user_can( 'update_themes' ) || 'ridgeroad' !== get_template() ) {
+		return;
+	}
+	echo '<div class="notice notice-warning"><p><strong>Marquee:</strong> ' . esc_html__( 'Your festive theme is older than 2.9.0, so it is still using its own built-in show features. Upload Marquee Festive 2.9.0 or newer (Appearance → Themes → Add New → Upload, then “Replace current”) to finish the switch.', 'marquee' ) . '</p></div>';
+} );
+
+/* First activation: send the admin to the setup wizard once. */
+register_activation_hook( __FILE__, function () {
+	delete_option( 'marquee_rw' ); // add the /manage address again
+	if ( ! get_option( 'marquee_setup_done' ) ) {
+		set_transient( 'marquee_go_setup', 1, 60 );
+	}
+} );
+add_action( 'admin_init', function () {
+	if ( get_transient( 'marquee_go_setup' ) && current_user_can( 'manage_options' ) && ! wp_doing_ajax() && empty( $_GET['activate-multi'] ) ) { // phpcs:ignore
+		delete_transient( 'marquee_go_setup' );
+		wp_safe_redirect( admin_url( 'admin.php?page=marquee' ) );
+		exit;
+	}
+} );
