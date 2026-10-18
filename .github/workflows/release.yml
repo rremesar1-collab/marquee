@@ -1,8 +1,10 @@
-# Push a tag like v0.7.2 and this builds both zips and publishes the GitHub release.
-# Notes come from release-notes/<tag>.md. Marquee sites see the update within 6 hours
-# (or right away from Dashboard -> Updates -> Check again).
+# Publishes a GitHub release with both zips for the version in plugin/marquee/marquee.php.
+# Start it from Actions -> Release -> Run workflow (or push a tag like v0.7.2).
+# Notes come from release-notes/v<version>.md. Marquee sites see the update within
+# 6 hours, or right away from Dashboard -> Updates -> Check again.
 name: Release
 on:
+  workflow_dispatch:
   push:
     tags: ['v*']
 permissions:
@@ -12,16 +14,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Check the tag matches the plugin version
+      - name: Read version
+        id: v
         run: |
           pv=$(sed -n "s/^define( 'MARQUEE_VERSION', '\(.*\)' );/\1/p" plugin/marquee/marquee.php)
-          test "v$pv" = "$GITHUB_REF_NAME" || { echo "Tag $GITHUB_REF_NAME does not match MARQUEE_VERSION $pv"; exit 1; }
+          test -n "$pv" || { echo "Could not read MARQUEE_VERSION"; exit 1; }
+          if [ "$GITHUB_REF_TYPE" = "tag" ] && [ "$GITHUB_REF_NAME" != "v$pv" ]; then
+            echo "Tag $GITHUB_REF_NAME does not match MARQUEE_VERSION $pv"; exit 1
+          fi
+          test -f "release-notes/v$pv.md" || { echo "Missing release-notes/v$pv.md"; exit 1; }
+          echo "tag=v$pv" >> "$GITHUB_OUTPUT"
       - name: Build zips
         run: ./build.sh
       - name: Publish release
         env:
           GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.v.outputs.tag }}
         run: |
-          notes="release-notes/$GITHUB_REF_NAME.md"
-          test -f "$notes" || { echo "Missing $notes"; exit 1; }
-          gh release create "$GITHUB_REF_NAME" dist/*.zip --title "Marquee ${GITHUB_REF_NAME#v}" --notes-file "$notes"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Release $TAG already exists - bump the version first."; exit 1
+          fi
+          gh release create "$TAG" dist/*.zip --target "$GITHUB_SHA" --title "Marquee ${TAG#v}" --notes-file "release-notes/$TAG.md"
