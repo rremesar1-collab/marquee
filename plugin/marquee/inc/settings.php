@@ -192,7 +192,10 @@ function marquee_save( $in ) {
 		}
 		if ( isset( $in['names_geo_miles'] ) ) {
 			$mi = (float) str_replace( ',', '.', (string) $in['names_geo_miles'] );
-			set_theme_mod( 'names_geo_miles', (string) round( max( 0.1, min( 50.0, $mi > 0 ? $mi : 0.5 ) ), 1 ) );
+			if ( isset( $in['names_geo_unit'] ) && 'km' === $in['names_geo_unit'] ) {
+				$mi = $mi / 1.609344; // entered in kilometres, stored in miles
+			}
+			set_theme_mod( 'names_geo_miles', (string) round( max( 0.1, min( 50.0, $mi > 0 ? $mi : 0.5 ) ), 2 ) );
 		}
 		set_theme_mod( 'snow_amount', in_array( 'snow', $f, true ) ? ( 'off' === marquee_theme_get( 'snow_amount' ) ? 'medium' : marquee_theme_get( 'snow_amount' ) ) : 'off' );
 	}

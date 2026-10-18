@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.7.6
+Stable tag: 0.7.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,7 +17,7 @@ Marquee turns a WordPress site into your light show's home page. Answer a few qu
 
 * **Show status and countdown** – show tonight, starting soon, canceled or off season, updated by itself.
 * **Tonight's Show** – radio station, show hours, Now Playing and Up Next from Remote Falcon, directions.
-* **Weather** – now and tonight hour by hour, with the radar (US).
+* **Weather** – now and tonight hour by hour, with live radar (National Weather Service in the US, Windy.com everywhere else).
 * **Songs & Videos** – this year's sequence videos and favorite-song voting with a weekly Fan Favorite.
 * **Kids' Corner** – Your Name in Lights, Make a Light Show (the Light Lab, with an optional contest and Show Wall), coloring pages and games.
 * **Your Name in Lights** – kids send a first name; a small script on your FPP shows it on your matrix, projector or TV between songs. Optionally only from phones at your show.
@@ -51,6 +51,10 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.7.7 =
+* Shows outside the US: a live radar map and a "View Full Weather Forecast" button from Windy.com, in °C and km/h for metric countries.
+* "Only at the show" distance is set and shown in kilometres for metric countries.
 
 = 0.7.6 =
 * "Buy me a coffee" link on Marquee → Settings and in the Plugins list (admins only; visitors never see it).

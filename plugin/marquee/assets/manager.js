@@ -58,7 +58,7 @@
 		if (!busy) {
 			$$('[data-mm-tog]').forEach(function (b) { b.setAttribute('aria-checked', String(!!sw[b.getAttribute('data-mm-tog')])); });
 			var gt = $('[data-mm-tog="names_geo"]'), gs = gt && gt.parentNode.querySelector('small');
-			if (gs) { gs.textContent = 'Names only from phones within ' + (sw.names_geo_mi || '0.5') + ' mi of your show. You can still send test names from anywhere.'; }
+			if (gs) { var gm = parseFloat(sw.names_geo_mi || '0.5'); gs.textContent = 'Names only from phones within ' + (sw.names_geo_km ? (Math.round(gm * 16.09344) / 10) + ' km' : gm + ' mi') + ' of your show. You can still send test names from anywhere.'; }
 			var sn = $('[data-mm-set="snow_amount"]'); if (document.activeElement !== sn) { sn.value = sw.snow_amount || 'off'; }
 		}
 

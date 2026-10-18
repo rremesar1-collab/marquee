@@ -227,3 +227,38 @@ if ( ! function_exists( 'ridgeroad_social_links' ) ) {
 		return $out;
 	}
 }
+
+/**
+ * Windy.com weather for the show's location, used outside the US (where the National
+ * Weather Service radar and forecast pages don't exist). $embed = the radar map for an iframe.
+ */
+if ( ! function_exists( 'ridgeroad_windy_url' ) ) {
+	function ridgeroad_windy_url( $embed = false ) {
+		$lat    = round( (float) RIDGEROAD_LAT, 4 );
+		$lon    = round( (float) RIDGEROAD_LON, 4 );
+		$metric = function_exists( 'ridgeroad_metric' ) ? ridgeroad_metric() : false;
+		if ( ! $embed ) {
+			return 'https://www.windy.com/' . $lat . '/' . $lon . '?' . $lat . ',' . $lon . ',9';
+		}
+		return add_query_arg( array(
+			'lat'        => $lat,
+			'lon'        => $lon,
+			'detailLat'  => $lat,
+			'detailLon'  => $lon,
+			'zoom'       => 8,
+			'level'      => 'surface',
+			'overlay'    => 'radar',
+			'menu'       => '',
+			'message'    => 'true',
+			'marker'     => 'true',
+			'calendar'   => 'now',
+			'pressure'   => '',
+			'type'       => 'map',
+			'location'   => 'coordinates',
+			'detail'     => '',
+			'metricWind' => $metric ? 'km/h' : 'mph',
+			'metricTemp' => $metric ? '°C' : '°F',
+			'radarRange' => '-1',
+		), 'https://embed.windy.com/embed2.html' );
+	}
+}

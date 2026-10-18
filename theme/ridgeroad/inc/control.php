@@ -352,6 +352,7 @@ function ridgeroad_control_state() {
 			'names_always' => (bool) ridgeroad_mod( 'names_always' ),
 			'names_geo'    => (bool) ridgeroad_mod( 'names_geo' ),
 			'names_geo_mi' => (string) ridgeroad_mod( 'names_geo_miles' ),
+			'names_geo_km' => function_exists( 'ridgeroad_metric' ) && ridgeroad_metric(),
 			'contest_on'   => (bool) ridgeroad_mod( 'contest_on' ),
 			'songs_show'   => (bool) ridgeroad_mod( 'songs_show' ),
 			'kids_show'    => (bool) ridgeroad_mod( 'kids_show' ),
