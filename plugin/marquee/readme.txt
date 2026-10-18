@@ -1,10 +1,11 @@
 === Marquee – Show Website for xLights & FPP ===
 Contributors: alateka
+Donate link: https://www.buymeacoffee.com/marqueeforxlights
 Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.7.5
+Stable tag: 0.7.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,6 +51,9 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.7.6 =
+* "Buy me a coffee" link on Marquee → Settings and in the Plugins list (admins only; visitors never see it).
 
 = 0.7.5 =
 * Instagram and YouTube links, next to Facebook and TikTok.

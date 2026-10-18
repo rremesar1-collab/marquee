@@ -30,6 +30,10 @@ After that, new versions show up as normal WordPress updates.
 
 WordPress sites check for a new release every 6 hours, or right away from Dashboard → Updates → Check again. The theme update is only offered to sites running Marquee Festive (it has a `.marquee-dist` marker file), never to a show's own custom copy of the theme.
 
+## Support Marquee
+
+Marquee is free. If it makes your show better, you can [buy me a coffee ☕](https://www.buymeacoffee.com/marqueeforxlights).
+
 ## License
 
 GPLv2 or later. Bundled fonts are under the SIL Open Font License (see `theme/ridgeroad/assets/fonts`).

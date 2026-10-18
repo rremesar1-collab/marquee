@@ -103,7 +103,7 @@ function marquee_admin_page() {
 	?>
 	<div class="wrap mq<?php echo $setup ? ' mq--wizard' : ' mq--settings'; ?>" data-mq>
 		<h1><?php echo $setup ? esc_html__( 'Welcome to Marquee', 'marquee' ) : esc_html__( 'Marquee Settings', 'marquee' ); ?></h1>
-		<p class="mq__intro"><?php echo $setup ? esc_html__( 'Answer a few questions and your show’s website is ready. You can change any of this later.', 'marquee' ) : esc_html__( 'Everything about your show in one place. Night-of switches are in Show Control, or on your phone in the Show Manager.', 'marquee' ); ?> <a href="<?php echo esc_url( marquee_feedback_url() ); ?>"><?php esc_html_e( 'Send feedback', 'marquee' ); ?></a></p>
+		<p class="mq__intro"><?php echo $setup ? esc_html__( 'Answer a few questions and your show’s website is ready. You can change any of this later.', 'marquee' ) : esc_html__( 'Everything about your show in one place. Night-of switches are in Show Control, or on your phone in the Show Manager.', 'marquee' ); ?> <a href="<?php echo esc_url( marquee_feedback_url() ); ?>"><?php esc_html_e( 'Send feedback', 'marquee' ); ?></a><?php if ( MARQUEE_COFFEE_URL ) : ?> · <a href="<?php echo esc_url( MARQUEE_COFFEE_URL ); ?>" target="_blank" rel="noopener">☕ <?php esc_html_e( 'Buy me a coffee', 'marquee' ); ?></a><?php endif; ?></p>
 		<?php
 		$saved     = isset( $_GET['saved'] ) ? sanitize_key( $_GET['saved'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification
 		$pages_msg = $saved ? get_transient( 'marquee_pages_msg' ) : false;
@@ -519,6 +519,9 @@ function marquee_feedback_url() {
 add_filter( 'plugin_action_links_' . plugin_basename( MARQUEE_DIR . 'marquee.php' ), function ( $links ) {
 	array_unshift( $links, '<a href="' . esc_url( admin_url( 'admin.php?page=marquee' ) ) . '">' . esc_html__( 'Settings', 'marquee' ) . '</a>' );
 	$links[] = '<a href="' . esc_url( marquee_feedback_url() ) . '">' . esc_html__( 'Send feedback', 'marquee' ) . '</a>';
+	if ( MARQUEE_COFFEE_URL ) {
+		$links[] = '<a href="' . esc_url( MARQUEE_COFFEE_URL ) . '" target="_blank" rel="noopener">☕ ' . esc_html__( 'Buy me a coffee', 'marquee' ) . '</a>';
+	}
 	return $links;
 } );
 
