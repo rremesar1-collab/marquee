@@ -113,3 +113,5 @@
 .mq__logo-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
 .mq__logo-pick { flex: 1; min-width: 220px; }
 .mq__logo-pick .mq__on { margin-top: 8px; }
+.mq__pane label.mq__geo-mi { display: inline-flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.mq__pane .mq__geo-mi select { width: auto; min-width: 90px; }

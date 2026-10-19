@@ -578,15 +578,15 @@ function marquee_manager_box() {
 function marquee_geo_row( $s ) {
 	$mi    = (string) marquee_theme_get( 'names_geo_miles' );
 	$mi    = '' !== $mi ? $mi : '0.5';
-	$km    = 'metric' === ( isset( $s['units'] ) ? $s['units'] : '' ); // metric shows see kilometres; it is stored in miles
+	$unit  = (string) marquee_theme_get( 'names_geo_unit' ); // the owner's choice; until they pick, it follows the weather units
+	$km    = '' !== $unit ? 'km' === $unit : 'metric' === ( isset( $s['units'] ) ? $s['units'] : '' ); // stored in miles either way
 	$shown = $km ? (string) round( (float) $mi * 1.609344, 1 ) : $mi;
 	$where = '' !== (string) $s['lat'] && '' !== (string) $s['lon'];
 	?>
 	<div class="mq__feat mq__feat--sub">
 		<span>
 			<label class="mq__geo-on"><input type="checkbox" name="feat[]" value="names_geo" <?php checked( (bool) marquee_theme_get( 'names_geo' ) ); ?>> <b><?php esc_html_e( 'Only at the show', 'marquee' ); ?></b></label>
-			<label class="mq__geo-mi"><?php esc_html_e( 'within', 'marquee' ); ?> <input type="number" name="names_geo_miles" min="0.1" max="<?php echo $km ? '80' : '50'; ?>" step="0.1" value="<?php echo esc_attr( $shown ); ?>" class="small-text"> <?php echo $km ? esc_html__( 'km of your show', 'marquee' ) : esc_html__( 'miles of your show', 'marquee' ); ?></label>
-			<?php if ( $km ) : ?><input type="hidden" name="names_geo_unit" value="km"><?php endif; ?>
+			<label class="mq__geo-mi"><?php esc_html_e( 'within', 'marquee' ); ?> <input type="number" name="names_geo_miles" min="0.1" max="80" step="0.1" value="<?php echo esc_attr( $shown ); ?>" class="small-text" data-mq-geo-dist> <select name="names_geo_unit" data-mq-geo-unit aria-label="<?php esc_attr_e( 'Distance unit', 'marquee' ); ?>"><option value="mi" <?php selected( ! $km ); ?>><?php esc_html_e( 'miles', 'marquee' ); ?></option><option value="km" <?php selected( $km ); ?>><?php esc_html_e( 'km', 'marquee' ); ?></option></select> <?php esc_html_e( 'of your show', 'marquee' ); ?></label>
 			<small><?php esc_html_e( 'When a kid sends a name, the phone asks to share its location. It is only compared with your show’s address and never saved. You and your Show helpers can still send test names from anywhere.', 'marquee' ); ?> <?php echo $km ? esc_html__( '1 km suits most shows; phones can be off by about 100 metres.', 'marquee' ) : esc_html__( '0.5 mile suits most shows; phones can be off by a few hundred feet.', 'marquee' ); ?></small>
 			<?php if ( ! $where ) : ?><small class="mq__warn"><?php esc_html_e( 'Set your show’s address in the Location step first: without it, names can be sent from anywhere.', 'marquee' ); ?></small><?php endif; ?>
 		</span>

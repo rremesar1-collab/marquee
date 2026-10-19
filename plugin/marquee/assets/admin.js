@@ -59,6 +59,16 @@
 		}).catch(function () { lk.disabled = false; say(lkMsg, 'Couldn’t reach the website. Try again.', false); });
 	});
 
+	/* "Only at the show": switching miles/km converts the number in the box */
+	var geoUnit = $('[data-mq-geo-unit]'), geoDist = $('[data-mq-geo-dist]');
+	if (geoUnit && geoDist) {
+		geoUnit.addEventListener('change', function () {
+			var v = parseFloat(String(geoDist.value).replace(',', '.'));
+			if (!(v > 0)) { return; }
+			geoDist.value = Math.round((geoUnit.value === 'km' ? v * 1.609344 : v / 1.609344) * 10) / 10;
+		});
+	}
+
 	/* Logo: show the picked file right away, before saving */
 	var logoFile = $('[data-mq-logo-file]');
 	if (logoFile) {

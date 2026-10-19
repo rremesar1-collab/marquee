@@ -48,7 +48,7 @@ function marquee_theme_keys() {
 	return array(
 		'radio', 'season_start', 'season_end', 'use_sunset', 'weeknight_start', 'weekend_start', 'weeknight_close', 'weekend_close',
 		'radar_station', 'cashapp_url', 'gb_show', 'names_on', 'names_geo', 'names_geo_miles', 'kids_show', 'lab_on', 'songs_show', 'contest_on', 'app_auto_on', 'snow_amount',
-		'facebook_url', 'instagram_url', 'youtube_url', 'tiktok_url', 'facebook_show', 'instagram_show', 'youtube_show', 'tiktok_show',
+		'names_geo_unit', 'facebook_url', 'instagram_url', 'youtube_url', 'tiktok_url', 'facebook_show', 'instagram_show', 'youtube_show', 'tiktok_show',
 	);
 }
 function marquee_theme_get( $k ) {
@@ -192,8 +192,11 @@ function marquee_save( $in ) {
 		}
 		if ( isset( $in['names_geo_miles'] ) ) {
 			$mi = (float) str_replace( ',', '.', (string) $in['names_geo_miles'] );
-			if ( isset( $in['names_geo_unit'] ) && 'km' === $in['names_geo_unit'] ) {
-				$mi = $mi / 1.609344; // entered in kilometres, stored in miles
+			if ( isset( $in['names_geo_unit'] ) && in_array( $in['names_geo_unit'], array( 'km', 'mi' ), true ) ) {
+				set_theme_mod( 'names_geo_unit', $in['names_geo_unit'] );
+				if ( 'km' === $in['names_geo_unit'] ) {
+					$mi = $mi / 1.609344; // entered in kilometres, stored in miles
+				}
 			}
 			set_theme_mod( 'names_geo_miles', (string) round( max( 0.1, min( 50.0, $mi > 0 ? $mi : 0.5 ) ), 2 ) );
 		}
