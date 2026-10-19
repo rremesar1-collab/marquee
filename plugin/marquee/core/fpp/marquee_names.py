@@ -38,7 +38,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-VERSION = "3.1.2"
+VERSION = "3.1.3"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -220,7 +220,7 @@ def voice_file(item):
     if not url or not str(url).startswith(("http://", "https://")):
         return None
     base = os.path.basename(urllib.parse.urlparse(url).path)
-    if not base.endswith(".mp3") or "/" in base or base.startswith("."):
+    if not base.endswith((".mp3", ".wav")) or "/" in base or base.startswith("."):
         return None
     name = VOICE_PREFIX + base
     path = os.path.join(MUSIC, name)

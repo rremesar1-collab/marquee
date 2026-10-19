@@ -113,12 +113,22 @@
 	if (vLoad && vTest) {
 		var vPick = $('[data-mq-vpick]'), vId = $('#mq-vid'), vName = $('#mq-vname'), vAudio = $('[data-mq-vaudio]');
 		var vKey = function () { return $('#mq-vkey').value.trim(); };
+		var keyBad = function (msgEl) {
+			var k = vKey();
+			if (k && k !== '••••••••' && k.indexOf('sk_') !== 0) {
+				say(msgEl, 'That’s the key ID, not the key. The API key starts with sk_ and ElevenLabs shows it only once, when you create the key.', false);
+				return true;
+			}
+			return false;
+		};
 		vPick.addEventListener('change', function () {
 			vId.value = vPick.value;
 			vName.value = vPick.value ? vPick.options[vPick.selectedIndex].text : '';
 		});
 		vLoad.addEventListener('click', function () {
-			var lm = $('[data-mq-vlmsg]'); say(lm, 'Loading…', true);
+			var lm = $('[data-mq-vlmsg]');
+			if (keyBad(lm)) { return; }
+			say(lm, 'Loading…', true);
 			post('marquee_voice_list', { key: vKey() }).then(function (j) {
 				if (!j || !j.success) { say(lm, (j && j.data && j.data.message) || 'Couldn’t load your voices.', false); return; }
 				var cur = vId.value, list = j.data.voices || [];
@@ -137,10 +147,16 @@
 				say(lm, list.length + ' voices. Pick one, then Test voice.', true);
 			}).catch(function () { say(lm, 'Couldn’t reach the website. Try again.', false); });
 		});
+		var loaded = false;
+		var autoLoad = function () { if (!loaded && vKey()) { loaded = true; vLoad.click(); } };
+		vPick.addEventListener('focus', autoLoad);
+		vPick.addEventListener('mousedown', autoLoad);
+		$('#mq-vkey').addEventListener('change', function () { loaded = false; if (vKey().indexOf('sk_') === 0) { autoLoad(); } });
 		vTest.addEventListener('click', function () {
 			var tm = $('[data-mq-vmsg]');
+			if (keyBad(tm)) { return; }
 			vTest.disabled = true; say(tm, 'Making the clip…', true);
-			post('marquee_voice_test', { key: vKey(), voice: vId.value, model: $('#mq-vmodel').value, name: $('#mq-vtest').value }).then(function (j) {
+			post('marquee_voice_test', { key: vKey(), voice: vId.value, model: $('#mq-vmodel').value, name: $('#mq-vtest').value, speed: $('#mq-vspeed').value, santa: $('#mq-vsanta').checked ? 1 : 0, greet: $('#mq-vsanta').checked ? 'santa' : 'merry' }).then(function (j) {
 				vTest.disabled = false;
 				if (!j || !j.success) { say(tm, (j && j.data && j.data.message) || 'Test failed.', false); return; }
 				say(tm, j.data.message, true);

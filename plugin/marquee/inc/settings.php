@@ -39,6 +39,9 @@ function marquee_defaults() {
 		'voice_name'   => '',
 		'voice_model'  => 'eleven_multilingual_v2',
 		'voice_effect' => '',                // FPP effect (.eseq) that moves the singing faces while a name is spoken
+		'voice_speed'  => 0.9,               // ElevenLabs speaking speed (0.7–1.2)
+		'voice_santa'  => 0,                 // the voice is Santa: "Hi Santa! Love, Mia" is answered "Hi Mia, Santa loves you too!"
+		'names_start'  => 4,                 // seconds into the names break when the first name goes up
 	);
 }
 
@@ -109,6 +112,9 @@ function marquee_save( $in ) {
 		'voice_name'   => $txt( 'voice_name', 80 ),
 		'voice_model'  => ( isset( $in['voice_model'] ) && function_exists( 'marquee_voice_models' ) && isset( marquee_voice_models()[ $in['voice_model'] ] ) ) ? $in['voice_model'] : $cur['voice_model'],
 		'voice_effect' => isset( $in['voice_effect'] ) ? $txt( 'voice_effect', 200 ) : $cur['voice_effect'],
+		'voice_speed'  => isset( $in['voice_speed'] ) ? max( 0.7, min( 1.2, round( (float) $in['voice_speed'], 2 ) ) ) : $cur['voice_speed'],
+		'voice_santa'  => isset( $in['voice_sent'] ) ? (int) ! empty( $in['voice_santa'] ) : $cur['voice_santa'],
+		'names_start'  => isset( $in['names_start'] ) && '' !== trim( (string) $in['names_start'] ) ? max( 0, min( 120, round( (float) $in['names_start'], 2 ) ) ) : $cur['names_start'],
 		'vote_hide'  => isset( $in['vote_hide_sent'] ) ? array_values( array_slice( array_unique( array_filter( array_map( 'sanitize_title', isset( $in['vote_hide'] ) ? (array) wp_unslash( $in['vote_hide'] ) : array() ) ) ), 0, 200 ) ) : $cur['vote_hide'],
 	);
 	if ( isset( $in['art_sent'] ) ) {

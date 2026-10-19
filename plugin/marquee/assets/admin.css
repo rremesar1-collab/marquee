@@ -124,3 +124,4 @@
 .mq__std--gone .mq__std-x { color: #2271b1 !important; }
 .mq__std--gone .mq__std-pg span { color: #646970; }
 .mq__std-gone { margin-top: 14px; padding-top: 10px; border-top: 1px dashed #dcdcde; }
+.mq__pane label.mq__chk { display: flex; align-items: center; gap: 8px; margin-top: 30px; }

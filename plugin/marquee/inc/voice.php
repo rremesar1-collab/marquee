@@ -31,10 +31,26 @@ function marquee_voice_on() {
 	return ! empty( $s['voice_on'] ) && '' !== (string) $s['voice_key'] && '' !== (string) $s['voice_id'];
 }
 
-/** "MERRY CHRISTMAS, EMMA!" → "Merry Christmas, Emma!" (all-caps text can sound shouted or get spelled out). */
-function marquee_voice_text( $text ) {
-	$t = mb_convert_case( mb_strtolower( trim( (string) $text ) ), MB_CASE_TITLE, 'UTF-8' );
-	return preg_replace( '/\s+/', ' ', $t );
+/**
+ * What the voice says for a name line.
+ * "MERRY CHRISTMAS, EMMA!" → "Merry Christmas, <short pause> Emma!" (all-caps text can sound
+ * shouted or get spelled out). With a Santa voice, "HI SANTA! LOVE, MIA" becomes
+ * "Ho ho ho! Hi Mia, Santa loves you too!".
+ */
+function marquee_voice_text( $text, $santa = null ) {
+	$santa = null === $santa ? ! empty( marquee_get( 'voice_santa' ) ) : $santa;
+	$t     = preg_replace( '/\s+/', ' ', mb_convert_case( mb_strtolower( trim( (string) $text ) ), MB_CASE_TITLE, 'UTF-8' ) );
+	if ( $santa && preg_match( '/^Hi Santa! Love, (.+)$/u', $t, $m ) ) {
+		return 'Ho ho ho! Hi ' . $m[1] . ', <break time="0.3s" /> Santa loves you too!';
+	}
+	// a short breath before the name, so it isn't rushed
+	return preg_replace( '/, /', ', <break time="0.35s" /> ', $t, 1 );
+}
+
+/** Speaking speed for ElevenLabs (0.7 slow … 1.2 fast). */
+function marquee_voice_speed() {
+	$v = (float) marquee_get( 'voice_speed' );
+	return $v >= 0.7 && $v <= 1.2 ? round( $v, 2 ) : 0.9;
 }
 
 function marquee_voice_dir( $url = false ) {
@@ -45,7 +61,7 @@ function marquee_voice_dir( $url = false ) {
 /** The saved clip for this text with the current voice: array( url, seconds ) or null. */
 function marquee_voice_cached( $text, $voice = '', $model = '' ) {
 	$file = marquee_voice_file_base( $text, $voice, $model );
-	$hits = glob( marquee_voice_dir() . $file . '-*.mp3' );
+	$hits = glob( marquee_voice_dir() . $file . '-*.{wav,mp3}', GLOB_BRACE );
 	if ( ! $hits ) {
 		return null;
 	}
@@ -56,7 +72,29 @@ function marquee_voice_file_base( $text, $voice = '', $model = '' ) {
 	$s     = marquee_get();
 	$voice = $voice ? $voice : $s['voice_id'];
 	$model = $model ? $model : $s['voice_model'];
-	return substr( md5( wp_salt( 'auth' ) . '|' . $voice . '|' . $model . '|' . marquee_voice_text( $text ) ), 0, 20 );
+	// "w2": stereo WAV clips (FPP's extra sound slots play mono clips too fast)
+	return substr( md5( wp_salt( 'auth' ) . '|w2|' . $voice . '|' . $model . '|' . marquee_voice_speed() . '|' . marquee_voice_text( $text ) ), 0, 20 );
+}
+
+/**
+ * ElevenLabs PCM (16-bit mono, $rate Hz) → 44.1 kHz 16-bit stereo WAV, the format FPP's
+ * media slots play at the right speed. 22050 Hz is doubled exactly; other rates are resampled.
+ */
+function marquee_voice_wav( $pcm, $rate ) {
+	$in  = array_values( unpack( 's*', $pcm ) );
+	$n   = count( $in );
+	$out = 44100;
+	$len = (int) floor( $n * $out / $rate );
+	$buf = '';
+	for ( $i = 0; $i < $len; $i++ ) {
+		$pos = $i * $rate / $out;
+		$a   = (int) $pos;
+		$b   = min( $n - 1, $a + 1 );
+		$v   = (int) round( $in[ $a ] + ( $in[ $b ] - $in[ $a ] ) * ( $pos - $a ) );
+		$buf .= pack( 'vv', $v & 0xFFFF, $v & 0xFFFF );
+	}
+	$size = strlen( $buf );
+	return 'RIFF' . pack( 'V', 36 + $size ) . 'WAVEfmt ' . pack( 'VvvVVvv', 16, 1, 2, $out, $out * 4, 4, 16 ) . 'data' . pack( 'V', $size ) . $buf;
 }
 
 /** One call to ElevenLabs. Returns the decoded JSON or a WP_Error with a message people can act on. */
@@ -115,22 +153,24 @@ function marquee_voice_make( $text, $opts = array(), $timeout = 15 ) {
 		return $hit;
 	}
 	$j = marquee_voice_api(
-		'text-to-speech/' . rawurlencode( $voice ) . '/with-timestamps?output_format=mp3_44100_128',
+		'text-to-speech/' . rawurlencode( $voice ) . '/with-timestamps?output_format=pcm_22050',
 		$key,
 		array(
 			'text'           => marquee_voice_text( $text ),
 			'model_id'       => $model,
-			'voice_settings' => array( 'stability' => 0.5, 'similarity_boost' => 0.75 ),
+			'voice_settings' => array( 'stability' => 0.6, 'similarity_boost' => 0.75, 'speed' => marquee_voice_speed() ),
 		),
 		$timeout
 	);
 	if ( is_wp_error( $j ) ) {
 		return $j;
 	}
-	$mp3 = isset( $j['audio_base64'] ) ? base64_decode( (string) $j['audio_base64'], true ) : false; // phpcs:ignore
-	if ( ! $mp3 || strlen( $mp3 ) < 500 ) {
+	$pcm = isset( $j['audio_base64'] ) ? base64_decode( (string) $j['audio_base64'], true ) : false; // phpcs:ignore
+	if ( ! $pcm || strlen( $pcm ) < 2000 ) {
 		return new WP_Error( 'voice', __( 'ElevenLabs sent back no audio.', 'marquee' ) );
 	}
+	$pcm = substr( $pcm, 0, strlen( $pcm ) - strlen( $pcm ) % 2 );
+	$wav = marquee_voice_wav( $pcm, 22050 );
 	$len = 0.0;
 	foreach ( array( 'alignment', 'normalized_alignment' ) as $a ) {
 		if ( ! empty( $j[ $a ]['character_end_times_seconds'] ) ) {
@@ -138,7 +178,7 @@ function marquee_voice_make( $text, $opts = array(), $timeout = 15 ) {
 		}
 	}
 	if ( $len <= 0 ) {
-		$len = strlen( $mp3 ) / 16000; // 128 kbit/s
+		$len = strlen( $pcm ) / 44100; // 22050 Hz x 2 bytes
 	}
 	$dir = marquee_voice_dir();
 	if ( ! wp_mkdir_p( $dir ) ) {
@@ -147,8 +187,8 @@ function marquee_voice_make( $text, $opts = array(), $timeout = 15 ) {
 	if ( ! file_exists( $dir . 'index.php' ) ) {
 		file_put_contents( $dir . 'index.php', "<?php\n// Silence is golden.\n" ); // phpcs:ignore
 	}
-	$name = marquee_voice_file_base( $text, $voice, $model ) . '-' . (int) round( $len * 1000 ) . '.mp3';
-	if ( false === file_put_contents( $dir . $name, $mp3 ) ) { // phpcs:ignore
+	$name = marquee_voice_file_base( $text, $voice, $model ) . '-' . (int) round( $len * 1000 ) . '.wav';
+	if ( false === file_put_contents( $dir . $name, $wav ) ) { // phpcs:ignore
 		return new WP_Error( 'voice', __( 'Couldn’t save the voice clip in uploads.', 'marquee' ) );
 	}
 	if ( function_exists( 'ridgeroad_stat_add' ) ) {
@@ -216,9 +256,23 @@ add_action( 'wp_ajax_marquee_voice_test', function () {
 		wp_send_json_error( null, 403 );
 	}
 	$opts = marquee_voice_posted();
+	// try the speed / Santa switch shown on the page, even before Save
+	$try = array();
+	if ( isset( $_POST['speed'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification -- checked above
+		$try['voice_speed'] = (float) $_POST['speed']; // phpcs:ignore
+	}
+	if ( isset( $_POST['santa'] ) ) { // phpcs:ignore
+		$try['voice_santa'] = (int) ! empty( $_POST['santa'] ); // phpcs:ignore
+	}
+	if ( $try ) {
+		add_filter( 'option_marquee', function ( $v ) use ( $try ) {
+			return array_merge( (array) $v, $try );
+		} );
+	}
 	$name = isset( $_POST['name'] ) && function_exists( 'ridgeroad_clean_kid_name' ) ? ridgeroad_clean_kid_name( wp_unslash( $_POST['name'] ) ) : '';
 	$name = $name ? $name : 'EMMA';
-	$r    = marquee_voice_make( sprintf( 'MERRY CHRISTMAS, %s!', $name ), $opts );
+	$g    = isset( $_POST['greet'] ) && 'santa' === $_POST['greet'] ? 'HI SANTA! LOVE, %s' : 'MERRY CHRISTMAS, %s!'; // phpcs:ignore
+	$r    = marquee_voice_make( sprintf( $g, $name ), $opts );
 	if ( is_wp_error( $r ) ) {
 		wp_send_json_error( array( 'message' => $r->get_error_message() ) );
 	}
@@ -272,7 +326,7 @@ function marquee_voice_posted() {
 
 /* Old clips: anything not played in 400 days is cleared once a day. */
 add_action( 'marquee_voice_tidy', function () {
-	foreach ( (array) glob( marquee_voice_dir() . '*.mp3' ) as $f ) {
+	foreach ( (array) glob( marquee_voice_dir() . '*.{wav,mp3}', GLOB_BRACE ) as $f ) {
 		if ( $f && filemtime( $f ) < time() - 400 * DAY_IN_SECONDS ) {
 			wp_delete_file( $f );
 		}

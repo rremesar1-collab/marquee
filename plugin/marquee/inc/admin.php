@@ -267,7 +267,10 @@ function marquee_admin_page() {
 					<p class="mq__fine"><?php esc_html_e( 'A small script on your FPP shows the names kids send. Fill in your screens, save, then download the two files and follow the setup guide.', 'marquee' ); ?></p>
 					<?php marquee_names_status(); ?>
 					<input type="hidden" name="fpp_sent" value="1">
+					<div class="mq__row">
 					<p><label for="mq-fpl"><?php esc_html_e( 'FPP playlist with your names break', 'marquee' ); ?></label><input id="mq-fpl" name="fpp_playlist" type="text" value="<?php echo esc_attr( $s['fpp_playlist'] ); ?>"><small><?php esc_html_e( 'A short sequence (about 30 seconds) that shows your screens, in its own playlist. The guide shows how to make one.', 'marquee' ); ?></small></p>
+					<p><label for="mq-nst"><?php esc_html_e( 'First name goes up at (seconds)', 'marquee' ); ?></label><input id="mq-nst" name="names_start" type="number" min="0" max="120" step="0.5" value="<?php echo esc_attr( $s['names_start'] ); ?>"><small><?php esc_html_e( 'How far into the break the names start, one every 3.75 seconds. If your break opens with an announcer, use the second the quiet music starts.', 'marquee' ); ?></small></p>
+					</div>
 					<table class="mq__screens">
 						<thead><tr><th><?php esc_html_e( 'Screen', 'marquee' ); ?></th><th><?php esc_html_e( 'FPP address', 'marquee' ); ?></th><th><?php esc_html_e( 'Overlay model name', 'marquee' ); ?></th></tr></thead>
 						<tbody>
@@ -325,6 +328,14 @@ function marquee_admin_page() {
 							<small><button type="button" class="button-link" data-mq-vload><?php esc_html_e( 'Load my voices', 'marquee' ); ?></button> <span class="mq__msg" data-mq-vlmsg aria-live="polite"></span></small></p>
 						<p><label for="mq-vtest"><?php esc_html_e( 'Try it with a name', 'marquee' ); ?></label><input id="mq-vtest" type="text" maxlength="14" value="Emma">
 							<small><button type="button" class="button" data-mq-vtest><?php esc_html_e( 'Test voice', 'marquee' ); ?></button> <span class="mq__msg" data-mq-vmsg aria-live="polite"></span></small></p>
+					</div>
+					<div class="mq__row">
+						<p><label for="mq-vspeed"><?php esc_html_e( 'Speaking speed', 'marquee' ); ?></label><select id="mq-vspeed" name="voice_speed">
+							<?php foreach ( array( '0.75' => __( 'Slow', 'marquee' ), '0.85' => __( 'A little slow', 'marquee' ), '0.9' => __( 'Relaxed (recommended)', 'marquee' ), '1' => __( 'Normal', 'marquee' ), '1.1' => __( 'Quick', 'marquee' ) ) as $sv => $sl ) : ?>
+								<option value="<?php echo esc_attr( $sv ); ?>" <?php selected( abs( (float) $s['voice_speed'] - (float) $sv ) < 0.01 ); ?>><?php echo esc_html( $sl ); ?></option>
+							<?php endforeach; ?>
+						</select></p>
+						<p><label class="mq__chk"><input type="checkbox" id="mq-vsanta" name="voice_santa" value="1" <?php checked( (bool) $s['voice_santa'] ); ?>> <?php esc_html_e( 'My voice is Santa', 'marquee' ); ?></label><small><?php esc_html_e( 'Then “Hi Santa! Love, Mia” is answered “Ho ho ho! Hi Mia, Santa loves you too!” (the screens still show the kid’s message).', 'marquee' ); ?></small></p>
 					</div>
 					<audio data-mq-vaudio controls hidden></audio>
 					<p><label for="mq-veff"><?php esc_html_e( 'Talking faces effect (optional)', 'marquee' ); ?></label><input id="mq-veff" name="voice_effect" type="text" value="<?php echo esc_attr( $s['voice_effect'] ); ?>" placeholder="<?php esc_attr_e( 'Names Talking', 'marquee' ); ?>"><small><?php esc_html_e( 'The name of an FPP effect (.eseq) that moves your singing faces’ mouths (several with commas). It plays while each name is spoken. Leave empty for voice only. The setup guide shows how to make one.', 'marquee' ); ?></small></p>
@@ -508,6 +519,7 @@ add_action( 'admin_post_marquee_names_json', function () {
 		'break_playlist' => $s['fpp_playlist'] ? $s['fpp_playlist'] : 'Names in Lights',
 		'screens'        => $screens,
 		'talk_effect'    => (string) $s['voice_effect'],
+		'names_start'    => (float) $s['names_start'],
 	);
 	nocache_headers();
 	header( 'Content-Type: application/json; charset=utf-8' );
