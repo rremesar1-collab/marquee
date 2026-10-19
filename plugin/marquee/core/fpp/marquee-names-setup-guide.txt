@@ -109,10 +109,10 @@ audio, so your ElevenLabs key never goes on the FPP.
      restart FPPD. The setup check gets a line for sound.
 
 The names break and sound:
-  - The spoken names play on your FPP master, on top of whatever the break
-    is playing. If your break has music, keep it soft so the names can be
-    heard. Some sound cards only play one thing at a time: if you hear the
-    music but no names, make the break without music.
+  - The spoken names play on your FPP master in their own sound slot
+    (stream 2), on top of the break's music (stream 1). Keep the music soft
+    so the names can be heard. Needs FPP 10 or newer for more than one
+    sound at a time.
   - Each name is spoken right when it goes up on the screens (3.75 seconds
     apart). A name is said once, even if the screens show it again.
 
