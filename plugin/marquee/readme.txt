@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.7.11
+Stable tag: 0.7.12
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,10 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.7.12 =
+* Spoken names (optional): an ElevenLabs voice reads each name out loud as it goes up ("Merry Christmas, Emma!"). Set it up in Marquee → Settings → Connections → "Say each name out loud": paste your key, load your voices, test one. Clips are saved, so a repeated name costs nothing. Optional "talking faces" effect moves your singing faces' mouths while a name is spoken. Needs marquee_names.py 3.1 on your FPP.
+* Coloring pages: Remove takes a standard page out of the Settings list (into "Removed pages", where Restore brings it back).
 
 = 0.7.11 =
 * Coloring pages: Marquee → Settings → Artwork shows the pages that come with Marquee, each with a Show switch. With every page off and none of your own, the Coloring Pages door is hidden.

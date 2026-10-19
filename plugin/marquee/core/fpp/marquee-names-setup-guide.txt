@@ -90,6 +90,55 @@ If you use a terminal on your FPP (SSH), you can also run:
 The log is in FPP -> File Manager -> Logs -> marquee_names.log.
 
 
+
+7. SAY EACH NAME OUT LOUD (OPTIONAL, ELEVENLABS)
+------------------------------------------------
+Your website can have an ElevenLabs voice read each name over your radio
+station as it goes up: "Merry Christmas, Emma!". Your website makes the
+audio, so your ElevenLabs key never goes on the FPP.
+
+  a. Make an ElevenLabs account (elevenlabs.io). Developers -> API Keys ->
+     Create: give it "Text to Speech" access and "Voices: Read".
+  b. WP Admin -> Marquee -> Settings -> Connections -> "Say each name out
+     loud": paste the key, click "Load my voices", pick one (the voice your
+     show announcer uses sounds best), and click "Test voice". Turn on
+     "Speak the names" and Save settings.
+  c. Upload marquee_names.py again (it must be version 3.1 or newer) and
+     restart FPPD. The setup check gets a line for sound.
+
+The names break and sound:
+  - The spoken names play on your FPP master, on top of whatever the break
+    is playing. If your break has music, keep it soft so the names can be
+    heard. Some sound cards only play one thing at a time: if you hear the
+    music but no names, make the break without music.
+  - Each name is spoken right when it goes up on the screens (3.75 seconds
+    apart). A name is said once, even if the screens show it again.
+
+Talking faces (optional): make your singing faces' mouths move while each
+name is spoken.
+  - In xLights, make a short sequence (about 4 seconds) with a talking
+    mouth on your singing faces: a Faces effect with a phoneme loop, or
+    mouth shapes switching "AI, O, E, MBP, rest" every 0.1-0.2 seconds.
+    Only put effects on the face models.
+  - In the sequencer, right-click the face model -> Export Model -> pick
+    "FPP Effects (.eseq)". Name it, for example, "Names Talking", and upload
+    it in FPP -> File Manager -> Effects.
+  - More than one face: export one effect per face (or one for a model
+    group of all of them, if your xLights version allows it).
+  - Type the effect name in "Talking faces effect" on your website (several
+    names with commas: Names Talking 1, Names Talking 2), Save, and
+    download marquee_names.json again (it carries the names to your FPP).
+  The script starts the effect as each name is spoken and stops it when
+  the voice ends.
+
+Cost: about 25 ElevenLabs credits per name (one per letter). A name that
+was already said is free after that: the clip is saved on your website
+(uploads/marquee-voice) and on your FPP (File Manager -> Audio, files that
+start with marquee-voice-; the newest 300 are kept).
+
+If a spoken name doesn't work, the name still goes up on the screens. The
+last problem shows on your website under "Say each name out loud".
+
 WHAT THE RED LINES MEAN
 -----------------------
 "no settings file"          marquee_names.json isn't next to the script.
@@ -110,10 +159,20 @@ WHAT THE RED LINES MEAN
                             screens is wrong, or that FPP is off.
 "taller than wide"          Swap strings and nodes for that model in xLights
                             (step 1).
+"no 'Play Media' command"   Your FPP is too old to play the spoken names.
+                            Update FPP.
+"no effect named ..."       The talking faces effect isn't in FPP -> File
+                            Manager -> Effects, or the name doesn't match.
+"could not download the spoken name" (in the log)
+                            Your host's bot protection may block the FPP
+                            from wp-content/uploads/marquee-voice/. Ask your
+                            host to allow it, like the names check above.
 
 
 PRIVACY
 -------
 The website only gets first names, checked against a word filter, and
 names you block never go up. The script sends your website what FPP is
-playing (for Show Control) and its setup check - nothing else.
+playing (for Show Control) and its setup check - nothing else. With spoken
+names on, your website sends the first name and greeting to ElevenLabs to
+make the audio.

@@ -27,11 +27,18 @@ function marquee_defaults() {
 		'art_house'  => 0,        // the show's own house coloring page (attachment ID)
 		'art_pages'  => array(),  // extra coloring pages (attachment IDs)
 		'art_hide'   => array(),  // standard coloring pages turned off (slugs)
+		'art_removed' => array(), // standard coloring pages removed from the Settings list (slugs; also in art_hide)
 		'art_doors'  => array(),  // Kids' Corner door pictures: names / show / coloring / games => attachment ID
 		'lab_songs'  => array(),  // Light Lab songs (audio attachment IDs)
 		'vote_hide'  => array(),  // song keys left out of voting (intros, announcements)
 		'fpp_playlist' => 'Names in Lights', // FPP playlist holding the names break
 		'fpp_screens'  => array(),           // [ name, fpp address, overlay model ] for the names script
+		'voice_on'     => 0,                 // say each name out loud (ElevenLabs)
+		'voice_key'    => '',
+		'voice_id'     => '',
+		'voice_name'   => '',
+		'voice_model'  => 'eleven_multilingual_v2',
+		'voice_effect' => '',                // FPP effect (.eseq) that moves the singing faces while a name is spoken
 	);
 }
 
@@ -91,10 +98,17 @@ function marquee_save( $in ) {
 		'art_house'  => $cur['art_house'],
 		'art_pages'  => $cur['art_pages'],
 		'art_hide'   => $cur['art_hide'],
+		'art_removed' => $cur['art_removed'],
 		'art_doors'  => $cur['art_doors'],
 		'lab_songs'  => $cur['lab_songs'],
 		'fpp_playlist' => isset( $in['fpp_playlist'] ) && '' !== trim( (string) $in['fpp_playlist'] ) ? mb_substr( sanitize_text_field( wp_unslash( $in['fpp_playlist'] ) ), 0, 80 ) : $cur['fpp_playlist'],
 		'fpp_screens'  => isset( $in['fpp_sent'] ) ? marquee_clean_screens( isset( $in['fpp_screens'] ) ? (array) wp_unslash( $in['fpp_screens'] ) : array() ) : $cur['fpp_screens'],
+		'voice_on'     => isset( $in['voice_sent'] ) ? (int) ! empty( $in['voice_on'] ) : $cur['voice_on'],
+		'voice_key'    => ( isset( $in['voice_key'] ) && '' !== trim( (string) $in['voice_key'] ) && '••••••••' !== $in['voice_key'] ) ? $txt( 'voice_key', 200 ) : $cur['voice_key'],
+		'voice_id'     => isset( $in['voice_id'] ) ? substr( preg_replace( '/[^A-Za-z0-9]/', '', wp_unslash( $in['voice_id'] ) ), 0, 40 ) : $cur['voice_id'],
+		'voice_name'   => $txt( 'voice_name', 80 ),
+		'voice_model'  => ( isset( $in['voice_model'] ) && function_exists( 'marquee_voice_models' ) && isset( marquee_voice_models()[ $in['voice_model'] ] ) ) ? $in['voice_model'] : $cur['voice_model'],
+		'voice_effect' => isset( $in['voice_effect'] ) ? $txt( 'voice_effect', 200 ) : $cur['voice_effect'],
 		'vote_hide'  => isset( $in['vote_hide_sent'] ) ? array_values( array_slice( array_unique( array_filter( array_map( 'sanitize_title', isset( $in['vote_hide'] ) ? (array) wp_unslash( $in['vote_hide'] ) : array() ) ) ), 0, 200 ) ) : $cur['vote_hide'],
 	);
 	if ( isset( $in['art_sent'] ) ) {
@@ -106,8 +120,10 @@ function marquee_save( $in ) {
 		$pages = isset( $in['art_pages'] ) ? explode( ',', (string) $in['art_pages'] ) : array();
 		$new['art_pages'] = array_values( array_slice( array_filter( array_unique( array_map( $img, $pages ) ) ), 0, 12 ) );
 		if ( function_exists( 'ridgeroad_std_coloring' ) ) {
-			$keep            = isset( $in['art_std'] ) ? array_map( 'sanitize_key', (array) $in['art_std'] ) : array();
-			$new['art_hide'] = array_values( array_diff( array_keys( ridgeroad_std_coloring() ), $keep, array( 'house' ) ) );
+			$std                = array_diff( array_keys( ridgeroad_std_coloring() ), array( 'house' ) );
+			$new['art_removed'] = array_values( array_intersect( $std, isset( $in['art_removed'] ) ? array_map( 'sanitize_key', (array) $in['art_removed'] ) : array() ) );
+			$keep               = array_diff( isset( $in['art_std'] ) ? array_map( 'sanitize_key', (array) $in['art_std'] ) : array(), $new['art_removed'] );
+			$new['art_hide']    = array_values( array_diff( $std, $keep ) );
 		}
 		$aud = function ( $v ) {
 			$id = absint( $v );
@@ -122,6 +138,10 @@ function marquee_save( $in ) {
 				$new['art_doors'][ $k ] = $id;
 			}
 		}
+	}
+	if ( isset( $in['voice_clear'] ) ) {
+		$new['voice_key'] = '';
+		$new['voice_on']  = 0;
 	}
 	if ( isset( $in['rf_clear'] ) ) {
 		$new['rf_token']  = '';

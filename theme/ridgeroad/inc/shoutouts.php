@@ -214,6 +214,7 @@ function ridgeroad_name_send() {
 	if ( ! $admin ) {
 		set_transient( $k, $n + 1, HOUR_IN_SECONDS );
 	}
+	do_action( 'ridgeroad_name_added', $id, $text ); // Marquee: make the spoken version
 	wp_send_json_success( array( 'place' => ridgeroad_name_place( $id ), 'text' => $text, 'id' => $id, 'buzz' => ridgeroad_buzz_token( $id ) ) );
 }
 
@@ -285,15 +286,16 @@ function ridgeroad_names_pull() {
 	}
 	$out = array();
 	if ( ridgeroad_mod( 'names_on' ) && ! ridgeroad_names_paused() ) {
-		foreach ( ridgeroad_name_queue( 12 ) as $p ) {
-			$out[] = array( 'id' => $p->ID, 'text' => get_post_meta( $p->ID, '_rr_text', true ) );
+		foreach ( ridgeroad_name_queue( 12 ) as $i => $p ) {
+			// Marquee adds the spoken clip here ('audio', 'say_for') when spoken names are on
+			$out[] = apply_filters( 'ridgeroad_names_pull_item', array( 'id' => $p->ID, 'text' => get_post_meta( $p->ID, '_rr_text', true ) ), $p, $i );
 		}
 		// the first 6 go up at the next break: buzz the phones that asked
 		if ( $out && function_exists( 'ridgeroad_app_buzz_names' ) ) {
 			ridgeroad_app_buzz_names( wp_list_pluck( array_slice( $out, 0, 6 ), 'id' ) );
 		}
 	}
-	wp_send_json_success( array( 'names' => $out, 'color' => ridgeroad_mod( 'names_color' ) ) );
+	wp_send_json_success( apply_filters( 'ridgeroad_names_pull_data', array( 'names' => $out, 'color' => ridgeroad_mod( 'names_color' ) ) ) );
 }
 
 add_action( 'wp_ajax_rr_names_nonce', 'ridgeroad_names_nonce' );

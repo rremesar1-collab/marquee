@@ -291,6 +291,45 @@ function marquee_admin_page() {
 						<a class="button-link" href="<?php echo esc_url( MARQUEE_URL . 'core/fpp/marquee-names-setup-guide.txt' ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Setup guide', 'marquee' ); ?></a>
 					</p>
 					<small><?php esc_html_e( 'Save first if you changed anything above; the settings file is made from the saved values. It contains your private key, so keep it private.', 'marquee' ); ?></small>
+
+					<h3><?php esc_html_e( 'Say each name out loud (optional)', 'marquee' ); ?></h3>
+					<p class="mq__fine"><?php esc_html_e( 'An ElevenLabs voice reads each name over your radio station as it goes up on the screens: “Merry Christmas, Emma!”. Use the same voice as your show announcer and it sounds like part of the show.', 'marquee' ); ?></p>
+					<input type="hidden" name="voice_sent" value="1">
+					<?php
+					$verr = get_option( 'marquee_voice_error' );
+					if ( $s['voice_on'] && is_array( $verr ) && ! empty( $verr['msg'] ) ) {
+						/* translators: 1: time ago, 2: error message */
+						echo '<div class="mq__fppstat"><p class="is-bad">' . esc_html( sprintf( __( 'The last spoken name didn’t work (%1$s ago): %2$s', 'marquee' ), human_time_diff( (int) $verr['t'] ), $verr['msg'] ) ) . '</p></div>';
+					}
+					?>
+					<label class="mq__feat"><span><b><?php esc_html_e( 'Speak the names', 'marquee' ); ?></b><small><?php esc_html_e( 'Needs an ElevenLabs account and the names script 3.1 or newer on your FPP.', 'marquee' ); ?></small></span><input type="checkbox" name="voice_on" value="1" <?php checked( (bool) $s['voice_on'] ); ?>></label>
+					<div class="mq__row">
+						<p><label for="mq-vkey"><?php esc_html_e( 'ElevenLabs API key', 'marquee' ); ?></label><input id="mq-vkey" name="voice_key" type="password" autocomplete="new-password" value="<?php echo $s['voice_key'] ? '••••••••' : ''; ?>"><small><?php esc_html_e( 'ElevenLabs → Developers → API Keys. Give it Text to Speech access, plus Voices: Read so the list below works. It stays on this server.', 'marquee' ); ?></small></p>
+						<p><label for="mq-vmodel"><?php esc_html_e( 'Voice quality', 'marquee' ); ?></label><select id="mq-vmodel" name="voice_model">
+							<?php foreach ( marquee_voice_models() as $mid => $mlab ) : ?>
+								<option value="<?php echo esc_attr( $mid ); ?>" <?php selected( $s['voice_model'], $mid ); ?>><?php echo esc_html( $mlab ); ?></option>
+							<?php endforeach; ?>
+						</select></p>
+					</div>
+					<div class="mq__row">
+						<p><label for="mq-vpick"><?php esc_html_e( 'Voice', 'marquee' ); ?></label>
+							<select id="mq-vpick" data-mq-vpick>
+								<?php if ( $s['voice_id'] ) : ?>
+									<option value="<?php echo esc_attr( $s['voice_id'] ); ?>" selected><?php echo esc_html( $s['voice_name'] ? $s['voice_name'] : $s['voice_id'] ); ?></option>
+								<?php else : ?>
+									<option value=""><?php esc_html_e( '— Load my voices first —', 'marquee' ); ?></option>
+								<?php endif; ?>
+							</select>
+							<input type="hidden" name="voice_id" id="mq-vid" value="<?php echo esc_attr( $s['voice_id'] ); ?>">
+							<input type="hidden" name="voice_name" id="mq-vname" value="<?php echo esc_attr( $s['voice_name'] ); ?>">
+							<small><button type="button" class="button-link" data-mq-vload><?php esc_html_e( 'Load my voices', 'marquee' ); ?></button> <span class="mq__msg" data-mq-vlmsg aria-live="polite"></span></small></p>
+						<p><label for="mq-vtest"><?php esc_html_e( 'Try it with a name', 'marquee' ); ?></label><input id="mq-vtest" type="text" maxlength="14" value="Emma">
+							<small><button type="button" class="button" data-mq-vtest><?php esc_html_e( 'Test voice', 'marquee' ); ?></button> <span class="mq__msg" data-mq-vmsg aria-live="polite"></span></small></p>
+					</div>
+					<audio data-mq-vaudio controls hidden></audio>
+					<p><label for="mq-veff"><?php esc_html_e( 'Talking faces effect (optional)', 'marquee' ); ?></label><input id="mq-veff" name="voice_effect" type="text" value="<?php echo esc_attr( $s['voice_effect'] ); ?>" placeholder="<?php esc_attr_e( 'Names Talking', 'marquee' ); ?>"><small><?php esc_html_e( 'The name of an FPP effect (.eseq) that moves your singing faces’ mouths (several with commas). It plays while each name is spoken. Leave empty for voice only. The setup guide shows how to make one.', 'marquee' ); ?></small></p>
+					<p class="mq__fine"><?php esc_html_e( 'Cost: about 25 ElevenLabs credits per name, and a name that was already said is free after that (the clip is saved on your website). Kids’ first names are sent to ElevenLabs to make the audio; Settings → Privacy has a line you can add to your privacy page.', 'marquee' ); ?>
+						<?php if ( $s['voice_key'] ) : ?><label><input type="checkbox" name="voice_clear" value="1"> <?php esc_html_e( 'Remove my ElevenLabs key', 'marquee' ); ?></label><?php endif; ?></p>
 				<?php endif; ?>
 			</section>
 
@@ -330,14 +369,40 @@ function marquee_admin_page() {
 					?>
 					<div class="mq__media is-multi">
 						<b class="mq__media-label"><?php esc_html_e( 'Coloring pages that come with Marquee', 'marquee' ); ?></b>
-						<small class="mq__fine"><?php esc_html_e( 'Untick any you don’t want in the Kids’ Corner. If every page is off and you add none of your own, the Coloring Pages door is hidden.', 'marquee' ); ?></small>
-						<div class="mq__std">
-							<?php foreach ( ridgeroad_std_coloring() as $slug => $title ) : if ( 'house' === $slug ) { continue; } ?>
-								<label class="mq__std-pg">
-									<img src="<?php echo esc_url( $std_dir . $slug . '-thumb.webp' ); ?>" alt="" loading="lazy">
-									<span><input type="checkbox" name="art_std[]" value="<?php echo esc_attr( $slug ); ?>" <?php checked( ! in_array( $slug, $hidden, true ) ); ?>> <?php echo esc_html( $title ); ?></span>
-								</label>
-							<?php endforeach; ?>
+						<small class="mq__fine"><?php esc_html_e( 'Untick any you want off for now, or click Remove to take it out of this list. If every page is off and you add none of your own, the Coloring Pages door is hidden.', 'marquee' ); ?></small>
+						<?php
+						$removed = (array) $s['art_removed'];
+						$card    = function ( $slug, $title, $gone ) use ( $std_dir, $hidden ) {
+							?>
+							<div class="mq__std-pg" data-mq-std="<?php echo esc_attr( $slug ); ?>">
+								<label><img src="<?php echo esc_url( $std_dir . $slug . '-thumb.webp' ); ?>" alt="" loading="lazy">
+								<span><input type="checkbox" name="art_std[]" value="<?php echo esc_attr( $slug ); ?>" <?php checked( ! $gone && ! in_array( $slug, $hidden, true ) ); ?> <?php disabled( $gone ); ?>> <?php echo esc_html( $title ); ?></span></label>
+								<input type="hidden" name="art_removed[]" value="<?php echo esc_attr( $slug ); ?>" <?php disabled( ! $gone ); ?>>
+								<button type="button" class="button-link mq__std-x" data-mq-std-x><?php echo $gone ? esc_html__( 'Restore', 'marquee' ) : esc_html__( 'Remove', 'marquee' ); ?></button>
+							</div>
+							<?php
+						};
+						?>
+						<div class="mq__std" data-mq-std-list>
+							<?php
+							foreach ( ridgeroad_std_coloring() as $slug => $title ) {
+								if ( 'house' !== $slug && ! in_array( $slug, $removed, true ) ) {
+									$card( $slug, $title, false );
+								}
+							}
+							?>
+						</div>
+						<div class="mq__std-gone" data-mq-std-gone <?php echo $removed ? '' : 'hidden'; ?>>
+							<b><?php esc_html_e( 'Removed pages', 'marquee' ); ?></b> <small class="mq__fine"><?php esc_html_e( 'Kids never see these. Click Restore to bring one back.', 'marquee' ); ?></small>
+							<div class="mq__std mq__std--gone" data-mq-std-gonelist>
+								<?php
+								foreach ( ridgeroad_std_coloring() as $slug => $title ) {
+									if ( 'house' !== $slug && in_array( $slug, $removed, true ) ) {
+										$card( $slug, $title, true );
+									}
+								}
+								?>
+							</div>
 						</div>
 					</div>
 					<?php
@@ -442,6 +507,7 @@ add_action( 'admin_post_marquee_names_json', function () {
 		'key'            => function_exists( 'ridgeroad_names_key' ) ? ridgeroad_names_key() : '',
 		'break_playlist' => $s['fpp_playlist'] ? $s['fpp_playlist'] : 'Names in Lights',
 		'screens'        => $screens,
+		'talk_effect'    => (string) $s['voice_effect'],
 	);
 	nocache_headers();
 	header( 'Content-Type: application/json; charset=utf-8' );

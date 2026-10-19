@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Marquee - "Your Name in Lights" for FPP   (version 3.0)
+Marquee - "Your Name in Lights" for FPP   (version 3.1)
 ---------------------------------------------------------
 Runs on your FPP master. Kids send their first name on your Marquee website.
 
@@ -9,6 +9,9 @@ Runs on your FPP master. Kids send their first name on your Marquee website.
     break right AFTER the current song finishes. Names never cover a song.
   * During the break it shows up to 6 names, one at a time, on your screens
     (any FPP Pixel Overlay Model: a matrix, a projector, a TV).
+  * If your website has "Say each name out loud" on, it downloads each
+    spoken name (made by your website with ElevenLabs) and plays it as the
+    name goes up, optionally with a "talking faces" effect on your props.
   * It tells your website what FPP is playing (Show Control in WP Admin) and
     how its setup check went (Marquee -> Settings -> Connections).
 
@@ -35,12 +38,15 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-VERSION = "3.0"
+VERSION = "3.1"
 HERE = os.path.dirname(os.path.abspath(__file__))
 CONFIG = os.environ.get("MARQUEE_NAMES_CONFIG", os.path.join(HERE, "marquee_names.json"))
 MASTER = os.environ.get("MARQUEE_FPP", "http://127.0.0.1")
 LOCK = "/tmp/marquee_names.pid"
 LOGFILE = "/home/fpp/media/logs/marquee_names.log"
+MUSIC = os.environ.get("MARQUEE_MUSIC", "/home/fpp/media/music")   # spoken names are saved here (FPP plays media from this folder)
+VOICE_PREFIX = "marquee-voice-"
+VOICE_KEEP = 300                                                    # newest clips kept on the FPP
 UA = "Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36 FPP-Marquee/" + VERSION
 
 DEFAULTS = {
@@ -56,6 +62,9 @@ DEFAULTS = {
     "max_height": 0.42,               # ... and of height
     "font": "",                       # "" picks a bold font automatically
     "check_every": 20,                # seconds between website checks during songs
+    "voice": True,                    # play spoken names when the website sends them (false = never)
+    "voice_volume": 0,                # -100..100, added to FPP's volume for the spoken names
+    "talk_effect": "",                # FPP effect (.eseq) that moves the singing faces while a name is spoken
 }
 S = dict(DEFAULTS)
 
@@ -186,6 +195,97 @@ def queue_break():
     fpp_command(MASTER, "Insert Playlist After Current", [S["break_playlist"], -1, -1, "true"])
 
 
+# --------------------------------------------------------------- voice ----
+def voice_file(item):
+    """Local file name for a name's spoken clip, downloading it if needed. None = no voice for this name."""
+    url = item.get("audio") if S["voice"] else None
+    if not url or not str(url).startswith(("http://", "https://")):
+        return None
+    base = os.path.basename(urllib.parse.urlparse(url).path)
+    if not base.endswith(".mp3") or "/" in base or base.startswith("."):
+        return None
+    name = VOICE_PREFIX + base
+    path = os.path.join(MUSIC, name)
+    if os.path.exists(path) and os.path.getsize(path) > 500:
+        return name
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "audio/mpeg,*/*"})
+        with urllib.request.urlopen(req, timeout=10) as r:
+            data = r.read(3_000_000)
+        if len(data) < 500 or data[:1] == b"<":
+            raise RuntimeError("the website sent back a page instead of audio")
+        tmp = path + ".part"
+        with open(tmp, "wb") as f:
+            f.write(data)
+        os.replace(tmp, path)
+        tidy_voice()
+        return name
+    except Exception as e:
+        log("could not download the spoken name for", item.get("text"), "-", e)
+        return None
+
+
+def tidy_voice():
+    try:
+        clips = sorted((os.path.getmtime(os.path.join(MUSIC, f)), f) for f in os.listdir(MUSIC) if f.startswith(VOICE_PREFIX))
+        for _, f in clips[:-VOICE_KEEP]:
+            os.remove(os.path.join(MUSIC, f))
+    except OSError:
+        pass
+
+
+def prefetch(names):
+    for item in names[:int(S["max_names"])]:
+        voice_file(item)
+
+
+def say(item):
+    """Start the spoken name (and the talking faces). Returns when to stop the faces, or 0."""
+    name = voice_file(item)
+    if not name:
+        return 0
+    try:
+        os.utime(os.path.join(MUSIC, name))       # newest-used clips are kept
+    except OSError:
+        pass
+    try:
+        fpp_command(MASTER, "Play Media", [name, 1, int(S["voice_volume"])])
+    except Exception as e:
+        log("could not play the spoken name:", e)
+        return 0
+    effs = talk_effects()
+    if not effs:
+        return 0
+    started = 0
+    for eff in effs:
+        try:
+            fpp_command(MASTER, "FSEQ Effect Start", [eff, "true", "false"])
+            started += 1
+        except Exception as e:
+            log("could not start the talking effect '%s':" % eff, e)
+    if not started:
+        return 0
+    try:
+        length = float(item.get("say_for") or 2.0)
+    except (TypeError, ValueError):
+        length = 2.0
+    return time.time() + max(0.5, min(8.0, length))
+
+
+def talk_effects():
+    """The talking faces effect name(s) from the settings file (commas allowed)."""
+    return [e.strip()[:-5] if e.strip().lower().endswith(".eseq") else e.strip()
+            for e in str(S["talk_effect"] or "").split(",") if e.strip()]
+
+
+def stop_talking():
+    for eff in talk_effects():
+        try:
+            fpp_command(MASTER, "FSEQ Effect Stop", [eff])
+        except Exception as e:
+            log("could not stop the talking effect:", e)
+
+
 # ------------------------------------------------------------- screens ----
 _info = {}
 
@@ -272,27 +372,43 @@ def run_break(color):
         log("break started but the website could not be reached:", e)
         return []
     log("break started with %d name(s)" % len(names))
+    prefetch(names)
     done = []
+    talk_until = 0
     # Fill every slot: with fewer names than slots, cycle through them.
     for k in range(int(S["max_names"]) if names else 0):
         item = names[k % len(names)]
         at = float(S["names_start"]) + k * float(S["slot"])
         while True:
+            if talk_until and time.time() >= talk_until:
+                stop_talking()
+                talk_until = 0
             st = master_status()
             if not in_break(st):
                 log("break ended early")
+                if talk_until:
+                    stop_talking()
                 return done
             if elapsed(st) >= at:
                 break
             time.sleep(0.1)
         if show(item["text"], color):
             log("showing:", item["text"])
+            if k < len(names):              # say each name once, even when the screens repeat it
+                if talk_until:
+                    stop_talking()
+                talk_until = say(item)
             if item["id"] not in done:
                 done.append(item["id"])
         else:
             log("no screen took", item["text"], "- it will wait for the next break")
     while in_break(master_status()):       # let the break finish
-        time.sleep(0.5)
+        if talk_until and time.time() >= talk_until:
+            stop_talking()
+            talk_until = 0
+        time.sleep(0.2)
+    if talk_until:
+        stop_talking()
     return done
 
 
@@ -304,9 +420,11 @@ def run_checks(problems=None):
     for p in (problems or []):
         add(False, "settings", p)
     site_ok = False
+    site_voice = False
     try:
         d = pull([])
         site_ok = True
+        site_voice = bool(d.get("voice"))
         add(True, "website", "website and private key work (%d name(s) waiting)" % len(d.get("names") or []))
     except urllib.error.HTTPError as e:
         add(False, "website", "the private key is wrong - download marquee_names.json again" if e.code == 403 else "website answered %s %s" % (e.code, e.reason))
@@ -325,6 +443,25 @@ def run_checks(problems=None):
             add(False, "playlist", "no playlist named '%s' on this FPP (found: %s)" % (S["break_playlist"], ", ".join(pls) or "none"))
     except Exception as e:
         add(False, "playlist", "could not list playlists: %s" % e)
+    if S["voice"] and site_voice:
+        try:
+            cmds = fpp_get(MASTER, "/api/commands") or []
+            names = set(c.get("name") for c in cmds if isinstance(c, dict))
+            if "Play Media" in names:
+                add(True, "voice", "this FPP can play spoken names")
+            else:
+                add(False, "voice", "this FPP has no 'Play Media' command, so spoken names can't play (update FPP)")
+            if talk_effects():
+                effs = [str(e) for e in (fpp_get(MASTER, "/api/effects") or [])]
+                for want in talk_effects():
+                    if want in effs or want + ".eseq" in effs:
+                        add(True, "voice", "talking effect '%s' found" % want)
+                    else:
+                        add(False, "voice", "no effect named '%s' on this FPP (found: %s)" % (want, ", ".join(effs) or "none"))
+        except Exception as e:
+            add(False, "voice", "could not check spoken-name support: %s" % e)
+        if not os.access(MUSIC, os.W_OK):
+            add(False, "voice", "can't save spoken names in %s" % MUSIC)
     for sc in S["screens"]:
         try:
             w, h, font = screen_info(sc)
@@ -463,6 +600,8 @@ def main():
                 done = []
                 color = data.get("color") or color
                 waiting = len(data.get("names") or [])
+                if waiting:
+                    prefetch(data.get("names") or [])     # spoken names are ready before the break
                 if waiting and not queued:
                     queue_break()
                     queued = True

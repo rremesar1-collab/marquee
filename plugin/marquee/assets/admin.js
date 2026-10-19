@@ -91,6 +91,64 @@
 		}).catch(function () { rt.disabled = false; say(rtMsg, 'Couldn’t reach the website. Try again.', false); });
 	});
 
+	/* standard coloring pages: Remove / Restore */
+	var stdList = $('[data-mq-std-list]'), stdGone = $('[data-mq-std-gonelist]');
+	if (stdList && stdGone) {
+		root.addEventListener('click', function (e) {
+			var x = e.target.closest('[data-mq-std-x]');
+			if (!x) { return; }
+			var card = x.closest('[data-mq-std]'), box = card.querySelector('input[type=checkbox]'), flag = card.querySelector('input[name="art_removed[]"]');
+			var gone = card.parentNode === stdGone;
+			if (gone) {
+				stdList.appendChild(card); box.disabled = false; box.checked = true; flag.disabled = true; x.textContent = 'Remove';
+			} else {
+				stdGone.appendChild(card); box.checked = false; box.disabled = true; flag.disabled = false; x.textContent = 'Restore';
+			}
+			$('[data-mq-std-gone]').hidden = !stdGone.children.length;
+		});
+	}
+
+	/* spoken names (ElevenLabs) */
+	var vLoad = $('[data-mq-vload]'), vTest = $('[data-mq-vtest]');
+	if (vLoad && vTest) {
+		var vPick = $('[data-mq-vpick]'), vId = $('#mq-vid'), vName = $('#mq-vname'), vAudio = $('[data-mq-vaudio]');
+		var vKey = function () { return $('#mq-vkey').value.trim(); };
+		vPick.addEventListener('change', function () {
+			vId.value = vPick.value;
+			vName.value = vPick.value ? vPick.options[vPick.selectedIndex].text : '';
+		});
+		vLoad.addEventListener('click', function () {
+			var lm = $('[data-mq-vlmsg]'); say(lm, 'Loading…', true);
+			post('marquee_voice_list', { key: vKey() }).then(function (j) {
+				if (!j || !j.success) { say(lm, (j && j.data && j.data.message) || 'Couldn’t load your voices.', false); return; }
+				var cur = vId.value, list = j.data.voices || [];
+				vPick.innerHTML = '';
+				var g1 = document.createElement('optgroup'), g2 = document.createElement('optgroup');
+				g1.label = 'My voices'; g2.label = 'ElevenLabs voices';
+				list.forEach(function (v) {
+					var o = document.createElement('option'); o.value = v.id; o.textContent = v.name;
+					if (v.id === cur) { o.selected = true; }
+					(v.mine ? g1 : g2).appendChild(o);
+				});
+				if (g1.children.length) { vPick.appendChild(g1); }
+				if (g2.children.length) { vPick.appendChild(g2); }
+				if (!cur || !list.some(function (v) { return v.id === cur; })) { vPick.selectedIndex = 0; }
+				vPick.dispatchEvent(new Event('change'));
+				say(lm, list.length + ' voices. Pick one, then Test voice.', true);
+			}).catch(function () { say(lm, 'Couldn’t reach the website. Try again.', false); });
+		});
+		vTest.addEventListener('click', function () {
+			var tm = $('[data-mq-vmsg]');
+			vTest.disabled = true; say(tm, 'Making the clip…', true);
+			post('marquee_voice_test', { key: vKey(), voice: vId.value, model: $('#mq-vmodel').value, name: $('#mq-vtest').value }).then(function (j) {
+				vTest.disabled = false;
+				if (!j || !j.success) { say(tm, (j && j.data && j.data.message) || 'Test failed.', false); return; }
+				say(tm, j.data.message, true);
+				vAudio.hidden = false; vAudio.src = j.data.url; vAudio.play().catch(function () {});
+			}).catch(function () { vTest.disabled = false; say(tm, 'Couldn’t reach the website. Try again.', false); });
+		});
+	}
+
 	/* picture pickers (Media Library) */
 	root.querySelectorAll('[data-mq-media]').forEach(function (box) {
 		var multi = box.getAttribute('data-multi') === '1', input = box.querySelector('[data-mq-ids]');
