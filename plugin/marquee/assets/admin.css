@@ -103,3 +103,5 @@
 .mq__social-row { display: flex; gap: 12px; align-items: center; }
 .mq__social-row input[type=url] { flex: 1; }
 .mq__pane label.mq__on { display: inline-flex; align-items: center; gap: 6px; margin: 0; font-weight: 400; white-space: nowrap; }
+.mq__row--4 .mq__wide { grid-column: 2 / -1; align-self: end; }
+@media (max-width: 782px) { .mq__row--4 .mq__wide { grid-column: 1 / -1; } }

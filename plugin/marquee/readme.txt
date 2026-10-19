@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.7.7
+Stable tag: 0.7.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,6 +51,10 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.7.8 =
+* Marquee → Settings → Location now shows your country (filled in by Find) and says where your weather and radar come from.
+* Shows outside the US always get the Windy.com radar, even if a US radar station was left in the settings.
 
 = 0.7.7 =
 * Shows outside the US: a live radar map and a "View Full Weather Forecast" button from Windy.com, in °C and km/h for metric countries.

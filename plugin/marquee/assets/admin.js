@@ -49,7 +49,7 @@
 			var d = j.data;
 			$('#mq-lat').value = (+d.lat).toFixed(5); $('#mq-lon').value = (+d.lon).toFixed(5);
 			if (d.tz) { var o = $('#mq-tz').querySelector('option[value="' + d.tz + '"]'); if (o) { $('#mq-tz').value = d.tz; } }
-			if (d.radar) { $('#mq-radar').value = d.radar; }
+			if (d.radar) { $('#mq-radar').value = d.radar; } else if (d.country && d.country !== 'US') { $('#mq-radar').value = ''; }
 			if ($('#mq-office')) { $('#mq-office').value = d.office || ''; }
 			if (d.city) { $('#mq-city').value = d.city; }
 			if (d.region) { $('#mq-region').value = d.region; }

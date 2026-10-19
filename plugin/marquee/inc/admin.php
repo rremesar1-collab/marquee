@@ -178,7 +178,7 @@ function marquee_admin_page() {
 					<p><label for="mq-lat"><?php esc_html_e( 'Latitude', 'marquee' ); ?></label><input id="mq-lat" name="lat" type="text" inputmode="decimal" value="<?php echo esc_attr( $s['lat'] ); ?>"></p>
 					<p><label for="mq-lon"><?php esc_html_e( 'Longitude', 'marquee' ); ?></label><input id="mq-lon" name="lon" type="text" inputmode="decimal" value="<?php echo esc_attr( $s['lon'] ); ?>"></p>
 					<p><label for="mq-tz"><?php esc_html_e( 'Time zone', 'marquee' ); ?></label><select id="mq-tz" name="tz"><?php echo wp_timezone_choice( $s['tz'] ); // phpcs:ignore ?></select></p>
-					<p><label for="mq-radar"><?php esc_html_e( 'Radar station', 'marquee' ); ?></label><input id="mq-radar" name="radar_station" type="text" maxlength="4" value="<?php echo esc_attr( $tm( 'radar_station' ) ); ?>"><small><?php esc_html_e( 'US only. Empty hides the radar.', 'marquee' ); ?></small></p>
+					<p><label for="mq-radar"><?php esc_html_e( 'Radar station', 'marquee' ); ?></label><input id="mq-radar" name="radar_station" type="text" maxlength="4" value="<?php echo esc_attr( $tm( 'radar_station' ) ); ?>"><small><?php esc_html_e( 'US only, filled in by Find. Outside the US a Windy.com radar map is used instead.', 'marquee' ); ?></small></p>
 					<input id="mq-office" name="nws_office" type="hidden" value="<?php echo esc_attr( $s['nws_office'] ); ?>">
 				</div>
 				<div class="mq__row mq__row--4">
@@ -187,7 +187,19 @@ function marquee_admin_page() {
 					<p><label for="mq-zip"><?php esc_html_e( 'ZIP / postcode', 'marquee' ); ?></label><input id="mq-zip" name="zip" type="text" value="<?php echo esc_attr( $s['zip'] ); ?>"></p>
 					<p><label for="mq-units"><?php esc_html_e( 'Weather units', 'marquee' ); ?></label><select id="mq-units" name="units"><option value="us" <?php selected( $s['units'], 'us' ); ?>>°F, mph</option><option value="metric" <?php selected( $s['units'], 'metric' ); ?>>°C, km/h</option></select></p>
 				</div>
-				<input type="hidden" name="country" value="<?php echo esc_attr( $s['country'] ); ?>" data-mq-country>
+				<div class="mq__row mq__row--4">
+					<p><label for="mq-country"><?php esc_html_e( 'Country', 'marquee' ); ?></label><input id="mq-country" name="country" type="text" maxlength="2" list="mq-countries" placeholder="US" value="<?php echo esc_attr( $s['country'] ); ?>" data-mq-country style="text-transform:uppercase"><small><?php esc_html_e( 'Two-letter code, filled in by Find.', 'marquee' ); ?></small></p>
+					<datalist id="mq-countries">
+						<?php
+						foreach ( array( 'US' => 'United States', 'AU' => 'Australia', 'CA' => 'Canada', 'GB' => 'United Kingdom', 'NZ' => 'New Zealand', 'IE' => 'Ireland', 'ZA' => 'South Africa', 'MX' => 'Mexico', 'DE' => 'Germany', 'NL' => 'Netherlands' ) as $cc => $cn ) {
+							printf( '<option value="%s" label="%s"></option>', esc_attr( $cc ), esc_attr( $cn ) );
+						}
+						?>
+					</datalist>
+					<p class="mq__wide"><span class="mq__fine"><?php echo 'US' === strtoupper( (string) $s['country'] ) || '' === (string) $s['country']
+						? esc_html__( 'Weather: forecast from Open-Meteo, radar and forecast links from the National Weather Service.', 'marquee' )
+						: esc_html__( 'Weather: forecast from Open-Meteo, plus a live Windy.com radar map and “View Full Weather Forecast” button for your location. Pick °C, km/h above for metric.', 'marquee' ); ?></span></p>
+				</div>
 			</section>
 
 			<section class="mq__pane" data-pane="2">

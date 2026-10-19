@@ -51,7 +51,7 @@ extract( ridgeroad_home_ctx(), EXTR_SKIP ); // $status, $np, $wx, $opts, $b_titl
 			$wx_us   = ! function_exists( 'marquee_get' ) || 'US' === marquee_get( 'country' );
 			$wx_pin  = (float) RIDGEROAD_LAT || (float) RIDGEROAD_LON;
 			?>
-			<?php if ( ridgeroad_mod( 'show_radar' ) && $station ) : ?>
+			<?php if ( ridgeroad_mod( 'show_radar' ) && $station && $wx_us ) : ?>
 				<a class="rr-radar" href="<?php echo esc_url( 'https://radar.weather.gov/station/' . strtolower( $station ) . '/standard' ); ?>" target="_blank" rel="noopener">
 					<img src="<?php echo esc_url( 'https://radar.weather.gov/ridge/standard/' . $station . '_loop.gif' ); ?>" alt="<?php esc_attr_e( 'Live weather radar loop', 'ridgeroad' ); ?>" loading="lazy" onerror="this.parentNode.classList.add('is-off')">
 					<span class="rr-radar__tag"><?php echo ridgeroad_cicon( 'radar' ); ?><?php esc_html_e( 'Live Radar', 'ridgeroad' ); ?></span>
