@@ -38,7 +38,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-VERSION = "3.1.4"
+VERSION = "3.2"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -81,6 +81,7 @@ DEFAULTS = {
     "voice": True,                    # play spoken names when the website sends them (false = never)
     "voice_volume": 0,                # -100..100, added to FPP's volume for the spoken names
     "voice_slot": 2,                  # FPP media stream slot for the names (slot 1 is the break's own music)
+    "short_breaks": True,             # 1 or 2 names: use "<break playlist> 1" / "<break playlist> 2" if they exist
     "say_every_time": True,           # with fewer names than slots the screens repeat them: say them again each time
     "talk_effect": "",                # FPP effect (.eseq) that moves the singing faces while a name is spoken
 }
@@ -194,7 +195,8 @@ def playlist_name(st):
 def in_break(st):
     if st.get("status_name") != "playing":
         return False
-    if playlist_name(st) == S["break_playlist"]:
+    pl = playlist_name(st)
+    if pl == S["break_playlist"] or pl in short_playlists().values():
         return True
     seq = (st.get("current_sequence") or "").lower().replace("_", " ")
     return "names in lights" in seq
@@ -209,9 +211,46 @@ def elapsed(st):
         return 0.0
 
 
-def queue_break():
+_playlists = {"t": 0, "names": []}
+
+
+def fpp_playlists():
+    """Playlist names on this FPP (cached for a minute)."""
+    if time.time() - _playlists["t"] > 60:
+        try:
+            _playlists["names"] = fpp_get(MASTER, "/api/playlists") or []
+            _playlists["t"] = time.time()
+        except Exception:
+            pass
+    return _playlists["names"]
+
+
+def short_playlists():
+    """The short breaks that exist: {name count: playlist}, e.g. {1: "Names in Lights 1", 2: "Names in Lights 2"}."""
+    if not S["short_breaks"]:
+        return {}
+    have = fpp_playlists()
+    out = {}
+    for n in (1, 2):
+        name = "%s %d" % (S["break_playlist"], n)
+        if name in have:
+            out[n] = name
+    return out
+
+
+def slots_for(st):
+    """Name slots in the break that is playing: a short break says each of its 1 or 2 names twice."""
+    for n, name in short_playlists().items():
+        if playlist_name(st) == name:
+            return n * 2
+    return int(S["max_names"])
+
+
+def queue_break(waiting=99):
     # "ifNotRunning" = true so a second request never stacks a second break
-    fpp_command(MASTER, "Insert Playlist After Current", [S["break_playlist"], -1, -1, "true"])
+    pl = short_playlists().get(waiting, S["break_playlist"])
+    fpp_command(MASTER, "Insert Playlist After Current", [pl, -1, -1, "true"])
+    return pl
 
 
 # --------------------------------------------------------------- voice ----
@@ -386,17 +425,18 @@ def run_break(color):
     """Called when the break starts: fetch names, show them on the break's clock."""
     try:
         data = pull([])
-        names = (data.get("names") or [])[:int(S["max_names"])]
+        slots = slots_for(master_status())
+        names = (data.get("names") or [])[:min(int(S["max_names"]), slots)]
         color = data.get("color") or color
     except Exception as e:
         log("break started but the website could not be reached:", e)
         return []
-    log("break started with %d name(s)" % len(names))
+    log("break started with %d name(s), %d slot(s)" % (len(names), slots))
     prefetch(names)
     done = []
     talk_until = 0
     # Fill every slot: with fewer names than slots, cycle through them.
-    for k in range(int(S["max_names"]) if names else 0):
+    for k in range(slots if names else 0):
         item = names[k % len(names)]
         at = float(S["names_start"]) + k * float(S["slot"])
         while True:
@@ -458,7 +498,8 @@ def run_checks(problems=None):
     try:
         pls = fpp_get(MASTER, "/api/playlists") or []
         if S["break_playlist"] in pls:
-            add(True, "playlist", "playlist '%s' found" % S["break_playlist"])
+            short = [p for p in pls if p in ("%s 1" % S["break_playlist"], "%s 2" % S["break_playlist"])]
+            add(True, "playlist", "playlist '%s' found%s" % (S["break_playlist"], (" (short breaks: %s)" % ", ".join(short)) if short else ""))
         else:
             add(False, "playlist", "no playlist named '%s' on this FPP (found: %s)" % (S["break_playlist"], ", ".join(pls) or "none"))
     except Exception as e:
@@ -623,9 +664,9 @@ def main():
                 if waiting:
                     prefetch(data.get("names") or [])     # spoken names are ready before the break
                 if waiting and not queued:
-                    queue_break()
+                    pl = queue_break(waiting)
                     queued = True
-                    log("%d name(s) waiting - break queued after the current song" % waiting)
+                    log("%d name(s) waiting - '%s' queued after the current song" % (waiting, pl))
             time.sleep(1)
         except Exception as e:
             log("problem:", e, "- trying again shortly")

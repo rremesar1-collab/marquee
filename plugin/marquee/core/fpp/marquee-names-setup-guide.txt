@@ -120,6 +120,13 @@ The names break and sound:
     (Settings -> Connections) to the second your quiet music starts, then
     download marquee_names.json again.
 
+Short breaks (optional): with only 1 or 2 names waiting, a full break is
+mostly music. Make two more playlists with the same names sequence but
+shorter audio, named like your break plus " 1" and " 2" (for example
+"Names in Lights 1" and "Names in Lights 2"). The audio must hold the
+intro, 2 name slots (or 4), and the outro: FPP ends the break when the
+audio ends. Each name is said twice in a short break.
+
 Talking faces (optional): make your singing faces' mouths move while each
 name is spoken.
   - In xLights, make a short sequence (about 4 seconds) with a talking

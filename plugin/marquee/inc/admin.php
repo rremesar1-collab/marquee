@@ -269,7 +269,8 @@ function marquee_admin_page() {
 					<input type="hidden" name="fpp_sent" value="1">
 					<div class="mq__row">
 					<p><label for="mq-fpl"><?php esc_html_e( 'FPP playlist with your names break', 'marquee' ); ?></label><input id="mq-fpl" name="fpp_playlist" type="text" value="<?php echo esc_attr( $s['fpp_playlist'] ); ?>"><small><?php esc_html_e( 'A short sequence (about 30 seconds) that shows your screens, in its own playlist. The guide shows how to make one.', 'marquee' ); ?></small></p>
-					<p><label for="mq-nst"><?php esc_html_e( 'First name goes up at (seconds)', 'marquee' ); ?></label><input id="mq-nst" name="names_start" type="number" min="0" max="120" step="0.5" value="<?php echo esc_attr( $s['names_start'] ); ?>"><small><?php esc_html_e( 'How far into the break the names start, one every 3.75 seconds. If your break opens with an announcer, use the second the quiet music starts.', 'marquee' ); ?></small></p>
+					<p><label for="mq-nst"><?php esc_html_e( 'First name goes up at (seconds)', 'marquee' ); ?></label><input id="mq-nst" name="names_start" type="number" min="0" max="120" step="0.5" value="<?php echo esc_attr( $s['names_start'] ); ?>"><small><?php esc_html_e( 'How far into the break the names start. If your break opens with an announcer, use the second the quiet music starts.', 'marquee' ); ?></small></p>
+					<p><label for="mq-nsl"><?php esc_html_e( 'Seconds per name', 'marquee' ); ?></label><input id="mq-nsl" name="names_slot" type="number" min="2.5" max="10" step="0.05" value="<?php echo esc_attr( $s['names_slot'] ); ?>"><small><?php esc_html_e( 'Time from one name to the next (up to 6 names). Short breaks: add playlists named like yours plus “ 1” and “ 2” (for one or two names, each said twice).', 'marquee' ); ?></small></p>
 					</div>
 					<table class="mq__screens">
 						<thead><tr><th><?php esc_html_e( 'Screen', 'marquee' ); ?></th><th><?php esc_html_e( 'FPP address', 'marquee' ); ?></th><th><?php esc_html_e( 'Overlay model name', 'marquee' ); ?></th></tr></thead>
@@ -520,6 +521,8 @@ add_action( 'admin_post_marquee_names_json', function () {
 		'screens'        => $screens,
 		'talk_effect'    => (string) $s['voice_effect'],
 		'names_start'    => (float) $s['names_start'],
+		'slot'           => (float) $s['names_slot'],
+		'show_for'       => max( 2.0, round( (float) $s['names_slot'] - 0.6, 2 ) ),
 	);
 	nocache_headers();
 	header( 'Content-Type: application/json; charset=utf-8' );
