@@ -38,7 +38,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-VERSION = "3.1.3"
+VERSION = "3.1.4"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -81,6 +81,7 @@ DEFAULTS = {
     "voice": True,                    # play spoken names when the website sends them (false = never)
     "voice_volume": 0,                # -100..100, added to FPP's volume for the spoken names
     "voice_slot": 2,                  # FPP media stream slot for the names (slot 1 is the break's own music)
+    "say_every_time": True,           # with fewer names than slots the screens repeat them: say them again each time
     "talk_effect": "",                # FPP effect (.eseq) that moves the singing faces while a name is spoken
 }
 S = dict(DEFAULTS)
@@ -413,7 +414,7 @@ def run_break(color):
             time.sleep(0.1)
         if show(item["text"], color):
             log("showing:", item["text"])
-            if k < len(names):              # say each name once, even when the screens repeat it
+            if S["say_every_time"] or k < len(names):
                 if talk_until:
                     stop_talking()
                 talk_until = say(item)

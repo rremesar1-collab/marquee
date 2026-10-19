@@ -114,7 +114,8 @@ The names break and sound:
     so the names can be heard. Needs FPP 10 or newer for more than one
     sound at a time.
   - Each name is spoken right when it goes up on the screens (3.75 seconds
-    apart). A name is said once, even if the screens show it again.
+    apart). With fewer than 6 names the screens repeat them, and each one
+    is said again every time it goes up.
   - If your break opens with a spoken intro, set "First name goes up at"
     (Settings -> Connections) to the second your quiet music starts, then
     download marquee_names.json again.
