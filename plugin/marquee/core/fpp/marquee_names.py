@@ -38,9 +38,25 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-VERSION = "3.1"
+VERSION = "3.1.1"
 HERE = os.path.dirname(os.path.abspath(__file__))
-CONFIG = os.environ.get("MARQUEE_NAMES_CONFIG", os.path.join(HERE, "marquee_names.json"))
+# Where the settings file may be: next to this script, or wherever FPP's File Manager
+# put it (it files .json uploads under Uploads or Config, not Scripts).
+CONFIG_PLACES = [os.path.join(HERE, "marquee_names.json"),
+                 "/home/fpp/media/scripts/marquee_names.json",
+                 "/home/fpp/media/upload/marquee_names.json",
+                 "/home/fpp/media/uploads/marquee_names.json",
+                 "/home/fpp/media/config/marquee_names.json"]
+CONFIG = os.environ.get("MARQUEE_NAMES_CONFIG", "")
+
+
+def config_path():
+    if CONFIG:
+        return CONFIG
+    for p in CONFIG_PLACES:
+        if os.path.exists(p):
+            return p
+    return CONFIG_PLACES[0]
 MASTER = os.environ.get("MARQUEE_FPP", "http://127.0.0.1")
 LOCK = "/tmp/marquee_names.pid"
 LOGFILE = "/home/fpp/media/logs/marquee_names.log"
@@ -86,15 +102,16 @@ def load_settings():
     """Read marquee_names.json. Returns a list of problems (empty = good)."""
     S.clear()
     S.update(DEFAULTS)
-    if not os.path.exists(CONFIG):
-        return ["no settings file (%s). Download marquee_names.json from your website "
-                "(Marquee -> Settings -> Connections) and upload it next to this script, "
-                "or run this script with --setup." % CONFIG]
+    cfg = config_path()
+    if not os.path.exists(cfg):
+        return ["no settings file. Download marquee_names.json from your website "
+                "(Marquee -> Settings -> Connections) and upload it in FPP -> File Manager "
+                "(looked in: %s)" % ", ".join(sorted(set(os.path.dirname(p) for p in CONFIG_PLACES)))]
     try:
-        with open(CONFIG) as f:
+        with open(cfg) as f:
             data = json.load(f)
     except (OSError, ValueError) as e:
-        return ["could not read %s: %s" % (CONFIG, e)]
+        return ["could not read %s: %s" % (cfg, e)]
     if isinstance(data, dict):
         S.update({k: v for k, v in data.items() if k in DEFAULTS})
     problems = []
@@ -527,9 +544,9 @@ def setup():
         i += 1
     data = {k: cur[k] for k in DEFAULTS}
     data.update({"site": site, "key": key, "break_playlist": pl, "screens": screens})
-    with open(CONFIG, "w") as f:
+    with open(config_path(), "w") as f:
         json.dump(data, f, indent=2)
-    print("\nSaved %s. Running the setup check...\n" % CONFIG)
+    print("\nSaved %s. Running the setup check...\n" % config_path())
     check()
 
 
@@ -562,7 +579,7 @@ def main():
     while problems and not (S["site"] and S["key"]):
         for p in problems:
             log("setup problem:", p)
-        time.sleep(300)                       # wait for the settings file, check again in 5 minutes
+        time.sleep(60)                        # wait for the settings file, check again in a minute
         problems = load_settings()
     log("started v%s; break playlist '%s'; screens: %s" % (
         VERSION, S["break_playlist"], ", ".join("%s=%s on %s" % (s["name"], s["model"], s["fpp"]) for s in S["screens"]) or "none"))

@@ -59,8 +59,10 @@ Then download both files:
 
 4. PUT THE FILES ON YOUR FPP MASTER
 -----------------------------------
-  FPP -> Content Setup -> File Manager -> Scripts tab -> Upload:
+  FPP -> Content Setup -> File Manager -> Upload both files:
   marquee_names.py and marquee_names.json.
+  FPP files the .py under Scripts and the .json under Uploads (it won't show
+  in the Scripts list). That's fine: the script looks in both places.
 
 
 5. START THE SCRIPT WITH FPP
@@ -141,8 +143,9 @@ last problem shows on your website under "Say each name out loud".
 
 WHAT THE RED LINES MEAN
 -----------------------
-"no settings file"          marquee_names.json isn't next to the script.
-                            Upload it to the Scripts tab (step 4).
+"no settings file"          marquee_names.json isn't on this FPP yet.
+                            Upload it in File Manager (step 4), then
+                            reboot the FPP.
 "the private key is wrong"  Download marquee_names.json again from your
                             website and upload it again.
 "could not reach the website"
