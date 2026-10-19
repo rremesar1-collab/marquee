@@ -73,7 +73,7 @@ function marquee_voice_file_base( $text, $voice = '', $model = '' ) {
 	$voice = $voice ? $voice : $s['voice_id'];
 	$model = $model ? $model : $s['voice_model'];
 	// "w2": stereo WAV clips (FPP's extra sound slots play mono clips too fast)
-	return substr( md5( wp_salt( 'auth' ) . '|w2|' . $voice . '|' . $model . '|' . marquee_voice_speed() . '|' . marquee_voice_text( $text ) ), 0, 20 );
+	return substr( md5( wp_salt( 'auth' ) . '|w3|' . $voice . '|' . $model . '|' . marquee_voice_speed() . '|' . marquee_voice_text( $text ) ), 0, 20 );
 }
 
 /**
@@ -83,6 +83,36 @@ function marquee_voice_file_base( $text, $voice = '', $model = '' ) {
 function marquee_voice_wav( $pcm, $rate ) {
 	$in  = array_values( unpack( 's*', $pcm ) );
 	$n   = count( $in );
+	// Level: bring the speech to about -14 LUFS, the level show songs are usually mastered to,
+	// so names are as loud as the music (gated RMS of 50 ms windows; LUFS ≈ RMS + 2.3 for speech).
+	$win = (int) ( $rate * 0.05 );
+	$sum = 0.0;
+	$cnt = 0;
+	for ( $i = 0; $i + $win <= $n; $i += $win ) {
+		$e = 0.0;
+		for ( $j = $i; $j < $i + $win; $j++ ) {
+			$e += $in[ $j ] * $in[ $j ];
+		}
+		$e /= $win;
+		if ( $e > 1073741824 * 0.0001 ) { // above -40 dBFS
+			$sum += $e;
+			$cnt++;
+		}
+	}
+	$gain = 1.0;
+	if ( $cnt ) {
+		$rms  = 10 * log10( $sum / $cnt / 1073741824 ); // dBFS
+		$gain = min( 4.0, pow( 10, ( -16.4 - $rms ) / 20 ) );
+	}
+	$lim = 29000;
+	foreach ( $in as $k => $v ) {
+		$v = $v * $gain;
+		if ( abs( $v ) > $lim ) { // soft limit instead of clipping
+			$over     = ( abs( $v ) - $lim ) / ( 32767 - $lim );
+			$v        = ( $v < 0 ? -1 : 1 ) * ( $lim + ( 32767 - $lim ) * tanh( $over ) );
+		}
+		$in[ $k ] = $v;
+	}
 	$out = 44100;
 	$len = (int) floor( $n * $out / $rate );
 	$buf = '';
@@ -90,7 +120,7 @@ function marquee_voice_wav( $pcm, $rate ) {
 		$pos = $i * $rate / $out;
 		$a   = (int) $pos;
 		$b   = min( $n - 1, $a + 1 );
-		$v   = (int) round( $in[ $a ] + ( $in[ $b ] - $in[ $a ] ) * ( $pos - $a ) );
+		$v   = (int) max( -32767, min( 32767, round( $in[ $a ] + ( $in[ $b ] - $in[ $a ] ) * ( $pos - $a ) ) ) );
 		$buf .= pack( 'vv', $v & 0xFFFF, $v & 0xFFFF );
 	}
 	$size = strlen( $buf );
