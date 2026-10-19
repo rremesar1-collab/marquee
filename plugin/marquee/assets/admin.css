@@ -105,3 +105,11 @@
 .mq__pane label.mq__on { display: inline-flex; align-items: center; gap: 6px; margin: 0; font-weight: 400; white-space: nowrap; }
 .mq__row--4 .mq__wide { grid-column: 2 / -1; align-self: end; }
 @media (max-width: 782px) { .mq__row--4 .mq__wide { grid-column: 1 / -1; } }
+.mq__logo { margin: 10px 0; }
+.mq__logo > label { display: block; font-weight: 600; margin-bottom: 6px; }
+.mq__logo-row { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.mq__logo-box { width: 180px; height: 110px; display: grid; place-items: center; padding: 8px; border: 1px solid #dcdcde; border-radius: 6px; background: #0b1b3a; }
+.mq__logo-box[hidden] { display: none; }
+.mq__logo-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.mq__logo-pick { flex: 1; min-width: 220px; }
+.mq__logo-pick .mq__on { margin-top: 8px; }

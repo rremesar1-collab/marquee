@@ -12,6 +12,14 @@ Your website never connects into your house. Remote Falcon is reached from the s
 | `theme/ridgeroad/` | The **Marquee Festive** theme: garlands, bows, the night-sky scene and glowing show cards. Needs the plugin. (The folder is named `ridgeroad` after the show it was first built for. Keep that name so updates keep working.) |
 | `plugin/marquee/core/fpp/` | `marquee_names.py` and the setup guide for Your Name in Lights on FPP. |
 
+## What you need
+
+- A WordPress website (6.0 or newer, PHP 7.4 or newer). Any host works; https is needed for the app and alerts.
+- **For Now Playing, the playlist and song voting:** a free [Remote Falcon](https://remotefalcon.com) account **and the Remote Falcon plugin installed and running on your FPP** (FPP → Content Setup → Plugin Manager → Remote Falcon). Marquee reads what's playing from Remote Falcon, which gets it from that plugin.
+- **For Your Name in Lights:** FPP (tested with FPP 10) and a matrix, projector or TV that FPP can draw on.
+
+Everything else (status, weather, Kids' Corner, guestbook, app) works with no extra setup.
+
 ## Install
 
 1. Download `marquee-x.y.z.zip` (and `marquee-festive-x.y.z.zip` for the festive look) from the [latest release](../../releases/latest).

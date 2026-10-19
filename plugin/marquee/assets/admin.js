@@ -59,6 +59,18 @@
 		}).catch(function () { lk.disabled = false; say(lkMsg, 'Couldn’t reach the website. Try again.', false); });
 	});
 
+	/* Logo: show the picked file right away, before saving */
+	var logoFile = $('[data-mq-logo-file]');
+	if (logoFile) {
+		logoFile.addEventListener('change', function () {
+			var f = logoFile.files && logoFile.files[0], box = $('[data-mq-logo-box]'), img = $('[data-mq-logo-img]'), note = $('[data-mq-logo-note]');
+			if (!f || !box || !img) { return; }
+			img.src = URL.createObjectURL(f);
+			box.hidden = false;
+			if (note) { note.textContent = 'New logo picked. Click Save settings to use it.'; }
+		});
+	}
+
 	/* Remote Falcon test */
 	var rt = $('[data-mq-rftest]'), rtMsg = $('[data-mq-rfmsg]');
 	rt.addEventListener('click', function () {

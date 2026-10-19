@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.7.8
+Stable tag: 0.7.9
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,7 +33,7 @@ Your website never connects into your house. Remote Falcon is reached with your 
 == Installation ==
 
 1. Plugins → Add New → Upload Plugin → choose the Marquee zip → Install → Activate.
-2. The setup wizard opens. Fill in your show, location, schedule and (optionally) Remote Falcon.
+2. The setup wizard opens. Fill in your show, location, schedule and (optionally) Remote Falcon. For Now Playing, the Remote Falcon plugin must be installed on your FPP.
 3. Optional: install the Marquee Festive theme (Appearance → Themes → Add New → Upload Theme).
 4. Follow the setup checklist at the top of Marquee → Settings.
 
@@ -44,6 +44,8 @@ For Your Name in Lights, see Marquee → Settings → Connections → "Setup gui
 = Do I need Remote Falcon? =
 No. Without it the site still shows status, hours, weather and the Kids' Corner. Remote Falcon adds Now Playing, the playlist and song voting.
 
+To use it you need a free Remote Falcon account **and the Remote Falcon plugin installed and running on your FPP** (FPP → Content Setup → Plugin Manager → Remote Falcon, then paste your show token from Remote Falcon). That plugin tells Remote Falcon what is playing; Marquee reads it from Remote Falcon with your API keys. Without the FPP plugin, Now Playing stays empty even if the connection test passes.
+
 = Does it work with my theme? =
 Yes. With the Marquee Festive theme the show sections use its look. With any other theme they get Marquee's own clean styling and use your theme's fonts.
 
@@ -51,6 +53,10 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.7.9 =
+* Logo: Marquee → Settings shows your current logo, previews a new one as soon as you pick it, and has a Remove logo option.
+* Settings and docs say clearly that Now Playing needs the Remote Falcon plugin installed on your FPP.
 
 = 0.7.8 =
 * Marquee → Settings → Location now shows your country (filled in by Find) and says where your weather and radar come from.

@@ -33,6 +33,10 @@ add_action( 'admin_post_marquee_save', function () {
 	}
 	check_admin_referer( 'marquee_save' );
 	marquee_save( $_POST ); // phpcs:ignore -- cleaned field by field in marquee_save()
+	if ( ! empty( $_POST['remove_logo'] ) && empty( $_FILES['logo']['name'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification -- checked above
+		set_theme_mod( 'custom_logo', '' ); // also clears Marquee's own copy of the setting
+		remove_theme_mod( 'custom_logo' );
+	}
 	if ( isset( $_FILES['logo'] ) && ! empty( $_FILES['logo']['name'] ) ) {
 		require_once ABSPATH . 'wp-admin/includes/file.php';
 		require_once ABSPATH . 'wp-admin/includes/media.php';
@@ -151,7 +155,22 @@ function marquee_admin_page() {
 					<p><label for="mq-radio"><?php esc_html_e( 'Radio station', 'marquee' ); ?></label><input id="mq-radio" name="radio" type="text" placeholder="88.1 FM" value="<?php echo esc_attr( $tm( 'radio' ) ); ?>"></p>
 					<p><label for="mq-don"><?php esc_html_e( 'Donation link (optional)', 'marquee' ); ?></label><input id="mq-don" name="cashapp_url" type="url" placeholder="https://cash.app/$yourshow" value="<?php echo esc_attr( $tm( 'cashapp_url' ) ); ?>"><small><?php esc_html_e( 'Cash App, PayPal, Venmo or any link. Empty hides the donation box.', 'marquee' ); ?></small></p>
 				</div>
-				<p><label for="mq-logo"><?php esc_html_e( 'Logo (optional)', 'marquee' ); ?></label><input id="mq-logo" name="logo" type="file" accept="image/png,image/jpeg,image/webp"><small><?php esc_html_e( 'PNG with a see-through background works best.', 'marquee' ); ?><?php echo get_theme_mod( 'custom_logo' ) ? ' ' . esc_html__( 'A logo is already set; choose a file only to replace it.', 'marquee' ) : ''; ?></small></p>
+				<?php $logo_id = (int) get_theme_mod( 'custom_logo' ); $logo_src = $logo_id ? wp_get_attachment_image_url( $logo_id, 'medium' ) : ''; ?>
+				<div class="mq__logo">
+					<label for="mq-logo"><?php esc_html_e( 'Logo (optional)', 'marquee' ); ?></label>
+					<div class="mq__logo-row">
+						<div class="mq__logo-box" data-mq-logo-box<?php echo $logo_src ? '' : ' hidden'; ?>>
+							<img src="<?php echo esc_url( $logo_src ); ?>" alt="<?php esc_attr_e( 'Your logo', 'marquee' ); ?>" data-mq-logo-img>
+						</div>
+						<div class="mq__logo-pick">
+							<input id="mq-logo" name="logo" type="file" accept="image/png,image/jpeg,image/webp" data-mq-logo-file>
+							<small data-mq-logo-note><?php echo $logo_src ? esc_html__( 'This is your current logo. Choose a file only to replace it.', 'marquee' ) : esc_html__( 'PNG with a see-through background works best.', 'marquee' ); ?></small>
+							<?php if ( $logo_src ) : ?>
+								<label class="mq__on"><input type="checkbox" name="remove_logo" value="1"> <?php esc_html_e( 'Remove logo (your show name is shown instead)', 'marquee' ); ?></label>
+							<?php endif; ?>
+						</div>
+					</div>
+				</div>
 				<?php if ( function_exists( 'ridgeroad_social_networks' ) ) : ?>
 					<h3><?php esc_html_e( 'Social links', 'marquee' ); ?></h3>
 					<p class="mq__fine"><?php esc_html_e( 'Buttons in Stay Connected and small icons at the bottom of every page. A button shows when it is turned on and has a link.', 'marquee' ); ?></p>
@@ -227,7 +246,7 @@ function marquee_admin_page() {
 					<p><label for="mq-rfs"><?php esc_html_e( 'Secret key', 'marquee' ); ?></label><input id="mq-rfs" name="rf_secret" type="password" autocomplete="new-password" value="<?php echo $s['rf_secret'] ? '••••••••' : ''; ?>"></p>
 				</div>
 				<p><button type="button" class="button" data-mq-rftest><?php esc_html_e( 'Test connection', 'marquee' ); ?></button> <span class="mq__msg" data-mq-rfmsg aria-live="polite"></span></p>
-				<p class="mq__fine"><?php esc_html_e( 'Both are on Remote Falcon → Account → API Access. They turn on Now Playing, the playlist and song voting, and never leave this server.', 'marquee' ); ?></p>
+				<p class="mq__fine"><?php esc_html_e( 'Both are on Remote Falcon → Account → API Access. They turn on Now Playing, the playlist and song voting, and never leave this server.', 'marquee' ); ?> <strong><?php esc_html_e( 'Your FPP also needs the Remote Falcon plugin installed and running (FPP → Content Setup → Plugin Manager), or Now Playing stays empty.', 'marquee' ); ?></strong></p>
 				<h3><?php esc_html_e( 'Leave out of song voting', 'marquee' ); ?></h3>
 				<input type="hidden" name="vote_hide_sent" value="1">
 				<?php
