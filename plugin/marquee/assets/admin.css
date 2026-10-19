@@ -115,3 +115,7 @@
 .mq__logo-pick .mq__on { margin-top: 8px; }
 .mq__pane label.mq__geo-mi { display: inline-flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 .mq__pane .mq__geo-mi select { width: auto; min-width: 90px; }
+.mq__std { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; margin-top: 8px; }
+.mq__pane label.mq__std-pg { display: flex; flex-direction: column; gap: 6px; font-weight: 400; cursor: pointer; }
+.mq__std-pg img { width: 100%; aspect-ratio: 4 / 3; object-fit: contain; background: #fff; border: 1px solid #dcdcde; border-radius: 6px; }
+.mq__std-pg:has(input:not(:checked)) img { opacity: .35; }

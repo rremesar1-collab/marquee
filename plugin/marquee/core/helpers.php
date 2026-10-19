@@ -130,17 +130,10 @@ if ( ! function_exists( 'ridgeroad_coloring_pages' ) ) {
 	 * house page and extra pages from Marquee → Settings → Artwork, printed with their name/logo.
 	 */
 	function ridgeroad_coloring_pages() {
-		$dir = ridgeroad_asset_url( 'coloring/' );
-		$std = array(
-			'house'           => __( 'Our light show', 'ridgeroad' ),
-			'snowman'         => __( 'Snowman', 'ridgeroad' ),
-			'reindeer'        => __( 'Reindeer', 'ridgeroad' ),
-			'gingerbread'     => __( 'Gingerbread', 'ridgeroad' ),
-			'merry-christmas' => __( 'Snowman friends', 'ridgeroad' ),
-			'santa-tree'      => __( 'Santa’s tree', 'ridgeroad' ),
-			'santa-cookies'   => __( 'Santa’s cookies', 'ridgeroad' ),
-		);
+		$dir   = ridgeroad_asset_url( 'coloring/' );
+		$std   = ridgeroad_std_coloring();
 		$mq    = ridgeroad_is_marquee();
+		$hide  = $mq ? (array) marquee_get( 'art_hide' ) : array();
 		$extra = '';
 		if ( $mq ) {
 			$logo  = get_theme_mod( 'custom_logo' ) ? wp_get_attachment_image_url( (int) get_theme_mod( 'custom_logo' ), 'medium_large' ) : '';
@@ -169,6 +162,9 @@ if ( ! function_exists( 'ridgeroad_coloring_pages' ) ) {
 		foreach ( $std as $slug => $title ) {
 			if ( $mq && 'house' === $slug ) {
 				continue; // that drawing is Lights On Ridge Road's own house
+			}
+			if ( in_array( $slug, $hide, true ) ) {
+				continue; // turned off in Marquee → Settings → Artwork
 			}
 			$out[ $slug ] = array(
 				'title' => $title,
@@ -260,5 +256,20 @@ if ( ! function_exists( 'ridgeroad_windy_url' ) ) {
 			'metricTemp' => $metric ? '°C' : '°F',
 			'radarRange' => '-1',
 		), 'https://embed.windy.com/embed2.html' );
+	}
+}
+
+if ( ! function_exists( 'ridgeroad_std_coloring' ) ) {
+	/** The coloring pages that come with Marquee: slug => title. */
+	function ridgeroad_std_coloring() {
+		return array(
+			'house'           => __( 'Our light show', 'ridgeroad' ),
+			'snowman'         => __( 'Snowman', 'ridgeroad' ),
+			'reindeer'        => __( 'Reindeer', 'ridgeroad' ),
+			'gingerbread'     => __( 'Gingerbread', 'ridgeroad' ),
+			'merry-christmas' => __( 'Snowman friends', 'ridgeroad' ),
+			'santa-tree'      => __( 'Santa’s tree', 'ridgeroad' ),
+			'santa-cookies'   => __( 'Santa’s cookies', 'ridgeroad' ),
+		);
 	}
 }

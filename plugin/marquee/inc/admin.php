@@ -324,6 +324,24 @@ function marquee_admin_page() {
 				<p class="mq__fine"><?php echo get_theme_mod( 'custom_logo' ) ? esc_html__( 'Your logo is printed in the corner of every standard coloring page.', 'marquee' ) : esc_html__( 'Your show name is printed in the corner of every standard coloring page (or your logo, once you add one in step 1).', 'marquee' ); ?></p>
 				<?php
 				marquee_media_field( 'art_house', __( 'Your house or display', 'marquee' ), __( 'A black-and-white line drawing of your house, shown first as “Our light show”.', 'marquee' ), $s['art_house'] ? array( (int) $s['art_house'] ) : array(), false );
+				if ( function_exists( 'ridgeroad_std_coloring' ) ) :
+					$std_dir = function_exists( 'ridgeroad_asset_url' ) ? ridgeroad_asset_url( 'coloring/' ) : MARQUEE_URL . 'core/assets/coloring/';
+					$hidden  = (array) $s['art_hide'];
+					?>
+					<div class="mq__media is-multi">
+						<b class="mq__media-label"><?php esc_html_e( 'Coloring pages that come with Marquee', 'marquee' ); ?></b>
+						<small class="mq__fine"><?php esc_html_e( 'Untick any you don’t want in the Kids’ Corner. If every page is off and you add none of your own, the Coloring Pages door is hidden.', 'marquee' ); ?></small>
+						<div class="mq__std">
+							<?php foreach ( ridgeroad_std_coloring() as $slug => $title ) : if ( 'house' === $slug ) { continue; } ?>
+								<label class="mq__std-pg">
+									<img src="<?php echo esc_url( $std_dir . $slug . '-thumb.webp' ); ?>" alt="" loading="lazy">
+									<span><input type="checkbox" name="art_std[]" value="<?php echo esc_attr( $slug ); ?>" <?php checked( ! in_array( $slug, $hidden, true ) ); ?>> <?php echo esc_html( $title ); ?></span>
+								</label>
+							<?php endforeach; ?>
+						</div>
+					</div>
+					<?php
+				endif;
 				marquee_media_field( 'art_pages', __( 'More coloring pages', 'marquee' ), __( 'Up to 12. Black-and-white line drawings print best. The picture’s title in the Media Library is the name kids see.', 'marquee' ), (array) $s['art_pages'], true );
 				?>
 				<h3><?php esc_html_e( 'Light Lab songs', 'marquee' ); ?></h3>

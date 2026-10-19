@@ -51,9 +51,11 @@ $winners    = array_filter( $entries, function ( $e ) {
 				<?php if ( ! $open ) : ?><span class="rr-kc__sign rr-kc__sign--show"><?php esc_html_e( 'Just for fun', 'ridgeroad' ); ?></span><?php endif; ?>
 			</a>
 			<?php endif; ?>
+			<?php if ( $color_pgs ) : ?>
 			<a class="rr-kc__door" href="#coloring" data-kc-door="coloring">
 				<img src="<?php echo esc_url( ridgeroad_door_url( 'coloring', 'door-coloring.jpg' ) ); ?>" width="490" height="685" alt="<?php esc_attr_e( 'Coloring Pages. Pick a picture to print and color.', 'ridgeroad' ); ?>">
 			</a>
+			<?php endif; ?>
 			<a class="rr-kc__door" href="#games" data-kc-door="games">
 				<img src="<?php echo esc_url( ridgeroad_door_url( 'games', 'door-4.jpg' ) ); ?>" width="490" height="685" alt="<?php esc_attr_e( 'Games. Elf names and Christmas trivia.', 'ridgeroad' ); ?>">
 			</a>

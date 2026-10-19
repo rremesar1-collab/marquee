@@ -26,6 +26,7 @@ function marquee_defaults() {
 		'names_key'  => '',
 		'art_house'  => 0,        // the show's own house coloring page (attachment ID)
 		'art_pages'  => array(),  // extra coloring pages (attachment IDs)
+		'art_hide'   => array(),  // standard coloring pages turned off (slugs)
 		'art_doors'  => array(),  // Kids' Corner door pictures: names / show / coloring / games => attachment ID
 		'lab_songs'  => array(),  // Light Lab songs (audio attachment IDs)
 		'vote_hide'  => array(),  // song keys left out of voting (intros, announcements)
@@ -89,6 +90,7 @@ function marquee_save( $in ) {
 		'names_key'  => $cur['names_key'],
 		'art_house'  => $cur['art_house'],
 		'art_pages'  => $cur['art_pages'],
+		'art_hide'   => $cur['art_hide'],
 		'art_doors'  => $cur['art_doors'],
 		'lab_songs'  => $cur['lab_songs'],
 		'fpp_playlist' => isset( $in['fpp_playlist'] ) && '' !== trim( (string) $in['fpp_playlist'] ) ? mb_substr( sanitize_text_field( wp_unslash( $in['fpp_playlist'] ) ), 0, 80 ) : $cur['fpp_playlist'],
@@ -103,6 +105,10 @@ function marquee_save( $in ) {
 		$new['art_house'] = $img( isset( $in['art_house'] ) ? $in['art_house'] : 0 );
 		$pages = isset( $in['art_pages'] ) ? explode( ',', (string) $in['art_pages'] ) : array();
 		$new['art_pages'] = array_values( array_slice( array_filter( array_unique( array_map( $img, $pages ) ) ), 0, 12 ) );
+		if ( function_exists( 'ridgeroad_std_coloring' ) ) {
+			$keep            = isset( $in['art_std'] ) ? array_map( 'sanitize_key', (array) $in['art_std'] ) : array();
+			$new['art_hide'] = array_values( array_diff( array_keys( ridgeroad_std_coloring() ), $keep, array( 'house' ) ) );
+		}
 		$aud = function ( $v ) {
 			$id = absint( $v );
 			return ( $id && 0 === strpos( (string) get_post_mime_type( $id ), 'audio/' ) ) ? $id : 0;
