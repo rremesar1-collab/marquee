@@ -382,3 +382,6 @@
 .mq-ai__keyrow { display: flex; gap: 6px; }
 .mq-ai__keyrow input { flex: 1; width: auto !important; min-width: 0; }
 .mq-ai__log { min-height: 120px; }
+/* clear of hosting chat bubbles in the bottom corner (SiteGround and others) */
+.mq-ai { bottom: 96px; height: min(620px, calc(100vh - 150px)); }
+@media (max-width: 600px) { .mq-ai { bottom: 84px; height: calc(100vh - 130px); } }
