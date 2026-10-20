@@ -252,6 +252,7 @@ function marquee_manager_app() {
 					<div class="mm-confirm" data-mm-cancel-confirm hidden>
 						<p><b><?php esc_html_e( 'Cancel tonight’s show?', 'marquee' ); ?></b></p>
 						<label class="mm-check" data-mm-cancel-alert-row><input type="checkbox" data-mm-cancel-alert checked> <span data-mm="cancel-alert-label"></span></label>
+						<label class="mm-check" data-mm-cancel-social-row hidden><input type="checkbox" data-mm-cancel-social> <span data-mm="cancel-social-label"></span></label>
 						<p class="mm-btns"><button type="button" class="mm-btn del" data-mm-cancel-yes><?php esc_html_e( 'Yes, cancel it', 'marquee' ); ?></button><button type="button" class="mm-btn" data-mm-cancel-no><?php esc_html_e( 'Keep it on', 'marquee' ); ?></button></p>
 					</div>
 				</div>

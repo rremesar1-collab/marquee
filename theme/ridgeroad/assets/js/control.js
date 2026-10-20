@@ -97,6 +97,8 @@
 		set('app-to', a.news === 1 ? 'Goes to 1 phone that chose “special news”.' : 'Goes to the ' + a.news + ' phones that chose “special news”.');
 		set('cancel-alert-label', 'Also send a “No show tonight” alert to ' + a.news + (a.news === 1 ? ' phone' : ' phones'));
 		$('[data-rrc-cancel-alert-row]').hidden = !a.ready || !a.news;
+		var so = state.social || {}, sr = $('[data-rrc-cancel-social-row]');
+		if (sr) { sr.hidden = !so.ready; set('cancel-social-label', so.label || ''); if (!sr.dataset.touched) { $('[data-rrc-cancel-social]').checked = !!so.auto; } }
 		var kinds = { auto: 'Automatic', cancel: 'From “Cancel tonight’s show”', you: 'Sent by you' };
 		var ul = $('[data-rrc-list="alerts"]'); ul.innerHTML = '';
 		if (!a.log.length) { ul.appendChild(el('li', 'empty', 'No alerts sent yet.')); }
@@ -166,11 +168,14 @@
 		});
 	});
 	var cc = $('[data-rrc-cancel-confirm]');
+	var srow = $('[data-rrc-cancel-social-row]'); if (srow) { srow.addEventListener('change', function () { srow.dataset.touched = '1'; }); }
 	$('[data-rrc-cancel-no]').addEventListener('click', function () { cc.hidden = true; });
 	$('[data-rrc-cancel-yes]').addEventListener('click', function () {
 		var alertToo = !$('[data-rrc-cancel-alert-row]').hidden && $('[data-rrc-cancel-alert]').checked;
 		cc.hidden = true; $('[data-rrc-tog="cancel"]').setAttribute('aria-checked', 'true');
-		act('rr_ctl_set', { key: 'cancel', value: '1', alert: alertToo ? '1' : '' }, 'Canceled for tonight');
+		var sr = $('[data-rrc-cancel-social-row]'), socialToo = sr && !sr.hidden ? ($('[data-rrc-cancel-social]').checked ? '1' : '0') : null;
+		var args = { key: 'cancel', value: '1', alert: alertToo ? '1' : '' }; if (socialToo !== null) { args.social = socialToo; }
+		act('rr_ctl_set', args, 'Canceled for tonight');
 	});
 
 	/* send an alert */

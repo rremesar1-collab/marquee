@@ -162,6 +162,7 @@ function ridgeroad_control_page() {
 							<div class="rrc__confirm" data-rrc-cancel-confirm hidden>
 								<p><b><?php esc_html_e( 'Cancel tonight’s show?', 'ridgeroad' ); ?></b> <?php esc_html_e( 'The website will show the canceled banner until 6 AM.', 'ridgeroad' ); ?></p>
 								<label data-rrc-cancel-alert-row><input type="checkbox" data-rrc-cancel-alert checked> <span data-rrc="cancel-alert-label"></span></label>
+								<label data-rrc-cancel-social-row hidden><input type="checkbox" data-rrc-cancel-social> <span data-rrc="cancel-social-label"></span></label>
 								<p class="rrc__btns"><button type="button" class="rrc__btn del-pri" data-rrc-cancel-yes><?php esc_html_e( 'Cancel the show', 'ridgeroad' ); ?></button> <button type="button" class="rrc__btn" data-rrc-cancel-no><?php esc_html_e( 'Keep it on', 'ridgeroad' ); ?></button></p>
 							</div>
 							<?php
@@ -345,6 +346,7 @@ function ridgeroad_control_state() {
 			'sequence' => isset( $fpp['sequence'] ) ? $fpp['sequence'] : '',
 		),
 		'names'    => array( 'open' => ridgeroad_names_open(), 'waiting' => $waiting, 'shown' => $shown, 'shown_tonight' => isset( $tn['name_shown'] ) ? (int) $tn['name_shown'] : 0 ),
+		'social'   => apply_filters( 'ridgeroad_social_state', array( 'ready' => false ) ),
 		'switches' => array(
 			'cancel'       => ridgeroad_cancel_tonight_on(),
 			'names_on'     => (bool) ridgeroad_mod( 'names_on' ),
@@ -414,8 +416,14 @@ add_action( 'wp_ajax_rr_ctl_set', function () {
 				if ( ! empty( $_POST['alert'] ) && function_exists( 'ridgeroad_app_cancel_alert' ) ) {
 					$sent = ridgeroad_app_cancel_alert();
 				}
+				/* Marquee posts it on Facebook / Instagram when that's set up ('social' = the box in the confirm, null = use the setting). */
+				do_action( 'ridgeroad_show_canceled', $six->getTimestamp(), isset( $_POST['social'] ) ? ! empty( $_POST['social'] ) : null );
 			} else {
+				$was = ridgeroad_cancel_tonight_on();
 				delete_option( 'ridgeroad_cancel_until' );
+				if ( $was ) {
+					do_action( 'ridgeroad_show_uncanceled' );
+				}
 			}
 			break;
 		case 'paused':

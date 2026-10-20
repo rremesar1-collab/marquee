@@ -367,3 +367,75 @@
 	}
 	if (document.querySelector('.mq__themes')) { sync(); setInterval(sync, 600); }
 })();
+
+/* Settings → Social posts: connect the Page, live preview of each post, "Post it now". */
+(function () {
+	var box = document.querySelector('[data-mq-social]');
+	if (!box) { return; }
+	var C = window.MarqueeAdmin || {}, fill = {};
+	try { fill = JSON.parse(box.getAttribute('data-fill') || '{}'); } catch (e) {}
+	function post(action, data) {
+		var fd = new FormData(); fd.append('action', action); fd.append('nonce', C.nonce);
+		Object.keys(data || {}).forEach(function (k) { fd.append(k, data[k]); });
+		return fetch(C.ajax, { method: 'POST', body: fd, credentials: 'same-origin' }).then(function (r) { return r.json(); });
+	}
+	function filled(t) {
+		return t.replace(/\r/g, '').split('\n').filter(function (line) {
+			var keys = line.match(/\{(show|city|site|radio|tagline|date)\}/g);
+			return !keys || keys.some(function (k) { return (fill[k] || '').trim(); });
+		}).map(function (line) { return line.replace(/\{(show|city|site|radio|tagline|date)\}/g, function (k) { return fill[k] || ''; }); }).join('\n').trim();
+	}
+	box.querySelectorAll('.mq__card').forEach(function (card) {
+		var ta = card.querySelector('[data-so-text]'), pv = card.querySelector('[data-so-preview]'), im = card.querySelector('[data-so-img]'), pic = card.querySelector('[data-so-pic]');
+		if (!ta) { return; }
+		function upd() {
+			pv.textContent = filled(ta.value);
+			var th = pic && pic.querySelector('[data-mq-thumbs] img');
+			im.innerHTML = th && th.src ? '<img alt="" src="' + th.src.replace(/"/g, '') + '">' : '';
+		}
+		ta.addEventListener('input', upd); upd(); setInterval(upd, 1000);
+		var ask = card.querySelector('[data-so-ask]'), cf = card.querySelector('[data-so-confirm]'), now = card.querySelector('[data-so-now]'), msg = card.querySelector('[data-so-nowmsg]');
+		if (ask) {
+			ask.addEventListener('click', function () { cf.hidden = false; ask.hidden = true; });
+			card.querySelector('[data-so-no]').addEventListener('click', function () { cf.hidden = true; ask.hidden = false; });
+			now.addEventListener('click', function () {
+				now.disabled = true; msg.textContent = 'Posting…';
+				post('marquee_social_now', { what: now.getAttribute('data-so-now') }).then(function (j) {
+					now.disabled = false; cf.hidden = true; ask.hidden = false;
+					var log = (j && j.success && j.data.log) || [];
+					msg.textContent = log.length ? log.map(function (l) { return (l.ok ? '✓ ' : '✗ ') + (l.net === 'instagram' ? 'Instagram: ' : 'Facebook: ') + l.msg; }).join('  ') : 'Nothing was posted.';
+				}).catch(function () { now.disabled = false; msg.textContent = 'Couldn’t reach your website.'; });
+			});
+		}
+	});
+	var chk = box.querySelector('[data-so-check]');
+	if (chk) {
+		chk.addEventListener('click', function () {
+			var m = box.querySelector('[data-so-checkmsg]'); m.textContent = 'Checking…';
+			post('marquee_social_check').then(function (j) { m.textContent = (j && j.data && j.data.message) || 'Something went wrong.'; });
+		});
+	}
+	var con = box.querySelector('[data-so-connect]'), cmsg = box.querySelector('[data-so-msg]'), pages = box.querySelector('[data-so-pages]');
+	con.addEventListener('click', function () {
+		con.disabled = true; cmsg.textContent = 'Connecting…'; pages.hidden = true;
+		post('marquee_social_connect', { app: box.querySelector('[data-so-app]').value, secret: box.querySelector('[data-so-secret]').value, token: box.querySelector('[data-so-token]').value }).then(function (j) {
+			con.disabled = false;
+			if (!j || !j.success) { cmsg.textContent = (j && j.data && j.data.message) || 'Something went wrong.'; return; }
+			cmsg.textContent = j.data.pages.length === 1 ? '' : 'Which Page should Marquee post on?';
+			pages.innerHTML = ''; pages.hidden = false;
+			j.data.pages.forEach(function (p) {
+				var b = document.createElement('button'); b.type = 'button'; b.className = 'button';
+				b.textContent = p.name + (p.ig ? ' + Instagram @' + p.ig : '');
+				b.addEventListener('click', function () {
+					cmsg.textContent = 'Saving…';
+					post('marquee_social_pick', { page: p.id }).then(function (k) {
+						if (k && k.success) { cmsg.textContent = 'Connected to ' + k.data.name + '!'; try { location.hash = '#mq-step-7'; } catch (e) {} location.reload(); }
+						else { cmsg.textContent = (k && k.data && k.data.message) || 'Something went wrong.'; }
+					});
+				});
+				pages.appendChild(b);
+			});
+			if (j.data.pages.length === 1) { pages.querySelector('button').click(); }
+		}).catch(function () { con.disabled = false; cmsg.textContent = 'Couldn’t reach your website.'; });
+	});
+})();

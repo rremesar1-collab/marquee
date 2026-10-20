@@ -173,6 +173,7 @@ function marquee_save( $in ) {
 		$new['rf_token']  = '';
 		$new['rf_secret'] = '';
 	}
+	$new = apply_filters( 'marquee_settings_saved', $new, $in );
 	update_option( 'marquee', $new, false );
 	if ( $new['show_name'] && $new['show_name'] !== get_bloginfo( 'name' ) ) {
 		update_option( 'blogname', $new['show_name'] );

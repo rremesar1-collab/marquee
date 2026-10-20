@@ -153,6 +153,7 @@ function marquee_admin_page() {
 					array( __( 'Names & FPP', 'marquee' ), 'megaphone' ),
 					array( __( 'Features', 'marquee' ), 'admin-settings' ),
 					array( __( 'Artwork', 'marquee' ), 'art' ),
+					array( __( 'Social posts', 'marquee' ), 'share' ),
 				);
 				foreach ( $steps as $i => $st ) {
 					printf( '<li><button type="button" data-step="%d"><span class="mq__ico dashicons dashicons-%s" aria-hidden="true"></span><span>%s</span></button></li>', (int) $i, esc_attr( $st[1] ), esc_html( $st[0] ) );
@@ -552,6 +553,12 @@ function marquee_admin_page() {
 				}
 				?>
 				</div>
+			</section>
+
+			<section class="mq__pane" data-pane="7">
+				<h2><?php esc_html_e( 'Social posts', 'marquee' ); ?></h2>
+				<p class="mq__lead"><?php esc_html_e( 'When you cancel tonight’s show (in Show Control or on your phone in the Show Manager), Marquee can post it on your Facebook Page and Instagram for you, with your picture. Once per night, so it never posts twice.', 'marquee' ); ?></p>
+				<?php marquee_social_box(); ?>
 			</section>
 			</div>
 
