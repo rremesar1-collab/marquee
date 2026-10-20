@@ -21,16 +21,57 @@
 	function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
 	function file(name) { return name.replace(/[\\/:*?"<>|’']/g, '').replace(/\s+/g, ' ').trim() + '.xsq'; }
 
+	/* The file boxes: drag and drop, and a line saying what was found in the file. */
+	box.querySelectorAll('[data-sm-drop]').forEach(function (drop) {
+		var inp = drop.querySelector('input');
+		['dragenter', 'dragover'].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add('is-over'); }); });
+		['dragleave', 'drop'].forEach(function (ev) { drop.addEventListener(ev, function () { drop.classList.remove('is-over'); }); });
+		drop.addEventListener('drop', function (e) { e.preventDefault(); if (e.dataTransfer && e.dataTransfer.files.length) { inp.files = e.dataTransfer.files; inp.dispatchEvent(new Event('change')); } });
+	});
+	function status(inp, ok, txt) {
+		var drop = inp.closest('[data-sm-drop]'), st = drop.querySelector('[data-sm-status]');
+		drop.classList.toggle('is-ok', ok === true); drop.classList.toggle('is-bad', ok === false); st.textContent = txt;
+	}
+	var NAMES = { tree: 'trees', star: 'stars', arch: 'arches', cane: 'candy canes', spinner: 'spinners', flake: 'snowflakes', window: 'windows', line: 'lines and outlines', flood: 'floods', present: 'presents', matrix: 'matrices', other: 'other props' };
+	rgbIn.addEventListener('change', function () {
+		read(rgbIn).then(function (f) {
+			if (!f) { status(rgbIn, null, 'Not chosen yet.'); return; }
+			try {
+				var by = S.propsSummary(f.text, null), n = 0, parts = [];
+				Object.keys(by).forEach(function (k) { n += by[k].length; if (k !== 'other') { parts.push(by[k].length + ' ' + NAMES[k]); } });
+				if (!n) { throw new Error('no props'); }
+				status(rgbIn, true, '✓ ' + f.name + ': ' + n + ' props found (' + parts.slice(0, 5).join(', ') + (parts.length > 5 ? '…' : '') + ')');
+			} catch (e) { status(rgbIn, false, '✗ That doesn’t look like xlights_rgbeffects.xml. Pick the file with that name from your xLights show folder.'); }
+		});
+	});
 	/* With their own names break given, it's already made: only themes are new. */
 	xsqIn.addEventListener('change', function () {
 		var have = xsqIn.files && xsqIn.files.length;
 		baseWrap.hidden = !!have;
+		read(xsqIn).then(function (f) {
+			if (!f) { status(xsqIn, null, 'Not chosen: everything is made from scratch.'); return; }
+			try { var by = S.propsSummary(null, f.text), n = 0; Object.keys(by).forEach(function (k) { n += by[k].length; }); status(xsqIn, true, '✓ ' + f.name + ': themes keep its music, timing and ' + n + ' props with effects'); }
+			catch (e) { status(xsqIn, false, '✗ That isn’t an xLights sequence (.xsq).'); }
+		});
+	});
+	/* "Make them for me" in Themed sequences opens this card. */
+	document.querySelectorAll('[data-mq-goto-maker]').forEach(function (b) {
+		b.addEventListener('click', function () {
+			var card = box.closest('details'); if (card) { card.open = true; }
+			box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			setTimeout(function () { var d = box.querySelector('[data-sm-drop]'); if (d) { d.classList.add('is-pulse'); setTimeout(function () { d.classList.remove('is-pulse'); }, 1600); } }, 500);
+		});
 	});
 
 	/* "Describe your own": the AI turns words into colors + effects. */
 	var ask = box.querySelector('[data-sm-ask]'), want = box.querySelector('[data-sm-want]'), amsg = box.querySelector('[data-sm-askmsg]');
 	ask.addEventListener('click', function () {
 		var w = want.value.trim(); if (!w) { want.focus(); return; }
+		if (!(rgbIn.files && rgbIn.files.length) && !(xsqIn.files && xsqIn.files.length)) {
+			amsg.textContent = 'Choose your xlights_rgbeffects.xml first (step 1), so the AI knows which props you have.';
+			var d = box.querySelector('[data-sm-drop]'); d.scrollIntoView({ behavior: 'smooth', block: 'center' }); d.classList.add('is-pulse'); setTimeout(function () { d.classList.remove('is-pulse'); }, 1600);
+			return;
+		}
 		ask.disabled = true; amsg.textContent = 'Asking the AI…';
 		read(rgbIn).then(function (rgb) {
 			return read(xsqIn).then(function (xsq) {

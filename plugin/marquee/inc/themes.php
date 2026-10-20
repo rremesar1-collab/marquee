@@ -134,6 +134,11 @@ function marquee_themes_box( $s ) {
 	?>
 	<input type="hidden" name="themes_sent" value="1">
 	<?php marquee_demo( 'themes', $s ); ?>
+	<div class="mq-sm__cta">
+		<span aria-hidden="true">✨</span>
+		<span><b><?php esc_html_e( 'Don’t have themed sequences yet?', 'marquee' ); ?></b> <?php esc_html_e( 'Marquee can make them from your xLights layout: pick Candy Cane Swirl, Snowfall… or describe your own and the AI designs it.', 'marquee' ); ?></span>
+		<button type="button" class="button button-primary" data-mq-goto-maker><?php esc_html_e( 'Make them for me', 'marquee' ); ?></button>
+	</div>
 	<p><?php esc_html_e( 'Give kids a choice: when they send their name, they also pick the show it goes up in. Between songs, your FPP plays the sequence they picked, with their name on your screens (and said out loud, if that’s on).', 'marquee' ); ?></p>
 	<div class="mq__tl mq__tl--themes">
 		<div class="mq__tl-part is-voice"><b><?php esc_html_e( '1. You make them', 'marquee' ); ?></b><small><?php esc_html_e( 'A few short sequences in xLights (about 30 seconds), like your names break: screens dark where the names go. Each one in its own FPP playlist.', 'marquee' ); ?></small></div>

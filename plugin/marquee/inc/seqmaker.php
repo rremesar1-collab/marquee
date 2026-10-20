@@ -45,12 +45,20 @@ function marquee_seqmaker_box( $s ) {
 			<li>
 				<b><?php esc_html_e( 'Your xLights layout', 'marquee' ); ?></b>
 				<span><?php esc_html_e( 'The file xlights_rgbeffects.xml in your xLights show folder. It stays on your computer: Marquee reads it right here in your browser.', 'marquee' ); ?></span>
-				<input type="file" accept=".xml" data-sm-rgb>
+				<label class="mq-sm__drop" data-sm-drop>
+					<input type="file" accept=".xml" data-sm-rgb>
+					<span class="mq-sm__dropic" aria-hidden="true">📂</span>
+					<span><b><?php esc_html_e( 'Choose or drop your xlights_rgbeffects.xml', 'marquee' ); ?></b><small data-sm-status><?php esc_html_e( 'Not chosen yet. On Windows it’s usually in Documents → xLights (your show folder).', 'marquee' ); ?></small></span>
+				</label>
 			</li>
 			<li>
 				<b><?php esc_html_e( 'Your names break sequence (if you have one)', 'marquee' ); ?></b>
 				<span><?php esc_html_e( 'Optional. Give it your own names break (.xsq) and the themed versions are made from it: same music, same timing, same singing faces, just new colors and effects. Leave it empty and Marquee makes everything from scratch.', 'marquee' ); ?></span>
-				<input type="file" accept=".xsq" data-sm-xsq>
+				<label class="mq-sm__drop is-small" data-sm-drop>
+					<input type="file" accept=".xsq" data-sm-xsq>
+					<span class="mq-sm__dropic" aria-hidden="true">🎄</span>
+					<span><b><?php esc_html_e( 'Choose or drop your names break .xsq (optional)', 'marquee' ); ?></b><small data-sm-status><?php esc_html_e( 'Not chosen: everything is made from scratch.', 'marquee' ); ?></small></span>
+				</label>
 			</li>
 			<li>
 				<b><?php esc_html_e( 'What to make', 'marquee' ); ?></b>
@@ -64,7 +72,7 @@ function marquee_seqmaker_box( $s ) {
 					<input type="text" maxlength="200" placeholder="<?php esc_attr_e( 'Or describe your own: purple and gold Mardi Gras…', 'marquee' ); ?>" data-sm-want>
 					<button type="button" class="button" data-sm-ask><?php esc_html_e( 'Add it', 'marquee' ); ?></button>
 				</span>
-				<small data-sm-askmsg aria-live="polite"><?php echo $ai_key ? esc_html__( 'Your own idea is turned into colors and effects by the AI you picked under “Need help?”. Only the description and your prop names are sent.', 'marquee' ) : esc_html__( 'Describing your own theme uses the AI under “Need help?” (add a ChatGPT or Claude key there). The ready-made themes don’t need it.', 'marquee' ); ?></small>
+				<small data-sm-askmsg aria-live="polite"><?php echo $ai_key ? esc_html__( 'How the AI helps: Marquee reads your layout (step 1) here in your browser and tells the AI only your prop names and what kind each is (trees, arches, rooflines…). The AI picks the colors and an effect for each kind; Marquee then writes the sequence from your layout. Your layout file itself never leaves your computer.', 'marquee' ) : esc_html__( 'Describing your own theme uses the AI under “Need help?” (add a ChatGPT or Claude key there). The ready-made themes don’t need it.', 'marquee' ); ?></small>
 			</li>
 		</ol>
 		<p><button type="button" class="button button-primary" data-sm-make><?php esc_html_e( 'Make my sequences', 'marquee' ); ?></button> <span class="mq__msg" data-sm-msg aria-live="polite"></span></p>
