@@ -20,6 +20,7 @@ add_action( 'admin_enqueue_scripts', function ( $hook ) {
 	wp_enqueue_style( 'marquee-admin', MARQUEE_URL . 'assets/admin.css', array(), MARQUEE_VERSION . '.' . filemtime( MARQUEE_DIR . 'assets/admin.css' ) );
 	wp_enqueue_script( 'marquee-qrcode', MARQUEE_URL . 'core/assets/js/qrcode.js', array(), '2.0.4', true );
 	wp_enqueue_script( 'marquee-admin', MARQUEE_URL . 'assets/admin.js', array( 'marquee-qrcode' ), MARQUEE_VERSION . '.' . filemtime( MARQUEE_DIR . 'assets/admin.js' ), true );
+	wp_enqueue_script( 'marquee-demo', MARQUEE_URL . 'assets/demo.js', array(), MARQUEE_VERSION . '.' . filemtime( MARQUEE_DIR . 'assets/demo.js' ), true );
 	wp_enqueue_script( 'marquee-ai', MARQUEE_URL . 'assets/ai.js', array( 'marquee-admin' ), MARQUEE_VERSION . '.' . filemtime( MARQUEE_DIR . 'assets/ai.js' ), true );
 	wp_enqueue_script( 'marquee-break', MARQUEE_URL . 'assets/break.js', array( 'marquee-admin' ), MARQUEE_VERSION . '.' . filemtime( MARQUEE_DIR . 'assets/break.js' ), true );
 	wp_localize_script( 'marquee-admin', 'MarqueeAdmin', array(
@@ -281,6 +282,7 @@ function marquee_admin_page() {
 				<?php if ( ! $names_url ) : ?>
 					<p class="mq__fine"><?php esc_html_e( 'Your Name in Lights isn’t available with this theme.', 'marquee' ); ?></p>
 				<?php else : ?>
+					<?php marquee_demo( 'names', $s ); ?>
 					<?php
 					$seen   = (int) get_option( 'ridgeroad_names_seen' );
 					$fpp_ok = $seen && time() - $seen < 15 * MINUTE_IN_SECONDS;
@@ -756,6 +758,36 @@ function marquee_geo_row( $s ) {
 			<small><?php esc_html_e( 'When a kid sends a name, the phone asks to share its location. It is only compared with your show’s address and never saved. You and your Show helpers can still send test names from anywhere.', 'marquee' ); ?> <?php echo $km ? esc_html__( '1 km suits most shows; phones can be off by about 100 metres.', 'marquee' ) : esc_html__( '0.5 mile suits most shows; phones can be off by a few hundred feet.', 'marquee' ); ?></small>
 			<?php if ( ! $where ) : ?><small class="mq__warn"><?php esc_html_e( 'Set your show’s address in the Location step first: without it, names can be sent from anywhere.', 'marquee' ); ?></small><?php endif; ?>
 		</span>
+	</div>
+	<?php
+}
+
+/** "See it in action": an animated preview of what kids and visitors see. $mode: names | themes. */
+function marquee_demo( $mode, $s ) {
+	$themes = array();
+	if ( 'themes' === $mode ) {
+		foreach ( (array) $s['themes'] as $t ) {
+			$themes[] = $t['name'];
+		}
+		if ( ! $themes ) {
+			$themes = array( 'Candy Cane Swirl', 'Snowfall', 'Rainbow Party' );
+		}
+	}
+	$voice = function_exists( 'marquee_voice_on' ) && marquee_voice_on();
+	?>
+	<div class="mq-demo" data-mq-demo data-mode="<?php echo esc_attr( $mode ); ?>" data-themes="<?php echo esc_attr( wp_json_encode( $themes ) ); ?>" data-santa="<?php echo $s['voice_santa'] ? '1' : '0'; ?>" data-voice="1">
+		<div class="mq-demo__label"><span class="dashicons dashicons-controls-play" aria-hidden="true"></span> <?php esc_html_e( 'See it in action', 'marquee' ); ?></div>
+		<div class="mq-demo__stage">
+			<div class="mq-demo__phone" aria-hidden="true"><div data-demo-phone></div></div>
+			<div class="mq-demo__arrow" aria-hidden="true">→</div>
+			<div class="mq-demo__tv">
+				<canvas width="420" height="190" role="img" aria-label="<?php esc_attr_e( 'Your matrix or TV showing a kid’s name during the names break', 'marquee' ); ?>"></canvas>
+				<div class="mq-demo__say" data-demo-say hidden></div>
+				<div class="mq-demo__tvlabel"><?php esc_html_e( 'Your matrix, projector or TV', 'marquee' ); ?></div>
+			</div>
+		</div>
+		<p class="mq-demo__step" data-demo-step aria-live="off"></p>
+		<?php if ( ! $voice ) : ?><p class="mq-demo__note"><?php esc_html_e( 'The 🔊 line is what you hear on your radio station with “Say each name out loud” on.', 'marquee' ); ?></p><?php endif; ?>
 	</div>
 	<?php
 }

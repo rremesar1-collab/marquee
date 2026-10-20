@@ -274,3 +274,35 @@
 .mq-ai__form textarea { flex: 1; resize: none; border-radius: 8px; }
 .mq-ai__fine { margin: 0; padding: 6px 14px 10px; font-size: 11px; color: #646970; background: #fff; }
 @media (max-width: 600px) { .mq-ai { right: 8px; bottom: 8px; height: calc(100vh - 80px); } .mq-ai__fab { right: 12px; bottom: 70px; } }
+/* See it in action */
+.mq-demo { margin: 4px 0 18px; padding: 16px 18px 12px; border-radius: 12px; background: linear-gradient(160deg, #0d1b3d, #1a1033); color: #e9eefc; }
+.mq-demo__label { font-weight: 700; font-size: 13px; letter-spacing: .02em; color: #ffd45c; margin-bottom: 10px; display: flex; align-items: center; gap: 4px; }
+.mq-demo__stage { display: flex; align-items: center; gap: 18px; justify-content: center; flex-wrap: wrap; }
+.mq-demo__phone { width: 170px; height: 300px; border-radius: 26px; background: #111; padding: 10px; box-shadow: 0 0 0 2px #333, 0 10px 30px rgba(0,0,0,.4); flex: none; }
+.mq-demo__phone > div { height: 100%; border-radius: 18px; background: linear-gradient(180deg, #13245a, #0a1330); overflow: hidden; }
+.mq-demo__app { padding: 18px 12px; display: flex; flex-direction: column; gap: 10px; font-size: 12px; }
+.mq-demo__app > b { color: #ffd45c; font-size: 13px; text-align: center; }
+.mq-demo__in { background: #fff; color: #111; border-radius: 8px; padding: 8px 10px; font-weight: 800; letter-spacing: .05em; min-height: 16px; }
+.mq-demo__in i { color: #999; font-weight: 400; letter-spacing: 0; }
+.mq-demo__in em { color: #2271b1; font-style: normal; animation: mqblink 1s steps(1) infinite; }
+@keyframes mqblink { 50% { opacity: 0; } }
+.mq-demo__themes { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+.mq-demo__th { padding: 7px 4px; border-radius: 7px; text-align: center; font-size: 10px; font-weight: 700; color: #fff; background: linear-gradient(135deg, color-mix(in srgb, var(--a) 55%, #000), color-mix(in srgb, var(--b) 35%, #000)); border: 2px solid transparent; }
+.mq-demo__th.is-on { border-color: #ffd45c; transform: scale(1.05); }
+.mq-demo__btn { background: #d63638; color: #fff; text-align: center; border-radius: 8px; padding: 9px 6px; font-weight: 800; transition: transform .1s; }
+.mq-demo__btn.is-press { transform: scale(.94); background: #b32d2e; }
+.mq-demo__ok { text-align: center; font-size: 18px; font-weight: 800; color: #6ee7a0; padding-top: 30px; }
+.mq-demo__ok small { display: block; font-size: 11px; font-weight: 400; color: #e9eefc; margin-top: 8px; }
+.mq-demo__arrow { font-size: 26px; color: #ffd45c; }
+.mq-demo__tv { position: relative; padding: 10px; border-radius: 10px; background: #1b1b1b; box-shadow: 0 0 0 2px #333, 0 10px 30px rgba(0,0,0,.4); }
+.mq-demo__tv canvas { display: block; width: 420px; max-width: 100%; height: auto; border-radius: 4px; }
+.mq-demo__tvlabel { text-align: center; font-size: 11px; color: #9aa3b5; margin-top: 6px; }
+.mq-demo__say { position: absolute; left: 50%; transform: translateX(-50%); bottom: 34px; background: rgba(0,0,0,.75); color: #fff; padding: 4px 12px; border-radius: 999px; font-size: 12px; white-space: nowrap; }
+.mq-demo__step { text-align: center; margin: 12px 0 0 !important; font-size: 13px; font-weight: 600; color: #fff; min-height: 18px; }
+.mq-demo__note { text-align: center; margin: 4px 0 0 !important; font-size: 11px; color: #9aa3b5; }
+.mq__pane .mq-demo small { color: inherit; }
+@media (max-width: 782px) { .mq-demo__arrow { transform: rotate(90deg); } .mq-demo__tv canvas { width: 300px; } }
+.mq__card .mq-demo__tv canvas { width: 330px; }
+.mq__card .mq-demo__phone { width: 150px; height: 270px; }
+.mq-demo__say { position: static; transform: none; display: table; margin: 8px auto 0; }
+.mq-demo__say[hidden] { display: table; visibility: hidden; }
