@@ -216,16 +216,21 @@
 	}
 	if (nb) {
 		var nf = nb.querySelector('[data-rr-names-form]'), nmsg = nb.querySelector('[data-rr-names-msg]'), ndone = nb.querySelector('[data-rr-names-done]');
+		/* No maxlength on the name box (on phones it stops a picked spelling suggestion from replacing the word);
+		   the 14-letter limit is checked here and on send instead. Never change the box while the kid types. */
 		var preview = function () {
-			var nm = (nf.kid.value.trim().split(/\s+/)[0] || 'NAME').toUpperCase();
+			var raw = nf.kid.value.trim().split(/\s+/)[0] || '';
+			var nm = (raw || 'NAME').toUpperCase();
 			nb.querySelectorAll('[data-greet]').forEach(function (sp) { sp.textContent = sp.getAttribute('data-greet').replace('NAME', nm); });
+			nmsg.textContent = raw.length > 14 ? 'That’s a long one! Names can have up to 14 letters.' : '';
 		};
 		nf.kid.addEventListener('input', preview);
 		nf.addEventListener('submit', function (e) {
 			e.preventDefault();
 			nmsg.textContent = '';
-			if (!/^[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ'\-]{1,13}$/.test(nf.kid.value.trim())) {
-				nmsg.textContent = 'Please type just your first name (letters only).'; nf.kid.focus(); return;
+			nf.kid.value = nf.kid.value.trim();
+			if (!/^[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ'\-]{1,13}$/.test(nf.kid.value)) {
+				nmsg.textContent = nf.kid.value.length > 14 ? 'That’s a long one! Names can have up to 14 letters.' : 'Please type just your first name (letters only).'; nf.kid.focus(); return;
 			}
 			var btn = nf.querySelector('button[type=submit]'); btn.disabled = true;
 			var geo = !!nb.querySelector('[data-rr-names-geo]'), pos = null;

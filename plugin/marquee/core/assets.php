@@ -27,7 +27,7 @@ function ridgeroad_feature_assets() {
 	// Kids' Corner: online coloring, contest and Art Wall.
 	if ( is_page( (int) get_option( 'ridgeroad_kids_page' ) ) ) {
 		wp_enqueue_script( 'ridgeroad-lab', RR_FEAT_URL . 'assets/js/lightlab.js', array(), RIDGEROAD_VERSION, true );
-		wp_enqueue_script( 'ridgeroad-kids', RR_FEAT_URL . 'assets/js/kids.js', array( 'ridgeroad-lab' ), RIDGEROAD_VERSION, true );
+		wp_enqueue_script( 'ridgeroad-kids', RR_FEAT_URL . 'assets/js/kids.js', array( 'ridgeroad-lab' ), RIDGEROAD_VERSION . '.' . (int) @filemtime( RR_FEAT_DIR . 'assets/js/kids.js' ), true );
 		wp_localize_script( 'ridgeroad-kids', 'RRShow', array(
 			'ajax'  => esc_url_raw( admin_url( 'admin-ajax.php' ) ),
 			'watch' => ridgeroad_show_for_watch(),

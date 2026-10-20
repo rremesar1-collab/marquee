@@ -14,7 +14,7 @@ $status = ridgeroad_status();
 
 	<form class="rr-names__form" data-rr-names-form autocomplete="off" <?php echo $open ? '' : 'hidden'; ?>>
 		<p class="rr-field"><label for="rr-n-kid"><?php esc_html_e( 'Your first name', 'ridgeroad' ); ?></label>
-			<input id="rr-n-kid" name="kid" type="text" maxlength="14" required></p>
+			<input id="rr-n-kid" name="kid" type="text" required autocapitalize="words" enterkeyhint="send" data-max="14"></p>
 		<fieldset class="rr-names__greet">
 			<legend><?php esc_html_e( 'Pick your message', 'ridgeroad' ); ?></legend>
 			<?php
