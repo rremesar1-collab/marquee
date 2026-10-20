@@ -206,7 +206,7 @@ add_action( 'wp_enqueue_scripts', function () {
 	if ( marquee_festive() || ! function_exists( 'ridgeroad_part' ) ) {
 		return;
 	}
-	wp_enqueue_style( 'marquee', MARQUEE_URL . 'assets/marquee.css', array(), MARQUEE_VERSION );
+	wp_enqueue_style( 'marquee', MARQUEE_URL . 'assets/marquee.css', array(), MARQUEE_VERSION . '.' . (int) @filemtime( MARQUEE_DIR . 'assets/marquee.css' ) );
 }, 30 );
 
 add_action( 'wp_footer', function () {

@@ -93,7 +93,7 @@ add_action( 'after_setup_theme', function () {
  * ---------------------------------------------------------------------- */
 add_action( 'wp_enqueue_scripts', function () {
 	// Fonts are bundled in assets/fonts (no Google Fonts request needed).
-	wp_enqueue_style( 'ridgeroad', get_stylesheet_uri(), array(), wp_get_theme( get_template() )->get( 'Version' ) );
+	wp_enqueue_style( 'ridgeroad', get_stylesheet_uri(), array(), wp_get_theme( get_template() )->get( 'Version' ) . '.' . (int) @filemtime( get_stylesheet_directory() . '/style.css' ) );
 
 	$bg = ridgeroad_mod( 'bg_image' );
 	if ( $bg ) {

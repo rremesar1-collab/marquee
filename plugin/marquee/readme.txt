@@ -55,7 +55,7 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 == Changelog ==
 
 = 0.8.0 =
-* Names form on phones: picking a spelling suggestion now fixes the word in the name box (the box no longer has a built-in letter limit, which stopped it on phones; the 14-letter limit is checked when you send).
+* Names form on iPhones: picking a spelling suggestion now fixes the word in the name box. The box no longer shows the name in capitals as you type or has a built-in letter limit (both stopped it); the 14-letter limit is checked when you send.
 * Blocked names and words: see and undo the names you blocked, and add your own words (Settings → Names & FPP). The bad-word filter is always on.
 * Messages kids can pick: write your own messages for "Pick your message" on the names form (up to 6, with NAME where the name goes), with a preview of how each looks on your screens. Settings → Names & FPP → 💬 Messages kids can pick.
 * Names & FPP (renamed from "Your Name in Lights"): a "How it works" picture at the top, and a choice of how names go up: between songs in a names break, or during songs on a spare TV or projector (no extra sequence; names script 3.5).

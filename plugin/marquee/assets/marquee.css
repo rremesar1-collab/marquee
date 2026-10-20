@@ -891,7 +891,7 @@
 .mq-skin:not(#mq-0) .rr-songs-page .rr-seq, .mq-skin:not(#mq-0) .rr-songs-page .rr-vote { margin-top: 26px; }
 .mq-skin:not(#mq-0) .rr-songs-page > .rr-seq:first-of-type, .mq-skin:not(#mq-0) .rr-songs-page > .rr-vote:first-of-type { margin-top: 0; }
 .mq-skin:not(#mq-0) .rr-names { max-width: 680px; }
-.mq-skin:not(#mq-0) .rr-names .rr-field input { padding: 12px 14px; border-radius: 10px; border: 1px solid rgba(247, 201, 90, .6); background: rgba(0, 12, 30, .7); color: #fff; font: 800 20px var(--f-body); font-family: inherit; text-transform: uppercase; letter-spacing: .04em; }
+.mq-skin:not(#mq-0) .rr-names .rr-field input { padding: 12px 14px; border-radius: 10px; border: 1px solid rgba(247, 201, 90, .6); background: rgba(0, 12, 30, .7); color: #fff; font: 800 20px var(--f-body); font-family: inherit; letter-spacing: .04em; }
 .mq-skin:not(#mq-0) .rr-names__greet { margin: 4px 0 14px; padding: 0; border: 0; display: grid; gap: 8px; }
 .mq-skin:not(#mq-0) .rr-names__greet legend { margin-bottom: 6px; font-weight: 800; font-size: 14px; color: #e4f0ff; }
 .mq-skin:not(#mq-0) .rr-names__greet label { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 10px; background: rgba(0, 0, 0, .3); border: 1px solid rgba(150, 190, 255, .3); cursor: pointer; font-weight: 800; letter-spacing: .03em; }
