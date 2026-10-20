@@ -23,7 +23,7 @@ Everything else (status, weather, Kids' Corner, guestbook, app) works with no ex
 
 ## Sequence maker
 
-Marquee → Settings → Names & FPP → **Sequence maker** builds the names break sequence, and themed versions kids can pick (Candy Cane Swirl, Snowfall… or describe your own with the AI), from your xLights layout. It runs in the browser: `xlights_rgbeffects.xml` is never uploaded. Download the `.xsq`, render it in xLights, and upload the `.fseq` to FPP.
+Marquee → Settings → Names & FPP → **Sequence maker** builds the names break sequence, and themed versions kids can pick (Candy Cane Swirl, Snowfall… or describe your own with the AI), from your xLights layout. It runs in the browser: `xlights_rgbeffects.xml` is never uploaded. It works out the names timing for you. Download the `.xsq`, render it in xLights, and upload the `.fseq` to FPP (File Manager, or straight from xLights with FPP Connect). The **Show me how** buttons walk through each step.
 
 ## Social posts
 
