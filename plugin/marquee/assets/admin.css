@@ -495,3 +495,63 @@
 .mq-nt__say { margin: 2px 0 0; font-size: 12.5px; color: #50575e; }
 .mq-nt.is-over .mq-nt__say { color: #b32d2e; }
 .mq-nt.is-compact .mq-nt__bar { height: 24px; }
+/* Show me how: guided walkthroughs */
+.mq-tour__btn { float: right; margin: 0 0 8px 12px !important; border-radius: 999px !important; border-color: #2271b1 !important; color: #2271b1 !important; font-weight: 600; }
+.mq-tour__btn span { font-size: 10px; margin-right: 3px; }
+.mqt[hidden] { display: none; }
+.mqt { position: fixed; inset: 0; z-index: 100000; pointer-events: none; }
+.mqt__shade { position: absolute; inset: 0; }
+.mqt__spot { position: absolute; border-radius: 12px; box-shadow: 0 0 0 4px #ffd45c, 0 0 0 9999px rgba(10, 16, 40, .55); transition: all .45s ease; }
+.mqt.is-center .mqt__shade, .mqt.has-pic .mqt__shade { background: rgba(10, 16, 40, .6); }
+.mqt.has-pic .mqt__spot { display: none !important; }
+.mqt__ptr { position: absolute; left: 0; top: 0; width: 30px; height: 30px; filter: drop-shadow(0 3px 4px rgba(0,0,0,.4)); z-index: 3; }
+.mqt__ring { position: absolute; left: -9px; top: -9px; width: 26px; height: 26px; border-radius: 50%; border: 3px solid #ffd45c; opacity: 0; }
+.mqt__ptr.is-click .mqt__ring { animation: mqtclick .7s ease-out 2; }
+@keyframes mqtclick { 0% { opacity: 1; transform: scale(.4); } 100% { opacity: 0; transform: scale(1.8); } }
+.mqt__card { position: absolute; pointer-events: auto; background: #fff; border-radius: 14px; box-shadow: 0 18px 50px rgba(0,0,0,.35); padding: 14px 16px 12px; outline: none; transition: top .35s ease, left .35s ease; z-index: 2; }
+.mqt.is-center .mqt__card, .mqt.has-pic .mqt__card { left: 50% !important; top: 50% !important; transform: translate(-50%, -50%); width: min(720px, calc(100vw - 24px)) !important; max-height: calc(100vh - 40px); overflow-y: auto; }
+.mqt__top { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #646970; }
+.mqt__count { background: #eef2ff; color: #3b4aa8; font-weight: 700; padding: 2px 8px; border-radius: 999px; }
+.mqt__name { flex: 1; font-weight: 600; }
+.mqt__x { border: 0; background: none; font-size: 22px; line-height: 1; cursor: pointer; color: #646970; }
+.mqt__t { margin: 8px 0 4px; font-size: 16px; }
+.mqt__x2 { margin: 0 0 10px; font-size: 13.5px; line-height: 1.5; color: #1d2327; }
+.mqt__prog { height: 3px; background: #f0f0f1; border-radius: 3px; overflow: hidden; margin: 0 0 10px; }
+.mqt__prog i { display: block; height: 100%; width: 0; background: #2271b1; }
+.mqt__btns { display: flex; gap: 6px; justify-content: flex-end; }
+.mqt__pic:empty { display: none; }
+.mqt__pic { margin: 10px 0 2px; }
+.mqt__pic > small { display: block; margin-top: 4px; font-size: 11px; color: #8c8f94; text-align: right; }
+.mqt__shot { position: relative; border-radius: 10px; overflow: hidden; border: 1px solid #dcdcde; }
+.mqt__shot img { display: block; width: 100%; }
+.mqt__box { position: absolute; border: 3px solid #ffcc33; border-radius: 8px; box-shadow: 0 0 0 9999px rgba(10,16,40,.35); animation: mqtbox 1.4s ease-in-out infinite; }
+@keyframes mqtbox { 50% { border-color: #ff9f1a; } }
+/* xLights pictures */
+.mqt-xl { border-radius: 10px; overflow: hidden; background: #2b2d31; color: #e6e6e6; font: 12px/1.3 system-ui, sans-serif; border: 1px solid #111; }
+.mqt-xl__bar { display: flex; gap: 14px; align-items: center; padding: 7px 12px; background: #3a3c42; }
+.mqt-xl__icons { margin-left: auto; display: flex; gap: 6px; }
+.mqt-xl__icons i { font-style: normal; padding: 3px 8px; border-radius: 4px; background: #4a4d55; }
+.mqt-xl .is-hl { background: #ffcc33 !important; color: #2a1f00 !important; border-radius: 4px; padding: 2px 8px; font-weight: 700; box-shadow: 0 0 0 3px rgba(255,204,51,.35); }
+.mqt-xl .is-hl2 { background: #3a7bd5 !important; color: #fff; }
+.mqt-xl__menu { display: grid; width: 190px; margin: 0 0 0 4px; background: #44474e; border: 1px solid #222; }
+.mqt-xl__menu span { padding: 6px 10px; }
+.mqt-xl__files { margin: 10px 12px 12px; display: grid; gap: 4px; max-width: 360px; padding: 8px; background: #fff; color: #222; border-radius: 6px; }
+.mqt-xl__files b { color: #555; font-size: 11px; }
+.mqt-xl__files span { padding: 3px 6px; }
+.mqt-xl__seq { display: grid; grid-template-columns: 110px 1fr; min-height: 150px; }
+.mqt-xl__rows { display: grid; background: #25272b; }
+.mqt-xl__rows span { padding: 6px 10px; border-bottom: 1px solid #1c1d20; }
+.mqt-xl__fx { position: relative; background: repeating-linear-gradient(90deg, #2f3136 0 59px, #383a40 59px 60px); }
+.mqt-xl__fx i { position: absolute; top: 2%; height: 16%; border-radius: 3px; background: #d33; }
+.mqt-xl__fx i.w { background: #eee; } .mqt-xl__fx i.r { background: repeating-linear-gradient(135deg, #e22 0 10px, #fff 10px 20px); }
+.mqt-xl__fx em { position: absolute; top: 0; bottom: 0; left: 30%; width: 2px; background: #ffcc33; animation: mqtplay 4s linear infinite; }
+@keyframes mqtplay { from { left: 8%; } to { left: 78%; } }
+.mqt-xl__note { margin: 0; padding: 7px 12px; background: #3a3c42; }
+.mqt-xl__title { padding: 8px 12px; background: #3a3c42; font-weight: 700; }
+.mqt-xl__dlg { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 12px; background: #f4f4f4; color: #222; }
+.mqt-xl__dlg b { display: block; margin-bottom: 6px; font-size: 11px; color: #555; }
+.mqt-xl__dlg label { display: flex; gap: 6px; padding: 4px 6px; }
+.mqt-xl__dlg label i { font-style: normal; }
+.mqt-xl__btns { display: flex; justify-content: flex-end; gap: 8px; padding: 8px 12px; background: #e9e9e9; color: #222; }
+.mqt-xl__btns span { padding: 4px 14px; border: 1px solid #aaa; border-radius: 4px; background: #fff; }
+@media (prefers-reduced-motion: reduce) { .mqt__spot, .mqt__card { transition: none; } .mqt-xl__fx em, .mqt__box { animation: none; } }

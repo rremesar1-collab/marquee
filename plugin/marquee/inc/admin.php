@@ -23,6 +23,7 @@ add_action( 'admin_enqueue_scripts', function ( $hook ) {
 	wp_enqueue_script( 'marquee-demo', MARQUEE_URL . 'assets/demo.js', array(), MARQUEE_VERSION . '.' . filemtime( MARQUEE_DIR . 'assets/demo.js' ), true );
 	wp_enqueue_script( 'marquee-walk', MARQUEE_URL . 'assets/walk.js', array(), MARQUEE_VERSION . '.' . filemtime( MARQUEE_DIR . 'assets/walk.js' ), true );
 	wp_enqueue_script( 'marquee-ai', MARQUEE_URL . 'assets/ai.js', array( 'marquee-admin' ), MARQUEE_VERSION . '.' . filemtime( MARQUEE_DIR . 'assets/ai.js' ), true );
+	wp_enqueue_script( 'marquee-tour', MARQUEE_URL . 'assets/tour.js', array(), MARQUEE_VERSION . '.' . filemtime( MARQUEE_DIR . 'assets/tour.js' ), true );
 	wp_enqueue_script( 'marquee-seqmaker', MARQUEE_URL . 'assets/seqmaker.js', array(), MARQUEE_VERSION . '.' . filemtime( MARQUEE_DIR . 'assets/seqmaker.js' ), true );
 	wp_enqueue_script( 'marquee-seqmaker-ui', MARQUEE_URL . 'assets/seqmaker-ui.js', array( 'marquee-seqmaker', 'marquee-admin' ), MARQUEE_VERSION . '.' . filemtime( MARQUEE_DIR . 'assets/seqmaker-ui.js' ), true );
 	wp_enqueue_script( 'marquee-break', MARQUEE_URL . 'assets/break.js', array( 'marquee-admin' ), MARQUEE_VERSION . '.' . filemtime( MARQUEE_DIR . 'assets/break.js' ), true );
@@ -373,6 +374,7 @@ function marquee_admin_page() {
 							<span class="mq__pill"><?php esc_html_e( 'Optional', 'marquee' ); ?></span>
 						</summary>
 						<div class="mq__card-b">
+							<?php marquee_tour_button( 'seqmaker' ); ?>
 							<?php marquee_seqmaker_box( $s ); ?>
 						</div>
 					</details>
@@ -441,6 +443,7 @@ function marquee_admin_page() {
 							<?php if ( $brk ) : ?><span class="mq__pill is-ok"><?php esc_html_e( 'Built', 'marquee' ); ?></span><?php else : ?><span class="mq__pill"><?php esc_html_e( 'Not built', 'marquee' ); ?></span><?php endif; ?>
 						</summary>
 						<div class="mq__card-b">
+							<?php marquee_tour_button( 'break' ); ?>
 							<?php marquee_break_box( $s ); ?>
 						</div>
 					</details>
@@ -453,6 +456,7 @@ function marquee_admin_page() {
 							<?php if ( $th_on ) : ?><span class="mq__pill is-ok"><?php /* translators: %d: number of themes */ echo esc_html( sprintf( _n( '%d theme', '%d themes', count( $s['themes'] ), 'marquee' ), count( $s['themes'] ) ) ); ?></span><?php else : ?><span class="mq__pill"><?php esc_html_e( 'Off', 'marquee' ); ?></span><?php endif; ?>
 						</summary>
 						<div class="mq__card-b">
+							<?php marquee_tour_button( 'themes' ); ?>
 							<?php marquee_themes_box( $s ); ?>
 						</div>
 					</details>
