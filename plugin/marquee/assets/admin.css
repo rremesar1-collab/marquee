@@ -560,3 +560,12 @@
 .mq-sm__tm { display: block; color: #00733a !important; }
 .mq__theme-auto { margin: 0 0 6px; font-size: 12px; }
 .mq__theme.is-auto .mq-nt__bar { box-shadow: 0 0 0 2px #00a32a; }
+
+/* Messages kids can pick */
+.mq-msgs { margin: 10px 0 4px 1.4em; padding: 0; }
+.mq-msgs li { margin: 0 0 10px; }
+.mq-msgs input[type="text"] { width: 100%; max-width: 360px; }
+.mq-msgs__scr { display: inline-block; margin: 4px 0 0 8px; padding: 2px 8px; border-radius: 4px; background: #111; color: #ffd84a; font: 600 12px/1.6 ui-monospace, Menlo, Consolas, monospace; letter-spacing: .04em; }
+.mq-msgs__scr:empty { display: none; }
+.mq-msgs__warn { display: block; color: #8a5a00; }
+@media (max-width: 600px) { .mq-msgs__scr { margin-left: 0; } }

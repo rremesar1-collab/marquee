@@ -4,7 +4,7 @@
  * FPP shows it on the garage-door projector and the TV in a short break between songs.
  *
  * - Names are accepted only while the show is running.
- * - First name only, letters only, plus a greeting picked from a short list.
+ * - First name only, letters only, plus a message picked from a short list (Marquee: your own messages).
  * - Bad-word filter (with l33t-speak folding), your own block list, per-phone limits.
  * - Names go live automatically if they pass the filter; block any of them in
  *   WP Admin -> Kids' Names.
@@ -15,12 +15,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-const RR_NAME_GREETINGS = array(
-	'merry'    => 'MERRY CHRISTMAS, %s!',
-	'holidays' => 'HAPPY HOLIDAYS, %s!',
-	'santa'    => 'HI SANTA! LOVE, %s',
-	'shine'    => '%s, YOU SHINE BRIGHT!',
-);
+/** The standard messages kids pick from (NAME is where the name goes). */
+function ridgeroad_name_greetings_std() {
+	return array(
+		'merry'    => 'Merry Christmas, NAME!',
+		'holidays' => 'Happy Holidays, NAME!',
+		'santa'    => 'Hi Santa! Love, NAME',
+		'shine'    => 'NAME, you shine bright!',
+	);
+}
+
+/** Messages kids pick from: key => 'Merry Christmas, NAME!'. Marquee lets the show owner write their own. */
+function ridgeroad_name_greetings() {
+	$g = apply_filters( 'ridgeroad_name_greetings', ridgeroad_name_greetings_std() );
+	return is_array( $g ) && $g ? $g : ridgeroad_name_greetings_std();
+}
+
+/** The message as it goes on the screens: "MERRY CHRISTMAS, Emma!" */
+function ridgeroad_name_message( $tpl, $name ) {
+	$tpl = false === strpos( $tpl, 'NAME' ) ? $tpl . ' NAME' : $tpl;
+	$k   = strpos( $tpl, 'NAME' );                        // only this one is the name ("Your name in lights, NAME!")
+	return mb_strtoupper( substr( $tpl, 0, $k ), 'UTF-8' ) . $name . mb_strtoupper( substr( $tpl, $k + 4 ), 'UTF-8' );
+}
 
 add_action( 'init', function () {
 	register_post_type( 'rr_shoutout', array(
@@ -177,8 +193,9 @@ function ridgeroad_name_send() {
 	if ( '' === $name ) {
 		$fail( __( 'Hmm, Santa’s elves can’t put that one in lights. Please type just your first name.', 'ridgeroad' ) );
 	}
-	$g = isset( $_POST['greet'] ) ? sanitize_key( $_POST['greet'] ) : 'merry';
-	$g = isset( RR_NAME_GREETINGS[ $g ] ) ? $g : 'merry';
+	$msgs = ridgeroad_name_greetings();
+	$g    = isset( $_POST['greet'] ) ? sanitize_key( $_POST['greet'] ) : '';
+	$g    = isset( $msgs[ $g ] ) ? $g : array_keys( $msgs )[0];
 
 	// limits: 3 an hour from one phone/network, and no repeats of the same name for 20 minutes.
 	// A logged-in site admin (you, testing) skips both limits.
@@ -207,7 +224,7 @@ function ridgeroad_name_send() {
 	if ( is_wp_error( $id ) ) {
 		$fail( __( 'Something went wrong. Please try again.', 'ridgeroad' ) );
 	}
-	$text = sprintf( RR_NAME_GREETINGS[ $g ], $name );
+	$text = ridgeroad_name_message( $msgs[ $g ], $name );
 	update_post_meta( $id, '_rr_text', $text );
 	// themed sequences (Marquee): the theme the kid picked, '' = the classic break
 	$theme = apply_filters( 'ridgeroad_name_theme', '', isset( $_POST['theme'] ) ? sanitize_title( wp_unslash( $_POST['theme'] ) ) : '' );

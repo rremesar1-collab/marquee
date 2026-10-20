@@ -52,6 +52,7 @@ function marquee_defaults() {
 		'themes_on'    => 0,                 // kids pick a themed sequence for their name
 		'classic_img'  => 0,                 // picture on the "Classic" card kids pick from (0 = the animated house)
 		'themes'       => array(),           // [ name, playlist, img (attachment ID), start, slot, look ] up to 6
+		'name_msgs'    => array(),           // your own messages kids pick from ('Merry Christmas, NAME!'), up to 6; empty = the standard ones
 	);
 }
 
@@ -133,6 +134,7 @@ function marquee_save( $in ) {
 		'themes_on'    => isset( $in['themes_sent'] ) ? (int) ! empty( $in['themes_on'] ) : $cur['themes_on'],
 		'classic_img'  => isset( $in['themes_sent'] ) ? ( ( absint( $in['classic_img'] ?? 0 ) && wp_attachment_is_image( absint( $in['classic_img'] ) ) ) ? absint( $in['classic_img'] ) : 0 ) : $cur['classic_img'],
 		'themes'       => isset( $in['themes_sent'] ) ? marquee_clean_themes( isset( $in['themes'] ) ? (array) wp_unslash( $in['themes'] ) : array() ) : $cur['themes'],
+		'name_msgs'    => isset( $in['msgs_sent'] ) ? marquee_clean_msgs( isset( $in['name_msgs'] ) ? (array) wp_unslash( $in['name_msgs'] ) : array() ) : $cur['name_msgs'],
 		'names_slot'   => isset( $in['names_slot'] ) && '' !== trim( (string) $in['names_slot'] ) ? max( 2.5, min( 10, round( (float) $in['names_slot'], 2 ) ) ) : $cur['names_slot'],
 		'names_start'  => isset( $in['names_start'] ) && '' !== trim( (string) $in['names_start'] ) ? max( 0, min( 120, round( (float) $in['names_start'], 2 ) ) ) : $cur['names_start'],
 		'vote_hide'  => isset( $in['vote_hide_sent'] ) ? array_values( array_slice( array_unique( array_filter( array_map( 'sanitize_title', isset( $in['vote_hide'] ) ? (array) wp_unslash( $in['vote_hide'] ) : array() ) ) ), 0, 200 ) ) : $cur['vote_hide'],
@@ -360,3 +362,48 @@ add_filter( 'ridgeroad_names_pull_data', function ( $data ) {
 	$data['live_show_for'] = (float) $s['live_show_for'];
 	return $data;
 }, 5 );
+
+/**
+ * The messages kids pick from, as typed in Settings: up to 6, each with NAME where the name goes.
+ * Empty (or exactly the standard four) = the standard messages.
+ */
+function marquee_clean_msgs( $raw ) {
+	$out = array();
+	foreach ( array_slice( (array) $raw, 0, 6 ) as $m ) {
+		$m = trim( preg_replace( '/\s+/u', ' ', sanitize_text_field( (string) $m ) ) );
+		$m = preg_replace( '/[^\p{L}\p{N}\p{P}\p{Zs}+=~^$]/u', '', $m );        // no emoji: the screens can't draw them
+		$m = preg_replace( '/\[\s*name\s*\]|\{\s*name\s*\}/iu', 'NAME', $m );            // [name] or {name} mean NAME
+		if ( false === strpos( $m, 'NAME' ) ) {
+			$m = preg_replace( '/\bname\b/iu', 'NAME', $m, 1 );                        // "Merry Christmas, Name!"
+		}
+		$k = strpos( $m, 'NAME' );
+		if ( false !== $k ) {
+			$m = substr( $m, 0, $k + 4 ) . str_replace( 'NAME', '', substr( $m, $k + 4 ) );  // the name goes in once
+		}
+		$m = trim( preg_replace( '/\s+/u', ' ', $m ) );
+		if ( '' === trim( str_replace( 'NAME', '', $m ), " \t,.!?-" ) ) {
+			continue;                                                             // empty, or just NAME
+		}
+		if ( false === strpos( $m, 'NAME' ) ) {
+			$m = rtrim( mb_substr( $m, 0, 27 ), ' ,!.' ) . ', NAME!';             // forgot NAME: it goes at the end
+		} elseif ( mb_strlen( $m ) > 34 ) {
+			continue;                                                             // too long for the screens (the box stops at 34)
+		}
+		$out[] = $m;
+	}
+	$out = array_values( array_unique( $out ) );
+	return function_exists( 'ridgeroad_name_greetings_std' ) && array_values( ridgeroad_name_greetings_std() ) === $out ? array() : $out;
+}
+
+/* Your own messages replace the standard ones on the names form. */
+add_filter( 'ridgeroad_name_greetings', function ( $std ) {
+	$own = (array) marquee_get( 'name_msgs' );
+	if ( ! $own ) {
+		return $std;
+	}
+	$out = array();
+	foreach ( array_values( $own ) as $i => $m ) {
+		$out[ 'm' . ( $i + 1 ) ] = $m;
+	}
+	return $out;
+} );

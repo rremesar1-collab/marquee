@@ -55,6 +55,7 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 == Changelog ==
 
 = 0.8.0 =
+* Messages kids can pick: write your own messages for "Pick your message" on the names form (up to 6, with NAME where the name goes), with a preview of how each looks on your screens. Settings → Names & FPP → 💬 Messages kids can pick.
 * Names & FPP (renamed from "Your Name in Lights"): a "How it works" picture at the top, and a choice of how names go up: between songs in a names break, or during songs on a spare TV or projector (no extra sequence; names script 3.5).
 * Show me how: guided walkthroughs on the Settings page for Sequence maker, Names break audio and Themed sequences. A pointer moves to each control with a spotlight and a short explanation, and the steps in xLights (Render All, FPP Connect) and on the FPP (File Manager, playlists) are shown as pictures. Plays by itself; pause, back and next any time.
 * No timing to set: Sequence maker works out when the names go up (from your names break audio, or the Names timing track in your sequence, or your settings), writes it into every sequence it makes (moving the Name marks and the prop flashes to match), and "Use it" fills the numbers in for the theme.

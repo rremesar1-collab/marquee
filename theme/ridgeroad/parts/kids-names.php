@@ -18,7 +18,7 @@ $status = ridgeroad_status();
 		<fieldset class="rr-names__greet">
 			<legend><?php esc_html_e( 'Pick your message', 'ridgeroad' ); ?></legend>
 			<?php
-			$labels = array( 'merry' => 'Merry Christmas, NAME!', 'holidays' => 'Happy Holidays, NAME!', 'santa' => 'Hi Santa! Love, NAME', 'shine' => 'NAME, you shine bright!' );
+			$labels = ridgeroad_name_greetings();
 			$first  = true;
 			foreach ( $labels as $k => $lab ) :
 				?>

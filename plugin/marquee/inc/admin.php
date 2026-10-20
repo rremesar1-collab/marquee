@@ -460,6 +460,30 @@ function marquee_admin_page() {
 							<?php marquee_themes_box( $s ); ?>
 						</div>
 					</details>
+
+					<?php
+					$msg_std = function_exists( 'ridgeroad_name_greetings_std' ) ? array_values( ridgeroad_name_greetings_std() ) : array();
+					$msg_now = $s['name_msgs'] ? array_values( (array) $s['name_msgs'] ) : $msg_std;
+					?>
+					<details class="mq__card" data-mq-msgs>
+						<summary>
+							<span class="mq__card-n" aria-hidden="true">💬</span>
+							<span class="mq__card-t"><b><?php esc_html_e( 'Messages kids can pick', 'marquee' ); ?></b><small><?php esc_html_e( 'The messages under “Pick your message” on your website, like “Merry Christmas, Emma!”. Write your own if you like.', 'marquee' ); ?></small></span>
+							<span class="mq__pill <?php echo $s['name_msgs'] ? 'is-ok' : ''; ?>"><?php echo $s['name_msgs'] ? esc_html__( 'Your own', 'marquee' ) : esc_html__( 'Standard', 'marquee' ); ?></span>
+						</summary>
+						<div class="mq__card-b">
+							<input type="hidden" name="msgs_sent" value="1">
+							<p class="mq__fine"><?php echo wp_kses( __( 'Type <b>NAME</b> where the kid’s name goes. Kids pick one of these when they send their name; it goes up on your screens in capital letters (and the voice says it, if you set that up). Up to 6 messages, 34 letters each. Leave a box empty to drop it.', 'marquee' ), array( 'b' => array() ) ); ?></p>
+							<ol class="mq-msgs">
+								<?php for ( $i = 0; $i < 6; $i++ ) : ?>
+									<li><input type="text" name="name_msgs[]" maxlength="34" value="<?php echo esc_attr( isset( $msg_now[ $i ] ) ? $msg_now[ $i ] : '' ); ?>" placeholder="<?php echo 0 === $i ? esc_attr__( 'Merry Christmas, NAME!', 'marquee' ) : esc_attr__( 'Another message (optional)', 'marquee' ); ?>" aria-label="<?php /* translators: %d: number */ echo esc_attr( sprintf( __( 'Message %d', 'marquee' ), $i + 1 ) ); ?>" data-mq-msg>
+										<span class="mq-msgs__scr" data-mq-msg-scr aria-hidden="true"></span><small class="mq-msgs__warn" data-mq-msg-warn hidden></small></li>
+								<?php endfor; ?>
+							</ol>
+							<p><button type="button" class="button-link" data-mq-msgs-std data-std="<?php echo esc_attr( wp_json_encode( $msg_std ) ); ?>"><?php esc_html_e( 'Put back the standard messages', 'marquee' ); ?></button></p>
+							<p class="mq__fine"><?php esc_html_e( 'Ideas: “Feliz Navidad, NAME!”, “Happy Hanukkah, NAME!”, “Thanks for visiting, NAME!”, “Go team, NAME!”. Kids can’t type their own message: only these, so nothing unexpected goes up on your screens. Save when you’re done.', 'marquee' ); ?></p>
+						</div>
+					</details>
 				<?php endif; ?>
 			</section>
 

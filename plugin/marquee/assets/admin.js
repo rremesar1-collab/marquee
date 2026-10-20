@@ -475,3 +475,30 @@
 		a.addEventListener('input', draw); b.addEventListener('input', draw); draw();
 	});
 })();
+
+/* Messages kids can pick: how each one looks on the screens, and "put back the standard messages". */
+(function () {
+	var box = document.querySelector('[data-mq-msgs]');
+	if (!box) { return; }
+	var ins = box.querySelectorAll('[data-mq-msg]');
+	function look(inp) {
+		var li = inp.parentNode, scr = li.querySelector('[data-mq-msg-scr]'), warn = li.querySelector('[data-mq-msg-warn]');
+		var v = inp.value.trim(), say = '';
+		if (!v) { scr.textContent = ''; warn.hidden = true; return; }
+		var t = v.replace(/\[\s*name\s*\]|\{\s*name\s*\}/ig, 'NAME');
+		if (t.indexOf('NAME') < 0 && /\bname\b/i.test(t)) { t = t.replace(/\bname\b/i, 'NAME'); }
+		if (t.indexOf('NAME') < 0) { t = t.replace(/[\s,!.]+$/, '') + ', NAME!'; say = 'No NAME in it, so the name goes at the end.'; }
+		if (/[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}]/u.test(t)) { t = t.replace(/[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}️]/gu, ''); say = (say ? say + ' ' : '') + 'Emoji are left out: the screens can’t show them.'; }
+		var k = t.indexOf('NAME');
+		scr.textContent = '→ ' + t.slice(0, k).toUpperCase() + 'EMMA' + t.slice(k + 4).replace(/NAME/g, '').toUpperCase();
+		warn.textContent = say; warn.hidden = !say;
+	}
+	ins.forEach(function (i) { i.addEventListener('input', function () { look(i); }); look(i); });
+	var std = box.querySelector('[data-mq-msgs-std]');
+	if (std) {
+		std.addEventListener('click', function () {
+			var list = []; try { list = JSON.parse(std.getAttribute('data-std')) || []; } catch (e) {}
+			ins.forEach(function (i, n) { i.value = list[n] || ''; look(i); });
+		});
+	}
+})();
