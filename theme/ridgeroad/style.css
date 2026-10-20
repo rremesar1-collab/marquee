@@ -4,7 +4,7 @@ Theme URI: https://alateka.com/
 Author: Alateka Corporation
 Author URI: https://alateka.com/
 Description: The festive Christmas look for the Marquee light show plugin: garlands, bows, a night-sky scene and glowing show cards for your status, Now Playing, weather, Kids’ Corner and more. Needs the free Marquee plugin (it holds all the show features and settings).
-Version: 2.11.0
+Version: 2.11.1
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -1315,6 +1315,15 @@ img.emoji, img.wp-smiley { display: inline !important; width: 1em !important; he
 .rr-theme__pic { width: 100%; aspect-ratio: 4 / 3; border-radius: 8px; object-fit: cover; display: grid; place-items: center; font-size: 28px; background: hsl(var(--h) 70% 45% / .35); }
 .rr-theme input:checked + .rr-theme__card { border-color: #ffd45c; background: linear-gradient(160deg, hsl(var(--h) 75% 40% / .75), rgba(255, 210, 90, .18)); transform: translateY(-2px); box-shadow: 0 0 0 3px rgba(255, 212, 92, .25); }
 .rr-theme input:focus-visible + .rr-theme__card { outline: 2px solid #ffd45c; outline-offset: 2px; }
+/* Pick your show: one wide card per show, with an animated (or uploaded) picture of the house */
+.rr-themes { grid-template-columns: 1fr; gap: 10px; }
+.rr-theme__card { position: relative; padding: 0; gap: 0; overflow: hidden; text-align: left; align-items: stretch; }
+.rr-theme__pic { width: 100%; aspect-ratio: 32 / 9; border-radius: 0; font-size: 0; display: block; background: #04060d; }
+.rr-theme__card b { padding: 8px 12px 9px; font-size: 16px; display: flex; align-items: center; gap: 8px; }
+.rr-theme__card b::before { content: ""; flex: none; width: 18px; height: 18px; border-radius: 50%; border: 2px solid rgba(255, 255, 255, .7); box-sizing: border-box; }
+.rr-theme input:checked + .rr-theme__card b::before { border: 5px solid #ffd45c; background: #2a1600; }
+.rr-theme input:checked + .rr-theme__card { transform: none; }
+@media (min-width: 700px) { .rr-themes { grid-template-columns: 1fr 1fr; } }
 .rr-names__form .rr-btn { width: 100%; padding: 13px; font-size: 17px; cursor: pointer; font-family: inherit; }
 .rr-names__done { text-align: center; }
 .rr-names__preview { display: inline-block; margin: 8px 0; padding: 14px 22px; border-radius: 12px; background: #000; border: 2px solid #ffd45c; color: #ffd45c; font: 800 clamp(20px, 3.4vw, 30px)/1.2 var(--f-body); letter-spacing: .06em; text-shadow: 0 0 10px rgba(255, 210, 90, .8); }

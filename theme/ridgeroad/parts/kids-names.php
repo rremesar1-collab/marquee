@@ -34,16 +34,16 @@ $status = ridgeroad_status();
 			$rr_hue = array( 350, 200, 280, 140, 30, 175 );
 			$rr_i   = 0;
 			?>
-			<fieldset class="rr-names__themes">
+			<fieldset class="rr-names__themes" data-rr-fx-lab="<?php echo esc_url( function_exists( 'ridgeroad_asset_url' ) ? ridgeroad_asset_url( 'lightlab/' ) : '' ); ?>">
 				<legend><?php esc_html_e( 'Pick your show', 'ridgeroad' ); ?></legend>
 				<div class="rr-themes">
-					<label class="rr-theme"><input type="radio" name="theme" value="" checked><span class="rr-theme__card" style="--h:45"><span class="rr-theme__pic" aria-hidden="true">✨</span><b><?php esc_html_e( 'Classic', 'ridgeroad' ); ?></b></span></label>
+					<label class="rr-theme"><input type="radio" name="theme" value="" checked><span class="rr-theme__card" style="--h:45"><canvas class="rr-theme__pic rr-theme__fx" data-rr-fx="classic" width="560" height="157" aria-hidden="true"></canvas><b><?php esc_html_e( 'Classic', 'ridgeroad' ); ?></b></span></label>
 					<?php
 					foreach ( $rr_themes as $rr_slug => $rr_t ) :
 						$rr_img = function_exists( 'marquee_theme_img' ) ? marquee_theme_img( $rr_t ) : '';
 						?>
 						<label class="rr-theme"><input type="radio" name="theme" value="<?php echo esc_attr( $rr_slug ); ?>"><span class="rr-theme__card" style="--h:<?php echo (int) $rr_hue[ $rr_i++ % 6 ]; ?>">
-							<?php if ( $rr_img ) : ?><img class="rr-theme__pic" src="<?php echo esc_url( $rr_img ); ?>" alt="" loading="lazy"><?php else : ?><span class="rr-theme__pic" aria-hidden="true">★</span><?php endif; ?>
+							<?php if ( $rr_img ) : ?><img class="rr-theme__pic" src="<?php echo esc_url( $rr_img ); ?>" alt="" loading="lazy"><?php else : ?><canvas class="rr-theme__pic rr-theme__fx" data-rr-fx="<?php echo esc_attr( function_exists( 'marquee_theme_look' ) ? marquee_theme_look( $rr_t ) : 'classic' ); ?>" width="560" height="157" aria-hidden="true"></canvas><?php endif; ?>
 							<b><?php echo esc_html( $rr_t['name'] ); ?></b></span></label>
 					<?php endforeach; ?>
 				</div>

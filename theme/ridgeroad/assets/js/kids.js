@@ -305,3 +305,96 @@
 		});
 	}
 })();
+
+/* Pick your show: each theme card plays a little animated picture of the Light Lab house
+   lit in that theme's style (when the show didn't upload its own picture). */
+(function () {
+	var set = document.querySelector('[data-rr-fx-lab]');
+	if (!set) { return; }
+	var cards = [].slice.call(set.querySelectorAll('canvas[data-rr-fx]'));
+	var base = set.getAttribute('data-rr-fx-lab') || '';
+	if (!cards.length || !base) { return; }
+	var M = { tree: [42, 83, 214, 362], mini: [355, 372, 839, 86], arch: [314, 349, 922, 108], spin: [340, 80, 1106, 150], flake: [265, 167, 1355, 156], win: [306, 234, 815, 102], faces: [936, 166, 107, 61], face2: [1370, 122, 118, 88], garage: [1276, 265, 300, 130], gift: [6, 354, 816, 56], roof: [227, 30, 1435, 230], sign: [723, 410, 100, 54] };
+	var LOOKS = {
+		classic: ['#ffd45c', '#ff6b5b', '#4fd27a', '#5aa8ff'], candy: ['#ff2b3a', '#ffffff'], snow: ['#ffffff', '#8fd3ff'],
+		rainbow: [], christmas: ['#ff2b3a', '#22d46a'], aurora: ['#38ffb8', '#7a5cff'], gold: ['#ffcf4a', '#fff2c0'],
+		ginger: ['#e0893a', '#fff0d0'], icy: ['#5ab8ff', '#ffffff'], purple: ['#c45cff', '#ff6fc8']
+	};
+	var house = new Image(), props = [], left = 1;
+	house.onload = function () { left--; };
+	house.src = base + 'house.jpg';
+	Object.keys(M).forEach(function (k, n) { var im = new Image(); left++; im.onload = im.onerror = function () { left--; }; im.src = base + 'm-' + k + '.png'; props.push({ k: k, n: n, im: im, c: {} }); });
+	function tint(p, col) {
+		if (p.c[col]) { return p.c[col]; }
+		if (!p.im.naturalWidth) { return null; }
+		var c = document.createElement('canvas'); c.width = p.im.naturalWidth; c.height = p.im.naturalHeight;
+		var x = c.getContext('2d'); x.drawImage(p.im, 0, 0); x.globalCompositeOperation = 'multiply'; x.fillStyle = col; x.fillRect(0, 0, c.width, c.height);
+		x.globalCompositeOperation = 'destination-in'; x.drawImage(p.im, 0, 0);
+		p.c[col] = c; return c;
+	}
+	/* candy cane: every prop red, with white diagonal stripes sliding across the house */
+	var layer = document.createElement('canvas');
+	function candy(ctx, W, H, S, t) {
+		layer.width = W; layer.height = H;
+		var x = layer.getContext('2d');
+		props.forEach(function (p) { var m = M[p.k], c = tint(p, '#ffffff'); if (c) { x.drawImage(c, m[0] * S, m[1] * S, m[2] * S, m[3] * S); } });
+		x.globalCompositeOperation = 'destination-in'; x.fillStyle = '#000';
+		var w = W / 14, off = (t * W / 9) % (w * 2);
+		x.beginPath();
+		for (var s = -H - w * 2; s < W + H; s += w * 2) { var a = s + off; x.moveTo(a, H); x.lineTo(a + w, H); x.lineTo(a + w + H, 0); x.lineTo(a + H, 0); x.closePath(); }
+		x.fill();
+		props.forEach(function (p) {
+			var m = M[p.k], c = tint(p, '#ff2b3a'); if (!c) { return; }
+			ctx.globalAlpha = 1; ctx.drawImage(c, m[0] * S, m[1] * S, m[2] * S, m[3] * S);
+			ctx.globalAlpha = .5; ctx.drawImage(c, m[0] * S - 1.5, m[1] * S - 1.5, m[2] * S + 3, m[3] * S + 3);
+		});
+		ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = 1; ctx.drawImage(layer, 0, 0);   // the masks are light on black, so add them
+		ctx.globalAlpha = .4; ctx.drawImage(layer, -1, -1, W + 2, H + 2);
+	}
+	var flakes = []; for (var i = 0; i < 40; i++) { flakes.push([Math.random(), Math.random(), .15 + Math.random() * .35]); }
+	function draw(cv, t) {
+		var look = cv.getAttribute('data-rr-fx'), cols = LOOKS[look] || LOOKS.classic, ctx = cv.getContext('2d'), W = cv.width, H = cv.height, S = W / 1672;
+		ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1; ctx.fillStyle = '#04060d'; ctx.fillRect(0, 0, W, H);
+		ctx.globalAlpha = .5; ctx.drawImage(house, 0, 0, W, H); ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'lighter';
+		if (look === 'candy') { candy(ctx, W, H, S, t); }
+		else props.forEach(function (p) {
+			var m = M[p.k], col, a = 1, step = Math.floor(t * 2);
+			if (look === 'rainbow') { col = 'hsl(' + Math.round((p.n * 37 + t * 110) % 360) + ',100%,60%)'; }
+			else if (look === 'candy') { col = cols[(p.n + step) % 2]; }
+			else if (look === 'christmas') { col = cols[(p.n + step) % 2]; a = .75 + .25 * Math.sin(t * 4 + p.n); }
+			else if (look === 'aurora') { col = Math.sin(m[0] / 260 + t * 1.6) > 0 ? cols[0] : cols[1]; a = .6 + .4 * Math.abs(Math.sin(m[0] / 300 + t)); }
+			else if (look === 'snow' || look === 'icy') { col = (p.n + Math.floor(t * 1.2)) % 3 ? cols[1] : cols[0]; a = .65 + .35 * Math.sin(t * 3 + p.n * 2); }
+			else if (look === 'purple') { col = cols[(p.n + Math.floor(t * 3)) % 2]; a = .55 + .45 * Math.abs(Math.sin(t * 5 + p.n)); }
+			else { col = cols[p.n % cols.length]; a = .5 + .5 * Math.abs(Math.sin(t * 1.7 + p.n * 1.3)); }
+			var c = tint(p, col); if (!c) { return; }
+			ctx.globalAlpha = a; ctx.drawImage(c, m[0] * S, m[1] * S, m[2] * S, m[3] * S);
+			ctx.globalAlpha = a * .55; ctx.drawImage(c, m[0] * S - 1.5, m[1] * S - 1.5, m[2] * S + 3, m[3] * S + 3);
+		});
+		ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1;
+		if (look === 'snow') {
+			ctx.fillStyle = 'rgba(255,255,255,.85)';
+			flakes.forEach(function (f) { var y = ((f[1] + t * f[2] * .25) % 1) * H, x = (f[0] * W + Math.sin(t + f[1] * 9) * 6); ctx.beginPath(); ctx.arc(x, y, 1.2 + f[2] * 3, 0, 7); ctx.fill(); });
+		}
+		if (look === 'gold' || look === 'icy') {
+			ctx.fillStyle = '#fff';
+			for (var k = 0; k < 14; k++) { var r = Math.sin(k * 91.7 + Math.floor(t * 6) * 3.1) * 43758.5; r -= Math.floor(r); var r2 = Math.sin(k * 12.3 + Math.floor(t * 6)) * 9631.2; r2 -= Math.floor(r2); ctx.globalAlpha = .9; ctx.fillRect(r * W, (.1 + r2 * .75) * H, 2, 2); }
+			ctx.globalAlpha = 1;
+		}
+	}
+	var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	var seen = cards.map(function () { return true; });
+	if ('IntersectionObserver' in window) {
+		var io = new IntersectionObserver(function (es) { es.forEach(function (e) { seen[cards.indexOf(e.target)] = e.isIntersecting; }); });
+		cards.forEach(function (c) { io.observe(c); });
+	}
+	var last = 0;
+	function frame(now) {
+		if (!left && now - last > 66) {           // about 15 frames a second is plenty for twinkling lights
+			last = now;
+			cards.forEach(function (c, i) { if (seen[i] && c.offsetParent) { draw(c, now / 1000); } });
+			if (still) { return; }
+		}
+		requestAnimationFrame(frame);
+	}
+	requestAnimationFrame(frame);
+})();

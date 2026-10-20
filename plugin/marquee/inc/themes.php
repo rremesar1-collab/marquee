@@ -29,6 +29,48 @@ function marquee_theme_img( $t ) {
 	return $u ? $u : '';
 }
 
+/** Preview looks for the theme cards kids pick from (an animated picture of the house). */
+function marquee_theme_looks() {
+	return array(
+		'classic'   => __( 'Classic: warm multicolor twinkle', 'marquee' ),
+		'candy'     => __( 'Candy cane: red and white stripes', 'marquee' ),
+		'snow'      => __( 'Snowfall: white and icy blue, falling snow', 'marquee' ),
+		'rainbow'   => __( 'Rainbow: every color, moving', 'marquee' ),
+		'christmas' => __( 'Christmas: red and green chase', 'marquee' ),
+		'aurora'    => __( 'Northern lights: green and purple waves', 'marquee' ),
+		'gold'      => __( 'Gold: warm gold sparkle', 'marquee' ),
+		'ginger'    => __( 'Gingerbread: warm orange and cream', 'marquee' ),
+		'icy'       => __( 'Frozen: blue and white shimmer', 'marquee' ),
+		'purple'    => __( 'Purple and pink party', 'marquee' ),
+	);
+}
+
+/** The look for a theme: the one picked, or a guess from its name. */
+function marquee_theme_look( $t ) {
+	if ( ! empty( $t['look'] ) && isset( marquee_theme_looks()[ $t['look'] ] ) ) {
+		return $t['look'];
+	}
+	$n = strtolower( (string) ( $t['name'] ?? '' ) );
+	foreach ( array(
+		'candy'     => array( 'candy', 'peppermint', 'cane' ),
+		'snow'      => array( 'snow', 'flake', 'winter' ),
+		'rainbow'   => array( 'rainbow', 'party', 'disco' ),
+		'aurora'    => array( 'northern', 'aurora', 'magic' ),
+		'gold'      => array( 'gold', 'star', 'angel', 'nativity', 'holy' ),
+		'ginger'    => array( 'ginger', 'cookie', 'cocoa' ),
+		'icy'       => array( 'frozen', 'ice', 'icy', 'elsa', 'blue' ),
+		'purple'    => array( 'purple', 'pink', 'sugar plum', 'fairy', 'princess' ),
+		'christmas' => array( 'santa', 'sleigh', 'elf', 'elves', 'reindeer', 'rudolph', 'grinch', 'jingle', 'christmas' ),
+	) as $look => $words ) {
+		foreach ( $words as $w ) {
+			if ( false !== strpos( $n, $w ) ) {
+				return $look;
+			}
+		}
+	}
+	return 'classic';
+}
+
 /* The names form asks: is this a theme kids can pick? ('' = the classic break) */
 add_filter( 'ridgeroad_name_theme', function ( $out, $slug ) {
 	$th = marquee_themes();
@@ -95,7 +137,7 @@ function marquee_themes_box( $s ) {
 	<div class="mq__themes">
 		<?php
 		for ( $i = 0; $i < 6; $i++ ) :
-			$t   = isset( $rows[ $i ] ) ? $rows[ $i ] : array( 'name' => '', 'playlist' => '', 'img' => 0, 'start' => 4, 'slot' => 3.75 );
+			$t   = isset( $rows[ $i ] ) ? $rows[ $i ] : array( 'name' => '', 'playlist' => '', 'img' => 0, 'start' => 4, 'slot' => 3.75, 'look' => '' );
 			$ex  = array( 'Candy Cane Swirl', 'Snowfall', 'Rainbow Party', 'Santa’s Sleigh', 'Gingerbread Town', 'Northern Lights' );
 			$pre = 'themes[' . $i . ']';
 			?>
@@ -111,6 +153,12 @@ function marquee_themes_box( $s ) {
 						<p><label for="mq-th<?php echo (int) $i; ?>l"><?php esc_html_e( 'Seconds per name', 'marquee' ); ?></label><input id="mq-th<?php echo (int) $i; ?>l" name="<?php echo esc_attr( $pre ); ?>[slot]" type="number" min="2.5" max="10" step="0.05" value="<?php echo esc_attr( $t['slot'] ); ?>"></p>
 						<div><?php marquee_media_field( $pre . '[img]', __( 'Picture', 'marquee' ), '', $t['img'] ? array( (int) $t['img'] ) : array(), false ); ?></div>
 					</div>
+					<p class="mq__theme-look"><label for="mq-th<?php echo (int) $i; ?>k"><?php esc_html_e( 'Preview kids see (when there’s no picture)', 'marquee' ); ?></label>
+						<select id="mq-th<?php echo (int) $i; ?>k" name="<?php echo esc_attr( $pre ); ?>[look]">
+							<option value=""><?php esc_html_e( 'Pick for me from the name', 'marquee' ); ?></option>
+							<?php foreach ( marquee_theme_looks() as $lk => $ll ) : ?><option value="<?php echo esc_attr( $lk ); ?>" <?php selected( $t['look'] ?? '', $lk ); ?>><?php echo esc_html( $ll ); ?></option><?php endforeach; ?>
+						</select>
+					</p>
 				</div>
 			</div>
 		<?php endfor; ?>
@@ -121,7 +169,7 @@ function marquee_themes_box( $s ) {
 		<p><b><?php esc_html_e( 'How do I make a themed sequence?', 'marquee' ); ?></b> <?php esc_html_e( 'Copy your names break sequence in xLights and change the effects on your house to fit the theme (red and white swirls for Candy Cane, white twinkles for Snowfall…). Keep your screens dark where the names go: FPP draws the names on top. Give it soft music with no singing so the spoken names can be heard. Upload it to FPP and put it in its own playlist, named like the examples.', 'marquee' ); ?></p>
 		<p><b><?php esc_html_e( 'What are “First name at” and “Seconds per name”?', 'marquee' ); ?></b> <?php esc_html_e( 'When the first name goes up in that sequence, and how far apart the names are (up to 6). Match them to the quiet part of your sequence.', 'marquee' ); ?></p>
 		<p><b><?php esc_html_e( 'What if a playlist is missing on my FPP?', 'marquee' ); ?></b> <?php esc_html_e( 'Names for that theme go up in your Classic break instead, and the setup check on this page tells you which playlist it couldn’t find.', 'marquee' ); ?></p>
-		<p><b><?php esc_html_e( 'Do I need pictures?', 'marquee' ); ?></b> <?php esc_html_e( 'No, but kids love them. A photo of your house during that sequence works great. Without one, kids see a colored card with the name.', 'marquee' ); ?></p>
+		<p><b><?php esc_html_e( 'Do I need pictures?', 'marquee' ); ?></b> <?php esc_html_e( 'No. Without one, kids see a little animated picture of a lit-up house in that theme’s colors (pick the look under each theme). A photo or short clip of your own house during that sequence is even better.', 'marquee' ); ?></p>
 	</details>
 	<?php
 }

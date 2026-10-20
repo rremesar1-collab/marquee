@@ -48,7 +48,7 @@ function marquee_defaults() {
 		'break_seq'    => 29.6,              // length of the names sequence (seconds)
 		'break_music'  => 0,                 // instrumental MP3 (attachment ID), 0 = the one that comes with Marquee
 		'themes_on'    => 0,                 // kids pick a themed sequence for their name
-		'themes'       => array(),           // [ name, playlist, img (attachment ID), start, slot ] up to 6
+		'themes'       => array(),           // [ name, playlist, img (attachment ID), start, slot, look ] up to 6
 	);
 }
 
@@ -318,6 +318,7 @@ function marquee_clean_themes( $rows ) {
 			'img'      => ( $img && wp_attachment_is_image( $img ) ) ? $img : 0,
 			'start'    => $start > 0 ? min( 60, round( $start, 2 ) ) : 4,
 			'slot'     => $slot >= 2.5 ? min( 10, round( $slot, 2 ) ) : 3.75,
+			'look'     => ( function_exists( 'marquee_theme_looks' ) && isset( marquee_theme_looks()[ (string) ( $r['look'] ?? '' ) ] ) ) ? (string) $r['look'] : '',
 		);
 	}
 	return $out;
