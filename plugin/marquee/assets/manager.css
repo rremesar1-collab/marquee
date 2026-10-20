@@ -142,3 +142,11 @@ textarea { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid va
 	.mm-list--entries .mm-act, .mm-list--gb .mm-act, .mm-list--names .mm-act { width: auto; padding-left: 0; }
 }
 @media (prefers-reduced-motion: reduce) { .mm-tog::after, .mm-toast { transition: none; } }
+/* social posts in the cancel card */
+.mm-social { margin: 10px 0; padding: 10px 12px; border-radius: 10px; background: rgba(255,255,255,.08); font-size: 14px; text-align: left; }
+.mm-social p { margin: 4px 0; }
+.mm-social a { color: inherit; text-decoration: underline; }
+.mm-social .so-lines { margin: 4px 0; padding: 0; list-style: none; }
+.mm-social .so-lines li { margin: 4px 0; }
+.mm-social .is-bad { color: #ffb3b3; }
+.mm-social .so-copy { border: 1px solid currentColor; background: none; color: inherit; border-radius: 8px; padding: 7px 12px; font: inherit; font-size: 13px; cursor: pointer; }

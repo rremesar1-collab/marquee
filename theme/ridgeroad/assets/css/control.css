@@ -82,3 +82,11 @@
 .rrc__tiles--3 .rrc__tile:nth-child(3n) { border-right: 0; }
 .rrc__sent { margin-left: auto; color: var(--ink-3); white-space: nowrap; }
 @media (max-width: 600px) { .rrc__tiles.rrc__tiles--3 { grid-template-columns: 1fr; } .rrc__tiles--3 .rrc__tile { border-right: 0; } }
+/* social posts beside the cancel switch */
+.rrc__social { margin: 6px 0 12px; padding: 10px 12px; border-radius: 8px; background: #f6f7f7; font-size: 13px; }
+.rrc__social p { margin: 4px 0; }
+.rrc__social .so-lines { margin: 4px 0; padding: 0; list-style: none; }
+.rrc__social .so-lines li { margin: 3px 0; }
+.rrc__social .is-ok { color: #00733a; } .rrc__social .is-bad { color: #b32d2e; }
+.rrc__social .so-copy { border: 1px solid #c5d9ed; background: #fff; color: #135e96; border-radius: 6px; padding: 5px 10px; cursor: pointer; font: inherit; font-size: 12.5px; }
+.rrc__social .so-copied { color: #00733a; font-size: 12px; }

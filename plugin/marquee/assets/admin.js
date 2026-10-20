@@ -403,7 +403,8 @@
 				post('marquee_social_now', { what: now.getAttribute('data-so-now') }).then(function (j) {
 					now.disabled = false; cf.hidden = true; ask.hidden = false;
 					var log = (j && j.success && j.data.log) || [];
-					msg.textContent = log.length ? log.map(function (l) { return (l.ok ? '✓ ' : '✗ ') + (l.net === 'instagram' ? 'Instagram: ' : 'Facebook: ') + l.msg; }).join('  ') : 'Nothing was posted.';
+					var nets = { facebook: 'Facebook: ', instagram: 'Instagram: ', threads: 'Threads: ', all: '' };
+					msg.textContent = log.length ? log.map(function (l) { return (l.ok ? '✓ ' : '✗ ') + (nets[l.net] || '') + l.msg; }).join('  ') : 'Nothing was posted.';
 				}).catch(function () { now.disabled = false; msg.textContent = 'Couldn’t reach your website.'; });
 			});
 		}
@@ -415,6 +416,15 @@
 			post('marquee_social_check').then(function (j) { m.textContent = (j && j.data && j.data.message) || 'Something went wrong.'; });
 		});
 	}
+	var thc = box.querySelector('[data-so-thconnect]'), thm = box.querySelector('[data-so-thmsg]');
+	thc.addEventListener('click', function () {
+		thc.disabled = true; thm.textContent = 'Connecting…';
+		post('marquee_social_threads', { token: box.querySelector('[data-so-thtoken]').value, secret: box.querySelector('[data-so-thsecret]').value }).then(function (j) {
+			thc.disabled = false;
+			if (j && j.success) { thm.textContent = 'Connected to @' + j.data.name + '!'; try { location.hash = '#mq-step-7'; } catch (e) {} location.reload(); }
+			else { thm.textContent = (j && j.data && j.data.message) || 'Something went wrong.'; }
+		}).catch(function () { thc.disabled = false; thm.textContent = 'Couldn’t reach your website.'; });
+	});
 	var con = box.querySelector('[data-so-connect]'), cmsg = box.querySelector('[data-so-msg]'), pages = box.querySelector('[data-so-pages]');
 	con.addEventListener('click', function () {
 		con.disabled = true; cmsg.textContent = 'Connecting…'; pages.hidden = true;

@@ -30,6 +30,36 @@
 		return 'FPP last checked in ' + Math.round(s / 3600) + ' h ago';
 	}
 
+	/* Social posts beside the cancel switch: a hint to set it up, or what was posted tonight. */
+	function socialBox(box, so, canceled, confirmOpen) {
+		if (!box) { return; }
+		so = so || {};
+		var h = '';
+		function esc(t) { return String(t || '').replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+		if (!so.ready) {
+			if (confirmOpen || canceled) { h = '<p class="so-hint">' + esc(so.hint || '') + ' <a href="' + esc(so.setup || '#') + '">Set it up</a></p>'; }
+		} else if (canceled) {
+			if (so.posting) { h += '<p class="so-wait">Posting on social media…</p>'; }
+			if (so.last && so.last.what === 'cancel' && so.last.lines && so.last.lines.length) {
+				h += '<ul class="so-lines">' + so.last.lines.map(function (l) {
+					return '<li class="' + (l.ok ? 'is-ok' : 'is-bad') + '">' + (l.ok ? '✓ ' : '✗ ') + (l.net ? esc(l.net) + ': ' : '') + esc(l.msg) + (l.link ? ' <a href="' + esc(l.link) + '" target="_blank" rel="noopener">View</a>' : '') + '</li>';
+				}).join('') + '</ul>';
+			}
+		}
+		if (canceled && so.text) { h += '<p><button type="button" class="so-copy" data-so-copy>Copy the post for other sites (Nextdoor, groups…)</button> <span class="so-copied" aria-live="polite"></span></p>'; }
+		if (box.getAttribute('data-h') !== h) { box.innerHTML = h; box.setAttribute('data-h', h); }
+		box.hidden = !h;
+		var cp = box.querySelector('[data-so-copy]');
+		if (cp && !cp.dataset.on) {
+			cp.dataset.on = '1';
+			cp.addEventListener('click', function () {
+				var done = function () { box.querySelector('.so-copied').textContent = 'Copied!'; };
+				if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(so.text).then(done, function () {}); }
+				else { var t = document.createElement('textarea'); t.value = so.text; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); done(); } catch (e) {} t.remove(); }
+			});
+		}
+	}
+
 	function render(d) {
 		state = d;
 		var sw = d.switches;
@@ -123,6 +153,8 @@
 		set('app-to', 'Goes to ' + plural(ap.news, 'phone', 'phones') + ' that chose “special news”.');
 		set('cancel-alert-label', 'Also send a “No show tonight” alert to ' + plural(ap.news, 'phone', 'phones'));
 		$('[data-mm-cancel-alert-row]').hidden = !ap.ready || !ap.news;
+		socialBox($('[data-mm-social-hint]'), d.social, false, true);
+		socialBox($('[data-mm-social-result]'), d.social, !!sw.cancel, false);
 		var so = d.social || {}, sr = $('[data-mm-cancel-social-row]');
 		if (sr) { sr.hidden = !so.ready; set('cancel-social-label', so.label || ''); if (!sr.dataset.touched) { $('[data-mm-cancel-social]').checked = !!so.auto; } }
 		var kinds = { auto: 'Automatic', cancel: 'Show canceled', you: 'Sent by you' };

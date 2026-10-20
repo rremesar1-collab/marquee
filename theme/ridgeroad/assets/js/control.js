@@ -87,6 +87,36 @@
 		tiles(); chart(); app();
 	}
 
+	/* Social posts beside the cancel switch: a hint to set it up, or what was posted tonight. */
+	function socialBox(box, so, canceled, confirmOpen) {
+		if (!box) { return; }
+		so = so || {};
+		var h = '';
+		function esc(t) { return String(t || '').replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+		if (!so.ready) {
+			if (confirmOpen || canceled) { h = '<p class="so-hint">' + esc(so.hint || '') + ' <a href="' + esc(so.setup || '#') + '">Set it up</a></p>'; }
+		} else if (canceled) {
+			if (so.posting) { h += '<p class="so-wait">Posting on social media…</p>'; }
+			if (so.last && so.last.what === 'cancel' && so.last.lines && so.last.lines.length) {
+				h += '<ul class="so-lines">' + so.last.lines.map(function (l) {
+					return '<li class="' + (l.ok ? 'is-ok' : 'is-bad') + '">' + (l.ok ? '✓ ' : '✗ ') + (l.net ? esc(l.net) + ': ' : '') + esc(l.msg) + (l.link ? ' <a href="' + esc(l.link) + '" target="_blank" rel="noopener">View</a>' : '') + '</li>';
+				}).join('') + '</ul>';
+			}
+		}
+		if (canceled && so.text) { h += '<p><button type="button" class="so-copy" data-so-copy>Copy the post for other sites (Nextdoor, groups…)</button> <span class="so-copied" aria-live="polite"></span></p>'; }
+		if (box.getAttribute('data-h') !== h) { box.innerHTML = h; box.setAttribute('data-h', h); }
+		box.hidden = !h;
+		var cp = box.querySelector('[data-so-copy]');
+		if (cp && !cp.dataset.on) {
+			cp.dataset.on = '1';
+			cp.addEventListener('click', function () {
+				var done = function () { box.querySelector('.so-copied').textContent = 'Copied!'; };
+				if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(so.text).then(done, function () {}); }
+				else { var t = document.createElement('textarea'); t.value = so.text; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); done(); } catch (e) {} t.remove(); }
+			});
+		}
+	}
+
 	function app() {
 		var a = state.app, box = $('[data-rrc-app-tiles]'); box.innerHTML = '';
 		[['App installs', a.installs, 'this season'], ['Getting alerts', a.subs, a.start + ' lights-on · ' + a.news + ' news'], ['Name buzzes', a.buzz, 'tonight']].forEach(function (t) {
@@ -97,6 +127,7 @@
 		set('app-to', a.news === 1 ? 'Goes to 1 phone that chose “special news”.' : 'Goes to the ' + a.news + ' phones that chose “special news”.');
 		set('cancel-alert-label', 'Also send a “No show tonight” alert to ' + a.news + (a.news === 1 ? ' phone' : ' phones'));
 		$('[data-rrc-cancel-alert-row]').hidden = !a.ready || !a.news;
+		socialBox($('[data-rrc-social]'), state.social, !!(state.switches && state.switches.cancel), !$('[data-rrc-cancel-confirm]').hidden);
 		var so = state.social || {}, sr = $('[data-rrc-cancel-social-row]');
 		if (sr) { sr.hidden = !so.ready; set('cancel-social-label', so.label || ''); if (!sr.dataset.touched) { $('[data-rrc-cancel-social]').checked = !!so.auto; } }
 		var kinds = { auto: 'Automatic', cancel: 'From “Cancel tonight’s show”', you: 'Sent by you' };
@@ -162,14 +193,14 @@
 	$$('[data-rrc-tog]').forEach(function (b) {
 		b.addEventListener('click', function () {
 			var on = b.getAttribute('aria-checked') !== 'true', k = b.getAttribute('data-rrc-tog');
-			if (k === 'cancel' && on) { cc.hidden = false; $('[data-rrc-cancel-yes]').focus(); return; }
+			if (k === 'cancel' && on) { cc.hidden = false; socialBox($('[data-rrc-social]'), state.social, false, true); $('[data-rrc-cancel-yes]').focus(); return; }
 			b.setAttribute('aria-checked', String(on));
 			act('rr_ctl_set', { key: k, value: on ? '1' : '0' });
 		});
 	});
 	var cc = $('[data-rrc-cancel-confirm]');
 	var srow = $('[data-rrc-cancel-social-row]'); if (srow) { srow.addEventListener('change', function () { srow.dataset.touched = '1'; }); }
-	$('[data-rrc-cancel-no]').addEventListener('click', function () { cc.hidden = true; });
+	$('[data-rrc-cancel-no]').addEventListener('click', function () { cc.hidden = true; socialBox($('[data-rrc-social]'), state.social, false, false); });
 	$('[data-rrc-cancel-yes]').addEventListener('click', function () {
 		var alertToo = !$('[data-rrc-cancel-alert-row]').hidden && $('[data-rrc-cancel-alert]').checked;
 		cc.hidden = true; $('[data-rrc-tog="cancel"]').setAttribute('aria-checked', 'true');

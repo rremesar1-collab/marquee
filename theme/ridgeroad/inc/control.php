@@ -165,6 +165,7 @@ function ridgeroad_control_page() {
 								<label data-rrc-cancel-social-row hidden><input type="checkbox" data-rrc-cancel-social> <span data-rrc="cancel-social-label"></span></label>
 								<p class="rrc__btns"><button type="button" class="rrc__btn del-pri" data-rrc-cancel-yes><?php esc_html_e( 'Cancel the show', 'ridgeroad' ); ?></button> <button type="button" class="rrc__btn" data-rrc-cancel-no><?php esc_html_e( 'Keep it on', 'ridgeroad' ); ?></button></p>
 							</div>
+							<div class="rrc__social" data-rrc-social hidden></div>
 							<?php
 						endif;
 					}
