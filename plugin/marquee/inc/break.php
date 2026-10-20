@@ -249,6 +249,12 @@ function marquee_break_box( $s ) {
 				<a href="<?php echo esc_url( $b['full'] ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'full break', 'marquee' ); ?></a> ·
 				<a href="<?php echo esc_url( $b['short2'] ); ?>" target="_blank" rel="noopener"><?php esc_html_e( '2 names', 'marquee' ); ?></a> ·
 				<a href="<?php echo esc_url( $b['short1'] ); ?>" target="_blank" rel="noopener"><?php esc_html_e( '1 name', 'marquee' ); ?></a>
+			</p>
+			<p class="mq__fine">
+				<?php
+				/* translators: %s: names break playlist */
+				echo wp_kses( sprintf( __( '📋 <b>You’ll see three playlists on your FPP: “%1$s”, “%1$s 2” and “%1$s 1”. Keep all three.</b> They aren’t copies by mistake: they play the same light sequence with the full, 2-name and 1-name sound, and your FPP picks the right one for how many names are waiting. If you delete one, Marquee makes it again the next time you build.', 'marquee' ), esc_html( $pl ) ), array( 'b' => array() ) );
+				?>
 			</p></div>
 		<?php endif; ?>
 		<p class="mq__fine"><?php esc_html_e( 'You’ll get three versions to listen to right here. They start the same on purpose: the names aren’t in the files, because your FPP says each name live over the soft music as it goes up. The versions only differ in length: the full break (3 to 6 names waiting), a shorter one for 2 names and the shortest for 1 name (each said twice), so nobody waits through 30 seconds of music for one name. Your FPP picks the right one by itself. Happy with it? You’re done: within a minute your FPP downloads it and sets up the playlists by itself. Not happy? Change a line or the music and build again. Each build uses about 100 ElevenLabs credits.', 'marquee' ); ?></p>
@@ -257,8 +263,8 @@ function marquee_break_box( $s ) {
 			<summary><?php esc_html_e( 'Questions', 'marquee' ); ?></summary>
 			<p><b><?php esc_html_e( 'Why do the full, 2-name and 1-name versions sound the same?', 'marquee' ); ?></b> <?php esc_html_e( 'Because the names aren’t in them: your FPP plays each kid’s name live, in its own sound slot, over the soft music. The three versions are the same intro, music and outro, just with a shorter soft part for fewer names, so the outro comes sooner. Listen to the end of each and you’ll hear the difference.', 'marquee' ); ?></p>
 			<p><b><?php esc_html_e( 'Do I have to change my xLights sequence?', 'marquee' ); ?></b> <?php esc_html_e( 'No. Only the sound changes. Marquee times the names to fit your sequence’s length.', 'marquee' ); ?></p>
-			<p><b><?php esc_html_e( 'I already made my own break audio. Do I need this?', 'marquee' ); ?></b> <?php esc_html_e( 'No. Nothing changes on your FPP until you click Build. Just make sure your audio has a quiet part for the names, and set “First name goes up at” and “Seconds per name” in step 1 to match it.', 'marquee' ); ?></p>
-			<p><b><?php esc_html_e( 'What exactly changes on my FPP?', 'marquee' ); ?></b> <?php echo esc_html( sprintf( __( 'Three sound files are added (marquee-break-full.wav, -2 and -1). Your “%1$s” playlist is set to play the full one with your names sequence, and two playlists are added for the short breaks: “%1$s 2” and “%1$s 1”. A copy of your original playlist is kept on the FPP.', 'marquee' ), $pl ) ); ?></p>
+			<p><b><?php esc_html_e( 'I already made my own break audio. Do I need this?', 'marquee' ); ?></b> <?php esc_html_e( 'No. Nothing changes on your FPP until you click Build. Just make sure your audio has a quiet part for the names, and set “When the first name appears” and “Time between names” in Connect your FPP to match it.', 'marquee' ); ?></p>
+			<p><b><?php esc_html_e( 'What exactly changes on my FPP?', 'marquee' ); ?></b> <?php echo esc_html( sprintf( __( 'Three sound files are added (marquee-break-full.wav, -2 and -1). Your “%1$s” playlist is set to play the full one with your names sequence, and two playlists are added for the short breaks: “%1$s 2” and “%1$s 1”. Keep all three playlists. A copy of your original playlist is kept on the FPP.', 'marquee' ), $pl ) ); ?></p>
 			<p><b><?php esc_html_e( 'Can I use Santa?', 'marquee' ); ?></b> <?php esc_html_e( 'Yes. Pick a Santa voice above and tick “My voice is Santa”. The example lines change to Santa ones.', 'marquee' ); ?></p>
 			<p><b><?php esc_html_e( 'The names start too early or too late.', 'marquee' ); ?></b> <?php esc_html_e( 'Make the intro shorter or longer and build again. The timing is set from how long the intro and outro take to say.', 'marquee' ); ?></p>
 		</details>
