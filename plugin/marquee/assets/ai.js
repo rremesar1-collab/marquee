@@ -73,17 +73,54 @@
 	input.addEventListener('keydown', function (e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); ask(input.value); } });
 	box.querySelectorAll('[data-mq-ai-chip]').forEach(function (b) { b.addEventListener('click', function () { ask(b.textContent); }); });
 
+	/* Which AI answers: ChatGPT or Claude (worked out from the key). */
+	var AIS = {}; try { AIS = JSON.parse(box.getAttribute('data-ais') || '{}'); } catch (e) {}
+	var saved = (box.getAttribute('data-saved') || '').split(',').filter(Boolean);
+	var who = box.querySelector('[data-mq-ai-who]'), kc = box.querySelector('[data-mq-ai-keyclear]');
+	function setAI(p) {
+		box.setAttribute('data-ai', p || ''); box.setAttribute('data-ready', p ? '1' : '0');
+		if (p && saved.indexOf(p) < 0) { saved.push(p); }
+		var a = AIS[p];
+		box.querySelectorAll('[data-mq-ai-name]').forEach(function (n) { n.textContent = a ? a.name : ''; });
+		var to = box.querySelector('[data-mq-ai-to]'); if (to) { to.textContent = a ? a.name + ' (' + a.by + ')' : 'the AI you pick'; }
+		if (who) { who.hidden = !a; }
+		if (kc) { kc.hidden = !a; }
+		box.querySelectorAll('[data-mq-ai-pick]').forEach(function (c) { c.classList.toggle('is-on', c.getAttribute('data-mq-ai-pick') === p); });
+		box.querySelectorAll('[data-mq-ai-use]').forEach(function (b) { var id = b.getAttribute('data-mq-ai-use'); b.hidden = id === p || saved.indexOf(id) < 0; });
+	}
+	var ch = box.querySelector('[data-mq-ai-change]');
+	if (ch) { ch.addEventListener('click', function () { keybox.hidden = !keybox.hidden; if (!keybox.hidden) { box.querySelector('[data-mq-ai-keyin]').focus(); } }); }
+	box.querySelectorAll('[data-mq-ai-use]').forEach(function (b) {
+		b.addEventListener('click', function () {
+			b.disabled = true;
+			post('marquee_ai_key', { use: b.getAttribute('data-mq-ai-use') }).then(function (j) {
+				b.disabled = false;
+				if (j && j.success) { setAI(j.data.provider); keybox.hidden = true; add('bot', 'OK, ' + j.data.name + ' answers from now on.'); input.focus(); }
+			});
+		});
+	});
+
 	var ks = box.querySelector('[data-mq-ai-keysave]'), kin = box.querySelector('[data-mq-ai-keyin]'), kmsg = box.querySelector('[data-mq-ai-keymsg]');
 	if (ks) {
 		ks.addEventListener('click', function () {
+			if (!kin.value.trim()) { kin.focus(); return; }
 			ks.disabled = true; kmsg.textContent = 'Saving…';
 			post('marquee_ai_key', { key: kin.value }).then(function (j) {
 				ks.disabled = false;
-				if (j && j.success && j.data.saved) { kmsg.textContent = ''; keybox.hidden = true; box.setAttribute('data-ready', '1'); kin.value = ''; input.focus(); }
+				if (j && j.success && j.data.saved) { kmsg.textContent = ''; keybox.hidden = true; kin.value = ''; setAI(j.data.provider); add('bot', 'Got it, ' + j.data.name + ' will answer. Ask away!'); input.focus(); }
 				else { kmsg.textContent = (j && j.data && j.data.message) || 'Couldn’t save the key.'; }
 			}).catch(function () { ks.disabled = false; kmsg.textContent = 'Couldn’t reach your website.'; });
 		});
 	}
-	var kc = box.querySelector('[data-mq-ai-keyclear]');
-	if (kc) { kc.addEventListener('click', function () { post('marquee_ai_key', { key: '' }).then(function () { box.setAttribute('data-ready', '0'); keybox.hidden = false; kc.hidden = true; }); }); }
+	if (kc) {
+		kc.addEventListener('click', function () {
+			var gone = box.getAttribute('data-ai');
+			post('marquee_ai_key', { key: '' }).then(function (j) {
+				saved = saved.filter(function (x) { return x !== gone; });
+				var np = j && j.success && j.data.saved ? j.data.provider : '';
+				setAI(np);
+				if (!np) { keybox.hidden = false; }
+			});
+		});
+	}
 })();
