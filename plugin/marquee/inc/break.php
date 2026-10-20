@@ -201,6 +201,7 @@ function marquee_break_box( $s ) {
 			<div class="mq__tl-part is-names"><b>♪ <?php esc_html_e( 'Soft music + the names', 'marquee' ); ?></b><small><?php esc_html_e( 'up to 6 names, each read out as it goes up on your screens', 'marquee' ); ?></small><em>“<?php echo esc_html( implode( '” … “', $ex ) ); ?>” …</em></div>
 			<div class="mq__tl-part is-voice"><b>🎙 <?php esc_html_e( 'Outro', 'marquee' ); ?></b><small><?php esc_html_e( 'about 4 seconds', 'marquee' ); ?></small><em data-mq-tl-outro>“<?php echo esc_html( $s['break_outro'] ? $s['break_outro'] : $def['outro'] ); ?>”</em></div>
 		</div>
+		<?php marquee_break_demo( $s, $b, $def ); ?>
 		<p class="mq__fine"><?php esc_html_e( 'Only 1 or 2 names waiting? A shorter break plays instead and says each name twice, so nobody sits through 30 seconds of music for one name. Everything is set to the same loudness as your songs, so nobody has to touch the radio volume.', 'marquee' ); ?></p>
 
 		<h4><?php esc_html_e( 'Before you start', 'marquee' ); ?></h4>
@@ -260,6 +261,33 @@ function marquee_break_box( $s ) {
 			<p><b><?php esc_html_e( 'Can I use Santa?', 'marquee' ); ?></b> <?php esc_html_e( 'Yes. Pick a Santa voice above and tick “My voice is Santa”. The example lines change to Santa ones.', 'marquee' ); ?></p>
 			<p><b><?php esc_html_e( 'The names start too early or too late.', 'marquee' ); ?></b> <?php esc_html_e( 'Make the intro shorter or longer and build again. The timing is set from how long the intro and outro take to say.', 'marquee' ); ?></p>
 		</details>
+	</div>
+	<?php
+}
+
+/** Animated timeline of the break: voice on top, music under it, what the screens show. */
+function marquee_break_demo( $s, $b, $def ) {
+	$start = $b ? (float) $b['start'] : max( 2.5, (float) $s['names_start'] );
+	$slot  = $b ? (float) $b['slot'] : (float) $s['names_slot'];
+	?>
+	<div class="mq-bdemo" data-mq-bdemo data-seq="<?php echo esc_attr( $s['break_seq'] ); ?>" data-start="<?php echo esc_attr( $start ); ?>" data-slot="<?php echo esc_attr( $slot ); ?>"
+		data-intro="<?php echo esc_attr( $s['break_intro'] ? $s['break_intro'] : $def['intro'] ); ?>" data-outro="<?php echo esc_attr( $s['break_outro'] ? $s['break_outro'] : $def['outro'] ); ?>" data-santa="<?php echo $s['voice_santa'] ? '1' : '0'; ?>"
+		data-l-full="<?php esc_attr_e( '6 names waiting: the full break', 'marquee' ); ?>" data-l-two="<?php esc_attr_e( '2 names waiting: a shorter break, each name said twice', 'marquee' ); ?>" data-l-one="<?php esc_attr_e( '1 name waiting: the shortest break, the name said twice', 'marquee' ); ?>">
+		<div class="mq-demo__label"><span class="dashicons dashicons-controls-play" aria-hidden="true"></span> <?php esc_html_e( 'See how the break sounds', 'marquee' ); ?></div>
+		<div class="bd-modes">
+			<button type="button" data-bd-mode class="is-on"><?php esc_html_e( 'Full', 'marquee' ); ?></button>
+			<button type="button" data-bd-mode><?php esc_html_e( '2 names', 'marquee' ); ?></button>
+			<button type="button" data-bd-mode><?php esc_html_e( '1 name', 'marquee' ); ?></button>
+			<?php if ( $b ) : ?><button type="button" class="bd-listen" data-bd-listen data-src="<?php echo esc_url( $b['full'] ); ?>">▶ <?php esc_html_e( 'Play the one you built', 'marquee' ); ?></button><?php endif; ?>
+		</div>
+		<p class="bd-label" data-bd-label></p>
+		<div class="bd-track" data-bd-track></div>
+		<span class="bd-head" data-bd-head aria-hidden="true"></span>
+		<div class="bd-out">
+			<div class="bd-say" data-bd-say aria-live="off"></div>
+			<div class="bd-screen"><small><?php esc_html_e( 'Your screens', 'marquee' ); ?></small><b data-bd-screen></b></div>
+		</div>
+		<p class="mq-demo__note"><?php esc_html_e( 'The music plays soft while names are said, and louder under the intro and outro. Everything is at the loudness of your songs.', 'marquee' ); ?></p>
 	</div>
 	<?php
 }

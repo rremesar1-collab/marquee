@@ -82,15 +82,27 @@
 			});
 			ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
 			if (l.style === 'snow') { ctx.fillStyle = 'rgba(255,255,255,.75)'; snow.forEach(function (f) { f.y += f.v; if (f.y > H) { f.y = 0; f.x = Math.random() * W; } ctx.fillRect(f.x, f.y, 1.6, 1.6); }); }
+			// the TV by the front door (on a little stand), and the garage-door matrix
+			var tv = { x: 676 * S, y: 258 * S, w: 118 * S, h: 70 * S };
+			ctx.fillStyle = '#111'; ctx.fillRect(tv.x - 3, tv.y - 3, tv.w + 6, tv.h + 6);
+			ctx.fillStyle = '#2a2a2a'; ctx.fillRect(tv.x + tv.w / 2 - 2, tv.y + tv.h + 3, 4, 14 * S * 2); ctx.fillRect(tv.x + tv.w / 2 - 14, tv.y + tv.h + 3 + 28 * S, 28, 3);
+			ctx.fillStyle = show ? '#000' : '#0b1430'; ctx.fillRect(tv.x, tv.y, tv.w, tv.h);
 			if (show) {
-				var g = M.garage, gx = g.x * S, gy = g.y * S, gw = g.w * S, gh = g.h * S;
-				ctx.fillStyle = '#000'; ctx.fillRect(gx, gy, gw, gh);
-				ctx.globalAlpha = alpha; ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.shadowColor = l.a; ctx.shadowBlur = 10;
-				var parts = text.split(', ');
-				ctx.font = '700 ' + Math.round(gh * .2) + 'px system-ui, sans-serif'; ctx.fillText(parts[0] + (parts[1] ? ',' : ''), gx + gw / 2, gy + gh * .32);
-				if (parts[1]) { ctx.font = '800 ' + Math.round(gh * .34) + 'px system-ui, sans-serif'; ctx.fillText(parts[1], gx + gw / 2, gy + gh * .68); }
-				ctx.shadowBlur = 0; ctx.globalAlpha = 1;
+				var g = M.garage;
+				ctx.fillStyle = '#000'; ctx.fillRect(g.x * S, g.y * S, g.w * S, g.h * S);
+				nameOn(g.x * S, g.y * S, g.w * S, g.h * S, alpha, l);
+				nameOn(tv.x, tv.y, tv.w, tv.h, alpha, l);
+			} else {
+				ctx.fillStyle = 'rgba(255,212,92,.55)'; ctx.font = '700 ' + Math.round(tv.h * .22) + 'px system-ui, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+				ctx.fillText('★ Names in Lights', tv.x + tv.w / 2, tv.y + tv.h / 2);
 			}
+		}
+		function nameOn(x, y, w, h, alpha, l) {
+			ctx.globalAlpha = alpha; ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.shadowColor = l.a; ctx.shadowBlur = 10;
+			var parts = text.split(', ');
+			ctx.font = '700 ' + Math.round(h * .2) + 'px system-ui, sans-serif'; ctx.fillText(parts[0] + (parts[1] ? ',' : ''), x + w / 2, y + h * .32);
+			if (parts[1]) { ctx.font = '800 ' + Math.round(h * .34) + 'px system-ui, sans-serif'; ctx.fillText(parts[1], x + w / 2, y + h * .68); }
+			ctx.shadowBlur = 0; ctx.globalAlpha = 1;
 		}
 		function frame(now) {
 			var dt = (now - t0) / 1000, len = 9;
@@ -106,6 +118,84 @@
 			if (box.isConnected) { requestAnimationFrame(frame); }
 		}
 		if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { drawPhone(1); text = greet(name); drawScreen(0, true, 1); step.textContent = 'A kid sends their name → it goes up on your matrix or TV between songs'; return; }
+		requestAnimationFrame(frame);
+	});
+})();
+
+/* Names break sound: a timeline of the break (voice on top, music under it), played back fast
+   with a playhead, or in real time with the break you built. */
+(function () {
+	document.querySelectorAll('[data-mq-bdemo]').forEach(function (box) {
+		var d = box.dataset, seq = parseFloat(d.seq) || 29.6, start = parseFloat(d.start) || 4, slot = parseFloat(d.slot) || 3.4;
+		var intro = d.intro || '', outro = d.outro || '', santa = d.santa === '1';
+		var kids = ['Emma', 'Jacob', 'Ava', 'Noah', 'Mia', 'Liam'];
+		var modes = [
+			{ label: box.getAttribute('data-l-full'), names: kids.slice(0, 6), slots: 6 },
+			{ label: box.getAttribute('data-l-two'), names: ['Emma', 'Jacob'], slots: 4 },
+			{ label: box.getAttribute('data-l-one'), names: ['Emma'], slots: 2 }
+		];
+		var track = box.querySelector('[data-bd-track]'), say = box.querySelector('[data-bd-say]'), head = box.querySelector('[data-bd-head]');
+		var lab = box.querySelector('[data-bd-label]'), scr = box.querySelector('[data-bd-screen]'), tabs = box.querySelectorAll('[data-bd-mode]');
+		var audioBtn = box.querySelector('[data-bd-listen]'), audio = null;
+		var mode = 0, total = seq, events = [], t0 = performance.now(), speed = 2.4, live = false;
+		function greet(n, k) { return santa && k % 3 === 2 ? 'Ho ho ho! Hi ' + n + ', Santa loves you too!' : (k % 2 ? 'Happy Holidays, ' + n + '!' : 'Merry Christmas, ' + n + '!'); }
+		function build() {
+			var m = modes[mode];
+			var outroAt = start + m.slots * slot + 0.2;
+			total = mode === 0 ? seq : outroAt + Math.max(3, outro.length / 14) + 0.5;
+			events = [{ at: 0.15, len: Math.max(2.5, start - 0.5), kind: 'intro', text: intro }];
+			for (var k = 0; k < m.slots; k++) {
+				var n = m.names[k % m.names.length];
+				events.push({ at: start + k * slot, len: Math.min(slot - 0.4, 1.8), kind: 'name', text: greet(n, k), name: n, scr: (k % 2 ? 'HAPPY HOLIDAYS, ' : 'MERRY CHRISTMAS, ') + n.toUpperCase() + '!' });
+			}
+			events.push({ at: outroAt, len: Math.min(total - outroAt - 0.2, 4.5), kind: 'outro', text: outro });
+			var pct = function (s) { return (s / total * 100).toFixed(2) + '%'; };
+			var h = '<div class="bd-row bd-row--voice"><span class="bd-rl">🎙 Voice</span><div class="bd-lane">';
+			events.forEach(function (e, i) { h += '<span class="bd-blk bd-' + e.kind + '" data-ev="' + i + '" style="left:' + pct(e.at) + ';width:' + pct(e.len) + '">' + (e.kind === 'name' ? e.name : (e.kind === 'intro' ? 'Intro' : 'Outro')) + '</span>'; });
+			h += '</div></div><div class="bd-row bd-row--music"><span class="bd-rl">♪ Music</span><div class="bd-lane">' +
+				'<span class="bd-mus is-loud" style="left:0;width:' + pct(start) + '"></span>' +
+				'<span class="bd-mus is-soft" style="left:' + pct(start) + ';width:' + pct(outroAt - start) + '"></span>' +
+				'<span class="bd-mus is-loud" style="left:' + pct(outroAt) + ';width:' + pct(total - outroAt) + '"></span></div></div>' +
+				'<div class="bd-row bd-row--time"><span class="bd-rl"></span><div class="bd-lane"><span style="left:0">0 s</span><span style="right:0">' + total.toFixed(1) + ' s</span></div></div>';
+			track.innerHTML = h;
+			lab.textContent = modes[mode].label;
+			tabs.forEach(function (b, k) { b.classList.toggle('is-on', k === mode); });
+		}
+		function frame(now) {
+			var t;
+			if (live && audio) { t = audio.currentTime; if (audio.ended) { live = false; audioBtn.classList.remove('is-on'); } }
+			else {
+				t = (now - t0) / 1000 * speed;
+				if (t > total + 1.5) { t0 = now; t = 0; mode = (mode + 1) % modes.length; build(); }
+			}
+			var lane = track.querySelector('.bd-lane');
+			if (lane) {
+				var bb = box.getBoundingClientRect(), lb = lane.getBoundingClientRect(), tb = track.getBoundingClientRect();
+				head.style.left = (lb.left - bb.left + Math.min(1, t / total) * lb.width) + 'px';
+				head.style.top = (tb.top - bb.top - 4) + 'px'; head.style.height = (tb.height + 4) + 'px';
+			}
+			var cur = null;
+			events.forEach(function (e, i) {
+				var on = t >= e.at && t < e.at + e.len, el = track.querySelector('[data-ev="' + i + '"]');
+				if (el) { el.classList.toggle('is-on', on); el.classList.toggle('is-done', t >= e.at + e.len); }
+				if (on) { cur = e; }
+			});
+			var screenEv = null; events.forEach(function (e) { if (e.kind === 'name' && t >= e.at && t < e.at + slot - 0.3) { screenEv = e; } });
+			say.textContent = cur ? (cur.kind === 'name' ? '🔊 “' + cur.text + '”' : '🎙 “' + cur.text + '”') : (t < total ? '♪ …' : '');
+			say.className = 'bd-say' + (cur ? ' is-' + cur.kind : '');
+			scr.textContent = screenEv ? screenEv.scr : '';
+			scr.classList.toggle('is-on', !!screenEv);
+			if (box.isConnected) { requestAnimationFrame(frame); }
+		}
+		tabs.forEach(function (b, k) { b.addEventListener('click', function () { if (audio) { audio.pause(); live = false; audioBtn && audioBtn.classList.remove('is-on'); } mode = k; build(); t0 = performance.now(); }); });
+		if (audioBtn) {
+			audioBtn.addEventListener('click', function () {
+				if (!audio) { audio = new Audio(audioBtn.getAttribute('data-src')); }
+				if (live) { audio.pause(); live = false; audioBtn.classList.remove('is-on'); t0 = performance.now(); return; }
+				mode = 0; build(); audio.currentTime = 0; audio.play(); live = true; audioBtn.classList.add('is-on');
+			});
+		}
+		build();
 		requestAnimationFrame(frame);
 	});
 })();

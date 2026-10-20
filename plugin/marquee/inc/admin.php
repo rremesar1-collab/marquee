@@ -788,7 +788,7 @@ function marquee_demo( $mode, $s ) {
 			<div class="mq-demo__tv">
 				<canvas width="840" height="235" role="img" aria-label="<?php esc_attr_e( 'Your matrix or TV showing a kid’s name during the names break', 'marquee' ); ?>"></canvas>
 				<div class="mq-demo__say" data-demo-say hidden></div>
-				<div class="mq-demo__tvlabel"><?php esc_html_e( 'Your show: names go up on your matrix (here, the garage door)', 'marquee' ); ?></div>
+				<div class="mq-demo__tvlabel"><?php esc_html_e( 'Your show: names go up on your matrix and TV', 'marquee' ); ?></div>
 			</div>
 		</div>
 		<p class="mq-demo__step" data-demo-step aria-live="off"></p>
