@@ -63,6 +63,24 @@
 		});
 	});
 
+	/* Up to 6 themes (kids pick from 6 plus Classic); 3 or 4 is the sweet spot. */
+	var MAX = 6, cnt = box.querySelector('[data-sm-count]');
+	function picked() { return box.querySelectorAll('[data-sm-theme]:checked, [data-sm-own]:checked').length; }
+	function already() {
+		var n = 0; document.querySelectorAll('.mq__themes [data-mq-theme]:not(.is-classic) [data-mq-tname]').forEach(function (i) { if (i.value.trim()) { n++; } });
+		return n;
+	}
+	function count() {
+		var n = picked(), full = n >= MAX, have = already();
+		box.querySelectorAll('[data-sm-theme], [data-sm-own]').forEach(function (c) { if (!c.checked) { c.disabled = full; c.closest('label').classList.toggle('is-off', full); } else { c.disabled = false; } });
+		var t = n + ' of ' + MAX + ' themes picked. 3 or 4 is plenty: kids pick faster, and each one is a sequence to render.';
+		if (full) { t = MAX + ' of ' + MAX + ' themes picked, the most kids can choose from. Untick one to pick another.'; }
+		if (have) { t += ' You already have ' + have + (have === 1 ? ' theme' : ' themes') + ' set up under Themed sequences' + (have + n > MAX ? ', so “Use it” only has room for ' + Math.max(0, MAX - have) + ' more.' : '.'); }
+		cnt.textContent = t; cnt.classList.toggle('is-full', full || have + n > MAX);
+	}
+	box.addEventListener('change', function (e) { if (e.target.matches('[data-sm-theme], [data-sm-own]')) { count(); } });
+	count(); setInterval(function () { if (cnt.isConnected) { count(); } }, 2000);
+
 	/* "Describe your own": the AI turns words into colors + effects. */
 	var ask = box.querySelector('[data-sm-ask]'), want = box.querySelector('[data-sm-want]'), amsg = box.querySelector('[data-sm-askmsg]');
 	ask.addEventListener('click', function () {
@@ -87,9 +105,11 @@
 			try { t = S.cleanTheme(t); } catch (e) { amsg.textContent = e.message; return; }
 			own[key] = t;
 			var l = document.createElement('label'); l.className = 'mq-sm__chip is-own';
-			l.innerHTML = '<input type="checkbox" checked data-sm-own="' + key + '"> ' + esc(t.name) + ' <span class="mq-sm__sw">' + t.colors.map(function (c) { return '<i style="background:' + c + '"></i>'; }).join('') + '</span>';
+			var room = picked() < MAX;
+			l.innerHTML = '<input type="checkbox"' + (room ? ' checked' : '') + ' data-sm-own="' + key + '"> ' + esc(t.name) + ' <span class="mq-sm__sw">' + t.colors.map(function (c) { return '<i style="background:' + c + '"></i>'; }).join('') + '</span>';
 			chips.appendChild(l);
-			want.value = ''; amsg.textContent = 'Added “' + t.name + '”. Make your sequences when you’re ready.';
+			want.value = ''; count();
+			amsg.textContent = room ? 'Added “' + t.name + '”. Add another, or make your sequences when you’re ready.' : 'Added “' + t.name + '”, but not ticked: 6 themes are already picked. Untick one to use it.';
 		}).catch(function () { ask.disabled = false; amsg.textContent = 'Couldn’t reach your website.'; });
 	});
 

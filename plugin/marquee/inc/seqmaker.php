@@ -63,6 +63,7 @@ function marquee_seqmaker_box( $s ) {
 			<li>
 				<b><?php esc_html_e( 'What to make', 'marquee' ); ?></b>
 				<label class="mq__chk" data-sm-base-wrap><input type="checkbox" data-sm-base checked> <?php echo esc_html( sprintf( /* translators: playlist */ __( 'My names break (“%s”)', 'marquee' ), $pl ) ); ?></label>
+				<span class="mq-sm__count" data-sm-count aria-live="polite"></span>
 				<span class="mq-sm__chips">
 					<?php foreach ( $themes as $k => $n ) : ?>
 						<label class="mq-sm__chip" data-look="<?php echo esc_attr( $k ); ?>"><input type="checkbox" data-sm-theme="<?php echo esc_attr( $k ); ?>"> <?php echo esc_html( $n ); ?></label>
@@ -72,7 +73,7 @@ function marquee_seqmaker_box( $s ) {
 					<input type="text" maxlength="200" placeholder="<?php esc_attr_e( 'Or describe your own: purple and gold Mardi Gras…', 'marquee' ); ?>" data-sm-want>
 					<button type="button" class="button" data-sm-ask><?php esc_html_e( 'Add it', 'marquee' ); ?></button>
 				</span>
-				<small data-sm-askmsg aria-live="polite"><?php echo $ai_key ? esc_html__( 'How the AI helps: Marquee reads your layout (step 1) here in your browser and tells the AI only your prop names and what kind each is (trees, arches, rooflines…). The AI picks the colors and an effect for each kind; Marquee then writes the sequence from your layout. Your layout file itself never leaves your computer.', 'marquee' ) : esc_html__( 'Describing your own theme uses the AI under “Need help?” (add a ChatGPT or Claude key there). The ready-made themes don’t need it.', 'marquee' ); ?></small>
+				<small data-sm-askmsg aria-live="polite"><?php esc_html_e( 'Add as many ideas as you like, one at a time. ', 'marquee' ); ?><?php echo $ai_key ? esc_html__( 'How the AI helps: Marquee reads your layout (step 1) here in your browser and tells the AI only your prop names and what kind each is (trees, arches, rooflines…). The AI picks the colors and an effect for each kind; Marquee then writes the sequence from your layout. Your layout file itself never leaves your computer.', 'marquee' ) : esc_html__( 'Describing your own theme uses the AI under “Need help?” (add a ChatGPT or Claude key there). The ready-made themes don’t need it.', 'marquee' ); ?></small>
 			</li>
 		</ol>
 		<p><button type="button" class="button button-primary" data-sm-make><?php esc_html_e( 'Make my sequences', 'marquee' ); ?></button> <span class="mq__msg" data-sm-msg aria-live="polite"></span></p>
