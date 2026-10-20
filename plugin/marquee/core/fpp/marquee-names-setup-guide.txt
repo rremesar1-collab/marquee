@@ -108,24 +108,29 @@ audio, so your ElevenLabs key never goes on the FPP.
   c. Upload marquee_names.py again (it must be version 3.1 or newer) and
      restart FPPD. The setup check gets a line for sound.
 
-The names break and sound:
-  - The spoken names play on your FPP master in their own sound slot
-    (stream 2), on top of the break's music (stream 1). Keep the music soft
-    so the names can be heard. Needs FPP 10 or newer for more than one
-    sound at a time.
-  - Each name is spoken right when it goes up on the screens (3.75 seconds
-    apart). With fewer than 6 names the screens repeat them, and each one
-    is said again every time it goes up.
-  - If your break opens with a spoken intro, set "First name goes up at"
-    (Settings -> Connections) to the second your quiet music starts, then
-    download marquee_names.json again.
-
-Short breaks (optional): with only 1 or 2 names waiting, a full break is
-mostly music. Make two more playlists with the same names sequence but
-shorter audio, named like your break plus " 1" and " 2" (for example
-"Names in Lights 1" and "Names in Lights 2"). The audio must hold the
-intro, 2 name slots (or 4), and the outro: FPP ends the break when the
-audio ends. Each name is said twice in a short break.
+The names break audio (do this once, and again whenever you change it):
+  - Your break needs a quiet stretch for the names. Marquee makes the
+    sound for you: Settings -> Connections -> "Names break audio".
+  - Type an intro and an outro line (or keep the examples), give the
+    length of your names sequence (FPP -> File Manager -> Sequences shows
+    it), and optionally pick an instrumental MP3 (no singing or talking).
+    Without one, a soft music box that comes with Marquee is used.
+  - Click "Build the break audio". Your voice says the lines, the music
+    plays soft under the names, and everything is leveled to the loudness
+    show songs are usually mastered to. You can listen before you leave.
+  - It also makes short breaks for when only 1 or 2 names are waiting
+    (each name is said twice).
+  - Within a minute, the names script downloads the audio and sets up
+    the playlists by itself: your break playlist plays the new audio, and
+    "<your break playlist> 1" and "<your break playlist> 2" are created for
+    the short breaks. Your xLights sequence isn't changed. The setup check
+    shows "names break audio from the website is set up".
+  - The names timing (when the first name goes up, seconds per name) is
+    set to match the audio automatically.
+  - Spoken names play in their own sound slot (FPP 10 or newer), over the
+    break audio, and are leveled to the same loudness.
+  - With fewer than 6 names, the screens repeat them, and each one is said
+    again every time it goes up.
 
 Talking faces (optional): make your singing faces' mouths move while each
 name is spoken.
@@ -190,3 +195,9 @@ names you block never go up. The script sends your website what FPP is
 playing (for Show Control) and its setup check - nothing else. With spoken
 names on, your website sends the first name and greeting to ElevenLabs to
 make the audio.
+
+
+ENJOYING MARQUEE?
+-----------------
+Marquee is free. If it adds something to your show, you can buy me a
+coffee: https://www.buymeacoffee.com/marqueeforxlights

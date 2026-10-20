@@ -43,6 +43,10 @@ function marquee_defaults() {
 		'voice_santa'  => 0,                 // the voice is Santa: "Hi Santa! Love, Mia" is answered "Hi Mia, Santa loves you too!"
 		'names_start'  => 4,                 // seconds into the names break when the first name goes up
 		'names_slot'   => 3.75,              // seconds from one name to the next
+		'break_intro'  => '',                // names break builder: announcer lines (empty = example)
+		'break_outro'  => '',
+		'break_seq'    => 29.6,              // length of the names sequence (seconds)
+		'break_music'  => 0,                 // instrumental MP3 (attachment ID), 0 = the one that comes with Marquee
 	);
 }
 
@@ -115,6 +119,10 @@ function marquee_save( $in ) {
 		'voice_effect' => isset( $in['voice_effect'] ) ? $txt( 'voice_effect', 200 ) : $cur['voice_effect'],
 		'voice_speed'  => isset( $in['voice_speed'] ) ? max( 0.7, min( 1.2, round( (float) $in['voice_speed'], 2 ) ) ) : $cur['voice_speed'],
 		'voice_santa'  => isset( $in['voice_sent'] ) ? (int) ! empty( $in['voice_santa'] ) : $cur['voice_santa'],
+		'break_intro'  => $txt( 'break_intro', 160 ),
+		'break_outro'  => $txt( 'break_outro', 160 ),
+		'break_seq'    => isset( $in['break_seq'] ) && '' !== trim( (string) $in['break_seq'] ) ? max( 15, min( 120, round( (float) $in['break_seq'], 2 ) ) ) : $cur['break_seq'],
+		'break_music'  => isset( $in['break_music'] ) ? ( ( absint( $in['break_music'] ) && 0 === strpos( (string) get_post_mime_type( absint( $in['break_music'] ) ), 'audio/' ) ) ? absint( $in['break_music'] ) : 0 ) : $cur['break_music'],
 		'names_slot'   => isset( $in['names_slot'] ) && '' !== trim( (string) $in['names_slot'] ) ? max( 2.5, min( 10, round( (float) $in['names_slot'], 2 ) ) ) : $cur['names_slot'],
 		'names_start'  => isset( $in['names_start'] ) && '' !== trim( (string) $in['names_start'] ) ? max( 0, min( 120, round( (float) $in['names_start'], 2 ) ) ) : $cur['names_start'],
 		'vote_hide'  => isset( $in['vote_hide_sent'] ) ? array_values( array_slice( array_unique( array_filter( array_map( 'sanitize_title', isset( $in['vote_hide'] ) ? (array) wp_unslash( $in['vote_hide'] ) : array() ) ) ), 0, 200 ) ) : $cur['vote_hide'],

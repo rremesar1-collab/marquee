@@ -38,7 +38,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-VERSION = "3.2"
+VERSION = "3.3"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -130,6 +130,11 @@ def load_settings():
                 host = "http://" + host
             screens.append({"name": (sc.get("name") or "screen %d" % (i + 1)).strip(), "fpp": host.rstrip("/"), "model": sc["model"].strip()})
     S["screens"] = screens
+    st = break_state()
+    if st.get("start") and st.get("slot"):     # timing of the break audio built on the website
+        S["names_start"] = float(st["start"])
+        S["slot"] = float(st["slot"])
+        S["show_for"] = max(2.0, float(st["slot"]) - 0.6)
     if not screens:
         problems.append("no screens in the settings file (each needs an FPP address and an overlay model name)")
     return problems
@@ -175,7 +180,81 @@ def pull(done_ids, st=None, report=None):
     res = http_json(url, data)
     if not res or not res.get("success"):
         raise RuntimeError("website said: %s" % (res,))
+    if isinstance(res["data"], dict) and res["data"].get("break"):
+        try:
+            sync_break(res["data"]["break"])
+        except Exception as e:
+            log("could not set up the names break from the website:", e)
     return res["data"]
+
+
+# --------------------------------------------------- break from website ----
+STATE = os.path.join(HERE, "marquee_break_state.json")
+BREAK_FILES = {"full": "marquee-break-full.wav", "short2": "marquee-break-2.wav", "short1": "marquee-break-1.wav"}
+
+
+def break_state():
+    try:
+        with open(STATE) as f:
+            d = json.load(f)
+        return d if isinstance(d, dict) else {}
+    except (OSError, ValueError):
+        return {}
+
+
+def download(url, path, limit=40_000_000):
+    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "audio/*,*/*"})
+    with urllib.request.urlopen(req, timeout=60) as r:
+        data = r.read(limit)
+    if len(data) < 1000 or data[:4] not in (b"RIFF", b"ID3\x03", b"ID3\x04") and data[:1] != b"\xff":
+        raise RuntimeError("the website sent back a page instead of audio (bot protection?)")
+    tmp = path + ".part"
+    with open(tmp, "wb") as f:
+        f.write(data)
+    os.replace(tmp, path)
+
+
+def sync_break(b):
+    """The website built new break audio: download it and set up the break playlists (full, 1 and 2 names)."""
+    if not isinstance(b, dict) or not b.get("v") or not b.get("full"):
+        return
+    st = break_state()
+    if str(st.get("v")) == str(b["v"]) or in_break(master_status()):
+        return
+    for k, name in BREAK_FILES.items():
+        if not b.get(k):
+            return
+        download(b[k], os.path.join(MUSIC, name))
+    bp = S["break_playlist"]
+    base = fpp_get(MASTER, "/api/playlist/" + urllib.parse.quote(bp)) or {}
+    entries = [e for e in (base.get("mainPlaylist") or []) if isinstance(e, dict) and e.get("sequenceName")]
+    if not entries:
+        raise RuntimeError("playlist '%s' has no sequence in it - add your names sequence to it first" % bp)
+    if "backup" not in st:
+        st["backup"] = base                    # the playlist as it was before Marquee changed it
+    entry = dict(entries[0])
+    for n, (key, pl) in enumerate((("full", bp), ("short2", bp + " 2"), ("short1", bp + " 1"))):
+        e = dict(entry)
+        e["type"] = "both"
+        e["mediaName"] = BREAK_FILES[key]
+        new = dict(base)
+        new["name"] = pl
+        new["mainPlaylist"] = [e]
+        new["leadIn"] = []
+        new["leadOut"] = []
+        body = json.dumps(new).encode()
+        req = urllib.request.Request(MASTER.rstrip("/") + "/api/playlist/" + urllib.parse.quote(pl), data=body,
+                                     headers={"Content-Type": "application/json"})
+        urllib.request.urlopen(req, timeout=10).read()
+    st.update({"v": str(b["v"]), "start": float(b.get("start") or S["names_start"]), "slot": float(b.get("slot") or S["slot"]),
+               "seq": entry.get("sequenceName"), "t": time.strftime("%Y-%m-%d %H:%M")})
+    with open(STATE, "w") as f:
+        json.dump(st, f, indent=1)
+    S["names_start"], S["slot"] = st["start"], st["slot"]
+    S["show_for"] = max(2.0, st["slot"] - 0.6)
+    _playlists["t"] = 0
+    log("names break updated from the website: '%s', '%s 2' and '%s 1' now play the new audio "
+        "(names start at %ss, one every %ss)" % (bp, bp, bp, st["start"], st["slot"]))
 
 
 # -------------------------------------------------------------- master ----
@@ -486,6 +565,11 @@ def run_checks(problems=None):
         site_ok = True
         site_voice = bool(d.get("voice"))
         add(True, "website", "website and private key work (%d name(s) waiting)" % len(d.get("names") or []))
+        bst = break_state()
+        if d.get("break"):
+            ok = str(bst.get("v")) == str(d["break"].get("v"))
+            add(ok, "break", ("names break audio from the website is set up (built %s)" % bst.get("t", "")) if ok
+                else "names break audio from the website isn't on this FPP yet (see the log)")
     except urllib.error.HTTPError as e:
         add(False, "website", "the private key is wrong - download marquee_names.json again" if e.code == 403 else "website answered %s %s" % (e.code, e.reason))
     except Exception as e:

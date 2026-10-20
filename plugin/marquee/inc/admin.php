@@ -20,6 +20,7 @@ add_action( 'admin_enqueue_scripts', function ( $hook ) {
 	wp_enqueue_style( 'marquee-admin', MARQUEE_URL . 'assets/admin.css', array(), MARQUEE_VERSION );
 	wp_enqueue_script( 'marquee-qrcode', MARQUEE_URL . 'core/assets/js/qrcode.js', array(), '2.0.4', true );
 	wp_enqueue_script( 'marquee-admin', MARQUEE_URL . 'assets/admin.js', array( 'marquee-qrcode' ), MARQUEE_VERSION, true );
+	wp_enqueue_script( 'marquee-break', MARQUEE_URL . 'assets/break.js', array( 'marquee-admin' ), MARQUEE_VERSION, true );
 	wp_localize_script( 'marquee-admin', 'MarqueeAdmin', array(
 		'ajax'  => admin_url( 'admin-ajax.php' ),
 		'nonce' => wp_create_nonce( 'marquee_admin' ),
@@ -270,7 +271,7 @@ function marquee_admin_page() {
 					<div class="mq__row">
 					<p><label for="mq-fpl"><?php esc_html_e( 'FPP playlist with your names break', 'marquee' ); ?></label><input id="mq-fpl" name="fpp_playlist" type="text" value="<?php echo esc_attr( $s['fpp_playlist'] ); ?>"><small><?php esc_html_e( 'A short sequence (about 30 seconds) that shows your screens, in its own playlist. The guide shows how to make one.', 'marquee' ); ?></small></p>
 					<p><label for="mq-nst"><?php esc_html_e( 'First name goes up at (seconds)', 'marquee' ); ?></label><input id="mq-nst" name="names_start" type="number" min="0" max="120" step="0.5" value="<?php echo esc_attr( $s['names_start'] ); ?>"><small><?php esc_html_e( 'How far into the break the names start. If your break opens with an announcer, use the second the quiet music starts.', 'marquee' ); ?></small></p>
-					<p><label for="mq-nsl"><?php esc_html_e( 'Seconds per name', 'marquee' ); ?></label><input id="mq-nsl" name="names_slot" type="number" min="2.5" max="10" step="0.05" value="<?php echo esc_attr( $s['names_slot'] ); ?>"><small><?php esc_html_e( 'Time from one name to the next (up to 6 names). Short breaks: add playlists named like yours plus “ 1” and “ 2” (for one or two names, each said twice).', 'marquee' ); ?></small></p>
+					<p><label for="mq-nsl"><?php esc_html_e( 'Seconds per name', 'marquee' ); ?></label><input id="mq-nsl" name="names_slot" type="number" min="2.5" max="10" step="0.05" value="<?php echo esc_attr( $s['names_slot'] ); ?>"><small><?php esc_html_e( 'Time from one name to the next (up to 6 names). Both are set for you when you build the names break audio below.', 'marquee' ); ?></small></p>
 					</div>
 					<table class="mq__screens">
 						<thead><tr><th><?php esc_html_e( 'Screen', 'marquee' ); ?></th><th><?php esc_html_e( 'FPP address', 'marquee' ); ?></th><th><?php esc_html_e( 'Overlay model name', 'marquee' ); ?></th></tr></thead>
@@ -342,6 +343,7 @@ function marquee_admin_page() {
 					<p><label for="mq-veff"><?php esc_html_e( 'Talking faces effect (optional)', 'marquee' ); ?></label><input id="mq-veff" name="voice_effect" type="text" value="<?php echo esc_attr( $s['voice_effect'] ); ?>" placeholder="<?php esc_attr_e( 'Names Talking', 'marquee' ); ?>"><small><?php esc_html_e( 'The name of an FPP effect (.eseq) that moves your singing faces’ mouths (several with commas). It plays while each name is spoken. Leave empty for voice only. The setup guide shows how to make one.', 'marquee' ); ?></small></p>
 					<p class="mq__fine"><?php esc_html_e( 'Cost: about 25 ElevenLabs credits per name, and a name that was already said is free after that (the clip is saved on your website). Kids’ first names are sent to ElevenLabs to make the audio; Settings → Privacy has a line you can add to your privacy page.', 'marquee' ); ?>
 						<?php if ( $s['voice_key'] ) : ?><label><input type="checkbox" name="voice_clear" value="1"> <?php esc_html_e( 'Remove my ElevenLabs key', 'marquee' ); ?></label><?php endif; ?></p>
+					<?php marquee_break_box( $s ); ?>
 				<?php endif; ?>
 			</section>
 
@@ -471,7 +473,7 @@ function marquee_media_field( $name, $label, $help, $ids, $multi, $std = '', $ty
 		</div>
 		<input type="hidden" name="<?php echo esc_attr( $name ); ?>" value="<?php echo esc_attr( implode( ',', $ids ) ); ?>" data-mq-ids>
 		<p class="mq__media-btns">
-			<button type="button" class="button" data-mq-pick><?php echo $multi ? ( 'audio' === $type ? esc_html__( 'Add songs', 'marquee' ) : esc_html__( 'Add pictures', 'marquee' ) ) : ( $ids ? esc_html__( 'Change', 'marquee' ) : esc_html__( 'Choose picture', 'marquee' ) ); ?></button>
+			<button type="button" class="button" data-mq-pick><?php echo $multi ? ( 'audio' === $type ? esc_html__( 'Add songs', 'marquee' ) : esc_html__( 'Add pictures', 'marquee' ) ) : ( $ids ? esc_html__( 'Change', 'marquee' ) : ( 'audio' === $type ? esc_html__( 'Choose MP3', 'marquee' ) : esc_html__( 'Choose picture', 'marquee' ) ) ); ?></button>
 			<?php if ( ! $multi ) : ?><button type="button" class="button-link" data-mq-clear <?php echo $ids ? '' : 'hidden'; ?>><?php echo $std ? esc_html__( 'Use the standard picture', 'marquee' ) : esc_html__( 'Remove', 'marquee' ); ?></button><?php endif; ?>
 		</p>
 		<?php if ( $help ) : ?><small><?php echo esc_html( $help ); ?></small><?php endif; ?>

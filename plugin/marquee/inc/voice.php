@@ -59,8 +59,8 @@ function marquee_voice_dir( $url = false ) {
 }
 
 /** The saved clip for this text with the current voice: array( url, seconds ) or null. */
-function marquee_voice_cached( $text, $voice = '', $model = '' ) {
-	$file = marquee_voice_file_base( $text, $voice, $model );
+function marquee_voice_cached( $text, $voice = '', $model = '', $raw = false ) {
+	$file = marquee_voice_file_base( $text, $voice, $model, $raw );
 	$hits = glob( marquee_voice_dir() . $file . '-*.{wav,mp3}', GLOB_BRACE );
 	if ( ! $hits ) {
 		return null;
@@ -68,12 +68,12 @@ function marquee_voice_cached( $text, $voice = '', $model = '' ) {
 	$name = basename( $hits[0] );
 	return array( marquee_voice_dir( true ) . $name, (int) substr( $name, strlen( $file ) + 1, -4 ) / 1000 );
 }
-function marquee_voice_file_base( $text, $voice = '', $model = '' ) {
+function marquee_voice_file_base( $text, $voice = '', $model = '', $raw = false ) {
 	$s     = marquee_get();
 	$voice = $voice ? $voice : $s['voice_id'];
 	$model = $model ? $model : $s['voice_model'];
 	// "w2": stereo WAV clips (FPP's extra sound slots play mono clips too fast)
-	return substr( md5( wp_salt( 'auth' ) . '|w4|' . $voice . '|' . $model . '|' . marquee_voice_speed() . '|' . marquee_voice_text( $text ) ), 0, 20 );
+	return substr( md5( wp_salt( 'auth' ) . '|w4|' . $voice . '|' . $model . '|' . marquee_voice_speed() . '|' . ( $raw ? 'raw|' . $text : marquee_voice_text( $text ) ) ), 0, 20 );
 }
 
 /**
@@ -178,7 +178,8 @@ function marquee_voice_make( $text, $opts = array(), $timeout = 15 ) {
 	if ( ! $key || ! $voice ) {
 		return new WP_Error( 'voice', __( 'Add your ElevenLabs API key and pick a voice first.', 'marquee' ) );
 	}
-	$hit = marquee_voice_cached( $text, $voice, $model );
+	$raw = ! empty( $opts['raw'] ); // announcer lines are said exactly as typed
+	$hit = marquee_voice_cached( $text, $voice, $model, $raw );
 	if ( $hit ) {
 		return $hit;
 	}
@@ -186,7 +187,7 @@ function marquee_voice_make( $text, $opts = array(), $timeout = 15 ) {
 		'text-to-speech/' . rawurlencode( $voice ) . '/with-timestamps?output_format=pcm_22050',
 		$key,
 		array(
-			'text'           => marquee_voice_text( $text ),
+			'text'           => $raw ? $text : marquee_voice_text( $text ),
 			'model_id'       => $model,
 			'voice_settings' => array( 'stability' => 0.6, 'similarity_boost' => 0.75, 'speed' => marquee_voice_speed() ),
 		),
@@ -217,7 +218,7 @@ function marquee_voice_make( $text, $opts = array(), $timeout = 15 ) {
 	if ( ! file_exists( $dir . 'index.php' ) ) {
 		file_put_contents( $dir . 'index.php', "<?php\n// Silence is golden.\n" ); // phpcs:ignore
 	}
-	$name = marquee_voice_file_base( $text, $voice, $model ) . '-' . (int) round( $len * 1000 ) . '.wav';
+	$name = marquee_voice_file_base( $text, $voice, $model, $raw ) . '-' . (int) round( $len * 1000 ) . '.wav';
 	if ( false === file_put_contents( $dir . $name, $wav ) ) { // phpcs:ignore
 		return new WP_Error( 'voice', __( 'Couldn’t save the voice clip in uploads.', 'marquee' ) );
 	}
