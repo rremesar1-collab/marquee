@@ -148,7 +148,7 @@ function marquee_admin_page() {
 					array( __( 'Location', 'marquee' ), 'location' ),
 					array( __( 'Schedule', 'marquee' ), 'calendar-alt' ),
 					array( __( 'Remote Falcon', 'marquee' ), 'playlist-audio' ),
-					array( __( 'Your Name in Lights', 'marquee' ), 'megaphone' ),
+					array( __( 'Names & FPP', 'marquee' ), 'megaphone' ),
 					array( __( 'Features', 'marquee' ), 'admin-settings' ),
 					array( __( 'Artwork', 'marquee' ), 'art' ),
 				);
@@ -279,8 +279,8 @@ function marquee_admin_page() {
 			</section>
 
 			<section class="mq__pane" data-pane="4">
-				<h2><?php esc_html_e( 'Your Name in Lights', 'marquee' ); ?></h2>
-				<p class="mq__lead"><?php esc_html_e( 'Kids type their first name on your website. Between songs, your show puts it up on your screens, and if you like, a voice says it on your radio station. Set it up in this order; each part is optional after the first.', 'marquee' ); ?></p>
+				<h2><?php esc_html_e( 'Names & FPP', 'marquee' ); ?></h2>
+				<p class="mq__lead"><?php esc_html_e( 'Connect your FPP and set up “Your Name in Lights”: kids type their first name on your website. Between songs, your show puts it up on your screens, and if you like, a voice says it on your radio station. Set it up in this order; each part is optional after the first.', 'marquee' ); ?></p>
 				<?php if ( ! $names_url ) : ?>
 					<p class="mq__fine"><?php esc_html_e( 'Your Name in Lights isn’t available with this theme.', 'marquee' ); ?></p>
 				<?php else : ?>
@@ -552,7 +552,7 @@ function marquee_media_field( $name, $label, $help, $ids, $multi, $std = '', $ty
 	<?php
 }
 
-/** What the FPP names script last reported (its setup check), for the Your Name in Lights step. */
+/** What the FPP names script last reported (its setup check), for the Names & FPP step. */
 function marquee_names_status() {
 	$seen = (int) get_option( 'ridgeroad_names_seen' );
 	$rep  = get_option( 'ridgeroad_names_report' );

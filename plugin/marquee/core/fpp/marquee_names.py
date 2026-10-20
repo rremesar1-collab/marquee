@@ -13,13 +13,13 @@ Runs on your FPP master. Kids send their first name on your Marquee website.
     spoken name (made by your website with ElevenLabs) and plays it as the
     name goes up, optionally with a "talking faces" effect on your props.
   * It tells your website what FPP is playing (Show Control in WP Admin) and
-    how its setup check went (Marquee -> Settings -> Your Name in Lights).
+    how its setup check went (Marquee -> Settings -> Names & FPP).
 
 Your website never connects into your house: this script reaches out to it,
 so no router ports need to be opened.
 
 Settings live in marquee_names.json next to this script. Download that file
-from your website (Marquee -> Settings -> Your Name in Lights), or make it here with:
+from your website (Marquee -> Settings -> Names & FPP), or make it here with:
     python3 /home/fpp/media/scripts/marquee_names.py --setup
 
 Install (once) - the full guide is "Marquee names - setup guide.txt":
@@ -67,7 +67,7 @@ UA = "Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Ch
 
 DEFAULTS = {
     "site": "",                       # your website, e.g. https://yourshow.com/
-    "key": "",                        # private key from Marquee -> Settings -> Your Name in Lights
+    "key": "",                        # private key from Marquee -> Settings -> Names & FPP
     "break_playlist": "Names in Lights",
     "screens": [],                    # [{"name": "matrix", "fpp": "http://192.168.1.50", "model": "MatrixText"}]
     "names_start": 4.0,               # seconds into the break when the first name appears
@@ -108,7 +108,7 @@ def load_settings():
     cfg = config_path()
     if not os.path.exists(cfg):
         return ["no settings file. Download marquee_names.json from your website "
-                "(Marquee -> Settings -> Your Name in Lights) and upload it in FPP -> File Manager "
+                "(Marquee -> Settings -> Names & FPP) and upload it in FPP -> File Manager "
                 "(looked in: %s)" % ", ".join(sorted(set(os.path.dirname(p) for p in CONFIG_PLACES)))]
     try:
         with open(cfg) as f:
@@ -734,7 +734,7 @@ def setup():
     site = ask("Your website address (like https://yourshow.com)", cur["site"])
     if site and not site.startswith("http"):
         site = "https://" + site
-    key = ask("Private key (Marquee -> Settings -> Your Name in Lights)", cur["key"])
+    key = ask("Private key (Marquee -> Settings -> Names & FPP)", cur["key"])
     pl = ask("FPP playlist that holds your names break", cur["break_playlist"])
     screens = []
     print("\nScreens: each one is an FPP Pixel Overlay Model (matrix, projector, TV).")

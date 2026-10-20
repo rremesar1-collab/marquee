@@ -1,4 +1,4 @@
-/* Marquee: names break builder (Settings → Your Name in Lights). Mixes the announcer lines and the
+/* Marquee: names break builder (Settings → Names & FPP). Mixes the announcer lines and the
    music in the browser (Web Audio) and saves three WAV files: full, 2 names, 1 name. */
 (function () {
 	var C = window.MarqueeAdmin || {};
