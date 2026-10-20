@@ -21,6 +21,7 @@ add_action( 'admin_enqueue_scripts', function ( $hook ) {
 	wp_enqueue_script( 'marquee-qrcode', MARQUEE_URL . 'core/assets/js/qrcode.js', array(), '2.0.4', true );
 	wp_enqueue_script( 'marquee-admin', MARQUEE_URL . 'assets/admin.js', array( 'marquee-qrcode' ), MARQUEE_VERSION . '.' . filemtime( MARQUEE_DIR . 'assets/admin.js' ), true );
 	wp_enqueue_script( 'marquee-demo', MARQUEE_URL . 'assets/demo.js', array(), MARQUEE_VERSION . '.' . filemtime( MARQUEE_DIR . 'assets/demo.js' ), true );
+	wp_enqueue_script( 'marquee-walk', MARQUEE_URL . 'assets/walk.js', array(), MARQUEE_VERSION . '.' . filemtime( MARQUEE_DIR . 'assets/walk.js' ), true );
 	wp_enqueue_script( 'marquee-ai', MARQUEE_URL . 'assets/ai.js', array( 'marquee-admin' ), MARQUEE_VERSION . '.' . filemtime( MARQUEE_DIR . 'assets/ai.js' ), true );
 	wp_enqueue_script( 'marquee-break', MARQUEE_URL . 'assets/break.js', array( 'marquee-admin' ), MARQUEE_VERSION . '.' . filemtime( MARQUEE_DIR . 'assets/break.js' ), true );
 	wp_localize_script( 'marquee-admin', 'MarqueeAdmin', array(
@@ -253,6 +254,7 @@ function marquee_admin_page() {
 			<section class="mq__pane" data-pane="3">
 				<h2><?php esc_html_e( 'Remote Falcon', 'marquee' ); ?></h2>
 				<p class="mq__lead"><?php esc_html_e( 'Optional. Connect it and your site shows what’s playing now, your playlist, and song voting. Without it the site still shows hours, weather and the Kids’ Corner.', 'marquee' ); ?></p>
+				<?php marquee_walk( 'rf', ! marquee_rf_configured() ); ?>
 				<div class="mq__row">
 					<p><label for="mq-rft"><?php esc_html_e( 'Access token', 'marquee' ); ?></label><input id="mq-rft" name="rf_token" type="text" autocomplete="off" value="<?php echo esc_attr( $s['rf_token'] ); ?>"></p>
 					<p><label for="mq-rfs"><?php esc_html_e( 'Secret key', 'marquee' ); ?></label><input id="mq-rfs" name="rf_secret" type="password" autocomplete="new-password" value="<?php echo $s['rf_secret'] ? '••••••••' : ''; ?>"></p>
@@ -300,6 +302,7 @@ function marquee_admin_page() {
 						</summary>
 						<div class="mq__card-b">
 					<p class="mq__fine"><?php esc_html_e( 'Fill in your screens and Save, then download the two files, put them on your FPP and follow the setup guide. Your website never connects into your house: the FPP checks in with it.', 'marquee' ); ?></p>
+					<?php marquee_walk( 'fpp', ! $fpp_ok ); ?>
 					<?php marquee_names_status(); ?>
 					<input type="hidden" name="fpp_sent" value="1">
 					<div class="mq__row">
@@ -342,6 +345,7 @@ function marquee_admin_page() {
 						<div class="mq__card-b">
 					<p class="mq__fine"><?php esc_html_e( 'An ElevenLabs voice reads each name over your radio station as it goes up on the screens: “Merry Christmas, Emma!”. Use the same voice as your show announcer and it sounds like part of the show.', 'marquee' ); ?></p>
 					<input type="hidden" name="voice_sent" value="1">
+					<?php marquee_walk( 'voice', ! $s['voice_key'] ); ?>
 					<?php
 					$verr = get_option( 'marquee_voice_error' );
 					if ( $s['voice_on'] && is_array( $verr ) && ! empty( $verr['msg'] ) ) {
