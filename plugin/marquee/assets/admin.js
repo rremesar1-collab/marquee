@@ -502,3 +502,33 @@
 		});
 	}
 })();
+
+/* Blocked names and words: chips with ×, and "Block it". Saved with the settings. */
+(function () {
+	var box = document.querySelector('[data-mq-block]');
+	if (!box) { return; }
+	var val = box.querySelector('[data-mq-block-val]'), list = box.querySelector('[data-mq-block-list]'), none = box.querySelector('[data-mq-block-none]');
+	var inp = box.querySelector('[data-mq-block-new]'), add = box.querySelector('[data-mq-block-add]'), pill = box.querySelector('[data-mq-block-pill]');
+	var words = val.value.split(',').map(function (w) { return w.trim(); }).filter(Boolean);
+	function draw() {
+		list.innerHTML = '';
+		words.forEach(function (w, i) {
+			var li = document.createElement('li'), b = document.createElement('button');
+			li.textContent = w;
+			b.type = 'button'; b.textContent = '×'; b.setAttribute('aria-label', 'Unblock ' + w);
+			b.addEventListener('click', function () { words.splice(i, 1); draw(); });
+			li.appendChild(b); list.appendChild(li);
+		});
+		none.hidden = words.length > 0;
+		val.value = words.join(', ');
+		pill.textContent = words.length + ' blocked';
+	}
+	function addWord() {
+		var w = inp.value.trim().toLowerCase().replace(/[,]/g, '');
+		if (w && words.indexOf(w) < 0) { words.push(w); }
+		inp.value = ''; draw(); inp.focus();
+	}
+	add.addEventListener('click', addWord);
+	inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); addWord(); } });
+	draw();
+})();

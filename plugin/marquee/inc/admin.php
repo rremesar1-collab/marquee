@@ -484,6 +484,26 @@ function marquee_admin_page() {
 							<p class="mq__fine"><?php esc_html_e( 'Ideas: “Feliz Navidad, NAME!”, “Happy Hanukkah, NAME!”, “Thanks for visiting, NAME!”, “Go team, NAME!”. Kids can’t type their own message: only these, so nothing unexpected goes up on your screens. Save when you’re done.', 'marquee' ); ?></p>
 						</div>
 					</details>
+
+					<?php
+					$blk = array_values( array_filter( array_map( 'trim', preg_split( '/[,\n]+/', (string) marquee_theme_get( 'names_block' ) ) ) ) );
+					?>
+					<details class="mq__card" data-mq-block>
+						<summary>
+							<span class="mq__card-n" aria-hidden="true">🚫</span>
+							<span class="mq__card-t"><b><?php esc_html_e( 'Blocked names and words', 'marquee' ); ?></b><small><?php esc_html_e( 'Names you blocked, and your own words to keep off your screens. Bad words are always blocked for you.', 'marquee' ); ?></small></span>
+							<span class="mq__pill" data-mq-block-pill><?php /* translators: %d: number of words */ echo esc_html( sprintf( _n( '%d blocked', '%d blocked', count( $blk ), 'marquee' ), count( $blk ) ) ); ?></span>
+						</summary>
+						<div class="mq__card-b">
+							<input type="hidden" name="block_sent" value="1">
+							<input type="hidden" name="names_block" value="<?php echo esc_attr( implode( ', ', $blk ) ); ?>" data-mq-block-val>
+							<p class="mq__fine"><?php esc_html_e( 'Marquee already stops bad words, rude names and tricks like swapping letters for numbers (“b4d”). You don’t need to set anything up. Every name also shows in Show Control and the Show Manager, where “Block word” takes it off the screens and adds it here.', 'marquee' ); ?></p>
+							<ul class="mq-block" data-mq-block-list></ul>
+							<p class="mq-block__none" data-mq-block-none hidden><?php esc_html_e( 'Nothing blocked yet.', 'marquee' ); ?></p>
+							<p class="mq-block__add"><label for="mq-block-new" class="screen-reader-text"><?php esc_html_e( 'Name or word to block', 'marquee' ); ?></label><input id="mq-block-new" type="text" maxlength="30" placeholder="<?php esc_attr_e( 'A name or word to block', 'marquee' ); ?>" data-mq-block-new> <button type="button" class="button" data-mq-block-add><?php esc_html_e( 'Block it', 'marquee' ); ?></button></p>
+							<p class="mq__fine"><?php esc_html_e( 'Blocked one by mistake? Click × next to it and Save, and that name can be sent again. A blocked word is stopped when it’s the whole name (blocking “Bob” doesn’t block “Bobby”).', 'marquee' ); ?></p>
+						</div>
+					</details>
 				<?php endif; ?>
 			</section>
 

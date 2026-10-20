@@ -257,6 +257,16 @@ function marquee_save( $in ) {
 		}
 		set_theme_mod( 'snow_amount', in_array( 'snow', $f, true ) ? ( 'off' === marquee_theme_get( 'snow_amount' ) ? 'medium' : marquee_theme_get( 'snow_amount' ) ) : 'off' );
 	}
+	if ( isset( $in['block_sent'] ) ) {   // Blocked names and words (Names & FPP)
+		$words = array();
+		foreach ( preg_split( '/[,\n]+/', (string) wp_unslash( $in['names_block'] ?? '' ) ) as $w ) {
+			$w = mb_strtolower( trim( preg_replace( "/[^\\p{L}\\p{N}'\\- ]/u", '', sanitize_text_field( $w ) ) ), 'UTF-8' );
+			if ( '' !== $w && mb_strlen( $w ) <= 30 ) {
+				$words[ $w ] = $w;
+			}
+		}
+		set_theme_mod( 'names_block', implode( ', ', array_slice( array_values( $words ), 0, 500 ) ) );
+	}
 	if ( function_exists( 'ridgeroad_flush_cache' ) ) {
 		ridgeroad_flush_cache();
 	}

@@ -569,3 +569,10 @@
 .mq-msgs__scr:empty { display: none; }
 .mq-msgs__warn { display: block; color: #8a5a00; }
 @media (max-width: 600px) { .mq-msgs__scr { margin-left: 0; } }
+
+/* Blocked names and words */
+.mq-block { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; padding: 0; list-style: none; }
+.mq-block li { display: inline-flex; align-items: center; gap: 2px; margin: 0; padding: 2px 4px 2px 10px; border: 1px solid #dcdcde; border-radius: 999px; background: #f6f7f7; font-size: 13px; }
+.mq-block li button { border: 0; background: none; color: #b32d2e; font-size: 16px; line-height: 1; padding: 2px 6px; cursor: pointer; border-radius: 50%; }
+.mq-block li button:hover, .mq-block li button:focus { background: #fcf0f1; }
+.mq-block__add input { width: 100%; max-width: 260px; }
