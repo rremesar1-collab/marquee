@@ -22,19 +22,25 @@
 		var picks = mode === 'themes' && themes.length ? themes.slice(0, 3) : ['Classic'];
 		var phone = box.querySelector('[data-demo-phone]'), scr = box.querySelector('canvas'), say = box.querySelector('[data-demo-say]'), step = box.querySelector('[data-demo-step]');
 		var ctx = scr.getContext('2d'), W = scr.width, H = scr.height;
-		/* a little house of lights: roof, walls, a door, and a tree beside it */
-		var dots = [], cx = W * 0.42, top = H - 92;
-		function line(x1, y1, x2, y2) {
-			var n = Math.max(1, Math.round(Math.hypot(x2 - x1, y2 - y1) / 7));
-			for (var k = 0; k <= n; k++) { dots.push({ x: cx + x1 + (x2 - x1) * k / n, y: top + y1 + (y2 - y1) * k / n, r: Math.random() }); }
+		/* the show's house from the Light Lab, with each prop lit in the theme's colors */
+		var base = box.getAttribute('data-lab') || '', M = {"tree": {"x": 42, "y": 83, "w": 214, "h": 362}, "mini": {"x": 355, "y": 372, "w": 839, "h": 86}, "arch": {"x": 314, "y": 349, "w": 922, "h": 108}, "spin": {"x": 340, "y": 80, "w": 1106, "h": 150}, "flake": {"x": 265, "y": 167, "w": 1355, "h": 156}, "win": {"x": 306, "y": 234, "w": 815, "h": 102}, "faces": {"x": 936, "y": 166, "w": 107, "h": 61}, "face2": {"x": 1370, "y": 122, "w": 118, "h": 88}, "garage": {"x": 1276, "y": 265, "w": 300, "h": 130}, "gift": {"x": 6, "y": 354, "w": 816, "h": 56}, "roof": {"x": 227, "y": 30, "w": 1435, "h": 230}, "sign": {"x": 723, "y": 410, "w": 100, "h": 54}};
+		var house = new Image(), props = [], ready = false, S = W / 1672;
+		house.onload = function () { ready = true; };
+		house.src = base + 'house.jpg';
+		Object.keys(M).forEach(function (k, n) {
+			var im = new Image(); im.src = base + 'm-' + k + '.png';
+			props.push({ k: k, n: n, im: im, c: null, col: '' });
+		});
+		var snow = []; for (var s2 = 0; s2 < 40; s2++) { snow.push({ x: Math.random() * W, y: Math.random() * H, v: .3 + Math.random() * .7 }); }
+		/* a prop's lights in one color (mask x color), cached per color */
+		function tinted(p, col) {
+			if (p.col === col && p.c) { return p.c; }
+			if (!p.im.complete || !p.im.naturalWidth) { return null; }
+			var c = p.c || document.createElement('canvas'); c.width = p.im.naturalWidth; c.height = p.im.naturalHeight;
+			var x = c.getContext('2d'); x.globalCompositeOperation = 'source-over'; x.clearRect(0, 0, c.width, c.height);
+			x.drawImage(p.im, 0, 0); x.globalCompositeOperation = 'multiply'; x.fillStyle = col; x.fillRect(0, 0, c.width, c.height);
+			p.c = c; p.col = col; return c;
 		}
-		line(-98, 38, 0, 0); line(0, 0, 98, 38);            // roof
-		line(-80, 38, -80, 86); line(80, 38, 80, 86);       // walls
-		line(-80, 86, 80, 86);                              // ground
-		line(-10, 86, -10, 60); line(-10, 60, 10, 60); line(10, 60, 10, 86);   // door
-		[-52, 38].forEach(function (wx) { line(wx, 48, wx + 18, 48); line(wx, 66, wx + 18, 66); line(wx, 48, wx, 66); line(wx + 18, 48, wx + 18, 66); });
-		for (var ty = 0; ty < 12; ty++) { for (var tx = -ty / 2.2; tx <= ty / 2.2; tx += 1) { dots.push({ x: W * 0.84 + tx * 7, y: top + 8 + ty * 6.5, r: Math.random() }); } }
-		var snow = []; for (var s = 0; s < 40; s++) { snow.push({ x: Math.random() * W, y: Math.random() * H, v: .3 + Math.random() * .7 }); }
 		var t0 = performance.now(), scene = 0, name = kids[0], theme = picks[0], text = '';
 		function greet(n) { return santa && scene % 2 ? 'HO HO HO, ' + n + '!' : 'MERRY CHRISTMAS, ' + n + '!'; }
 
@@ -54,26 +60,35 @@
 					'<span class="mq-demo__in">' + (typed || '<i>Your first name</i>') + (p < .45 ? '<em>|</em>' : '') + '</span>' + themeHtml +
 					'<span class="mq-demo__btn' + (p > .65 ? ' is-press' : '') + '">Put My Name in Lights!</span>') + '</div>';
 		}
-		/* the screen: the house lights in the theme's style, the name drawn on top */
+		/* the screen: the house with its props lit in the theme's style; names on the garage-door matrix */
 		function drawScreen(now, show, alpha) {
 			var l = look(theme), t = now / 1000;
+			ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1;
 			ctx.fillStyle = '#05070f'; ctx.fillRect(0, 0, W, H);
-			if (l.style === 'snow') { ctx.fillStyle = 'rgba(255,255,255,.8)'; snow.forEach(function (f) { f.y += f.v; if (f.y > H) { f.y = 0; f.x = Math.random() * W; } ctx.fillRect(f.x, f.y, 2, 2); }); }
-			dots.forEach(function (d, i) {
-				var c, on = true;
-				if (l.style === 'stripes') { c = (Math.floor((d.x + t * 60) / 16) % 2) ? l.a : l.b; }
-				else if (l.style === 'rainbow') { c = 'hsl(' + ((d.x * 2 + t * 120) % 360) + ',95%,60%)'; }
-				else if (l.style === 'wave') { c = Math.sin(d.x / 30 + t * 2) > 0 ? l.a : l.b; }
-				else if (l.style === 'snow') { c = (d.r + t * .5) % 1 > .5 ? l.a : l.b; }
-				else { c = (d.r + t * .7) % 1 > .3 ? l.a : l.b; on = (d.r * 7 + t) % 1 > .15; }
-				if (!on) { return; }
-				ctx.fillStyle = c; ctx.beginPath(); ctx.arc(d.x, d.y, 2.2, 0, 6.3); ctx.fill();
+			if (!ready) { return; }
+			ctx.globalAlpha = .55; ctx.drawImage(house, 0, 0, W, H); ctx.globalAlpha = 1;
+			ctx.globalCompositeOperation = 'lighter';
+			props.forEach(function (p) {
+				if (p.k === 'garage' && show) { return; }            // the matrix shows the name instead
+				var m = M[p.k], col, a = 1;
+				if (l.style === 'stripes') { col = ((p.n + Math.floor(t * 2)) % 2) ? l.a : l.b; }
+				else if (l.style === 'rainbow') { col = 'hsl(' + Math.round((p.n * 40 + t * 90) % 360) + ',100%,60%)'; }
+				else if (l.style === 'wave') { col = Math.sin(m.x / 200 + t * 2) > 0 ? l.a : l.b; }
+				else if (l.style === 'snow') { col = (p.n + Math.floor(t)) % 3 ? '#ffffff' : l.b; a = .7 + .3 * Math.sin(t * 3 + p.n); }
+				else { col = (p.n % 2) ? l.a : l.b; a = .55 + .45 * Math.abs(Math.sin(t * 1.6 + p.n * 1.3)); }
+				var c = tinted(p, col); if (!c) { return; }
+				ctx.globalAlpha = a; ctx.drawImage(c, m.x * S, m.y * S, m.w * S, m.h * S);
+				ctx.globalAlpha = a * .35; ctx.drawImage(c, m.x * S - 1, m.y * S - 1, m.w * S + 2, m.h * S + 2);
 			});
+			ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
+			if (l.style === 'snow') { ctx.fillStyle = 'rgba(255,255,255,.75)'; snow.forEach(function (f) { f.y += f.v; if (f.y > H) { f.y = 0; f.x = Math.random() * W; } ctx.fillRect(f.x, f.y, 1.6, 1.6); }); }
 			if (show) {
-				ctx.globalAlpha = alpha; ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.shadowColor = l.a; ctx.shadowBlur = 14;
+				var g = M.garage, gx = g.x * S, gy = g.y * S, gw = g.w * S, gh = g.h * S;
+				ctx.fillStyle = '#000'; ctx.fillRect(gx, gy, gw, gh);
+				ctx.globalAlpha = alpha; ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.shadowColor = l.a; ctx.shadowBlur = 10;
 				var parts = text.split(', ');
-				ctx.font = '700 22px system-ui, sans-serif'; ctx.fillText(parts[0] + (parts[1] ? ',' : ''), W / 2, 48);
-				if (parts[1]) { ctx.font = '800 34px system-ui, sans-serif'; ctx.fillText(parts[1], W / 2, 90); }
+				ctx.font = '700 ' + Math.round(gh * .2) + 'px system-ui, sans-serif'; ctx.fillText(parts[0] + (parts[1] ? ',' : ''), gx + gw / 2, gy + gh * .32);
+				if (parts[1]) { ctx.font = '800 ' + Math.round(gh * .34) + 'px system-ui, sans-serif'; ctx.fillText(parts[1], gx + gw / 2, gy + gh * .68); }
 				ctx.shadowBlur = 0; ctx.globalAlpha = 1;
 			}
 		}

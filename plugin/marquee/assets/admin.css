@@ -306,3 +306,6 @@
 .mq__card .mq-demo__phone { width: 150px; height: 270px; }
 .mq-demo__say { position: static; transform: none; display: table; margin: 8px auto 0; }
 .mq-demo__say[hidden] { display: table; visibility: hidden; }
+.mq-demo__tv canvas { width: 460px; }
+.mq__card .mq-demo__tv canvas { width: 400px; }
+.mq-demo__tv { max-width: 100%; }

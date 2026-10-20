@@ -774,16 +774,17 @@ function marquee_demo( $mode, $s ) {
 		}
 	}
 	$voice = function_exists( 'marquee_voice_on' ) && marquee_voice_on();
+	$lab   = function_exists( 'ridgeroad_asset_url' ) ? ridgeroad_asset_url( 'lightlab/' ) : MARQUEE_URL . 'core/assets/lightlab/';
 	?>
-	<div class="mq-demo" data-mq-demo data-mode="<?php echo esc_attr( $mode ); ?>" data-themes="<?php echo esc_attr( wp_json_encode( $themes ) ); ?>" data-santa="<?php echo $s['voice_santa'] ? '1' : '0'; ?>" data-voice="1">
+	<div class="mq-demo" data-mq-demo data-lab="<?php echo esc_url( $lab ); ?>" data-mode="<?php echo esc_attr( $mode ); ?>" data-themes="<?php echo esc_attr( wp_json_encode( $themes ) ); ?>" data-santa="<?php echo $s['voice_santa'] ? '1' : '0'; ?>" data-voice="1">
 		<div class="mq-demo__label"><span class="dashicons dashicons-controls-play" aria-hidden="true"></span> <?php esc_html_e( 'See it in action', 'marquee' ); ?></div>
 		<div class="mq-demo__stage">
 			<div class="mq-demo__phone" aria-hidden="true"><div data-demo-phone></div></div>
 			<div class="mq-demo__arrow" aria-hidden="true">→</div>
 			<div class="mq-demo__tv">
-				<canvas width="420" height="190" role="img" aria-label="<?php esc_attr_e( 'Your matrix or TV showing a kid’s name during the names break', 'marquee' ); ?>"></canvas>
+				<canvas width="840" height="235" role="img" aria-label="<?php esc_attr_e( 'Your matrix or TV showing a kid’s name during the names break', 'marquee' ); ?>"></canvas>
 				<div class="mq-demo__say" data-demo-say hidden></div>
-				<div class="mq-demo__tvlabel"><?php esc_html_e( 'Your matrix, projector or TV', 'marquee' ); ?></div>
+				<div class="mq-demo__tvlabel"><?php esc_html_e( 'Your show: names go up on your matrix (here, the garage door)', 'marquee' ); ?></div>
 			</div>
 		</div>
 		<p class="mq-demo__step" data-demo-step aria-live="off"></p>
