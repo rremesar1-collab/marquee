@@ -1,6 +1,6 @@
 <?php
 /**
- * Sequence maker (Settings → Names & FPP → "Make your sequences"): makes the names break
+ * Sequence maker (Settings → Names & FPP → "Sequence maker"): makes the names break
  * sequence, and themed copies of it, as xLights files (.xsq) from the show's layout.
  * Everything happens in the browser (assets/seqmaker.js): the layout file has controller
  * addresses in it, so it's never uploaded. Only a theme the owner describes in words goes to
@@ -77,7 +77,7 @@ function marquee_seqmaker_box( $s ) {
 				<small data-sm-askmsg aria-live="polite"><?php esc_html_e( 'Add as many ideas as you like, one at a time. ', 'marquee' ); ?><?php echo $ai_key ? esc_html__( 'How the AI helps: Marquee reads your layout (step 1) here in your browser and tells the AI only your prop names and what kind each is (trees, arches, rooflines…). The AI picks the colors and an effect for each kind; Marquee then writes the sequence from your layout. Your layout file itself never leaves your computer.', 'marquee' ) : esc_html__( 'Describing your own theme uses the AI under “Need help?” (add a ChatGPT or Claude key there). The ready-made themes don’t need it.', 'marquee' ); ?></small>
 			</li>
 		</ol>
-		<div class="mq-sm__timing"><span aria-hidden="true">⏱</span><div><b><?php esc_html_e( 'You don’t have to set any timing.', 'marquee' ); ?></b> <?php esc_html_e( 'Your FPP puts each name up on its own clock while the sequence plays, so it needs to know when the names go. Marquee works that out for you: from your names break audio (card 4) if you built it, otherwise from the Names timing track in your sequence, otherwise from your settings. Every sequence it makes uses those times, and “Use it” fills them in. Nothing to measure in xLights.', 'marquee' ); ?></div></div>
+		<div class="mq-sm__timing"><span aria-hidden="true">⏱</span><div><b><?php esc_html_e( 'You don’t have to set any timing.', 'marquee' ); ?></b> <?php esc_html_e( 'Your FPP puts each name up on its own clock while the sequence plays, so it needs to know when the names go. Marquee works that out for you: from your names break audio (card 3) if you built it, otherwise from the Names timing track in your sequence, otherwise from your settings. Every sequence it makes uses those times, and “Use it” fills them in. Nothing to measure in xLights.', 'marquee' ); ?></div></div>
 		<p><button type="button" class="button button-primary" data-sm-make><?php esc_html_e( 'Make my sequences', 'marquee' ); ?></button> <span class="mq__msg" data-sm-msg aria-live="polite"></span></p>
 
 		<div class="mq-sm__out" data-sm-out hidden></div>
@@ -95,7 +95,7 @@ function marquee_seqmaker_box( $s ) {
 				<li><?php echo esc_html( sprintf( /* translators: playlist */ __( 'In FPP → Content Setup → Playlists, make a playlist for each one with just that sequence and its music: “%s” for your names break, “Names - Candy Cane Swirl” and so on for the themes. Don’t add them to your show schedule; Marquee plays them between songs.', 'marquee' ), $pl ) ); ?></li>
 				<li><?php esc_html_e( 'Themes: click “Use it” next to each one below so kids can pick it, then Save settings. The setup check in card 1 tells you if FPP can’t find a playlist.', 'marquee' ); ?></li>
 			</ol>
-			<?php if ( $music_url ) : ?><p><a class="button" href="<?php echo esc_url( $music_url ); ?>" download="<?php echo esc_attr( $music_name ); ?>"><?php echo esc_html( sprintf( /* translators: file */ __( 'Download the music (%s)', 'marquee' ), $music_name ) ); ?></a> <small><?php echo $brk ? esc_html__( 'Your names break audio from card 4: the announcer, the soft music and the outro.', 'marquee' ) : esc_html__( 'Soft music for the break. Build your names break audio in card 4 to get one with your announcer in it.', 'marquee' ); ?></small></p><?php endif; ?>
+			<?php if ( $music_url ) : ?><p><a class="button" href="<?php echo esc_url( $music_url ); ?>" download="<?php echo esc_attr( $music_name ); ?>"><?php echo esc_html( sprintf( /* translators: file */ __( 'Download the music (%s)', 'marquee' ), $music_name ) ); ?></a> <small><?php echo $brk ? esc_html__( 'Your names break audio from card 4: the announcer, the soft music and the outro.', 'marquee' ) : esc_html__( 'Soft music for the break. Build your names break audio in card 3 to get one with your announcer in it.', 'marquee' ); ?></small></p><?php endif; ?>
 		</div>
 	</div>
 	<?php

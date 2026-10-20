@@ -176,7 +176,7 @@ function marquee_themes_box( $s ) {
 						<div><?php marquee_media_field( $pre . '[img]', __( 'Picture', 'marquee' ), '', $t['img'] ? array( (int) $t['img'] ) : array(), false ); ?></div>
 					</div>
 					<?php marquee_name_timeline( '#mq-th' . (int) $i . 's', '#mq-th' . (int) $i . 'l', (float) $s['break_seq'], true ); ?>
-					<p class="mq__fine mq__theme-auto"><?php esc_html_e( 'Made with “Make your sequences”? These two numbers were filled in for you: leave them as they are.', 'marquee' ); ?></p>
+					<p class="mq__fine mq__theme-auto"><?php esc_html_e( 'Made with the Sequence maker? These two numbers were filled in for you: leave them as they are.', 'marquee' ); ?></p>
 					<p class="mq__theme-look"><label for="mq-th<?php echo (int) $i; ?>k"><?php esc_html_e( 'Preview kids see (when there’s no picture)', 'marquee' ); ?></label>
 						<select id="mq-th<?php echo (int) $i; ?>k" data-mq-tlook name="<?php echo esc_attr( $pre ); ?>[look]">
 							<option value=""><?php esc_html_e( 'Pick for me from the name', 'marquee' ); ?></option>
@@ -192,7 +192,7 @@ function marquee_themes_box( $s ) {
 	<details class="mq__faq">
 		<summary><?php esc_html_e( 'Questions', 'marquee' ); ?></summary>
 		<p><b><?php esc_html_e( 'How do I make a themed sequence?', 'marquee' ); ?></b> <?php esc_html_e( 'Copy your names break sequence in xLights and change the effects on your house to fit the theme (red and white swirls for Candy Cane, white twinkles for Snowfall…). Keep your screens dark where the names go: FPP draws the names on top. Give it soft music with no singing so the spoken names can be heard. Upload it to FPP and put it in its own playlist, named like the examples.', 'marquee' ); ?></p>
-		<p><b><?php esc_html_e( 'What are “First name appears at” and “Time between names”?', 'marquee' ); ?></b> <?php esc_html_e( 'Your FPP puts the names up on its own clock while the themed sequence plays: the first one this many seconds in, then one every “time between names” seconds, up to 6. The little timeline under each theme shows exactly where they land. If the theme was made by “Make your sequences” from your names break, use the same numbers as your names break (“Use it” fills them in).', 'marquee' ); ?></p>
+		<p><b><?php esc_html_e( 'What are “First name appears at” and “Time between names”?', 'marquee' ); ?></b> <?php esc_html_e( 'Your FPP puts the names up on its own clock while the themed sequence plays: the first one this many seconds in, then one every “time between names” seconds, up to 6. The little timeline under each theme shows exactly where they land. If the theme was made by the Sequence maker from your names break, use the same numbers as your names break (“Use it” fills them in).', 'marquee' ); ?></p>
 		<p><b><?php esc_html_e( 'What if a playlist is missing on my FPP?', 'marquee' ); ?></b> <?php esc_html_e( 'Names for that theme go up in your Classic break instead, and the setup check on this page tells you which playlist it couldn’t find.', 'marquee' ); ?></p>
 		<p><b><?php esc_html_e( 'Do I need pictures?', 'marquee' ); ?></b> <?php esc_html_e( 'No. Without one, kids see a little animated picture of a lit-up house in that theme’s colors (pick the look under each theme). A photo or short clip of your own house during that sequence is even better.', 'marquee' ); ?></p>
 	</details>

@@ -1,4 +1,4 @@
-/* Marquee: "Make your sequences" card. Reads the layout (and the show's own names break) in the
+/* Marquee: "Sequence maker" card. Reads the layout (and the show's own names break) in the
    browser, makes the .xsq files with MarqueeSeq, and offers each one as a download. */
 (function () {
 	var box = document.querySelector('[data-mq-seqmaker]');
@@ -78,7 +78,7 @@
 		box.querySelectorAll('[data-sm-theme], [data-sm-own]').forEach(function (c) { if (!c.checked) { c.disabled = full; c.closest('label').classList.toggle('is-off', full); } else { c.disabled = false; } });
 		var t = n + ' of ' + MAX + ' themes picked. 3 or 4 is plenty: kids pick faster, and each one is a sequence to render.';
 		if (full) { t = MAX + ' of ' + MAX + ' themes picked, the most kids can choose from. Untick one to pick another.'; }
-		if (have) { t += ' You already have ' + have + (have === 1 ? ' theme' : ' themes') + ' set up under Themed sequences' + (have + n > MAX ? ', so “Use it” only has room for ' + Math.max(0, MAX - have) + ' more.' : '.'); }
+		if (have) { t += ' You already have ' + have + (have === 1 ? ' theme' : ' themes') + ' set up under Themes kids can pick' + (have + n > MAX ? ', so “Use it” only has room for ' + Math.max(0, MAX - have) + ' more.' : '.'); }
 		cnt.textContent = t; cnt.classList.toggle('is-full', full || have + n > MAX);
 	}
 	box.addEventListener('change', function (e) { if (e.target.matches('[data-sm-theme], [data-sm-own]')) { count(); } });
@@ -129,7 +129,7 @@
 			if (!rgb && jobs.some(function (j) { return j.base; })) { msg.textContent = 'Making your names break needs your layout file (step 1).'; return; }
 			urls.forEach(function (u) { URL.revokeObjectURL(u); }); urls = [];
 			var tm = null; if (xsq) { try { tm = S.timing(xsq.text); } catch (e) { tm = null; } }
-			// The music decides when names can go up: with names break audio built (card 4), the sequences use
+			// The music decides when names can go up: with names break audio built (card 3), the sequences use
 			// that audio, so its timing wins; otherwise the sequence's own Names track; otherwise the settings.
 			var built = d.built === '1', useTrack = tm && !built;
 			var useStart = useTrack ? tm.start : +d.start, useSlot = useTrack ? tm.slot : +d.slot;
@@ -158,7 +158,7 @@
 		}).catch(function (e) { msg.textContent = e.message; });
 	});
 
-	/* "Use it": fill the next empty row under Themed sequences. */
+	/* "Use it": fill the next empty row under Themes kids can pick. */
 	out.addEventListener('click', function (e) {
 		var b = e.target.closest('[data-sm-use]'); if (!b) { return; }
 		var name = b.getAttribute('data-sm-use'), rows = document.querySelectorAll('.mq__themes [data-mq-theme]:not(.is-classic)'), row = null;
@@ -174,6 +174,6 @@
 		var lk = row.querySelector('[data-mq-tlook]'); if (lk && b.getAttribute('data-look')) { lk.value = b.getAttribute('data-look'); }
 		var on = document.querySelector('input[name="themes_on"]'); if (on) { on.checked = true; }
 		var card = row.closest('details'); if (card) { card.open = true; }
-		b.outerHTML = '<span class="mq-sm__ok">✓ Added under Themed sequences. Save settings to keep it.</span>';
+		b.outerHTML = '<span class="mq-sm__ok">✓ Added under Themes kids can pick. Save settings to keep it.</span>';
 	});
 })();

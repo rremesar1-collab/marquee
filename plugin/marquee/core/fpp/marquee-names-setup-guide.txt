@@ -37,7 +37,7 @@ How names go up (Marquee -> Settings -> Names & FPP, top of the page):
     sequences don't use while the show keeps playing. No names break
     needed: skip to step 3. (Names script 3.5 or newer.)
 
-Let Marquee make it: Settings -> Names & FPP -> "Make your sequences".
+Let Marquee make it: Settings -> Names & FPP -> "Sequence maker".
 Choose your xlights_rgbeffects.xml (from your xLights show folder; it's read
 in your browser, never uploaded) and Marquee makes the names break .xsq for
 you: screens left dark for the names, gentle effects on the rest of the
@@ -157,7 +157,7 @@ The names break audio (do this once, and again whenever you change it):
     again every time it goes up.
 
 Themed sequences (optional): kids pick the show their name goes up in.
-  - Settings -> Names & FPP -> "Make your sequences" makes them for you:
+  - Settings -> Names & FPP -> "Sequence maker" makes them for you:
     give it your layout (and your own names break .xsq if you have one,
     so the themes keep its music and timing), tick Candy Cane Swirl,
     Snowfall... or describe your own (uses the Need help? AI), and download
@@ -166,9 +166,9 @@ Themed sequences (optional): kids pick the show their name goes up in.
     effects to fit the theme. Keep the screens dark where the names go and
     use soft music with no singing.
   - Put each one in its own FPP playlist, for example "Names - Snowfall".
-  - Settings -> Names & FPP -> "Themed sequences": turn it on and
+  - Settings -> Names & FPP -> "Themes kids can pick": turn it on and
     add each theme with its playlist, when the first name goes up and the
-    seconds per name ("Use it" in Make your sequences fills this in).
+    seconds per name ("Use it" in Sequence maker fills this in).
     Each card kids see shows a little animated house in that theme's
     colors, or a picture you choose (Classic can have one too).
   - Kids then tap a picture when they send their name. After the current
