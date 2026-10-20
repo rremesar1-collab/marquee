@@ -144,6 +144,7 @@ p:last-child { margin-bottom: 0; }
 .rr-menu a:hover, .rr-menu a.is-active, .rr-menu .current-menu-item > a { background: rgba(255, 210, 120, .14); color: #fff; }
 
 .rr-hero { padding: 18px 0 8px; }
+.rr-logo-h { margin: 0; font: inherit; line-height: 0; }
 .rr-logo { display: inline-block; line-height: 0; }
 .rr-logo img { width: min(400px, 80vw); filter: drop-shadow(0 0 22px rgba(255, 170, 60, .3)) drop-shadow(0 6px 14px rgba(0, 0, 0, .55)); }
 .rr-hero--small .rr-logo img { width: min(300px, 70vw); }

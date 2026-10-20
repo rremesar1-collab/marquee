@@ -41,6 +41,7 @@
 	</nav>
 
 	<div class="rr-hero<?php echo is_front_page() ? '' : ' rr-hero--small'; ?>">
+		<?php if ( is_front_page() ) : ?><h1 class="rr-logo-h"><?php endif; // the logo (its alt text, the show name) is the home page's main heading for Google ?>
 		<a class="rr-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
 			<?php
 			$logo_id = get_theme_mod( 'custom_logo' );
@@ -58,6 +59,7 @@
 			}
 			?>
 		</a>
+		<?php if ( is_front_page() ) : ?></h1><?php endif; ?>
 		<div class="rr-hero__text">
 		<?php if ( ridgeroad_mod( 'subtitle' ) ) : ?>
 			<p class="rr-subtitle"><?php echo esc_html( ridgeroad_mod( 'subtitle' ) ); ?></p>

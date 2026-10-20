@@ -21,6 +21,9 @@ extract( ridgeroad_home_ctx(), EXTR_SKIP ); // $status, $np, $wx, $opts, $b_titl
 			if ( 3 === $i && '' === $num && ! empty( $np['playlist'] ) ) {
 				$num = (string) count( $np['playlist'] );
 			}
+			if ( 6 === $i && '' === $num && preg_match( '/\d+(\.\d+)?/', (string) ridgeroad_mod( 'radio' ), $fm ) ) {
+				$num = $fm[0]; // the radio tile: your station from Settings (90.5)
+			}
 			if ( ! $label || '' === $num ) { continue; } ?>
 			<div class="rr-stat">
 				<span class="rr-stat__icon"><?php echo ridgeroad_cicon( ridgeroad_mod( "stat{$i}_icon" ) ); ?></span>
