@@ -50,7 +50,10 @@
 		baseWrap.hidden = !!have;
 		read(xsqIn).then(function (f) {
 			if (!f) { status(xsqIn, null, 'Not chosen: everything is made from scratch.'); return; }
-			try { var by = S.propsSummary(null, f.text), n = 0; Object.keys(by).forEach(function (k) { n += by[k].length; }); status(xsqIn, true, '✓ ' + f.name + ': themes keep its music, timing and ' + n + ' props with effects'); }
+			try {
+				var by = S.propsSummary(null, f.text), n = 0, tm2 = S.timing(f.text); Object.keys(by).forEach(function (k) { n += by[k].length; });
+				status(xsqIn, true, '✓ ' + f.name + ': themes keep its look, timing and ' + n + ' props with effects. ' + (d.built === '1' ? 'Name times come from your names break audio, so they match the music.' : (tm2 ? 'Names found at ' + tm2.start + ' s, every ' + tm2.slot + ' s (its Names timing track).' : 'No Names timing track in it, so your names break settings are used.')));
+			}
 			catch (e) { status(xsqIn, false, '✗ That isn’t an xLights sequence (.xsq).'); }
 		});
 	});
@@ -125,18 +128,25 @@
 			if (!jobs.length) { msg.textContent = 'Tick at least one thing to make (step 3).'; return; }
 			if (!rgb && jobs.some(function (j) { return j.base; })) { msg.textContent = 'Making your names break needs your layout file (step 1).'; return; }
 			urls.forEach(function (u) { URL.revokeObjectURL(u); }); urls = [];
-			var opts = { screens: screens, start: +d.start, slot: +d.slot, names: 6, duration: +d.dur, music: d.music };
+			var tm = null; if (xsq) { try { tm = S.timing(xsq.text); } catch (e) { tm = null; } }
+			// The music decides when names can go up: with names break audio built (card 4), the sequences use
+			// that audio, so its timing wins; otherwise the sequence's own Names track; otherwise the settings.
+			var built = d.built === '1', useTrack = tm && !built;
+			var useStart = useTrack ? tm.start : +d.start, useSlot = useTrack ? tm.slot : +d.slot;
+			var why = built ? 'to match your names break audio' : (useTrack ? 'read from the Names timing track in your sequence' : (xsq ? 'the same as your names break settings' : 'Marquee placed them'));
+			var tmNote = 'Names at ' + useStart + ' s, then every ' + useSlot + ' s (' + why + ')';
+			var opts = { screens: screens, start: useStart, slot: useSlot, names: 6, duration: +d.dur, music: d.music };
 			var rows = jobs.map(function (j) {
 				try {
 					var r = j.base ? S.build(rgb.text, opts) :
-						(xsq ? S.theme(xsq.text, rgb ? rgb.text : null, j.theme, { screens: screens }) : S.build(rgb.text, opts, j.theme));
+						(xsq ? S.theme(xsq.text, rgb ? rgb.text : null, j.theme, { screens: screens, start: useStart, slot: useSlot }) : S.build(rgb.text, opts, j.theme));
 					var name = j.base ? j.name : 'Names - ' + r.report.theme;
 					var url = URL.createObjectURL(new Blob([r.xsq], { type: 'application/xml' })); urls.push(url);
 					var sum = r.report.swapped ? (r.report.swapped.length + ' main effects changed, ' + r.report.recolored + ' recolored') :
 						(r.report.props + ' props, ' + Object.keys(r.report.effects).map(function (k) { return r.report.effects[k] + ' ' + k; }).join(', '));
 					if (r.report.screens && r.report.screens.length) { sum += '; left dark for the names: ' + r.report.screens.join(', '); }
-					return '<li><b>' + esc(name) + '</b><small>' + esc(sum) + '</small><span><a class="button" href="' + url + '" download="' + esc(file(name)) + '">Download .xsq</a>' +
-						(j.base ? '' : ' <button type="button" class="button-link" data-sm-use="' + esc(r.report.theme) + '" data-look="' + esc(j.look || '') + '">Use it: add to the themes kids pick from</button>') + '</span></li>';
+					return '<li><b>' + esc(name) + '</b><small>' + esc(sum) + '</small><small class="mq-sm__tm">⏱ ' + esc(tmNote) + ': filled in for you.</small><span><a class="button" href="' + url + '" download="' + esc(file(name)) + '">Download .xsq</a>' +
+						(j.base ? '' : ' <button type="button" class="button-link" data-sm-use="' + esc(r.report.theme) + '" data-look="' + esc(j.look || '') + '" data-start="' + useStart + '" data-slot="' + useSlot + '">Use it: add to the themes kids pick from</button>') + '</span></li>';
 				} catch (e) {
 					return '<li class="is-bad"><b>' + esc(j.base ? j.name : (j.theme.name || j.theme)) + '</b><small>' + esc(e.message) + '</small></li>';
 				}
@@ -158,8 +168,9 @@
 		row.classList.remove('is-empty');
 		row.querySelector('[data-mq-tname]').value = name.slice(0, 30);
 		var pl = row.querySelector('input[name$="[playlist]"]'); if (pl) { pl.value = 'Names - ' + name; }
-		var st = row.querySelector('input[name$="[start]"]'); if (st) { st.value = d.start; st.dispatchEvent(new Event('input')); }
-		var sl = row.querySelector('input[name$="[slot]"]'); if (sl) { sl.value = d.slot; sl.dispatchEvent(new Event('input')); }
+		var st = row.querySelector('input[name$="[start]"]'); if (st) { st.value = b.getAttribute('data-start') || d.start; st.dispatchEvent(new Event('input')); }
+		var sl = row.querySelector('input[name$="[slot]"]'); if (sl) { sl.value = b.getAttribute('data-slot') || d.slot; sl.dispatchEvent(new Event('input')); }
+		row.classList.add('is-auto');
 		var lk = row.querySelector('[data-mq-tlook]'); if (lk && b.getAttribute('data-look')) { lk.value = b.getAttribute('data-look'); }
 		var on = document.querySelector('input[name="themes_on"]'); if (on) { on.checked = true; }
 		var card = row.closest('details'); if (card) { card.open = true; }

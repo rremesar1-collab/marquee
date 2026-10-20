@@ -38,6 +38,7 @@ function marquee_seqmaker_box( $s ) {
 		data-slot="<?php echo esc_attr( $brk ? $brk['slot'] : $s['names_slot'] ); ?>"
 		data-dur="<?php echo esc_attr( $s['break_seq'] ); ?>"
 		data-music="<?php echo esc_attr( $music_name ); ?>"
+		data-built="<?php echo $brk ? '1' : '0'; ?>"
 		data-playlist="<?php echo esc_attr( $pl ); ?>">
 		<p class="mq__fine"><?php esc_html_e( 'Don’t want to sequence the names break yourself? Marquee makes it from your xLights layout: your screens stay dark for the names, the rest of your house plays gentle effects, and every prop flashes as each name goes up. It can also make themed versions for kids to pick from (Candy Cane Swirl, Snowfall…). You open them in xLights, render, and upload, like any sequence.', 'marquee' ); ?></p>
 
@@ -76,6 +77,7 @@ function marquee_seqmaker_box( $s ) {
 				<small data-sm-askmsg aria-live="polite"><?php esc_html_e( 'Add as many ideas as you like, one at a time. ', 'marquee' ); ?><?php echo $ai_key ? esc_html__( 'How the AI helps: Marquee reads your layout (step 1) here in your browser and tells the AI only your prop names and what kind each is (trees, arches, rooflines…). The AI picks the colors and an effect for each kind; Marquee then writes the sequence from your layout. Your layout file itself never leaves your computer.', 'marquee' ) : esc_html__( 'Describing your own theme uses the AI under “Need help?” (add a ChatGPT or Claude key there). The ready-made themes don’t need it.', 'marquee' ); ?></small>
 			</li>
 		</ol>
+		<div class="mq-sm__timing"><span aria-hidden="true">⏱</span><div><b><?php esc_html_e( 'You don’t have to set any timing.', 'marquee' ); ?></b> <?php esc_html_e( 'Your FPP puts each name up on its own clock while the sequence plays, so it needs to know when the names go. Marquee works that out for you: from your names break audio (card 4) if you built it, otherwise from the Names timing track in your sequence, otherwise from your settings. Every sequence it makes uses those times, and “Use it” fills them in. Nothing to measure in xLights.', 'marquee' ); ?></div></div>
 		<p><button type="button" class="button button-primary" data-sm-make><?php esc_html_e( 'Make my sequences', 'marquee' ); ?></button> <span class="mq__msg" data-sm-msg aria-live="polite"></span></p>
 
 		<div class="mq-sm__out" data-sm-out hidden></div>

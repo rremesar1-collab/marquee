@@ -167,6 +167,29 @@
 			refMap[key] = dbs.length - 1; return refMap[key];
 		}
 
+		/* Names timing: move the "Name 1…6" marks and every prop's flash to the new times (opts.start/slot). */
+		var rt = opts.start > 0 && opts.slot > 0 ? { start: +opts.start, slot: +opts.slot } : null;
+		function retime(effs) {
+			effs.sort(function (a, b) { return +a.getAttribute('startTime') - +b.getAttribute('startTime'); });
+			effs.forEach(function (e, k) {
+				var len = +e.getAttribute('endTime') - +e.getAttribute('startTime'), at = Math.round((rt.start + k * rt.slot) * 40) * 25;
+				e.setAttribute('startTime', String(at)); e.setAttribute('endTime', String(at + len));
+			});
+			report.retimed = (report.retimed || 0) + effs.length;
+		}
+		if (rt) {
+			kids(ee, 'Element').forEach(function (el) {
+				if (el.getAttribute('type') !== 'timing') { return; }
+				var marks = [].slice.call(el.getElementsByTagName('Effect')).filter(function (e) { return /^\s*name\s*\d+\s*$/i.test(e.getAttribute('label') || ''); });
+				[].slice.call(el.getElementsByTagName('Effect')).forEach(function (e) {   // the intro mark ends where the first name starts
+					if (/^\s*(title|intro)\s*$/i.test(e.getAttribute('label') || '') && +e.getAttribute('startTime') < rt.start * 1000) { e.setAttribute('endTime', String(Math.round(rt.start * 40) * 25)); }
+				});
+				marks.forEach(function (e) {
+					var n = +/\d+/.exec(e.getAttribute('label'))[0] - 1, at = Math.round((rt.start + n * rt.slot) * 40) * 25;
+					e.setAttribute('startTime', String(at)); e.setAttribute('endTime', String(Math.round((rt.start + (n + 1) * rt.slot) * 40) * 25));
+				});
+			});
+		}
 		kids(ee, 'Element').forEach(function (el) {
 			if (el.getAttribute('type') !== 'model') { return; }
 			var name = el.getAttribute('name') || '';
@@ -175,6 +198,7 @@
 			for (var li = 0; li < layers.length; li++) {
 				var effs = kids(layers[li], 'Effect');
 				var pulse = effs.length > 1 && effs.every(function (e) { return e.getAttribute('name') === 'On' && (+e.getAttribute('endTime') - +e.getAttribute('startTime')) < 1000; });
+				if (pulse && rt && effs.length <= 8) { retime(effs.slice()); }
 				effs.forEach(function (e) {
 					var en = e.getAttribute('name');
 					if (/^(Faces|Pictures|Video|Text|Shader|Sketch)$/.test(en)) { if (report.kept.indexOf(name) < 0) { report.kept.push(name); } return; }
@@ -269,6 +293,29 @@
 		return { xsq: x, report: report };
 	}
 
-	var api = { THEMES: THEMES, build: build, EFFECTS: EFFECTS, KINDS: KINDS, theme: theme, cleanTheme: cleanTheme, propsSummary: propsSummary, kindOf: function (n, rgb) { return kindOf(n, layoutKinds(rgb)); } };
+	/** Where the names go in a names break sequence, from its "Names" timing track (Name 1, Name 2…)
+	    if it has one. Returns { start, slot, count, len } in seconds, or null. */
+	function timing(xsqText) {
+		var d = parse(xsqText, 'The sequence (.xsq)'), ee = first(d, 'ElementEffects'), head = first(d, 'head');
+		var len = head && first(head, 'sequenceDuration') ? parseFloat(first(head, 'sequenceDuration').textContent) || 0 : 0;
+		var best = null;
+		kids(ee, 'Element').forEach(function (el) {
+			if (el.getAttribute('type') !== 'timing' || best) { return; }
+			var marks = [];
+			[].slice.call(el.getElementsByTagName('Effect')).forEach(function (e) {
+				var m = /^\s*name\s*(\d+)\s*$/i.exec(e.getAttribute('label') || '');
+				if (m) { marks.push({ n: +m[1], t: (+e.getAttribute('startTime') || 0) / 1000 }); }
+			});
+			marks.sort(function (a, b) { return a.n - b.n; });
+			if (marks.length >= 2 && marks[0].n === 1) {
+				var gaps = []; for (var k = 1; k < marks.length; k++) { gaps.push((marks[k].t - marks[k - 1].t) / (marks[k].n - marks[k - 1].n)); }
+				gaps.sort(function (a, b) { return a - b; });
+				best = { start: Math.round(marks[0].t * 100) / 100, slot: Math.round(gaps[Math.floor(gaps.length / 2)] * 100) / 100, count: marks.length, len: len, from: 'track' };
+			}
+		});
+		return best;
+	}
+
+	var api = { THEMES: THEMES, build: build, timing: timing, EFFECTS: EFFECTS, KINDS: KINDS, theme: theme, cleanTheme: cleanTheme, propsSummary: propsSummary, kindOf: function (n, rgb) { return kindOf(n, layoutKinds(rgb)); } };
 	if (typeof module !== 'undefined' && module.exports) { module.exports = api; } else { root.MarqueeSeq = api; }
 })(typeof window !== 'undefined' ? window : this);

@@ -176,6 +176,7 @@ function marquee_themes_box( $s ) {
 						<div><?php marquee_media_field( $pre . '[img]', __( 'Picture', 'marquee' ), '', $t['img'] ? array( (int) $t['img'] ) : array(), false ); ?></div>
 					</div>
 					<?php marquee_name_timeline( '#mq-th' . (int) $i . 's', '#mq-th' . (int) $i . 'l', (float) $s['break_seq'], true ); ?>
+					<p class="mq__fine mq__theme-auto"><?php esc_html_e( 'Made with “Make your sequences”? These two numbers were filled in for you: leave them as they are.', 'marquee' ); ?></p>
 					<p class="mq__theme-look"><label for="mq-th<?php echo (int) $i; ?>k"><?php esc_html_e( 'Preview kids see (when there’s no picture)', 'marquee' ); ?></label>
 						<select id="mq-th<?php echo (int) $i; ?>k" data-mq-tlook name="<?php echo esc_attr( $pre ); ?>[look]">
 							<option value=""><?php esc_html_e( 'Pick for me from the name', 'marquee' ); ?></option>
