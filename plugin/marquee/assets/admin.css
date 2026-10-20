@@ -576,3 +576,7 @@
 .mq-block li button { border: 0; background: none; color: #b32d2e; font-size: 16px; line-height: 1; padding: 2px 6px; cursor: pointer; border-radius: 50%; }
 .mq-block li button:hover, .mq-block li button:focus { background: #fcf0f1; }
 .mq-block__add input { width: 100%; max-width: 260px; }
+
+/* App icon status (Your show) */
+.mq-icon p { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
+.mq-icon img { border-radius: 7px; flex: none; }

@@ -189,6 +189,21 @@ function marquee_admin_page() {
 						</div>
 					</div>
 				</div>
+				<?php
+				$ico_id = (int) get_option( 'site_icon' );
+				$ico_m  = $ico_id ? wp_get_attachment_metadata( $ico_id ) : array();
+				$ico_w  = ! empty( $ico_m['width'] ) ? (int) $ico_m['width'] : 0;
+				$ico_go = admin_url( 'customize.php?autofocus[section]=title_tagline' );
+				?>
+				<div class="mq__fppstat mq-icon">
+					<?php if ( ! $ico_id ) : ?>
+						<p><b><?php esc_html_e( 'App icon: not set yet.', 'marquee' ); ?></b> <?php esc_html_e( 'Phones and Google show a plain star until you add one. Pick a square picture, 512 × 512 pixels.', 'marquee' ); ?> <a href="<?php echo esc_url( $ico_go ); ?>"><?php esc_html_e( 'Choose the icon', 'marquee' ); ?></a></p>
+					<?php elseif ( $ico_w && $ico_w < 512 ) : ?>
+						<p class="is-bad"><img src="<?php echo esc_url( get_site_icon_url( 64 ) ); ?>" alt="" width="32" height="32"> <b><?php /* translators: %d: pixels */ echo esc_html( sprintf( __( 'Your app icon is only %1$d × %1$d pixels, so it looks blurry on phones and in Google.', 'marquee' ), $ico_w ) ); ?></b> <?php esc_html_e( 'Pick a square picture 512 × 512 pixels (WordPress makes the small sizes from it).', 'marquee' ); ?> <a href="<?php echo esc_url( $ico_go ); ?>"><?php esc_html_e( 'Change the icon', 'marquee' ); ?></a></p>
+					<?php else : ?>
+						<p class="is-ok"><img src="<?php echo esc_url( get_site_icon_url( 64 ) ); ?>" alt="" width="32" height="32"> <b><?php esc_html_e( 'App icon: sharp and ready.', 'marquee' ); ?></b> <?php esc_html_e( 'Used on phones, browser tabs and Google.', 'marquee' ); ?> <a href="<?php echo esc_url( $ico_go ); ?>"><?php esc_html_e( 'Change it', 'marquee' ); ?></a></p>
+					<?php endif; ?>
+				</div>
 				<?php if ( function_exists( 'ridgeroad_social_networks' ) ) : ?>
 					<h3><?php esc_html_e( 'Social links', 'marquee' ); ?></h3>
 					<p class="mq__fine"><?php esc_html_e( 'Buttons in Stay Connected and small icons at the bottom of every page. A button shows when it is turned on and has a link.', 'marquee' ); ?></p>

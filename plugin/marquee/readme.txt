@@ -55,6 +55,7 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 == Changelog ==
 
 = 0.8.1 =
+* Your show: shows your app icon and warns when it's too small (blurry on phones and in Google), with a link to change it.
 * Behind the Lights: the radio tile shows your station from Settings when you leave its number empty.
 * Google: the show's event info now includes a performer (your show), so Search Console stops reporting "Missing field performer".
 * Google: the home page tells Google its one true address (canonical), so links with Facebook's ?fbclid=… tracking aren't treated as separate pages; the share link no longer copies those tracking bits. The event's street address no longer repeats the ZIP code or shouts in capitals, and the map point is written with sensible precision.
