@@ -56,6 +56,7 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 = 0.8.1 =
 * Google: the show's event info now includes a performer (your show), so Search Console stops reporting "Missing field performer".
+* Google: the home page tells Google its one true address (canonical), so links with Facebook's ?fbclid=… tracking aren't treated as separate pages; the share link no longer copies those tracking bits. The event's street address no longer repeats the ZIP code or shouts in capitals, and the map point is written with sensible precision.
 
 = 0.8.0 =
 * Names form on iPhones: picking a spelling suggestion now fixes the word in the name box. The box no longer shows the name in capitals as you type or has a built-in letter limit (both stopped it); the 14-letter limit is checked when you send.

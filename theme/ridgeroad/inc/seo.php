@@ -64,7 +64,7 @@ add_action( 'wp_head', function () {
 	$name  = wp_specialchars_decode( get_bloginfo( 'name' ), ENT_QUOTES );
 	$title = is_front_page() ? $name . ' – ' . ridgeroad_mod( 'subtitle' ) : wp_get_document_title();
 	$desc  = ridgeroad_seo_description();
-	$url   = is_singular() ? get_permalink() : home_url( add_query_arg( array() ) );
+	$url   = is_singular() ? get_permalink() : strtok( home_url( add_query_arg( array() ) ), '?' ); // no ?fbclid=… or other tracking bits
 	$img   = ridgeroad_share_image();
 	$tags  = array(
 		array( 'name', 'description', $desc ),
@@ -95,6 +95,9 @@ add_action( 'wp_head', function () {
 	}
 	foreach ( $tags as $t ) {
 		printf( '<meta %s="%s" content="%s">' . "\n", esc_attr( $t[0] ), esc_attr( $t[1] ), esc_attr( $t[2] ) );
+	}
+	if ( ! is_singular() && ( is_front_page() || is_home() ) && ! is_paged() ) {
+		echo '<link rel="canonical" href="' . esc_url( home_url( '/' ) ) . '">' . "\n"; // one address for the home page, however people arrive (WordPress adds this for pages itself)
 	}
 }, 4 );
 
@@ -129,7 +132,10 @@ add_action( 'wp_head', function () {
 	);
 	$a = trim( (string) ridgeroad_mod( 'address' ) );
 	if ( $a && ! preg_match( '#^https?://#i', $a ) && ! preg_match( '#^-?\d{1,2}\.\d+\s*,#', $a ) ) {
-		$address['streetAddress'] = $a;
+		if ( $address['postalCode'] ) {
+			$a = trim( preg_replace( '/[\s,]*' . preg_quote( $address['postalCode'], '/' ) . '$/', '', $a ) ); // "414 Ridge Rd 35752" -> "414 Ridge Rd" (the ZIP has its own field)
+		}
+		$address['streetAddress'] = $a === strtoupper( $a ) ? ucwords( strtolower( $a ) ) : $a; // "414 RIDGE RD" -> "414 Ridge Rd"
 	}
 	$event = array(
 		'@context'            => 'https://schema.org',
@@ -146,7 +152,7 @@ add_action( 'wp_head', function () {
 			'@type'   => 'Place',
 			'name'    => $name,
 			'address' => $address,
-			'geo'     => array( '@type' => 'GeoCoordinates', 'latitude' => RIDGEROAD_LAT, 'longitude' => RIDGEROAD_LON ),
+			'geo'     => array( '@type' => 'GeoCoordinates', 'latitude' => (string) round( RIDGEROAD_LAT, 6 ), 'longitude' => (string) round( RIDGEROAD_LON, 6 ) ),
 		),
 		'offers'              => array(
 			'@type'         => 'Offer',
