@@ -52,7 +52,8 @@ add_action( 'admin_post_marquee_save', function () {
 	}
 	$first = ! get_option( 'marquee_setup_done' );
 	update_option( 'marquee_setup_done', 1 );
-	wp_safe_redirect( add_query_arg( array( 'page' => 'marquee', 'saved' => $first ? 'setup' : '1' ), admin_url( 'admin.php' ) ) );
+	$tab = isset( $_POST['mq_tab'] ) ? absint( $_POST['mq_tab'] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification -- checked above
+	wp_safe_redirect( add_query_arg( array( 'page' => 'marquee', 'saved' => $first ? 'setup' : '1' ), admin_url( 'admin.php' ) ) . ( $first ? '' : '#mq-step-' . min( 9, $tab ) ) );
 	exit;
 } );
 
@@ -136,11 +137,20 @@ function marquee_admin_page() {
 			<input type="hidden" name="action" value="marquee_save">
 			<?php wp_nonce_field( 'marquee_save' ); ?>
 			<input type="hidden" name="features_sent" value="1">
+			<input type="hidden" name="mq_tab" value="0" data-mq-tab>
 			<ol class="mq__steps" aria-label="<?php esc_attr_e( 'Steps', 'marquee' ); ?>">
 				<?php
-				$steps = array( __( 'Your show', 'marquee' ), __( 'Location', 'marquee' ), __( 'Schedule', 'marquee' ), __( 'Connections', 'marquee' ), __( 'Features', 'marquee' ), __( 'Artwork', 'marquee' ) );
+				$steps = array(
+					array( __( 'Your show', 'marquee' ), 'star-filled' ),
+					array( __( 'Location', 'marquee' ), 'location' ),
+					array( __( 'Schedule', 'marquee' ), 'calendar-alt' ),
+					array( __( 'Remote Falcon', 'marquee' ), 'playlist-audio' ),
+					array( __( 'Your Name in Lights', 'marquee' ), 'megaphone' ),
+					array( __( 'Features', 'marquee' ), 'admin-settings' ),
+					array( __( 'Artwork', 'marquee' ), 'art' ),
+				);
 				foreach ( $steps as $i => $st ) {
-					printf( '<li><button type="button" data-step="%d">%s</button></li>', (int) $i, esc_html( $st ) );
+					printf( '<li><button type="button" data-step="%d"><span class="mq__ico dashicons dashicons-%s" aria-hidden="true"></span><span>%s</span></button></li>', (int) $i, esc_attr( $st[1] ), esc_html( $st[0] ) );
 				}
 				?>
 			</ol>
@@ -239,9 +249,8 @@ function marquee_admin_page() {
 			</section>
 
 			<section class="mq__pane" data-pane="3">
-				<h2><?php esc_html_e( 'Connections', 'marquee' ); ?></h2>
-				<p class="mq__fine"><?php esc_html_e( 'Both are optional. Without them the site still shows hours, weather and the Kids’ Corner.', 'marquee' ); ?></p>
-				<h3><?php esc_html_e( 'Remote Falcon', 'marquee' ); ?></h3>
+				<h2><?php esc_html_e( 'Remote Falcon', 'marquee' ); ?></h2>
+				<p class="mq__lead"><?php esc_html_e( 'Optional. Connect it and your site shows what’s playing now, your playlist, and song voting. Without it the site still shows hours, weather and the Kids’ Corner.', 'marquee' ); ?></p>
 				<div class="mq__row">
 					<p><label for="mq-rft"><?php esc_html_e( 'Access token', 'marquee' ); ?></label><input id="mq-rft" name="rf_token" type="text" autocomplete="off" value="<?php echo esc_attr( $s['rf_token'] ); ?>"></p>
 					<p><label for="mq-rfs"><?php esc_html_e( 'Secret key', 'marquee' ); ?></label><input id="mq-rfs" name="rf_secret" type="password" autocomplete="new-password" value="<?php echo $s['rf_secret'] ? '••••••••' : ''; ?>"></p>
@@ -263,9 +272,31 @@ function marquee_admin_page() {
 				<?php else : ?>
 					<p class="mq__fine"><?php esc_html_e( 'Your songs show up here once Remote Falcon is connected (save this page after a successful test).', 'marquee' ); ?></p>
 				<?php endif; ?>
-				<?php if ( $names_url ) : ?>
-					<h3><?php esc_html_e( 'FPP: Your Name in Lights', 'marquee' ); ?></h3>
-					<p class="mq__fine"><?php esc_html_e( 'A small script on your FPP shows the names kids send. Fill in your screens, save, then download the two files and follow the setup guide.', 'marquee' ); ?></p>
+			</section>
+
+			<section class="mq__pane" data-pane="4">
+				<h2><?php esc_html_e( 'Your Name in Lights', 'marquee' ); ?></h2>
+				<p class="mq__lead"><?php esc_html_e( 'Kids type their first name on your website. Between songs, your show puts it up on your screens, and if you like, a voice says it on your radio station. Set it up in this order; each part is optional after the first.', 'marquee' ); ?></p>
+				<?php if ( ! $names_url ) : ?>
+					<p class="mq__fine"><?php esc_html_e( 'Your Name in Lights isn’t available with this theme.', 'marquee' ); ?></p>
+				<?php else : ?>
+					<?php
+					$seen   = (int) get_option( 'ridgeroad_names_seen' );
+					$fpp_ok = $seen && time() - $seen < 15 * MINUTE_IN_SECONDS;
+					$v_on   = function_exists( 'marquee_voice_on' ) && marquee_voice_on();
+					$brk    = function_exists( 'marquee_break_info' ) ? marquee_break_info() : null;
+					if ( ! marquee_theme_get( 'names_on' ) ) {
+						echo '<div class="mq__note">' . esc_html__( 'Your Name in Lights is switched off, so kids can’t send names yet. Turn it on under Features when you’re ready.', 'marquee' ) . '</div>';
+					}
+					?>
+					<details class="mq__card" <?php echo $fpp_ok ? '' : 'open'; ?>>
+						<summary>
+							<span class="mq__card-n">1</span>
+							<span class="mq__card-t"><b><?php esc_html_e( 'Connect your FPP', 'marquee' ); ?></b><small><?php esc_html_e( 'Your screens, and the small script that puts the names on them', 'marquee' ); ?></small></span>
+							<?php if ( $fpp_ok ) : ?><span class="mq__pill is-ok"><?php esc_html_e( 'Connected', 'marquee' ); ?></span><?php elseif ( $seen ) : ?><span class="mq__pill is-warn"><?php /* translators: %s: time ago */ echo esc_html( sprintf( __( 'Last seen %s ago', 'marquee' ), human_time_diff( $seen ) ) ); ?></span><?php else : ?><span class="mq__pill"><?php esc_html_e( 'Not set up', 'marquee' ); ?></span><?php endif; ?>
+						</summary>
+						<div class="mq__card-b">
+					<p class="mq__fine"><?php esc_html_e( 'Fill in your screens and Save, then download the two files, put them on your FPP and follow the setup guide. Your website never connects into your house: the FPP checks in with it.', 'marquee' ); ?></p>
 					<?php marquee_names_status(); ?>
 					<input type="hidden" name="fpp_sent" value="1">
 					<div class="mq__row">
@@ -296,8 +327,16 @@ function marquee_admin_page() {
 						<a class="button-link" href="<?php echo esc_url( MARQUEE_URL . 'core/fpp/marquee-names-setup-guide.txt' ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Setup guide', 'marquee' ); ?></a>
 					</p>
 					<small><?php esc_html_e( 'Save first if you changed anything above; the settings file is made from the saved values. It contains your private key, so keep it private.', 'marquee' ); ?></small>
+						</div>
+					</details>
 
-					<h3><?php esc_html_e( 'Say each name out loud (optional)', 'marquee' ); ?></h3>
+					<details class="mq__card" <?php echo ( $fpp_ok && ! $v_on && ! $s['voice_key'] ) ? 'open' : ''; ?>>
+						<summary>
+							<span class="mq__card-n">2</span>
+							<span class="mq__card-t"><b><?php esc_html_e( 'Say each name out loud', 'marquee' ); ?></b><small><?php esc_html_e( 'An ElevenLabs voice (Santa, if you like) reads each name on your radio station', 'marquee' ); ?></small></span>
+							<?php if ( $v_on ) : ?><span class="mq__pill is-ok"><?php echo esc_html( $s['voice_name'] ? $s['voice_name'] : __( 'On', 'marquee' ) ); ?></span><?php else : ?><span class="mq__pill"><?php esc_html_e( 'Off', 'marquee' ); ?></span><?php endif; ?>
+						</summary>
+						<div class="mq__card-b">
 					<p class="mq__fine"><?php esc_html_e( 'An ElevenLabs voice reads each name over your radio station as it goes up on the screens: “Merry Christmas, Emma!”. Use the same voice as your show announcer and it sounds like part of the show.', 'marquee' ); ?></p>
 					<input type="hidden" name="voice_sent" value="1">
 					<?php
@@ -343,11 +382,23 @@ function marquee_admin_page() {
 					<p><label for="mq-veff"><?php esc_html_e( 'Talking faces effect (optional)', 'marquee' ); ?></label><input id="mq-veff" name="voice_effect" type="text" value="<?php echo esc_attr( $s['voice_effect'] ); ?>" placeholder="<?php esc_attr_e( 'Names Talking', 'marquee' ); ?>"><small><?php esc_html_e( 'The name of an FPP effect (.eseq) that moves your singing faces’ mouths (several with commas). It plays while each name is spoken. Leave empty for voice only. The setup guide shows how to make one.', 'marquee' ); ?></small></p>
 					<p class="mq__fine"><?php esc_html_e( 'Cost: about 25 ElevenLabs credits per name, and a name that was already said is free after that (the clip is saved on your website). Kids’ first names are sent to ElevenLabs to make the audio; Settings → Privacy has a line you can add to your privacy page.', 'marquee' ); ?>
 						<?php if ( $s['voice_key'] ) : ?><label><input type="checkbox" name="voice_clear" value="1"> <?php esc_html_e( 'Remove my ElevenLabs key', 'marquee' ); ?></label><?php endif; ?></p>
-					<?php marquee_break_box( $s ); ?>
+						</div>
+					</details>
+
+					<details class="mq__card" <?php echo ( $v_on && ! $brk ) ? 'open' : ''; ?>>
+						<summary>
+							<span class="mq__card-n">3</span>
+							<span class="mq__card-t"><b><?php esc_html_e( 'Names break sound', 'marquee' ); ?></b><small><?php esc_html_e( 'The intro, soft music and outro around the names, made for you', 'marquee' ); ?></small></span>
+							<?php if ( $brk ) : ?><span class="mq__pill is-ok"><?php esc_html_e( 'Built', 'marquee' ); ?></span><?php else : ?><span class="mq__pill"><?php esc_html_e( 'Not built', 'marquee' ); ?></span><?php endif; ?>
+						</summary>
+						<div class="mq__card-b">
+							<?php marquee_break_box( $s ); ?>
+						</div>
+					</details>
 				<?php endif; ?>
 			</section>
 
-			<section class="mq__pane" data-pane="4">
+			<section class="mq__pane" data-pane="5">
 				<h2><?php esc_html_e( 'Features', 'marquee' ); ?></h2>
 				<?php
 				foreach ( $feat as $k => $f ) {
@@ -369,7 +420,7 @@ function marquee_admin_page() {
 				<?php endif; ?>
 			</section>
 
-			<section class="mq__pane" data-pane="5">
+			<section class="mq__pane" data-pane="6">
 				<h2><?php esc_html_e( 'Artwork', 'marquee' ); ?></h2>
 				<p class="mq__fine"><?php esc_html_e( 'Pictures for the Kids’ Corner. All optional: anything left empty uses the standard pictures.', 'marquee' ); ?></p>
 				<input type="hidden" name="art_sent" value="1">
@@ -481,7 +532,7 @@ function marquee_media_field( $name, $label, $help, $ids, $multi, $std = '', $ty
 	<?php
 }
 
-/** What the FPP names script last reported (its setup check), for the Connections step. */
+/** What the FPP names script last reported (its setup check), for the Your Name in Lights step. */
 function marquee_names_status() {
 	$seen = (int) get_option( 'ridgeroad_names_seen' );
 	$rep  = get_option( 'ridgeroad_names_report' );
@@ -570,20 +621,20 @@ function marquee_checklist_items() {
 		return admin_url( 'admin.php?page=marquee#mq-step-' . $n );
 	};
 	$items = array();
-	$items[] = array( marquee_rf_configured(), __( 'Connect Remote Falcon', 'marquee' ), __( 'Now Playing, the playlist and song voting.', 'marquee' ), $step( 3 ), __( 'Connections', 'marquee' ) );
+	$items[] = array( marquee_rf_configured(), __( 'Connect Remote Falcon', 'marquee' ), __( 'Now Playing, the playlist and song voting.', 'marquee' ), $step( 3 ), __( 'Remote Falcon', 'marquee' ) );
 	$items[] = array( (bool) get_theme_mod( 'custom_logo' ), __( 'Add your logo', 'marquee' ), __( 'Header, app icon fallback, share previews and coloring pages.', 'marquee' ), $step( 0 ), __( 'Your show', 'marquee' ) );
 	$items[] = array( '' !== (string) $tm( 'cashapp_url' ), __( 'Add a donation link', 'marquee' ), __( 'Optional: Cash App, PayPal, Venmo or any link.', 'marquee' ), $step( 0 ), __( 'Your show', 'marquee' ) );
 	if ( $tm( 'kids_show' ) && $tm( 'lab_on' ) ) {
-		$items[] = array( ! empty( $s['lab_songs'] ), __( 'Add songs for the Light Lab', 'marquee' ), __( 'Kids light up the house to them.', 'marquee' ), $step( 5 ), __( 'Artwork', 'marquee' ) );
+		$items[] = array( ! empty( $s['lab_songs'] ), __( 'Add songs for the Light Lab', 'marquee' ), __( 'Kids light up the house to them.', 'marquee' ), $step( 6 ), __( 'Artwork', 'marquee' ) );
 	}
 	if ( $tm( 'names_on' ) ) {
 		$seen    = (int) get_option( 'ridgeroad_names_seen' );
-		$items[] = array( $seen && time() - $seen < 3 * DAY_IN_SECONDS, __( 'Set up Your Name in Lights on FPP', 'marquee' ), __( 'Download the script and settings file, then follow the guide.', 'marquee' ), $step( 3 ), __( 'Connections', 'marquee' ) );
+		$items[] = array( $seen && time() - $seen < 3 * DAY_IN_SECONDS, __( 'Set up Your Name in Lights on FPP', 'marquee' ), __( 'Download the script and settings file, then follow the guide.', 'marquee' ), $step( 4 ), __( 'Your Name in Lights', 'marquee' ) );
 	}
 	if ( 'ridgeroad' !== get_template() ) {
 		$front   = (int) get_option( 'page_on_front' );
 		$on_site = ( $front && has_block( 'marquee/home', $front ) ) || (int) get_option( 'ridgeroad_kids_page' );
-		$items[] = array( (bool) $on_site, __( 'Put the show on your pages', 'marquee' ), __( 'Tick “Make my show pages”, or add Marquee blocks to any page.', 'marquee' ), $step( 4 ), __( 'Features', 'marquee' ) );
+		$items[] = array( (bool) $on_site, __( 'Put the show on your pages', 'marquee' ), __( 'Tick “Make my show pages”, or add Marquee blocks to any page.', 'marquee' ), $step( 5 ), __( 'Features', 'marquee' ) );
 	}
 	$items[] = array( (bool) get_option( 'marquee_tips_seen' ), __( 'Check your visitor tips and text', 'marquee' ), __( 'Before You Visit, guestbook and Kids’ Corner wording.', 'marquee' ), admin_url( 'customize.php?autofocus[panel]=ridgeroad' ), __( 'Customize', 'marquee' ) );
 	$items[] = array( 0 === strpos( home_url(), 'https://' ), __( 'Use https for the app and alerts', 'marquee' ), __( 'Phones only install the app and allow alerts on a secure (https) site. Most hosts turn it on for free.', 'marquee' ), '', '' );

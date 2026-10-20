@@ -151,3 +151,86 @@
 .mq__faq { margin-top: 16px; }
 .mq__faq summary { cursor: pointer; font-weight: 600; }
 .mq__faq p { margin: 8px 0; }
+
+/* ---------- 0.7.12 look: calmer, one section at a time ---------- */
+.mq { max-width: 1120px; }
+.mq h1 { font-size: 26px; font-weight: 700; }
+.mq__wiz { grid-template-columns: 230px minmax(0, 1fr); gap: 0 24px; }
+.mq__steps { padding: 10px; border: 0; border-radius: 12px; box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 0 0 1px rgba(0,0,0,.05); }
+.mq__steps button { padding: 10px 12px; border-radius: 8px; color: #3c434a; font-weight: 500; }
+.mq__steps button:hover { background: #f6f7f7; }
+.mq__steps .mq__ico { color: #8c8f94; width: 20px; height: 20px; font-size: 20px; }
+.mq__steps button[aria-current="step"] { background: #eaf2fb; color: #135e96; font-weight: 600; box-shadow: inset 3px 0 0 #2271b1; }
+.mq__steps button[aria-current="step"] .mq__ico { color: #2271b1; }
+.mq--settings .mq__steps button::before { display: none; }
+.mq--wizard .mq__steps .mq__ico { display: none; }
+.mq__pane { border: 0; border-radius: 12px; padding: 10px 28px 22px; box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 0 0 1px rgba(0,0,0,.05); }
+.mq__pane h2 { font-size: 21px; font-weight: 700; margin: 18px 0 6px; }
+.mq__pane h3 { font-size: 15px; margin: 24px 0 6px; padding-top: 18px; border-top: 1px solid #f0f0f1; }
+.mq__lead { font-size: 14px; color: #50575e; max-width: 72ch; margin: 0 0 18px; line-height: 1.55; }
+.mq__pane input[type=text], .mq__pane input[type=url], .mq__pane input[type=password], .mq__pane input[type=number], .mq__pane input[type=date], .mq__pane input[type=time], .mq__pane select { min-height: 38px; border-radius: 6px; border-color: #c3c4c7; }
+.mq__pane input:focus, .mq__pane select:focus { border-color: #2271b1; box-shadow: 0 0 0 1px #2271b1; }
+.mq__pane label:not(.mq__feat) { color: #1d2327; }
+/* settings page: show one section at a time, like tabs */
+.mq--settings.is-js .mq__pane { display: none; }
+.mq--settings.is-js .mq__pane.is-on { display: block; }
+.mq--settings .mq__nav { background: rgba(240,240,241,.92); backdrop-filter: blur(4px); padding: 12px 0; margin-top: 4px; }
+.mq__nav .button-primary { min-height: 38px; padding: 0 22px; border-radius: 6px; font-size: 14px; }
+/* switches instead of plain checkboxes for features */
+.mq__feat input[type=checkbox] { -webkit-appearance: none; appearance: none; width: 40px; height: 22px; border-radius: 11px; background: #c3c4c7; border: 0; position: relative; cursor: pointer; transition: background .15s; flex: none; margin: 0; }
+.mq__feat input[type=checkbox]::before { content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; margin: 0; border-radius: 50%; background: #fff; transition: transform .15s; box-shadow: 0 1px 2px rgba(0,0,0,.2); }
+.mq__feat input[type=checkbox]:checked { background: #2271b1; }
+.mq__feat input[type=checkbox]:checked::before { transform: translateX(18px); content: ""; }
+.mq__feat input[type=checkbox]:focus { box-shadow: 0 0 0 2px #fff, 0 0 0 4px #2271b1; }
+.mq__feat b { font-size: 14px; }
+/* cards (Your Name in Lights) */
+.mq__card { border: 1px solid #e2e4e7; border-radius: 10px; margin: 12px 0; background: #fff; }
+.mq__card[open] { border-color: #c5d9ed; box-shadow: 0 2px 8px rgba(34,113,177,.08); }
+.mq__card > summary { list-style: none; display: flex; align-items: center; gap: 14px; padding: 14px 18px; cursor: pointer; border-radius: 10px; }
+.mq__card > summary::-webkit-details-marker { display: none; }
+.mq__card > summary:hover { background: #f8f9fa; }
+.mq__card > summary::after { content: "\f347"; font-family: dashicons; color: #8c8f94; font-size: 18px; transition: transform .15s; }
+.mq__card[open] > summary::after { transform: rotate(180deg); }
+.mq__card-n { flex: none; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #eaf2fb; color: #2271b1; font-weight: 700; }
+.mq__card-t { flex: 1; min-width: 0; }
+.mq__card-t b { display: block; font-size: 15px; color: #1d2327; }
+.mq__card-t small { display: block; color: #646970; margin-top: 2px; }
+.mq__pill { flex: none; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: #f0f0f1; color: #50575e; white-space: nowrap; max-width: 180px; overflow: hidden; text-overflow: ellipsis; }
+.mq__pill.is-ok { background: #e6f4ea; color: #1e7a34; }
+.mq__pill.is-ok::before { content: "● "; }
+.mq__pill.is-warn { background: #fcf3e0; color: #8a5a00; }
+.mq__card-b { padding: 4px 22px 18px 62px; border-top: 1px solid #f0f0f1; }
+.mq__card-b > h3:first-child { border-top: 0; padding-top: 0; }
+.mq__note { background: #fcf3e0; border-left: 4px solid #dba617; padding: 10px 14px; border-radius: 6px; margin: 0 0 12px; }
+/* the break builder lives inside its card */
+.mq__card .mq__bb { margin: 0; padding: 0; border: 0; background: none; }
+.mq__card .mq__bb > h3:first-child { display: none; }
+@media (max-width: 782px) {
+	.mq__card-b { padding: 4px 14px 16px; }
+	.mq__card > summary { gap: 10px; padding: 12px 14px; flex-wrap: wrap; }
+	.mq__pill { order: 3; margin-left: 40px; }
+}
+@media (max-width: 900px) {
+	.mq__steps { gap: 4px; padding: 8px; }
+	.mq__steps li { flex: 1 1 auto; }
+	.mq__steps button { justify-content: center; padding: 8px 10px; }
+}
+/* top boxes: checklist and Show Manager side by side, same card look */
+.mq--settings .mq__todo, .mq--settings .mq__mgr { border: 0; border-radius: 12px; box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 0 0 1px rgba(0,0,0,.05); background: #fff; margin: 12px 0; }
+.mq--settings .mq__todo > summary, .mq--settings .mq__mgr > summary { padding: 14px 18px; font-weight: 600; cursor: pointer; }
+.mq--settings .mq__todo { padding: 0; }
+.mq--settings .mq__todo ul { padding: 0 18px 12px; margin: 0; }
+.mq__fppstat { border-radius: 6px; }
+@media (max-width: 900px) {
+	.mq__wiz { grid-template-columns: 1fr; }
+	.mq__steps { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 4px; margin-bottom: 12px; position: static; }
+	.mq__steps li { flex: none; }
+	.mq__steps button { white-space: nowrap; }
+	.mq__pane { padding: 6px 16px 18px; }
+}
+.mq--settings .mq__mgr { max-width: none; }
+@media (max-width: 782px) {
+	.mq__card-t { flex: 1 1 calc(100% - 90px); }
+	.mq__card-n { width: 26px; height: 26px; }
+	.mq__pill { margin-left: 40px; }
+}

@@ -35,7 +35,7 @@ In xLights, make a sequence about 30 seconds long called "Names in Lights":
   - Optional: a short "Your Name in Lights!" title at the start.
 Render it, upload the .fseq to your FPP master, and make a playlist with just
 that sequence. Name the playlist "Names in Lights" (or put your own name in
-Marquee -> Settings -> Connections).
+Marquee -> Settings -> Your Name in Lights).
 
 Do NOT add this playlist to your show schedule. The script slips it in after
 the current song only when names are waiting.
@@ -43,7 +43,7 @@ the current song only when names are waiting.
 
 3. FILL IN YOUR SCREENS ON YOUR WEBSITE
 ---------------------------------------
-WP Admin -> Marquee -> Settings -> Connections -> "FPP: Your Name in Lights":
+WP Admin -> Marquee -> Settings -> Your Name in Lights -> "Connect your FPP":
   - FPP playlist with your names break: the playlist from step 2.
   - One row per screen:
       Screen             a name for you, like Matrix or TV
@@ -76,7 +76,7 @@ Then download both files:
 
 6. CHECK IT
 -----------
-Within a minute, WP Admin -> Marquee -> Settings -> Connections shows
+Within a minute, WP Admin -> Marquee -> Settings -> Your Name in Lights shows
 "FPP last checked in ..." and a setup check with a green tick or a red cross
 for each part. Fix any red line (see below), then restart FPPD again.
 
@@ -101,7 +101,7 @@ audio, so your ElevenLabs key never goes on the FPP.
 
   a. Make an ElevenLabs account (elevenlabs.io). Developers -> API Keys ->
      Create: give it "Text to Speech" access and "Voices: Read".
-  b. WP Admin -> Marquee -> Settings -> Connections -> "Say each name out
+  b. WP Admin -> Marquee -> Settings -> Your Name in Lights -> "Say each name out
      loud": paste the key, click "Load my voices", pick one (the voice your
      show announcer uses sounds best), and click "Test voice". Turn on
      "Speak the names" and Save settings.
@@ -110,7 +110,7 @@ audio, so your ElevenLabs key never goes on the FPP.
 
 The names break audio (do this once, and again whenever you change it):
   - Your break needs a quiet stretch for the names. Marquee makes the
-    sound for you: Settings -> Connections -> "Names break audio".
+    sound for you: Settings -> Your Name in Lights -> "Names break sound".
   - Type an intro and an outro line (or keep the examples), give the
     length of your names sequence (FPP -> File Manager -> Sequences shows
     it), and optionally pick an instrumental MP3 (no singing or talking).

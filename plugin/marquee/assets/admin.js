@@ -18,11 +18,21 @@
 		});
 		root.classList.toggle('is-first', cur === 0);
 		root.classList.toggle('is-last', cur === panes.length - 1);
+		if (steps[cur] && window.innerWidth <= 900 && steps[cur].parentNode.parentNode.scrollWidth > steps[cur].parentNode.parentNode.clientWidth) {
+			var bar = steps[cur].parentNode.parentNode; bar.scrollLeft = steps[cur].offsetLeft - bar.clientWidth / 2 + steps[cur].offsetWidth / 2;
+		}
 	}
+	var tabIn = root.querySelector('[data-mq-tab]');
 	steps.forEach(function (b) {
 		b.addEventListener('click', function () {
 			var i = +b.getAttribute('data-step');
-			if (wizard) { go(i); } else { go(i); panes[i].scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+			go(i);
+			if (!wizard) {
+				if (tabIn) { tabIn.value = i; }
+				try { history.replaceState(null, '', '#mq-step-' + i); } catch (e) {}
+			}
+			var top = root.querySelector('.mq__wiz').getBoundingClientRect().top + window.pageYOffset - 40;
+			if (window.pageYOffset > top) { window.scrollTo({ top: top, behavior: 'smooth' }); }
 		});
 	});
 	$('[data-mq-back]').addEventListener('click', function () { go(cur - 1); window.scrollTo(0, 0); });
@@ -30,7 +40,7 @@
 	go(0);
 	/* links like #mq-step-3 (from the setup checklist) open that step */
 	var hm = /^#mq-step-(\d)$/.exec(location.hash);
-	if (hm && panes[+hm[1]]) { go(+hm[1]); setTimeout(function () { panes[+hm[1]].scrollIntoView({ block: 'start' }); }, 50); }
+	if (hm && panes[+hm[1]]) { go(+hm[1]); if (tabIn) { tabIn.value = +hm[1]; } }
 
 	function post(action, data) {
 		var fd = new FormData(); fd.append('action', action); fd.append('nonce', C.nonce);

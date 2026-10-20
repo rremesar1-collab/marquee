@@ -37,7 +37,7 @@ Your website never connects into your house. Remote Falcon is reached with your 
 3. Optional: install the Marquee Festive theme (Appearance → Themes → Add New → Upload Theme).
 4. Follow the setup checklist at the top of Marquee → Settings.
 
-For Your Name in Lights, see Marquee → Settings → Connections → "Setup guide".
+For Your Name in Lights, see Marquee → Settings → Your Name in Lights → "Setup guide".
 
 == Frequently Asked Questions ==
 
@@ -55,9 +55,9 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 == Changelog ==
 
 = 0.7.12 =
-* Spoken names (optional): an ElevenLabs voice reads each name out loud as it goes up ("Merry Christmas, Emma!"). Set it up in Marquee → Settings → Connections → "Say each name out loud": paste your key, load your voices, test one. Clips are saved, so a repeated name costs nothing. Optional "talking faces" effect moves your singing faces' mouths while a name is spoken. Speaking speed and "My voice is Santa" options. Clips are stereo so FPP plays them at the right speed. Needs marquee_names.py 3.1.3 and FPP 10 on your FPP.
+* Spoken names (optional): an ElevenLabs voice reads each name out loud as it goes up ("Merry Christmas, Emma!"). Set it up in Marquee → Settings → Your Name in Lights → "Say each name out loud": paste your key, load your voices, test one. Clips are saved, so a repeated name costs nothing. Optional "talking faces" effect moves your singing faces' mouths while a name is spoken. Speaking speed and "My voice is Santa" options. Clips are stereo so FPP plays them at the right speed. Needs marquee_names.py 3.1.3 and FPP 10 on your FPP.
 * Spoken names are leveled to about -14 LUFS, the usual level of show songs.
-* Names break builder (Settings → Connections → "Names break audio"): your voice says an intro and an outro, music plays soft under the names, all leveled to song loudness. Also makes short breaks for 1 or 2 names (each said twice). The names script (3.3) downloads it and sets up the playlists by itself.
+* Names break builder (Settings → Your Name in Lights → "Names break sound"): your voice says an intro and an outro, music plays soft under the names, all leveled to song loudness. Also makes short breaks for 1 or 2 names (each said twice). The names script (3.3) downloads it and sets up the playlists by itself.
 * "First name goes up at" and "Seconds per name" settings (set automatically by the break builder).
 * Coloring pages: Remove takes a standard page out of the Settings list (into "Removed pages", where Restore brings it back).
 

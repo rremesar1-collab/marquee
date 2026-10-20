@@ -206,8 +206,8 @@ function marquee_break_box( $s ) {
 		<h4><?php esc_html_e( 'Before you start', 'marquee' ); ?></h4>
 		<ul class="mq__check">
 			<?php
-			$tick( $voice, $voice ? __( 'A voice is set up (“Say each name out loud” above).', 'marquee' ) : __( 'Set up <b>Say each name out loud</b> above first (ElevenLabs key and a voice), and Save. The intro and outro are made with that voice.', 'marquee' ) );
-			$tick( $script, null === $script ? __( 'Your FPP needs the names script 3.3 or newer. It hasn’t reported its version yet.', 'marquee' ) : ( $script ? __( 'Your FPP runs a names script that can set up the break by itself.', 'marquee' ) : sprintf( __( 'Your FPP runs names script %s. Download <b>marquee_names.py</b> above and upload it to your FPP (it must be 3.3 or newer).', 'marquee' ), esc_html( $sv ) ) ) );
+			$tick( $voice, $voice ? __( 'A voice is set up (step 2, “Say each name out loud”).', 'marquee' ) : __( 'Set up step 2, <b>Say each name out loud</b>, first (ElevenLabs key and a voice), and Save. The intro and outro are made with that voice.', 'marquee' ) );
+			$tick( $script, null === $script ? __( 'Your FPP needs the names script 3.3 or newer. It hasn’t reported its version yet.', 'marquee' ) : ( $script ? __( 'Your FPP runs a names script that can set up the break by itself.', 'marquee' ) : sprintf( __( 'Your FPP runs names script %s. Download <b>marquee_names.py</b> in step 1 and upload it to your FPP (it must be 3.3 or newer).', 'marquee' ), esc_html( $sv ) ) ) );
 			$plok = null;
 			foreach ( is_array( $rep ) && ! empty( $rep['checks'] ) ? $rep['checks'] : array() as $c ) {
 				if ( false !== strpos( $c['msg'], "playlist '" . $pl . "' found" ) ) {
@@ -255,7 +255,7 @@ function marquee_break_box( $s ) {
 		<details class="mq__faq">
 			<summary><?php esc_html_e( 'Questions', 'marquee' ); ?></summary>
 			<p><b><?php esc_html_e( 'Do I have to change my xLights sequence?', 'marquee' ); ?></b> <?php esc_html_e( 'No. Only the sound changes. Marquee times the names to fit your sequence’s length.', 'marquee' ); ?></p>
-			<p><b><?php esc_html_e( 'I already made my own break audio. Do I need this?', 'marquee' ); ?></b> <?php esc_html_e( 'No. Nothing changes on your FPP until you click Build. Just make sure your audio has a quiet part for the names, and set “First name goes up at” and “Seconds per name” above to match it.', 'marquee' ); ?></p>
+			<p><b><?php esc_html_e( 'I already made my own break audio. Do I need this?', 'marquee' ); ?></b> <?php esc_html_e( 'No. Nothing changes on your FPP until you click Build. Just make sure your audio has a quiet part for the names, and set “First name goes up at” and “Seconds per name” in step 1 to match it.', 'marquee' ); ?></p>
 			<p><b><?php esc_html_e( 'What exactly changes on my FPP?', 'marquee' ); ?></b> <?php echo esc_html( sprintf( __( 'Three sound files are added (marquee-break-full.wav, -2 and -1). Your “%1$s” playlist is set to play the full one with your names sequence, and two playlists are added for the short breaks: “%1$s 2” and “%1$s 1”. A copy of your original playlist is kept on the FPP.', 'marquee' ), $pl ) ); ?></p>
 			<p><b><?php esc_html_e( 'Can I use Santa?', 'marquee' ); ?></b> <?php esc_html_e( 'Yes. Pick a Santa voice above and tick “My voice is Santa”. The example lines change to Santa ones.', 'marquee' ); ?></p>
 			<p><b><?php esc_html_e( 'The names start too early or too late.', 'marquee' ); ?></b> <?php esc_html_e( 'Make the intro shorter or longer and build again. The timing is set from how long the intro and outro take to say.', 'marquee' ); ?></p>
