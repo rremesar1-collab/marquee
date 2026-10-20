@@ -89,7 +89,7 @@ function marquee_seqmaker_box( $s ) {
 				echo esc_html( sprintf( __( 'Open one in xLights. If it asks for the music, pick %s (download it below and put it in your show folder).', 'marquee' ), $music_name ) );
 				?></li>
 				<li><?php esc_html_e( 'Click Render All, play it in the house preview, change anything you like, then Save. Saving writes the .fseq file next to it: that’s what FPP plays.', 'marquee' ); ?></li>
-				<li><?php esc_html_e( 'In FPP → Content Setup → File Manager, upload the .fseq (Sequences tab) and the music (Audio tab).', 'marquee' ); ?></li>
+				<li><?php esc_html_e( 'Send them to your FPP, either way: in xLights, Tools → FPP Connect, tick your FPP and the new sequences, and click Upload (it sends the .fseq and the music together); or in FPP → Content Setup → File Manager, upload the .fseq (Sequences tab) and the music (Audio tab).', 'marquee' ); ?></li>
 				<li><?php echo esc_html( sprintf( /* translators: playlist */ __( 'In FPP → Content Setup → Playlists, make a playlist for each one with just that sequence and its music: “%s” for your names break, “Names - Candy Cane Swirl” and so on for the themes. Don’t add them to your show schedule; Marquee plays them between songs.', 'marquee' ), $pl ) ); ?></li>
 				<li><?php esc_html_e( 'Themes: click “Use it” next to each one below so kids can pick it, then Save settings. The setup check in card 1 tells you if FPP can’t find a playlist.', 'marquee' ); ?></li>
 			</ol>

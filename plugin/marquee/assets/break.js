@@ -128,10 +128,14 @@
 			say('Done! Names start at ' + p.start + ' s, one every ' + p.slot + ' s. Your FPP picks it up within a minute.');
 			var nst = document.getElementById('mq-nst'), nsl = document.getElementById('mq-nsl');
 			if (nst) { nst.value = p.start; } if (nsl) { nsl.value = p.slot; }
-			[['Full break', p.full], ['2 names', p.short2], ['1 name', p.short1]].forEach(function (x) {
-				var d = document.createElement('p'), b = document.createElement('b'), a = document.createElement('audio');
-				b.textContent = x[0] + ' '; a.controls = true; a.src = URL.createObjectURL(x[1]);
-				d.appendChild(b); d.appendChild(a); prev.appendChild(d);
+			var note = document.createElement('p'); note.className = 'mq__fine';
+			note.textContent = 'Why do they sound alike? The names aren’t in these files: your FPP says each name live, over the soft music, the moment it goes up on your screens. The three only differ in how long the soft music lasts before the outro. Your FPP picks the right one by itself, depending on how many names are waiting.';
+			prev.appendChild(note);
+			function secs(blob) { return Math.round((blob.size - 44) / (RATE * 4) * 10) / 10; }
+			[['Full break', p.full, '3 to 6 names waiting: room for 6 names'], ['2 names', p.short2, '2 names waiting: each said twice'], ['1 name', p.short1, '1 name waiting: said twice']].forEach(function (x) {
+				var d = document.createElement('p'), b = document.createElement('b'), sm = document.createElement('small'), a = document.createElement('audio');
+				b.textContent = x[0] + ' · ' + secs(x[1]) + ' s'; sm.textContent = ' ' + x[2]; a.controls = true; a.src = URL.createObjectURL(x[1]);
+				d.appendChild(b); d.appendChild(sm); d.appendChild(document.createElement('br')); d.appendChild(a); prev.appendChild(d);
 			});
 			prev.hidden = false;
 		}).catch(function (e) {

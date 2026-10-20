@@ -55,7 +55,9 @@ or any soft instrumental), click Render All, check it in the house
 preview, and Save. Saving writes the .fseq next to it. FPP plays the .fseq,
 not the .xsq.
 
-Upload the .fseq (and its music) to your FPP master, and make a playlist with just
+Send the .fseq (and its music) to your FPP master: in xLights, Tools -> FPP
+Connect, tick your FPP and the sequence, and click Upload (it sends both); or
+upload them in FPP -> Content Setup -> File Manager. Then make a playlist with just
 that sequence. Name the playlist "Names in Lights" (or put your own name in
 Marquee -> Settings -> Names & FPP).
 
