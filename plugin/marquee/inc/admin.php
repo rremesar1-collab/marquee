@@ -471,10 +471,8 @@ function marquee_admin_page() {
 					}
 				}
 				?>
-				<h3><?php esc_html_e( 'Show pages', 'marquee' ); ?></h3>
-				<?php if ( $theme ) : ?>
-					<p class="mq__fine"><?php esc_html_e( 'The festive theme draws your Home, Kids’ Corner and Songs & Videos pages for you.', 'marquee' ); ?></p>
-				<?php else : ?>
+				<?php if ( ! $theme ) : /* only with another WordPress theme: the festive theme draws these pages itself */ ?>
+					<h3><?php esc_html_e( 'Show pages', 'marquee' ); ?></h3>
 					<label class="mq__feat"><span><b><?php esc_html_e( 'Make my show pages', 'marquee' ); ?></b><small><?php esc_html_e( 'Creates Home (the whole show, made your front page), Kids’ Corner and Songs & Videos with the show sections in them. Pages that already have content are left alone. You can edit them like any page.', 'marquee' ); ?></small></span><input type="checkbox" name="make_pages" value="1" <?php checked( $setup ); ?>></label>
 				<?php endif; ?>
 			</section>
