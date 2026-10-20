@@ -44,8 +44,26 @@
 		running: 'Between songs — stay tuned!',
 		canceled: 'No show tonight'
 	};
+	/* Traffic & parking alert from Show Control: a strip at the top of every page while it's on. */
+	function advisory(a) {
+		var bar = document.querySelector('[data-rr-advisory]');
+		if (!a) { if (bar) { bar.remove(); } return; }
+		if (!bar) {
+			bar = document.createElement('div'); bar.setAttribute('data-rr-advisory', ''); bar.setAttribute('role', 'status');
+			bar.style.cssText = 'position:sticky;top:0;z-index:9999;display:flex;gap:10px;align-items:center;justify-content:center;padding:10px 16px;background:#ffcc33;color:#1d1200;font:600 15px/1.35 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.25)';
+			document.body.insertBefore(bar, document.body.firstChild);
+		}
+		var key = a.kind + '|' + a.title + '|' + a.text;
+		if (bar.getAttribute('data-k') === key) { return; }
+		bar.setAttribute('data-k', key); bar.innerHTML = '';
+		var i = document.createElement('span'); i.setAttribute('aria-hidden', 'true'); i.style.fontSize = '20px'; i.textContent = a.icon || '📣';
+		var t = document.createElement('span'); var b = document.createElement('b'); b.textContent = a.title; t.appendChild(b);
+		if (a.text) { t.appendChild(document.createTextNode(' ' + a.text)); }
+		bar.appendChild(i); bar.appendChild(t);
+	}
 	function apply(d) {
 		if (!d || !d.status) { return; }
+		advisory(d.advisory || null);
 		var s = d.status, np = d.nowPlaying || {};
 		var badge = $('[data-rr="badge"]');
 		if (badge) {

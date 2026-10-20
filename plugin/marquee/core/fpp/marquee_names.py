@@ -88,6 +88,7 @@ DEFAULTS = {
     "live_show_for": 6,               # live mode: seconds each name stays up
 }
 MODE = {"mode": None, "show_for": None}   # what the website said last (it wins over the settings file)
+ADVISORY = {"now": None, "last": 0.0}     # traffic & parking alert from Show Control, put on the screens now and then
 
 
 def live():
@@ -193,6 +194,7 @@ def pull(done_ids, st=None, report=None):
             if MODE["mode"] and MODE["mode"] != res["data"]["mode"]:
                 log("website switched names to", "during songs on the screens" if res["data"]["mode"] == "live" else "a names break between songs")
             MODE["mode"] = res["data"]["mode"]
+        ADVISORY["now"] = res["data"].get("advisory") if isinstance(res["data"].get("advisory"), dict) else None
         if res["data"].get("live_show_for"):
             MODE["show_for"] = float(res["data"]["live_show_for"])
         THEMES.clear()
@@ -857,6 +859,16 @@ def main():
                     done = []
                 time.sleep(5)
                 continue
+            adv = ADVISORY["now"]
+            if adv and adv.get("text") and time.time() - ADVISORY["last"] >= float(adv.get("every") or 180):
+                ADVISORY["last"] = time.time()
+                keep = S["show_for"]
+                S["show_for"] = 6
+                try:
+                    if show(str(adv["text"])[:60], "#FFCC33"):
+                        log("traffic alert on the screens:", adv["text"])
+                finally:
+                    S["show_for"] = keep
             if time.time() - last_check >= every:
                 last_check = time.time()
                 data = pull(done, st)

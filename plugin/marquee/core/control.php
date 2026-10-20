@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /* -------------------------------------------------------------------------
  * Stats
  * ---------------------------------------------------------------------- */
-const RR_STAT_EVENTS = array( 'visit', 'kids', 'lab_play', 'lab_save', 'elf', 'trivia', 'coloring', 'name_sent', 'name_shown', 'entry', 'heart', 'song_vote', 'app_install', 'app_open', 'alerts_on', 'buzz_sent' );
+const RR_STAT_EVENTS = array( 'visit', 'kids', 'lab_play', 'lab_save', 'elf', 'trivia', 'coloring', 'name_sent', 'name_shown', 'entry', 'heart', 'song_vote', 'app_install', 'app_open', 'alerts_on', 'buzz_sent', 'voice_made', 'social_post', 'traffic', 'name_theme' );
 
 /** Show-night date: anything before 6 AM counts toward the night before. */
 function ridgeroad_stat_day( $ts = null ) {
@@ -113,8 +113,11 @@ add_action( 'admin_enqueue_scripts', function ( $hook ) {
 	if ( 'toplevel_page_rr-control' !== $hook ) {
 		return;
 	}
-	wp_enqueue_style( 'rr-control', RR_FEAT_URL . 'assets/css/control.css', array(), RIDGEROAD_VERSION );
-	wp_enqueue_script( 'rr-control', RR_FEAT_URL . 'assets/js/control.js', array(), RIDGEROAD_VERSION, true );
+	$v = function ( $f ) {
+		return RIDGEROAD_VERSION . ( defined( 'RR_FEAT_DIR' ) && file_exists( RR_FEAT_DIR . $f ) ? '.' . filemtime( RR_FEAT_DIR . $f ) : '' );
+	};
+	wp_enqueue_style( 'rr-control', RR_FEAT_URL . 'assets/css/control.css', array(), $v( 'assets/css/control.css' ) );
+	wp_enqueue_script( 'rr-control', RR_FEAT_URL . 'assets/js/control.js', array(), $v( 'assets/js/control.js' ), true );
 	wp_localize_script( 'rr-control', 'RRCtl', array(
 		'ajax'  => admin_url( 'admin-ajax.php' ),
 		'nonce' => wp_create_nonce( 'rr_ctl' ),
@@ -125,17 +128,35 @@ function ridgeroad_control_page() {
 	$cust = admin_url( 'customize.php?autofocus[section]=rr_kids' );
 	?>
 	<div class="wrap rrc" data-rrc>
-		<div class="rrc__head">
-			<h1><?php esc_html_e( 'Show Control', 'ridgeroad' ); ?></h1>
-			<p><?php esc_html_e( 'Everything you need during a show, on one page. Updates every 15 seconds.', 'ridgeroad' ); ?></p>
-			<span class="rrc__saved" data-rrc-saved aria-live="polite"></span>
-		</div>
+		<h1 class="screen-reader-text"><?php esc_html_e( 'Show Control', 'ridgeroad' ); ?></h1>
+		<header class="rrc__hero">
+			<div class="rrc__hero-top">
+				<div>
+					<p class="rrc__eyebrow"><?php esc_html_e( 'Show Control', 'ridgeroad' ); ?> · <span data-rrc="today"><?php echo esc_html( wp_date( 'l, F j', null, ridgeroad_tz() ) ); ?></span></p>
+					<p class="rrc__headline"><span data-rrc="show"></span></p>
+					<p class="rrc__headsub" data-rrc="show-sub"></p>
+				</div>
+				<div class="rrc__clock"><b data-rrc="clock"></b><small data-rrc="updated"><?php esc_html_e( 'Updates every 15 seconds', 'ridgeroad' ); ?></small><span class="rrc__saved" data-rrc-saved aria-live="polite"></span></div>
+			</div>
+			<nav class="rrc__quick" aria-label="<?php esc_attr_e( 'Quick actions', 'ridgeroad' ); ?>">
+				<button type="button" class="rrc__qa is-red" data-rrc-qa="cancel"><span aria-hidden="true">🌧️</span> <span data-rrc="qa-cancel"><?php esc_html_e( 'Cancel tonight', 'ridgeroad' ); ?></span></button>
+				<button type="button" class="rrc__qa is-amber" data-rrc-qa="traffic"><span aria-hidden="true">🚗</span> <?php esc_html_e( 'Traffic alert', 'ridgeroad' ); ?></button>
+				<button type="button" class="rrc__qa" data-rrc-qa="alert"><span aria-hidden="true">📣</span> <?php esc_html_e( 'Send a phone alert', 'ridgeroad' ); ?></button>
+				<button type="button" class="rrc__qa" data-rrc-qa="pause"><span aria-hidden="true">⏸️</span> <span data-rrc="qa-pause"><?php esc_html_e( 'Pause names', 'ridgeroad' ); ?></span></button>
+				<?php $mgr = function_exists( 'marquee_manager_url' ) ? marquee_manager_url() : ''; ?>
+				<?php if ( $mgr ) : ?><a class="rrc__qa is-ghost" href="<?php echo esc_url( $mgr ); ?>" target="_blank" rel="noopener"><span aria-hidden="true">📱</span> <?php esc_html_e( 'Open the Show Manager', 'ridgeroad' ); ?></a><?php endif; ?>
+			</nav>
+		</header>
+
+		<div class="rrc__traffic-now" data-rrc-traffic-now hidden></div>
 
 		<section class="rrc__status" aria-label="<?php esc_attr_e( 'Right now', 'ridgeroad' ); ?>">
-			<div class="rrc__st" data-rrc-st="show"><small><?php esc_html_e( 'Tonight’s show', 'ridgeroad' ); ?></small><b data-rrc="show"></b><span data-rrc="show-sub"></span></div>
-			<div class="rrc__st" data-rrc-st="fpp"><small>FPP-Master</small><b data-rrc="fpp"></b><span data-rrc="fpp-sub"></span></div>
-			<div class="rrc__st" data-rrc-st="names"><small><?php esc_html_e( 'Name in Lights', 'ridgeroad' ); ?></small><b data-rrc="names"></b><span data-rrc="names-sub"></span></div>
-			<div class="rrc__st"><small><?php esc_html_e( 'On the website now', 'ridgeroad' ); ?></small><b data-rrc="people"></b><span data-rrc="people-sub"></span></div>
+			<div class="rrc__st" data-rrc-st="fpp"><i aria-hidden="true">🎛️</i><small><?php esc_html_e( 'FPP', 'ridgeroad' ); ?></small><b data-rrc="fpp"></b><span data-rrc="fpp-sub"></span></div>
+			<div class="rrc__st" data-rrc-st="names"><i aria-hidden="true">⭐</i><small><?php esc_html_e( 'Name in Lights', 'ridgeroad' ); ?></small><b data-rrc="names"></b><span data-rrc="names-sub"></span></div>
+			<div class="rrc__st" data-rrc-st="people"><i aria-hidden="true">👀</i><small><?php esc_html_e( 'On the website now', 'ridgeroad' ); ?></small><b data-rrc="people"></b><span data-rrc="people-sub"></span></div>
+			<div class="rrc__st" data-rrc-st="wx"><i aria-hidden="true" data-rrc="wx-icon">🌤️</i><small><?php esc_html_e( 'Weather', 'ridgeroad' ); ?></small><b data-rrc="wx"></b><span data-rrc="wx-sub"></span></div>
+			<div class="rrc__st" data-rrc-st="social"><i aria-hidden="true">💬</i><small><?php esc_html_e( 'Social posts', 'ridgeroad' ); ?></small><b data-rrc="social"></b><span data-rrc="social-sub"></span></div>
+			<div class="rrc__st" data-rrc-st="phones"><i aria-hidden="true">🔔</i><small><?php esc_html_e( 'Phones getting alerts', 'ridgeroad' ); ?></small><b data-rrc="phones"></b><span data-rrc="phones-sub"></span></div>
 		</section>
 
 		<div class="rrc__grid">
@@ -187,6 +208,33 @@ function ridgeroad_control_page() {
 					<p class="rrc__sub"><?php esc_html_e( 'Just shown', 'ridgeroad' ); ?></p>
 					<ul class="rrc__list" data-rrc-list="shown"></ul>
 					<p class="rrc__fine"><?php esc_html_e( '“Block word” removes the name and adds it to your block list, so it can’t be sent again.', 'ridgeroad' ); ?></p>
+				</div>
+			</section>
+		</div>
+
+		<div class="rrc__grid">
+			<section class="rrc__card" id="rrc-traffic" data-rrc-traffic>
+				<header><h2><span aria-hidden="true">🚗</span> <?php esc_html_e( 'Traffic & parking', 'ridgeroad' ); ?></h2><span data-rrc="traffic-sub"></span></header>
+				<div class="rrc__body">
+					<p class="rrc__fine"><?php esc_html_e( 'One tap puts a message at the top of every page of your website. It turns itself off when the time is up.', 'ridgeroad' ); ?></p>
+					<div class="rrc__tbtns" data-rrc-tbtns></div>
+					<p class="rrc__trow"><input type="text" maxlength="140" data-rrc-tcustom placeholder="<?php esc_attr_e( 'Or type your own: Road closed at Elm St, please use Oak St', 'ridgeroad' ); ?>"> <button type="button" class="rrc__btn" data-rrc-tsend="custom"><?php esc_html_e( 'Post it', 'ridgeroad' ); ?></button></p>
+					<div class="rrc__topts">
+						<label><?php esc_html_e( 'For', 'ridgeroad' ); ?> <select data-rrc-tmin><option value="30"><?php esc_html_e( '30 minutes', 'ridgeroad' ); ?></option><option value="60" selected><?php esc_html_e( '1 hour', 'ridgeroad' ); ?></option><option value="120"><?php esc_html_e( '2 hours', 'ridgeroad' ); ?></option><option value="0"><?php esc_html_e( 'the rest of the night', 'ridgeroad' ); ?></option></select></label>
+						<label data-rrc-talert-row><input type="checkbox" data-rrc-talert> <span data-rrc="talert-label"><?php esc_html_e( 'Also send a phone alert', 'ridgeroad' ); ?></span></label>
+						<label><input type="checkbox" data-rrc-tscreens> <?php esc_html_e( 'Also show it on my screens every 3 minutes', 'ridgeroad' ); ?></label>
+					</div>
+					<p class="rrc__fine"><?php esc_html_e( 'Screens: needs the names script 3.5 on your FPP. It goes over whatever is playing for a few seconds, so leave it off if your matrix is busy in every song.', 'ridgeroad' ); ?></p>
+				</div>
+			</section>
+
+			<section class="rrc__card" id="rrc-social" data-rrc-social-card>
+				<header><h2><span aria-hidden="true">💬</span> <?php esc_html_e( 'Social posts', 'ridgeroad' ); ?></h2><span data-rrc="social-card-sub"></span></header>
+				<div class="rrc__body">
+					<div class="rrc__tiles rrc__tiles--3" data-rrc-social-tiles></div>
+					<p class="rrc__sub"><?php esc_html_e( 'Recent posts', 'ridgeroad' ); ?></p>
+					<ul class="rrc__list" data-rrc-list="social"></ul>
+					<p class="rrc__fine" data-rrc="social-help"></p>
 				</div>
 			</section>
 		</div>
@@ -348,6 +396,15 @@ function ridgeroad_control_state() {
 		),
 		'names'    => array( 'open' => ridgeroad_names_open(), 'waiting' => $waiting, 'shown' => $shown, 'shown_tonight' => isset( $tn['name_shown'] ) ? (int) $tn['name_shown'] : 0 ),
 		'social'   => apply_filters( 'ridgeroad_social_state', array( 'ready' => false ) ),
+		'traffic'  => array(
+			'now'     => ( function () {
+				$a = ridgeroad_advisory();
+				return $a ? array( 'kind' => $a['kind'], 'icon' => $a['icon'], 'title' => $a['title'], 'left' => human_time_diff( time(), (int) $a['until'] ), 'until' => wp_date( 'g:i A', (int) $a['until'], ridgeroad_tz() ), 'screens' => ! empty( $a['screens'] ) ) : null;
+			} )(),
+			'presets' => array_map( function ( $p ) {
+				return array( 'icon' => $p['icon'], 'label' => $p['label'] );
+			}, ridgeroad_advisory_presets() ),
+		),
 		'switches' => array(
 			'cancel'       => ridgeroad_cancel_tonight_on(),
 			'names_on'     => (bool) ridgeroad_mod( 'names_on' ),
@@ -374,6 +431,17 @@ function ridgeroad_control_state() {
 		),
 		'guestbook' => $gb,
 		'people'   => array( 'now' => count( $pres ), 'kids' => $kids ),
+		'weather'  => ( function () {
+			$w = function_exists( 'ridgeroad_weather' ) ? ridgeroad_weather() : array();
+			if ( empty( $w['ok'] ) ) {
+				return null;
+			}
+			$rain = 0;
+			foreach ( (array) ( $w['hours'] ?? array() ) as $h ) {
+				$rain = max( $rain, (int) ( $h['pop'] ?? 0 ) );
+			}
+			return array( 'temp' => $w['temp'], 'label' => $w['label'], 'code' => (int) ( $w['code'] ?? 0 ), 'rain' => $rain, 'unit' => function_exists( 'ridgeroad_metric' ) && ridgeroad_metric() ? '°C' : '°F' );
+		} )(),
 		'stats'    => array( 'tonight' => $tn, 'season' => $sea, 'nights' => $nights, 'top_song' => $top_song ),
 		'app'      => array(
 			'ready'    => function_exists( 'ridgeroad_push_ready' ) && ridgeroad_push_ready() && (bool) ridgeroad_vapid(),
@@ -540,6 +608,91 @@ add_action( 'wp_ajax_rr_ctl_gb', function () {
 	wp_set_comment_status( $id, ! empty( $_POST['approve'] ) ? 'approve' : 'trash' );
 	if ( function_exists( 'ridgeroad_flush_cache' ) ) {
 		ridgeroad_flush_cache();
+	}
+	wp_send_json_success( ridgeroad_control_state() );
+} );
+
+/* -------------------------------------------------------------------------
+ * Traffic & parking alerts: a quick message that turns itself off.
+ * Shows on the website (live strip), optionally as a phone alert and on the
+ * show's screens (the FPP names script puts it up every few minutes).
+ * ---------------------------------------------------------------------- */
+function ridgeroad_advisory_presets() {
+	return array(
+		'traffic'  => array( 'icon' => '🚗', 'label' => __( 'Heavy traffic', 'ridgeroad' ), 'title' => __( 'Heavy traffic tonight', 'ridgeroad' ), 'text' => __( 'Please keep moving and don’t stop in the road. Thanks for your patience!', 'ridgeroad' ), 'screen' => __( 'PLEASE KEEP MOVING', 'ridgeroad' ) ),
+		'driveway' => array( 'icon' => '🚫', 'label' => __( 'Driveway blocked', 'ridgeroad' ), 'title' => __( 'Please don’t block driveways', 'ridgeroad' ), 'text' => __( 'Our neighbors need to get in and out. Please only park where it’s allowed.', 'ridgeroad' ), 'screen' => __( 'PLEASE DON’T BLOCK DRIVEWAYS', 'ridgeroad' ) ),
+		'moving'   => array( 'icon' => '➡️', 'label' => __( 'Please keep moving', 'ridgeroad' ), 'title' => __( 'Please keep moving', 'ridgeroad' ), 'text' => __( 'Enjoy the show from your car and keep traffic flowing so everyone gets a turn.', 'ridgeroad' ), 'screen' => __( 'PLEASE KEEP MOVING', 'ridgeroad' ) ),
+		'parking'  => array( 'icon' => '🅿️', 'label' => __( 'Parking full', 'ridgeroad' ), 'title' => __( 'Parking is full', 'ridgeroad' ), 'text' => __( 'Please drive by slowly and enjoy the show from your car.', 'ridgeroad' ), 'screen' => __( 'PARKING FULL - PLEASE DRIVE THRU', 'ridgeroad' ) ),
+	);
+}
+/** The alert that's on now, or null. */
+function ridgeroad_advisory() {
+	$a = get_option( 'ridgeroad_advisory' );
+	if ( ! is_array( $a ) || empty( $a['until'] ) || (int) $a['until'] <= time() ) {
+		return null;
+	}
+	return $a;
+}
+function ridgeroad_advisory_public() {
+	$a = ridgeroad_advisory();
+	return $a ? array( 'kind' => $a['kind'], 'icon' => $a['icon'], 'title' => $a['title'], 'text' => $a['text'], 'until' => (int) $a['until'] ) : null;
+}
+/* The FPP names script puts it on the screens (if that box was ticked). */
+add_filter( 'ridgeroad_names_pull_data', function ( $data ) {
+	$a = ridgeroad_advisory();
+	if ( $a && ! empty( $a['screens'] ) ) {
+		$data['advisory'] = array( 'text' => $a['screen'], 'every' => 180, 'id' => (string) $a['t'] );
+	}
+	return $data;
+} );
+add_action( 'wp_ajax_rr_ctl_traffic', function () {
+	check_ajax_referer( 'rr_ctl', 'nonce' );
+	if ( ! ridgeroad_ctl_can() ) {
+		wp_send_json_error( null, 403 );
+	}
+	$kind = isset( $_POST['kind'] ) ? sanitize_key( wp_unslash( $_POST['kind'] ) ) : '';
+	if ( 'clear' === $kind ) {
+		delete_option( 'ridgeroad_advisory' );
+		wp_send_json_success( ridgeroad_control_state() );
+	}
+	$pre = ridgeroad_advisory_presets();
+	$p   = isset( $pre[ $kind ] ) ? $pre[ $kind ] : array( 'icon' => '📣', 'label' => __( 'Message', 'ridgeroad' ), 'title' => '', 'text' => '', 'screen' => '' );
+	$own = isset( $_POST['text'] ) ? mb_substr( trim( sanitize_text_field( wp_unslash( $_POST['text'] ) ) ), 0, 140 ) : '';
+	if ( ! isset( $pre[ $kind ] ) ) {
+		if ( '' === $own ) {
+			wp_send_json_error( array( 'message' => __( 'Type the message first.', 'ridgeroad' ) ) );
+		}
+		$p['title']  = $own;
+		$p['screen'] = mb_strtoupper( mb_substr( $own, 0, 40 ) );
+		$kind        = 'custom';
+	}
+	$min = isset( $_POST['minutes'] ) ? (int) $_POST['minutes'] : 60;
+	if ( $min <= 0 ) {     // until the show night ends (6 AM)
+		$tz    = ridgeroad_tz();
+		$six   = new DateTimeImmutable( 'now', $tz );
+		$until = ( (int) $six->format( 'G' ) < 6 ? $six : $six->modify( '+1 day' ) )->setTime( 6, 0 )->getTimestamp();
+	} else {
+		$until = time() + min( 720, $min ) * MINUTE_IN_SECONDS;
+	}
+	$a = array(
+		'kind'    => $kind,
+		'icon'    => $p['icon'],
+		'title'   => $p['title'],
+		'text'    => $p['text'],
+		'screen'  => $p['screen'],
+		'until'   => $until,
+		'screens' => ! empty( $_POST['screens'] ),
+		't'       => time(),
+	);
+	update_option( 'ridgeroad_advisory', $a, false );
+	ridgeroad_stat_add( 'traffic' );
+	if ( ! empty( $_POST['alert'] ) && function_exists( 'ridgeroad_push_topic' ) ) {
+		ridgeroad_push_topic( 'news', array(
+			'title' => $p['icon'] . ' ' . $a['title'],
+			'body'  => $a['text'] ? $a['text'] : $a['title'],
+			'tag'   => 'traffic',
+			'ttl'   => max( 600, $until - time() ),
+		), 'traffic' );
 	}
 	wp_send_json_success( ridgeroad_control_state() );
 } );

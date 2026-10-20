@@ -213,6 +213,7 @@ function ridgeroad_name_send() {
 	$theme = apply_filters( 'ridgeroad_name_theme', '', isset( $_POST['theme'] ) ? sanitize_title( wp_unslash( $_POST['theme'] ) ) : '' );
 	if ( $theme ) {
 		update_post_meta( $id, '_rr_theme', $theme );
+		ridgeroad_stat_add( 'name_theme' );
 	}
 	update_post_meta( $id, '_rr_shown', 0 );
 	ridgeroad_stat_add( 'name_sent' );

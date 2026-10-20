@@ -119,6 +119,9 @@ function marquee_social_night() {
 }
 
 function marquee_social_log( &$s, $what, $net, $ok, $msg, $link = '' ) {
+	if ( $ok && in_array( $what, array( 'cancel', 'resume' ), true ) && 'all' !== $net && function_exists( 'ridgeroad_stat_add' ) ) {
+		ridgeroad_stat_add( 'social_post' );
+	}
 	array_unshift( $s['log'], array( 't' => time(), 'what' => $what, 'net' => $net, 'ok' => (bool) $ok, 'msg' => (string) $msg, 'link' => (string) $link ) );
 	$s['log'] = array_slice( $s['log'], 0, 25 );
 }
@@ -399,6 +402,14 @@ add_filter( 'ridgeroad_social_state', function () {
 		return $out;
 	}
 	$out['auto']  = (bool) $s['auto'];
+	$out['nets']  = array_values( array_filter( array(
+		marquee_social_fb_ready( $s ) ? 'Facebook' : '',
+		marquee_social_fb_ready( $s ) && $s['ig_id'] && $s['ig_on'] ? 'Instagram' : '',
+		marquee_social_th_ready( $s ) && $s['th_on'] ? 'Threads' : '',
+	) ) );
+	$out['history'] = array_map( function ( $l ) {
+		return array( 'ok' => (bool) $l['ok'], 'what' => $l['what'], 'net' => $l['net'], 'msg' => $l['msg'], 'link' => $l['link'], 'when' => wp_date( 'M j, g:i A', (int) $l['t'] ) );
+	}, array_slice( array_values( array_filter( (array) $s['log'], function ( $l ) { return 'connect' !== $l['what']; } ) ), 0, 5 ) );
 	/* translators: %s: Facebook, Instagram and Threads */
 	$out['label'] = sprintf( __( 'Also post “Show canceled tonight” on %s', 'marquee' ), marquee_social_where( $s ) );
 	return $out;

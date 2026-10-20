@@ -153,6 +153,26 @@
 		set('app-to', 'Goes to ' + plural(ap.news, 'phone', 'phones') + ' that chose “special news”.');
 		set('cancel-alert-label', 'Also send a “No show tonight” alert to ' + plural(ap.news, 'phone', 'phones'));
 		$('[data-mm-cancel-alert-row]').hidden = !ap.ready || !ap.news;
+		/* traffic & parking */
+		var tr = d.traffic || {}, tn = tr.now, tb = $('[data-mm-tbtns]'), tbox = $('[data-mm-tnow]');
+		if (tb && !tb.children.length && tr.presets) {
+			Object.keys(tr.presets).forEach(function (k) {
+				var b = document.createElement('button'); b.type = 'button'; b.className = 'mm-tbtn'; b.setAttribute('data-mm-tsend', k);
+				b.innerHTML = '<span class="ic"></span><span class="lb"></span>'; b.querySelector('.ic').textContent = tr.presets[k].icon; b.querySelector('.lb').textContent = tr.presets[k].label; tb.appendChild(b);
+			});
+		}
+		document.querySelectorAll('[data-mm-tsend]').forEach(function (b) { b.classList.toggle('is-on', !!tn && tn.kind === b.getAttribute('data-mm-tsend')); });
+		if (tbox) {
+			tbox.hidden = !tn; tbox.innerHTML = '';
+			if (tn) {
+				var tt = document.createElement('div'); tt.innerHTML = '<b></b><small></small>'; tt.querySelector('b').textContent = tn.icon + ' ' + tn.title;
+				tt.querySelector('small').textContent = 'On your website until ' + tn.until + ' (' + tn.left + ' left)';
+				var off = document.createElement('button'); off.type = 'button'; off.className = 'mm-btn'; off.textContent = 'Turn it off';
+				off.addEventListener('click', function () { act('rr_ctl_traffic', { kind: 'clear' }, 'Traffic alert off'); });
+				tbox.appendChild(tt); tbox.appendChild(off);
+			}
+		}
+		var tar = $('[data-mm-talert-row]'); if (tar) { tar.hidden = !(d.app && d.app.ready && d.app.news); set('talert-label', 'Also send a phone alert to ' + plural((d.app && d.app.news) || 0, 'phone', 'phones')); }
 		socialBox($('[data-mm-social-hint]'), d.social, false, true);
 		socialBox($('[data-mm-social-result]'), d.social, !!sw.cancel, false);
 		var so = d.social || {}, sr = $('[data-mm-cancel-social-row]');
@@ -203,6 +223,16 @@
 		});
 	});
 	$$('[data-mm-set]').forEach(function (i) { i.addEventListener('change', function () { act('rr_ctl_set', { key: i.getAttribute('data-mm-set'), value: i.value }); }); });
+
+	/* traffic & parking: one tap */
+	document.addEventListener('click', function (e) {
+		var b = e.target.closest && e.target.closest('[data-mm-tsend]'); if (!b) { return; }
+		var k = b.getAttribute('data-mm-tsend'), inp = $('[data-mm-tcustom]'), txt = k === 'custom' ? inp.value.trim() : '';
+		if (k === 'custom' && !txt) { inp.focus(); return; }
+		var tar = $('[data-mm-talert-row]');
+		act('rr_ctl_traffic', { kind: k, text: txt, minutes: $('[data-mm-tmin]').value, alert: tar && !tar.hidden && $('[data-mm-talert]').checked ? '1' : '', screens: $('[data-mm-tscreens]').checked ? '1' : '' }, 'Traffic alert is on');
+		if (k === 'custom') { inp.value = ''; }
+	});
 
 	/* cancel */
 	var cc = $('[data-mm-cancel-confirm]'), ask = $('[data-mm-cancel-ask]');

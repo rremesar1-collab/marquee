@@ -150,3 +150,14 @@ textarea { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid va
 .mm-social .so-lines li { margin: 4px 0; }
 .mm-social .is-bad { color: #ffb3b3; }
 .mm-social .so-copy { border: 1px solid currentColor; background: none; color: inherit; border-radius: 8px; padding: 7px 12px; font: inherit; font-size: 13px; cursor: pointer; }
+/* traffic & parking */
+.mm-tbtns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0 0 10px; }
+.mm-tbtn { display: flex; align-items: center; gap: 8px; padding: 12px; border-radius: 12px; border: 1px solid rgba(255, 204, 51, .5); background: rgba(255, 204, 51, .12); color: inherit; font: inherit; font-weight: 600; font-size: 14px; text-align: left; cursor: pointer; }
+.mm-tbtn .ic { font-size: 20px; }
+.mm-tbtn.is-on { background: #ffcc33; color: #2a1f00; border-color: #ffcc33; }
+.mm-trow { display: flex; gap: 8px; }
+.mm-trow input { flex: 1; min-width: 0; }
+.mm-topts { display: grid; gap: 8px; margin-top: 10px; font-size: 14px; }
+.mm-tnow { display: flex; gap: 10px; align-items: center; justify-content: space-between; padding: 10px 12px; margin: 0 0 12px; border-radius: 12px; background: #ffcc33; color: #2a1f00; }
+.mm-tnow b { display: block; } .mm-tnow small { display: block; opacity: .8; }
+.mm-tnow .mm-btn { background: #2a1f00; border-color: #2a1f00; color: #ffcc33; flex: none; }

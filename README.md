@@ -27,7 +27,11 @@ Marquee → Settings → Names & FPP → **Make your sequences** builds the name
 
 ## Social posts
 
-Cancel tonight's show in Show Control or the Show Manager and Marquee posts it on your Facebook Page and Instagram (once a night, with your picture), using your own free Meta app. Marquee → Settings → Social posts has the steps.
+Cancel tonight's show in Show Control or the Show Manager and Marquee posts it on your Facebook Page, Instagram and Threads (once a night, with your picture), using your own free Meta app. Marquee → Settings → Social posts has the steps.
+
+## Traffic & parking alerts
+
+One tap in Show Control or the Show Manager (Heavy traffic, Driveway blocked, Please keep moving, Parking full, or your own words) puts a strip at the top of your website, optionally sends a phone alert and shows it on your screens. It turns itself off when the time is up.
 
 ## Help assistant (optional)
 

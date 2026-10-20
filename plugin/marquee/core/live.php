@@ -435,6 +435,7 @@ function ridgeroad_live_payload() {
 			'code'     => $wx['code'],
 		) : null,
 		'votes'      => function_exists( 'ridgeroad_votes_public' ) ? ridgeroad_votes_public() : null,
+		'advisory'   => function_exists( 'ridgeroad_advisory_public' ) ? ridgeroad_advisory_public() : null,
 		'time'       => time(),
 	);
 }

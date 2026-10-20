@@ -24,7 +24,11 @@
 		state = d;
 		/* status strip */
 		var sc = { running: 'good', canceled: 'bad', upcoming: 'off', ended: 'off', offseason: 'off' }[d.show.state] || 'off';
-		pill('show', 'is-' + sc, d.show.label); set('show-sub', d.show.sub); stCls('show', sc === 'off' ? '' : sc);
+		pill('show', 'is-' + sc, d.show.label); set('show-sub', d.show.sub);
+		var hero = root.querySelector('.rrc__hero'); if (hero) { hero.setAttribute('data-state', d.show.state); }
+		set('qa-cancel', sw0(d).cancel ? 'Undo: the show is on' : 'Cancel tonight');
+		set('qa-pause', sw0(d).paused ? 'Resume names' : 'Pause names');
+		lastAt = Date.now();
 		var f = d.fpp, fresh = f.seen !== null && f.seen < 120;
 		if (!fresh) { set('fpp', f.seen === null ? 'Not connected' : 'Not checking in'); stCls('fpp', f.seen === null ? '' : 'warn'); }
 		else if (f.status === 'playing') { set('fpp', f.sequence || 'Playing'); stCls('fpp', 'good'); }
@@ -84,8 +88,79 @@
 			li.appendChild(el('em', '', e.votes + ' ♥')); tp.appendChild(li);
 		});
 
-		tiles(); chart(); app();
+		tiles(); chart(); app(); extra(d);
 	}
+	function sw0(d) { return d.switches || {}; }
+
+	/* weather, social, phones, traffic: the newer parts of the page */
+	var WX = function (c) { return c === 0 ? '☀️' : c <= 3 ? '⛅' : c <= 48 ? '🌫️' : c <= 67 ? '🌧️' : c <= 77 ? '❄️' : c <= 82 ? '🌦️' : c <= 86 ? '🌨️' : '⛈️'; };
+	function extra(d) {
+		var w = d.weather;
+		if (w) {
+			set('wx', w.temp + w.unit + ' · ' + w.label); set('wx-icon', WX(w.code));
+			set('wx-sub', w.rain ? 'Up to ' + w.rain + '% chance of rain during the show' : 'No rain expected during the show');
+			stCls('wx', w.rain >= 60 ? 'warn' : '');
+		} else { set('wx', '—'); set('wx-sub', 'Weather isn’t available'); }
+		var so = d.social || {}, sea = (d.stats.season || {}), tn = (d.stats.tonight || {});
+		if (so.ready) {
+			set('social', (so.nets || []).join(', ') || 'Connected'); set('social-sub', (sea.social_post || 0) + ' posted this season');
+			stCls('social', so.last && so.last.lines && so.last.lines.some(function (l) { return !l.ok; }) ? 'warn' : 'good');
+		} else { set('social', 'Not set up'); set('social-sub', 'Post cancellations for you'); stCls('social', ''); }
+		var a = d.app || {};
+		set('phones', (a.subs || 0).toLocaleString()); set('phones-sub', (a.news || 0) + ' get news · ' + (a.start || 0) + ' get “lights on”');
+
+		/* social card */
+		set('social-card-sub', so.ready ? 'Posting to ' + (so.nets || []).join(', ') : 'Not set up yet');
+		var st = $('[data-rrc-social-tiles]');
+		if (st) {
+			st.innerHTML = '';
+			[['Posts this season', sea.social_post, ''], ['Posted tonight', tn.social_post, ''], ['Connected', (so.nets || []).length, (so.nets || []).join(', ') || 'none yet']].forEach(function (t) {
+				var x = el('div', 'rrc__tile'); x.appendChild(el('small', '', t[0])); x.appendChild(el('b', '', (t[1] || 0).toLocaleString())); x.appendChild(el('span', '', t[2] || ' ')); st.appendChild(x);
+			});
+		}
+		var sl = $('[data-rrc-list="social"]');
+		if (sl) {
+			sl.innerHTML = '';
+			var hist = so.history || [];
+			if (!hist.length) { sl.appendChild(el('li', 'empty', so.ready ? 'Nothing posted yet. Posts go out when you cancel the show.' : 'Nothing posted yet.')); }
+			var nets = { facebook: 'Facebook', instagram: 'Instagram', threads: 'Threads', all: '' };
+			hist.forEach(function (h) {
+				var li = el('li'), t = el('span', 't');
+				t.appendChild(el('b', h.ok ? '' : 'bad', (h.ok ? '✓ ' : '✗ ') + (nets[h.net] ? nets[h.net] + ' · ' : '') + (h.what === 'resume' ? 'Back on' : 'Canceled')));
+				t.appendChild(el('small', '', h.when + ' · ' + h.msg)); li.appendChild(t);
+				if (h.link) { var v = el('a', 'rrc__btn', 'View'); v.href = h.link; v.target = '_blank'; v.rel = 'noopener'; li.appendChild(v); }
+				sl.appendChild(li);
+			});
+		}
+		var help = $('[data-rrc="social-help"]');
+		if (help) { help.innerHTML = ''; if (!so.ready && so.setup) { help.appendChild(document.createTextNode('When you cancel, Marquee can post it on Facebook, Instagram and Threads. ')); var l = el('a', '', 'Set it up'); l.href = so.setup; help.appendChild(l); } }
+
+		/* traffic */
+		var tr = d.traffic || {}, now = tr.now, box = $('[data-rrc-traffic-now]');
+		if (box) {
+			box.hidden = !now; box.innerHTML = '';
+			if (now) {
+				box.appendChild(el('span', 'ic', now.icon));
+				var tx = el('span', 'tx'); tx.appendChild(el('b', '', now.title)); tx.appendChild(el('small', '', 'On your website until ' + now.until + ' (' + now.left + ' left)' + (now.screens ? ' · on your screens too' : ''))); box.appendChild(tx);
+				var cl = el('button', 'rrc__btn', 'Turn it off'); cl.type = 'button'; cl.addEventListener('click', function () { act('rr_ctl_traffic', { kind: 'clear' }, 'Traffic alert off'); }); box.appendChild(cl);
+			}
+		}
+		set('traffic-sub', now ? 'On now: ' + now.title : 'Nothing posted');
+		var tb = $('[data-rrc-tbtns]');
+		if (tb && !tb.children.length && tr.presets) {
+			Object.keys(tr.presets).forEach(function (k) {
+				var p = tr.presets[k], b = el('button', 'rrc__tbtn'); b.type = 'button'; b.setAttribute('data-rrc-tsend', k);
+				b.appendChild(el('span', 'ic', p.icon)); b.appendChild(el('span', '', p.label)); tb.appendChild(b);
+			});
+		}
+		$$('[data-rrc-tsend]').forEach(function (b) { b.classList.toggle('is-on', !!now && now.kind === b.getAttribute('data-rrc-tsend')); });
+		var ar = $('[data-rrc-talert-row]'); if (ar) { ar.hidden = !a.ready || !a.news; set('talert-label', 'Also send a phone alert to ' + (a.news || 0) + ((a.news === 1) ? ' phone' : ' phones')); }
+	}
+	var lastAt = 0;
+	setInterval(function () {
+		var c = $('[data-rrc="clock"]'); if (c) { c.textContent = new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }); }
+		var u = $('[data-rrc="updated"]'); if (u && lastAt) { var s2 = Math.round((Date.now() - lastAt) / 1000); u.textContent = s2 < 5 ? 'Updated just now' : 'Updated ' + s2 + ' sec ago'; }
+	}, 1000);
 
 	/* Social posts beside the cancel switch: a hint to set it up, or what was posted tonight. */
 	function socialBox(box, so, canceled, confirmOpen) {
@@ -130,7 +205,7 @@
 		socialBox($('[data-rrc-social]'), state.social, !!(state.switches && state.switches.cancel), !$('[data-rrc-cancel-confirm]').hidden);
 		var so = state.social || {}, sr = $('[data-rrc-cancel-social-row]');
 		if (sr) { sr.hidden = !so.ready; set('cancel-social-label', so.label || ''); if (!sr.dataset.touched) { $('[data-rrc-cancel-social]').checked = !!so.auto; } }
-		var kinds = { auto: 'Automatic', cancel: 'From “Cancel tonight’s show”', you: 'Sent by you' };
+		var kinds = { auto: 'Automatic', cancel: 'From “Cancel tonight’s show”', you: 'Sent by you', traffic: 'Traffic alert' };
 		var ul = $('[data-rrc-list="alerts"]'); ul.innerHTML = '';
 		if (!a.log.length) { ul.appendChild(el('li', 'empty', 'No alerts sent yet.')); }
 		a.log.forEach(function (l) {
@@ -145,7 +220,9 @@
 		[['Names sent', s.name_sent, (s.name_shown || 0) + ' shown'], ['Light shows played', s.lab_play, 'Play pressed in the Light Lab'], ['Contest entries', s.entry, ''],
 			['Hearts given', s.heart, ''], ['Song votes', s.song_vote, state.stats.top_song ? 'Top: ' + state.stats.top_song : ''],
 			['Elf names', s.elf, ''], ['Trivia games', s.trivia, avg.replace(' · ', '')], ['Coloring pages', s.coloring, 'opened to print'],
-			['Kids’ Corner visits', s.kids, ''], ['Website visits', s.visit, '']].forEach(function (t) {
+			['Kids’ Corner visits', s.kids, ''], ['Website visits', s.visit, ''],
+			['Names said out loud', s.voice_made, 'new voice clips'], ['Themed picks', s.name_theme, 'names sent with a theme'], ['Social posts', s.social_post, 'Facebook, Instagram, Threads'],
+			['Traffic alerts', s.traffic, ''], ['Phone alerts on', s.alerts_on, 'people who turned alerts on'], ['App installs', s.app_install, '']].forEach(function (t) {
 			var d = el('div', 'rrc__tile'); d.appendChild(el('small', '', t[0])); d.appendChild(el('b', '', (t[1] || 0).toLocaleString())); d.appendChild(el('span', '', t[2] || ' '));
 			box.appendChild(d);
 		});
@@ -207,6 +284,26 @@
 		var sr = $('[data-rrc-cancel-social-row]'), socialToo = sr && !sr.hidden ? ($('[data-rrc-cancel-social]').checked ? '1' : '0') : null;
 		var args = { key: 'cancel', value: '1', alert: alertToo ? '1' : '' }; if (socialToo !== null) { args.social = socialToo; }
 		act('rr_ctl_set', args, 'Canceled for tonight');
+	});
+
+	/* quick actions in the header */
+	$$('[data-rrc-qa]').forEach(function (b) {
+		b.addEventListener('click', function () {
+			var k = b.getAttribute('data-rrc-qa');
+			if (k === 'cancel') { var t = $('[data-rrc-tog="cancel"]'); t.scrollIntoView({ behavior: 'smooth', block: 'center' }); t.click(); }
+			else if (k === 'pause') { $('[data-rrc-tog="paused"]').click(); }
+			else if (k === 'traffic') { $('[data-rrc-traffic]').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+			else if (k === 'alert') { var m = $('[data-rrc-msg]'); m.scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(function () { m.focus(); }, 400); }
+		});
+	});
+	/* traffic & parking: one tap */
+	root.addEventListener('click', function (e) {
+		var b = e.target.closest('[data-rrc-tsend]'); if (!b) { return; }
+		var k = b.getAttribute('data-rrc-tsend'), txt = k === 'custom' ? $('[data-rrc-tcustom]').value.trim() : '';
+		if (k === 'custom' && !txt) { $('[data-rrc-tcustom]').focus(); return; }
+		var ar = $('[data-rrc-talert-row]');
+		act('rr_ctl_traffic', { kind: k, text: txt, minutes: $('[data-rrc-tmin]').value, alert: ar && !ar.hidden && $('[data-rrc-talert]').checked ? '1' : '', screens: $('[data-rrc-tscreens]').checked ? '1' : '' }, 'Traffic alert is on');
+		if (k === 'custom') { $('[data-rrc-tcustom]').value = ''; }
 	});
 
 	/* send an alert */

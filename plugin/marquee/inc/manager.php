@@ -265,6 +265,19 @@ function marquee_manager_app() {
 				</div>
 			</div>
 
+			<div class="mm-card mm-traffic" data-mm-traffic>
+				<h2><?php esc_html_e( 'Traffic & parking', 'marquee' ); ?></h2>
+				<div class="mm-tnow" data-mm-tnow hidden></div>
+				<p><?php esc_html_e( 'One tap puts a message at the top of your website. It turns itself off when the time is up.', 'marquee' ); ?></p>
+				<div class="mm-tbtns" data-mm-tbtns></div>
+				<p class="mm-trow"><input type="text" maxlength="140" data-mm-tcustom placeholder="<?php esc_attr_e( 'Or type your own message', 'marquee' ); ?>"> <button type="button" class="mm-btn" data-mm-tsend="custom"><?php esc_html_e( 'Post', 'marquee' ); ?></button></p>
+				<div class="mm-topts">
+					<label><?php esc_html_e( 'For', 'marquee' ); ?> <select data-mm-tmin><option value="30"><?php esc_html_e( '30 min', 'marquee' ); ?></option><option value="60" selected><?php esc_html_e( '1 hour', 'marquee' ); ?></option><option value="120"><?php esc_html_e( '2 hours', 'marquee' ); ?></option><option value="0"><?php esc_html_e( 'rest of the night', 'marquee' ); ?></option></select></label>
+					<label class="mm-check" data-mm-talert-row><input type="checkbox" data-mm-talert> <span data-mm="talert-label"><?php esc_html_e( 'Also send a phone alert', 'marquee' ); ?></span></label>
+					<label class="mm-check"><input type="checkbox" data-mm-tscreens> <?php esc_html_e( 'Also on my screens every 3 minutes', 'marquee' ); ?></label>
+				</div>
+			</div>
+
 			<div class="mm-card">
 				<h2><?php esc_html_e( 'On the website', 'marquee' ); ?></h2>
 				<?php
