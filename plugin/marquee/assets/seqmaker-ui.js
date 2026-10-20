@@ -52,7 +52,7 @@
 			if (!f) { status(xsqIn, null, 'Not chosen: everything is made from scratch.'); return; }
 			try {
 				var by = S.propsSummary(null, f.text), n = 0, tm2 = S.timing(f.text); Object.keys(by).forEach(function (k) { n += by[k].length; });
-				status(xsqIn, true, '✓ ' + f.name + ': themes keep its look, timing and ' + n + ' props with effects. ' + (d.built === '1' ? 'Name times come from your names break audio, so they match the music.' : (tm2 ? 'Names found at ' + tm2.start + ' s, every ' + tm2.slot + ' s (its Names timing track).' : 'No Names timing track in it, so your names break settings are used.')));
+				status(xsqIn, true, '✓ ' + f.name + ': themes keep its look, timing and ' + n + ' props with effects. ' + (d.built === '1' ? 'The names will line up with your names break audio.' : (tm2 ? 'In it, the first name is ' + tm2.start + ' seconds in, then one every ' + tm2.slot + ' seconds.' : 'The names will use the same times as your names break.')));
 			}
 			catch (e) { status(xsqIn, false, '✗ That isn’t an xLights sequence (.xsq).'); }
 		});
@@ -133,8 +133,8 @@
 			// that audio, so its timing wins; otherwise the sequence's own Names track; otherwise the settings.
 			var built = d.built === '1', useTrack = tm && !built;
 			var useStart = useTrack ? tm.start : +d.start, useSlot = useTrack ? tm.slot : +d.slot;
-			var why = built ? 'to match your names break audio' : (useTrack ? 'read from the Names timing track in your sequence' : (xsq ? 'the same as your names break settings' : 'Marquee placed them'));
-			var tmNote = 'Names at ' + useStart + ' s, then every ' + useSlot + ' s (' + why + ')';
+			var why = built ? 'lined up with your names break audio' : (useTrack ? 'taken from your sequence' : (xsq ? 'the same as your names break' : 'set by Marquee'));
+			var tmNote = 'First name ' + useStart + ' seconds in, then a new name every ' + useSlot + ' seconds (' + why + ')';
 			var opts = { screens: screens, start: useStart, slot: useSlot, names: 6, duration: +d.dur, music: d.music };
 			var rows = jobs.map(function (j) {
 				try {
