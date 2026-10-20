@@ -171,10 +171,11 @@ function marquee_themes_box( $s ) {
 						<p><label for="mq-th<?php echo (int) $i; ?>p"><?php esc_html_e( 'FPP playlist', 'marquee' ); ?></label><input id="mq-th<?php echo (int) $i; ?>p" name="<?php echo esc_attr( $pre ); ?>[playlist]" type="text" maxlength="80" value="<?php echo esc_attr( $t['playlist'] ); ?>" placeholder="<?php echo esc_attr( 'Names - ' . $ex[ $i ] ); ?>"></p>
 					</div>
 					<div class="mq__row mq__row--3">
-						<p><label for="mq-th<?php echo (int) $i; ?>s"><?php esc_html_e( 'First name at (s)', 'marquee' ); ?></label><input id="mq-th<?php echo (int) $i; ?>s" name="<?php echo esc_attr( $pre ); ?>[start]" type="number" min="0" max="60" step="0.1" value="<?php echo esc_attr( $t['start'] ); ?>"></p>
-						<p><label for="mq-th<?php echo (int) $i; ?>l"><?php esc_html_e( 'Seconds per name', 'marquee' ); ?></label><input id="mq-th<?php echo (int) $i; ?>l" name="<?php echo esc_attr( $pre ); ?>[slot]" type="number" min="2.5" max="10" step="0.05" value="<?php echo esc_attr( $t['slot'] ); ?>"></p>
+						<p><label for="mq-th<?php echo (int) $i; ?>s"><?php esc_html_e( 'First name appears at', 'marquee' ); ?> <span class="mq__unit"><?php esc_html_e( 'seconds', 'marquee' ); ?></span></label><input id="mq-th<?php echo (int) $i; ?>s" name="<?php echo esc_attr( $pre ); ?>[start]" type="number" min="0" max="60" step="0.1" value="<?php echo esc_attr( $t['start'] ); ?>"></p>
+						<p><label for="mq-th<?php echo (int) $i; ?>l"><?php esc_html_e( 'Time between names', 'marquee' ); ?> <span class="mq__unit"><?php esc_html_e( 'seconds', 'marquee' ); ?></span></label><input id="mq-th<?php echo (int) $i; ?>l" name="<?php echo esc_attr( $pre ); ?>[slot]" type="number" min="2.5" max="10" step="0.05" value="<?php echo esc_attr( $t['slot'] ); ?>"></p>
 						<div><?php marquee_media_field( $pre . '[img]', __( 'Picture', 'marquee' ), '', $t['img'] ? array( (int) $t['img'] ) : array(), false ); ?></div>
 					</div>
+					<?php marquee_name_timeline( '#mq-th' . (int) $i . 's', '#mq-th' . (int) $i . 'l', (float) $s['break_seq'], true ); ?>
 					<p class="mq__theme-look"><label for="mq-th<?php echo (int) $i; ?>k"><?php esc_html_e( 'Preview kids see (when there’s no picture)', 'marquee' ); ?></label>
 						<select id="mq-th<?php echo (int) $i; ?>k" data-mq-tlook name="<?php echo esc_attr( $pre ); ?>[look]">
 							<option value=""><?php esc_html_e( 'Pick for me from the name', 'marquee' ); ?></option>
@@ -190,7 +191,7 @@ function marquee_themes_box( $s ) {
 	<details class="mq__faq">
 		<summary><?php esc_html_e( 'Questions', 'marquee' ); ?></summary>
 		<p><b><?php esc_html_e( 'How do I make a themed sequence?', 'marquee' ); ?></b> <?php esc_html_e( 'Copy your names break sequence in xLights and change the effects on your house to fit the theme (red and white swirls for Candy Cane, white twinkles for Snowfall…). Keep your screens dark where the names go: FPP draws the names on top. Give it soft music with no singing so the spoken names can be heard. Upload it to FPP and put it in its own playlist, named like the examples.', 'marquee' ); ?></p>
-		<p><b><?php esc_html_e( 'What are “First name at” and “Seconds per name”?', 'marquee' ); ?></b> <?php esc_html_e( 'When the first name goes up in that sequence, and how far apart the names are (up to 6). Match them to the quiet part of your sequence.', 'marquee' ); ?></p>
+		<p><b><?php esc_html_e( 'What are “First name appears at” and “Time between names”?', 'marquee' ); ?></b> <?php esc_html_e( 'Your FPP puts the names up on its own clock while the themed sequence plays: the first one this many seconds in, then one every “time between names” seconds, up to 6. The little timeline under each theme shows exactly where they land. If the theme was made by “Make your sequences” from your names break, use the same numbers as your names break (“Use it” fills them in).', 'marquee' ); ?></p>
 		<p><b><?php esc_html_e( 'What if a playlist is missing on my FPP?', 'marquee' ); ?></b> <?php esc_html_e( 'Names for that theme go up in your Classic break instead, and the setup check on this page tells you which playlist it couldn’t find.', 'marquee' ); ?></p>
 		<p><b><?php esc_html_e( 'Do I need pictures?', 'marquee' ); ?></b> <?php esc_html_e( 'No. Without one, kids see a little animated picture of a lit-up house in that theme’s colors (pick the look under each theme). A photo or short clip of your own house during that sequence is even better.', 'marquee' ); ?></p>
 	</details>

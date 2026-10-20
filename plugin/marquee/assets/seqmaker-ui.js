@@ -158,8 +158,8 @@
 		row.classList.remove('is-empty');
 		row.querySelector('[data-mq-tname]').value = name.slice(0, 30);
 		var pl = row.querySelector('input[name$="[playlist]"]'); if (pl) { pl.value = 'Names - ' + name; }
-		var st = row.querySelector('input[name$="[start]"]'); if (st) { st.value = d.start; }
-		var sl = row.querySelector('input[name$="[slot]"]'); if (sl) { sl.value = d.slot; }
+		var st = row.querySelector('input[name$="[start]"]'); if (st) { st.value = d.start; st.dispatchEvent(new Event('input')); }
+		var sl = row.querySelector('input[name$="[slot]"]'); if (sl) { sl.value = d.slot; sl.dispatchEvent(new Event('input')); }
 		var lk = row.querySelector('[data-mq-tlook]'); if (lk && b.getAttribute('data-look')) { lk.value = b.getAttribute('data-look'); }
 		var on = document.querySelector('input[name="themes_on"]'); if (on) { on.checked = true; }
 		var card = row.closest('details'); if (card) { card.open = true; }

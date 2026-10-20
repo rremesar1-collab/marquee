@@ -449,3 +449,29 @@
 		}).catch(function () { con.disabled = false; cmsg.textContent = 'Couldn’t reach your website.'; });
 	});
 })();
+
+/* Names break timeline: where each name goes up, from "When the first name appears" and "Time between names". */
+(function () {
+	document.querySelectorAll('[data-mq-nt]').forEach(function (nt) {
+		var a = document.querySelector(nt.getAttribute('data-start-in')), b = document.querySelector(nt.getAttribute('data-slot-in'));
+		if (!a || !b) { return; }
+		var len = parseFloat(nt.getAttribute('data-len')) || 29.6, bar = nt.querySelector('.mq-nt__bar'), axis = nt.querySelector('.mq-nt__axis'), say = nt.querySelector('.mq-nt__say');
+		function fmt(x) { return (Math.round(x * 10) / 10).toString(); }
+		function draw() {
+			var st = parseFloat(a.value) || 0, sl = parseFloat(b.value) || 0, end = st + 6 * sl, L = Math.max(len, end + 1), h = '';
+			function pc(x) { return Math.max(0, Math.min(100, x / L * 100)); }
+			h += '<span class="mq-nt__seg is-intro" style="left:0;width:' + pc(st) + '%">' + (st >= 2 ? 'Intro' : '') + '</span>';
+			for (var k = 0; k < 6; k++) { h += '<span class="mq-nt__seg is-name" style="left:' + pc(st + k * sl) + '%;width:' + Math.max(0, pc(sl) - 0.6) + '%">' + (k + 1) + '</span>'; }
+			if (end < len) { h += '<span class="mq-nt__seg is-outro" style="left:' + pc(end) + '%;width:' + (pc(len) - pc(end)) + '%">' + (len - end >= 2 ? 'Outro' : '') + '</span>'; }
+			bar.innerHTML = h;
+			var ax = ''; for (var t = 0; t <= L; t += 5) { ax += '<span style="left:' + pc(t) + '%">' + t + 's</span>'; }
+			axis.innerHTML = ax;
+			var times = []; for (var j = 0; j < 6; j++) { times.push(fmt(st + j * sl) + ' s'); }
+			var txt = 'Names go up at ' + times.join(', ') + '. Each one stays up about ' + fmt(Math.max(2, sl - 0.6)) + ' s.';
+			if (end > len + 0.05) { txt += ' ⚠ The 6th name ends at ' + fmt(end) + ' s, after your ' + fmt(len) + ' s break: lower one of the numbers.'; nt.classList.add('is-over'); }
+			else { txt += ' The last name is done at ' + fmt(end) + ' s of your ' + fmt(len) + ' s break.'; nt.classList.remove('is-over'); }
+			say.textContent = txt;
+		}
+		a.addEventListener('input', draw); b.addEventListener('input', draw); draw();
+	});
+})();

@@ -481,3 +481,17 @@
 .mq-sm__count { display: block !important; margin: 8px 0 0 !important; font-size: 12.5px; color: #50575e !important; }
 .mq-sm__count.is-full { color: #8a5a00 !important; }
 .mq-sm__chip.is-off { opacity: .45; cursor: not-allowed; }
+/* names break timeline */
+.mq__unit { font-weight: 400; color: #646970; font-size: 12px; }
+.mq-nt { margin: 4px 0 10px; max-width: 760px; }
+.mq-nt__bar { position: relative; height: 34px; border-radius: 8px; background: #eef1f4; overflow: hidden; }
+.mq-nt__seg { position: absolute; top: 0; bottom: 0; display: flex; align-items: center; justify-content: center; font-size: 11.5px; font-weight: 700; white-space: nowrap; overflow: hidden; }
+.mq-nt__seg.is-intro { background: #c9d4f5; color: #22306b; }
+.mq-nt__seg.is-outro { background: #c9d4f5; color: #22306b; }
+.mq-nt__seg.is-name { top: 4px; bottom: 4px; border-radius: 6px; background: #ffd45c; color: #3d2b00; }
+.mq-nt__axis { position: relative; height: 16px; font-size: 10.5px; color: #8c8f94; }
+.mq-nt__axis span { position: absolute; transform: translateX(-50%); }
+.mq-nt__axis span:first-child { transform: none; }
+.mq-nt__say { margin: 2px 0 0; font-size: 12.5px; color: #50575e; }
+.mq-nt.is-over .mq-nt__say { color: #b32d2e; }
+.mq-nt.is-compact .mq-nt__bar { height: 24px; }

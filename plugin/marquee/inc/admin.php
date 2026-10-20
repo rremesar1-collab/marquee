@@ -335,9 +335,11 @@ function marquee_admin_page() {
 					</div>
 					<div class="mq__row mq-only-break">
 					<p><label for="mq-fpl"><?php esc_html_e( 'FPP playlist with your names break', 'marquee' ); ?></label><input id="mq-fpl" name="fpp_playlist" type="text" value="<?php echo esc_attr( $s['fpp_playlist'] ); ?>"><small><?php esc_html_e( 'A short sequence (about 30 seconds) in its own playlist, with your screens left dark where the names go. Don’t have one? Card 2 makes it for you.', 'marquee' ); ?></small></p>
-					<p><label for="mq-nst"><?php esc_html_e( 'First name goes up at (seconds)', 'marquee' ); ?></label><input id="mq-nst" name="names_start" type="number" min="0" max="120" step="0.5" value="<?php echo esc_attr( $s['names_start'] ); ?>"><small><?php esc_html_e( 'How far into the break the names start. If your break opens with an announcer, use the second the quiet music starts.', 'marquee' ); ?></small></p>
-					<p><label for="mq-nsl"><?php esc_html_e( 'Seconds per name', 'marquee' ); ?></label><input id="mq-nsl" name="names_slot" type="number" min="2.5" max="10" step="0.05" value="<?php echo esc_attr( $s['names_slot'] ); ?>"><small><?php esc_html_e( 'Time from one name to the next (up to 6 names). Both are set for you when you build the names break audio below.', 'marquee' ); ?></small></p>
+					<p><label for="mq-nst"><?php esc_html_e( 'When the first name appears', 'marquee' ); ?> <span class="mq__unit"><?php esc_html_e( 'seconds into the break', 'marquee' ); ?></span></label><input id="mq-nst" name="names_start" type="number" min="0" max="120" step="0.5" value="<?php echo esc_attr( $s['names_start'] ); ?>"><small><?php esc_html_e( 'Usually right after the announcer’s intro ends (“It’s time for Names in Lights!”).', 'marquee' ); ?></small></p>
+					<p><label for="mq-nsl"><?php esc_html_e( 'Time between names', 'marquee' ); ?> <span class="mq__unit"><?php esc_html_e( 'seconds', 'marquee' ); ?></span></label><input id="mq-nsl" name="names_slot" type="number" min="2.5" max="10" step="0.05" value="<?php echo esc_attr( $s['names_slot'] ); ?>"><small><?php esc_html_e( 'How long each name gets before the next one goes up (up to 6 names per break).', 'marquee' ); ?></small></p>
 					</div>
+					<div class="mq-only-break"><?php marquee_name_timeline( '#mq-nst', '#mq-nsl', (float) $s['break_seq'] ); ?>
+					<p class="mq__fine"><?php esc_html_e( 'You don’t normally need to touch these: building the names break audio (card 4) sets both to match your intro and outro. Change them only if you made your own break audio; then match them to where your audio goes quiet.', 'marquee' ); ?></p></div>
 					<table class="mq__screens">
 						<thead><tr><th><?php esc_html_e( 'Screen', 'marquee' ); ?></th><th><?php esc_html_e( 'FPP address', 'marquee' ); ?></th><th><?php esc_html_e( 'Overlay model name', 'marquee' ); ?></th></tr></thead>
 						<tbody>
@@ -841,4 +843,16 @@ function marquee_demo( $mode, $s ) {
 		<?php if ( ! $voice ) : ?><p class="mq-demo__note"><?php esc_html_e( 'The 🔊 line is what you hear on your radio station with “Say each name out loud” on.', 'marquee' ); ?></p><?php endif; ?>
 	</div>
 	<?php
+}
+
+
+/** A little live timeline of the names break: where each name goes up. Reads two number fields. */
+function marquee_name_timeline( $start_sel, $slot_sel, $len, $compact = false ) {
+	printf(
+		'<div class="mq-nt%s" data-mq-nt data-start-in="%s" data-slot-in="%s" data-len="%s" aria-hidden="true"><div class="mq-nt__bar"></div><div class="mq-nt__axis"></div><p class="mq-nt__say"></p></div>',
+		$compact ? ' is-compact' : '',
+		esc_attr( $start_sel ),
+		esc_attr( $slot_sel ),
+		esc_attr( $len > 0 ? $len : 29.6 )
+	);
 }
