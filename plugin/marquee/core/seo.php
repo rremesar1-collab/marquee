@@ -157,6 +157,7 @@ add_action( 'wp_head', function () {
 			'validFrom'     => $first['start']->modify( '-60 days' )->format( 'c' ),
 		),
 		'organizer'           => array( '@type' => 'Organization', 'name' => $name, 'url' => home_url( '/' ) ),
+		'performer'           => array( '@type' => 'PerformingGroup', 'name' => $name, 'url' => home_url( '/' ) ), // a light show performs itself (Google asks for a performer)
 	);
 	echo '<script type="application/ld+json">' . wp_json_encode( $event, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . "</script>\n";
 }, 5 );

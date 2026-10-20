@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.8.0
+Stable tag: 0.8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,9 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.8.1 =
+* Google: the show's event info now includes a performer (your show), so Search Console stops reporting "Missing field performer".
 
 = 0.8.0 =
 * Names form on iPhones: picking a spelling suggestion now fixes the word in the name box. The box no longer shows the name in capitals as you type or has a built-in letter limit (both stopped it); the 14-letter limit is checked when you send.
