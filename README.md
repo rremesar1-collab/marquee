@@ -21,6 +21,17 @@ Your website never connects into your house. Remote Falcon is reached from the s
 
 Everything else (status, weather, Kids' Corner, guestbook, app) works with no extra setup.
 
+## Help assistant (optional)
+
+Marquee → Settings has a **Need help?** button: an assistant (Claude, by Anthropic) that knows how Marquee works and can see the site's setup check, so it can point at the exact problem. Paste your own Claude API key in the panel to turn it on. Hosts can include it for their customers instead by adding to `wp-config.php`:
+
+```php
+define( 'MARQUEE_AI_KEY', 'sk-ant-...' );   // the host's key, never shown to the site owner
+define( 'MARQUEE_AI_DAILY', 40 );            // optional: questions per site per day
+```
+
+Questions and the site's setup status (never passwords or keys) are sent to Anthropic to answer.
+
 ## Install
 
 1. Download `marquee-x.y.z.zip` (and `marquee-festive-x.y.z.zip` for the festive look) from the [latest release](../../releases/latest).

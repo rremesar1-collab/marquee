@@ -56,6 +56,7 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 = 0.8.0 =
 * Themed sequences: kids pick the show their name goes up in (Settings → Your Name in Lights → Themed sequences). The names script (3.4) plays the theme the longest-waiting kid picked; same-theme names go up together.
+* Need help? assistant on the Settings page (Claude): knows Marquee and sees your setup check. Use your own Claude API key, or your host can include it.
 * Settings: one section at a time, Remote Falcon and Your Name in Lights as their own sections, step cards with status.
 * Spoken names (optional): an ElevenLabs voice reads each name out loud as it goes up ("Merry Christmas, Emma!"). Set it up in Marquee → Settings → Your Name in Lights → "Say each name out loud": paste your key, load your voices, test one. Clips are saved, so a repeated name costs nothing. Optional "talking faces" effect moves your singing faces' mouths while a name is spoken. Speaking speed and "My voice is Santa" options. Clips are stereo so FPP plays them at the right speed. Needs marquee_names.py 3.1.3 and FPP 10 on your FPP.
 * Spoken names are leveled to about -14 LUFS, the usual level of show songs.

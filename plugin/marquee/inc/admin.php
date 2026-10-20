@@ -20,6 +20,7 @@ add_action( 'admin_enqueue_scripts', function ( $hook ) {
 	wp_enqueue_style( 'marquee-admin', MARQUEE_URL . 'assets/admin.css', array(), MARQUEE_VERSION . '.' . filemtime( MARQUEE_DIR . 'assets/admin.css' ) );
 	wp_enqueue_script( 'marquee-qrcode', MARQUEE_URL . 'core/assets/js/qrcode.js', array(), '2.0.4', true );
 	wp_enqueue_script( 'marquee-admin', MARQUEE_URL . 'assets/admin.js', array( 'marquee-qrcode' ), MARQUEE_VERSION . '.' . filemtime( MARQUEE_DIR . 'assets/admin.js' ), true );
+	wp_enqueue_script( 'marquee-ai', MARQUEE_URL . 'assets/ai.js', array( 'marquee-admin' ), MARQUEE_VERSION . '.' . filemtime( MARQUEE_DIR . 'assets/ai.js' ), true );
 	wp_enqueue_script( 'marquee-break', MARQUEE_URL . 'assets/break.js', array( 'marquee-admin' ), MARQUEE_VERSION . '.' . filemtime( MARQUEE_DIR . 'assets/break.js' ), true );
 	wp_localize_script( 'marquee-admin', 'MarqueeAdmin', array(
 		'ajax'  => admin_url( 'admin-ajax.php' ),
@@ -515,6 +516,7 @@ function marquee_admin_page() {
 				<button type="submit" class="button button-primary" data-mq-save><?php echo $setup ? esc_html__( 'Finish setup', 'marquee' ) : esc_html__( 'Save settings', 'marquee' ); ?></button>
 			</div>
 		</form>
+		<?php marquee_ai_panel(); ?>
 	</div>
 	<?php
 }

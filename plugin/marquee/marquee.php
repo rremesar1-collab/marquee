@@ -32,6 +32,7 @@ require MARQUEE_DIR . 'inc/manager.php';
 require MARQUEE_DIR . 'inc/voice.php';
 require MARQUEE_DIR . 'inc/break.php';
 require MARQUEE_DIR . 'inc/themes.php';
+require MARQUEE_DIR . 'inc/ai.php';
 
 /* -------------------------------------------------------------------------
  * The show features (status, Remote Falcon, names, Kids' Corner, contest, songs,
