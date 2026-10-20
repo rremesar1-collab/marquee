@@ -28,12 +28,34 @@ network.
 
 2. MAKE THE NAMES BREAK (a short sequence + playlist)
 -----------------------------------------------------
-In xLights, make a sequence about 30 seconds long called "Names in Lights":
+How names go up (Marquee -> Settings -> Names & FPP, top of the page):
+  - Between songs (a names break, recommended): when kids have sent names,
+    your FPP slips a short "names break" sequence in after the current
+    song, puts the names up one by one, then goes back to your playlist.
+    Needed for spoken names, the break audio and themed sequences.
+  - During songs, on a spare screen: names go up on a TV or projector your
+    sequences don't use while the show keeps playing. No names break
+    needed: skip to step 3. (Names script 3.5 or newer.)
+
+Let Marquee make it: Settings -> Names & FPP -> "Make your sequences".
+Choose your xlights_rgbeffects.xml (from your xLights show folder; it's read
+in your browser, never uploaded) and Marquee makes the names break .xsq for
+you: screens left dark for the names, gentle effects on the rest of the
+house, a flash on every prop as each name goes up.
+
+Or make it yourself: in xLights, a sequence about 30 seconds long called
+"Names in Lights":
   - Keep your screens dark or very dim from 4 seconds on - the names are
     drawn on top by FPP, 6 names, 3.75 seconds apart.
   - Light the rest of the house however you like (a gentle twinkle works).
   - Optional: a short "Your Name in Lights!" title at the start.
-Render it, upload the .fseq to your FPP master, and make a playlist with just
+Either way it has to be RENDERED in xLights before FPP can play it: open
+the .xsq in xLights (if it asks for the music, pick the names break audio
+or any soft instrumental), click Render All, check it in the house
+preview, and Save. Saving writes the .fseq next to it. FPP plays the .fseq,
+not the .xsq.
+
+Upload the .fseq (and its music) to your FPP master, and make a playlist with just
 that sequence. Name the playlist "Names in Lights" (or put your own name in
 Marquee -> Settings -> Names & FPP).
 
@@ -110,7 +132,7 @@ audio, so your ElevenLabs key never goes on the FPP.
 
 The names break audio (do this once, and again whenever you change it):
   - Your break needs a quiet stretch for the names. Marquee makes the
-    sound for you: Settings -> Names & FPP -> "Names break sound".
+    sound for you: Settings -> Names & FPP -> "Names break audio".
   - Type an intro and an outro line (or keep the examples), give the
     length of your names sequence (FPP -> File Manager -> Sequences shows
     it), and optionally pick an instrumental MP3 (no singing or talking).
@@ -133,14 +155,20 @@ The names break audio (do this once, and again whenever you change it):
     again every time it goes up.
 
 Themed sequences (optional): kids pick the show their name goes up in.
-  - Make a few short sequences in xLights (about 30 seconds each), like
-    your names break: copy it and change the house effects to fit the
-    theme (Candy Cane Swirl, Snowfall...). Keep the screens dark where the
-    names go and use soft music with no singing.
+  - Settings -> Names & FPP -> "Make your sequences" makes them for you:
+    give it your layout (and your own names break .xsq if you have one,
+    so the themes keep its music and timing), tick Candy Cane Swirl,
+    Snowfall... or describe your own (uses the Need help? AI), and download
+    the .xsq files. Render each one in xLights and Save (see step 2).
+  - Or make them yourself: copy your names break and change the house
+    effects to fit the theme. Keep the screens dark where the names go and
+    use soft music with no singing.
   - Put each one in its own FPP playlist, for example "Names - Snowfall".
   - Settings -> Names & FPP -> "Themed sequences": turn it on and
     add each theme with its playlist, when the first name goes up and the
-    seconds per name. A picture for each is optional.
+    seconds per name ("Use it" in Make your sequences fills this in).
+    Each card kids see shows a little animated house in that theme's
+    colors, or a picture you choose (Classic can have one too).
   - Kids then tap a picture when they send their name. After the current
     song, the theme the longest-waiting kid picked plays; kids who picked
     the same theme go up together, and anybody who waited a whole break

@@ -21,6 +21,14 @@ Your website never connects into your house. Remote Falcon is reached from the s
 
 Everything else (status, weather, Kids' Corner, guestbook, app) works with no extra setup.
 
+## Make your sequences
+
+Marquee → Settings → Names & FPP → **Make your sequences** builds the names break sequence, and themed versions kids can pick (Candy Cane Swirl, Snowfall… or describe your own with the AI), from your xLights layout. It runs in the browser: `xlights_rgbeffects.xml` is never uploaded. Download the `.xsq`, render it in xLights, and upload the `.fseq` to FPP.
+
+## Social posts
+
+Cancel tonight's show in Show Control or the Show Manager and Marquee posts it on your Facebook Page and Instagram (once a night, with your picture), using your own free Meta app. Marquee → Settings → Social posts has the steps.
+
 ## Help assistant (optional)
 
 Marquee → Settings has a **Need help?** button: an assistant that knows how Marquee works and already sees the site's setup and the FPP's setup check, so the owner never has to describe their setup and it can point at the exact problem. The owner picks the AI: **ChatGPT** (OpenAI) or **Claude** (Anthropic). Paste either API key in the panel and Marquee works out which one it is. Hosts can include it for their customers instead by adding to `wp-config.php`:

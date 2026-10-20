@@ -55,12 +55,16 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 == Changelog ==
 
 = 0.8.0 =
+* Names & FPP (renamed from "Your Name in Lights"): a "How it works" picture at the top, and a choice of how names go up: between songs in a names break, or during songs on a spare TV or projector (no extra sequence; names script 3.5).
+* Make your sequences: Marquee makes your names break sequence and themed versions (Candy Cane Swirl, Snowfall, Rainbow Party… or describe your own with the AI) from your xLights layout, right in your browser. Download the .xsq, render it in xLights, upload the .fseq. The themed versions can be made from your own names break so they keep its music, timing and singing faces.
+* Pick your show: each theme card kids tap shows an animated house in that theme's colors, or your own picture; the Classic card can have a picture too. Settings show each card as kids see it.
+* Social posts: when you cancel tonight's show, Marquee posts it on your Facebook Page and Instagram (once a night, with your picture), and optionally "We're back on" if you undo it. Editable messages with fill-ins, a preview, Post it now, and a posting history.
 * Themed sequences: kids pick the show their name goes up in (Settings → Names & FPP → Themed sequences). The names script (3.4) plays the theme the longest-waiting kid picked; same-theme names go up together.
 * Need help? assistant on the Settings page: pick ChatGPT or Claude. It knows Marquee and already sees your setup and your FPP's setup check, so you don't have to explain it. Use your own API key, or your host can include it.
 * Settings: one section at a time, Remote Falcon and Names & FPP (Your Name in Lights) as their own sections, step cards with status.
 * Spoken names (optional): an ElevenLabs voice reads each name out loud as it goes up ("Merry Christmas, Emma!"). Set it up in Marquee → Settings → Names & FPP → "Say each name out loud": paste your key, load your voices, test one. Clips are saved, so a repeated name costs nothing. Optional "talking faces" effect moves your singing faces' mouths while a name is spoken. Speaking speed and "My voice is Santa" options. Clips are stereo so FPP plays them at the right speed. Needs marquee_names.py 3.1.3 and FPP 10 on your FPP.
 * Spoken names are leveled to about -14 LUFS, the usual level of show songs.
-* Names break builder (Settings → Names & FPP → "Names break sound"): your voice says an intro and an outro, music plays soft under the names, all leveled to song loudness. Also makes short breaks for 1 or 2 names (each said twice). The names script (3.3) downloads it and sets up the playlists by itself.
+* Names break audio (Settings → Names & FPP → "Names break audio"): your voice says an intro and an outro, music plays soft under the names, all leveled to song loudness. Also makes short breaks for 1 or 2 names (each said twice). The names script (3.3) downloads it and sets up the playlists by itself.
 * "First name goes up at" and "Seconds per name" settings (set automatically by the break builder).
 * Coloring pages: Remove takes a standard page out of the Settings list (into "Removed pages", where Restore brings it back).
 

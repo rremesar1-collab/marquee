@@ -193,7 +193,7 @@ function marquee_break_box( $s ) {
 	};
 	?>
 	<div class="mq__bb" id="mq-break">
-		<h3><?php esc_html_e( 'Names break sound', 'marquee' ); ?> <span class="mq__tag"><?php esc_html_e( 'optional', 'marquee' ); ?></span></h3>
+		<h3><?php esc_html_e( 'Names break audio', 'marquee' ); ?> <span class="mq__tag"><?php esc_html_e( 'optional', 'marquee' ); ?></span></h3>
 		<p><?php echo wp_kses( sprintf( __( 'When kids have sent names, your show plays a short <b>names break</b> between songs: your “%s” playlist. This builds the sound for that break, so you don’t need any audio software. Your lights and screens stay exactly as you sequenced them.', 'marquee' ), esc_html( $pl ) ), array( 'b' => array() ) ); ?></p>
 
 		<div class="mq__tl" aria-label="<?php esc_attr_e( 'What the names break sounds like', 'marquee' ); ?>">
