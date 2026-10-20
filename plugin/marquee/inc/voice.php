@@ -33,7 +33,7 @@ function marquee_voice_on() {
 
 /**
  * What the voice says for a name line.
- * "MERRY CHRISTMAS, EMMA!" → "Merry Christmas, <short pause> Emma!" (all-caps text can sound
+ * "MERRY CHRISTMAS, EMMA!" → "Merry Christmas, Emma!" (all-caps text can sound
  * shouted or get spelled out). With a Santa voice, "HI SANTA! LOVE, MIA" becomes
  * "Ho ho ho! Hi Mia, Santa loves you too!".
  */
@@ -41,10 +41,10 @@ function marquee_voice_text( $text, $santa = null ) {
 	$santa = null === $santa ? ! empty( marquee_get( 'voice_santa' ) ) : $santa;
 	$t     = preg_replace( '/\s+/', ' ', mb_convert_case( mb_strtolower( trim( (string) $text ) ), MB_CASE_TITLE, 'UTF-8' ) );
 	if ( $santa && preg_match( '/^Hi Santa! Love, (.+)$/u', $t, $m ) ) {
-		return 'Ho ho ho! Hi ' . $m[1] . ', <break time="0.3s" /> Santa loves you too!';
+		return 'Ho ho ho! Hi ' . $m[1] . ', Santa loves you too!';
 	}
-	// a short breath before the name, so it isn't rushed
-	return preg_replace( '/, /', ', <break time="0.35s" /> ', $t, 1 );
+	// one natural sentence (a forced pause before the name made it sound spliced in)
+	return $t;
 }
 
 /** Speaking speed for ElevenLabs (0.7 slow … 1.2 fast). */
@@ -73,7 +73,7 @@ function marquee_voice_file_base( $text, $voice = '', $model = '' ) {
 	$voice = $voice ? $voice : $s['voice_id'];
 	$model = $model ? $model : $s['voice_model'];
 	// "w2": stereo WAV clips (FPP's extra sound slots play mono clips too fast)
-	return substr( md5( wp_salt( 'auth' ) . '|w3|' . $voice . '|' . $model . '|' . marquee_voice_speed() . '|' . marquee_voice_text( $text ) ), 0, 20 );
+	return substr( md5( wp_salt( 'auth' ) . '|w4|' . $voice . '|' . $model . '|' . marquee_voice_speed() . '|' . marquee_voice_text( $text ) ), 0, 20 );
 }
 
 /**
