@@ -132,6 +132,22 @@ The names break audio (do this once, and again whenever you change it):
   - With fewer than 6 names, the screens repeat them, and each one is said
     again every time it goes up.
 
+Themed sequences (optional): kids pick the show their name goes up in.
+  - Make a few short sequences in xLights (about 30 seconds each), like
+    your names break: copy it and change the house effects to fit the
+    theme (Candy Cane Swirl, Snowfall...). Keep the screens dark where the
+    names go and use soft music with no singing.
+  - Put each one in its own FPP playlist, for example "Names - Snowfall".
+  - Settings -> Your Name in Lights -> "Themed sequences": turn it on and
+    add each theme with its playlist, when the first name goes up and the
+    seconds per name. A picture for each is optional.
+  - Kids then tap a picture when they send their name. After the current
+    song, the theme the longest-waiting kid picked plays; kids who picked
+    the same theme go up together, and anybody who waited a whole break
+    goes up in the next one whatever it is. Your regular break is the
+    "Classic" choice.
+  - Names script 3.4 or newer. The setup check lists each theme's playlist.
+
 Talking faces (optional): make your singing faces' mouths move while each
 name is spoken.
   - In xLights, make a short sequence (about 4 seconds) with a talking

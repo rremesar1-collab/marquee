@@ -254,6 +254,9 @@
 					var p = j.data.place;
 					nb.querySelector('[data-rr-names-place]').textContent = j.data.again ? 'Your name is already in line!' :
 						(p <= 6 ? (p <= 1 ? 'You’re next! Watch for your name after this song.' : 'You’re #' + p + ' in line. Watch for your name after this song.') : 'You’re #' + p + ' in line. Your name will show after a few songs.');
+					if (j.data.theme && !j.data.again) {
+						nb.querySelector('[data-rr-names-place]').textContent += ' It goes up in ' + j.data.theme + ' (if lots of kids picked other shows, it may be one song later).';
+					}
 					buzzSetup(j.data);
 				} else {
 					nmsg.textContent = (j && j.data && j.data.message) || 'Something went wrong. Please try again.';

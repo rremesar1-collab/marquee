@@ -47,6 +47,8 @@ function marquee_defaults() {
 		'break_outro'  => '',
 		'break_seq'    => 29.6,              // length of the names sequence (seconds)
 		'break_music'  => 0,                 // instrumental MP3 (attachment ID), 0 = the one that comes with Marquee
+		'themes_on'    => 0,                 // kids pick a themed sequence for their name
+		'themes'       => array(),           // [ name, playlist, img (attachment ID), start, slot ] up to 6
 	);
 }
 
@@ -123,6 +125,8 @@ function marquee_save( $in ) {
 		'break_outro'  => $txt( 'break_outro', 160 ),
 		'break_seq'    => isset( $in['break_seq'] ) && '' !== trim( (string) $in['break_seq'] ) ? max( 15, min( 120, round( (float) $in['break_seq'], 2 ) ) ) : $cur['break_seq'],
 		'break_music'  => isset( $in['break_music'] ) ? ( ( absint( $in['break_music'] ) && 0 === strpos( (string) get_post_mime_type( absint( $in['break_music'] ) ), 'audio/' ) ) ? absint( $in['break_music'] ) : 0 ) : $cur['break_music'],
+		'themes_on'    => isset( $in['themes_sent'] ) ? (int) ! empty( $in['themes_on'] ) : $cur['themes_on'],
+		'themes'       => isset( $in['themes_sent'] ) ? marquee_clean_themes( isset( $in['themes'] ) ? (array) wp_unslash( $in['themes'] ) : array() ) : $cur['themes'],
 		'names_slot'   => isset( $in['names_slot'] ) && '' !== trim( (string) $in['names_slot'] ) ? max( 2.5, min( 10, round( (float) $in['names_slot'], 2 ) ) ) : $cur['names_slot'],
 		'names_start'  => isset( $in['names_start'] ) && '' !== trim( (string) $in['names_start'] ) ? max( 0, min( 120, round( (float) $in['names_start'], 2 ) ) ) : $cur['names_start'],
 		'vote_hide'  => isset( $in['vote_hide_sent'] ) ? array_values( array_slice( array_unique( array_filter( array_map( 'sanitize_title', isset( $in['vote_hide'] ) ? (array) wp_unslash( $in['vote_hide'] ) : array() ) ) ), 0, 200 ) ) : $cur['vote_hide'],
@@ -290,6 +294,35 @@ add_action( 'after_setup_theme', function () {
 }, 20 );
 
 /** Screens for the names script: up to 4 rows of name / FPP address / overlay model. */
+/** Themed sequences from the settings form: only rows with a name and an FPP playlist. */
+function marquee_clean_themes( $rows ) {
+	$out  = array();
+	$seen = array();
+	foreach ( array_slice( $rows, 0, 6 ) as $r ) {
+		if ( ! is_array( $r ) ) {
+			continue;
+		}
+		$name = mb_substr( trim( sanitize_text_field( (string) ( $r['name'] ?? '' ) ) ), 0, 30 );
+		$pl   = mb_substr( trim( sanitize_text_field( (string) ( $r['playlist'] ?? '' ) ) ), 0, 80 );
+		$slug = sanitize_title( $name );
+		if ( '' === $name || '' === $pl || '' === $slug || isset( $seen[ $slug ] ) ) {
+			continue;
+		}
+		$seen[ $slug ] = 1;
+		$img           = absint( $r['img'] ?? 0 );
+		$start         = (float) ( $r['start'] ?? 0 );
+		$slot          = (float) ( $r['slot'] ?? 0 );
+		$out[]         = array(
+			'name'     => $name,
+			'playlist' => $pl,
+			'img'      => ( $img && wp_attachment_is_image( $img ) ) ? $img : 0,
+			'start'    => $start > 0 ? min( 60, round( $start, 2 ) ) : 4,
+			'slot'     => $slot >= 2.5 ? min( 10, round( $slot, 2 ) ) : 3.75,
+		);
+	}
+	return $out;
+}
+
 function marquee_clean_screens( $rows ) {
 	$out = array();
 	foreach ( array_slice( $rows, 0, 4 ) as $r ) {

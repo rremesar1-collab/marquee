@@ -395,6 +395,18 @@ function marquee_admin_page() {
 							<?php marquee_break_box( $s ); ?>
 						</div>
 					</details>
+
+					<?php $th_on = ! empty( $s['themes_on'] ) && ! empty( $s['themes'] ); ?>
+					<details class="mq__card">
+						<summary>
+							<span class="mq__card-n">4</span>
+							<span class="mq__card-t"><b><?php esc_html_e( 'Themed sequences', 'marquee' ); ?></b><small><?php esc_html_e( 'Kids pick the show their name goes up in, like Candy Cane Swirl or Snowfall', 'marquee' ); ?></small></span>
+							<?php if ( $th_on ) : ?><span class="mq__pill is-ok"><?php /* translators: %d: number of themes */ echo esc_html( sprintf( _n( '%d theme', '%d themes', count( $s['themes'] ), 'marquee' ), count( $s['themes'] ) ) ); ?></span><?php else : ?><span class="mq__pill"><?php esc_html_e( 'Off', 'marquee' ); ?></span><?php endif; ?>
+						</summary>
+						<div class="mq__card-b">
+							<?php marquee_themes_box( $s ); ?>
+						</div>
+					</details>
 				<?php endif; ?>
 			</section>
 

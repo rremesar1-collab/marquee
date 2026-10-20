@@ -897,6 +897,16 @@
 .mq-skin:not(#mq-0) .rr-names__greet label { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 10px; background: rgba(0, 0, 0, .3); border: 1px solid rgba(150, 190, 255, .3); cursor: pointer; font-weight: 800; letter-spacing: .03em; }
 .mq-skin:not(#mq-0) .rr-names__greet input { width: 18px; height: 18px; accent-color: #ffd45c; }
 .mq-skin:not(#mq-0) .rr-names__greet label:has(input:checked) { border-color: #ffd45c; background: rgba(255, 210, 90, .15); }
+.mq-skin:not(#mq-0) .rr-names__themes { margin: 4px 0 14px; padding: 0; border: 0; }
+.mq-skin:not(#mq-0) .rr-names__themes legend { margin-bottom: 6px; font-weight: 800; font-size: 14px; color: #e4f0ff; }
+.mq-skin:not(#mq-0) .rr-themes { display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: 8px; }
+.mq-skin:not(#mq-0) .rr-theme { cursor: pointer; display: block; }
+.mq-skin:not(#mq-0) .rr-theme input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.mq-skin:not(#mq-0) .rr-theme__card { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 8px 6px 10px; border-radius: 12px; text-align: center; background: linear-gradient(160deg, hsl(var(--h) 70% 35% / .55), rgba(0, 0, 0, .35)); border: 2px solid rgba(150, 190, 255, .3); transition: transform .12s, border-color .12s; }
+.mq-skin:not(#mq-0) .rr-theme__card b { font-size: 13px; line-height: 1.15; }
+.mq-skin:not(#mq-0) .rr-theme__pic { width: 100%; aspect-ratio: 4 / 3; border-radius: 8px; object-fit: cover; display: grid; place-items: center; font-size: 28px; background: hsl(var(--h) 70% 45% / .35); }
+.mq-skin:not(#mq-0) .rr-theme input:checked + .rr-theme__card { border-color: #ffd45c; background: linear-gradient(160deg, hsl(var(--h) 75% 40% / .75), rgba(255, 210, 90, .18)); transform: translateY(-2px); box-shadow: 0 0 0 3px rgba(255, 212, 92, .25); }
+.mq-skin:not(#mq-0) .rr-theme input:focus-visible + .rr-theme__card { outline: 2px solid #ffd45c; outline-offset: 2px; }
 .mq-skin:not(#mq-0) .rr-names__form .rr-btn { width: 100%; padding: 13px; font-size: 17px; cursor: pointer; font-family: inherit; }
 .mq-skin:not(#mq-0) .rr-names__done { text-align: center; }
 .mq-skin:not(#mq-0) .rr-names__preview { display: inline-block; margin: 8px 0; padding: 14px 22px; border-radius: 12px; background: #000; border: 2px solid #ffd45c; color: #ffd45c; font: 800 clamp(20px, 3.4vw, 30px)/1.2 var(--f-body); font-family: inherit; letter-spacing: .06em; }

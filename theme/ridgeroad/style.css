@@ -4,7 +4,7 @@ Theme URI: https://alateka.com/
 Author: Alateka Corporation
 Author URI: https://alateka.com/
 Description: The festive Christmas look for the Marquee light show plugin: garlands, bows, a night-sky scene and glowing show cards for your status, Now Playing, weather, Kids’ Corner and more. Needs the free Marquee plugin (it holds all the show features and settings).
-Version: 2.10.4
+Version: 2.11.0
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -1305,6 +1305,16 @@ img.emoji, img.wp-smiley { display: inline !important; width: 1em !important; he
 .rr-names__greet label { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 10px; background: rgba(0, 0, 0, .3); border: 1px solid rgba(150, 190, 255, .3); cursor: pointer; font-weight: 800; letter-spacing: .03em; }
 .rr-names__greet input { width: 18px; height: 18px; accent-color: #ffd45c; }
 .rr-names__greet label:has(input:checked) { border-color: #ffd45c; background: rgba(255, 210, 90, .15); }
+.rr-names__themes { margin: 4px 0 14px; padding: 0; border: 0; }
+.rr-names__themes legend { margin-bottom: 6px; font-weight: 800; font-size: 14px; color: #e4f0ff; }
+.rr-themes { display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: 8px; }
+.rr-theme { cursor: pointer; display: block; }
+.rr-theme input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.rr-theme__card { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 8px 6px 10px; border-radius: 12px; text-align: center; background: linear-gradient(160deg, hsl(var(--h) 70% 35% / .55), rgba(0, 0, 0, .35)); border: 2px solid rgba(150, 190, 255, .3); transition: transform .12s, border-color .12s; }
+.rr-theme__card b { font-size: 13px; line-height: 1.15; }
+.rr-theme__pic { width: 100%; aspect-ratio: 4 / 3; border-radius: 8px; object-fit: cover; display: grid; place-items: center; font-size: 28px; background: hsl(var(--h) 70% 45% / .35); }
+.rr-theme input:checked + .rr-theme__card { border-color: #ffd45c; background: linear-gradient(160deg, hsl(var(--h) 75% 40% / .75), rgba(255, 210, 90, .18)); transform: translateY(-2px); box-shadow: 0 0 0 3px rgba(255, 212, 92, .25); }
+.rr-theme input:focus-visible + .rr-theme__card { outline: 2px solid #ffd45c; outline-offset: 2px; }
 .rr-names__form .rr-btn { width: 100%; padding: 13px; font-size: 17px; cursor: pointer; font-family: inherit; }
 .rr-names__done { text-align: center; }
 .rr-names__preview { display: inline-block; margin: 8px 0; padding: 14px 22px; border-radius: 12px; background: #000; border: 2px solid #ffd45c; color: #ffd45c; font: 800 clamp(20px, 3.4vw, 30px)/1.2 var(--f-body); letter-spacing: .06em; text-shadow: 0 0 10px rgba(255, 210, 90, .8); }

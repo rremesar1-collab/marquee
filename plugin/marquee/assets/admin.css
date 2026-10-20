@@ -234,3 +234,15 @@
 	.mq__card-n { width: 26px; height: 26px; }
 	.mq__pill { margin-left: 40px; }
 }
+
+/* themed sequences */
+.mq__tl--themes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.mq__themes { margin-top: 8px; }
+.mq__theme { display: flex; gap: 14px; padding: 14px 0; border-top: 1px solid #f0f0f1; }
+.mq__theme.is-empty { display: none; }
+.mq__theme-n { flex: none; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: #f0f0f1; color: #50575e; font-weight: 700; font-size: 12px; margin-top: 26px; }
+.mq__theme-f { flex: 1; min-width: 0; }
+.mq__row--3 { grid-template-columns: 1fr 1fr 1.4fr; align-items: start; }
+.mq__theme .mq__media { border-top: 0; padding: 0; }
+.mq__theme .mq__thumb { width: 96px; height: 64px; }
+@media (max-width: 782px) { .mq__tl--themes, .mq__row--3 { grid-template-columns: 1fr; } }

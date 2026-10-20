@@ -28,6 +28,27 @@ $status = ridgeroad_status();
 			endforeach;
 			?>
 		</fieldset>
+		<?php
+		$rr_themes = function_exists( 'marquee_themes' ) ? marquee_themes() : array();
+		if ( $rr_themes ) :
+			$rr_hue = array( 350, 200, 280, 140, 30, 175 );
+			$rr_i   = 0;
+			?>
+			<fieldset class="rr-names__themes">
+				<legend><?php esc_html_e( 'Pick your show', 'ridgeroad' ); ?></legend>
+				<div class="rr-themes">
+					<label class="rr-theme"><input type="radio" name="theme" value="" checked><span class="rr-theme__card" style="--h:45"><span class="rr-theme__pic" aria-hidden="true">✨</span><b><?php esc_html_e( 'Classic', 'ridgeroad' ); ?></b></span></label>
+					<?php
+					foreach ( $rr_themes as $rr_slug => $rr_t ) :
+						$rr_img = function_exists( 'marquee_theme_img' ) ? marquee_theme_img( $rr_t ) : '';
+						?>
+						<label class="rr-theme"><input type="radio" name="theme" value="<?php echo esc_attr( $rr_slug ); ?>"><span class="rr-theme__card" style="--h:<?php echo (int) $rr_hue[ $rr_i++ % 6 ]; ?>">
+							<?php if ( $rr_img ) : ?><img class="rr-theme__pic" src="<?php echo esc_url( $rr_img ); ?>" alt="" loading="lazy"><?php else : ?><span class="rr-theme__pic" aria-hidden="true">★</span><?php endif; ?>
+							<b><?php echo esc_html( $rr_t['name'] ); ?></b></span></label>
+					<?php endforeach; ?>
+				</div>
+			</fieldset>
+		<?php endif; ?>
 		<p class="rr-hp" aria-hidden="true"><label>Website <input name="website" type="text" tabindex="-1" autocomplete="off"></label></p>
 		<button class="rr-btn rr-btn--red" type="submit"><?php echo ridgeroad_cicon( 'star' ); ?><?php esc_html_e( 'Put My Name in Lights!', 'ridgeroad' ); ?></button>
 		<p class="rr-contest__msg" data-rr-names-msg aria-live="polite"></p>

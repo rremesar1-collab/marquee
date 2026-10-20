@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Marquee – Show Website for xLights & FPP
  * Description: Show status, Remote Falcon, Your Name in Lights, Kids' Corner, app and alerts for Christmas light shows. Start with Marquee → Setup.
- * Version: 0.7.12
+ * Version: 0.8.0
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Alateka Corporation
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MARQUEE_VERSION', '0.7.12' );
+define( 'MARQUEE_VERSION', '0.8.0' );
 define( 'MARQUEE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'MARQUEE_URL', plugin_dir_url( __FILE__ ) );
 // GitHub "owner/repo" where new versions are published (empty = no update checks).
@@ -31,6 +31,7 @@ require MARQUEE_DIR . 'inc/updates.php';
 require MARQUEE_DIR . 'inc/manager.php';
 require MARQUEE_DIR . 'inc/voice.php';
 require MARQUEE_DIR . 'inc/break.php';
+require MARQUEE_DIR . 'inc/themes.php';
 
 /* -------------------------------------------------------------------------
  * The show features (status, Remote Falcon, names, Kids' Corner, contest, songs,

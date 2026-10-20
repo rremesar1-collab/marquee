@@ -209,13 +209,19 @@ function ridgeroad_name_send() {
 	}
 	$text = sprintf( RR_NAME_GREETINGS[ $g ], $name );
 	update_post_meta( $id, '_rr_text', $text );
+	// themed sequences (Marquee): the theme the kid picked, '' = the classic break
+	$theme = apply_filters( 'ridgeroad_name_theme', '', isset( $_POST['theme'] ) ? sanitize_title( wp_unslash( $_POST['theme'] ) ) : '' );
+	if ( $theme ) {
+		update_post_meta( $id, '_rr_theme', $theme );
+	}
 	update_post_meta( $id, '_rr_shown', 0 );
 	ridgeroad_stat_add( 'name_sent' );
 	if ( ! $admin ) {
 		set_transient( $k, $n + 1, HOUR_IN_SECONDS );
 	}
 	do_action( 'ridgeroad_name_added', $id, $text ); // Marquee: make the spoken version
-	wp_send_json_success( array( 'place' => ridgeroad_name_place( $id ), 'text' => $text, 'id' => $id, 'buzz' => ridgeroad_buzz_token( $id ) ) );
+	$theme_name = ( $theme && function_exists( 'marquee_themes' ) && isset( marquee_themes()[ $theme ] ) ) ? marquee_themes()[ $theme ]['name'] : '';
+	wp_send_json_success( array( 'place' => ridgeroad_name_place( $id ), 'text' => $text, 'id' => $id, 'buzz' => ridgeroad_buzz_token( $id ), 'theme' => $theme_name ) );
 }
 
 /** Waiting names, oldest first (names older than 2 hours are skipped). */

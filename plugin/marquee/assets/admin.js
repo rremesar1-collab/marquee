@@ -118,6 +118,17 @@
 		});
 	}
 
+	/* themed sequences: show one more empty row at a time */
+	var thMore = $('[data-mq-theme-more]');
+	if (thMore) {
+		var thLeft = function () { return root.querySelectorAll('[data-mq-theme].is-empty'); };
+		thMore.hidden = !thLeft().length;
+		thMore.addEventListener('click', function () {
+			var e = thLeft()[0]; if (e) { e.classList.remove('is-empty'); var f = e.querySelector('input[type=text]'); if (f) { f.focus(); } }
+			thMore.hidden = !thLeft().length;
+		});
+	}
+
 	/* spoken names (ElevenLabs) */
 	var vLoad = $('[data-mq-vload]'), vTest = $('[data-mq-vtest]');
 	if (vLoad && vTest) {

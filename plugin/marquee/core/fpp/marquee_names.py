@@ -38,7 +38,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-VERSION = "3.3"
+VERSION = "3.4"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -180,6 +180,11 @@ def pull(done_ids, st=None, report=None):
     res = http_json(url, data)
     if not res or not res.get("success"):
         raise RuntimeError("website said: %s" % (res,))
+    if isinstance(res["data"], dict):
+        THEMES.clear()
+        for t in res["data"].get("themes") or []:
+            if isinstance(t, dict) and t.get("slug") and t.get("playlist"):
+                THEMES[t["slug"]] = t
     if isinstance(res["data"], dict) and res["data"].get("break"):
         try:
             sync_break(res["data"]["break"])
@@ -275,7 +280,7 @@ def in_break(st):
     if st.get("status_name") != "playing":
         return False
     pl = playlist_name(st)
-    if pl == S["break_playlist"] or pl in short_playlists().values():
+    if pl == S["break_playlist"] or pl in short_playlists().values() or pl in theme_playlists().values():
         return True
     seq = (st.get("current_sequence") or "").lower().replace("_", " ")
     return "names in lights" in seq
@@ -325,9 +330,47 @@ def slots_for(st):
     return int(S["max_names"])
 
 
-def queue_break(waiting=99):
+# ------------------------------------------------------ themed sequences ----
+THEMES = {}      # slug -> {"name", "playlist", "start", "slot"} from the website
+SKIPS = {}       # name id -> breaks it already waited through (it rides along in the next one)
+
+
+def theme_playlists():
+    """Themes whose playlist exists on this FPP: {slug: playlist}."""
+    have = fpp_playlists()
+    return {k: t["playlist"] for k, t in THEMES.items() if t["playlist"] in have}
+
+
+def name_theme(item):
+    """The theme a name goes up in ('' = the classic break). A theme without a playlist on this FPP falls back to classic."""
+    t = item.get("theme") or ""
+    return t if t in theme_playlists() else ""
+
+
+def eligible(names, theme):
+    """Names that go up in a break of this theme: the ones that picked it, plus any that already waited a break."""
+    return [n for n in names if name_theme(n) == theme or SKIPS.get(n.get("id"), 0) >= 1]
+
+
+def plan_break(names):
+    """Which playlist to play next: the theme the longest-waiting kid picked."""
+    theme = name_theme(names[0]) if names else ""
+    if theme:
+        return theme_playlists()[theme]
+    return short_playlists().get(len(eligible(names, "")), S["break_playlist"])
+
+
+def current_theme(st):
+    pl = playlist_name(st)
+    for k, name in theme_playlists().items():
+        if name == pl:
+            return k
+    return ""
+
+
+def queue_break(names=None):
     # "ifNotRunning" = true so a second request never stacks a second break
-    pl = short_playlists().get(waiting, S["break_playlist"])
+    pl = plan_break(names or [])
     fpp_command(MASTER, "Insert Playlist After Current", [pl, -1, -1, "true"])
     return pl
 
@@ -502,15 +545,46 @@ def show(text, color):
 # --------------------------------------------------------------- break ----
 def run_break(color):
     """Called when the break starts: fetch names, show them on the break's clock."""
+    keep = (S["names_start"], S["slot"], S["show_for"])
+    try:
+        return _run_break(color)
+    finally:
+        S["names_start"], S["slot"], S["show_for"] = keep
+
+
+def _run_break(color):
     try:
         data = pull([])
-        slots = slots_for(master_status())
-        names = (data.get("names") or [])[:min(int(S["max_names"]), slots)]
+        st = master_status()
+        theme = current_theme(st)
+        everyone = data.get("names") or []
+        if theme:                                   # a themed sequence: its own timing, up to 6 names
+            t = THEMES[theme]
+            S["names_start"] = float(t.get("start") or S["names_start"])
+            S["slot"] = float(t.get("slot") or S["slot"])
+            S["show_for"] = max(2.0, S["slot"] - 0.6)
+            slots = int(S["max_names"])
+        else:
+            slots = slots_for(st)
+        names = (eligible(everyone, theme) or everyone)[:min(int(S["max_names"]), slots)]
         color = data.get("color") or color
     except Exception as e:
         log("break started but the website could not be reached:", e)
         return []
-    log("break started with %d name(s), %d slot(s)" % (len(names), slots))
+    log("break started%s with %d name(s), %d slot(s)" % ((" (theme: %s)" % THEMES[theme].get("name", theme)) if theme else "", len(names), slots))
+    shown = _show_names(names, slots, color)
+    # names that waited through this break go up in the next one, whatever theme it is
+    for n in everyone:
+        if n.get("id") not in shown:
+            SKIPS[n.get("id")] = SKIPS.get(n.get("id"), 0) + 1
+    for i in shown:
+        SKIPS.pop(i, None)
+    if len(SKIPS) > 500:
+        SKIPS.clear()
+    return shown
+
+
+def _show_names(names, slots, color):
     prefetch(names)
     done = []
     talk_until = 0
@@ -584,6 +658,11 @@ def run_checks(problems=None):
         if S["break_playlist"] in pls:
             short = [p for p in pls if p in ("%s 1" % S["break_playlist"], "%s 2" % S["break_playlist"])]
             add(True, "playlist", "playlist '%s' found%s" % (S["break_playlist"], (" (short breaks: %s)" % ", ".join(short)) if short else ""))
+            for t in THEMES.values():
+                if t["playlist"] in pls:
+                    add(True, "theme", "themed sequence '%s': playlist '%s' found" % (t.get("name", ""), t["playlist"]))
+                else:
+                    add(False, "theme", "themed sequence '%s': no playlist named '%s' on this FPP (those names go up in the classic break)" % (t.get("name", ""), t["playlist"]))
         else:
             add(False, "playlist", "no playlist named '%s' on this FPP (found: %s)" % (S["break_playlist"], ", ".join(pls) or "none"))
     except Exception as e:
@@ -748,7 +827,7 @@ def main():
                 if waiting:
                     prefetch(data.get("names") or [])     # spoken names are ready before the break
                 if waiting and not queued:
-                    pl = queue_break(waiting)
+                    pl = queue_break(data.get("names") or [])
                     queued = True
                     log("%d name(s) waiting - '%s' queued after the current song" % (waiting, pl))
             time.sleep(1)
