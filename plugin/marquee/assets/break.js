@@ -63,6 +63,15 @@
 		return new Blob([dv.buffer], { type: 'audio/wav' });
 	}
 
+	/* example lines and the live preview of what the voice will say */
+	document.querySelectorAll('[data-mq-idea]').forEach(function (b) {
+		b.addEventListener('click', function () { var f = document.getElementById(b.getAttribute('data-mq-idea')); f.value = b.textContent; f.dispatchEvent(new Event('input')); });
+	});
+	[['mq-bintro', '[data-mq-tl-intro]'], ['mq-boutro', '[data-mq-tl-outro]']].forEach(function (x) {
+		var f = document.getElementById(x[0]), t = document.querySelector(x[1]);
+		if (f && t) { f.addEventListener('input', function () { t.textContent = '“' + (f.value.trim() || f.placeholder) + '”'; }); }
+	});
+
 	btn.addEventListener('click', function () {
 		var seq = parseFloat((document.getElementById('mq-bseq') || {}).value) || 29.6;
 		var musicIn = document.querySelector('input[name="break_music"]');

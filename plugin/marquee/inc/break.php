@@ -176,33 +176,90 @@ add_filter( 'ridgeroad_names_pull_data', function ( $data ) {
 
 /** Settings page box. */
 function marquee_break_box( $s ) {
-	$b    = marquee_break_info();
-	$def  = marquee_break_defaults();
-	$mus  = (int) $s['break_music'];
+	$b      = marquee_break_info();
+	$def    = marquee_break_defaults();
+	$mus    = (int) $s['break_music'];
+	$santa  = ! empty( $s['voice_santa'] );
+	$voice  = function_exists( 'marquee_voice_on' ) && marquee_voice_on();
+	$rep    = get_option( 'ridgeroad_names_report' );
+	$sv     = is_array( $rep ) && ! empty( $rep['v'] ) ? (string) $rep['v'] : '';
+	$script = $sv ? version_compare( $sv, '3.3', '>=' ) : null;
+	$pl     = $s['fpp_playlist'] ? $s['fpp_playlist'] : 'Names in Lights';
+	$ex     = $santa
+		? array( 'Merry Christmas, Emma!', 'Hi Jacob, Santa loves you too!', 'Happy Holidays, Ava!' )
+		: array( 'Merry Christmas, Emma!', 'Happy Holidays, Jacob!', 'Ava, you shine bright!' );
+	$tick   = function ( $ok, $text ) {
+		printf( '<li class="%s"><span aria-hidden="true">%s</span> %s</li>', null === $ok ? 'is-maybe' : ( $ok ? 'is-ok' : 'is-bad' ), null === $ok ? '?' : ( $ok ? '✓' : '✗' ), wp_kses( $text, array( 'b' => array(), 'a' => array( 'href' => array() ) ) ) );
+	};
 	?>
-	<h3 id="mq-break"><?php esc_html_e( 'Names break audio', 'marquee' ); ?></h3>
-	<p class="mq__fine"><?php esc_html_e( 'Marquee makes the sound for your names break: your voice says an intro and an outro, and music plays soft under the names, at the same loudness as your songs. It also makes short versions for when only 1 or 2 names are waiting (each said twice). Your names script puts them on your FPP and sets up the playlists by itself.', 'marquee' ); ?></p>
-	<?php if ( $b ) : ?>
-		<div class="mq__fppstat"><p class="is-ok">
+	<div class="mq__bb" id="mq-break">
+		<h3><?php esc_html_e( 'Names break sound', 'marquee' ); ?> <span class="mq__tag"><?php esc_html_e( 'optional', 'marquee' ); ?></span></h3>
+		<p><?php echo wp_kses( sprintf( __( 'When kids have sent names, your show plays a short <b>names break</b> between songs: your “%s” playlist. This builds the sound for that break, so you don’t need any audio software. Your lights and screens stay exactly as you sequenced them.', 'marquee' ), esc_html( $pl ) ), array( 'b' => array() ) ); ?></p>
+
+		<div class="mq__tl" aria-label="<?php esc_attr_e( 'What the names break sounds like', 'marquee' ); ?>">
+			<div class="mq__tl-part is-voice"><b>🎙 <?php esc_html_e( 'Intro', 'marquee' ); ?></b><small><?php esc_html_e( 'about 4 seconds', 'marquee' ); ?></small><em data-mq-tl-intro>“<?php echo esc_html( $s['break_intro'] ? $s['break_intro'] : $def['intro'] ); ?>”</em></div>
+			<div class="mq__tl-part is-names"><b>♪ <?php esc_html_e( 'Soft music + the names', 'marquee' ); ?></b><small><?php esc_html_e( 'up to 6 names, each read out as it goes up on your screens', 'marquee' ); ?></small><em>“<?php echo esc_html( implode( '” … “', $ex ) ); ?>” …</em></div>
+			<div class="mq__tl-part is-voice"><b>🎙 <?php esc_html_e( 'Outro', 'marquee' ); ?></b><small><?php esc_html_e( 'about 4 seconds', 'marquee' ); ?></small><em data-mq-tl-outro>“<?php echo esc_html( $s['break_outro'] ? $s['break_outro'] : $def['outro'] ); ?>”</em></div>
+		</div>
+		<p class="mq__fine"><?php esc_html_e( 'Only 1 or 2 names waiting? A shorter break plays instead and says each name twice, so nobody sits through 30 seconds of music for one name. Everything is set to the same loudness as your songs, so nobody has to touch the radio volume.', 'marquee' ); ?></p>
+
+		<h4><?php esc_html_e( 'Before you start', 'marquee' ); ?></h4>
+		<ul class="mq__check">
 			<?php
-			/* translators: 1: time ago, 2: seconds, 3: seconds */
-			echo esc_html( sprintf( __( '✓ Built %1$s ago. Names start at %2$s s, one every %3$s s.', 'marquee' ), human_time_diff( (int) $b['t'] ), $b['start'], $b['slot'] ) );
+			$tick( $voice, $voice ? __( 'A voice is set up (“Say each name out loud” above).', 'marquee' ) : __( 'Set up <b>Say each name out loud</b> above first (ElevenLabs key and a voice), and Save. The intro and outro are made with that voice.', 'marquee' ) );
+			$tick( $script, null === $script ? __( 'Your FPP needs the names script 3.3 or newer. It hasn’t reported its version yet.', 'marquee' ) : ( $script ? __( 'Your FPP runs a names script that can set up the break by itself.', 'marquee' ) : sprintf( __( 'Your FPP runs names script %s. Download <b>marquee_names.py</b> above and upload it to your FPP (it must be 3.3 or newer).', 'marquee' ), esc_html( $sv ) ) ) );
+			$plok = null;
+			foreach ( is_array( $rep ) && ! empty( $rep['checks'] ) ? $rep['checks'] : array() as $c ) {
+				if ( false !== strpos( $c['msg'], "playlist '" . $pl . "' found" ) ) {
+					$plok = true;
+				} elseif ( false !== strpos( $c['msg'], "no playlist named '" . $pl . "'" ) ) {
+					$plok = false;
+				}
+			}
+			$tick( $plok, sprintf( __( 'Your FPP has a playlist named <b>%s</b> with your names sequence in it (the one you already use for names).', 'marquee' ), esc_html( $pl ) ) );
 			?>
-			<a href="<?php echo esc_url( $b['full'] ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Full', 'marquee' ); ?></a> ·
-			<a href="<?php echo esc_url( $b['short2'] ); ?>" target="_blank" rel="noopener"><?php esc_html_e( '2 names', 'marquee' ); ?></a> ·
-			<a href="<?php echo esc_url( $b['short1'] ); ?>" target="_blank" rel="noopener"><?php esc_html_e( '1 name', 'marquee' ); ?></a>
-		</p></div>
-	<?php endif; ?>
-	<div class="mq__row">
-		<p><label for="mq-bintro"><?php esc_html_e( 'Intro line', 'marquee' ); ?></label><input id="mq-bintro" name="break_intro" type="text" maxlength="160" value="<?php echo esc_attr( $s['break_intro'] ); ?>" placeholder="<?php echo esc_attr( $def['intro'] ); ?>"><small><?php esc_html_e( 'Keep it short (about 4 seconds). Empty uses the example.', 'marquee' ); ?></small></p>
-		<p><label for="mq-boutro"><?php esc_html_e( 'Outro line', 'marquee' ); ?></label><input id="mq-boutro" name="break_outro" type="text" maxlength="160" value="<?php echo esc_attr( $s['break_outro'] ); ?>" placeholder="<?php echo esc_attr( $def['outro'] ); ?>"><small><?php esc_html_e( 'Write your website the way it’s said: “lights on main street dot com”.', 'marquee' ); ?></small></p>
+		</ul>
+
+		<h4><span class="mq__step">1</span> <?php esc_html_e( 'What the voice says', 'marquee' ); ?></h4>
+		<div class="mq__row">
+			<p><label for="mq-bintro"><?php esc_html_e( 'Intro (before the names)', 'marquee' ); ?></label><input id="mq-bintro" name="break_intro" type="text" maxlength="160" value="<?php echo esc_attr( $s['break_intro'] ); ?>" placeholder="<?php echo esc_attr( $def['intro'] ); ?>">
+				<small><?php esc_html_e( 'One short sentence. Leave it empty to use the example.', 'marquee' ); ?> <span class="mq__ideas"><?php esc_html_e( 'Ideas:', 'marquee' ); ?>
+					<?php foreach ( array_unique( array( $def['intro'], 'It’s time for Names in Lights!', 'Hey everybody, watch for your name in lights!' ) ) as $idea ) : ?><button type="button" class="button-link" data-mq-idea="mq-bintro"><?php echo esc_html( $idea ); ?></button><?php endforeach; ?></span></small></p>
+			<p><label for="mq-boutro"><?php esc_html_e( 'Outro (after the names)', 'marquee' ); ?></label><input id="mq-boutro" name="break_outro" type="text" maxlength="160" value="<?php echo esc_attr( $s['break_outro'] ); ?>" placeholder="<?php echo esc_attr( $def['outro'] ); ?>">
+				<small><?php esc_html_e( 'Tell people how to send a name. Write your website the way it’s said out loud, like “lights on main street dot com”, or the voice may spell it out.', 'marquee' ); ?></small></p>
+		</div>
+
+		<h4><span class="mq__step">2</span> <?php esc_html_e( 'How long is your names sequence?', 'marquee' ); ?></h4>
+		<p class="mq__narrow"><label for="mq-bseq" class="screen-reader-text"><?php esc_html_e( 'Length in seconds', 'marquee' ); ?></label><input id="mq-bseq" name="break_seq" type="number" min="15" max="120" step="0.1" value="<?php echo esc_attr( $s['break_seq'] ); ?>"> <?php esc_html_e( 'seconds', 'marquee' ); ?>
+			<small><?php esc_html_e( 'The full break is made exactly this long, so it fits the sequence you already have. You can see the length in xLights (the end time of the sequence) or in FPP when the playlist plays. About 30 seconds works well.', 'marquee' ); ?></small></p>
+
+		<h4><span class="mq__step">3</span> <?php esc_html_e( 'Music under the names', 'marquee' ); ?> <span class="mq__tag"><?php esc_html_e( 'optional', 'marquee' ); ?></span></h4>
+		<div class="mq__narrow"><?php marquee_media_field( 'break_music', __( 'Your own music', 'marquee' ), __( 'Use music only: no singing and no talking, or it will talk over the names. A soft, calm tune at least 30 seconds long works best. Leave it empty to use the soft music box that comes with Marquee.', 'marquee' ), $mus ? array( $mus ) : array(), false, '', 'audio' ); ?></div>
+
+		<h4><span class="mq__step">4</span> <?php esc_html_e( 'Build it and listen', 'marquee' ); ?></h4>
+		<p><button type="button" class="button button-primary" data-mq-break-build <?php disabled( ! $voice ); ?>><?php echo $b ? esc_html__( 'Build it again', 'marquee' ) : esc_html__( 'Build the names break', 'marquee' ); ?></button> <span class="mq__msg" data-mq-break-msg aria-live="polite"></span></p>
+		<div class="mq__break-prev" data-mq-break-prev hidden></div>
+		<?php if ( $b ) : ?>
+			<div class="mq__fppstat"><p class="is-ok">
+				<?php
+				/* translators: 1: time ago, 2: seconds, 3: seconds */
+				echo esc_html( sprintf( __( '✓ Last built %1$s ago. Names start %2$s seconds in, one every %3$s seconds. Listen:', 'marquee' ), human_time_diff( (int) $b['t'] ), $b['start'], $b['slot'] ) );
+				?>
+				<a href="<?php echo esc_url( $b['full'] ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'full break', 'marquee' ); ?></a> ·
+				<a href="<?php echo esc_url( $b['short2'] ); ?>" target="_blank" rel="noopener"><?php esc_html_e( '2 names', 'marquee' ); ?></a> ·
+				<a href="<?php echo esc_url( $b['short1'] ); ?>" target="_blank" rel="noopener"><?php esc_html_e( '1 name', 'marquee' ); ?></a>
+			</p></div>
+		<?php endif; ?>
+		<p class="mq__fine"><?php esc_html_e( 'You’ll get three players to listen to right here. Happy with it? You’re done: within a minute your FPP downloads it and sets up the playlists by itself. Not happy? Change a line or the music and build again. Each build uses about 100 ElevenLabs credits.', 'marquee' ); ?></p>
+
+		<details class="mq__faq">
+			<summary><?php esc_html_e( 'Questions', 'marquee' ); ?></summary>
+			<p><b><?php esc_html_e( 'Do I have to change my xLights sequence?', 'marquee' ); ?></b> <?php esc_html_e( 'No. Only the sound changes. Marquee times the names to fit your sequence’s length.', 'marquee' ); ?></p>
+			<p><b><?php esc_html_e( 'I already made my own break audio. Do I need this?', 'marquee' ); ?></b> <?php esc_html_e( 'No. Nothing changes on your FPP until you click Build. Just make sure your audio has a quiet part for the names, and set “First name goes up at” and “Seconds per name” above to match it.', 'marquee' ); ?></p>
+			<p><b><?php esc_html_e( 'What exactly changes on my FPP?', 'marquee' ); ?></b> <?php echo esc_html( sprintf( __( 'Three sound files are added (marquee-break-full.wav, -2 and -1). Your “%1$s” playlist is set to play the full one with your names sequence, and two playlists are added for the short breaks: “%1$s 2” and “%1$s 1”. A copy of your original playlist is kept on the FPP.', 'marquee' ), $pl ) ); ?></p>
+			<p><b><?php esc_html_e( 'Can I use Santa?', 'marquee' ); ?></b> <?php esc_html_e( 'Yes. Pick a Santa voice above and tick “My voice is Santa”. The example lines change to Santa ones.', 'marquee' ); ?></p>
+			<p><b><?php esc_html_e( 'The names start too early or too late.', 'marquee' ); ?></b> <?php esc_html_e( 'Make the intro shorter or longer and build again. The timing is set from how long the intro and outro take to say.', 'marquee' ); ?></p>
+		</details>
 	</div>
-	<div class="mq__row">
-		<p><label for="mq-bseq"><?php esc_html_e( 'Length of your names sequence (seconds)', 'marquee' ); ?></label><input id="mq-bseq" name="break_seq" type="number" min="15" max="120" step="0.1" value="<?php echo esc_attr( $s['break_seq'] ); ?>"><small><?php esc_html_e( 'The full break is made exactly this long, so your xLights sequence fits. FPP → Content Setup → File Manager → Sequences shows it.', 'marquee' ); ?></small></p>
-		<div><?php marquee_media_field( 'break_music', __( 'Music (optional)', 'marquee' ), __( 'An instrumental MP3 with no singing or talking. Without one, a soft music box comes with Marquee.', 'marquee' ), $mus ? array( $mus ) : array(), false, '', 'audio' ); ?></div>
-	</div>
-	<p><button type="button" class="button button-primary" data-mq-break-build><?php esc_html_e( 'Build the break audio', 'marquee' ); ?></button> <span class="mq__msg" data-mq-break-msg aria-live="polite"></span></p>
-	<div class="mq__break-prev" data-mq-break-prev hidden></div>
-	<small><?php esc_html_e( 'Uses the voice saved above (Save first if you just changed it) and about 100 ElevenLabs credits. After building, your FPP updates itself within a minute (names script 3.3 or newer). Build again whenever you change the lines, the music or the voice.', 'marquee' ); ?></small>
 	<?php
 }

@@ -126,3 +126,28 @@
 .mq__std-gone { margin-top: 14px; padding-top: 10px; border-top: 1px dashed #dcdcde; }
 .mq__pane label.mq__chk { display: flex; align-items: center; gap: 8px; margin-top: 30px; }
 .mq__break-prev p { display: flex; align-items: center; gap: 10px; margin: 6px 0; } .mq__break-prev b { min-width: 90px; } .mq__break-prev audio { height: 36px; }
+
+/* names break builder */
+.mq__bb { margin-top: 26px; padding: 18px 20px; border: 1px solid #dcdcde; border-radius: 10px; background: #fbfbfc; }
+.mq__bb h3 { margin-top: 0; }
+.mq__bb h4 { margin: 22px 0 8px; font-size: 14px; display: flex; align-items: center; gap: 8px; }
+.mq__step { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: #2271b1; color: #fff; font-size: 12px; }
+.mq__tag { font-size: 11px; font-weight: 400; color: #646970; background: #f0f0f1; border-radius: 10px; padding: 1px 8px; }
+.mq__tl { display: grid; grid-template-columns: 1fr 2.2fr 1fr; gap: 6px; margin: 14px 0 8px; }
+.mq__tl-part { padding: 10px 12px; border-radius: 8px; display: flex; flex-direction: column; gap: 3px; }
+.mq__tl-part.is-voice { background: #e7f1fb; border: 1px solid #b6d3ef; }
+.mq__tl-part.is-names { background: #eef7ee; border: 1px solid #b8dcb8; }
+.mq__tl-part small { color: #50575e; }
+.mq__tl-part em { font-size: 12px; color: #1d2327; }
+@media (max-width: 782px) { .mq__tl { grid-template-columns: 1fr; } }
+.mq__check { margin: 0; padding: 0; list-style: none; }
+.mq__check li { margin: 4px 0; padding-left: 22px; text-indent: -22px; }
+.mq__check li span { display: inline-block; width: 22px; text-indent: 0; font-weight: 700; }
+.mq__check .is-ok span { color: #00a32a; } .mq__check .is-bad span { color: #d63638; } .mq__check .is-maybe span { color: #996800; }
+.mq__ideas { display: block; margin-top: 4px; }
+.mq__ideas .button-link { margin-right: 10px; text-align: left; }
+.mq__narrow { max-width: 520px; }
+.mq__narrow input[type=number] { width: 110px; }
+.mq__faq { margin-top: 16px; }
+.mq__faq summary { cursor: pointer; font-weight: 600; }
+.mq__faq p { margin: 8px 0; }
