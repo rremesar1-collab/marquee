@@ -490,7 +490,7 @@
 		if (t.indexOf('NAME') < 0) { t = t.replace(/[\s,!.]+$/, '') + ', NAME!'; say = 'No NAME in it, so the name goes at the end.'; }
 		if (/[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}]/u.test(t)) { t = t.replace(/[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}️]/gu, ''); say = (say ? say + ' ' : '') + 'Emoji are left out: the screens can’t show them.'; }
 		var k = t.indexOf('NAME');
-		scr.textContent = '→ ' + t.slice(0, k).toUpperCase() + 'EMMA' + t.slice(k + 4).replace(/NAME/g, '').toUpperCase();
+		scr.textContent = '→ ' + t.slice(0, k).toUpperCase() + 'Emma' + t.slice(k + 4).replace(/NAME/g, '').toUpperCase();
 		warn.textContent = say; warn.hidden = !say;
 	}
 	ins.forEach(function (i) { i.addEventListener('input', function () { look(i); }); look(i); });
