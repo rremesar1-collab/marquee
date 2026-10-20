@@ -179,7 +179,7 @@ function marquee_ai_site_now() {
 }
 
 /** Ask Claude. Returns array( text ) or array( null, error message ). */
-function marquee_ai_ask_claude( $key, $msgs ) {
+function marquee_ai_ask_claude( $key, $msgs, $system = null, $max = 900 ) {
 	$r = wp_remote_post( 'https://api.anthropic.com/v1/messages', array(
 		'timeout' => 45,
 		'headers' => array(
@@ -189,8 +189,8 @@ function marquee_ai_ask_claude( $key, $msgs ) {
 		),
 		'body'    => wp_json_encode( array(
 			'model'      => marquee_ai_model( 'claude' ),
-			'max_tokens' => 900,
-			'system'     => array(
+			'max_tokens' => $max,
+			'system'     => null !== $system ? array( array( 'type' => 'text', 'text' => $system ) ) : array(
 				array( 'type' => 'text', 'text' => marquee_ai_guide(), 'cache_control' => array( 'type' => 'ephemeral' ) ),
 				array( 'type' => 'text', 'text' => marquee_ai_site_now() ),
 			),
@@ -226,8 +226,8 @@ function marquee_ai_ask_claude( $key, $msgs ) {
 }
 
 /** Ask ChatGPT. Returns array( text ) or array( null, error message ). */
-function marquee_ai_ask_chatgpt( $key, $msgs ) {
-	$sys = array(
+function marquee_ai_ask_chatgpt( $key, $msgs, $system = null, $max = 900 ) {
+	$sys = null !== $system ? array( array( 'role' => 'system', 'content' => $system ) ) : array(
 		array( 'role' => 'system', 'content' => marquee_ai_guide() ),
 		array( 'role' => 'system', 'content' => marquee_ai_site_now() ),
 	);
@@ -242,7 +242,7 @@ function marquee_ai_ask_chatgpt( $key, $msgs ) {
 			$body['max_completion_tokens'] = 4000; // includes its thinking
 			$body['reasoning_effort']      = 'low';
 		} else {
-			$body['max_tokens'] = 900;
+			$body['max_tokens'] = $max;
 		}
 		$r = wp_remote_post( 'https://api.openai.com/v1/chat/completions', array(
 			'timeout' => 60,
@@ -404,3 +404,59 @@ function marquee_ai_panel() {
 	</div>
 	<?php
 }
+
+
+/* Sequence maker: turn "purple and gold Mardi Gras" into a theme (colors + which effect each kind
+   of prop gets). Only the description and the kinds of props (with their names) are sent. */
+add_action( 'wp_ajax_marquee_ai_theme', function () {
+	check_ajax_referer( 'marquee_admin', 'nonce' );
+	if ( ! current_user_can( 'manage_options' ) ) {
+		wp_send_json_error( null, 403 );
+	}
+	list( $key, , $p ) = marquee_ai_key();
+	if ( ! $key ) {
+		wp_send_json_error( array( 'message' => __( 'Describing your own theme uses the Need help assistant: add a ChatGPT or Claude key there first (the ready-made themes work without one).', 'marquee' ), 'need_key' => true ) );
+	}
+	$day  = 'marquee_ai_n_' . wp_date( 'Ymd' );
+	$used = (int) get_transient( $day );
+	if ( $used >= marquee_ai_daily() ) {
+		wp_send_json_error( array( 'message' => __( 'That’s all the AI questions for today. Try again tomorrow, or pick a ready-made theme.', 'marquee' ) ) );
+	}
+	$want  = isset( $_POST['want'] ) ? mb_substr( sanitize_text_field( wp_unslash( $_POST['want'] ) ), 0, 200 ) : '';
+	$props = isset( $_POST['props'] ) ? json_decode( wp_unslash( $_POST['props'] ), true ) : array(); // phpcs:ignore
+	if ( '' === trim( $want ) ) {
+		wp_send_json_error( array( 'message' => __( 'Describe the theme first, like “purple and gold Mardi Gras”.', 'marquee' ) ) );
+	}
+	$kinds = array();
+	foreach ( (array) $props as $k => $names ) {
+		if ( is_string( $k ) && preg_match( '/^[a-z]+$/', $k ) ) {
+			$kinds[ $k ] = array_slice( array_map( 'sanitize_text_field', (array) $names ), 0, 8 );
+		}
+	}
+	$system = "You design themed versions of a short Christmas light show sequence (xLights) for a kids' \"names in lights\" break. "
+		. "Answer with ONLY a JSON object, no other text: {\"name\": short theme name (max 30 chars), \"colors\": 2 to 5 colors as \"#RRGGBB\" (the theme's palette, most important first; bright, saturated colors look best on pixels; use #FFFFFF for white), "
+		. "\"swaps\": an object mapping prop kinds to an effect for the main part of the break}. "
+		. "Prop kinds: tree, star, arch, cane, spinner, flake, window, line (rooflines, icicles, outlines), flood, present, matrix, other. "
+		. "Effects you may use: spirals (stripes winding round, great on trees), pinwheel (spinning arms, for spinners), chase (moving stripes along a line), bars (moving bands, good on windows and matrices), twinkle (random twinkling), shimmer (all lights flickering together), wash (slow color fade), snowfall (dots falling down), on (steady). "
+		. "Only include kinds this show has. Pick effects that make the theme recognisable (for example snowfall for snow themes, spirals for candy canes).";
+	$user = 'Theme: ' . $want . "\nThis show's props by kind: " . wp_json_encode( $kinds );
+	$msgs = array( array( 'role' => 'user', 'content' => $user ) );
+	$res  = 'chatgpt' === $p ? marquee_ai_ask_chatgpt( $key, $msgs, $system, 600 ) : marquee_ai_ask_claude( $key, $msgs, $system, 600 );
+	if ( null === $res[0] ) {
+		wp_send_json_error( array( 'message' => $res[1] ) );
+	}
+	set_transient( $day, $used + 1, DAY_IN_SECONDS );
+	$text = (string) $res[0];
+	$j    = json_decode( $text, true );
+	if ( ! is_array( $j ) && preg_match( '/\{.*\}/s', $text, $m ) ) {
+		$j = json_decode( $m[0], true );
+	}
+	if ( ! is_array( $j ) || empty( $j['colors'] ) ) {
+		wp_send_json_error( array( 'message' => __( 'The AI’s answer didn’t make sense. Try describing it a little differently.', 'marquee' ) ) );
+	}
+	wp_send_json_success( array( 'theme' => array(
+		'name'   => mb_substr( sanitize_text_field( (string) ( $j['name'] ?? $want ) ), 0, 30 ),
+		'colors' => array_values( array_filter( (array) $j['colors'], function ( $c ) { return is_string( $c ) && preg_match( '/^#[0-9a-fA-F]{6}$/', $c ); } ) ),
+		'swaps'  => array_map( 'sanitize_key', array_filter( (array) ( $j['swaps'] ?? array() ), 'is_string' ) ),
+	) ) );
+} );

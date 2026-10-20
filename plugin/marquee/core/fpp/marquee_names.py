@@ -38,7 +38,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-VERSION = "3.4"
+VERSION = "3.5"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -84,7 +84,15 @@ DEFAULTS = {
     "short_breaks": True,             # 1 or 2 names: use "<break playlist> 1" / "<break playlist> 2" if they exist
     "say_every_time": True,           # with fewer names than slots the screens repeat them: say them again each time
     "talk_effect": "",                # FPP effect (.eseq) that moves the singing faces while a name is spoken
+    "mode": "break",                  # "break": a names break between songs; "live": during songs on a spare screen
+    "live_show_for": 6,               # live mode: seconds each name stays up
 }
+MODE = {"mode": None, "show_for": None}   # what the website said last (it wins over the settings file)
+
+
+def live():
+    return (MODE["mode"] or S["mode"]) == "live"
+
 S = dict(DEFAULTS)
 
 
@@ -181,6 +189,12 @@ def pull(done_ids, st=None, report=None):
     if not res or not res.get("success"):
         raise RuntimeError("website said: %s" % (res,))
     if isinstance(res["data"], dict):
+        if res["data"].get("mode") in ("break", "live"):
+            if MODE["mode"] and MODE["mode"] != res["data"]["mode"]:
+                log("website switched names to", "during songs on the screens" if res["data"]["mode"] == "live" else "a names break between songs")
+            MODE["mode"] = res["data"]["mode"]
+        if res["data"].get("live_show_for"):
+            MODE["show_for"] = float(res["data"]["live_show_for"])
         THEMES.clear()
         for t in res["data"].get("themes") or []:
             if isinstance(t, dict) and t.get("slug") and t.get("playlist"):
@@ -625,6 +639,29 @@ def _show_names(names, slots, color):
     return done
 
 
+# ---------------------------------------------------------------- live ----
+def show_live(names, color):
+    """Live mode: put the waiting names up one after another while the show plays. No voice:
+    it would talk over the music. Returns the ids shown."""
+    keep = S["show_for"]
+    S["show_for"] = float(MODE["show_for"] or S["live_show_for"])
+    done = []
+    try:
+        for item in names[:int(S["max_names"])]:
+            if master_status().get("status_name") != "playing":
+                break                                  # show stopped: the rest wait for it to start again
+            if show(item["text"], color):
+                log("showing (during the song):", item["text"])
+                done.append(item["id"])
+                time.sleep(S["show_for"] + 1.0)
+            else:
+                log("no screen took", item["text"], "- trying again shortly")
+                break
+    finally:
+        S["show_for"] = keep
+    return done
+
+
 # --------------------------------------------------------------- check ----
 def run_checks(problems=None):
     """Every setup check, as a list of {ok, what, msg}. Used by --check and sent to the website at start."""
@@ -655,7 +692,9 @@ def run_checks(problems=None):
         add(False, "fpp", "could not read this FPP's status")
     try:
         pls = fpp_get(MASTER, "/api/playlists") or []
-        if S["break_playlist"] in pls:
+        if live():
+            add(True, "playlist", "names go up during songs on the screens, so no names break playlist is needed")
+        elif S["break_playlist"] in pls:
             short = [p for p in pls if p in ("%s 1" % S["break_playlist"], "%s 2" % S["break_playlist"])]
             add(True, "playlist", "playlist '%s' found%s" % (S["break_playlist"], (" (short breaks: %s)" % ", ".join(short)) if short else ""))
             for t in THEMES.values():
@@ -667,7 +706,7 @@ def run_checks(problems=None):
             add(False, "playlist", "no playlist named '%s' on this FPP (found: %s)" % (S["break_playlist"], ", ".join(pls) or "none"))
     except Exception as e:
         add(False, "playlist", "could not list playlists: %s" % e)
-    if S["voice"] and site_voice:
+    if S["voice"] and site_voice and not live():
         try:
             cmds = fpp_get(MASTER, "/api/commands") or []
             names = set(c.get("name") for c in cmds if isinstance(c, dict))
@@ -788,8 +827,8 @@ def main():
             log("setup problem:", p)
         time.sleep(60)                        # wait for the settings file, check again in a minute
         problems = load_settings()
-    log("started v%s; break playlist '%s'; screens: %s" % (
-        VERSION, S["break_playlist"], ", ".join("%s=%s on %s" % (s["name"], s["model"], s["fpp"]) for s in S["screens"]) or "none"))
+    log("started v%s; %s; screens: %s" % (
+        VERSION, "names during songs" if live() else "break playlist '%s'" % S["break_playlist"], ", ".join("%s=%s on %s" % (s["name"], s["model"], s["fpp"]) for s in S["screens"]) or "none"))
     checks, site_ok = run_checks(problems)
     for c in checks:
         log(("ok: " if c["ok"] else "PROBLEM: ") + c["msg"])
@@ -824,6 +863,12 @@ def main():
                 done = []
                 color = data.get("color") or color
                 waiting = len(data.get("names") or [])
+                if waiting and live():
+                    shown = show_live(data.get("names") or [], color)
+                    if shown:
+                        pull(shown, st)                   # tell the website right away
+                    last_check = time.time() - every + 2  # check again soon for more
+                    continue
                 if waiting:
                     prefetch(data.get("names") or [])     # spoken names are ready before the break
                 if waiting and not queued:

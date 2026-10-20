@@ -253,7 +253,8 @@
 					nb.querySelector('[data-rr-names-text]').textContent = j.data.text;
 					var p = j.data.place;
 					nb.querySelector('[data-rr-names-place]').textContent = j.data.again ? 'Your name is already in line!' :
-						(p <= 6 ? (p <= 1 ? 'You’re next! Watch for your name after this song.' : 'You’re #' + p + ' in line. Watch for your name after this song.') : 'You’re #' + p + ' in line. Your name will show after a few songs.');
+						(j.data.live ? (p <= 1 ? 'You’re next! Watch our screens: your name goes up in a minute.' : 'You’re #' + p + ' in line. Watch our screens: your name goes up in a few minutes.') :
+						(p <= 6 ? (p <= 1 ? 'You’re next! Watch for your name after this song.' : 'You’re #' + p + ' in line. Watch for your name after this song.') : 'You’re #' + p + ' in line. Your name will show after a few songs.'));
 					if (j.data.theme && !j.data.again) {
 						nb.querySelector('[data-rr-names-place]').textContent += ' It goes up in ' + j.data.theme + ' (if lots of kids picked other shows, it may be one song later).';
 					}
@@ -382,16 +383,16 @@
 		}
 	}
 	var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-	var seen = cards.map(function () { return true; });
-	if ('IntersectionObserver' in window) {
-		var io = new IntersectionObserver(function (es) { es.forEach(function (e) { seen[cards.indexOf(e.target)] = e.isIntersecting; }); });
-		cards.forEach(function (c) { io.observe(c); });
+	function onScreen(c) {                     // only animate cards you can see (and that are open)
+		if (!c.offsetParent) { return false; }
+		var r = c.getBoundingClientRect();
+		return r.width > 0 && r.bottom > 0 && r.top < (window.innerHeight || 800);
 	}
 	var last = 0;
 	function frame(now) {
 		if (!left && now - last > 66) {           // about 15 frames a second is plenty for twinkling lights
 			last = now;
-			cards.forEach(function (c, i) { if (seen[i] && c.offsetParent) { draw(c, now / 1000); } });
+			cards.forEach(function (c) { if (onScreen(c)) { draw(c, now / 1000); } });
 			if (still) { return; }
 		}
 		requestAnimationFrame(frame);

@@ -31,6 +31,8 @@ function marquee_defaults() {
 		'art_doors'  => array(),  // Kids' Corner door pictures: names / show / coloring / games => attachment ID
 		'lab_songs'  => array(),  // Light Lab songs (audio attachment IDs)
 		'vote_hide'  => array(),  // song keys left out of voting (intros, announcements)
+		'names_mode'   => 'break',           // 'break' = a short names break between songs; 'live' = during songs on a spare screen
+		'live_show_for' => 6,                // live mode: seconds each name stays up
 		'fpp_playlist' => 'Names in Lights', // FPP playlist holding the names break
 		'fpp_screens'  => array(),           // [ name, fpp address, overlay model ] for the names script
 		'voice_on'     => 0,                 // say each name out loud (ElevenLabs)
@@ -48,6 +50,7 @@ function marquee_defaults() {
 		'break_seq'    => 29.6,              // length of the names sequence (seconds)
 		'break_music'  => 0,                 // instrumental MP3 (attachment ID), 0 = the one that comes with Marquee
 		'themes_on'    => 0,                 // kids pick a themed sequence for their name
+		'classic_img'  => 0,                 // picture on the "Classic" card kids pick from (0 = the animated house)
 		'themes'       => array(),           // [ name, playlist, img (attachment ID), start, slot, look ] up to 6
 	);
 }
@@ -111,6 +114,8 @@ function marquee_save( $in ) {
 		'art_removed' => $cur['art_removed'],
 		'art_doors'  => $cur['art_doors'],
 		'lab_songs'  => $cur['lab_songs'],
+		'names_mode'   => isset( $in['names_mode'] ) && in_array( $in['names_mode'], array( 'break', 'live' ), true ) ? $in['names_mode'] : $cur['names_mode'],
+		'live_show_for' => isset( $in['live_show_for'] ) && '' !== trim( (string) $in['live_show_for'] ) ? max( 3, min( 20, round( (float) $in['live_show_for'], 1 ) ) ) : $cur['live_show_for'],
 		'fpp_playlist' => isset( $in['fpp_playlist'] ) && '' !== trim( (string) $in['fpp_playlist'] ) ? mb_substr( sanitize_text_field( wp_unslash( $in['fpp_playlist'] ) ), 0, 80 ) : $cur['fpp_playlist'],
 		'fpp_screens'  => isset( $in['fpp_sent'] ) ? marquee_clean_screens( isset( $in['fpp_screens'] ) ? (array) wp_unslash( $in['fpp_screens'] ) : array() ) : $cur['fpp_screens'],
 		'voice_on'     => isset( $in['voice_sent'] ) ? (int) ! empty( $in['voice_on'] ) : $cur['voice_on'],
@@ -126,6 +131,7 @@ function marquee_save( $in ) {
 		'break_seq'    => isset( $in['break_seq'] ) && '' !== trim( (string) $in['break_seq'] ) ? max( 15, min( 120, round( (float) $in['break_seq'], 2 ) ) ) : $cur['break_seq'],
 		'break_music'  => isset( $in['break_music'] ) ? ( ( absint( $in['break_music'] ) && 0 === strpos( (string) get_post_mime_type( absint( $in['break_music'] ) ), 'audio/' ) ) ? absint( $in['break_music'] ) : 0 ) : $cur['break_music'],
 		'themes_on'    => isset( $in['themes_sent'] ) ? (int) ! empty( $in['themes_on'] ) : $cur['themes_on'],
+		'classic_img'  => isset( $in['themes_sent'] ) ? ( ( absint( $in['classic_img'] ?? 0 ) && wp_attachment_is_image( absint( $in['classic_img'] ) ) ) ? absint( $in['classic_img'] ) : 0 ) : $cur['classic_img'],
 		'themes'       => isset( $in['themes_sent'] ) ? marquee_clean_themes( isset( $in['themes'] ) ? (array) wp_unslash( $in['themes'] ) : array() ) : $cur['themes'],
 		'names_slot'   => isset( $in['names_slot'] ) && '' !== trim( (string) $in['names_slot'] ) ? max( 2.5, min( 10, round( (float) $in['names_slot'], 2 ) ) ) : $cur['names_slot'],
 		'names_start'  => isset( $in['names_start'] ) && '' !== trim( (string) $in['names_start'] ) ? max( 0, min( 120, round( (float) $in['names_start'], 2 ) ) ) : $cur['names_start'],
@@ -339,3 +345,17 @@ function marquee_clean_screens( $rows ) {
 	}
 	return $out;
 }
+
+
+/* How names go up: in a names break between songs, or during songs on a spare screen.
+   The FPP script reads this on every check-in, so switching needs no new settings file. */
+function marquee_names_live() {
+	return 'live' === marquee_get()['names_mode'];
+}
+add_filter( 'ridgeroad_names_live', 'marquee_names_live' );
+add_filter( 'ridgeroad_names_pull_data', function ( $data ) {
+	$s                     = marquee_get();
+	$data['mode']          = 'live' === $s['names_mode'] ? 'live' : 'break';
+	$data['live_show_for'] = (float) $s['live_show_for'];
+	return $data;
+}, 5 );

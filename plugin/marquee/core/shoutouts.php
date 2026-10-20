@@ -198,7 +198,7 @@ function ridgeroad_name_send() {
 		'numberposts' => 1,
 	) );
 	if ( $dup && ! $admin ) {
-		wp_send_json_success( array( 'place' => ridgeroad_name_place( $dup[0] ), 'text' => get_post_meta( $dup[0], '_rr_text', true ), 'again' => true ) );
+		wp_send_json_success( array( 'place' => ridgeroad_name_place( $dup[0] ), 'text' => get_post_meta( $dup[0], '_rr_text', true ), 'again' => true, 'live' => (bool) apply_filters( 'ridgeroad_names_live', false ) ) );
 	}
 	if ( count( ridgeroad_name_queue( 40 ) ) >= 40 ) {
 		$fail( __( 'Lots of names right now! Please try again in a few minutes.', 'ridgeroad' ), 429 );
@@ -221,7 +221,7 @@ function ridgeroad_name_send() {
 	}
 	do_action( 'ridgeroad_name_added', $id, $text ); // Marquee: make the spoken version
 	$theme_name = ( $theme && function_exists( 'marquee_themes' ) && isset( marquee_themes()[ $theme ] ) ) ? marquee_themes()[ $theme ]['name'] : '';
-	wp_send_json_success( array( 'place' => ridgeroad_name_place( $id ), 'text' => $text, 'id' => $id, 'buzz' => ridgeroad_buzz_token( $id ), 'theme' => $theme_name ) );
+	wp_send_json_success( array( 'place' => ridgeroad_name_place( $id ), 'text' => $text, 'id' => $id, 'buzz' => ridgeroad_buzz_token( $id ), 'theme' => $theme_name, 'live' => (bool) apply_filters( 'ridgeroad_names_live', false ) ) );
 }
 
 /** Waiting names, oldest first (names older than 2 hours are skipped). */

@@ -37,7 +37,7 @@ $status = ridgeroad_status();
 			<fieldset class="rr-names__themes" data-rr-fx-lab="<?php echo esc_url( function_exists( 'ridgeroad_asset_url' ) ? ridgeroad_asset_url( 'lightlab/' ) : '' ); ?>">
 				<legend><?php esc_html_e( 'Pick your show', 'ridgeroad' ); ?></legend>
 				<div class="rr-themes">
-					<label class="rr-theme"><input type="radio" name="theme" value="" checked><span class="rr-theme__card" style="--h:45"><canvas class="rr-theme__pic rr-theme__fx" data-rr-fx="classic" width="560" height="157" aria-hidden="true"></canvas><b><?php esc_html_e( 'Classic', 'ridgeroad' ); ?></b></span></label>
+					<label class="rr-theme"><input type="radio" name="theme" value="" checked><span class="rr-theme__card" style="--h:45"><?php $rr_cimg = function_exists( 'marquee_classic_img' ) ? marquee_classic_img() : ''; ?><?php if ( $rr_cimg ) : ?><img class="rr-theme__pic" src="<?php echo esc_url( $rr_cimg ); ?>" alt="" loading="lazy"><?php else : ?><canvas class="rr-theme__pic rr-theme__fx" data-rr-fx="classic" width="560" height="157" aria-hidden="true"></canvas><?php endif; ?><b><?php esc_html_e( 'Classic', 'ridgeroad' ); ?></b></span></label>
 					<?php
 					foreach ( $rr_themes as $rr_slug => $rr_t ) :
 						$rr_img = function_exists( 'marquee_theme_img' ) ? marquee_theme_img( $rr_t ) : '';
@@ -60,7 +60,7 @@ $status = ridgeroad_status();
 	<div class="rr-names__done" data-rr-names-done hidden>
 		<p class="rr-names__preview" data-rr-names-text></p>
 		<p class="rr-names__place" data-rr-names-place></p>
-		<p><?php echo esc_html( ridgeroad_is_marquee() ? __( 'Watch for your name in the show after the next song!', 'ridgeroad' ) : __( 'Watch for your name after the next song on the garage door and the TV by the front door!', 'ridgeroad' ) ); ?></p>
+		<p><?php echo esc_html( apply_filters( 'ridgeroad_names_live', false ) ? __( 'Watch for your name on our screens in a minute!', 'ridgeroad' ) : ( ridgeroad_is_marquee() ? __( 'Watch for your name in the show after the next song!', 'ridgeroad' ) : __( 'Watch for your name after the next song on the garage door and the TV by the front door!', 'ridgeroad' ) ) ); ?></p>
 		<div class="rr-names__buzz" data-rr-buzz hidden>
 			<span class="rr-names__bell" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg></span>
 			<span data-rr-buzz-text><?php esc_html_e( 'Want a buzz on this phone right before your name shows?', 'ridgeroad' ); ?></span>

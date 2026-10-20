@@ -32,6 +32,7 @@ require MARQUEE_DIR . 'inc/manager.php';
 require MARQUEE_DIR . 'inc/voice.php';
 require MARQUEE_DIR . 'inc/break.php';
 require MARQUEE_DIR . 'inc/themes.php';
+require MARQUEE_DIR . 'inc/seqmaker.php';
 require MARQUEE_DIR . 'inc/ai.php';
 require MARQUEE_DIR . 'inc/walk.php';
 

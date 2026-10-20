@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /** Themes kids can pick right now: slug => [ name, playlist, img, start, slot ]. Empty when switched off. */
 function marquee_themes() {
 	$s = marquee_get();
-	if ( empty( $s['themes_on'] ) || empty( $s['themes'] ) ) {
+	if ( empty( $s['themes_on'] ) || empty( $s['themes'] ) || 'live' === $s['names_mode'] ) {   // themes need the names break
 		return array();
 	}
 	$out = array();
@@ -25,7 +25,14 @@ function marquee_themes() {
 
 /** Picture for a theme card (the show's own, or a plain festive one). */
 function marquee_theme_img( $t ) {
-	$u = ! empty( $t['img'] ) ? wp_get_attachment_image_url( (int) $t['img'], 'medium' ) : '';
+	$u = ! empty( $t['img'] ) ? wp_get_attachment_image_url( (int) $t['img'], 'medium_large' ) : '';
+	return $u ? $u : '';
+}
+
+/** Picture for the Classic card ('' = the animated house). */
+function marquee_classic_img() {
+	$id = (int) marquee_get()['classic_img'];
+	$u  = $id ? wp_get_attachment_image_url( $id, 'medium_large' ) : '';
 	return $u ? $u : '';
 }
 
@@ -134,7 +141,17 @@ function marquee_themes_box( $s ) {
 		<div class="mq__tl-part is-voice"><b><?php esc_html_e( '3. It plays', 'marquee' ); ?></b><small><?php esc_html_e( 'After the current song, the theme the longest-waiting kid picked plays. Kids who picked the same one go up together; nobody waits more than one extra break.', 'marquee' ); ?></small></div>
 	</div>
 	<label class="mq__feat"><span><b><?php esc_html_e( 'Let kids pick a themed sequence', 'marquee' ); ?></b><small><?php echo esc_html( sprintf( __( 'Your regular “%s” break stays as the “Classic” choice.', 'marquee' ), $pl ) ); ?></small></span><input type="checkbox" name="themes_on" value="1" <?php checked( (bool) $s['themes_on'] ); ?>></label>
-	<div class="mq__themes">
+	<div class="mq__themes" data-rr-fx-lab="<?php echo esc_url( function_exists( 'ridgeroad_asset_url' ) ? ridgeroad_asset_url( 'lightlab/' ) : MARQUEE_URL . 'core/assets/lightlab/' ); ?>">
+		<p class="mq__fine"><?php esc_html_e( 'Each card on the right is what kids see when they pick. Without a picture it’s a little animated house in that theme’s colors; add a picture (a photo of your house during that sequence works great) to use it instead.', 'marquee' ); ?></p>
+		<div class="mq__theme is-classic" data-mq-theme>
+			<div class="mq__theme-n">★</div>
+			<div class="mq__theme-f">
+				<p class="mq__theme-classic"><b><?php esc_html_e( 'Classic', 'marquee' ); ?></b> <?php echo esc_html( sprintf( /* translators: playlist */ __( 'Your regular names break (“%s”). Always there for kids to pick.', 'marquee' ), $pl ) ); ?></p>
+				<input type="hidden" data-mq-tname value="<?php esc_attr_e( 'Classic', 'marquee' ); ?>"><input type="hidden" data-mq-tlook value="classic">
+				<div><?php marquee_media_field( 'classic_img', __( 'Picture', 'marquee' ), '', $s['classic_img'] ? array( (int) $s['classic_img'] ) : array(), false ); ?></div>
+			</div>
+			<?php marquee_theme_card_preview(); ?>
+		</div>
 		<?php
 		for ( $i = 0; $i < 6; $i++ ) :
 			$t   = isset( $rows[ $i ] ) ? $rows[ $i ] : array( 'name' => '', 'playlist' => '', 'img' => 0, 'start' => 4, 'slot' => 3.75, 'look' => '' );
@@ -145,7 +162,7 @@ function marquee_themes_box( $s ) {
 				<div class="mq__theme-n"><?php echo (int) $i + 1; ?></div>
 				<div class="mq__theme-f">
 					<div class="mq__row">
-						<p><label for="mq-th<?php echo (int) $i; ?>n"><?php esc_html_e( 'Name kids see', 'marquee' ); ?></label><input id="mq-th<?php echo (int) $i; ?>n" name="<?php echo esc_attr( $pre ); ?>[name]" type="text" maxlength="30" value="<?php echo esc_attr( $t['name'] ); ?>" placeholder="<?php echo esc_attr( $ex[ $i ] ); ?>"></p>
+						<p><label for="mq-th<?php echo (int) $i; ?>n"><?php esc_html_e( 'Name kids see', 'marquee' ); ?></label><input id="mq-th<?php echo (int) $i; ?>n" data-mq-tname name="<?php echo esc_attr( $pre ); ?>[name]" type="text" maxlength="30" value="<?php echo esc_attr( $t['name'] ); ?>" placeholder="<?php echo esc_attr( $ex[ $i ] ); ?>"></p>
 						<p><label for="mq-th<?php echo (int) $i; ?>p"><?php esc_html_e( 'FPP playlist', 'marquee' ); ?></label><input id="mq-th<?php echo (int) $i; ?>p" name="<?php echo esc_attr( $pre ); ?>[playlist]" type="text" maxlength="80" value="<?php echo esc_attr( $t['playlist'] ); ?>" placeholder="<?php echo esc_attr( 'Names - ' . $ex[ $i ] ); ?>"></p>
 					</div>
 					<div class="mq__row mq__row--3">
@@ -154,12 +171,13 @@ function marquee_themes_box( $s ) {
 						<div><?php marquee_media_field( $pre . '[img]', __( 'Picture', 'marquee' ), '', $t['img'] ? array( (int) $t['img'] ) : array(), false ); ?></div>
 					</div>
 					<p class="mq__theme-look"><label for="mq-th<?php echo (int) $i; ?>k"><?php esc_html_e( 'Preview kids see (when there’s no picture)', 'marquee' ); ?></label>
-						<select id="mq-th<?php echo (int) $i; ?>k" name="<?php echo esc_attr( $pre ); ?>[look]">
+						<select id="mq-th<?php echo (int) $i; ?>k" data-mq-tlook name="<?php echo esc_attr( $pre ); ?>[look]">
 							<option value=""><?php esc_html_e( 'Pick for me from the name', 'marquee' ); ?></option>
 							<?php foreach ( marquee_theme_looks() as $lk => $ll ) : ?><option value="<?php echo esc_attr( $lk ); ?>" <?php selected( $t['look'] ?? '', $lk ); ?>><?php echo esc_html( $ll ); ?></option><?php endforeach; ?>
 						</select>
 					</p>
 				</div>
+				<?php marquee_theme_card_preview(); ?>
 			</div>
 		<?php endfor; ?>
 		<p><button type="button" class="button" data-mq-theme-more><?php esc_html_e( '+ Add another theme', 'marquee' ); ?></button></p>
@@ -171,5 +189,16 @@ function marquee_themes_box( $s ) {
 		<p><b><?php esc_html_e( 'What if a playlist is missing on my FPP?', 'marquee' ); ?></b> <?php esc_html_e( 'Names for that theme go up in your Classic break instead, and the setup check on this page tells you which playlist it couldn’t find.', 'marquee' ); ?></p>
 		<p><b><?php esc_html_e( 'Do I need pictures?', 'marquee' ); ?></b> <?php esc_html_e( 'No. Without one, kids see a little animated picture of a lit-up house in that theme’s colors (pick the look under each theme). A photo or short clip of your own house during that sequence is even better.', 'marquee' ); ?></p>
 	</details>
+	<?php
+}
+
+
+/** A kid's-eye preview of one "Pick your show" card (kept in step with the row by admin.js). */
+function marquee_theme_card_preview() {
+	?>
+	<div class="mq-tcard" aria-hidden="true">
+		<span class="mq-tcard__pic"><canvas data-rr-fx="classic" width="560" height="157"></canvas><img alt="" hidden></span>
+		<b data-mq-tcard-name></b>
+	</div>
 	<?php
 }

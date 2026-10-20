@@ -23,6 +23,8 @@ add_action( 'admin_enqueue_scripts', function ( $hook ) {
 	wp_enqueue_script( 'marquee-demo', MARQUEE_URL . 'assets/demo.js', array(), MARQUEE_VERSION . '.' . filemtime( MARQUEE_DIR . 'assets/demo.js' ), true );
 	wp_enqueue_script( 'marquee-walk', MARQUEE_URL . 'assets/walk.js', array(), MARQUEE_VERSION . '.' . filemtime( MARQUEE_DIR . 'assets/walk.js' ), true );
 	wp_enqueue_script( 'marquee-ai', MARQUEE_URL . 'assets/ai.js', array( 'marquee-admin' ), MARQUEE_VERSION . '.' . filemtime( MARQUEE_DIR . 'assets/ai.js' ), true );
+	wp_enqueue_script( 'marquee-seqmaker', MARQUEE_URL . 'assets/seqmaker.js', array(), MARQUEE_VERSION . '.' . filemtime( MARQUEE_DIR . 'assets/seqmaker.js' ), true );
+	wp_enqueue_script( 'marquee-seqmaker-ui', MARQUEE_URL . 'assets/seqmaker-ui.js', array( 'marquee-seqmaker', 'marquee-admin' ), MARQUEE_VERSION . '.' . filemtime( MARQUEE_DIR . 'assets/seqmaker-ui.js' ), true );
 	wp_enqueue_script( 'marquee-break', MARQUEE_URL . 'assets/break.js', array( 'marquee-admin' ), MARQUEE_VERSION . '.' . filemtime( MARQUEE_DIR . 'assets/break.js' ), true );
 	wp_localize_script( 'marquee-admin', 'MarqueeAdmin', array(
 		'ajax'  => admin_url( 'admin-ajax.php' ),
@@ -278,9 +280,9 @@ function marquee_admin_page() {
 				<?php endif; ?>
 			</section>
 
-			<section class="mq__pane" data-pane="4">
+			<section class="mq__pane" data-pane="4" data-names-mode="<?php echo esc_attr( 'live' === $s['names_mode'] ? 'live' : 'break' ); ?>">
 				<h2><?php esc_html_e( 'Names & FPP', 'marquee' ); ?></h2>
-				<p class="mq__lead"><?php esc_html_e( 'Connect your FPP and set up “Your Name in Lights”: kids type their first name on your website. Between songs, your show puts it up on your screens, and if you like, a voice says it on your radio station. Set it up in this order; each part is optional after the first.', 'marquee' ); ?></p>
+				<p class="mq__lead"><?php esc_html_e( 'Connect your FPP and set up “Your Name in Lights”: kids type their first name on your website and your show puts it up on your screens.', 'marquee' ); ?></p>
 				<?php if ( ! $names_url ) : ?>
 					<p class="mq__fine"><?php esc_html_e( 'Your Name in Lights isn’t available with this theme.', 'marquee' ); ?></p>
 				<?php else : ?>
@@ -294,6 +296,28 @@ function marquee_admin_page() {
 						echo '<div class="mq__note">' . esc_html__( 'Your Name in Lights is switched off, so kids can’t send names yet. Turn it on under Features when you’re ready.', 'marquee' ) . '</div>';
 					}
 					?>
+					<div class="mq-how">
+						<h3><?php esc_html_e( 'How it works', 'marquee' ); ?></h3>
+						<p><?php esc_html_e( 'Marquee doesn’t change your show. Pick how the names go up:', 'marquee' ); ?></p>
+						<div class="mq-how__modes" role="radiogroup" aria-label="<?php esc_attr_e( 'How names go up', 'marquee' ); ?>">
+							<label class="mq-how__mode">
+								<input type="radio" name="names_mode" value="break" <?php checked( 'live' !== $s['names_mode'] ); ?>>
+								<span class="mq-how__card">
+									<b><?php esc_html_e( 'Between songs: a names break', 'marquee' ); ?> <em><?php esc_html_e( 'Recommended', 'marquee' ); ?></em></b>
+									<span class="mq-flow" aria-hidden="true"><span class="mq-flow__song">🎵 <?php esc_html_e( 'Your song', 'marquee' ); ?></span><i>→</i><span class="mq-flow__break">⭐ <?php esc_html_e( 'Names break', 'marquee' ); ?><small><?php esc_html_e( 'about 30 seconds', 'marquee' ); ?></small></span><i>→</i><span class="mq-flow__song">🎵 <?php esc_html_e( 'Next song', 'marquee' ); ?></span></span>
+									<small><?php esc_html_e( 'When kids have sent names, your FPP slips a short “names break” sequence in after the current song: the names go up on your screens one by one (and a voice can say them), then your playlist carries on. No names waiting? Nothing changes. You need one short extra sequence for the break; Marquee can make it for you (card 2).', 'marquee' ); ?></small>
+								</span>
+							</label>
+							<label class="mq-how__mode">
+								<input type="radio" name="names_mode" value="live" <?php checked( 'live' === $s['names_mode'] ); ?>>
+								<span class="mq-how__card">
+									<b><?php esc_html_e( 'During songs, on a spare screen', 'marquee' ); ?></b>
+									<span class="mq-flow" aria-hidden="true"><span class="mq-flow__song is-wide">🎵 <?php esc_html_e( 'Your show keeps playing', 'marquee' ); ?><small><?php esc_html_e( '+ names on a spare TV or projector', 'marquee' ); ?></small></span></span>
+									<small><?php esc_html_e( 'For a TV or projector your sequences don’t use: names appear on it while your show plays. No extra sequence to make. Names aren’t spoken (it would talk over your music) and kids don’t pick a themed sequence.', 'marquee' ); ?></small>
+								</span>
+							</label>
+						</div>
+					</div>
 					<details class="mq__card" <?php echo $fpp_ok ? '' : 'open'; ?>>
 						<summary>
 							<span class="mq__card-n">1</span>
@@ -305,8 +329,11 @@ function marquee_admin_page() {
 					<?php marquee_walk( 'fpp', ! $fpp_ok ); ?>
 					<?php marquee_names_status(); ?>
 					<input type="hidden" name="fpp_sent" value="1">
-					<div class="mq__row">
-					<p><label for="mq-fpl"><?php esc_html_e( 'FPP playlist with your names break', 'marquee' ); ?></label><input id="mq-fpl" name="fpp_playlist" type="text" value="<?php echo esc_attr( $s['fpp_playlist'] ); ?>"><small><?php esc_html_e( 'A short sequence (about 30 seconds) that shows your screens, in its own playlist. The guide shows how to make one.', 'marquee' ); ?></small></p>
+					<div class="mq__row mq-only-live">
+					<p><label for="mq-lsf"><?php esc_html_e( 'Seconds each name stays up', 'marquee' ); ?></label><input id="mq-lsf" name="live_show_for" type="number" min="3" max="20" step="0.5" value="<?php echo esc_attr( $s['live_show_for'] ); ?>"><small><?php esc_html_e( 'Names go up one after another while your show plays, within about 20 seconds of being sent.', 'marquee' ); ?></small></p>
+					</div>
+					<div class="mq__row mq-only-break">
+					<p><label for="mq-fpl"><?php esc_html_e( 'FPP playlist with your names break', 'marquee' ); ?></label><input id="mq-fpl" name="fpp_playlist" type="text" value="<?php echo esc_attr( $s['fpp_playlist'] ); ?>"><small><?php esc_html_e( 'A short sequence (about 30 seconds) in its own playlist, with your screens left dark where the names go. Don’t have one? Card 2 makes it for you.', 'marquee' ); ?></small></p>
 					<p><label for="mq-nst"><?php esc_html_e( 'First name goes up at (seconds)', 'marquee' ); ?></label><input id="mq-nst" name="names_start" type="number" min="0" max="120" step="0.5" value="<?php echo esc_attr( $s['names_start'] ); ?>"><small><?php esc_html_e( 'How far into the break the names start. If your break opens with an announcer, use the second the quiet music starts.', 'marquee' ); ?></small></p>
 					<p><label for="mq-nsl"><?php esc_html_e( 'Seconds per name', 'marquee' ); ?></label><input id="mq-nsl" name="names_slot" type="number" min="2.5" max="10" step="0.05" value="<?php echo esc_attr( $s['names_slot'] ); ?>"><small><?php esc_html_e( 'Time from one name to the next (up to 6 names). Both are set for you when you build the names break audio below.', 'marquee' ); ?></small></p>
 					</div>
@@ -336,9 +363,21 @@ function marquee_admin_page() {
 						</div>
 					</details>
 
-					<details class="mq__card" <?php echo ( $fpp_ok && ! $v_on && ! $s['voice_key'] ) ? 'open' : ''; ?>>
+					<details class="mq__card mq-only-break">
 						<summary>
 							<span class="mq__card-n">2</span>
+							<span class="mq__card-t"><b><?php esc_html_e( 'Make your sequences', 'marquee' ); ?></b><small><?php esc_html_e( 'Your names break and themed versions, made from your xLights layout', 'marquee' ); ?></small></span>
+							<span class="mq__pill"><?php esc_html_e( 'Optional', 'marquee' ); ?></span>
+						</summary>
+						<div class="mq__card-b">
+							<?php marquee_seqmaker_box( $s ); ?>
+						</div>
+					</details>
+
+					<p class="mq__note mq-only-live"><?php esc_html_e( 'Spoken names, the names break audio and themed sequences work with the names break. Pick “Between songs” above to use them.', 'marquee' ); ?></p>
+					<details class="mq__card mq-only-break" <?php echo ( $fpp_ok && ! $v_on && ! $s['voice_key'] ) ? 'open' : ''; ?>>
+						<summary>
+							<span class="mq__card-n">3</span>
 							<span class="mq__card-t"><b><?php esc_html_e( 'Say each name out loud', 'marquee' ); ?></b><small><?php esc_html_e( 'An ElevenLabs voice (Santa, if you like) reads each name on your radio station', 'marquee' ); ?></small></span>
 							<?php if ( $v_on ) : ?><span class="mq__pill is-ok"><?php echo esc_html( $s['voice_name'] ? $s['voice_name'] : __( 'On', 'marquee' ) ); ?></span><?php else : ?><span class="mq__pill"><?php esc_html_e( 'Off', 'marquee' ); ?></span><?php endif; ?>
 						</summary>
@@ -392,10 +431,10 @@ function marquee_admin_page() {
 						</div>
 					</details>
 
-					<details class="mq__card" <?php echo ( $v_on && ! $brk ) ? 'open' : ''; ?>>
+					<details class="mq__card mq-only-break" <?php echo ( $v_on && ! $brk ) ? 'open' : ''; ?>>
 						<summary>
-							<span class="mq__card-n">3</span>
-							<span class="mq__card-t"><b><?php esc_html_e( 'Names break sound', 'marquee' ); ?></b><small><?php esc_html_e( 'The intro, soft music and outro around the names, made for you', 'marquee' ); ?></small></span>
+							<span class="mq__card-n">4</span>
+							<span class="mq__card-t"><b><?php esc_html_e( 'Names break audio', 'marquee' ); ?></b><small><?php esc_html_e( 'What your radio plays during the names break: an intro, soft music under the names, and an outro, made for you', 'marquee' ); ?></small></span>
 							<?php if ( $brk ) : ?><span class="mq__pill is-ok"><?php esc_html_e( 'Built', 'marquee' ); ?></span><?php else : ?><span class="mq__pill"><?php esc_html_e( 'Not built', 'marquee' ); ?></span><?php endif; ?>
 						</summary>
 						<div class="mq__card-b">
@@ -404,9 +443,9 @@ function marquee_admin_page() {
 					</details>
 
 					<?php $th_on = ! empty( $s['themes_on'] ) && ! empty( $s['themes'] ); ?>
-					<details class="mq__card">
+					<details class="mq__card mq-only-break">
 						<summary>
-							<span class="mq__card-n">4</span>
+							<span class="mq__card-n">5</span>
 							<span class="mq__card-t"><b><?php esc_html_e( 'Themed sequences', 'marquee' ); ?></b><small><?php esc_html_e( 'Kids pick the show their name goes up in, like Candy Cane Swirl or Snowfall', 'marquee' ); ?></small></span>
 							<?php if ( $th_on ) : ?><span class="mq__pill is-ok"><?php /* translators: %d: number of themes */ echo esc_html( sprintf( _n( '%d theme', '%d themes', count( $s['themes'] ), 'marquee' ), count( $s['themes'] ) ) ); ?></span><?php else : ?><span class="mq__pill"><?php esc_html_e( 'Off', 'marquee' ); ?></span><?php endif; ?>
 						</summary>
@@ -590,6 +629,8 @@ add_action( 'admin_post_marquee_names_json', function () {
 	$data = array(
 		'site'           => home_url( '/' ),
 		'key'            => function_exists( 'ridgeroad_names_key' ) ? ridgeroad_names_key() : '',
+		'mode'           => 'live' === $s['names_mode'] ? 'live' : 'break',
+		'live_show_for'  => (float) $s['live_show_for'],
 		'break_playlist' => $s['fpp_playlist'] ? $s['fpp_playlist'] : 'Names in Lights',
 		'screens'        => $screens,
 		'talk_effect'    => (string) $s['voice_effect'],
