@@ -46,6 +46,7 @@ function ridgeroad_defaults() {
 		'address'           => '',
 		'parking_note'      => 'Please park on the shoulder and keep the road clear.',
 		// Stats.
+		'wall_home'         => 1,
 		'stats_show'        => 1,
 		'stats_title'       => 'Behind the Lights',
 		'stats_text'        => 'Every song is programmed by hand, one light at a time.',
@@ -345,6 +346,7 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp ) {
 	$add( 'names_color', 'rr_kids', __( 'Name text color on the screens (like #FFD45C)', 'ridgeroad' ) );
 	$add( 'names_block', 'rr_kids', __( 'Extra names or words to block (comma separated)', 'ridgeroad' ), 'textarea' );
 	$add( 'contest_on', 'rr_kids', __( 'Run the light show contest (entries, Show Wall and hearts)', 'ridgeroad' ), 'checkbox', array( 'description' => __( 'Review entries under Kids’ Light Shows in the WordPress menu. Nothing shows on the Show Wall until you publish it.', 'ridgeroad' ) ) );
+	$add( 'wall_home', 'rr_kids', __( 'Show the newest kids’ shows on the home page (when the contest is on)', 'ridgeroad' ), 'checkbox' );
 	$add( 'contest_deadline', 'rr_kids', __( 'Last day to enter and vote', 'ridgeroad' ), 'date' );
 	$add( 'contest_prize1', 'rr_kids', __( 'Judges’ Pick prize', 'ridgeroad' ) );
 	$add( 'contest_prize2', 'rr_kids', __( 'People’s Choice prize', 'ridgeroad' ) );

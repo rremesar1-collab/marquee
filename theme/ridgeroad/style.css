@@ -1618,3 +1618,19 @@ html.rr-sheet-open { overflow: hidden; }
 /* 2.8.1: text logo (Marquee, no logo uploaded) */
 .rr-logo__text { display: inline-block; max-width: min(760px, 90vw); padding: 10px 0 4px; font: 400 clamp(44px, 7vw, 92px)/1.05 var(--f-script); color: var(--gold); line-height: 1.05; text-shadow: 0 0 18px rgba(255, 190, 80, .55), 0 3px 10px rgba(0, 0, 0, .8); text-wrap: balance; }
 .rr-hero--small .rr-logo__text { font-size: clamp(36px, 5vw, 64px); }
+
+/* Home page: Kids' Show Wall strip */
+.rr-homewall { margin-top: 30px; }
+.rr-homewall__text { margin: -6px auto 18px; text-align: center; font-size: 15.5px; color: #f3ead8; text-shadow: 0 1px 3px #000, 0 0 10px #000; }
+.rr-homewall__grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+.rr-homewall__card { position: relative; flex: 0 1 calc((100% - 48px) / 4); min-width: 0; display: flex; flex-direction: column; padding: 10px 10px 12px; border-radius: 14px; text-decoration: none; color: #fff; background: linear-gradient(180deg, rgba(2, 33, 77, .92), rgba(0, 18, 46, .92)); border: 2px solid rgba(150, 190, 255, .45); box-shadow: 0 10px 24px rgba(0, 0, 0, .5); transition: transform .15s; }
+.rr-homewall__card:hover { transform: translateY(-2px); color: #fff; }
+.rr-homewall__card.is-winner { border-color: #ffd45c; box-shadow: 0 0 20px rgba(255, 200, 60, .55); }
+.rr-homewall__pic { position: relative; display: block; border-radius: 10px; overflow: hidden; background: #000; margin-bottom: 8px; }
+.rr-homewall__pic img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.rr-homewall__title { display: block; padding-right: 44px; font-size: 15px; color: #fde866; }
+.rr-homewall__by { display: block; padding-right: 44px; font-size: 13.5px; color: #d8e4ff; }
+.rr-homewall__hearts { position: absolute; right: 12px; bottom: 12px; font: 800 13px var(--f-body, inherit); color: #fff; }
+.rr-homewall__hearts b { color: #ff3b5c; font-size: 18px; }
+.rr-homewall__more { margin: 18px 0 0; text-align: center; }
+@media (max-width: 900px) { .rr-homewall__card { flex-basis: calc((100% - 16px) / 2); } }

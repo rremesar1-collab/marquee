@@ -1282,3 +1282,19 @@ html.rr-sheet-open { overflow: hidden; }
 .mq-skin:not(#mq-0).mq-block > .rr-banner + .rr-count { margin-top: 18px; }
 .mq-skin:not(#mq-0) .rr-explore { max-width: none; }
 .mq-skin:not(#mq-0) .rr-grid--support > :only-child { grid-column: 1 / -1; }
+
+/* Home page: Kids' Show Wall strip */
+.mq-skin:not(#mq-0) .rr-homewall { margin-top: 30px; }
+.mq-skin:not(#mq-0) .rr-homewall__text { margin: -6px auto 18px; text-align: center; font-size: 15.5px; color: #f3ead8; text-shadow: 0 1px 3px #000, 0 0 10px #000; }
+.mq-skin:not(#mq-0) .rr-homewall__grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+.mq-skin:not(#mq-0) .rr-homewall__card { position: relative; flex: 0 1 calc((100% - 48px) / 4); min-width: 0; display: flex; flex-direction: column; padding: 10px 10px 12px; border-radius: 14px; text-decoration: none; color: #fff; background: linear-gradient(180deg, rgba(2, 33, 77, .92), rgba(0, 18, 46, .92)); border: 2px solid rgba(150, 190, 255, .45); box-shadow: 0 10px 24px rgba(0, 0, 0, .5); transition: transform .15s; }
+.mq-skin:not(#mq-0) .rr-homewall__card:hover { transform: translateY(-2px); color: #fff; }
+.mq-skin:not(#mq-0) .rr-homewall__card.is-winner { border-color: #ffd45c; box-shadow: 0 0 20px rgba(255, 200, 60, .55); }
+.mq-skin:not(#mq-0) .rr-homewall__pic { position: relative; display: block; border-radius: 10px; overflow: hidden; background: #000; margin-bottom: 8px; }
+.mq-skin:not(#mq-0) .rr-homewall__pic img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.mq-skin:not(#mq-0) .rr-homewall__title { display: block; padding-right: 44px; font-size: 15px; color: #fde866; }
+.mq-skin:not(#mq-0) .rr-homewall__by { display: block; padding-right: 44px; font-size: 13.5px; color: #d8e4ff; }
+.mq-skin:not(#mq-0) .rr-homewall__hearts { position: absolute; right: 12px; bottom: 12px; font: 800 13px var(--f-body, inherit); color: #fff; }
+.mq-skin:not(#mq-0) .rr-homewall__hearts b { color: #ff3b5c; font-size: 18px; }
+.mq-skin:not(#mq-0) .rr-homewall__more { margin: 18px 0 0; text-align: center; }
+@container mq (max-width: 900px) { .mq-skin:not(#mq-0) .rr-homewall__card { flex-basis: calc((100% - 16px) / 2); } }

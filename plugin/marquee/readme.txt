@@ -55,6 +55,9 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 == Changelog ==
 
 = 0.8.3 =
+* Kids' Show Wall on the home page: the newest approved contest shows with their hearts, and a "See all shows & vote" button. Tap one to watch it on the Kids' Corner. Turn it off in Customize → Kids' Corner.
+* Publishing a contest entry or show video now clears your page cache, so it shows up for visitors right away.
+* Behind the Lights: when you hide some tiles, the rest stay centered.
 * Marquee FPP plugin: install "Marquee" from FPP's Plugin Manager, paste the connection code from Settings → Names & FPP, and it runs the names script for you. No files to upload, no Command Presets, and changes to your screens on the website reach the FPP by themselves.
 * Names script 3.7: takes your screens and names break timing from the website on every check-in, restarts itself when its settings file changes, and won't run twice if both the plugin and a copy put on by hand are there.
 * Get help: Marquee Support can run the setup check, set up the names break playlists again or restart the names script on your FPP during a support session. Each one shows in your chat.

@@ -25,6 +25,7 @@ function marquee_sections() {
 		'live-cam'  => array( __( 'Live Camera', 'marquee' ), __( 'Your YouTube live stream (set it in Appearance → Customize).', 'marquee' ), 'video-alt3' ),
 		'visit'     => array( __( 'Before You Visit', 'marquee' ), __( 'Your visitor tips.', 'marquee' ), 'info' ),
 		'explore'   => array( __( 'Songs & Kids’ Corner Links', 'marquee' ), __( 'Two big buttons to the Songs page and the Kids’ Corner.', 'marquee' ), 'admin-links' ),
+		'showwall'  => array( __( 'Kids’ Show Wall', 'marquee' ), __( 'The newest kids’ light shows from the contest, with their hearts (shows only when the contest has approved shows).', 'marquee' ), 'format-gallery' ),
 		'stats'     => array( __( 'Behind the Lights', 'marquee' ), __( 'Your show’s numbers (lights, channels, songs…).', 'marquee' ), 'chart-bar' ),
 		'guestbook' => array( __( 'Guestbook', 'marquee' ), __( 'Visitor messages and the sign-the-guestbook form.', 'marquee' ), 'book' ),
 		'donate'    => array( __( 'Donate', 'marquee' ), __( 'Your donation link with a QR code.', 'marquee' ), 'heart' ),
@@ -80,7 +81,7 @@ function marquee_section_html( $slug ) {
 			ridgeroad_part( 'show' );
 			ridgeroad_part( 'weather' );
 			echo '</div>';
-			foreach ( array( 'playlist', 'live-cam', 'visit', 'explore', 'stats', 'guestbook' ) as $p ) {
+			foreach ( array( 'playlist', 'live-cam', 'visit', 'explore', 'showwall', 'stats', 'guestbook' ) as $p ) {
 				ridgeroad_part( $p );
 			}
 			echo '<div id="support" class="rr-grid rr-grid--support">';

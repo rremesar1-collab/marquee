@@ -21,6 +21,7 @@ ridgeroad_part( 'playlist' );
 ridgeroad_part( 'live-cam' );
 ridgeroad_part( 'visit' );
 ridgeroad_part( 'explore' );
+ridgeroad_part( 'showwall' );
 ridgeroad_part( 'stats' );
 ridgeroad_part( 'guestbook' );
 ?>
