@@ -44,3 +44,4 @@
 .mq-sup__scr small { color: #50575e; }
 .mq-sup__tools { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 .mq-sup__tools input { width: 110px; }
+.mq-sup [hidden] { display: none !important; }
