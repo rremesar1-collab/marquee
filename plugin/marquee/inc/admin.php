@@ -268,6 +268,19 @@ function marquee_admin_page() {
 					<p><label for="mq-fc"><?php esc_html_e( 'Fri–Sat end', 'marquee' ); ?></label><input id="mq-fc" name="weekend_close" type="time" value="<?php echo esc_attr( $tm( 'weekend_close' ) ); ?>"></p>
 				</div>
 				<p class="mq__fine"><?php esc_html_e( 'An end time after midnight counts as the same show night.', 'marquee' ); ?></p>
+				<?php $cto = marquee_theme_get( 'count_to' ); ?>
+				<h3><?php esc_html_e( 'Countdown', 'marquee' ); ?></h3>
+				<div class="mq__row">
+					<p><label for="mq-cto"><?php esc_html_e( 'Count down to', 'marquee' ); ?></label>
+						<select id="mq-cto" name="count_to" data-mq-cto>
+							<?php foreach ( array( 'auto' => __( 'Automatic', 'marquee' ), 'christmas' => __( 'Christmas', 'marquee' ), 'halloween' => __( 'Halloween', 'marquee' ), 'custom' => __( 'A date I pick', 'marquee' ) ) as $v => $l ) : ?>
+								<option value="<?php echo esc_attr( $v ); ?>" <?php selected( $cto ? $cto : 'auto', $v ); ?>><?php echo esc_html( $l ); ?></option>
+							<?php endforeach; ?>
+						</select>
+						<small><?php esc_html_e( 'Automatic: Halloween if your last night is in August, September or October, otherwise Christmas. Shown under the countdown on your home page (“12 days until Halloween”).', 'marquee' ); ?></small></p>
+					<p data-mq-cto-custom <?php echo 'custom' === $cto ? '' : 'hidden'; ?>><label for="mq-cnm"><?php esc_html_e( 'Its name', 'marquee' ); ?></label><input id="mq-cnm" name="count_name" type="text" maxlength="40" placeholder="<?php esc_attr_e( 'New Year’s Eve', 'marquee' ); ?>" value="<?php echo esc_attr( marquee_theme_get( 'count_name' ) ); ?>"></p>
+					<p data-mq-cto-custom <?php echo 'custom' === $cto ? '' : 'hidden'; ?>><label for="mq-cdt"><?php esc_html_e( 'The date', 'marquee' ); ?></label><input id="mq-cdt" name="count_date" type="date" value="<?php echo esc_attr( marquee_theme_get( 'count_date' ) ); ?>"><small><?php esc_html_e( 'It repeats every year, so the year doesn’t matter.', 'marquee' ); ?></small></p>
+				</div>
 			</section>
 
 			<section class="mq__pane" data-pane="3">
@@ -278,6 +291,7 @@ function marquee_admin_page() {
 					<p><label for="mq-rft"><?php esc_html_e( 'Access token', 'marquee' ); ?></label><input id="mq-rft" name="rf_token" type="text" autocomplete="off" value="<?php echo esc_attr( ( $s['rf_token'] && function_exists( 'marquee_is_support_user' ) && marquee_is_support_user() ) ? '••••••••' : $s['rf_token'] ); ?>"></p>
 					<p><label for="mq-rfs"><?php esc_html_e( 'Secret key', 'marquee' ); ?></label><input id="mq-rfs" name="rf_secret" type="password" autocomplete="new-password" value="<?php echo $s['rf_secret'] ? '••••••••' : ''; ?>"></p>
 				</div>
+				<p><label for="mq-rfv"><?php esc_html_e( 'Your Remote Falcon viewer page (optional)', 'marquee' ); ?></label><input id="mq-rfv" name="rf_viewer_url" type="url" placeholder="https://yourshow.remotefalcon.com" value="<?php echo esc_attr( marquee_theme_get( 'rf_viewer_url' ) ); ?>"><small><?php esc_html_e( 'Adds a “Pick the Next Song” button to Tonight’s Show while the show is running, so visitors can choose what plays next. It’s the page your visitors use on Remote Falcon.', 'marquee' ); ?></small></p>
 				<p><button type="button" class="button" data-mq-rftest><?php esc_html_e( 'Test connection', 'marquee' ); ?></button> <span class="mq__msg" data-mq-rfmsg aria-live="polite"></span></p>
 				<p class="mq__fine"><?php esc_html_e( 'Both are on Remote Falcon → Account → API Access. They turn on Now Playing, the playlist and song voting, and never leave this server.', 'marquee' ); ?> <strong><?php esc_html_e( 'Your FPP also needs the Remote Falcon plugin installed and running (FPP → Content Setup → Plugin Manager), or Now Playing stays empty.', 'marquee' ); ?></strong></p>
 				<h3><?php esc_html_e( 'Leave out of song voting', 'marquee' ); ?></h3>

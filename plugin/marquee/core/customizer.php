@@ -40,6 +40,10 @@ function ridgeroad_defaults() {
 		'off_text'          => 'The show is resting for now. Check back for opening night!',
 		// Countdown, playlist, directions.
 		'show_countdown'    => 1,
+		'count_to'          => 'auto',          // countdown holiday: auto, christmas, halloween, custom
+		'count_name'        => '',
+		'count_date'        => '',
+		'rf_viewer_url'     => '',              // your Remote Falcon viewer page (Pick the next song)
 		'show_playlist'     => 1,
 		'playlist_when'     => 'running',
 		'playlist_title'    => 'Tonight’s Playlist',
@@ -165,6 +169,37 @@ function ridgeroad_defaults() {
 	}
 	$memo = $d;
 	return $d;
+}
+
+/**
+ * What the countdown counts down to: the holiday and its timestamp (start of that day, show time zone).
+ * Returns array( ts, name, many, one, day, icon ).
+ */
+function ridgeroad_count_target() {
+	$tz   = ridgeroad_tz();
+	$kind = (string) ridgeroad_mod( 'count_to' );
+	if ( 'custom' === $kind && ( ! preg_match( '/^\d{4}-(\d{2})-(\d{2})$/', (string) ridgeroad_mod( 'count_date' ), $md ) || '' === trim( (string) ridgeroad_mod( 'count_name' ) ) ) ) {
+		$kind = 'auto';
+	}
+	if ( 'auto' === $kind || ! in_array( $kind, array( 'christmas', 'halloween', 'custom' ), true ) ) {
+		$end  = (string) ridgeroad_mod( 'season_end' );
+		$kind = ( preg_match( '/^\d{4}-(\d{2})-\d{2}$/', $end, $em ) && (int) $em[1] >= 8 && (int) $em[1] <= 10 ) ? 'halloween' : 'christmas'; // a season that ends in Aug–Oct is a Halloween show
+	}
+	$mmdd = array( 'christmas' => '12-25', 'halloween' => '10-31' );
+	$mmdd = 'custom' === $kind ? $md[1] . '-' . $md[2] : $mmdd[ $kind ];
+	$t    = new DateTimeImmutable( wp_date( 'Y', null, $tz ) . '-' . $mmdd . ' 00:00', $tz );
+	if ( $t->getTimestamp() + DAY_IN_SECONDS < time() ) {
+		$t = $t->modify( '+1 year' );
+	}
+	if ( 'christmas' === $kind ) {
+		return array( $t->getTimestamp(), __( 'Christmas', 'ridgeroad' ), __( '%d days until Christmas', 'ridgeroad' ), __( 'Christmas Eve is here!', 'ridgeroad' ), __( 'Merry Christmas!', 'ridgeroad' ), 'gift' );
+	}
+	if ( 'halloween' === $kind ) {
+		return array( $t->getTimestamp(), __( 'Halloween', 'ridgeroad' ), __( '%d days until Halloween', 'ridgeroad' ), __( 'Halloween is tomorrow!', 'ridgeroad' ), __( 'Happy Halloween!', 'ridgeroad' ), 'pumpkin' );
+	}
+	$n = mb_substr( trim( (string) ridgeroad_mod( 'count_name' ) ), 0, 40 );
+	/* translators: %s: the date's name */
+	return array( $t->getTimestamp(), $n, sprintf( __( '%%d days until %s', 'ridgeroad' ), $n ), sprintf( __( '%s is tomorrow!', 'ridgeroad' ), $n ), sprintf( __( 'It’s %s!', 'ridgeroad' ), $n ), 'star' );
 }
 
 function ridgeroad_mod( $key ) {
@@ -294,6 +329,10 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp ) {
 	$add( 'off_text', 'rr_show', __( 'Banner text — off season', 'ridgeroad' ), 'textarea' );
 
 	$add( 'show_countdown', 'rr_show', __( 'Show the countdown clocks', 'ridgeroad' ), 'checkbox' );
+	$add( 'count_to', 'rr_show', __( 'Count down to', 'ridgeroad' ), 'select', array( 'choices' => array( 'auto' => __( 'Automatic (Halloween if your last night is in August to October, otherwise Christmas)', 'ridgeroad' ), 'christmas' => __( 'Christmas', 'ridgeroad' ), 'halloween' => __( 'Halloween', 'ridgeroad' ), 'custom' => __( 'A date I pick', 'ridgeroad' ) ) ) );
+	$add( 'count_name', 'rr_show', __( 'Your date’s name (like New Year’s Eve)', 'ridgeroad' ), 'text', array( 'description' => __( 'For “A date I pick”.', 'ridgeroad' ) ) );
+	$add( 'count_date', 'rr_show', __( 'Your date (the year doesn’t matter; it repeats every year)', 'ridgeroad' ), 'date', array( 'description' => __( 'For “A date I pick”.', 'ridgeroad' ) ) );
+	$add( 'rf_viewer_url', 'rr_show', __( 'Remote Falcon viewer page (adds “Pick the next song” to Tonight’s Show)', 'ridgeroad' ), 'url', array( 'description' => __( 'Like https://yourshow.remotefalcon.com. The button shows while the show is running. Leave empty to hide it.', 'ridgeroad' ) ) );
 	$add( 'show_playlist', 'rr_show', __( 'Show the playlist section', 'ridgeroad' ), 'checkbox' );
 	$add( 'playlist_when', 'rr_show', __( 'When to show the playlist', 'ridgeroad' ), 'select', array( 'choices' => array( 'running' => __( 'Only while the show is running', 'ridgeroad' ), 'season' => __( 'All season (hide off-season and canceled nights)', 'ridgeroad' ), 'always' => __( 'Always', 'ridgeroad' ) ) ) );
 	$add( 'playlist_title', 'rr_show', __( 'Playlist title', 'ridgeroad' ) );

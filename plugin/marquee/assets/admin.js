@@ -554,3 +554,9 @@ document.addEventListener('change', function (e) {
 	box.hidden = sel.value !== 'custom';
 	if (!box.hidden) { var inp = box.querySelector('input'); if (!inp.value) { inp.focus(); } }
 });
+
+/* Countdown: the name and date boxes show for "A date I pick". */
+document.addEventListener('change', function (e) {
+	if (!e.target.matches || !e.target.matches('[data-mq-cto]')) { return; }
+	document.querySelectorAll('[data-mq-cto-custom]').forEach(function (p) { p.hidden = e.target.value !== 'custom'; });
+});

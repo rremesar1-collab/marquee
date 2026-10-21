@@ -51,6 +51,10 @@ function ridgeroad_cicon( $name, $class = '' ) {
 			. '<circle cx="26" cy="30" r="2.2" fill="#ff3b30"/><circle cx="37" cy="27" r="2.2" fill="#ffd23c"/><circle cx="22" cy="43" r="2.2" fill="#4aa8ff"/><circle cx="33" cy="40" r="2.2" fill="#ff3b30"/><circle cx="43" cy="44" r="2.2" fill="#ffd23c"/>',
 		'heart'  => $red . '<path d="M32 56S6 41 6 22C6 13 13 7 21 7c5 0 9 3 11 7 2-4 6-7 11-7 8 0 15 6 15 15 0 19-26 34-26 34z" fill="' . $R . '"/>'
 			. '<path d="M15 16c3-4 9-4 11 0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".55"/>',
+		'pumpkin' => '<ellipse cx="32" cy="38" rx="25" ry="20" fill="#ff8a1a" stroke="#b85200" stroke-width="1.5"/>'
+			. '<path d="M22 20c-5 6-5 30 0 37M42 20c5 6 5 30 0 37M32 18v40" fill="none" stroke="#d96500" stroke-width="2"/>'
+			. '<path d="M31 19c0-7 3-11 8-13" fill="none" stroke="#3d7a1a" stroke-width="4.5" stroke-linecap="round"/>'
+			. '<path d="M19 33l7-5 3 7zM45 33l-7-5-3 7zM20 43c7 7 17 7 24 0l-4 1-2-3-2 3-2-3-2 3-2-3-2 3-2-3-2 3z" fill="#4a1d00"/>',
 		'star'   => $gold . '<path d="M32 4l8 17 18 2.5-13 12.5 3.3 18L32 45l-16.3 9 3.3-18L6 23.5 24 21z" fill="' . $G . '" stroke="#9a5a05" stroke-width="1.2" stroke-linejoin="round"/>',
 		'gift'   => $red . $gold . '<rect x="8" y="26" width="48" height="30" rx="2" fill="' . $R . '"/><rect x="5" y="18" width="54" height="10" rx="2" fill="' . $R . '"/><rect x="28" y="18" width="8" height="38" fill="' . $G . '"/>'
 			. '<path d="M32 18c-6-10-18-10-16-2 1 3 8 3 16 2zm0 0c6-10 18-10 16-2-1 3-8 3-16 2z" fill="' . $G . '"/>',

@@ -83,6 +83,8 @@
 			set('banner-text', d.banner.text);
 		}
 		playlist(np, s.state);
+		var pick = $('[data-rr-rfpick]');
+		if (pick) { pick.hidden = s.state !== 'running'; }
 		voteNow(np.title || '');
 		if (d.votes) { voteData(d.votes); }
 		if (cd && s.start_ts) {
@@ -246,7 +248,10 @@
 			if (tiles) { Object.keys(u).forEach(function (k) { var b = tiles.querySelector('[data-u="' + k + '"]'); if (b) { b.textContent = k === 'd' ? u[k] : pad(u[k]); } }); }
 		}
 		var x = +cd.getAttribute('data-xmas'), dx = Math.ceil((x - now) / 86400), xe = $('[data-rr="xmas"]');
-		if (xe) { xe.textContent = dx > 1 ? dx + ' days until Christmas' : (dx === 1 ? 'Christmas Eve is here!' : 'Merry Christmas!'); }
+		if (xe) {
+			var many = cd.getAttribute('data-hol-many') || '%d days until Christmas';
+			xe.textContent = dx > 1 ? many.replace('%d', dx) : (dx === 1 ? (cd.getAttribute('data-hol-one') || 'Christmas Eve is here!') : (cd.getAttribute('data-hol-day') || 'Merry Christmas!'));
+		}
 	}
 
 	/* Playlist: highlight the song playing now, refresh "recently played" */

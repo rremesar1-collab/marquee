@@ -1654,3 +1654,9 @@ html.rr-sheet-open { overflow: hidden; }
 .rr-kc__wall-link a { color: #fde866; font-weight: 800; text-decoration: underline; text-underline-offset: 3px; }
 .rr-kc__wallbox .rr-wall__grid { grid-template-columns: repeat(auto-fit, minmax(230px, 280px)); justify-content: center; }
 .rr-kc__wallbox .rr-wall .rr-kc__h, .rr-kc__wallbox .rr-wall .rr-kc__note { text-align: center; }
+
+/* Tonight's Show: Pick the next song (Remote Falcon) */
+.rr-rfpick { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin: 12px 0 0; }
+.rr-rfpick[hidden] { display: none; }
+.rr-rfpick .rr-btn .rr-cicon { width: 22px; height: 22px; }
+.rr-rfpick__note { font-size: 14px; color: #f3ead8; }

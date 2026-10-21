@@ -70,7 +70,7 @@ function marquee_theme_keys() {
 	return array(
 		'radio', 'season_start', 'season_end', 'use_sunset', 'weeknight_start', 'weekend_start', 'weeknight_close', 'weekend_close',
 		'radar_station', 'cashapp_url', 'gb_show', 'names_on', 'names_geo', 'names_geo_miles', 'kids_show', 'lab_on', 'songs_show', 'contest_on', 'app_auto_on', 'snow_amount',
-		'names_geo_unit', 'facebook_url', 'instagram_url', 'youtube_url', 'tiktok_url', 'facebook_show', 'instagram_show', 'youtube_show', 'tiktok_show',
+		'names_geo_unit', 'count_to', 'count_name', 'count_date', 'rf_viewer_url', 'facebook_url', 'instagram_url', 'youtube_url', 'tiktok_url', 'facebook_show', 'instagram_show', 'youtube_show', 'tiktok_show',
 	);
 }
 function marquee_theme_get( $k ) {
@@ -199,6 +199,10 @@ function marquee_save( $in ) {
 		'instagram_url'   => array( 'url' ),
 		'youtube_url'     => array( 'url' ),
 		'tiktok_url'      => array( 'url' ),
+		'count_to'        => array( 'pick', array( 'auto', 'christmas', 'halloween', 'custom' ) ),
+		'count_name'      => array( 'text', 40 ),
+		'count_date'      => array( 'date' ),
+		'rf_viewer_url'   => array( 'url' ),
 	);
 	foreach ( $t as $k => $rule ) {
 		if ( ! isset( $in[ $k ] ) ) {
@@ -219,6 +223,9 @@ function marquee_save( $in ) {
 				break;
 			case 'url':
 				$v = esc_url_raw( $v );
+				break;
+			case 'pick':
+				$v = in_array( $v, $rule[1], true ) ? $v : $rule[1][0];
 				break;
 			default:
 				$v = mb_substr( sanitize_text_field( $v ), 0, $rule[1] );

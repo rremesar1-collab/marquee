@@ -39,6 +39,12 @@ extract( ridgeroad_home_ctx(), EXTR_SKIP ); // $status, $np, $wx, $opts, $b_titl
 			</div>
 			<div class="rr-eq" aria-hidden="true"><?php echo str_repeat( '<i></i>', 28 ); ?></div>
 		</div>
+		<?php $rf_pick = ridgeroad_mod( 'rf_viewer_url' ); if ( $rf_pick ) : ?>
+			<div class="rr-rfpick" data-rr-rfpick <?php echo 'running' === $status['state'] ? '' : 'hidden'; ?>>
+				<a class="rr-btn rr-btn--red" href="<?php echo esc_url( $rf_pick ); ?>" target="_blank" rel="noopener"><?php echo ridgeroad_cicon( 'music' ); ?><?php esc_html_e( 'Pick the Next Song', 'ridgeroad' ); ?></a>
+				<span class="rr-rfpick__note"><?php esc_html_e( 'Choose what plays next on our Remote Falcon page.', 'ridgeroad' ); ?></span>
+			</div>
+		<?php endif; ?>
 		<p class="rr-show__note" data-rr="note"><?php echo esc_html( $status['note'] ); ?></p>
 		<?php $dir = ridgeroad_directions_url(); if ( $dir ) : ?>
 			<div class="rr-dir">
