@@ -680,3 +680,28 @@ function ridgeroad_show_for_watch() {
 		'title' => get_post_meta( $id, '_rr_showname', true ),
 	);
 }
+
+/**
+ * Clear the page cache when a contest entry or show video goes up or comes down. These are
+ * private post types, so caching plugins don't clear the Kids' page by themselves.
+ */
+function ridgeroad_purge_page_cache() {
+	if ( function_exists( 'sg_cachepress_purge_cache' ) ) {
+		sg_cachepress_purge_cache();                      // SiteGround Speed Optimizer
+	}
+	if ( function_exists( 'rocket_clean_domain' ) ) {
+		rocket_clean_domain();                            // WP Rocket
+	}
+	if ( function_exists( 'w3tc_flush_all' ) ) {
+		w3tc_flush_all();                                 // W3 Total Cache
+	}
+	if ( function_exists( 'wp_cache_clear_cache' ) ) {
+		wp_cache_clear_cache();                           // WP Super Cache
+	}
+	do_action( 'litespeed_purge_all' );                   // LiteSpeed Cache
+}
+add_action( 'transition_post_status', function ( $new, $old, $post ) {
+	if ( $new !== $old && ( 'publish' === $new || 'publish' === $old ) && in_array( $post->post_type, array( 'rr_lightshow', 'rr_sequence' ), true ) ) {
+		ridgeroad_purge_page_cache();
+	}
+}, 10, 3 );
