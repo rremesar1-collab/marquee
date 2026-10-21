@@ -40,7 +40,7 @@ import urllib.parse
 import socket
 import urllib.request
 
-VERSION = "3.7.1"
+VERSION = "3.8"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -81,6 +81,7 @@ DEFAULTS = {
     "max_width": 0.62,                # text stays inside this part of the screen (fraction of width)
     "max_height": 0.42,               # ... and of height
     "font": "",                       # "" picks a bold font automatically
+    "scroll": "auto",                 # small pixel matrices: "auto" scrolls a name that won't fit big; "always" / "never"
     "check_every": 20,                # seconds between website checks during songs
     "voice": True,                    # play spoken names when the website sends them (false = never)
     "voice_volume": 0,                # -100..100, added to FPP's volume for the spoken names
@@ -164,7 +165,7 @@ def break_timing():
         S["show_for"] = max(2.0, float(st["slot"]) - 0.6)
 
 
-SITE_KEYS = ("break_playlist", "names_start", "slot", "show_for", "talk_effect")
+SITE_KEYS = ("break_playlist", "names_start", "slot", "show_for", "talk_effect", "scroll")
 
 
 def site_config(cfg):
@@ -712,6 +713,23 @@ def layout(text, width, height):
     return best[1]
 
 
+def small_plan(text, width, height):
+    """Small pixel matrices (64 pixels tall or less, like a 40 x 10 seed matrix): the text uses the
+    whole screen. One line, still if it fits big enough, otherwise big and scrolling right to left.
+    Returns (size, position, pixels per second), or None for TVs and big screens."""
+    mode = str(S.get("scroll") or "auto").lower()
+    if height > 64 and mode != "always":
+        return None
+    big = max(6, int(height * 0.8))
+    fit = min(big, int(width * 0.95 / (0.62 * max(1, len(text)))))
+    if mode != "always" and fit >= max(6, 0.55 * height):
+        return fit, "Center", 0
+    if mode == "never":
+        return None
+    secs = max(2.0, float(S["show_for"]))
+    return big, "R2L", max(10, int(round((width + 0.62 * big * len(text)) / secs)))
+
+
 def show(text, color):
     """Put one name up on every screen; returns how many screens took it."""
     ok = 0
@@ -719,7 +737,12 @@ def show(text, color):
         try:
             w, h, font = screen_info(sc)
             size, lines = layout(text, w, h)
-            args = [sc["model"], "Transparent", "Text", color, font, size, "true", "Center", 0, S["show_for"],
+            one = " ".join(lines)
+            sp = small_plan(one, w, h)
+            if sp:
+                args = [sc["model"], "Transparent", "Text", color, font, sp[0], "true", sp[1], sp[2], S["show_for"], one]
+            else:
+                args = [sc["model"], "Transparent", "Text", color, font, size, "true", "Center", 0, S["show_for"],
                     "\\n".join(lines)]
             fpp_command(sc["fpp"], "Overlay Model Effect", args)
             ok += 1
