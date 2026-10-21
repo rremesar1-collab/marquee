@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'RIDGEROAD_VERSION' ) ) {
-	define( 'RIDGEROAD_VERSION', '2.11.4' );
+	define( 'RIDGEROAD_VERSION', '2.11.5' );
 }
 // Show location: from Marquee → Settings (0,0 until the Marquee plugin is set up).
 $rr_mq = function_exists( 'marquee_get' ) ? marquee_get() : array();
