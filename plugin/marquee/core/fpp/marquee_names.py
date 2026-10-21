@@ -156,7 +156,8 @@ def clean_screens(rows):
             pick = lambda k, ok, d: str(sc.get(k) or d) if str(sc.get(k) or d) in ok else d
             screens.append({"name": (str(sc.get("name") or "") or "screen %d" % (i + 1)).strip(), "fpp": host.rstrip("/"), "model": str(sc["model"]).strip(),
                             "style": pick("style", ("auto", "still", "scroll"), "auto"),
-                            "size": pick("size", ("auto", "s", "m", "l", "xl"), "auto"),
+                            "size": pick("size", ("auto", "s", "m", "l", "xl", "custom"), "auto"),
+                            "px": max(0, min(400, int(float(sc.get("px") or 0)))),
                             "speed": pick("speed", ("slow", "normal", "fast"), "normal")})
     return screens
 
@@ -736,11 +737,12 @@ def text_plan(text, width, height, sc=None):
         return size, "Center", 0, "\\n".join(lines)
     if style == "auto" and not small:
         style = "still"                                  # TVs only scroll when you pick Scrolling
-    frac = SIZES.get(size_k, 0.8 if small else 0.6)
-    big = max(6, min(200, int(height * frac)))
+    px = int(sc.get("px") or 0) if size_k == "custom" else 0
+    frac = (px / float(height)) if px else SIZES.get(size_k, 0.8 if small else 0.6)
+    big = max(4, px) if px else max(6, min(200, int(height * frac)))
     fit = min(big, int(width * 0.95 / (0.62 * max(1, len(one)))))
     if style == "still" or (style == "auto" and fit >= max(6, 0.7 * big)):
-        if fit >= max(6, 0.7 * big) or " " not in one:
+        if fit >= (big if px else max(6, 0.7 * big)) or " " not in one:
             return max(4, fit), "Center", 0, one
         # too long for one line: break it up and fill the same height
         keep = S["max_width"], S["max_height"]

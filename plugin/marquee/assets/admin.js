@@ -544,3 +544,13 @@ document.addEventListener('click', function (e) {
 	if (navigator.clipboard) { navigator.clipboard.writeText(inp.value).then(done, function () { document.execCommand('copy'); done(); }); }
 	else { document.execCommand('copy'); done(); }
 });
+
+/* Your screens: the Font size box shows when Size is Custom. */
+document.addEventListener('change', function (e) {
+	var sel = e.target;
+	if (!sel.name || !/^fpp_screens\[\d+\]\[size\]$/.test(sel.name)) { return; }
+	var box = sel.closest('td') && sel.closest('td').querySelector('[data-mq-px]');
+	if (!box) { return; }
+	box.hidden = sel.value !== 'custom';
+	if (!box.hidden) { var inp = box.querySelector('input'); if (!inp.value) { inp.focus(); } }
+});

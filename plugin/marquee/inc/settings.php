@@ -363,7 +363,8 @@ function marquee_clean_screens( $rows ) {
 			'fpp'   => mb_substr( $host, 0, 80 ),
 			'model' => $model,
 			'style' => $pick( 'style', array( 'auto', 'still', 'scroll' ) ),
-			'size'  => $pick( 'size', array( 'auto', 's', 'm', 'l', 'xl' ) ),
+			'size'  => $pick( 'size', array( 'auto', 's', 'm', 'l', 'xl', 'custom' ) ),
+			'px'    => max( 0, min( 400, (int) ( $r['px'] ?? 0 ) ) ),
 			'speed' => $pick( 'speed', array( 'normal', 'slow', 'fast' ) ),
 		);
 	}
@@ -396,7 +397,8 @@ function marquee_fpp_config() {
 				'fpp'   => ( 0 === strpos( $r['fpp'], 'http' ) ? $r['fpp'] : 'http://' . $r['fpp'] ),
 				'model' => $r['model'],
 				'style' => $r['style'] ?? 'auto',   // how the text goes up: auto, still, scroll (script 3.8+)
-				'size'  => $r['size'] ?? 'auto',    // auto, s, m, l, xl
+				'size'  => $r['size'] ?? 'auto',    // auto, s, m, l, xl, custom
+				'px'    => (int) ( $r['px'] ?? 0 ),  // custom: the font size (about how many pixels tall the letters are)
 				'speed' => $r['speed'] ?? 'normal', // scrolling speed: slow, normal, fast
 			);
 		}

@@ -374,7 +374,7 @@ function marquee_admin_page() {
 									<?php
 									$look = array(
 										'style' => array( __( 'Text', 'marquee' ), array( 'auto' => __( 'Automatic', 'marquee' ), 'still' => __( 'Still', 'marquee' ), 'scroll' => __( 'Scrolling', 'marquee' ) ) ),
-										'size'  => array( __( 'Size', 'marquee' ), array( 'auto' => __( 'Automatic', 'marquee' ), 's' => __( 'Small', 'marquee' ), 'm' => __( 'Medium', 'marquee' ), 'l' => __( 'Large', 'marquee' ), 'xl' => __( 'Fill the screen', 'marquee' ) ) ),
+										'size'  => array( __( 'Size', 'marquee' ), array( 'auto' => __( 'Automatic', 'marquee' ), 's' => __( 'Small', 'marquee' ), 'm' => __( 'Medium', 'marquee' ), 'l' => __( 'Large', 'marquee' ), 'xl' => __( 'Fill the screen', 'marquee' ), 'custom' => __( 'Custom…', 'marquee' ) ) ),
 										'speed' => array( __( 'Scroll speed', 'marquee' ), array( 'normal' => __( 'Normal', 'marquee' ), 'slow' => __( 'Slow', 'marquee' ), 'fast' => __( 'Fast', 'marquee' ) ) ),
 									);
 									foreach ( $look as $k => $l ) :
@@ -385,6 +385,11 @@ function marquee_admin_page() {
 												<?php foreach ( $l[1] as $v => $t ) : ?><option value="<?php echo esc_attr( $v ); ?>" <?php selected( $cur_v, $v ); ?>><?php echo esc_html( $t ); ?></option><?php endforeach; ?>
 											</select>
 										</label>
+										<?php if ( 'size' === $k ) : ?>
+											<label class="mq__scr-px" data-mq-px <?php echo 'custom' === $cur_v ? '' : 'hidden'; ?>><?php esc_html_e( 'Font size', 'marquee' ); ?>
+												<input type="number" min="4" max="400" step="1" name="fpp_screens[<?php echo (int) $i; ?>][px]" value="<?php echo esc_attr( ! empty( $r['px'] ) ? (int) $r['px'] : '' ); ?>" placeholder="8" title="<?php esc_attr_e( 'About how many pixels tall the letters are', 'marquee' ); ?>">
+											</label>
+										<?php endif; ?>
 									<?php endforeach; ?>
 								</td>
 							</tr>
@@ -392,7 +397,7 @@ function marquee_admin_page() {
 						</tbody>
 					</table>
 					<small><?php esc_html_e( 'FPP address: the FPP that drives that screen (127.0.0.1 means the FPP running the script). Overlay model: its name under FPP → Input/Output Setup → Pixel Overlay Models.', 'marquee' ); ?></small>
-					<small class="mq__fine"><?php esc_html_e( 'Text and Size: Automatic works for most screens. Small pixel matrices (64 pixels tall or less) get one big line that scrolls across when the message won’t fit; TVs and projectors get still text with the name on its own line. Scrolling text always crosses the screen in the time each name is up; Slow may not quite finish on long messages.', 'marquee' ); ?></small>
+					<small class="mq__fine"><?php esc_html_e( 'Text and Size: Automatic works for most screens. Small pixel matrices (64 pixels tall or less) get one big line that scrolls across when the message won’t fit; TVs and projectors get still text with the name on its own line. Scrolling text always crosses the screen in the time each name is up; Slow may not quite finish on long messages. Custom size: the font size FPP uses, about how many pixels tall the letters are (a 10-pixel-tall matrix looks good at 8 or 9). Still text that won’t fit at that size is made just small enough to fit; scrolling text keeps it.', 'marquee' ); ?></small>
 					<div class="mq__fppplug" data-mq-fppplug>
 						<h4><?php esc_html_e( 'Put it on your FPP: the Marquee plugin (easiest)', 'marquee' ); ?></h4>
 						<ol>

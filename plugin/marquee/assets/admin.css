@@ -595,3 +595,5 @@
 .mq__screens .mq__scr-look label { display: inline-flex; align-items: center; gap: 4px; margin: 0 12px 4px 0; font-size: 12px; color: #50575e; white-space: nowrap; }
 .mq__screens .mq__scr-look select { width: auto; }
 .mq__screens .mq__scr-look select { min-height: 26px; font-size: 12px; }
+.mq__screens .mq__scr-look .mq__scr-px input { width: 64px; min-height: 26px; font-size: 12px; }
+.mq__screens .mq__scr-look [hidden] { display: none; }
