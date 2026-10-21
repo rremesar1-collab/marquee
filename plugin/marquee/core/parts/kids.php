@@ -60,6 +60,11 @@ $winners    = array_filter( $entries, function ( $e ) {
 				<img src="<?php echo esc_url( ridgeroad_door_url( 'games', 'door-4.jpg' ) ); ?>" width="490" height="685" alt="<?php esc_attr_e( 'Games. Elf names and Christmas trivia.', 'ridgeroad' ); ?>">
 			</a>
 		</div>
+		<?php if ( $contest && ( $entries || $open ) ) : ?>
+			<div class="rr-panel rr-panel--red rr-kc__wallbox">
+				<?php ridgeroad_part( 'kids-wall', array( 'entries' => $entries, 'open' => $open ) ); ?>
+			</div>
+		<?php endif; ?>
 	</div>
 
 	<?php if ( $lab ) : ?>
@@ -85,16 +90,13 @@ $winners    = array_filter( $entries, function ( $e ) {
 
 		<?php if ( $open ) : ?>
 			<?php ridgeroad_part( 'kids-prize' ); ?>
-			<nav class="rr-kc__steps" aria-label="<?php esc_attr_e( 'Light show steps', 'ridgeroad' ); ?>">
+			<nav class="rr-kc__steps rr-kc__steps--two" aria-label="<?php esc_attr_e( 'Light show steps', 'ridgeroad' ); ?>">
 				<a href="#light-lab" data-kc-step="make"><i>1</i><?php esc_html_e( 'Make it', 'ridgeroad' ); ?></a>
 				<a href="#enter" data-kc-step="enter"><i>2</i><?php esc_html_e( 'Enter to win', 'ridgeroad' ); ?></a>
-				<a href="#show-wall" data-kc-step="wall"><i>3</i><?php esc_html_e( 'Show Wall', 'ridgeroad' ); ?></a>
 			</nav>
-		<?php elseif ( $contest && $entries ) : ?>
-			<nav class="rr-kc__steps rr-kc__steps--two" aria-label="<?php esc_attr_e( 'Light shows', 'ridgeroad' ); ?>">
-				<a href="#light-lab" data-kc-step="make"><i>1</i><?php esc_html_e( 'Make a show', 'ridgeroad' ); ?></a>
-				<a href="#show-wall" data-kc-step="wall"><i>2</i><?php esc_html_e( 'Show Wall', 'ridgeroad' ); ?></a>
-			</nav>
+		<?php endif; ?>
+		<?php if ( $contest && $entries ) : ?>
+			<p class="rr-kc__wall-link"><a href="#show-wall"><?php echo $open ? esc_html__( 'Watch the other kids’ shows and give your favorites a heart', 'ridgeroad' ) : esc_html__( 'Watch the shows other kids made', 'ridgeroad' ); ?> &rarr;</a></p>
 		<?php endif; ?>
 
 		<div class="rr-kc__pane rr-panel rr-panel--blue" data-kc-pane="make">
@@ -103,11 +105,6 @@ $winners    = array_filter( $entries, function ( $e ) {
 		<?php if ( $open ) : ?>
 			<div class="rr-kc__pane rr-panel rr-panel--green" data-kc-pane="enter" hidden>
 				<?php ridgeroad_part( 'kids-enter' ); ?>
-			</div>
-		<?php endif; ?>
-		<?php if ( $contest ) : ?>
-			<div class="rr-kc__pane rr-panel rr-panel--red" data-kc-pane="wall" hidden>
-				<?php ridgeroad_part( 'kids-wall', array( 'entries' => $entries, 'open' => $open ) ); ?>
 			</div>
 		<?php endif; ?>
 	</section>

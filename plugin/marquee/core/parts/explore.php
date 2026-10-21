@@ -22,7 +22,11 @@ if ( $rr_kids || $rr_songs ) : ?>
 	<?php if ( $rr_kids ) : ?>
 	<a class="rr-kids-teaser" href="<?php echo esc_url( ridgeroad_kids_url() ); ?>">
 		<span class="rr-kids-teaser__icon"><?php echo ridgeroad_cicon( 'gift' ); ?></span>
-		<span class="rr-kids-teaser__text"><b><?php echo esc_html( ridgeroad_mod( 'kids_title' ) ); ?></b> <?php echo esc_html( ridgeroad_mod( 'lab_on' ) ? __( 'Design your own light show and win a prize, plus coloring, elf names & trivia!', 'ridgeroad' ) : __( 'Coloring pages, elf names & Christmas trivia!', 'ridgeroad' ) ); ?></span>
+		<span class="rr-kids-teaser__text"><b><?php echo esc_html( ridgeroad_mod( 'kids_title' ) ); ?></b> <?php
+			$rr_lab  = ridgeroad_mod( 'lab_on' );
+			$rr_vote = $rr_lab && ridgeroad_mod( 'contest_on' ) && ridgeroad_contest_open();
+			echo esc_html( $rr_vote ? __( 'Make your own light show to win a prize, and vote for your favorite kids’ shows on the Show Wall! Plus coloring, elf names & trivia.', 'ridgeroad' ) : ( $rr_lab ? __( 'Design your own light show, plus coloring, elf names & trivia!', 'ridgeroad' ) : __( 'Coloring pages, elf names & Christmas trivia!', 'ridgeroad' ) ) );
+		?></span>
 		<span class="rr-kids-teaser__go"><?php esc_html_e( 'Let’s Play', 'ridgeroad' ); ?> &rarr;</span>
 	</a>
 	<?php endif; ?>

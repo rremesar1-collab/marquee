@@ -55,6 +55,7 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 == Changelog ==
 
 = 0.8.3 =
+* Kids' Corner: the Show Wall is now right on the Kids' Corner page, under the activities, instead of a third tab in Make a Light Show. Links to #show-wall still work. The Kids' Corner button on the home page says visitors can vote for the kids' shows while the contest is open.
 * Kids' Show Wall on the home page: the newest approved contest shows with their hearts, and a "See all shows & vote" button. Tap one to watch it on the Kids' Corner. Off by default; turn it on in Customize → Kids' Corner.
 * Publishing a contest entry or show video now clears your page cache, so it shows up for visitors right away.
 * Behind the Lights: when you hide some tiles, the rest stay centered.

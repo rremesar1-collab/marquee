@@ -11,7 +11,7 @@
 
 	/* ---------- Doors and activities ---------- */
 	var ACT = { 'light-show': 'light-show', names: 'names', coloring: 'coloring', games: 'games' };
-	var ALIAS = { 'light-lab': ['light-show', 'make'], enter: ['light-show', 'enter'], 'show-wall': ['light-show', 'wall'], contest: ['light-show', 'wall'], elf: ['games', 'elf'], trivia: ['games', 'trivia'] };
+	var ALIAS = { 'light-lab': ['light-show', 'make'], enter: ['light-show', 'enter'], 'show-wall': ['', 'wall'], contest: ['', 'wall'], elf: ['games', 'elf'], trivia: ['games', 'trivia'] };
 	function route(h) {
 		h = (h || '').replace('#', '');
 		if (ACT[h]) { return [h, null]; }
@@ -26,6 +26,11 @@
 		if (id === 'light-show') { step(sub || curStep || 'make'); if (lab() && lab().resize) { setTimeout(lab().resize, 30); } }
 		if (id === 'games' && sub) { game(sub); }
 		if (id === 'games' && !gamesSeen) { gamesSeen = true; }
+		if (!id && sub === 'wall') {   // the Show Wall is on the Kids' Corner page itself, under the activities
+			var w = $('#show-wall');
+			if (w) { setTimeout(function () { w.scrollIntoView({ behavior: scroll === false ? 'auto' : 'smooth', block: 'start' }); }, 30); }
+			return;
+		}
 		if (scroll !== false) { kc.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
 	}
 	var curStep = null, gamesSeen = false;
@@ -49,9 +54,9 @@
 		var a = e.target.closest('a[href^="#"]');
 		if (!a || !kc.contains(a)) { return; }
 		var h = a.getAttribute('href').slice(1), r = route(h);
-		if (!r[0]) { return; }
+		if (!r[0] && r[1] !== 'wall') { return; }
 		e.preventDefault(); setHash(h);
-		var sameAct = !$('[data-kc-act="' + r[0] + '"]').hidden;
+		var sameAct = r[0] ? !$('[data-kc-act="' + r[0] + '"]').hidden : false;
 		open(r[0], r[1], !sameAct || !!r[1]);
 	});
 	window.addEventListener('popstate', function () { var r = route(location.hash); open(r[0], r[1], false); });
@@ -306,7 +311,7 @@
 	/* ---------- ?rr_watch=ID link (site owner reviewing an entry) ---------- */
 	if (cfg.watch && cfg.watch.show && lab()) {
 		lab().ready(function () {
-			open('light-show', 'wall', false);
+			open('', 'wall', false);
 			try { openShow(JSON.parse(cfg.watch.show), cfg.watch.label, cfg.watch.title, true); } catch (e) {}
 		});
 	}

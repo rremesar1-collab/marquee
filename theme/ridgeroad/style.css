@@ -1645,3 +1645,12 @@ html.rr-sheet-open { overflow: hidden; }
 .rr-homewall__hearts b { color: #ff3b5c; font-size: 20px; }
 @media (max-width: 820px) { .rr-homewall__box { grid-template-columns: 1fr; } .rr-homewall__intro { text-align: center; } .rr-homewall__prize, .rr-homewall__btns { justify-content: center; } }
 
+/* Kids' Corner: the Show Wall under the activities */
+.rr-kc__wallbox { margin-top: 10px; }
+.rr-kc__wallbox .rr-wall { margin-top: 0; }
+.rr-kc__wallbox .rr-wall .rr-kc__h { margin-top: 0; }
+.rr-wall__first { margin: 10px 0 0; text-align: center; }
+.rr-kc__wall-link { margin: -6px 0 0; text-align: center; }
+.rr-kc__wall-link a { color: #fde866; font-weight: 800; text-decoration: underline; text-underline-offset: 3px; }
+.rr-kc__wallbox .rr-wall__grid { grid-template-columns: repeat(auto-fit, minmax(230px, 280px)); justify-content: center; }
+.rr-kc__wallbox .rr-wall .rr-kc__h, .rr-kc__wallbox .rr-wall .rr-kc__note { text-align: center; }

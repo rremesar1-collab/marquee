@@ -31,7 +31,8 @@ $open    = ! empty( $args['open'] );
 			<?php endforeach; ?>
 		</div>
 	<?php else : ?>
-		<p class="rr-kc__note"><?php esc_html_e( 'No shows yet. Be the first! Shows appear here after we check them.', 'ridgeroad' ); ?></p>
+		<p class="rr-kc__note"><?php esc_html_e( 'No shows yet. Make one and be the first! Shows appear here after we check them.', 'ridgeroad' ); ?></p>
+		<p class="rr-wall__first"><a class="rr-btn rr-btn--gold" href="#light-show"><?php esc_html_e( 'Make a Light Show', 'ridgeroad' ); ?></a></p>
 	<?php endif; ?>
 </section>
 
