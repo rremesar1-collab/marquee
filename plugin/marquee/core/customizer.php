@@ -46,7 +46,7 @@ function ridgeroad_defaults() {
 		'address'           => '',
 		'parking_note'      => 'Please park on the shoulder and keep the road clear.',
 		// Stats.
-		'wall_home'         => 1,
+		'wall_home'         => 0,
 		'stats_show'        => 1,
 		'stats_title'       => 'Behind the Lights',
 		'stats_text'        => 'Every song is programmed by hand, one light at a time.',
