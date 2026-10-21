@@ -578,5 +578,8 @@
 .mq-block__add input { width: 100%; max-width: 260px; }
 
 /* App icon status (Your show) */
+.mq-icon { padding: 8px 12px; margin: 8px 0 12px; border-left: 4px solid #72aee6; background: #f0f6fc; border-radius: 6px; }
+.mq-icon p.is-ok { color: #00702a; }
+.mq-icon p.is-bad { color: #b32d2e; }
 .mq-icon p { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
 .mq-icon img { border-radius: 7px; flex: none; }

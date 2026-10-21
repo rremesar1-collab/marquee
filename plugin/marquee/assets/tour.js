@@ -104,7 +104,7 @@
 		ui.querySelector('[data-t="next"]').textContent = i === tour.steps.length - 1 ? 'Done ✓' : 'Next ▶';
 		pic.innerHTML = '';
 		if (s.img) {
-			pic.innerHTML = '<div class="mqt__shot"><img alt="" src="' + esc(s.img) + '">' + (s.box || []).map(function (b) { return '<span class="mqt__box" style="left:' + b[0] + '%;top:' + b[1] + '%;width:' + b[2] + '%;height:' + b[3] + '%"></span>'; }).join('') + '</div><small>On your FPP</small>';
+			pic.innerHTML = '<div class="mqt__shot"><img alt="" src="' + esc(s.img) + '">' + (s.box || []).map(function (b) { return '<span class="mqt__box" style="left:' + b[0] + '%;top:' + b[1] + '%;width:' + b[2] + '%;height:' + b[3] + '%"></span>'; }).join('') + '</div><small>' + ({ rf: 'On remotefalcon.com', el: 'On elevenlabs.io' }[s.where] || 'On your FPP') + '</small>';
 		} else if (s.art && ART[s.art]) {
 			pic.innerHTML = ART[s.art] + '<small>In xLights (picture)</small>';
 		}
@@ -123,6 +123,8 @@
 	}
 	function start(def) {
 		if (!ui) { build(); }
+		var pane = document.querySelector('[data-names-mode]'), mode = pane ? pane.getAttribute('data-names-mode') : '';
+		def.steps = def.steps.filter(function (s) { return !s.mode || !mode || s.mode === mode; });   // only the steps for the names mode picked
 		tour = def; playing = true; label();
 		ptr.x = window.innerWidth - 80; ptr.y = window.innerHeight - 80;
 		ui.hidden = false; document.documentElement.classList.add('mqt-on');

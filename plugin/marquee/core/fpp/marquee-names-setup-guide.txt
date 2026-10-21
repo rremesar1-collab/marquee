@@ -95,7 +95,7 @@ Then download both files:
   FPP -> Status/Control -> Settings -> UI -> User Interface Level: Advanced.
   (On "Basic", FPP hides some commands, including Run Script.)
 
-  FPP -> Content Setup -> Command Presets -> Add:
+  FPP -> Status/Control -> Command Presets -> Add:
     Preset name: FPPD_STARTED
     Command:     Run Script   (in the "Events" group of the list)
     Script:      marquee_names.py
