@@ -40,7 +40,7 @@ import urllib.parse
 import socket
 import urllib.request
 
-VERSION = "3.8"
+VERSION = "3.8.1"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -435,6 +435,15 @@ def support_action(do):
         return False, "unknown fix '%s' (update the names script)" % do
     except Exception as e:
         return False, "%s failed: %s" % (do, e)
+
+
+def self_stamp():
+    """When this script file last changed (a plugin update or a new copy put on by hand)."""
+    try:
+        st = os.stat(os.path.abspath(__file__))
+        return (st.st_mtime, st.st_size)
+    except OSError:
+        return None
 
 
 def restart_self(why):
@@ -1117,8 +1126,12 @@ def main():
     idle_said = 0.0
     every = float(S["check_every"])
     cfg_seen = cfg_stamp()
+    me_seen = self_stamp()
     while True:
         try:
+            if self_stamp() != me_seen and self_stamp():
+                time.sleep(2)                 # let the copy or update finish writing it
+                restart_self("names script updated - starting the new version")
             if os.path.exists(os.path.join(DATA, "restart")) or cfg_stamp() != cfg_seen:
                 try:
                     os.remove(os.path.join(DATA, "restart"))

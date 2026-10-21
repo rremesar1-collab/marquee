@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.8.3
+Stable tag: 0.8.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,10 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.8.4 =
+* Names script 3.8.1: restarts itself with the new version when it's updated (by the Marquee FPP plugin or a new copy put on by hand), so there's nothing to restart after an update.
+* Marquee FPP plugin: updating or reinstalling it on the FPP keeps your connection, so names keep going up without connecting again.
 
 = 0.8.3 =
 * Your screens: each screen now has Text (Automatic, Still or Scrolling), Size (Automatic to Fill the screen, or Custom with an exact font size) and Scroll speed. Automatic gives small pixel matrices (64 pixels tall or less, like a 40 x 10 seed matrix) one big line that scrolls across when it won't fit; TVs and projectors look the same as before. Needs names script 3.8.
