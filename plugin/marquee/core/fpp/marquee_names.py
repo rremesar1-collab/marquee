@@ -38,7 +38,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-VERSION = "3.5"
+VERSION = "3.5.1"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -689,7 +689,11 @@ def run_checks(problems=None):
         add(False, "website", "could not reach the website: %s" % e)
     st = master_status()
     if st:
-        add(True, "fpp", "FPP status: %s" % (st.get("status_name") or "?"))
+        sn = st.get("status_name") or "?"
+        if sn in ("playing", "paused"):
+            add(True, "fpp", "FPP status: %s" % sn)
+        else:   # FPP 10 says "playing media" when only audio/a single file runs: no playlist, so no names break
+            add(True, "fpp", "FPP status: %s - names go up only while your show PLAYLIST is playing on this FPP (start it as a playlist, not a single sequence or Play Media)" % sn)
     else:
         add(False, "fpp", "could not read this FPP's status")
     try:
@@ -840,6 +844,7 @@ def main():
     queued = False
     last_check = 0.0
     color = "#FFFFFF"
+    idle_said = 0.0
     every = float(S["check_every"])
     while True:
         try:
@@ -855,8 +860,13 @@ def main():
                 queued = False
                 if done or time.time() - last_check >= 60:      # idle: check in once a minute
                     last_check = time.time()
-                    pull(done, st)
+                    data = pull(done, st) or {}
                     done = []
+                    waiting = len(data.get("names") or [])
+                    if waiting and time.time() - idle_said >= 600:   # say why names wait, every 10 minutes at most
+                        idle_said = time.time()
+                        log("%d name(s) waiting, but FPP is '%s', not playing a playlist - names go up once your show playlist plays on this FPP"
+                            % (waiting, st.get("status_name") or "?"))
                 time.sleep(5)
                 continue
             adv = ADVISORY["now"]
