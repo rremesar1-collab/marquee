@@ -81,7 +81,7 @@ DEFAULTS = {
     "max_width": 0.62,                # text stays inside this part of the screen (fraction of width)
     "max_height": 0.42,               # ... and of height
     "font": "",                       # "" picks a bold font automatically
-    "scroll": "auto",                 # small pixel matrices: "auto" scrolls a name that won't fit big; "always" / "never"
+    "scroll": "auto",                 # old setting (each screen has its own Text style now): "auto", "always" or "never"
     "check_every": 20,                # seconds between website checks during songs
     "voice": True,                    # play spoken names when the website sends them (false = never)
     "voice_volume": 0,                # -100..100, added to FPP's volume for the spoken names
@@ -153,7 +153,11 @@ def clean_screens(rows):
             host = str(sc["fpp"]).strip()
             if not host.startswith("http"):
                 host = "http://" + host
-            screens.append({"name": (str(sc.get("name") or "") or "screen %d" % (i + 1)).strip(), "fpp": host.rstrip("/"), "model": str(sc["model"]).strip()})
+            pick = lambda k, ok, d: str(sc.get(k) or d) if str(sc.get(k) or d) in ok else d
+            screens.append({"name": (str(sc.get("name") or "") or "screen %d" % (i + 1)).strip(), "fpp": host.rstrip("/"), "model": str(sc["model"]).strip(),
+                            "style": pick("style", ("auto", "still", "scroll"), "auto"),
+                            "size": pick("size", ("auto", "s", "m", "l", "xl"), "auto"),
+                            "speed": pick("speed", ("slow", "normal", "fast"), "normal")})
     return screens
 
 
@@ -713,21 +717,42 @@ def layout(text, width, height):
     return best[1]
 
 
-def small_plan(text, width, height):
-    """Small pixel matrices (64 pixels tall or less, like a 40 x 10 seed matrix): the text uses the
-    whole screen. One line, still if it fits big enough, otherwise big and scrolling right to left.
-    Returns (size, position, pixels per second), or None for TVs and big screens."""
-    mode = str(S.get("scroll") or "auto").lower()
-    if height > 64 and mode != "always":
-        return None
-    big = max(6, int(height * 0.8))
-    fit = min(big, int(width * 0.95 / (0.62 * max(1, len(text)))))
-    if mode != "always" and fit >= max(6, 0.55 * height):
-        return fit, "Center", 0
-    if mode == "never":
-        return None
+SIZES = {"s": 0.45, "m": 0.6, "l": 0.8, "xl": 0.95}       # text height as a part of the screen's height
+SPEEDS = {"slow": 0.75, "normal": 1.0, "fast": 1.35}
+
+
+def text_plan(text, width, height, sc=None):
+    """How one name goes up on one screen. Returns (size, position, pixels per second, text).
+    Each screen's Text style / Text size / Scroll speed come from the website (Your screens).
+    Automatic: small pixel matrices (64 pixels tall or less) get one big line that scrolls when it
+    won't fit; TVs and projectors get still text, the name on its own line."""
+    sc = sc or {}
+    style = sc.get("style") or str(S.get("scroll") or "auto").replace("always", "scroll").replace("never", "still")
+    size_k, speed_k = sc.get("size") or "auto", sc.get("speed") or "normal"
+    small = height <= 64
+    one = " ".join(text.split())
+    if size_k == "auto" and not small and style != "scroll":
+        size, lines = layout(text, width, height)        # TVs: the comfortable look, name on its own line
+        return size, "Center", 0, "\\n".join(lines)
+    if style == "auto" and not small:
+        style = "still"                                  # TVs only scroll when you pick Scrolling
+    frac = SIZES.get(size_k, 0.8 if small else 0.6)
+    big = max(6, min(200, int(height * frac)))
+    fit = min(big, int(width * 0.95 / (0.62 * max(1, len(one)))))
+    if style == "still" or (style == "auto" and fit >= max(6, 0.7 * big)):
+        if fit >= max(6, 0.7 * big) or " " not in one:
+            return max(4, fit), "Center", 0, one
+        # too long for one line: break it up and fill the same height
+        keep = S["max_width"], S["max_height"]
+        S["max_width"], S["max_height"] = 0.95, frac
+        try:
+            size, lines = layout(text, width, height)
+        finally:
+            S["max_width"], S["max_height"] = keep
+        return size, "Center", 0, "\\n".join(lines)
     secs = max(2.0, float(S["show_for"]))
-    return big, "R2L", max(10, int(round((width + 0.62 * big * len(text)) / secs)))
+    pps = (width + 0.62 * big * len(one)) / secs * SPEEDS.get(speed_k, 1.0)
+    return big, "R2L", max(10, int(round(pps))), one
 
 
 def show(text, color):
@@ -736,14 +761,8 @@ def show(text, color):
     for sc in S["screens"]:
         try:
             w, h, font = screen_info(sc)
-            size, lines = layout(text, w, h)
-            one = " ".join(lines)
-            sp = small_plan(one, w, h)
-            if sp:
-                args = [sc["model"], "Transparent", "Text", color, font, sp[0], "true", sp[1], sp[2], S["show_for"], one]
-            else:
-                args = [sc["model"], "Transparent", "Text", color, font, size, "true", "Center", 0, S["show_for"],
-                    "\\n".join(lines)]
+            size, pos, pps, txt = text_plan(text, w, h, sc)
+            args = [sc["model"], "Transparent", "Text", color, font, size, "true", pos, pps, S["show_for"], txt]
             fpp_command(sc["fpp"], "Overlay Model Effect", args)
             ok += 1
         except Exception as e:

@@ -591,3 +591,7 @@
 .mq__copyrow input { flex: 1; min-width: 0; font-family: monospace; font-size: 12px; }
 .mq__byhand { margin: 8px 0; }
 .mq__byhand summary { cursor: pointer; color: #2271b1; }
+.mq__screens .mq__scr-look td { padding: 0 6px 10px 0; }
+.mq__screens .mq__scr-look label { display: inline-flex; align-items: center; gap: 4px; margin: 0 12px 4px 0; font-size: 12px; color: #50575e; white-space: nowrap; }
+.mq__screens .mq__scr-look select { width: auto; }
+.mq__screens .mq__scr-look select { min-height: 26px; font-size: 12px; }

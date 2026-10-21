@@ -354,7 +354,18 @@ function marquee_clean_screens( $rows ) {
 		if ( '' === $host || '' === $model ) {
 			continue;
 		}
-		$out[] = array( 'name' => mb_substr( sanitize_text_field( (string) ( $r['name'] ?? '' ) ), 0, 30 ), 'fpp' => mb_substr( $host, 0, 80 ), 'model' => $model );
+		$pick  = function ( $k, $ok ) use ( $r ) {
+			$v = sanitize_key( (string) ( $r[ $k ] ?? '' ) );
+			return in_array( $v, $ok, true ) ? $v : $ok[0];
+		};
+		$out[] = array(
+			'name'  => mb_substr( sanitize_text_field( (string) ( $r['name'] ?? '' ) ), 0, 30 ),
+			'fpp'   => mb_substr( $host, 0, 80 ),
+			'model' => $model,
+			'style' => $pick( 'style', array( 'auto', 'still', 'scroll' ) ),
+			'size'  => $pick( 'size', array( 'auto', 's', 'm', 'l', 'xl' ) ),
+			'speed' => $pick( 'speed', array( 'normal', 'slow', 'fast' ) ),
+		);
 	}
 	return $out;
 }
@@ -380,7 +391,14 @@ function marquee_fpp_config() {
 	$screens = array();
 	foreach ( (array) $s['fpp_screens'] as $r ) {
 		if ( ! empty( $r['fpp'] ) && ! empty( $r['model'] ) ) {
-			$screens[] = array( 'name' => $r['name'] ? $r['name'] : 'screen ' . ( count( $screens ) + 1 ), 'fpp' => ( 0 === strpos( $r['fpp'], 'http' ) ? $r['fpp'] : 'http://' . $r['fpp'] ), 'model' => $r['model'] );
+			$screens[] = array(
+				'name'  => $r['name'] ? $r['name'] : 'screen ' . ( count( $screens ) + 1 ),
+				'fpp'   => ( 0 === strpos( $r['fpp'], 'http' ) ? $r['fpp'] : 'http://' . $r['fpp'] ),
+				'model' => $r['model'],
+				'style' => $r['style'] ?? 'auto',   // how the text goes up: auto, still, scroll (script 3.8+)
+				'size'  => $r['size'] ?? 'auto',    // auto, s, m, l, xl
+				'speed' => $r['speed'] ?? 'normal', // scrolling speed: slow, normal, fast
+			);
 		}
 	}
 	return array(

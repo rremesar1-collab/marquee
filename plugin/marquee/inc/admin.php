@@ -364,15 +364,35 @@ function marquee_admin_page() {
 						for ( $i = 0; $i < 4; $i++ ) :
 							$r = isset( $scr[ $i ] ) ? $scr[ $i ] : array( 'name' => '', 'fpp' => '', 'model' => '' );
 							?>
-							<tr>
+							<tr class="mq__scr-main">
 								<td><input type="text" name="fpp_screens[<?php echo (int) $i; ?>][name]" value="<?php echo esc_attr( $r['name'] ); ?>" placeholder="<?php echo 0 === $i ? esc_attr__( 'Matrix', 'marquee' ) : ''; ?>" aria-label="<?php esc_attr_e( 'Screen name', 'marquee' ); ?>"></td>
 								<td><input type="text" name="fpp_screens[<?php echo (int) $i; ?>][fpp]" value="<?php echo esc_attr( $r['fpp'] ); ?>" placeholder="<?php echo 0 === $i ? '127.0.0.1' : '192.168.1.'; ?>" aria-label="<?php esc_attr_e( 'FPP address', 'marquee' ); ?>"></td>
 								<td><input type="text" name="fpp_screens[<?php echo (int) $i; ?>][model]" value="<?php echo esc_attr( $r['model'] ); ?>" placeholder="<?php echo 0 === $i ? esc_attr__( 'MatrixText', 'marquee' ) : ''; ?>" aria-label="<?php esc_attr_e( 'Overlay model name', 'marquee' ); ?>"></td>
+							</tr>
+							<tr class="mq__scr-look">
+								<td colspan="3">
+									<?php
+									$look = array(
+										'style' => array( __( 'Text', 'marquee' ), array( 'auto' => __( 'Automatic', 'marquee' ), 'still' => __( 'Still', 'marquee' ), 'scroll' => __( 'Scrolling', 'marquee' ) ) ),
+										'size'  => array( __( 'Size', 'marquee' ), array( 'auto' => __( 'Automatic', 'marquee' ), 's' => __( 'Small', 'marquee' ), 'm' => __( 'Medium', 'marquee' ), 'l' => __( 'Large', 'marquee' ), 'xl' => __( 'Fill the screen', 'marquee' ) ) ),
+										'speed' => array( __( 'Scroll speed', 'marquee' ), array( 'normal' => __( 'Normal', 'marquee' ), 'slow' => __( 'Slow', 'marquee' ), 'fast' => __( 'Fast', 'marquee' ) ) ),
+									);
+									foreach ( $look as $k => $l ) :
+										$cur_v = isset( $r[ $k ] ) ? $r[ $k ] : key( $l[1] );
+										?>
+										<label><?php echo esc_html( $l[0] ); ?>
+											<select name="fpp_screens[<?php echo (int) $i; ?>][<?php echo esc_attr( $k ); ?>]">
+												<?php foreach ( $l[1] as $v => $t ) : ?><option value="<?php echo esc_attr( $v ); ?>" <?php selected( $cur_v, $v ); ?>><?php echo esc_html( $t ); ?></option><?php endforeach; ?>
+											</select>
+										</label>
+									<?php endforeach; ?>
+								</td>
 							</tr>
 						<?php endfor; ?>
 						</tbody>
 					</table>
 					<small><?php esc_html_e( 'FPP address: the FPP that drives that screen (127.0.0.1 means the FPP running the script). Overlay model: its name under FPP → Input/Output Setup → Pixel Overlay Models.', 'marquee' ); ?></small>
+					<small class="mq__fine"><?php esc_html_e( 'Text and Size: Automatic works for most screens. Small pixel matrices (64 pixels tall or less) get one big line that scrolls across when the message won’t fit; TVs and projectors get still text with the name on its own line. Scrolling text always crosses the screen in the time each name is up; Slow may not quite finish on long messages.', 'marquee' ); ?></small>
 					<div class="mq__fppplug" data-mq-fppplug>
 						<h4><?php esc_html_e( 'Put it on your FPP: the Marquee plugin (easiest)', 'marquee' ); ?></h4>
 						<ol>
