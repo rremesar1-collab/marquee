@@ -1,5 +1,5 @@
 === Marquee Festive ===
-Version: 2.11.5
+Version: 2.11.6
 Requires at least: 6.0
 Requires PHP: 7.4
 License: GPLv2 or later
