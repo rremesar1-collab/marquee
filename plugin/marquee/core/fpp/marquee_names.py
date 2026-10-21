@@ -38,7 +38,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-VERSION = "3.6"
+VERSION = "3.6.1"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -187,7 +187,7 @@ def pull(done_ids, st=None, report=None):
     url = str(S["site"]).rstrip("/") + "/wp-admin/admin-ajax.php?action=rr_names_pull&key=" + urllib.parse.quote(str(S["key"]))
     data = {"done": ",".join(str(i) for i in done_ids)} if done_ids else {"ping": "1"}
     if st is not None:
-        data["fpp"] = json.dumps({"status": st.get("status_name", ""), "playlist": playlist_name(st),
+        data["fpp"] = json.dumps({"status": status_name(st), "playlist": playlist_name(st),
                                   "sequence": st.get("current_sequence", "")})
     if report is not None:
         data["report"] = json.dumps(report)
@@ -299,7 +299,7 @@ def support_view():
     st = master_status()
     cp = st.get("current_playlist") or {}
     view = {"v": VERSION, "t": int(time.time()),
-            "status": st.get("status_name", ""), "playlist": cp.get("playlist", "") if isinstance(cp, dict) else "",
+            "status": status_name(st), "playlist": cp.get("playlist", "") if isinstance(cp, dict) else "",
             "sequence": st.get("current_sequence", ""), "song": st.get("current_song", ""),
             "fpp_version": st.get("version", "") or "", "mode": MODE["mode"] or "",
             "break_playlist": S["break_playlist"], "names_start": S["names_start"], "slot": S["slot"],
@@ -359,13 +359,22 @@ def master_status():
         return {}
 
 
+def status_name(st):
+    """FPP's status_name, fixed for FPP 10.1.x: it can say "playing media" while a playlist is playing
+    (status 1 with a current playlist). That's a playlist, so call it "playing"."""
+    sn = str(st.get("status_name") or "")
+    if sn.startswith("playing") and str(st.get("status")) == "1" and playlist_name(st):
+        return "playing"
+    return sn
+
+
 def playlist_name(st):
     cp = st.get("current_playlist") or {}
     return cp.get("playlist", "") if isinstance(cp, dict) else ""
 
 
 def in_break(st):
-    if st.get("status_name") != "playing":
+    if status_name(st) != "playing":
         return False
     pl = playlist_name(st)
     if pl == S["break_playlist"] or pl in short_playlists().values() or pl in theme_playlists().values():
@@ -722,7 +731,7 @@ def show_live(names, color):
     done = []
     try:
         for item in names[:int(S["max_names"])]:
-            if master_status().get("status_name") != "playing":
+            if status_name(master_status()) != "playing":
                 break                                  # show stopped: the rest wait for it to start again
             if show(item["text"], color):
                 log("showing (during the song):", item["text"])
@@ -761,7 +770,7 @@ def run_checks(problems=None):
         add(False, "website", "could not reach the website: %s" % e)
     st = master_status()
     if st:
-        sn = st.get("status_name") or "?"
+        sn = status_name(st) or "?"
         if sn in ("playing", "paused"):
             add(True, "fpp", "FPP status: %s" % sn)
         else:   # FPP 10 says "playing media" when only audio/a single file runs: no playlist, so no names break
@@ -928,7 +937,7 @@ def main():
                 done = []
                 last_check = time.time()
                 continue
-            if st.get("status_name") != "playing":
+            if status_name(st) != "playing":
                 queued = False
                 if done or time.time() - last_check >= (5 if SUPPORT["on"] else 60):      # idle: check in once a minute (every 5 s during a support session)
                     last_check = time.time()
@@ -938,7 +947,7 @@ def main():
                     if waiting and time.time() - idle_said >= 600:   # say why names wait, every 10 minutes at most
                         idle_said = time.time()
                         log("%d name(s) waiting, but FPP is '%s', not playing a playlist - names go up once your show playlist plays on this FPP"
-                            % (waiting, st.get("status_name") or "?"))
+                            % (waiting, status_name(st) or "?"))
                 time.sleep(5)
                 continue
             adv = ADVISORY["now"]

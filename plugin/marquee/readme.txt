@@ -56,6 +56,7 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 = 0.8.2 =
 * Get help from Marquee Support (Marquee → Get help): describe the problem and Marquee sends a support report (your setup without any keys or passwords). You can let Marquee Support sign in for 24 hours to fix it with you: they only get Marquee's pages and your media library, every setting they change is written into the chat in plain words, and you can end it any time. Chat on the page with pictures, email when the other side answers, and a live look at your FPP (status, playlists, screens, names script log, test names) through the names script.
+* Names script 3.6.1: FPP 10.1 reports "playing media" even while a scheduled playlist is playing, so older scripts never put names up on FPP 10.1. The script now checks the playlist itself.
 * Names script 3.6: shows its log and FPP status to Marquee Support while a support session is open, and checks in every 5 seconds during the session.
 * Show me how: Connect your FPP, Connect Remote Falcon and Say each name out loud are now guided walkthroughs on the real Settings page (like the others), with every step: turning names on, the names break playlist, saving before downloading, FPP 10's UI level, starting the show as a playlist, and a test name. Steps follow the names mode you picked.
 * Setup guide: Command Presets is under Status/Control.
