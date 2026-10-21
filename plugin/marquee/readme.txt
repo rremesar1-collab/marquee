@@ -54,6 +54,9 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
 
+= 0.8.2 =
+* Names & FPP setup: FPP 10 hides "Run Script" in Command Presets when the User Interface Level is Basic. The setup guide, the walkthrough and the help assistant now say to set it to Advanced first.
+
 = 0.8.1 =
 * Your show: shows your app icon and warns when it's too small (blurry on phones and in Google), with a link to change it.
 * Behind the Lights: the radio tile shows your station from Settings when you leave its number empty.

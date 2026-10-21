@@ -34,7 +34,7 @@ function marquee_walks() {
 				array( 'mq-fpp', array( 118, 25, 980, 600 ), array( array( 385, 350, 925, 560 ) ), __( 'Type each screen here with its FPP’s address and that model name. Save settings, then download both files.', 'marquee' ) ),
 				array( 'fpp-files', array( 0, 0, 1372, 860 ), array( array( 52, 575, 1310, 698 ) ), __( 'On your FPP: Content Setup → File Manager → Select Files, and upload marquee_names.py and marquee_names.json.', 'marquee' ) ),
 				array( 'fpp-scripts', array( 0, 0, 1372, 860 ), array( array( 75, 292, 1287, 314 ) ), __( 'The script shows under Scripts. (The .json goes under Uploads; that’s fine, the script finds it.)', 'marquee' ) ),
-				array( 'fpp-presets', array( 0, 0, 1372, 520 ), array( array( 55, 240, 1317, 300 ) ), __( 'Status/Control → Command Presets → Add: name it FPPD_STARTED, pick Run Script and marquee_names.py. Save.', 'marquee' ) ),
+				array( 'fpp-presets', array( 0, 0, 1372, 520 ), array( array( 55, 240, 1317, 300 ) ), __( 'Status/Control → Command Presets → Add: name it FPPD_STARTED, pick Run Script (in the Events group) and marquee_names.py. Save. No Run Script in the list? Set Settings → UI → User Interface Level to Advanced first.', 'marquee' ) ),
 				array( 'fpp-presets', array( 0, 0, 1372, 520 ), array( array( 627, 480, 706, 507 ) ), __( 'Click Reboot. Within a minute this card says Connected and shows the setup check with green ticks.', 'marquee' ) ),
 			),
 		),
