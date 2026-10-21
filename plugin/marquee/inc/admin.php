@@ -342,7 +342,7 @@ function marquee_admin_page() {
 							<?php if ( $fpp_ok ) : ?><span class="mq__pill is-ok"><?php esc_html_e( 'Connected', 'marquee' ); ?></span><?php elseif ( $seen ) : ?><span class="mq__pill is-warn"><?php /* translators: %s: time ago */ echo esc_html( sprintf( __( 'Last seen %s ago', 'marquee' ), human_time_diff( $seen ) ) ); ?></span><?php else : ?><span class="mq__pill"><?php esc_html_e( 'Not set up', 'marquee' ); ?></span><?php endif; ?>
 						</summary>
 						<div class="mq__card-b">
-					<p class="mq__fine"><?php esc_html_e( 'Fill in your screens and Save, then download the two files, put them on your FPP and follow the setup guide. Your website never connects into your house: the FPP checks in with it.', 'marquee' ); ?></p>
+					<p class="mq__fine"><?php esc_html_e( 'Fill in your screens and Save, then put the Marquee plugin on your FPP (below). Your website never connects into your house: the FPP checks in with it.', 'marquee' ); ?></p>
 					<?php marquee_tour_button( 'fpp' ); ?>
 					<?php marquee_names_status(); ?>
 					<input type="hidden" name="fpp_sent" value="1">
@@ -373,12 +373,30 @@ function marquee_admin_page() {
 						</tbody>
 					</table>
 					<small><?php esc_html_e( 'FPP address: the FPP that drives that screen (127.0.0.1 means the FPP running the script). Overlay model: its name under FPP → Input/Output Setup → Pixel Overlay Models.', 'marquee' ); ?></small>
-					<p class="mq__media-btns">
+					<div class="mq__fppplug" data-mq-fppplug>
+						<h4><?php esc_html_e( 'Put it on your FPP: the Marquee plugin (easiest)', 'marquee' ); ?></h4>
+						<ol>
+							<li><?php esc_html_e( 'On the FPP that plays your show: Content Setup → Plugin Manager. Search for “Marquee”, or paste this address in the search box:', 'marquee' ); ?>
+								<span class="mq__copyrow"><input type="text" readonly value="<?php echo esc_attr( MARQUEE_FPP_PLUGIN_INFO ); ?>" data-mq-copysrc aria-label="<?php esc_attr_e( 'Plugin address', 'marquee' ); ?>"><button type="button" class="button" data-mq-copy><?php esc_html_e( 'Copy', 'marquee' ); ?></button></span></li>
+							<li><?php esc_html_e( 'Click Install. Then open Content Setup → Marquee and paste your connection code:', 'marquee' ); ?>
+								<?php if ( function_exists( 'marquee_is_support_user' ) && marquee_is_support_user() ) : ?>
+									<em><?php esc_html_e( '(hidden during a support session: it contains your private key)', 'marquee' ); ?></em>
+								<?php else : ?>
+									<span class="mq__copyrow"><input type="text" readonly value="<?php echo esc_attr( marquee_fpp_code() ); ?>" data-mq-copysrc aria-label="<?php esc_attr_e( 'Connection code', 'marquee' ); ?>"><button type="button" class="button" data-mq-copy><?php esc_html_e( 'Copy', 'marquee' ); ?></button></span>
+								<?php endif; ?></li>
+							<li><?php esc_html_e( 'Click Connect. Within a minute the setup check shows here. No Command Presets, no files to upload, and when you change your screens here the FPP picks it up by itself.', 'marquee' ); ?></li>
+						</ol>
+						<small><?php esc_html_e( 'The connection code contains your private key, so keep it private.', 'marquee' ); ?></small>
+					</div>
+					<details class="mq__byhand">
+						<summary><?php esc_html_e( 'Or put the script on your FPP by hand', 'marquee' ); ?></summary>
+						<p class="mq__media-btns">
 						<a class="button button-primary" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=marquee_names_json' ), 'marquee_names_json' ) ); ?>"><?php esc_html_e( 'Download marquee_names.json', 'marquee' ); ?></a>
 						<a class="button" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=marquee_names_py' ), 'marquee_names_py' ) ); ?>"><?php esc_html_e( 'Download marquee_names.py', 'marquee' ); ?></a>
 						<a class="button-link" href="<?php echo esc_url( MARQUEE_URL . 'core/fpp/marquee-names-setup-guide.txt' ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Setup guide', 'marquee' ); ?></a>
 					</p>
-					<small><?php esc_html_e( 'Save first if you changed anything above; the settings file is made from the saved values. It contains your private key, so keep it private.', 'marquee' ); ?></small>
+						<small><?php esc_html_e( 'Save first if you changed anything above; the settings file is made from the saved values. It contains your private key, so keep it private.', 'marquee' ); ?></small>
+					</details>
 						</div>
 					</details>
 
@@ -689,25 +707,13 @@ add_action( 'admin_post_marquee_names_json', function () {
 		wp_die( esc_html__( 'You can’t download this.', 'marquee' ) );
 	}
 	check_admin_referer( 'marquee_names_json' );
-	$s       = marquee_get();
-	$screens = array();
-	foreach ( (array) $s['fpp_screens'] as $r ) {
-		if ( ! empty( $r['fpp'] ) && ! empty( $r['model'] ) ) {
-			$screens[] = array( 'name' => $r['name'] ? $r['name'] : 'screen ' . ( count( $screens ) + 1 ), 'fpp' => ( 0 === strpos( $r['fpp'], 'http' ) ? $r['fpp'] : 'http://' . $r['fpp'] ), 'model' => $r['model'] );
-		}
-	}
-	$data = array(
-		'site'           => home_url( '/' ),
-		'key'            => function_exists( 'ridgeroad_names_key' ) ? ridgeroad_names_key() : '',
-		'mode'           => 'live' === $s['names_mode'] ? 'live' : 'break',
-		'live_show_for'  => (float) $s['live_show_for'],
-		'break_playlist' => $s['fpp_playlist'] ? $s['fpp_playlist'] : 'Names in Lights',
-		'screens'        => $screens,
-		'talk_effect'    => (string) $s['voice_effect'],
-		'names_start'    => (float) $s['names_start'],
-		'slot'           => (float) $s['names_slot'],
-		'show_for'       => max( 2.0, round( (float) $s['names_slot'] - 0.6, 2 ) ),
-	);
+	$s    = marquee_get();
+	$data = array_merge( array(
+		'site' => home_url( '/' ),
+		'key'  => function_exists( 'ridgeroad_names_key' ) ? ridgeroad_names_key() : '',
+		'mode' => 'live' === $s['names_mode'] ? 'live' : 'break',
+		'live_show_for' => (float) $s['live_show_for'],
+	), marquee_fpp_config() );
 	nocache_headers();
 	header( 'Content-Type: application/json; charset=utf-8' );
 	header( 'Content-Disposition: attachment; filename="marquee_names.json"' );

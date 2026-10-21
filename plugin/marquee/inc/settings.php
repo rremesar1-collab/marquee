@@ -370,8 +370,34 @@ add_filter( 'ridgeroad_names_pull_data', function ( $data ) {
 	$s                     = marquee_get();
 	$data['mode']          = 'live' === $s['names_mode'] ? 'live' : 'break';
 	$data['live_show_for'] = (float) $s['live_show_for'];
+	$data['config']        = marquee_fpp_config();   // script 3.7+: screens and timing come from here, not the settings file
 	return $data;
 }, 5 );
+
+/** What the FPP names script needs from Settings (the screens and the names break timing). No keys. */
+function marquee_fpp_config() {
+	$s       = marquee_get();
+	$screens = array();
+	foreach ( (array) $s['fpp_screens'] as $r ) {
+		if ( ! empty( $r['fpp'] ) && ! empty( $r['model'] ) ) {
+			$screens[] = array( 'name' => $r['name'] ? $r['name'] : 'screen ' . ( count( $screens ) + 1 ), 'fpp' => ( 0 === strpos( $r['fpp'], 'http' ) ? $r['fpp'] : 'http://' . $r['fpp'] ), 'model' => $r['model'] );
+		}
+	}
+	return array(
+		'break_playlist' => $s['fpp_playlist'] ? $s['fpp_playlist'] : 'Names in Lights',
+		'screens'        => $screens,
+		'talk_effect'    => (string) $s['voice_effect'],
+		'names_start'    => (float) $s['names_start'],
+		'slot'           => (float) $s['names_slot'],
+		'show_for'       => max( 2.0, round( (float) $s['names_slot'] - 0.6, 2 ) ),
+	);
+}
+
+/** The connection code for the Marquee FPP plugin: your website address and private key in one line. */
+function marquee_fpp_code() {
+	$key = function_exists( 'ridgeroad_names_key' ) ? ridgeroad_names_key() : '';
+	return 'MQ1-' . rtrim( strtr( base64_encode( wp_json_encode( array( 'site' => home_url( '/' ), 'key' => $key ) ) ), '+/', '-_' ), '=' );
+}
 
 /**
  * The messages kids pick from, as typed in Settings: up to 6, each with NAME where the name goes.

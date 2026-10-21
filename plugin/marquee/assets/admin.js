@@ -532,3 +532,15 @@
 	inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); addWord(); } });
 	draw();
 })();
+
+/* Copy buttons (FPP plugin address, connection code). */
+document.addEventListener('click', function (e) {
+	var b = e.target.closest && e.target.closest('[data-mq-copy]');
+	if (!b) { return; }
+	var inp = b.parentNode.querySelector('[data-mq-copysrc]');
+	if (!inp) { return; }
+	inp.select();
+	var done = function () { var t = b.textContent; b.textContent = 'Copied ✓'; setTimeout(function () { b.textContent = t; }, 1500); };
+	if (navigator.clipboard) { navigator.clipboard.writeText(inp.value).then(done, function () { document.execCommand('copy'); done(); }); }
+	else { document.execCommand('copy'); done(); }
+});

@@ -129,6 +129,7 @@ function marquee_support_start( $message, $access ) {
 		'owner'    => get_current_user_id(),
 		'want'     => 1,
 		'tests'    => array(),
+		'actions'  => array(),
 		'changes'  => array(),
 		'ended'    => 0,
 	);
@@ -480,7 +481,7 @@ function marquee_support_nudge( $from, $text ) {
 add_filter( 'ridgeroad_names_pull_data', function ( $data ) {
 	if ( marquee_support_active() ) {
 		$s               = marquee_support();
-		$data['support'] = array( 'on' => true, 'id' => (string) $s['id'], 'want' => (int) $s['want'], 'tests' => array_values( (array) $s['tests'] ) );
+		$data['support'] = array( 'on' => true, 'id' => (string) $s['id'], 'want' => (int) $s['want'], 'tests' => array_values( (array) $s['tests'] ), 'actions' => array_values( (array) ( $s['actions'] ?? array() ) ) );
 	}
 	return $data;
 }, 20 );
@@ -515,6 +516,8 @@ function marquee_support_fpp_in() {
 		'slot'           => (float) ( $v['slot'] ?? 0 ),
 		'playlists'      => array_map( $clean, array_slice( (array) ( $v['playlists'] ?? array() ), 0, 60 ) ),
 		'screens'        => array(),
+		'plugin'         => ! empty( $v['plugin'] ),
+		'sequences'      => array_map( $clean, array_slice( (array) ( $v['sequences'] ?? array() ), 0, 80 ) ),
 		'log'            => array_map( function ( $l ) use ( $clean ) {
 			return $clean( $l, 300 );
 		}, array_slice( (array) ( $v['log'] ?? array() ), -60 ) ),
@@ -528,6 +531,14 @@ function marquee_support_fpp_in() {
 	$s = marquee_support();
 	if ( empty( $s['active'] ) ) {
 		wp_send_json_success( array( 'on' => false ) );
+	}
+	foreach ( (array) ( $v['actions'] ?? array() ) as $a ) {
+		$id = $clean( $a['id'] ?? '', 20 );
+		if ( isset( $s['actions'][ $id ] ) ) {
+			/* translators: %s: what the FPP said */
+			marquee_support_say( 'system', sprintf( ! empty( $a['ok'] ) ? __( 'Your FPP: %s', 'marquee' ) : __( 'Your FPP couldn’t do that: %s', 'marquee' ), $clean( $a['msg'] ?? '', 200 ) ) );
+			unset( $s['actions'][ $id ] );
+		}
 	}
 	foreach ( (array) ( $v['tests'] ?? array() ) as $t ) {
 		$id = $clean( $t['id'] ?? '', 20 );
@@ -664,6 +675,22 @@ add_action( 'wp_ajax_marquee_support_fpp_ask', function () {
 	}
 	$s = marquee_support();
 	++$s['want'];
+	$fixes = array(
+		'check'     => __( 'Marquee Support ran the setup check on your FPP.', 'marquee' ),
+		'playlists' => __( 'Marquee Support set up your names break playlists on the FPP again.', 'marquee' ),
+		'restart'   => __( 'Marquee Support restarted the names script on your FPP.', 'marquee' ),
+	);
+	$do = sanitize_key( wp_unslash( $_POST['do'] ?? '' ) ); // phpcs:ignore
+	if ( isset( $fixes[ $do ] ) ) {
+		if ( count( (array) ( $s['actions'] ?? array() ) ) >= 3 ) {
+			wp_send_json_error( array( 'message' => __( 'Wait for the FPP to finish the last one first.', 'marquee' ) ) );
+		}
+		$id                  = wp_generate_password( 8, false, false );
+		$s['actions'][ $id ] = array( 'id' => $id, 'do' => $do );
+		marquee_support_save( $s );
+		marquee_support_say( 'system', $fixes[ $do ] );
+		wp_send_json_success( array( 'ok' => true ) );
+	}
 	$test = trim( sanitize_text_field( wp_unslash( $_POST['test'] ?? '' ) ) ); // phpcs:ignore
 	if ( '' !== $test ) {
 		$test = function_exists( 'ridgeroad_clean_kid_name' ) ? ridgeroad_clean_kid_name( $test ) : '';
@@ -777,6 +804,10 @@ function marquee_support_page() {
 					<?php if ( $sup ) : ?>
 						<p class="mq-sup__tools"><button type="button" class="button" data-mq-sup-refresh><?php esc_html_e( 'Refresh', 'marquee' ); ?></button>
 						<input type="text" maxlength="40" value="TEST" data-mq-sup-testtext aria-label="<?php esc_attr_e( 'Test name', 'marquee' ); ?>"> <button type="button" class="button" data-mq-sup-test><?php esc_html_e( 'Send a test name', 'marquee' ); ?></button></p>
+						<p class="mq-sup__tools"><b><?php esc_html_e( 'Fixes on the FPP', 'marquee' ); ?></b><br>
+						<button type="button" class="button" data-mq-sup-do="check"><?php esc_html_e( 'Run the setup check', 'marquee' ); ?></button>
+						<button type="button" class="button" data-mq-sup-do="playlists"><?php esc_html_e( 'Set up names break playlists again', 'marquee' ); ?></button>
+						<button type="button" class="button" data-mq-sup-do="restart"><?php esc_html_e( 'Restart the names script', 'marquee' ); ?></button></p>
 					<?php endif; ?>
 				</div>
 				<?php if ( $sup ) : ?>

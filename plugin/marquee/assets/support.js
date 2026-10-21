@@ -42,7 +42,7 @@
 			['Status', v.status + (v.status && v.status !== 'playing' ? ' (names only go up while a playlist is playing)' : '')],
 			['Playlist', v.playlist], ['Sequence', v.sequence], ['Song', v.song],
 			['Names', v.mode === 'live' ? 'during songs' : 'between songs' + (v.break_playlist ? ' · break playlist: ' + v.break_playlist : '')],
-			['FPP', v.fpp_version], ['Names script', v.v], ['Checked in', v.ago + ' ago']
+			['FPP', v.fpp_version], ['Names script', v.v + (v.plugin ? ' (Marquee plugin)' : ' (by hand)')], ['Checked in', v.ago + ' ago']
 		];
 		var h = '<dl>' + rows.filter(function (r) { return r[1]; }).map(function (r) { return '<dt>' + esc(r[0]) + '</dt><dd>' + esc(r[1]) + '</dd>'; }).join('') + '</dl>';
 		if (v.screens && v.screens.length) {
@@ -50,6 +50,7 @@
 				return '<li class="' + (s.ok ? 'is-ok' : 'is-bad') + '">' + (s.ok ? '✓ ' : '✗ ') + esc(s.name || s.model) + ' <small>' + esc([s.fpp, s.model, s.size].filter(Boolean).join(' · ')) + (s.error ? ' — ' + esc(s.error) : '') + '</small></li>';
 			}).join('') + '</ul>';
 		}
+		if (v.sequences && v.sequences.length) { h += '<details><summary>Sequences on the FPP (' + v.sequences.length + ')</summary><p>' + v.sequences.map(esc).join('<br>') + '</p></details>'; }
 		if (v.playlists && v.playlists.length) { h += '<details><summary>Playlists on the FPP (' + v.playlists.length + ')</summary><p>' + v.playlists.map(esc).join('<br>') + '</p></details>'; }
 		if (v.log && v.log.length) { h += '<details' + (C.who === 'support' ? ' open' : '') + '><summary>Names script log</summary><pre>' + v.log.map(esc).join('\n') + '</pre></details>'; }
 		var open = Array.prototype.map.call(box.querySelectorAll('details'), function (d) { return d.open; });
@@ -149,6 +150,12 @@
 		});
 	}
 
+	root.querySelectorAll('[data-mq-sup-do]').forEach(function (b) {
+		b.addEventListener('click', function () {
+			b.disabled = true; setTimeout(function () { b.disabled = false; }, 8000);
+			post('marquee_support_fpp_ask', { 'do': b.getAttribute('data-mq-sup-do') }).then(function (r) { if (r && !r.success && r.data && r.data.message) { window.alert(r.data.message); } poll(); });
+		});
+	});
 	if (location.hash === '#end' && end) { end.scrollIntoView({ block: 'center' }); end.focus(); }
 	document.addEventListener('visibilitychange', function () { if (!document.hidden && active) { poll(); } });
 	post('marquee_support_poll').then(function (r) { if (r && r.success) { apply(r.data); } if (active) { timer = setTimeout(poll, 4000); } });

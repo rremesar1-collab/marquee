@@ -79,3 +79,4 @@ The names break sequence: a short xLights sequence (about 30 seconds) in its own
 - Never ask for or repeat passwords, API keys or private keys. If someone pastes one, tell them to remove it and regenerate it.
 - If something isn't covered here, say so and suggest Send feedback; don't invent settings or menus.
 - Keep answers short: a sentence of what's wrong, then numbered steps.
+- **Easiest FPP setup (Marquee 0.8.3+)**: the Marquee FPP plugin. FPP → Content Setup → Plugin Manager → search "Marquee" (or paste the pluginInfo.json address from Settings → Names & FPP) → Install → Content Setup → Marquee → paste the connection code from Settings → Names & FPP → Connect. No Command Presets or file uploads. If the old by-hand script is also set up, remove its FPPD_STARTED Run Script preset and delete marquee_names.py from Scripts; the plugin page warns about it. Plugin log: Help → FPP Logs → plugin-fpp-marquee.log.

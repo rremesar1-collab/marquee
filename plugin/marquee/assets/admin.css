@@ -583,3 +583,11 @@
 .mq-icon p.is-bad { color: #b32d2e; }
 .mq-icon p { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
 .mq-icon img { border-radius: 7px; flex: none; }
+.mq__fppplug { border: 1px solid #c3c4c7; border-radius: 8px; padding: 10px 14px; margin: 12px 0; background: #f6f7f7; }
+.mq__fppplug h4 { margin: 4px 0 6px; }
+.mq__fppplug ol { margin: 0 0 6px 18px; }
+.mq__fppplug li { margin-bottom: 8px; }
+.mq__copyrow { display: flex; gap: 6px; margin-top: 4px; }
+.mq__copyrow input { flex: 1; min-width: 0; font-family: monospace; font-size: 12px; }
+.mq__byhand { margin: 8px 0; }
+.mq__byhand summary { cursor: pointer; color: #2271b1; }

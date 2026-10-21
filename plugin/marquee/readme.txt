@@ -54,6 +54,11 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
 
+= 0.8.3 =
+* Marquee FPP plugin: install "Marquee" from FPP's Plugin Manager, paste the connection code from Settings → Names & FPP, and it runs the names script for you. No files to upload, no Command Presets, and changes to your screens on the website reach the FPP by themselves.
+* Names script 3.7: takes your screens and names break timing from the website on every check-in, restarts itself when its settings file changes, and won't run twice if both the plugin and a copy put on by hand are there.
+* Get help: Marquee Support can run the setup check, set up the names break playlists again or restart the names script on your FPP during a support session. Each one shows in your chat.
+
 = 0.8.2 =
 * Get help from Marquee Support (Marquee → Get help): describe the problem and Marquee sends a support report (your setup without any keys or passwords). You can let Marquee Support sign in for 24 hours to fix it with you: they only get Marquee's pages and your media library, every setting they change is written into the chat in plain words, and you can end it any time. Chat on the page with pictures, email when the other side answers, and a live look at your FPP (status, playlists, screens, names script log, test names) through the names script.
 * Names script 3.6.1: FPP 10.1 reports "playing media" even while a scheduled playlist is playing, so older scripts never put names up on FPP 10.1. The script now checks the playlist itself.

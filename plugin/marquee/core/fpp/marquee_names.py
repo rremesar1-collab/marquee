@@ -18,7 +18,8 @@ Runs on your FPP master. Kids send their first name on your Marquee website.
 Your website never connects into your house: this script reaches out to it,
 so no router ports need to be opened.
 
-Settings live in marquee_names.json next to this script. Download that file
+Easiest: install the Marquee plugin in FPP's Plugin Manager - it runs this script for you.
+By hand: settings live in marquee_names.json next to this script. Download that file
 from your website (Marquee -> Settings -> Names & FPP), or make it here with:
     python3 /home/fpp/media/scripts/marquee_names.py --setup
 
@@ -38,7 +39,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-VERSION = "3.6.1"
+VERSION = "3.7"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -58,8 +59,10 @@ def config_path():
             return p
     return CONFIG_PLACES[0]
 MASTER = os.environ.get("MARQUEE_FPP", "http://127.0.0.1")
-LOCK = "/tmp/marquee_names.pid"
-LOGFILE = "/home/fpp/media/logs/marquee_names.log"
+LOCK = os.environ.get("MARQUEE_LOCK", "/tmp/marquee_names.pid")
+PLUGIN = os.environ.get("MARQUEE_PLUGIN", "") == "1"          # started by the Marquee FPP plugin
+LOGFILE = os.environ.get("MARQUEE_LOG", "/home/fpp/media/logs/marquee_names.log")
+DATA = os.environ.get("MARQUEE_DATA", HERE)                   # break state (and the plugin's restart request)
 MUSIC = os.environ.get("MARQUEE_MUSIC", "/home/fpp/media/music")   # spoken names are saved here (FPP plays media from this folder)
 VOICE_PREFIX = "marquee-voice-"
 VOICE_KEEP = 300                                                    # newest clips kept on the FPP
@@ -106,7 +109,7 @@ def log(*a):
     LOGBUF.append(line)
     del LOGBUF[:-80]
     try:
-        if os.path.exists(LOGFILE) and os.path.getsize(LOGFILE) > 500000:
+        if not PLUGIN and os.path.exists(LOGFILE) and os.path.getsize(LOGFILE) > 500000:   # FPP rotates the plugin's log itself
             os.replace(LOGFILE, LOGFILE + ".old")
         with open(LOGFILE, "a") as f:
             f.write(line + "\n")
@@ -136,22 +139,51 @@ def load_settings():
         problems.append("the website address in the settings file must start with https://")
     if len(str(S["key"])) < 20:
         problems.append("the private key in the settings file is missing or too short")
+    S["screens"] = clean_screens(S["screens"])
+    break_timing()
+    return problems
+
+
+def clean_screens(rows):
     screens = []
-    for i, sc in enumerate(S["screens"] or []):
+    for i, sc in enumerate(rows or []):
         if isinstance(sc, dict) and sc.get("fpp") and sc.get("model"):
-            host = sc["fpp"].strip()
+            host = str(sc["fpp"]).strip()
             if not host.startswith("http"):
                 host = "http://" + host
-            screens.append({"name": (sc.get("name") or "screen %d" % (i + 1)).strip(), "fpp": host.rstrip("/"), "model": sc["model"].strip()})
-    S["screens"] = screens
+            screens.append({"name": (str(sc.get("name") or "") or "screen %d" % (i + 1)).strip(), "fpp": host.rstrip("/"), "model": str(sc["model"]).strip()})
+    return screens
+
+
+def break_timing():
     st = break_state()
-    if st.get("start") and st.get("slot"):     # timing of the break audio built on the website
+    if st.get("start") and st.get("slot"):     # timing of the break audio built on the website wins
         S["names_start"] = float(st["start"])
         S["slot"] = float(st["slot"])
         S["show_for"] = max(2.0, float(st["slot"]) - 0.6)
-    if not screens:
-        problems.append("no screens in the settings file (each needs an FPP address and an overlay model name)")
-    return problems
+
+
+SITE_KEYS = ("break_playlist", "names_start", "slot", "show_for", "talk_effect")
+
+
+def site_config(cfg):
+    """Your screens and timing as set on the website now (so changing them there needs no new settings file)."""
+    if not isinstance(cfg, dict):
+        return
+    if "screens" in cfg:
+        new = clean_screens(cfg.get("screens"))
+        if new != LAST.get("screens"):
+            log("screens from the website:", ", ".join("%s=%s on %s" % (x["name"], x["model"], x["fpp"]) for x in new) or "none")
+            LAST["screens"] = new
+            _info.clear()
+        S["screens"] = new
+    for k in SITE_KEYS:
+        if cfg.get(k) not in (None, ""):
+            try:
+                S[k] = str(cfg[k]) if isinstance(DEFAULTS[k], str) else float(cfg[k])
+            except (TypeError, ValueError):
+                pass
+    break_timing()
 
 
 # ---------------------------------------------------------------- HTTP ----
@@ -202,6 +234,9 @@ def pull(done_ids, st=None, report=None):
         ADVISORY["now"] = res["data"].get("advisory") if isinstance(res["data"].get("advisory"), dict) else None
         if res["data"].get("live_show_for"):
             MODE["show_for"] = float(res["data"]["live_show_for"])
+        site_config(res["data"].get("config"))
+        if isinstance(res["data"].get("break"), dict):
+            LAST["break"] = res["data"]["break"]
         sup = res["data"].get("support")
         SUPPORT["on"] = bool(isinstance(sup, dict) and sup.get("on"))
         if SUPPORT["on"]:
@@ -222,7 +257,7 @@ def pull(done_ids, st=None, report=None):
 
 
 # --------------------------------------------------- break from website ----
-STATE = os.path.join(HERE, "marquee_break_state.json")
+STATE = os.path.join(DATA, "marquee_break_state.json")
 BREAK_FILES = {"full": "marquee-break-full.wav", "short2": "marquee-break-2.wav", "short1": "marquee-break-1.wav"}
 
 
@@ -291,7 +326,8 @@ def sync_break(b):
 
 
 # ------------------------------------------------------------- support ----
-SUPPORT = {"on": False, "id": "", "sent": 0, "tests": set()}
+SUPPORT = {"on": False, "id": "", "sent": 0, "tests": set(), "done": set()}
+LAST = {"break": None}
 
 
 def support_view():
@@ -303,7 +339,11 @@ def support_view():
             "sequence": st.get("current_sequence", ""), "song": st.get("current_song", ""),
             "fpp_version": st.get("version", "") or "", "mode": MODE["mode"] or "",
             "break_playlist": S["break_playlist"], "names_start": S["names_start"], "slot": S["slot"],
-            "screens": [], "playlists": [], "log": LOGBUF[-60:]}
+            "screens": [], "playlists": [], "log": LOGBUF[-60:], "plugin": PLUGIN, "sequences": []}
+    try:
+        view["sequences"] = [str(x) for x in (fpp_get(MASTER, "/api/sequence") or [])][:80]
+    except Exception:
+        pass
     try:
         view["playlists"] = [str(p) for p in (fpp_get(MASTER, "/api/playlists") or [])][:60]
     except Exception as e:
@@ -324,7 +364,7 @@ def support_view():
 def support_answer(sup):
     """The website asked for a fresh view and/or a test name (only while the owner has support turned on)."""
     if str(sup.get("id", "")) != SUPPORT["id"]:   # a new support session: start counting again
-        SUPPORT.update({"id": str(sup.get("id", "")), "sent": 0, "tests": set()})
+        SUPPORT.update({"id": str(sup.get("id", "")), "sent": 0, "tests": set(), "done": set()})
     shown = []
     for t in (sup.get("tests") or [])[:3]:
         tid = str(t.get("id", ""))
@@ -339,15 +379,64 @@ def support_answer(sup):
             n = 0
         log("support: test name", repr(text), "shown on %d screen(s)" % n)
         shown.append({"id": tid, "screens": n})
+    acted, restart = [], False
+    for a in (sup.get("actions") or [])[:3]:
+        aid, do = str(a.get("id", "")), str(a.get("do", ""))
+        if not aid or aid in SUPPORT["done"]:
+            continue
+        SUPPORT["done"].add(aid)
+        ok, msg = support_action(do)
+        log("support:", msg)
+        acted.append({"id": aid, "ok": ok, "msg": msg[:200]})
+        restart = restart or (do == "restart" and ok)
     want = int(sup.get("want") or 0)
-    if not shown and want <= SUPPORT["sent"]:
+    if not shown and not acted and want <= SUPPORT["sent"]:
         return
     SUPPORT["sent"] = max(want, SUPPORT["sent"])
     view = support_view()
     view["want"] = want
     view["tests"] = shown
+    view["actions"] = acted
     url = str(S["site"]).rstrip("/") + "/wp-admin/admin-ajax.php?action=marquee_support_fpp&key=" + urllib.parse.quote(str(S["key"]))
     http_json(url, {"view": json.dumps(view)})
+    if restart:
+        restart_self("restart asked for by Marquee Support")
+
+
+def support_action(do):
+    """The few fixes Marquee Support can ask for (only while the owner has a support session open)."""
+    try:
+        if do == "restart":
+            return True, "names script restarting"
+        if do == "check":
+            checks, site_ok = run_checks(load_settings())
+            if site_ok:
+                send_report(checks)
+            bad = [c["msg"] for c in checks if not c["ok"]]
+            return True, "setup check ran: " + ("all good" if not bad else "; ".join(bad))
+        if do == "playlists":
+            if live():
+                return False, "names go up during songs, so there are no names break playlists to set up"
+            if not LAST["break"]:
+                return False, "no names break audio has been built on the website yet (Settings -> Names & FPP -> Names break audio)"
+            st = break_state()
+            st.pop("v", None)
+            with open(STATE, "w") as f:
+                json.dump(st, f, indent=1)
+            sync_break(LAST["break"])
+            return True, "names break playlists set up again: '%s', '%s 2' and '%s 1'" % ((S["break_playlist"],) * 3)
+        return False, "unknown fix '%s' (update the names script)" % do
+    except Exception as e:
+        return False, "%s failed: %s" % (do, e)
+
+
+def restart_self(why):
+    log(why)
+    try:
+        os.remove(LOCK)
+    except OSError:
+        pass
+    os.execv(sys.executable, [sys.executable, os.path.abspath(__file__)] + sys.argv[1:])
 
 
 # -------------------------------------------------------------- master ----
@@ -768,6 +857,8 @@ def run_checks(problems=None):
         add(False, "website", "the private key is wrong - download marquee_names.json again" if e.code == 403 else "website answered %s %s" % (e.code, e.reason))
     except Exception as e:
         add(False, "website", "could not reach the website: %s" % e)
+    if not S["screens"]:
+        add(False, "screen", "no screens set yet: add them on your website (Marquee -> Settings -> Names & FPP -> Your screens)")
     st = master_status()
     if st:
         sn = status_name(st) or "?"
@@ -884,11 +975,42 @@ def setup():
 
 
 # ---------------------------------------------------------------- main ----
+def cfg_stamp():
+    try:
+        return os.path.getmtime(config_path())
+    except OSError:
+        return 0
+def other_copy():
+    """Another names script running from a different place (the plugin's, or one put on the FPP by hand)."""
+    me = os.path.abspath(__file__)
+    try:
+        for pid in os.listdir("/proc"):
+            if not pid.isdigit() or int(pid) == os.getpid():
+                continue
+            try:
+                args = open("/proc/%s/cmdline" % pid, "rb").read().split(b"\0")
+            except OSError:
+                continue
+            args = [x.decode("utf-8", "replace") for x in args if x]
+            if len(args) == 2 and os.path.basename(args[0]).startswith("python") \
+                    and args[1].endswith("marquee_names.py") and os.path.abspath(args[1]) != me:
+                return args[1]        # a running copy (not a --check or --test run)
+    except OSError:
+        pass
+    return ""
+
+
 def single_instance():
+    other = other_copy()
+    if other:
+        log(("the names script you put on this FPP by hand is running (%s) - remove its Run Script command preset; "
+             "the Marquee plugin runs it for you now - exiting" if PLUGIN else
+             "the Marquee plugin already runs the names script (%s) - you can delete this copy and its Run Script command preset - exiting") % other)
+        sys.exit(0)
     try:
         if os.path.exists(LOCK):
             old = int(open(LOCK).read().strip() or 0)
-            if old and os.path.exists("/proc/%d" % old):
+            if old and old != os.getpid() and os.path.exists("/proc/%d" % old):
                 log("already running (pid %d) - exiting" % old)
                 sys.exit(0)
         open(LOCK, "w").write(str(os.getpid()))
@@ -905,7 +1027,11 @@ def main():
         return
     if len(sys.argv) > 2 and sys.argv[1] == "--test":
         load_settings()
-        show(sys.argv[2].upper(), "#FFFFFF")
+        try:
+            pull([])                      # your screens come from the website
+        except Exception as e:
+            print("could not reach the website:", e)
+        print("shown on %d screen(s)" % show(sys.argv[2].upper(), "#FFFFFF"))
         return
     single_instance()
     problems = load_settings()
@@ -927,8 +1053,15 @@ def main():
     color = "#FFFFFF"
     idle_said = 0.0
     every = float(S["check_every"])
+    cfg_seen = cfg_stamp()
     while True:
         try:
+            if os.path.exists(os.path.join(DATA, "restart")) or cfg_stamp() != cfg_seen:
+                try:
+                    os.remove(os.path.join(DATA, "restart"))
+                except OSError:
+                    pass
+                restart_self("settings changed - restarting")
             st = master_status()
             if in_break(st):
                 done += run_break(color)
