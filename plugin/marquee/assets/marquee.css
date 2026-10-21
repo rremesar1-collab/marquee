@@ -511,7 +511,8 @@
 .mq-skin:not(#mq-0) .rr-pl__recent b { color: #fde866; }
 .mq-skin:not(#mq-0) .rr-stats-sec { margin-top: 30px; }
 .mq-skin:not(#mq-0) .rr-stats-sec__text { margin: -6px auto 18px; text-align: center; font-size: 15.5px; color: #f3ead8; }
-.mq-skin:not(#mq-0) .rr-statgrid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+.mq-skin:not(#mq-0) .rr-statgrid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+.mq-skin:not(#mq-0) .rr-statgrid > .rr-stat { flex: 0 1 calc((100% - 80px) / 6); min-width: 0; }
 .mq-skin:not(#mq-0) .rr-stat {
 	position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 18px 10px 16px; border-radius: 16px;
 	background: radial-gradient(ellipse at 50% 0%, rgba(40, 110, 220, .35), transparent 70%), linear-gradient(180deg, #02214d, #00122e);
@@ -521,8 +522,8 @@
 .mq-skin:not(#mq-0) .rr-stat__icon .rr-cicon { width: 46px; height: 46px; }
 .mq-skin:not(#mq-0) .rr-stat__num { margin-top: 8px; font: 800 clamp(26px, 2.2vw, 40px)/1 var(--f-body); font-family: inherit; background: linear-gradient(180deg, #fff3a0 10%, #fde866 45%, #ff9a1f 95%); -webkit-background-clip: text; background-clip: text; color: transparent; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .mq-skin:not(#mq-0) .rr-stat__label { margin-top: 6px; font: 700 13px/1.3 var(--f-body); font-family: inherit; letter-spacing: .05em; text-transform: uppercase; color: #bcdeee; }
-@container mq (max-width: 1000px) { .mq-skin:not(#mq-0) .rr-statgrid { grid-template-columns: repeat(3, 1fr); } }
-@container mq (max-width: 540px) { .mq-skin:not(#mq-0) .rr-statgrid { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
+@container mq (max-width: 1000px) { .mq-skin:not(#mq-0) .rr-statgrid > .rr-stat { flex-basis: calc((100% - 32px) / 3); } }
+@container mq (max-width: 540px) { .mq-skin:not(#mq-0) .rr-statgrid { gap: 10px; } .mq-skin:not(#mq-0) .rr-statgrid > .rr-stat { flex-basis: calc((100% - 10px) / 2); } }
 .mq-skin:not(#mq-0) .rr-kids { margin-top: 30px; }
 .mq-skin:not(#mq-0) .rr-grid--kids { grid-template-columns: 1fr 0.8fr 1.2fr; align-items: stretch; }
 .mq-skin:not(#mq-0) .rr-kid { display: flex; flex-direction: column; gap: 12px; padding-top: 26px; }

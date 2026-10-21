@@ -870,7 +870,8 @@ body.rr-scene .rr-scroll::-webkit-scrollbar-thumb { background: rgba(247, 201, 9
 /* ---------- Behind the Lights (stats) ---------- */
 .rr-stats-sec { margin-top: 30px; }
 .rr-stats-sec__text { margin: -6px auto 18px; text-align: center; font-size: 15.5px; color: #f3ead8; text-shadow: 0 1px 3px #000, 0 0 10px #000; }
-.rr-statgrid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+.rr-statgrid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+.rr-statgrid > .rr-stat { flex: 0 1 calc((100% - 80px) / 6); min-width: 0; } /* fewer tiles stay centered */
 .rr-stat {
 	position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 18px 10px 16px; border-radius: 16px;
 	background: radial-gradient(ellipse at 50% 0%, rgba(40, 110, 220, .35), transparent 70%), linear-gradient(180deg, #02214d, #00122e);
@@ -880,8 +881,8 @@ body.rr-scene .rr-scroll::-webkit-scrollbar-thumb { background: rgba(247, 201, 9
 .rr-stat__icon .rr-cicon { width: 46px; height: 46px; filter: drop-shadow(0 0 8px rgba(255, 200, 60, .65)); }
 .rr-stat__num { margin-top: 8px; font: 800 clamp(26px, 2.2vw, 40px)/1 var(--f-body); background: linear-gradient(180deg, #fff3a0 10%, #fde866 45%, #ff9a1f 95%); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 0 6px rgba(255, 150, 30, .6)); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .rr-stat__label { margin-top: 6px; font: 700 13px/1.3 var(--f-body); letter-spacing: .05em; text-transform: uppercase; color: #bcdeee; }
-@media (max-width: 1180px) { .rr-statgrid { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 640px) { .rr-statgrid { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
+@media (max-width: 1180px) { .rr-statgrid > .rr-stat { flex-basis: calc((100% - 32px) / 3); } }
+@media (max-width: 640px) { .rr-statgrid { gap: 10px; } .rr-statgrid > .rr-stat { flex-basis: calc((100% - 10px) / 2); } }
 
 /* ---------- Kids' Corner ---------- */
 .rr-kids { margin-top: 30px; }
