@@ -84,7 +84,7 @@
 		}
 		playlist(np, s.state);
 		var pick = $('[data-rr-rfpick]');
-		if (pick) { pick.hidden = s.state !== 'running'; }
+		if (pick && !pick.hasAttribute('data-preview')) { pick.hidden = s.state !== 'running'; }
 		voteNow(np.title || '');
 		if (d.votes) { voteData(d.votes); }
 		if (cd && s.start_ts) {

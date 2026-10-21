@@ -1324,3 +1324,5 @@ html.rr-sheet-open { overflow: hidden; }
 .mq-skin:not(#mq-0) .rr-rfpick[hidden] { display: none; }
 .mq-skin:not(#mq-0) .rr-rfpick .rr-btn .rr-cicon { width: 22px; height: 22px; }
 .mq-skin:not(#mq-0) .rr-rfpick__note { font-size: 14px; color: #f3ead8; }
+.mq-skin:not(#mq-0) .rr-rfpick.is-preview { padding: 8px 10px; border: 2px dashed rgba(255, 212, 92, .6); border-radius: 12px; }
+.mq-skin:not(#mq-0) .rr-rfpick__preview { flex-basis: 100%; font-size: 12.5px; font-style: normal; color: #ffd45c; }
