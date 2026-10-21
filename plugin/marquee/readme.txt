@@ -54,6 +54,9 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
 
+= 0.8.6 =
+* Pick the Next Song leaves out the songs ticked under "Leave out of song voting" (like your intro), the same as favorite song voting.
+
 = 0.8.5 =
 * Countdown: count down to Christmas, Halloween or a date you pick (with its own name, like New Year's Eve). Automatic picks Halloween when your last night is in August to October. Settings → Schedule → Countdown.
 * Pick the Next Song: add your Remote Falcon viewer page (Settings → Remote Falcon) and Tonight's Show gets a "Pick the Next Song" button while the show is running. Visitors see your songs and vote or request right on your website; Remote Falcon's own rules (one pick each, queue size, location check) still apply.

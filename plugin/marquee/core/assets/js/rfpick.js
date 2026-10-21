@@ -11,7 +11,9 @@
 	var SUB = box.getAttribute('data-sub') || '';
 	if (!SUB) { return; }   // no show name: the button stays a plain link to the Remote Falcon page
 	var list = dlg.querySelector('[data-rf-list]'), msg = dlg.querySelector('[data-rf-msg]'), head = dlg.querySelector('[data-rf-head]');
-	var show = null, timer = null, busy = false, pos = null;
+	var show = null, timer = null, busy = false, pos = null, hide = [];
+	try { hide = (JSON.parse(box.getAttribute('data-hide') || '[]') || []).map(function (t) { return String(t).toLowerCase(); }); } catch (e) {}
+	function title(q) { return (q.displayName || String(q.name || '').replace(/\.(fseq|xsq|mp3)$/i, '').replace(/_/g, ' ')).trim(); }
 
 	var SAY = {
 		ALREADY_VOTED: 'You already voted. Votes start over after the winning song plays.',
@@ -31,7 +33,7 @@
 	function say(t, kind) { msg.textContent = t || ''; msg.className = 'rr-rf__msg' + (kind ? ' is-' + kind : ''); }
 	function items() {
 		var seen = {}, out = [];
-		(show.sequences || []).filter(function (q) { return q.visible && q.active; })
+		(show.sequences || []).filter(function (q) { return q.visible && q.active && hide.indexOf(title(q).toLowerCase()) < 0; })
 			.sort(function (a, b) { return (a.order || 0) - (b.order || 0); })
 			.forEach(function (q) {
 				var key = q.group ? 'g:' + q.group : q.name;
