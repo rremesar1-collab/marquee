@@ -37,6 +37,7 @@ require MARQUEE_DIR . 'inc/social.php';
 require MARQUEE_DIR . 'inc/tour.php';
 require MARQUEE_DIR . 'inc/ai.php';
 require MARQUEE_DIR . 'inc/walk.php';
+require MARQUEE_DIR . 'inc/support.php';
 
 /* -------------------------------------------------------------------------
  * The show features (status, Remote Falcon, names, Kids' Corner, contest, songs,

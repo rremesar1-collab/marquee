@@ -106,7 +106,7 @@ function marquee_save( $in ) {
 		'tz'         => in_array( $txt( 'tz', 60 ), timezone_identifiers_list(), true ) ? $txt( 'tz', 60 ) : $cur['tz'],
 		'nws_office' => isset( $in['nws_office'] ) ? strtoupper( substr( preg_replace( '/[^A-Za-z]/', '', wp_unslash( $in['nws_office'] ) ), 0, 3 ) ) : $cur['nws_office'],
 		'units'      => ( isset( $in['units'] ) && 'metric' === $in['units'] ) ? 'metric' : ( isset( $in['units'] ) ? 'us' : $cur['units'] ),
-		'rf_token'   => $txt( 'rf_token', 200 ),
+		'rf_token'   => ( isset( $in['rf_token'] ) && '••••••••' === $in['rf_token'] ) ? $cur['rf_token'] : $txt( 'rf_token', 200 ),
 		'rf_secret'  => ( isset( $in['rf_secret'] ) && '' !== $in['rf_secret'] && '••••••••' !== $in['rf_secret'] ) ? $txt( 'rf_secret', 200 ) : $cur['rf_secret'],
 		'names_key'  => $cur['names_key'],
 		'art_house'  => $cur['art_house'],

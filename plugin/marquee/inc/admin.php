@@ -115,7 +115,7 @@ function marquee_admin_page() {
 	?>
 	<div class="wrap mq<?php echo $setup ? ' mq--wizard' : ' mq--settings'; ?>" data-mq>
 		<h1><?php echo $setup ? esc_html__( 'Welcome to Marquee', 'marquee' ) : esc_html__( 'Marquee Settings', 'marquee' ); ?></h1>
-		<p class="mq__intro"><?php echo $setup ? esc_html__( 'Answer a few questions and your show’s website is ready. You can change any of this later.', 'marquee' ) : esc_html__( 'Everything about your show in one place. Night-of switches are in Show Control, or on your phone in the Show Manager.', 'marquee' ); ?> <a href="<?php echo esc_url( marquee_feedback_url() ); ?>"><?php esc_html_e( 'Send feedback', 'marquee' ); ?></a><?php if ( MARQUEE_COFFEE_URL ) : ?> · <a href="<?php echo esc_url( MARQUEE_COFFEE_URL ); ?>" target="_blank" rel="noopener">☕ <?php esc_html_e( 'Buy me a coffee', 'marquee' ); ?></a><?php endif; ?></p>
+		<p class="mq__intro"><?php echo $setup ? esc_html__( 'Answer a few questions and your show’s website is ready. You can change any of this later.', 'marquee' ) : esc_html__( 'Everything about your show in one place. Night-of switches are in Show Control, or on your phone in the Show Manager.', 'marquee' ); ?> <a href="<?php echo esc_url( admin_url( 'admin.php?page=marquee-support' ) ); ?>"><?php esc_html_e( 'Get help from Marquee Support', 'marquee' ); ?></a> · <a href="<?php echo esc_url( marquee_feedback_url() ); ?>"><?php esc_html_e( 'Send feedback', 'marquee' ); ?></a><?php if ( MARQUEE_COFFEE_URL ) : ?> · <a href="<?php echo esc_url( MARQUEE_COFFEE_URL ); ?>" target="_blank" rel="noopener">☕ <?php esc_html_e( 'Buy me a coffee', 'marquee' ); ?></a><?php endif; ?></p>
 		<?php
 		$saved     = isset( $_GET['saved'] ) ? sanitize_key( $_GET['saved'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification
 		$pages_msg = $saved ? get_transient( 'marquee_pages_msg' ) : false;
@@ -275,7 +275,7 @@ function marquee_admin_page() {
 				<p class="mq__lead"><?php esc_html_e( 'Optional. Connect it and your site shows what’s playing now, your playlist, and song voting. Without it the site still shows hours, weather and the Kids’ Corner.', 'marquee' ); ?></p>
 				<?php marquee_tour_button( 'rf' ); ?>
 				<div class="mq__row">
-					<p><label for="mq-rft"><?php esc_html_e( 'Access token', 'marquee' ); ?></label><input id="mq-rft" name="rf_token" type="text" autocomplete="off" value="<?php echo esc_attr( $s['rf_token'] ); ?>"></p>
+					<p><label for="mq-rft"><?php esc_html_e( 'Access token', 'marquee' ); ?></label><input id="mq-rft" name="rf_token" type="text" autocomplete="off" value="<?php echo esc_attr( ( $s['rf_token'] && function_exists( 'marquee_is_support_user' ) && marquee_is_support_user() ) ? '••••••••' : $s['rf_token'] ); ?>"></p>
 					<p><label for="mq-rfs"><?php esc_html_e( 'Secret key', 'marquee' ); ?></label><input id="mq-rfs" name="rf_secret" type="password" autocomplete="new-password" value="<?php echo $s['rf_secret'] ? '••••••••' : ''; ?>"></p>
 				</div>
 				<p><button type="button" class="button" data-mq-rftest><?php esc_html_e( 'Test connection', 'marquee' ); ?></button> <span class="mq__msg" data-mq-rfmsg aria-live="polite"></span></p>

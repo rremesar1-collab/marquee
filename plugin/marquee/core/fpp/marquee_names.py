@@ -38,7 +38,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-VERSION = "3.5.1"
+VERSION = "3.6"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -97,9 +97,14 @@ def live():
 S = dict(DEFAULTS)
 
 
+LOGBUF = []          # the last log lines, for a Marquee Support session
+
+
 def log(*a):
     line = time.strftime("%Y-%m-%d %H:%M:%S ") + " ".join(str(x) for x in a)
     print(line, flush=True)
+    LOGBUF.append(line)
+    del LOGBUF[:-80]
     try:
         if os.path.exists(LOGFILE) and os.path.getsize(LOGFILE) > 500000:
             os.replace(LOGFILE, LOGFILE + ".old")
@@ -197,6 +202,13 @@ def pull(done_ids, st=None, report=None):
         ADVISORY["now"] = res["data"].get("advisory") if isinstance(res["data"].get("advisory"), dict) else None
         if res["data"].get("live_show_for"):
             MODE["show_for"] = float(res["data"]["live_show_for"])
+        sup = res["data"].get("support")
+        SUPPORT["on"] = bool(isinstance(sup, dict) and sup.get("on"))
+        if SUPPORT["on"]:
+            try:
+                support_answer(sup)
+            except Exception as e:
+                log("support view: could not send -", e)
         THEMES.clear()
         for t in res["data"].get("themes") or []:
             if isinstance(t, dict) and t.get("slug") and t.get("playlist"):
@@ -276,6 +288,66 @@ def sync_break(b):
     _playlists["t"] = 0
     log("names break updated from the website: '%s', '%s 2' and '%s 1' now play the new audio "
         "(names start at %ss, one every %ss)" % (bp, bp, bp, st["start"], st["slot"]))
+
+
+# ------------------------------------------------------------- support ----
+SUPPORT = {"on": False, "id": "", "sent": 0, "tests": set()}
+
+
+def support_view():
+    """What Marquee Support sees during a session: read-only facts about this FPP, no secrets."""
+    st = master_status()
+    cp = st.get("current_playlist") or {}
+    view = {"v": VERSION, "t": int(time.time()),
+            "status": st.get("status_name", ""), "playlist": cp.get("playlist", "") if isinstance(cp, dict) else "",
+            "sequence": st.get("current_sequence", ""), "song": st.get("current_song", ""),
+            "fpp_version": st.get("version", "") or "", "mode": MODE["mode"] or "",
+            "break_playlist": S["break_playlist"], "names_start": S["names_start"], "slot": S["slot"],
+            "screens": [], "playlists": [], "log": LOGBUF[-60:]}
+    try:
+        view["playlists"] = [str(p) for p in (fpp_get(MASTER, "/api/playlists") or [])][:60]
+    except Exception as e:
+        view["playlists_error"] = str(e)[:120]
+    for sc in S["screens"]:
+        row = {"name": sc["name"], "fpp": sc["fpp"], "model": sc["model"]}
+        try:
+            m = fpp_get(sc["fpp"], "/api/overlays/model/" + urllib.parse.quote(sc["model"])) or {}
+            row["size"] = "%s x %s" % (m.get("width", "?"), m.get("height", "?"))
+            row["ok"] = True
+        except Exception as e:
+            row["ok"] = False
+            row["error"] = str(e)[:120]
+        view["screens"].append(row)
+    return view
+
+
+def support_answer(sup):
+    """The website asked for a fresh view and/or a test name (only while the owner has support turned on)."""
+    if str(sup.get("id", "")) != SUPPORT["id"]:   # a new support session: start counting again
+        SUPPORT.update({"id": str(sup.get("id", "")), "sent": 0, "tests": set()})
+    shown = []
+    for t in (sup.get("tests") or [])[:3]:
+        tid = str(t.get("id", ""))
+        if not tid or tid in SUPPORT["tests"]:
+            continue
+        SUPPORT["tests"].add(tid)
+        text = str(t.get("text") or "TEST")[:40]
+        try:
+            n = show(text, "#FFFFFF")
+        except Exception as e:
+            log("support: test name could not be shown -", e)
+            n = 0
+        log("support: test name", repr(text), "shown on %d screen(s)" % n)
+        shown.append({"id": tid, "screens": n})
+    want = int(sup.get("want") or 0)
+    if not shown and want <= SUPPORT["sent"]:
+        return
+    SUPPORT["sent"] = max(want, SUPPORT["sent"])
+    view = support_view()
+    view["want"] = want
+    view["tests"] = shown
+    url = str(S["site"]).rstrip("/") + "/wp-admin/admin-ajax.php?action=marquee_support_fpp&key=" + urllib.parse.quote(str(S["key"]))
+    http_json(url, {"view": json.dumps(view)})
 
 
 # -------------------------------------------------------------- master ----
@@ -858,7 +930,7 @@ def main():
                 continue
             if st.get("status_name") != "playing":
                 queued = False
-                if done or time.time() - last_check >= 60:      # idle: check in once a minute
+                if done or time.time() - last_check >= (5 if SUPPORT["on"] else 60):      # idle: check in once a minute (every 5 s during a support session)
                     last_check = time.time()
                     data = pull(done, st) or {}
                     done = []
@@ -879,7 +951,7 @@ def main():
                         log("traffic alert on the screens:", adv["text"])
                 finally:
                     S["show_for"] = keep
-            if time.time() - last_check >= every:
+            if time.time() - last_check >= (min(every, 5) if SUPPORT["on"] else every):
                 last_check = time.time()
                 data = pull(done, st)
                 done = []
