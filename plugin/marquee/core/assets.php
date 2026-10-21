@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 function ridgeroad_feature_assets() {
-	wp_enqueue_script( 'ridgeroad', RR_FEAT_URL . 'assets/js/main.js', array(), RIDGEROAD_VERSION, true );
+	wp_enqueue_script( 'ridgeroad', RR_FEAT_URL . 'assets/js/main.js', array(), RIDGEROAD_VERSION . '.' . (int) @filemtime( RR_FEAT_DIR . 'assets/js/main.js' ), true );
 	wp_localize_script( 'ridgeroad', 'RidgeRoad', array(
 		'endpoint' => esc_url_raw( admin_url( 'admin-ajax.php?action=ridgeroad_live' ) ),
 		'ajax'     => esc_url_raw( admin_url( 'admin-ajax.php' ) ),
@@ -21,12 +21,12 @@ function ridgeroad_feature_assets() {
 	) );
 
 	// The app: install card, alerts, offline screen.
-	wp_enqueue_script( 'ridgeroad-app', RR_FEAT_URL . 'assets/js/app.js', array( 'ridgeroad' ), RIDGEROAD_VERSION, true );
+	wp_enqueue_script( 'ridgeroad-app', RR_FEAT_URL . 'assets/js/app.js', array( 'ridgeroad' ), RIDGEROAD_VERSION . '.' . (int) @filemtime( RR_FEAT_DIR . 'assets/js/app.js' ), true );
 	wp_localize_script( 'ridgeroad-app', 'RRApp', ridgeroad_app_frontend() );
 
 	// Kids' Corner: online coloring, contest and Art Wall.
 	if ( is_page( (int) get_option( 'ridgeroad_kids_page' ) ) ) {
-		wp_enqueue_script( 'ridgeroad-lab', RR_FEAT_URL . 'assets/js/lightlab.js', array(), RIDGEROAD_VERSION, true );
+		wp_enqueue_script( 'ridgeroad-lab', RR_FEAT_URL . 'assets/js/lightlab.js', array(), RIDGEROAD_VERSION . '.' . (int) @filemtime( RR_FEAT_DIR . 'assets/js/lightlab.js' ), true );
 		wp_enqueue_script( 'ridgeroad-kids', RR_FEAT_URL . 'assets/js/kids.js', array( 'ridgeroad-lab' ), RIDGEROAD_VERSION . '.' . (int) @filemtime( RR_FEAT_DIR . 'assets/js/kids.js' ), true );
 		wp_localize_script( 'ridgeroad-kids', 'RRShow', array(
 			'ajax'  => esc_url_raw( admin_url( 'admin-ajax.php' ) ),
