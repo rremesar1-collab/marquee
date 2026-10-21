@@ -56,7 +56,7 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 = 0.8.5 =
 * Countdown: count down to Christmas, Halloween or a date you pick (with its own name, like New Year's Eve). Automatic picks Halloween when your last night is in August to October. Settings → Schedule → Countdown.
-* Remote Falcon: add your viewer page (Settings → Remote Falcon) and Tonight's Show gets a "Pick the Next Song" button while the show is running.
+* Pick the Next Song: add your Remote Falcon viewer page (Settings → Remote Falcon) and Tonight's Show gets a "Pick the Next Song" button while the show is running. Visitors see your songs and vote or request right on your website; Remote Falcon's own rules (one pick each, queue size, location check) still apply.
 
 = 0.8.4 =
 * Names script 3.8.1: restarts itself with the new version when it's updated (by the Marquee FPP plugin or a new copy put on by hand), so there's nothing to restart after an update.

@@ -1662,3 +1662,27 @@ html.rr-sheet-open { overflow: hidden; }
 .rr-rfpick__note { font-size: 14px; color: #f3ead8; }
 .rr-rfpick.is-preview { padding: 8px 10px; border: 2px dashed rgba(255, 212, 92, .6); border-radius: 12px; }
 .rr-rfpick__preview { flex-basis: 100%; font-size: 12.5px; font-style: normal; color: #ffd45c; }
+
+/* Pick the Next Song (Remote Falcon) pop-up */
+.rr-rf { width: min(560px, 94vw); }
+.rr-rf__box { padding: 18px 16px 14px; color: #fff; max-height: 86vh; overflow-y: auto; }
+.rr-rf__h { display: flex; align-items: center; gap: 8px; margin: 0 30px 8px 0; font-size: 22px; color: #fde866; }
+.rr-rf__h .rr-cicon { width: 28px; height: 28px; }
+.rr-rf__head p { margin: 0 0 4px; font-size: 14.5px; color: #e6ecff; }
+.rr-rf__how { opacity: .85; font-size: 13.5px !important; }
+.rr-rf__msg { min-height: 1.2em; margin: 8px 0; font-weight: 700; font-size: 14.5px; }
+.rr-rf__msg.is-ok { color: #6ee7a0; }
+.rr-rf__msg.is-bad { color: #ff8a8a; }
+.rr-rf__msg.is-warn { color: #ffd45c; }
+.rr-rf__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.rr-rf__song { display: flex; align-items: center; gap: 10px; width: 100%; padding: 8px 10px; border: 1px solid rgba(150, 190, 255, .35); border-radius: 10px; background: rgba(2, 33, 77, .7); color: #fff; font: inherit; text-align: left; cursor: pointer; }
+.rr-rf__song:hover { border-color: #ffd45c; }
+.rr-rf__song.is-busy { opacity: .6; }
+.rr-rf__song img, .rr-rf__note { flex: none; width: 44px; height: 44px; border-radius: 6px; object-fit: cover; }
+.rr-rf__note { display: grid; place-items: center; background: rgba(255, 255, 255, .08); font-size: 22px; color: #ffd45c; }
+.rr-rf__t { flex: 1; min-width: 0; }
+.rr-rf__t b { display: block; font-size: 15px; overflow-wrap: anywhere; }
+.rr-rf__t small { display: block; font-size: 12.5px; color: #c9d6f5; }
+.rr-rf__votes { flex: none; font-size: 12.5px; color: #ffd45c; }
+.rr-rf__go { flex: none; padding: 5px 12px; border-radius: 999px; background: linear-gradient(180deg, #ff2b3d, #c70d1e); font-weight: 800; font-size: 13px; }
+.rr-rf__empty { opacity: .8; }

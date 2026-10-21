@@ -42,12 +42,28 @@ extract( ridgeroad_home_ctx(), EXTR_SKIP ); // $status, $np, $wx, $opts, $b_titl
 		<?php
 		$rf_pick = ridgeroad_mod( 'rf_viewer_url' );
 		$rf_prev = $rf_pick && 'running' !== $status['state'] && current_user_can( 'manage_options' ); // the owner sees it any time, to check it
-		if ( $rf_pick ) : ?>
-			<div class="rr-rfpick<?php echo $rf_prev ? ' is-preview' : ''; ?>" data-rr-rfpick <?php echo $rf_prev ? 'data-preview="1"' : ''; ?> <?php echo ( 'running' === $status['state'] || $rf_prev ) ? '' : 'hidden'; ?>>
-				<a class="rr-btn rr-btn--red" href="<?php echo esc_url( $rf_pick ); ?>" target="_blank" rel="noopener"><?php echo ridgeroad_cicon( 'music' ); ?><?php esc_html_e( 'Pick the Next Song', 'ridgeroad' ); ?></a>
-				<span class="rr-rfpick__note"><?php esc_html_e( 'Choose what plays next on our Remote Falcon page.', 'ridgeroad' ); ?></span>
+		$rf_sub  = $rf_pick && preg_match( '#^https?://([a-z0-9-]+)\.remotefalcon\.com#i', $rf_pick, $rf_m ) ? strtolower( $rf_m[1] ) : '';
+		if ( $rf_pick ) :
+			if ( $rf_sub ) {
+				wp_enqueue_script( 'ridgeroad-rfpick', RR_FEAT_URL . 'assets/js/rfpick.js', array(), RIDGEROAD_VERSION . '.' . (int) @filemtime( RR_FEAT_DIR . 'assets/js/rfpick.js' ), true );
+			}
+			?>
+			<div class="rr-rfpick<?php echo $rf_prev ? ' is-preview' : ''; ?>" data-rr-rfpick data-sub="<?php echo esc_attr( $rf_sub ); ?>" data-api="<?php echo esc_url( apply_filters( 'ridgeroad_rf_viewer_api', 'https://remotefalcon.com/remote-falcon-viewer/graphql' ) ); ?>" <?php echo $rf_prev ? 'data-preview="1"' : ''; ?> <?php echo ( 'running' === $status['state'] || $rf_prev ) ? '' : 'hidden'; ?>>
+				<a class="rr-btn rr-btn--red" href="<?php echo esc_url( $rf_pick ); ?>" target="_blank" rel="noopener" data-rf-open><?php echo ridgeroad_cicon( 'music' ); ?><?php esc_html_e( 'Pick the Next Song', 'ridgeroad' ); ?></a>
+				<span class="rr-rfpick__note"><?php esc_html_e( 'Choose what plays next!', 'ridgeroad' ); ?></span>
 				<?php if ( $rf_prev ) : ?><em class="rr-rfpick__preview"><?php esc_html_e( 'Only you can see this right now (you’re logged in). Visitors see it while the show is running.', 'ridgeroad' ); ?></em><?php endif; ?>
 			</div>
+			<?php if ( $rf_sub ) : ?>
+			<dialog class="rr-vmodal rr-rf" data-rr-rfdlg aria-labelledby="rr-rf-h">
+				<div class="rr-vmodal__box rr-rf__box">
+					<button type="button" class="rr-vmodal__x" data-rf-close aria-label="<?php esc_attr_e( 'Close', 'ridgeroad' ); ?>">&times;</button>
+					<h3 id="rr-rf-h" class="rr-rf__h"><?php echo ridgeroad_cicon( 'music' ); ?><?php esc_html_e( 'Pick the Next Song', 'ridgeroad' ); ?></h3>
+					<div class="rr-rf__head" data-rf-head></div>
+					<p class="rr-rf__msg" data-rf-msg aria-live="polite"></p>
+					<ul class="rr-rf__list" data-rf-list></ul>
+				</div>
+			</dialog>
+			<?php endif; ?>
 		<?php endif; ?>
 		<p class="rr-show__note" data-rr="note"><?php echo esc_html( $status['note'] ); ?></p>
 		<?php $dir = ridgeroad_directions_url(); if ( $dir ) : ?>
