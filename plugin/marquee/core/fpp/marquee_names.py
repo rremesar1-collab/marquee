@@ -37,9 +37,10 @@ import sys
 import time
 import urllib.error
 import urllib.parse
+import socket
 import urllib.request
 
-VERSION = "3.7"
+VERSION = "3.7.1"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -1000,6 +1001,23 @@ def other_copy():
     return ""
 
 
+def wait_until_ready(limit=180):
+    """Right after a reboot the network and FPP itself take a minute to come up: wait for both
+    (up to 3 minutes) so the first setup check isn't full of start-up errors."""
+    host = urllib.parse.urlparse(str(S["site"])).hostname or ""
+    t0, said = time.time(), False
+    while time.time() - t0 < limit:
+        try:
+            socket.getaddrinfo(host, 443)
+            fpp_get(MASTER, "/api/fppd/status", timeout=3)
+            return
+        except Exception:
+            if not said:
+                log("waiting for the network and FPP to finish starting...")
+                said = True
+            time.sleep(5)
+
+
 def single_instance():
     other = other_copy()
     if other:
@@ -1040,6 +1058,7 @@ def main():
             log("setup problem:", p)
         time.sleep(60)                        # wait for the settings file, check again in a minute
         problems = load_settings()
+    wait_until_ready()
     log("started v%s; %s; screens: %s" % (
         VERSION, "names during songs" if live() else "break playlist '%s'" % S["break_playlist"], ", ".join("%s=%s on %s" % (s["name"], s["model"], s["fpp"]) for s in S["screens"]) or "none"))
     checks, site_ok = run_checks(problems)
