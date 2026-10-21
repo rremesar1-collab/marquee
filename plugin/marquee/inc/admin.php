@@ -322,7 +322,7 @@ function marquee_admin_page() {
 								<span class="mq-how__card">
 									<b><?php esc_html_e( 'Between songs: a names break', 'marquee' ); ?> <em><?php esc_html_e( 'Recommended', 'marquee' ); ?></em></b>
 									<span class="mq-flow" aria-hidden="true"><span class="mq-flow__song">🎵 <?php esc_html_e( 'Your song', 'marquee' ); ?></span><i>→</i><span class="mq-flow__break">⭐ <?php esc_html_e( 'Names break', 'marquee' ); ?><small><?php esc_html_e( 'about 30 seconds', 'marquee' ); ?></small></span><i>→</i><span class="mq-flow__song">🎵 <?php esc_html_e( 'Next song', 'marquee' ); ?></span></span>
-									<small><?php esc_html_e( 'When kids have sent names, your FPP slips a short “names break” sequence in after the current song: the names go up on your screens one by one (and a voice can say them), then your playlist carries on. No names waiting? Nothing changes. You need one short extra sequence for the break; Marquee can make it for you (card 4).', 'marquee' ); ?></small>
+									<small><?php esc_html_e( 'When kids have sent names, your FPP slips a short “names break” sequence in after the current song: the names go up on your screens one by one (and a voice can say them), then your playlist carries on. No names waiting? Nothing changes. Your show needs to be playing as a playlist on the FPP that runs the names script. You need one short extra sequence for the break; Marquee can make it for you (card 4).', 'marquee' ); ?></small>
 								</span>
 							</label>
 							<label class="mq-how__mode">

@@ -55,6 +55,7 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 == Changelog ==
 
 = 0.8.2 =
+* Names & FPP: the FPP walkthrough ends with "Start your show as a playlist" (on the FPP that runs the names script), and How it works says so too.
 * Names script 3.5.1: when names are waiting but FPP isn't playing a playlist (FPP 10 shows "playing media" for audio or a single sequence), the log and the setup check say so plainly instead of waiting silently.
 * Names & FPP setup: FPP 10 hides "Run Script" in Command Presets when the User Interface Level is Basic. The setup guide, the walkthrough and the help assistant now say to set it to Advanced first.
 

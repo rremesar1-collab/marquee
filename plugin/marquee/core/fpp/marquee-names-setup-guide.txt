@@ -106,6 +106,10 @@ Then download both files:
 
 6. CHECK IT
 -----------
+Names go up only while your show PLAYLIST is playing on this FPP (the one
+running the script). A single sequence or "Play Media" won't bring the names
+break. More than one FPP? Put the script on the one that plays the show.
+
 Within a minute, WP Admin -> Marquee -> Settings -> Names & FPP shows
 "FPP last checked in ..." and a setup check with a green tick or a red cross
 for each part. Fix any red line (see below), then restart FPPD again.

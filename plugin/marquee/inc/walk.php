@@ -36,6 +36,7 @@ function marquee_walks() {
 				array( 'fpp-scripts', array( 0, 0, 1372, 860 ), array( array( 75, 292, 1287, 314 ) ), __( 'The script shows under Scripts. (The .json goes under Uploads; that’s fine, the script finds it.)', 'marquee' ) ),
 				array( 'fpp-presets', array( 0, 0, 1372, 520 ), array( array( 55, 240, 1317, 300 ) ), __( 'Status/Control → Command Presets → Add: name it FPPD_STARTED, pick Run Script (in the Events group) and marquee_names.py. Save. No Run Script in the list? Set Settings → UI → User Interface Level to Advanced first.', 'marquee' ) ),
 				array( 'fpp-presets', array( 0, 0, 1372, 520 ), array( array( 627, 480, 706, 507 ) ), __( 'Click Reboot. Within a minute this card says Connected and shows the setup check with green ticks.', 'marquee' ) ),
+				array( 'fpp-playlists', array( 0, 0, 1351, 480 ), array( array( 55, 190, 453, 322 ) ), __( 'Start your show as a playlist (like this one). Names go up only while your show playlist plays on this FPP, the one running the script: a single sequence or Play Media won’t bring the names break. More than one FPP? Put the script on the one that plays the show.', 'marquee' ) ),
 			),
 		),
 		'voice' => array(
