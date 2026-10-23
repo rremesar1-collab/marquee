@@ -440,7 +440,7 @@ function marquee_admin_page() {
 					<div class="mq__fppplug" data-mq-fppplug>
 						<h4><?php esc_html_e( 'Put it on your FPP: the Marquee plugin (easiest)', 'marquee' ); ?></h4>
 						<ol>
-							<li><?php esc_html_e( 'On the FPP that plays your show: Content Setup → Plugin Manager. Search for “Marquee”, or paste this address in the search box:', 'marquee' ); ?>
+							<li><?php esc_html_e( 'On the FPP that plays your show: Status/Control → Settings → UI → User Interface Level: Developer (FPP only takes a plugin address at that level). Then Content Setup → Plugin Manager, paste this address in the Find a Plugin box and click Install:', 'marquee' ); ?>
 								<span class="mq__copyrow"><input type="text" readonly value="<?php echo esc_attr( MARQUEE_FPP_PLUGIN_INFO ); ?>" data-mq-copysrc aria-label="<?php esc_attr_e( 'Plugin address', 'marquee' ); ?>"><button type="button" class="button" data-mq-copy><?php esc_html_e( 'Copy', 'marquee' ); ?></button></span></li>
 							<li><?php esc_html_e( 'Click Install. Then open Content Setup → Marquee and paste your connection code:', 'marquee' ); ?>
 								<?php if ( function_exists( 'marquee_is_support_user' ) && marquee_is_support_user() ) : ?>
