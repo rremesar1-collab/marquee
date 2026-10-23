@@ -289,6 +289,10 @@ function ridgeroad_names_pull() {
 				'status'   => isset( $f['status'] ) ? sanitize_text_field( mb_substr( (string) $f['status'], 0, 30 ) ) : '',
 				'playlist' => isset( $f['playlist'] ) ? sanitize_text_field( mb_substr( (string) $f['playlist'], 0, 80 ) ) : '',
 				'sequence' => isset( $f['sequence'] ) ? sanitize_text_field( mb_substr( preg_replace( '/\.fseq$/i', '', (string) $f['sequence'] ), 0, 80 ) ) : '',
+				// the FPP's playlists (script 3.9+), for "Only during these playlists" in Settings; kept when a ping leaves them out
+				'playlists' => isset( $f['playlists'] ) && is_array( $f['playlists'] )
+					? array_slice( array_values( array_filter( array_map( function ( $p ) { return sanitize_text_field( mb_substr( (string) $p, 0, 80 ) ); }, $f['playlists'] ) ) ), 0, 60 )
+					: ( is_array( $prev = get_option( 'ridgeroad_fpp' ) ) && isset( $prev['playlists'] ) ? (array) $prev['playlists'] : array() ),
 			), false );
 			if ( function_exists( 'ridgeroad_app_fpp_checkin' ) ) {
 				ridgeroad_app_fpp_checkin( isset( $f['status'] ) ? (string) $f['status'] : '', isset( $f['playlist'] ) ? (string) $f['playlist'] : '' );

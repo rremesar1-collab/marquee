@@ -40,7 +40,7 @@ import urllib.parse
 import socket
 import urllib.request
 
-VERSION = "3.8.1"
+VERSION = "3.9.0"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -91,6 +91,7 @@ DEFAULTS = {
     "talk_effect": "",                # FPP effect (.eseq) that moves the singing faces while a name is spoken
     "mode": "break",                  # "break": a names break between songs; "live": during songs on a spare screen
     "live_show_for": 6,               # live mode: seconds each name stays up
+    "only_playlists": [],             # names go up only while one of these playlists plays ([] = any playlist)
 }
 MODE = {"mode": None, "show_for": None}   # what the website said last (it wins over the settings file)
 ADVISORY = {"now": None, "last": 0.0}     # traffic & parking alert from Show Control, put on the screens now and then
@@ -184,6 +185,11 @@ def site_config(cfg):
             LAST["screens"] = new
             _info.clear()
         S["screens"] = new
+    if isinstance(cfg.get("only_playlists"), list):
+        new = [str(p).strip() for p in cfg["only_playlists"] if str(p).strip()][:20]
+        if new != S["only_playlists"]:
+            log("names only during:", ", ".join(new) if new else "any playlist")
+            S["only_playlists"] = new
     for k in SITE_KEYS:
         if cfg.get(k) not in (None, ""):
             try:
@@ -226,8 +232,13 @@ def pull(done_ids, st=None, report=None):
     url = str(S["site"]).rstrip("/") + "/wp-admin/admin-ajax.php?action=rr_names_pull&key=" + urllib.parse.quote(str(S["key"]))
     data = {"done": ",".join(str(i) for i in done_ids)} if done_ids else {"ping": "1"}
     if st is not None:
-        data["fpp"] = json.dumps({"status": status_name(st), "playlist": playlist_name(st),
-                                  "sequence": st.get("current_sequence", "")})
+        info = {"status": status_name(st), "playlist": playlist_name(st), "sequence": st.get("current_sequence", "")}
+        if time.time() - PL_SENT["t"] > 600:          # the playlist list, for the website's "Only during these playlists"
+            pls = fpp_playlists()
+            if pls:
+                info["playlists"] = [str(p) for p in pls][:60]
+                PL_SENT["t"] = time.time()
+        data["fpp"] = json.dumps(info)
     if report is not None:
         data["report"] = json.dumps(report)
     res = http_json(url, data)
@@ -498,6 +509,13 @@ def elapsed(st):
 
 
 _playlists = {"t": 0, "names": []}
+PL_SENT = {"t": 0}
+
+
+def names_allowed(st):
+    """Names go up only while one of the chosen playlists plays (none chosen = any playlist)."""
+    want = [p.lower() for p in (S.get("only_playlists") or [])]
+    return not want or playlist_name(st).lower() in want
 
 
 def fpp_playlists():
@@ -926,6 +944,14 @@ def run_checks(problems=None):
         pls = fpp_get(MASTER, "/api/playlists") or []
         if live():
             add(True, "playlist", "names go up during songs on the screens, so no names break playlist is needed")
+        if S.get("only_playlists"):
+            missing = [p for p in S["only_playlists"] if p.lower() not in [str(x).lower() for x in pls]]
+            if missing:
+                add(False, "playlist", "names only during: %s - no playlist named %s on this FPP" % (", ".join(S["only_playlists"]), ", ".join("'%s'" % m for m in missing)))
+            else:
+                add(True, "playlist", "names only during: %s" % ", ".join(S["only_playlists"]))
+        if live():
+            pass
         elif S["break_playlist"] in pls:
             short = [p for p in pls if p in ("%s 1" % S["break_playlist"], "%s 2" % S["break_playlist"])]
             add(True, "playlist", "playlist '%s' found%s" % (S["break_playlist"], (" (short breaks: %s)" % ", ".join(short)) if short else ""))
@@ -1124,6 +1150,7 @@ def main():
     last_check = 0.0
     color = "#FFFFFF"
     idle_said = 0.0
+    other_said = 0.0
     every = float(S["check_every"])
     cfg_seen = cfg_stamp()
     me_seen = self_stamp()
@@ -1175,6 +1202,13 @@ def main():
                 done = []
                 color = data.get("color") or color
                 waiting = len(data.get("names") or [])
+                if waiting and not names_allowed(st):
+                    if time.time() - other_said >= 600:   # say why names wait, every 10 minutes at most
+                        other_said = time.time()
+                        log("%d name(s) waiting - '%s' isn't one of your names playlists (%s), so they wait for it"
+                            % (waiting, playlist_name(st) or "?", ", ".join(S["only_playlists"])))
+                    time.sleep(1)
+                    continue
                 if waiting and live():
                     shown = show_live(data.get("names") or [], color)
                     if shown:

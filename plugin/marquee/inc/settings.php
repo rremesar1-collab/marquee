@@ -34,6 +34,7 @@ function marquee_defaults() {
 		'names_mode'   => 'break',           // 'break' = a short names break between songs; 'live' = during songs on a spare screen
 		'live_show_for' => 6,                // live mode: seconds each name stays up
 		'fpp_playlist' => 'Names in Lights', // FPP playlist holding the names break
+		'names_playlists' => array(),        // names go up only while one of these FPP playlists plays (empty = any playlist)
 		'fpp_screens'  => array(),           // [ name, fpp address, overlay model ] for the names script
 		'voice_on'     => 0,                 // say each name out loud (ElevenLabs)
 		'voice_key'    => '',
@@ -118,6 +119,7 @@ function marquee_save( $in ) {
 		'names_mode'   => isset( $in['names_mode'] ) && in_array( $in['names_mode'], array( 'break', 'live' ), true ) ? $in['names_mode'] : $cur['names_mode'],
 		'live_show_for' => isset( $in['live_show_for'] ) && '' !== trim( (string) $in['live_show_for'] ) ? max( 3, min( 20, round( (float) $in['live_show_for'], 1 ) ) ) : $cur['live_show_for'],
 		'fpp_playlist' => isset( $in['fpp_playlist'] ) && '' !== trim( (string) $in['fpp_playlist'] ) ? mb_substr( sanitize_text_field( wp_unslash( $in['fpp_playlist'] ) ), 0, 80 ) : $cur['fpp_playlist'],
+		'names_playlists' => isset( $in['fpp_sent'] ) ? marquee_clean_playlist_list( isset( $in['names_playlists'] ) ? (array) wp_unslash( $in['names_playlists'] ) : array(), isset( $in['names_playlists_more'] ) ? (string) wp_unslash( $in['names_playlists_more'] ) : '' ) : $cur['names_playlists'],
 		'fpp_screens'  => isset( $in['fpp_sent'] ) ? marquee_clean_screens( isset( $in['fpp_screens'] ) ? (array) wp_unslash( $in['fpp_screens'] ) : array() ) : $cur['fpp_screens'],
 		'voice_on'     => isset( $in['voice_sent'] ) ? (int) ! empty( $in['voice_on'] ) : $cur['voice_on'],
 		'voice_key'    => ( isset( $in['voice_key'] ) && '' !== trim( (string) $in['voice_key'] ) && '••••••••' !== $in['voice_key'] ) ? $txt( 'voice_key', 200 ) : $cur['voice_key'],
@@ -393,6 +395,20 @@ add_filter( 'ridgeroad_names_pull_data', function ( $data ) {
 	return $data;
 }, 5 );
 
+/**
+ * The playlists names may go up during: the ticked ones plus any typed (comma separated). Empty = any playlist.
+ */
+function marquee_clean_playlist_list( $ticked, $typed ) {
+	$out = array();
+	foreach ( array_merge( (array) $ticked, explode( ',', (string) $typed ) ) as $p ) {
+		$p = trim( mb_substr( sanitize_text_field( (string) $p ), 0, 80 ) );
+		if ( '' !== $p && ! in_array( mb_strtolower( $p ), array_map( 'mb_strtolower', $out ), true ) ) {
+			$out[] = $p;
+		}
+	}
+	return array_slice( $out, 0, 20 );
+}
+
 /** What the FPP names script needs from Settings (the screens and the names break timing). No keys. */
 function marquee_fpp_config() {
 	$s       = marquee_get();
@@ -417,6 +433,7 @@ function marquee_fpp_config() {
 		'names_start'    => (float) $s['names_start'],
 		'slot'           => (float) $s['names_slot'],
 		'show_for'       => max( 2.0, round( (float) $s['names_slot'] - 0.6, 2 ) ),
+		'only_playlists' => array_values( (array) $s['names_playlists'] ), // script 3.9+: empty = any playlist
 	);
 }
 

@@ -370,6 +370,31 @@ function marquee_admin_page() {
 					</div>
 					<div class="mq-only-break"><?php marquee_name_timeline( '#mq-nst', '#mq-nsl', (float) $s['break_seq'] ); ?>
 					<p class="mq__fine"><?php esc_html_e( 'You don’t normally need to touch these: building the names break audio (card 3) sets both to match your intro and outro. Change them only if you made your own break audio; then match them to where your audio goes quiet.', 'marquee' ); ?></p></div>
+					<?php
+					$mq_pls  = get_option( 'ridgeroad_fpp' );
+					$mq_pls  = is_array( $mq_pls ) && ! empty( $mq_pls['playlists'] ) ? (array) $mq_pls['playlists'] : array();
+					$mq_brk  = mb_strtolower( $s['fpp_playlist'] ? $s['fpp_playlist'] : 'Names in Lights' );
+					$mq_pls  = array_values( array_filter( $mq_pls, function ( $p ) use ( $mq_brk ) {
+						$l = mb_strtolower( (string) $p );
+						return $l !== $mq_brk && $l !== $mq_brk . ' 1' && $l !== $mq_brk . ' 2';
+					} ) );
+					$mq_on   = array_map( 'mb_strtolower', (array) $s['names_playlists'] );
+					$mq_more = array_values( array_filter( (array) $s['names_playlists'], function ( $p ) use ( $mq_pls ) {
+						return ! in_array( mb_strtolower( $p ), array_map( 'mb_strtolower', $mq_pls ), true );
+					} ) );
+					?>
+					<fieldset class="mq-playlists">
+						<legend><?php esc_html_e( 'Only during these playlists', 'marquee' ); ?></legend>
+						<?php if ( $mq_pls ) : ?>
+							<div class="mq-playlists__list">
+							<?php foreach ( $mq_pls as $p ) : ?>
+								<label><input type="checkbox" name="names_playlists[]" value="<?php echo esc_attr( $p ); ?>" <?php checked( in_array( mb_strtolower( $p ), $mq_on, true ) ); ?>> <?php echo esc_html( $p ); ?></label>
+							<?php endforeach; ?>
+							</div>
+						<?php endif; ?>
+						<p><label for="mq-npl-more"><?php echo $mq_pls ? esc_html__( 'Other playlists (comma separated)', 'marquee' ) : esc_html__( 'Playlist names (comma separated)', 'marquee' ); ?></label><input id="mq-npl-more" name="names_playlists_more" type="text" value="<?php echo esc_attr( implode( ', ', $mq_more ) ); ?>" placeholder="<?php esc_attr_e( 'e.g. Show', 'marquee' ); ?>"></p>
+						<small><?php esc_html_e( 'Leave everything blank to put names up during any playlist. Pick your main show playlist if you also run something like a static or background playlist: names then wait until the show playlist plays.', 'marquee' ); ?><?php if ( ! $mq_pls ) : ?> <?php esc_html_e( 'Your FPP playlists show up here as checkboxes once the names script has checked in.', 'marquee' ); ?><?php endif; ?></small>
+					</fieldset>
 					<table class="mq__screens">
 						<thead><tr><th><?php esc_html_e( 'Screen', 'marquee' ); ?></th><th><?php esc_html_e( 'FPP address', 'marquee' ); ?></th><th><?php esc_html_e( 'Overlay model name', 'marquee' ); ?></th></tr></thead>
 						<tbody>

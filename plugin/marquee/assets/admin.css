@@ -598,3 +598,11 @@
 .mq__screens .mq__scr-look .mq__scr-px input { width: 64px; min-height: 26px; font-size: 12px; }
 .mq__screens .mq__scr-look [hidden] { display: none; }
 .mq__row > [hidden] { display: none !important; }
+
+/* Names & FPP: only during these playlists */
+.mq-playlists{border:1px solid #dcdcde;border-radius:8px;padding:12px 14px 14px;margin:14px 0 0}
+.mq-playlists legend{font-weight:600;padding:0 6px}
+.mq-playlists__list{display:flex;flex-wrap:wrap;gap:6px 16px;margin:4px 0 10px}
+.mq-playlists__list label{display:inline-flex;align-items:center;gap:6px;min-height:32px}
+.mq-playlists p{margin:0 0 6px}
+.mq-playlists input[type=text]{width:100%;max-width:420px}
