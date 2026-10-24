@@ -1079,6 +1079,8 @@ def _show_names(names, slots, color):
     prefetch(names)
     done = []
     talk_until = 0
+    voice_until = 0.0                                  # when the name being said right now ends
+    outro_at = float(S["names_start"]) + slots * float(S["slot"])    # the break audio's outro starts about here
     # Fill every slot: with fewer names than slots, cycle through them.
     for k in range(slots if names else 0):
         item = names[k % len(names)]
@@ -1107,10 +1109,19 @@ def _show_names(names, slots, color):
             continue
         if show(item["text"], color):
             log("showing:", item["text"])
-            if S["say_every_time"] or k < len(names):
+            try:
+                say_for = max(0.5, min(8.0, float(item.get("say_for") or 2.0)))
+            except (TypeError, ValueError):
+                say_for = 2.0
+            repeat = k >= len(names)
+            # a name going round again is only said when Santa has finished the last one and it ends before the outro
+            if repeat and (time.time() < voice_until or el + say_for > outro_at - 0.3):
+                pass
+            elif S["say_every_time"] or not repeat:
                 if talk_until:
                     stop_talking()
                 talk_until = say(item)
+                voice_until = time.time() + say_for
             if item["id"] not in done:
                 done.append(item["id"])
         else:
