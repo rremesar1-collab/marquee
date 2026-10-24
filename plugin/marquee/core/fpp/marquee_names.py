@@ -1073,6 +1073,12 @@ def _show_names(names, slots, color):
             if el >= at:
                 break
             time.sleep(0.1)
+        late = el - at
+        if late > 0.5 * float(S["slot"]) and k + 1 < slots:
+            # running late (a slow website, a spoken name still downloading): skip this turn rather than
+            # putting two names up at once and talking over the announcer; the name comes round again
+            log("running %.1fs late - skipping turn %d" % (late, k + 1))
+            continue
         if show(item["text"], color):
             log("showing:", item["text"])
             if S["say_every_time"] or k < len(names):
@@ -1439,6 +1445,8 @@ def main():
                     data = pull(done, st) or {}
                     done = []
                     waiting = len(data.get("names") or [])
+                    if waiting:
+                        prefetch(data.get("names") or [])      # spoken names ready before anyone starts the break
                     if waiting and time.time() - idle_said >= 600:   # say why names wait, every 10 minutes at most
                         idle_said = time.time()
                         log("%d name(s) waiting, but FPP is '%s', not playing a playlist - names go up once your show playlist plays on this FPP"
