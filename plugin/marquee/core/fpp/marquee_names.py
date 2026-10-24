@@ -1257,6 +1257,10 @@ def run_checks(problems=None):
                 add(False, "screen", "%s: overlay model '%s' is taller than wide (%d x %d) - strings and nodes are swapped in xLights" % (sc["name"], sc["model"], w, h))
             else:
                 add(True, "screen", "%s: overlay model '%s' on %s is %d x %d, font %s" % (sc["name"], sc["model"], sc["fpp"], w, h, font or "none!"))
+                better = fb_instead(sc, w, h)
+                if better:
+                    add(False, "screen", "%s: '%s' is the whole HDMI screen, so names blank your sequence there while they're up. "
+                        "Use '%s' instead (same size, it's what your sequence draws on), and names go up on top of it" % (sc["name"], sc["model"], better))
         except Exception as e:
             msg = "%s (%s): %s" % (sc["name"], sc["fpp"], e)
             if "no overlay model" in str(e) and sc["fpp"].rstrip("/") == MASTER.rstrip("/").replace("://localhost", "://127.0.0.1"):
@@ -1264,6 +1268,22 @@ def run_checks(problems=None):
                 msg += " - models on this FPP: %s" % (", ".join(m["name"] for m in ms) or "none (upload your models with FPP Connect, Models ticked)")
             add(False, "screen", msg)
     return out, site_ok
+
+
+def fb_instead(sc, w, h):
+    """A screen set to a framebuffer (FB) model when that FPP also has a channel model the same size:
+    the channel one is what the sequence draws on, so names on it go up over the sequence instead of blanking it."""
+    try:
+        models = fpp_get(sc["fpp"], "/api/overlays/models", timeout=3) or []
+    except Exception:
+        return ""
+    mine = [m for m in models if isinstance(m, dict) and m.get("Name") == sc["model"]]
+    if not mine or str(mine[0].get("Type", "")).upper() != "FB":
+        return ""
+    for m in models:
+        if isinstance(m, dict) and str(m.get("Type", "")).lower() == "channel" and int(m.get("width") or 0) == w and int(m.get("height") or 0) == h:
+            return str(m.get("Name"))
+    return ""
 
 
 def send_report(checks, req=""):

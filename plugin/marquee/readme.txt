@@ -69,6 +69,7 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
   * A name running late skips its turn instead of two going up at once.
   * A name going round again (fewer names than turns) isn't said over the last one or over the outro.
   * A theme pointed at your regular names break playlist now uses the break audio's timing, so names stay in step with the announcer.
+  * The setup check warns when a screen is set to the raw HDMI model (FB), which blanks your sequence while a name is up, and names the model to use instead.
 
 = 0.8.6 =
 * Pick the Next Song leaves out the songs ticked under "Leave out of song voting" (like your intro), the same as favorite song voting.
