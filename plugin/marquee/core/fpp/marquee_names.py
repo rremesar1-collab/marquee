@@ -900,7 +900,7 @@ def screen_info(sc):
     if k in _info:
         return _info[k]
     try:
-        m = fpp_get(sc["fpp"], "/api/overlays/model/" + urllib.parse.quote(sc["model"]))
+        m = fpp_get(sc["fpp"], "/api/overlays/model/" + urllib.parse.quote(sc["model"]), timeout=2)
     except urllib.error.HTTPError as e:
         if e.code == 404:
             raise RuntimeError("no overlay model named '%s' on %s" % (sc["model"], sc["fpp"]))
@@ -987,20 +987,46 @@ def text_plan(text, width, height, sc=None):
     return big, "R2L", max(10, int(round(pps))), one
 
 
+DEAD = {}      # FPP address -> until when it's skipped (it didn't answer: switched off, unplugged)
+
+
 def show(text, color):
-    """Put one name up on every screen; returns how many screens took it."""
-    ok = 0
-    for sc in S["screens"]:
+    """Put one name up on every screen at the same time; returns how many screens took it.
+    A screen whose FPP doesn't answer is skipped for a minute, so one switched-off TV never
+    holds up the names (or the voice) on the others."""
+    import threading
+    results = []
+
+    def one(sc):
+        if DEAD.get(sc["fpp"], 0) > time.time():
+            return
         try:
             w, h, font = screen_info(sc)
             size, pos, pps, txt = text_plan(text, w, h, sc)
             args = [sc["model"], "Transparent", "Text", color, font, size, "true", pos, pps, S["show_for"], txt]
-            fpp_command(sc["fpp"], "Overlay Model Effect", args)
-            ok += 1
+            fpp_command(sc["fpp"], "Overlay Model Effect", args, timeout=2)
+            results.append(sc["name"])
+            DEAD.pop(sc["fpp"], None)
         except Exception as e:
-            log("could not show on", sc["name"], "(", sc["fpp"], ") -", e)
+            if isinstance(e, (urllib.error.URLError, OSError, socket.timeout)) and not isinstance(e, urllib.error.HTTPError) \
+                    or "could not reach" in str(e):
+                if DEAD.get(sc["fpp"], 0) <= time.time():
+                    log("could not reach", sc["name"], "(", sc["fpp"], ") - skipping it for a minute")
+                DEAD[sc["fpp"]] = time.time() + 60
+            else:
+                log("could not show on", sc["name"], "(", sc["fpp"], ") -", e)
             _info.pop(sc["fpp"] + "|" + sc["model"], None)
-    return ok
+    threads = [threading.Thread(target=one, args=(sc,), daemon=True) for sc in S["screens"]]
+    for t in threads:
+        t.start()
+    t0, first = time.time(), 0.0
+    while any(t.is_alive() for t in threads) and time.time() - t0 < 4:
+        if results and not first:
+            first = time.time()
+        if first and time.time() - first > 0.3:   # a screen has it: don't keep the voice waiting on a silent one
+            break
+        time.sleep(0.02)
+    return len(results)
 
 
 # --------------------------------------------------------------- break ----
