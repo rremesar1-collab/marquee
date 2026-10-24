@@ -375,6 +375,11 @@ function marquee_admin_page() {
 							<option value="<?php echo (int) $mq_n; ?>" <?php selected( (int) $s['names_per_break'], $mq_n ); ?>><?php echo esc_html( 6 === $mq_n ? __( '6 (standard)', 'marquee' ) : (string) $mq_n ); ?></option>
 						<?php endforeach; ?>
 					</select><small><?php esc_html_e( 'Fewer names, each up longer: at 3, every name gets twice the time, so a scrolling message can move half as fast and is easier to read. The names still fit the same part of your break audio. Any extra names go up in the next break.', 'marquee' ); ?></small></p>
+					<p><label for="mq-nev"><?php esc_html_e( 'Names break after every', 'marquee' ); ?></label><select id="mq-nev" name="names_every">
+						<?php foreach ( array( 1, 2, 3, 4, 5, 6 ) as $mq_n ) : ?>
+							<option value="<?php echo (int) $mq_n; ?>" <?php selected( (int) $s['names_every'], $mq_n ); ?>><?php echo esc_html( 1 === $mq_n ? __( 'song (standard)', 'marquee' ) : sprintf( /* translators: %d: number of songs */ __( '%d songs', 'marquee' ), $mq_n ) ); ?></option>
+						<?php endforeach; ?>
+					</select><small><?php esc_html_e( 'Names collect while your show plays and go up together after that many songs, so a busy night doesn’t put a break between every song. If 6 names are waiting, the break comes sooner.', 'marquee' ); ?></small></p>
 					</div>
 					<label class="mq__feat mq-only-break"><span><b><?php esc_html_e( 'Make a simple names break for me', 'marquee' ); ?></b><small><?php esc_html_e( 'If your FPP has no names break playlist yet, Marquee makes one: the show pauses, the names go up on your screens (with the names break audio from card 3, if you build it), then your show carries on. No sequence needed. A names break playlist you already have is never touched.', 'marquee' ); ?></small></span><input type="checkbox" name="names_simple" value="1" <?php checked( ! empty( $s['names_simple'] ) ); ?>></label>
 					<div class="mq-only-break"><?php marquee_name_timeline( '#mq-nst', '#mq-nsl', (float) $s['break_seq'] ); ?>

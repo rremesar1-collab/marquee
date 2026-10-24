@@ -49,6 +49,7 @@ function marquee_defaults() {
 		'names_start'  => 4,                 // seconds into the names break when the first name goes up
 		'names_slot'   => 3.75,              // seconds from one name to the next
 		'names_per_break' => 6,              // names in one break (fewer = each is up longer, so scrolling can be slower)
+		'names_every'  => 1,                 // a names break after every this many songs (names collect in between)
 		'break_intro'  => '',                // names break builder: announcer lines (empty = example)
 		'break_outro'  => '',
 		'break_seq'    => 29.6,              // length of the names sequence (seconds)
@@ -144,6 +145,7 @@ function marquee_save( $in ) {
 		'name_msgs'    => isset( $in['msgs_sent'] ) ? marquee_clean_msgs( isset( $in['name_msgs'] ) ? (array) wp_unslash( $in['name_msgs'] ) : array() ) : $cur['name_msgs'],
 		'names_slot'   => isset( $in['names_slot'] ) && '' !== trim( (string) $in['names_slot'] ) ? max( 2.5, min( 10, round( (float) $in['names_slot'], 2 ) ) ) : $cur['names_slot'],
 		'names_per_break' => isset( $in['names_per_break'] ) ? max( 1, min( 6, (int) $in['names_per_break'] ) ) : $cur['names_per_break'],
+		'names_every'  => isset( $in['names_every'] ) ? max( 1, min( 6, (int) $in['names_every'] ) ) : $cur['names_every'],
 		'names_start'  => isset( $in['names_start'] ) && '' !== trim( (string) $in['names_start'] ) ? max( 0, min( 120, round( (float) $in['names_start'], 2 ) ) ) : $cur['names_start'],
 		'vote_hide'  => isset( $in['vote_hide_sent'] ) ? array_values( array_slice( array_unique( array_filter( array_map( 'sanitize_title', isset( $in['vote_hide'] ) ? (array) wp_unslash( $in['vote_hide'] ) : array() ) ) ), 0, 200 ) ) : $cur['vote_hide'],
 	);
@@ -447,6 +449,7 @@ function marquee_fpp_config() {
 		'simple_break'   => ! empty( $s['names_simple'] ) && ( ! function_exists( 'marquee_theme_get' ) || marquee_theme_get( 'names_on' ) ),
 		'break_own'      => ! empty( $s['break_own'] ), // script 3.10+: leave the playlists' audio alone, use these timings
 		'per_break'      => max( 1, min( 6, (int) $s['names_per_break'] ) ), // script 3.11+: fewer names, each up longer
+		'every'          => max( 1, min( 6, (int) $s['names_every'] ) ),     // script 3.12+: a names break after every this many songs
 	);
 }
 

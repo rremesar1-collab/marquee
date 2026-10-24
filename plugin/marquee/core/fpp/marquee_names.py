@@ -41,7 +41,7 @@ import socket
 import threading
 import urllib.request
 
-VERSION = "3.11.1"
+VERSION = "3.12.0"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -96,6 +96,7 @@ DEFAULTS = {
     "simple_break": False,            # no names break playlist on this FPP: make a simple one (no sequence needed)
     "break_own": False,               # the show's own names break audio: don't put the website's in the playlists, use the website's timing
     "per_break": 6,                   # names in one break: fewer = each is up longer (spread over the same part of the break)
+    "every": 1,                       # a names break after every this many songs (names collect in between)
 }
 MODE = {"mode": None, "show_for": None}   # what the website said last (it wins over the settings file)
 ADVISORY = {"now": None, "last": 0.0}     # traffic & parking alert from Show Control, put on the screens now and then
@@ -204,6 +205,11 @@ def site_config(cfg):
         S["screens"] = new
     if "break_own" in cfg:
         S["break_own"] = bool(cfg.get("break_own"))
+    if cfg.get("every"):
+        try:
+            S["every"] = max(1, min(6, int(cfg["every"])))
+        except (TypeError, ValueError):
+            pass
     if cfg.get("per_break"):
         try:
             S["per_break"] = max(1, min(6, int(cfg["per_break"])))
@@ -833,6 +839,26 @@ def current_theme(st):
         if name == pl:
             return k
     return ""
+
+
+SONGS = {"key": None, "played": 0}       # songs finished since the last names break
+
+
+def count_songs(st):
+    """Count the songs that finish while the show plays (not the names break itself)."""
+    if status_name(st) != "playing" or in_break(st):
+        return
+    cp = st.get("current_playlist") or {}
+    key = "%s|%s|%s" % (playlist_name(st), cp.get("index", "") if isinstance(cp, dict) else "", st.get("current_sequence") or st.get("current_song") or "")
+    if SONGS["key"] is not None and key != SONGS["key"]:
+        SONGS["played"] += 1
+    SONGS["key"] = key
+
+
+def break_due(waiting):
+    """Time for a names break after the current song? Every N songs, or sooner when a full break's worth is waiting."""
+    every = int(S.get("every") or 1)
+    return every <= 1 or SONGS["played"] >= every - 1 or waiting >= int(S["max_names"])
 
 
 def queue_break(names=None):
@@ -1544,6 +1570,7 @@ def main():
                     pass
                 restart_self("settings changed - restarting")
             st = master_status()
+            count_songs(st)
             if not in_break(st):
                 if CHECK["want"]:                                   # "Check again" on the website, or settings changed there
                     req = "" if CHECK["want"] == "changed" else CHECK["want"]
@@ -1580,6 +1607,7 @@ def main():
                     BG["thread"].join(0)
                 done += run_break(color)
                 BRK["end"] = time.time()
+                SONGS.update(key=None, played=0)          # start counting songs again
                 queued = False
                 try:
                     pull(done)            # report what was shown (the next break must not show them again)
@@ -1637,7 +1665,12 @@ def main():
                         done += shown                     # reported at the next check-in, right away
                     last_check = time.time() - every + 2  # check again soon for more
                     continue
-                if waiting and not queued:
+                if waiting and not queued and not break_due(waiting):
+                    if time.time() - other_said >= 600:
+                        other_said = time.time()
+                        log("%d name(s) waiting - names go up after every %d songs (%d played since the last break)"
+                            % (waiting, int(S["every"]), SONGS["played"]))
+                elif waiting and not queued:
                     pl = queue_break(data.get("names") or [])
                     queued = True
                     log("%d name(s) waiting - '%s' queued after the current song" % (waiting, pl))
