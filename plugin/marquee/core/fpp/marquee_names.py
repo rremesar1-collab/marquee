@@ -759,9 +759,12 @@ SKIPS = {}       # name id -> breaks it already waited through (it rides along i
 
 
 def theme_playlists():
-    """Themes whose playlist exists on this FPP: {slug: playlist}."""
+    """Themes whose playlist exists on this FPP: {slug: playlist}. A theme pointed at the names break
+    playlist itself isn't a separate show: it plays the break (and its audio), so it's left out here
+    and that break's own timing is used, not the theme row's."""
     have = fpp_playlists()
-    return {k: t["playlist"] for k, t in THEMES.items() if t["playlist"] in have}
+    own = {S["break_playlist"], S["break_playlist"] + " 1", S["break_playlist"] + " 2"}
+    return {k: t["playlist"] for k, t in THEMES.items() if t["playlist"] in have and t["playlist"] not in own}
 
 
 def name_theme(item):
