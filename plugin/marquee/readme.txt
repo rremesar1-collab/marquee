@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.9.0
+Stable tag: 0.9.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,9 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.9.1 =
+* Names per break (Settings → Names & FPP → card 1): fewer names in a break, each up longer. At 3, every name gets twice the time, so scrolling messages move half as fast and are easier to read on small matrices. The names still fit the same part of your break audio; extra names go up in the next break. Needs names script 3.11.
 
 = 0.9.0 =
 * Names & FPP: a setup panel at the top shows each step (FPP connected, your screen, the names break, which playlist, a test name) and turns green by itself as your FPP reports in. "Show me" opens the right card.

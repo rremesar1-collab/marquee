@@ -41,7 +41,7 @@ import socket
 import threading
 import urllib.request
 
-VERSION = "3.10.0"
+VERSION = "3.11.0"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -95,6 +95,7 @@ DEFAULTS = {
     "only_playlists": [],             # names go up only while one of these playlists plays ([] = any playlist)
     "simple_break": False,            # no names break playlist on this FPP: make a simple one (no sequence needed)
     "break_own": False,               # the show's own names break audio: don't put the website's in the playlists, use the website's timing
+    "per_break": 6,                   # names in one break: fewer = each is up longer (spread over the same part of the break)
 }
 MODE = {"mode": None, "show_for": None}   # what the website said last (it wins over the settings file)
 ADVISORY = {"now": None, "last": 0.0}     # traffic & parking alert from Show Control, put on the screens now and then
@@ -203,6 +204,11 @@ def site_config(cfg):
         S["screens"] = new
     if "break_own" in cfg:
         S["break_own"] = bool(cfg.get("break_own"))
+    if cfg.get("per_break"):
+        try:
+            S["per_break"] = max(1, min(6, int(cfg["per_break"])))
+        except (TypeError, ValueError):
+            pass
     if "simple_break" in cfg:
         S["simple_break"] = bool(cfg.get("simple_break"))
         LAST["site_simple"] = True                  # the website (Marquee 0.9+) has the "simple names break" switch
@@ -1107,6 +1113,13 @@ def _run_break(color):
             slots = int(S["max_names"])
         else:
             slots = slots_for(st)
+        per = int(S.get("per_break") or 6)
+        if per < 6:
+            # fewer names per break: the same stretch of the break, shared by fewer names, so each is up longer
+            turns = max(1, int(round(slots * per / 6.0)))
+            S["slot"] = float(S["slot"]) * slots / turns
+            S["show_for"] = max(2.0, S["slot"] - 0.6)
+            slots = turns
         names = (eligible(everyone, theme) or everyone)[:min(int(S["max_names"]), slots)]
         color = data.get("color") or color
     except Exception as e:

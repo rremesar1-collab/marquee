@@ -193,7 +193,8 @@ function marquee_fast_scroll_screen() {
 		$size[ $m['name'] ] = array( (int) $m['w'], (int) $m['h'] );
 	}
 	$b    = function_exists( 'marquee_break_info' ) ? marquee_break_info() : null;
-	$slot = $b && ! empty( $b['slot'] ) ? (float) $b['slot'] : (float) $s['names_slot'];
+	$slot = ( $b && ! empty( $b['slot'] ) && empty( $s['break_own'] ) ) ? (float) $b['slot'] : (float) $s['names_slot'];
+	$slot = $slot * 6 / max( 1, min( 6, (int) $s['names_per_break'] ) );   // fewer names per break: each is up longer
 	$secs = max( 2.0, $slot - 0.6 );
 	foreach ( (array) $s['fpp_screens'] as $r ) {
 		if ( ! marquee_screen_is_local( $r['fpp'] ) || empty( $size[ $r['model'] ] ) ) {
@@ -354,7 +355,7 @@ function marquee_names_setup_steps() {
 		$fast = marquee_fast_scroll_screen();
 		if ( $fast ) {
 			/* translators: %s: screen name */
-			$steps[] = array( 'tip', sprintf( __( 'Names may scroll too fast on %s', 'marquee' ), $fast ), __( 'Each name is up for only a couple of seconds, so a scrolling message has to fly across. This screen is big enough to show it still: set its Text to Still in card 1.', 'marquee' ), 'screens' );
+			$steps[] = array( 'tip', sprintf( __( 'Names may scroll too fast on %s', 'marquee' ), $fast ), __( 'Each name is up for only a couple of seconds, so a scrolling message has to fly across. Show it still (Text: Still in card 1), or give each name more time with fewer Names per break.', 'marquee' ), 'screens' );
 		}
 	} else {
 		$steps[] = array( 'wait', __( 'Your screen', 'marquee' ), __( 'Saved. The FPP checks it at its next setup check.', 'marquee' ), 'screens' );
