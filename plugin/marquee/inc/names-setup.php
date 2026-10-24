@@ -255,6 +255,32 @@ add_action( 'wp_ajax_marquee_names_panel', function () {
 	wp_send_json_success( array( 'html' => marquee_names_setup_panel_html() ) );
 } );
 
+/* "Put it in line": a real test name in the queue, as if a kid sent it (voice and all), for testing the names break. */
+add_action( 'wp_ajax_marquee_names_queue_test', function () {
+	check_ajax_referer( 'marquee_names_setup', 'nonce' );
+	if ( ! current_user_can( 'manage_options' ) || ! function_exists( 'ridgeroad_clean_kid_name' ) ) {
+		wp_send_json_error( null, 403 );
+	}
+	$raw  = isset( $_POST['text'] ) ? sanitize_text_field( wp_unslash( $_POST['text'] ) ) : '';
+	$raw  = preg_replace( '/^(merry christmas|happy holidays|hi santa!?)[,!]?\s*(love,)?\s*/i', '', $raw );
+	$name = ridgeroad_clean_kid_name( '' !== trim( $raw, ' !,' ) ? trim( $raw, ' !,' ) : 'Rudolph' );
+	if ( '' === $name ) {
+		wp_send_json_error( array( 'message' => __( 'Type a first name to put in line.', 'marquee' ) ) );
+	}
+	$msgs = ridgeroad_name_greetings();
+	$id   = wp_insert_post( array( 'post_type' => 'rr_shoutout', 'post_status' => 'publish', 'post_title' => $name ), true );
+	if ( is_wp_error( $id ) ) {
+		wp_send_json_error( array( 'message' => $id->get_error_message() ) );
+	}
+	$text = ridgeroad_name_message( reset( $msgs ), $name );
+	update_post_meta( $id, '_rr_text', $text );
+	update_post_meta( $id, '_rr_shown', 0 );
+	do_action( 'ridgeroad_name_added', $id, $text ); // the spoken version, like a kid's name
+	marquee_names_req_update( array( 'open_t' => time() ) );
+	/* translators: %s: the message */
+	wp_send_json_success( array( 'message' => sprintf( __( '“%s” is in line. It goes up at the next names break (start your Names in Lights playlist to see it now).', 'marquee' ), $text ), 'html' => marquee_names_setup_panel_html() ) );
+} );
+
 /* "Only during this playlist": take the suggestion with one click. */
 add_action( 'wp_ajax_marquee_names_onlypl', function () {
 	check_ajax_referer( 'marquee_names_setup', 'nonce' );
@@ -429,7 +455,8 @@ function marquee_names_setup_panel_html() {
 						<button type="button" class="button button-primary" data-mq-nonly="<?php echo esc_attr( $st[4] ); ?>"><?php /* translators: %s: playlist */ echo esc_html( sprintf( __( 'Only during %s', 'marquee' ), $st[4] ) ); ?></button>
 					<?php elseif ( 'test' === $st[3] && $seen && $new ) : ?>
 						<input type="text" maxlength="20" value="MERRY CHRISTMAS!" data-mq-ntesttext aria-label="<?php esc_attr_e( 'Test name', 'marquee' ); ?>">
-						<button type="button" class="button" data-mq-ntest><?php esc_html_e( 'Send a test name', 'marquee' ); ?></button>
+						<button type="button" class="button" data-mq-ntest title="<?php esc_attr_e( 'Shows it on your screens right now', 'marquee' ); ?>"><?php esc_html_e( 'Send a test name', 'marquee' ); ?></button>
+						<button type="button" class="button" data-mq-nqueue title="<?php esc_attr_e( 'Adds it to the line like a kid’s name, with the voice; it goes up at the next names break', 'marquee' ); ?>"><?php esc_html_e( 'Put it in line', 'marquee' ); ?></button>
 					<?php elseif ( 'ok' !== $st[0] && isset( $open[ $st[3] ] ) ) : ?>
 						<button type="button" class="button-link" data-mq-ngo="<?php echo esc_attr( $open[ $st[3] ] ); ?>"><?php esc_html_e( 'Show me', 'marquee' ); ?></button>
 					<?php endif; ?>

@@ -601,6 +601,17 @@ document.addEventListener('change', function (e) {
 			var t = box.querySelector('[data-mq-ntesttext]');
 			post('marquee_names_test', { text: t ? t.value : '' }, b);
 		}
+		else if (b.hasAttribute('data-mq-nqueue')) {
+			var q = box.querySelector('[data-mq-ntesttext]');
+			post('marquee_names_queue_test', { text: q ? q.value : '' }, b).then(function (j) {
+				if (j && j.success && j.data.message) {
+					var note = document.createElement('p');
+					note.className = 'mq__fine mq-nsetup__note';
+					note.textContent = j.data.message;
+					box.appendChild(note);
+				}
+			});
+		}
 		else if (b.hasAttribute('data-mq-nonly')) {
 			var pl = b.getAttribute('data-mq-nonly');
 			post('marquee_names_onlypl', { playlist: pl }, b).then(function (j) {
