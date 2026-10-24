@@ -94,6 +94,7 @@ DEFAULTS = {
     "live_show_for": 6,               # live mode: seconds each name stays up
     "only_playlists": [],             # names go up only while one of these playlists plays ([] = any playlist)
     "simple_break": False,            # no names break playlist on this FPP: make a simple one (no sequence needed)
+    "break_own": False,               # the show's own names break audio: don't put the website's in the playlists, use the website's timing
 }
 MODE = {"mode": None, "show_for": None}   # what the website said last (it wins over the settings file)
 ADVISORY = {"now": None, "last": 0.0}     # traffic & parking alert from Show Control, put on the screens now and then
@@ -151,7 +152,7 @@ def load_settings():
 
 def load_settings_keep():
     """Settings-file problems for a re-check, without losing what the website sent since start-up."""
-    keep = {k: S[k] for k in ("screens", "only_playlists", "simple_break") + SITE_KEYS}
+    keep = {k: S[k] for k in ("screens", "only_playlists", "simple_break", "break_own") + SITE_KEYS}
     problems = load_settings()
     S.update(keep)
     break_timing()
@@ -175,6 +176,8 @@ def clean_screens(rows):
 
 
 def break_timing():
+    if S.get("break_own"):
+        return                                   # the show's own audio: the timing set on the website is the one
     st = break_state()
     if st.get("start") and st.get("slot"):     # timing of the break audio built on the website wins
         S["names_start"] = float(st["start"])
@@ -198,6 +201,8 @@ def site_config(cfg):
             LAST["screens"] = new
             _info.clear()
         S["screens"] = new
+    if "break_own" in cfg:
+        S["break_own"] = bool(cfg.get("break_own"))
     if "simple_break" in cfg:
         S["simple_break"] = bool(cfg.get("simple_break"))
         LAST["site_simple"] = True                  # the website (Marquee 0.9+) has the "simple names break" switch
@@ -346,7 +351,7 @@ def download(url, path, limit=40_000_000):
 
 def sync_break(b):
     """The website built new break audio: download it and set up the break playlists (full, 1 and 2 names)."""
-    if not isinstance(b, dict) or not b.get("v") or not b.get("full"):
+    if not isinstance(b, dict) or not b.get("v") or not b.get("full") or S.get("break_own"):
         return
     st = break_state()
     if str(st.get("v")) == str(b["v"]) or in_break(master_status()):

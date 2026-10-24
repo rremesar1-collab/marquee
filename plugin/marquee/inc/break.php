@@ -160,7 +160,7 @@ add_action( 'wp_ajax_marquee_break_save', function () {
 
 /* The names script gets the break with every check-in, and sets itself up when it changes. */
 add_filter( 'ridgeroad_names_pull_data', function ( $data ) {
-	$b = marquee_break_info();
+	$b = empty( marquee_get()['break_own'] ) ? marquee_break_info() : null; // "Use my own audio": nothing to put in the playlists
 	if ( $b ) {
 		$data['break'] = array(
 			'v'      => (string) $b['v'],
@@ -204,6 +204,8 @@ function marquee_break_box( $s ) {
 		<?php marquee_break_demo( $s, $b, $def ); ?>
 		<p class="mq__fine"><?php esc_html_e( 'Only 1 or 2 names waiting? A shorter break plays instead and says each name twice, so nobody sits through 30 seconds of music for one name. Everything is set to the same loudness as your songs, so nobody has to touch the radio volume.', 'marquee' ); ?></p>
 
+		<input type="hidden" name="break_own_sent" value="1">
+		<label class="mq__feat"><span><b><?php esc_html_e( 'Use my own names break audio', 'marquee' ); ?></b><small><?php esc_html_e( 'Your names break playlists already play audio you made. Marquee leaves it alone and puts the names up at “When the first name appears” and “Time between names” in card 1, so set those to the gaps in your audio. Turn this off to use the audio built here.', 'marquee' ); ?></small></span><input type="checkbox" name="break_own" value="1" <?php checked( ! empty( $s['break_own'] ) ); ?>></label>
 		<h4><?php esc_html_e( 'Before you start', 'marquee' ); ?></h4>
 		<ul class="mq__check">
 			<?php

@@ -37,6 +37,7 @@ function marquee_defaults() {
 		'names_playlists' => array(),        // names go up only while one of these FPP playlists plays (empty = any playlist)
 		'fpp_screens'  => array(),           // [ name, fpp address, overlay model ] for the names script
 		'names_simple' => 1,                 // no names break playlist on the FPP: the script (3.10+) makes a simple one, no sequence needed
+		'break_own'    => 0,                 // the show uses its own names break audio: Marquee doesn't put its break audio in the playlists
 		'voice_on'     => 0,                 // say each name out loud (ElevenLabs)
 		'voice_key'    => '',
 		'voice_id'     => '',
@@ -123,6 +124,7 @@ function marquee_save( $in ) {
 		'names_playlists' => isset( $in['fpp_sent'] ) ? marquee_clean_playlist_list( isset( $in['names_playlists'] ) ? (array) wp_unslash( $in['names_playlists'] ) : array(), isset( $in['names_playlists_more'] ) ? (string) wp_unslash( $in['names_playlists_more'] ) : '' ) : $cur['names_playlists'],
 		'fpp_screens'  => isset( $in['fpp_sent'] ) ? marquee_clean_screens( isset( $in['fpp_screens'] ) ? (array) wp_unslash( $in['fpp_screens'] ) : array() ) : $cur['fpp_screens'],
 		'names_simple' => isset( $in['fpp_sent'] ) ? (int) ! empty( $in['names_simple'] ) : $cur['names_simple'],
+		'break_own'    => isset( $in['break_own_sent'] ) ? (int) ! empty( $in['break_own'] ) : $cur['break_own'],
 		'voice_on'     => isset( $in['voice_sent'] ) ? (int) ! empty( $in['voice_on'] ) : $cur['voice_on'],
 		'voice_key'    => ( isset( $in['voice_key'] ) && '' !== trim( (string) $in['voice_key'] ) && '••••••••' !== $in['voice_key'] ) ? $txt( 'voice_key', 200 ) : $cur['voice_key'],
 		'voice_id'     => isset( $in['voice_id'] ) ? substr( preg_replace( '/[^A-Za-z0-9]/', '', wp_unslash( $in['voice_id'] ) ), 0, 40 ) : $cur['voice_id'],
@@ -441,6 +443,7 @@ function marquee_fpp_config() {
 		'only_playlists' => array_values( (array) $s['names_playlists'] ), // script 3.9+: empty = any playlist
 		// script 3.10+: make a simple names break when there's none (only once names are switched on)
 		'simple_break'   => ! empty( $s['names_simple'] ) && ( ! function_exists( 'marquee_theme_get' ) || marquee_theme_get( 'names_on' ) ),
+		'break_own'      => ! empty( $s['break_own'] ), // script 3.10+: leave the playlists' audio alone, use these timings
 	);
 }
 

@@ -62,6 +62,7 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 * No names break sequence needed: if your FPP has no names break playlist, Marquee makes a simple one (the show pauses, the names go up, with your names break audio if you built it). A names break playlist you already have is never changed. Settings → Names & FPP → "Make a simple names break for me".
 * Names only during your show: when your FPP schedules more than one playlist, Marquee suggests your show playlist with a one-click button. Nothing is changed unless you click it.
 * A tip when names would scroll too fast to read on a screen big enough to show them still.
+* Use my own names break audio (Settings → Names & FPP → card 3): Marquee leaves the audio in your names break playlists alone and puts names up at your own timing.
 * Put it in line: a test name goes in the queue like a kid's name (voice and all), for testing the names break from your computer.
 * Names script 3.10.0 (in the Marquee FPP plugin):
   * The start of a names break is caught within a quarter second: checking in with your website and downloading spoken names happen in the background, and the break uses the names it already has instead of waiting on the internet.
