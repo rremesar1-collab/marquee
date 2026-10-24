@@ -41,7 +41,7 @@ import socket
 import threading
 import urllib.request
 
-VERSION = "3.11.0"
+VERSION = "3.11.1"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -233,12 +233,36 @@ def site_config(cfg):
 
 
 # ---------------------------------------------------------------- HTTP ----
+class _KeepPost(urllib.request.HTTPRedirectHandler):
+    """Your website moved the request (http -> https, or with/without www): send it on as the same POST.
+    Python would turn it into a GET and drop what the FPP sent (shown names, the setup check, its version),
+    so the website only ever saw a ping."""
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        if req.data is not None and code in (301, 302, 303, 307, 308):
+            old, new = urllib.parse.urlparse(req.full_url), urllib.parse.urlparse(newurl)
+            same = lambda h: (h or "").lower()[4:] if (h or "").lower().startswith("www.") else (h or "").lower()
+            if old.hostname and same(old.hostname) == same(new.hostname):        # the same website, only moved
+                MOVED["to"] = "%s://%s/" % (new.scheme, new.netloc)
+                return urllib.request.Request(newurl, data=req.data, headers=dict(req.header_items()), method="POST")
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+
+MOVED = {"to": "", "said": False}
+_OPENER = urllib.request.build_opener(_KeepPost)
+
+
 def http_json(url, data=None, timeout=15):
     if data is not None:
         data = urllib.parse.urlencode(data).encode()
     req = urllib.request.Request(url, data=data, headers={"User-Agent": UA, "Accept": "application/json, text/plain, */*"})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
+    with _OPENER.open(req, timeout=timeout) as r:
         body = r.read().decode("utf-8", "replace")
+    if MOVED["to"] and str(S.get("site", "")) and not str(S["site"]).startswith(MOVED["to"]):
+        if not MOVED["said"]:
+            log("your website moved this FPP's requests to %s - using that address from now on "
+                "(download marquee_names.json again to save it)" % MOVED["to"])
+            MOVED["said"] = True
+        S["site"] = MOVED["to"]
     try:
         return json.loads(body or "null")
     except ValueError:

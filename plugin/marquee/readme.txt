@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.9.1
+Stable tag: 0.9.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,9 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.9.2 =
+* Names script 3.11.1: when your website redirects the FPP (http to https, or with/without www), the names it showed, its setup check and its version were lost on the way, so the same name came back after every song and the setup panel never updated. The script now follows the redirect without losing anything, and uses the right address from then on.
 
 = 0.9.1 =
 * Names per break (Settings → Names & FPP → card 1): fewer names in a break, each up longer. At 3, every name gets twice the time, so scrolling messages move half as fast and are easier to read on small matrices. The names still fit the same part of your break audio; extra names go up in the next break. Needs names script 3.11.
