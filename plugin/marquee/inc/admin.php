@@ -419,9 +419,25 @@ function marquee_admin_page() {
 										?>
 										<select data-mq-model-pick aria-label="<?php esc_attr_e( 'Overlay model', 'marquee' ); ?>">
 											<option value=""><?php esc_html_e( '— Pick a screen —', 'marquee' ); ?></option>
-											<?php foreach ( $mq_models as $mm ) : ?>
+											<?php
+											$mq_groups = array(
+												__( 'Screens', 'marquee' )      => array_filter( $mq_models, function ( $mm ) { return ! empty( $mm['screen'] ); } ),
+												__( 'Other models', 'marquee' ) => array_filter( $mq_models, function ( $mm ) { return empty( $mm['screen'] ); } ),
+											);
+											$mq_split  = $mq_groups[ __( 'Screens', 'marquee' ) ] && $mq_groups[ __( 'Other models', 'marquee' ) ];
+											foreach ( $mq_groups as $mq_glabel => $mq_gmodels ) :
+												if ( ! $mq_gmodels ) {
+													continue;
+												}
+												echo $mq_split ? '<optgroup label="' . esc_attr( $mq_glabel ) . '">' : '';
+												foreach ( $mq_gmodels as $mm ) :
+													?>
 												<option value="<?php echo esc_attr( $mm['name'] ); ?>" <?php selected( $r['model'], $mm['name'] ); ?>><?php echo esc_html( $mm['name'] . ( $mm['w'] ? sprintf( ' (%d × %d)', $mm['w'], $mm['h'] ) : '' ) ); ?></option>
-											<?php endforeach; ?>
+													<?php
+												endforeach;
+												echo $mq_split ? '</optgroup>' : '';
+											endforeach;
+											?>
 											<?php if ( '' !== $r['model'] && ! $mq_in ) : ?>
 												<option value="<?php echo esc_attr( $r['model'] ); ?>" selected><?php /* translators: %s: model name */ echo esc_html( sprintf( __( '%s (not on your FPP)', 'marquee' ), $r['model'] ) ); ?></option>
 											<?php endif; ?>

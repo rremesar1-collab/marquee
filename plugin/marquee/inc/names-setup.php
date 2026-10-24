@@ -28,12 +28,13 @@ add_filter( 'ridgeroad_names_pull_data', function ( $data ) {
 			}
 			if ( isset( $f['models'] ) && is_array( $f['models'] ) ) {
 				$x['models'] = array();
-				foreach ( array_slice( $f['models'], 0, 30 ) as $m ) {
+				foreach ( array_slice( $f['models'], 0, 150 ) as $m ) {
 					if ( is_array( $m ) && '' !== trim( (string) ( $m['name'] ?? '' ) ) ) {
 						$x['models'][] = array(
-							'name' => sanitize_text_field( mb_substr( (string) $m['name'], 0, 60 ) ),
-							'w'    => max( 0, (int) ( $m['w'] ?? 0 ) ),
-							'h'    => max( 0, (int) ( $m['h'] ?? 0 ) ),
+							'name'   => sanitize_text_field( mb_substr( (string) $m['name'], 0, 60 ) ),
+							'w'      => max( 0, (int) ( $m['w'] ?? 0 ) ),
+							'h'      => max( 0, (int) ( $m['h'] ?? 0 ) ),
+							'screen' => ! empty( $m['screen'] ),
 						);
 					}
 				}

@@ -666,27 +666,37 @@ def fpp_playlists():
 
 
 def fpp_models():
-    """This FPP's Pixel Overlay Models with their size, for the website's screen picker: [{"name", "w", "h"}].
+    """This FPP's Pixel Overlay Models with their size, for the website's screen picker:
+    [{"name", "w", "h", "screen"}] - "screen" marks the ones that look like a matrix, panels, TV or projector.
     None when FPP can't be asked (an older FPP, or it's busy)."""
     try:
-        raw = fpp_get(MASTER, "/api/overlays/models") or []
+        raw = fpp_get(MASTER, "/api/overlays/models", timeout=10) or []
     except Exception:
         return None
-    names = []
+    rows, seen = [], set()
     for m in raw if isinstance(raw, list) else []:
-        n = m.get("Name") or m.get("name") if isinstance(m, dict) else m
-        if n and str(n) not in names:
-            names.append(str(n))
-    out = []
-    for n in names[:30]:
-        row = {"name": n[:60]}
-        try:
-            m = fpp_get(MASTER, "/api/overlays/model/" + urllib.parse.quote(n)) or {}
+        n = (m.get("Name") or m.get("name")) if isinstance(m, dict) else m
+        if not n or str(n) in seen:
+            continue
+        seen.add(str(n))
+        row = {"name": str(n)[:60]}
+        if isinstance(m, dict) and m.get("width"):
             row["w"], row["h"] = int(m.get("width") or 0), int(m.get("height") or 0)
-        except Exception:
-            pass
-        out.append(row)
-    return out
+            orient = str(m.get("Orientation") or "").lower()
+        else:
+            orient = ""
+            if len(rows) < 40:                      # an older FPP lists names only: ask for each size
+                try:
+                    d = fpp_get(MASTER, "/api/overlays/model/" + urllib.parse.quote(str(n))) or {}
+                    row["w"], row["h"] = int(d.get("width") or 0), int(d.get("height") or 0)
+                except Exception:
+                    pass
+        w, h = row.get("w", 0), row.get("h", 0)
+        named = any(k in str(n).lower() for k in ("matrix", "panel", "screen", "tv", "proj", "hdmi", "video", "sign", "marquee"))
+        row["screen"] = bool(str(n).upper().startswith("FB") or named or (orient in ("horizontal", "vertical") and w >= 20 and h >= 8))
+        rows.append(row)
+    rows.sort(key=lambda r: (not r["screen"], r["name"].lower()))
+    return rows[:150]
 
 
 def fpp_scheduled():
