@@ -62,7 +62,13 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 * No names break sequence needed: if your FPP has no names break playlist, Marquee makes a simple one (the show pauses, the names go up, with your names break audio if you built it). A names break playlist you already have is never changed. Settings → Names & FPP → "Make a simple names break for me".
 * Names only during your show: when your FPP schedules more than one playlist, Marquee suggests your show playlist with a one-click button. Nothing is changed unless you click it.
 * A tip when names would scroll too fast to read on a screen big enough to show them still.
-* Names script 3.10.0 (in the Marquee FPP plugin).
+* Put it in line: a test name goes in the queue like a kid's name (voice and all), for testing the names break from your computer.
+* Names script 3.10.0 (in the Marquee FPP plugin):
+  * A screen whose FPP is switched off or unplugged no longer delays every name (and Santa's voice) by several seconds: names go to all screens at once, and a screen that doesn't answer is skipped for a minute.
+  * Spoken names are fetched as soon as they arrive, even before the show starts, so the first name isn't late.
+  * A name running late skips its turn instead of two going up at once.
+  * A name going round again (fewer names than turns) isn't said over the last one or over the outro.
+  * A theme pointed at your regular names break playlist now uses the break audio's timing, so names stay in step with the announcer.
 
 = 0.8.6 =
 * Pick the Next Song leaves out the songs ticked under "Leave out of song voting" (like your intro), the same as favorite song voting.
