@@ -316,7 +316,13 @@ function marquee_names_setup_steps() {
 	if ( empty( $s['fpp_screens'] ) ) {
 		$steps[] = array( $on ? 'bad' : 'wait', __( 'Pick your screen', 'marquee' ), marquee_fpp_models() ? __( 'Pick the matrix, TV or projector the names go on from the list in card 1, then Save.', 'marquee' ) : __( 'Type the overlay model name of your matrix, TV or projector in card 1, then Save.', 'marquee' ), 'screens' );
 	} elseif ( $scr_bad ) {
-		$steps[] = array( 'bad', __( 'Your screen wasn’t found', 'marquee' ), $scr_bad[0]['msg'], 'screens' );
+		$who  = trim( preg_replace( '/\s*[(:].*$/s', '', $scr_bad[0]['msg'] ) );
+		$off  = false !== stripos( $scr_bad[0]['msg'], 'could not reach' );
+		/* translators: %s: screen name */
+		$head = $off ? sprintf( __( 'Can’t reach the FPP for %s', 'marquee' ), $who ) : sprintf( __( '%s: screen not found', 'marquee' ), $who );
+		$more = $scr_ok ? ' ' . sprintf( /* translators: %d: number of screens */ _n( 'Your other screen is ready.', 'Your other %d screens are ready.', count( $scr_ok ), 'marquee' ), count( $scr_ok ) ) : '';
+		$tip  = $off ? ' ' . __( 'If it’s just switched off, that’s fine: names go up on it once it’s on.', 'marquee' ) : '';
+		$steps[] = array( $off && $scr_ok ? 'wait' : 'bad', $head, $scr_bad[0]['msg'] . $tip . $more, 'screens' );
 	} elseif ( $scr_ok ) {
 		$steps[] = array( 'ok', __( 'Your screen is ready', 'marquee' ), $scr_ok[0]['msg'], 'screens' );
 		$fast = marquee_fast_scroll_screen();
