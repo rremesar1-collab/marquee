@@ -560,3 +560,93 @@ document.addEventListener('change', function (e) {
 	if (!e.target.matches || !e.target.matches('[data-mq-cto]')) { return; }
 	document.querySelectorAll('[data-mq-cto-custom]').forEach(function (p) { p.hidden = e.target.value !== 'custom'; });
 });
+
+/* Names & FPP setup panel: Check again, Send a test name, the show playlist suggestion, "Show me" links,
+   and it refreshes itself while the page is open so steps turn green as the FPP reports in. */
+(function () {
+	var box = document.querySelector('[data-mq-nsetup]');
+	if (!box || !window.MarqueeAdmin) { return; }
+	var nonce = box.getAttribute('data-nonce');
+	function post(action, extra, btn) {
+		var fd = new FormData();
+		fd.append('action', action);
+		fd.append('nonce', nonce);
+		Object.keys(extra || {}).forEach(function (k) { fd.append(k, extra[k]); });
+		if (btn) { btn.disabled = true; }
+		return fetch(MarqueeAdmin.ajax, { method: 'POST', body: fd, credentials: 'same-origin' })
+			.then(function (r) { return r.json(); })
+			.then(function (j) {
+				if (j && j.success && j.data && j.data.html) { box.innerHTML = j.data.html; }
+				else if (btn) { btn.disabled = false; alert((j && j.data && j.data.message) || 'That didn’t work. Try again.'); }
+				return j;
+			})
+			.catch(function () { if (btn) { btn.disabled = false; } });
+	}
+	function openCard(which) {
+		var card = document.querySelector('[data-mq-card="' + (which === 'screens' || which === 'only' ? 'fpp' : which) + '"]');
+		if (card) { card.open = true; }
+		var target = which === 'screens' ? document.getElementById('mq-screens')
+			: which === 'only' ? document.querySelector('[data-mq-only]') : card;
+		if (target) {
+			target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+			target.classList.add('mq-flash');
+			setTimeout(function () { target.classList.remove('mq-flash'); }, 2200);
+		}
+	}
+	box.addEventListener('click', function (e) {
+		var b = e.target.closest('button');
+		if (!b) { return; }
+		if (b.hasAttribute('data-mq-ncheck')) { post('marquee_names_check', {}, b); }
+		else if (b.hasAttribute('data-mq-ntest')) {
+			var t = box.querySelector('[data-mq-ntesttext]');
+			post('marquee_names_test', { text: t ? t.value : '' }, b);
+		}
+		else if (b.hasAttribute('data-mq-nonly')) {
+			var pl = b.getAttribute('data-mq-nonly');
+			post('marquee_names_onlypl', { playlist: pl }, b).then(function (j) {
+				if (!j || !j.success) { return; }
+				document.querySelectorAll('input[name="names_playlists[]"]').forEach(function (c) { c.checked = c.value === pl; });
+			});
+		}
+		else if (b.hasAttribute('data-mq-ngo')) { openCard(b.getAttribute('data-mq-ngo')); }
+	});
+	// refresh: often while waiting on the FPP, now and then otherwise, never in a hidden tab
+	function tick() {
+		var waiting = box.querySelector('.is-wait') || box.querySelector('[data-mq-ncheck][disabled]');
+		setTimeout(function () {
+			if (document.hidden || !box.offsetParent || (document.activeElement && document.activeElement.tagName === 'INPUT' && box.contains(document.activeElement))) { tick(); return; }
+			post('marquee_names_panel').then(tick, tick);
+		}, waiting ? 6000 : 30000);
+	}
+	post('marquee_names_panel').then(tick, tick);
+})();
+
+/* Your screens: pick the overlay model from the FPP's list (or type one). */
+(function () {
+	function local(addr) {
+		var h = (addr || '').trim().toLowerCase().replace(/^https?:\/\//, '').replace(/\/+$/, '').replace(/:\d+$/, '');
+		return h === '' || h === '127.0.0.1' || h === 'localhost';
+	}
+	document.querySelectorAll('[data-mq-model-pick]').forEach(function (sel) {
+		var row = sel.closest('tr');
+		var typed = row.querySelector('[data-mq-model-typed]');
+		var addr = row.querySelector('input[name$="[fpp]"]');
+		var name = row.querySelector('input[name$="[name]"]');
+		function sync() {
+			var useList = local(addr.value) && sel.value !== '__type';
+			sel.hidden = !local(addr.value);
+			typed.hidden = useList;
+			if (!useList && sel.value === '__type') { typed.focus(); }
+		}
+		sel.addEventListener('change', function () {
+			if (sel.value !== '__type') {
+				typed.value = sel.value;
+				if (sel.value && !addr.value.trim()) { addr.value = '127.0.0.1'; }
+				if (sel.value && !name.value.trim()) { name.value = sel.value; }
+			}
+			sync();
+		});
+		addr.addEventListener('input', sync);
+		sync();
+	});
+})();

@@ -36,6 +36,7 @@ function marquee_defaults() {
 		'fpp_playlist' => 'Names in Lights', // FPP playlist holding the names break
 		'names_playlists' => array(),        // names go up only while one of these FPP playlists plays (empty = any playlist)
 		'fpp_screens'  => array(),           // [ name, fpp address, overlay model ] for the names script
+		'names_simple' => 1,                 // no names break playlist on the FPP: the script (3.10+) makes a simple one, no sequence needed
 		'voice_on'     => 0,                 // say each name out loud (ElevenLabs)
 		'voice_key'    => '',
 		'voice_id'     => '',
@@ -121,6 +122,7 @@ function marquee_save( $in ) {
 		'fpp_playlist' => isset( $in['fpp_playlist'] ) && '' !== trim( (string) $in['fpp_playlist'] ) ? mb_substr( sanitize_text_field( wp_unslash( $in['fpp_playlist'] ) ), 0, 80 ) : $cur['fpp_playlist'],
 		'names_playlists' => isset( $in['fpp_sent'] ) ? marquee_clean_playlist_list( isset( $in['names_playlists'] ) ? (array) wp_unslash( $in['names_playlists'] ) : array(), isset( $in['names_playlists_more'] ) ? (string) wp_unslash( $in['names_playlists_more'] ) : '' ) : $cur['names_playlists'],
 		'fpp_screens'  => isset( $in['fpp_sent'] ) ? marquee_clean_screens( isset( $in['fpp_screens'] ) ? (array) wp_unslash( $in['fpp_screens'] ) : array() ) : $cur['fpp_screens'],
+		'names_simple' => isset( $in['fpp_sent'] ) ? (int) ! empty( $in['names_simple'] ) : $cur['names_simple'],
 		'voice_on'     => isset( $in['voice_sent'] ) ? (int) ! empty( $in['voice_on'] ) : $cur['voice_on'],
 		'voice_key'    => ( isset( $in['voice_key'] ) && '' !== trim( (string) $in['voice_key'] ) && '••••••••' !== $in['voice_key'] ) ? $txt( 'voice_key', 200 ) : $cur['voice_key'],
 		'voice_id'     => isset( $in['voice_id'] ) ? substr( preg_replace( '/[^A-Za-z0-9]/', '', wp_unslash( $in['voice_id'] ) ), 0, 40 ) : $cur['voice_id'],
@@ -360,6 +362,9 @@ function marquee_clean_screens( $rows ) {
 		}
 		$host  = trim( preg_replace( '#[^A-Za-z0-9.:/_-]#', '', (string) ( $r['fpp'] ?? '' ) ) );
 		$model = mb_substr( sanitize_text_field( (string) ( $r['model'] ?? '' ) ), 0, 60 );
+		if ( '' === $host && '' !== $model ) {
+			$host = '127.0.0.1'; // a screen picked with no address: the FPP running the script (it used to be dropped without a word)
+		}
 		if ( '' === $host || '' === $model ) {
 			continue;
 		}
@@ -434,6 +439,8 @@ function marquee_fpp_config() {
 		'slot'           => (float) $s['names_slot'],
 		'show_for'       => max( 2.0, round( (float) $s['names_slot'] - 0.6, 2 ) ),
 		'only_playlists' => array_values( (array) $s['names_playlists'] ), // script 3.9+: empty = any playlist
+		// script 3.10+: make a simple names break when there's none (only once names are switched on)
+		'simple_break'   => ! empty( $s['names_simple'] ) && ( ! function_exists( 'marquee_theme_get' ) || marquee_theme_get( 'names_on' ) ),
 	);
 }
 

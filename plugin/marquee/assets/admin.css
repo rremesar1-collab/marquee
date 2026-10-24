@@ -606,3 +606,28 @@
 .mq-playlists__list label{display:inline-flex;align-items:center;gap:6px;min-height:32px}
 .mq-playlists p{margin:0 0 6px}
 .mq-playlists input[type=text]{width:100%;max-width:420px}
+
+/* Names & FPP: the setup steps */
+.mq-nsetup { margin: 12px 0 18px; padding: 14px 16px; border: 1px solid #c3c4c7; border-radius: 8px; background: #fff; }
+.mq-nsetup__head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-bottom: 8px; }
+.mq-nsetup__head h3 { margin: 0; font-size: 15px; flex: 1 1 auto; }
+.mq-nsetup__when { color: #646970; font-size: 12px; }
+.mq-nsetup__steps { list-style: none; margin: 0; padding: 0; counter-reset: none; }
+.mq-nsetup__steps li { display: flex; align-items: flex-start; gap: 10px; padding: 9px 0; border-top: 1px solid #f0f0f1; margin: 0; }
+.mq-nsetup__steps li:first-child { border-top: 0; }
+.mq-nsetup__icon { flex: 0 0 24px; height: 24px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; color: #fff; background: #8c8f94; }
+.mq-nsetup__steps .is-ok .mq-nsetup__icon { background: #00a32a; }
+.mq-nsetup__steps .is-bad .mq-nsetup__icon { background: #d63638; }
+.mq-nsetup__steps .is-wait .mq-nsetup__icon { background: #dba617; }
+.mq-nsetup__steps .is-tip .mq-nsetup__icon { background: #2271b1; }
+.mq-nsetup__txt { flex: 1 1 auto; min-width: 0; }
+.mq-nsetup__txt b { display: block; }
+.mq-nsetup__txt small { display: block; color: #50575e; line-height: 1.45; overflow-wrap: anywhere; }
+.mq-nsetup__act { flex: 0 0 auto; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; justify-content: flex-end; max-width: 50%; }
+.mq-nsetup__act input[type="text"] { width: 150px; }
+@media (max-width: 600px) {
+	.mq-nsetup__steps li { flex-wrap: wrap; }
+	.mq-nsetup__act { max-width: none; width: 100%; justify-content: flex-start; padding-left: 34px; }
+}
+.mq-flash { outline: 3px solid #f0c33c; outline-offset: 4px; border-radius: 4px; transition: outline-color .6s; }
+.mq__screens select[data-mq-model-pick] { max-width: 100%; }

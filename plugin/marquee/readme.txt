@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.8.8
+Stable tag: 0.9.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,16 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.9.0 =
+* Names & FPP: a setup panel at the top shows each step (FPP connected, your screen, the names break, which playlist, a test name) and turns green by itself as your FPP reports in. "Show me" opens the right card.
+* Pick your screen from a list: the FPP sends its Pixel Overlay Models (with their size), so there's nothing to type. A screen picked with no FPP address now uses this FPP instead of being dropped.
+* Check again: reruns the FPP's setup check from the website. The check also reruns by itself when you change your screens or playlists.
+* Send a test name: puts a name on your screens right away.
+* No names break sequence needed: if your FPP has no names break playlist, Marquee makes a simple one (the show pauses, the names go up, with your names break audio if you built it). A names break playlist you already have is never changed. Settings → Names & FPP → "Make a simple names break for me".
+* Names only during your show: when your FPP schedules more than one playlist, Marquee suggests your show playlist with a one-click button. Nothing is changed unless you click it.
+* A tip when names would scroll too fast to read on a screen big enough to show them still.
+* Names script 3.10.0 (in the Marquee FPP plugin).
 
 = 0.8.6 =
 * Pick the Next Song leaves out the songs ticked under "Leave out of song voting" (like your intro), the same as favorite song voting.

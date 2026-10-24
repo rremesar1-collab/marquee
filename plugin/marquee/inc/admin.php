@@ -326,6 +326,9 @@ function marquee_admin_page() {
 					if ( ! marquee_theme_get( 'names_on' ) ) {
 						echo '<div class="mq__note">' . esc_html__( 'Your Name in Lights is switched off, so kids can’t send names yet. Turn it on under Features when you’re ready.', 'marquee' ) . '</div>';
 					}
+					if ( function_exists( 'marquee_names_setup_panel' ) ) {
+						marquee_names_setup_panel();
+					}
 					?>
 					<div class="mq-how">
 						<h3><?php esc_html_e( 'How it works', 'marquee' ); ?></h3>
@@ -349,7 +352,7 @@ function marquee_admin_page() {
 							</label>
 						</div>
 					</div>
-					<details class="mq__card" <?php echo $fpp_ok ? '' : 'open'; ?>>
+					<details class="mq__card" data-mq-card="fpp" <?php echo $fpp_ok && ! empty( $s['fpp_screens'] ) ? '' : 'open'; ?>>
 						<summary>
 							<span class="mq__card-n">1</span>
 							<span class="mq__card-t"><b><?php esc_html_e( 'Connect your FPP', 'marquee' ); ?></b><small><?php esc_html_e( 'Your screens, and the small script that puts the names on them', 'marquee' ); ?></small></span>
@@ -364,10 +367,11 @@ function marquee_admin_page() {
 					<p><label for="mq-lsf"><?php esc_html_e( 'Seconds each name stays up', 'marquee' ); ?></label><input id="mq-lsf" name="live_show_for" type="number" min="3" max="20" step="0.5" value="<?php echo esc_attr( $s['live_show_for'] ); ?>"><small><?php esc_html_e( 'Names go up one after another while your show plays, within about 20 seconds of being sent.', 'marquee' ); ?></small></p>
 					</div>
 					<div class="mq__row mq-only-break">
-					<p><label for="mq-fpl"><?php esc_html_e( 'FPP playlist with your names break', 'marquee' ); ?></label><input id="mq-fpl" name="fpp_playlist" type="text" value="<?php echo esc_attr( $s['fpp_playlist'] ); ?>"><small><?php esc_html_e( 'A short sequence (about 30 seconds) in its own playlist, with your screens left dark where the names go. Don’t have one? The Sequence maker (card 4) makes it for you.', 'marquee' ); ?></small></p>
+					<p><label for="mq-fpl"><?php esc_html_e( 'FPP playlist with your names break', 'marquee' ); ?></label><input id="mq-fpl" name="fpp_playlist" type="text" value="<?php echo esc_attr( $s['fpp_playlist'] ); ?>"><small><?php esc_html_e( 'A short sequence (about 30 seconds) in its own playlist, with your screens left dark where the names go. Don’t have one? The Sequence maker (card 4) makes it for you, or leave “Make a simple names break for me” on.', 'marquee' ); ?></small></p>
 					<p><label for="mq-nst"><?php esc_html_e( 'When the first name appears', 'marquee' ); ?> <span class="mq__unit"><?php esc_html_e( 'seconds into the break', 'marquee' ); ?></span></label><input id="mq-nst" name="names_start" type="number" min="0" max="120" step="0.5" value="<?php echo esc_attr( $s['names_start'] ); ?>"><small><?php esc_html_e( 'Usually right after the announcer’s intro ends (“It’s time for Names in Lights!”).', 'marquee' ); ?></small></p>
 					<p><label for="mq-nsl"><?php esc_html_e( 'Time between names', 'marquee' ); ?> <span class="mq__unit"><?php esc_html_e( 'seconds', 'marquee' ); ?></span></label><input id="mq-nsl" name="names_slot" type="number" min="2.5" max="10" step="0.05" value="<?php echo esc_attr( $s['names_slot'] ); ?>"><small><?php esc_html_e( 'How long each name gets before the next one goes up (up to 6 names per break).', 'marquee' ); ?></small></p>
 					</div>
+					<label class="mq__feat mq-only-break"><span><b><?php esc_html_e( 'Make a simple names break for me', 'marquee' ); ?></b><small><?php esc_html_e( 'If your FPP has no names break playlist yet, Marquee makes one: the show pauses, the names go up on your screens (with the names break audio from card 3, if you build it), then your show carries on. No sequence needed. A names break playlist you already have is never touched.', 'marquee' ); ?></small></span><input type="checkbox" name="names_simple" value="1" <?php checked( ! empty( $s['names_simple'] ) ); ?>></label>
 					<div class="mq-only-break"><?php marquee_name_timeline( '#mq-nst', '#mq-nsl', (float) $s['break_seq'] ); ?>
 					<p class="mq__fine"><?php esc_html_e( 'You don’t normally need to touch these: building the names break audio (card 3) sets both to match your intro and outro. Change them only if you made your own break audio; then match them to where your audio goes quiet.', 'marquee' ); ?></p></div>
 					<?php
@@ -383,7 +387,7 @@ function marquee_admin_page() {
 						return ! in_array( mb_strtolower( $p ), array_map( 'mb_strtolower', $mq_pls ), true );
 					} ) );
 					?>
-					<fieldset class="mq-playlists">
+					<fieldset class="mq-playlists" data-mq-only>
 						<legend><?php esc_html_e( 'Only during these playlists', 'marquee' ); ?></legend>
 						<?php if ( $mq_pls ) : ?>
 							<div class="mq-playlists__list">
@@ -395,7 +399,8 @@ function marquee_admin_page() {
 						<p><label for="mq-npl-more"><?php echo $mq_pls ? esc_html__( 'Other playlists (comma separated)', 'marquee' ) : esc_html__( 'Playlist names (comma separated)', 'marquee' ); ?></label><input id="mq-npl-more" name="names_playlists_more" type="text" value="<?php echo esc_attr( implode( ', ', $mq_more ) ); ?>" placeholder="<?php esc_attr_e( 'e.g. Show', 'marquee' ); ?>"></p>
 						<small><?php esc_html_e( 'Leave everything blank to put names up during any playlist. Pick your main show playlist if you also run something like a static or background playlist: names then wait until the show playlist plays.', 'marquee' ); ?><?php if ( ! $mq_pls ) : ?> <?php esc_html_e( 'Your FPP playlists show up here as checkboxes once the names script has checked in.', 'marquee' ); ?><?php endif; ?></small>
 					</fieldset>
-					<table class="mq__screens">
+					<?php $mq_models = function_exists( 'marquee_fpp_models' ) ? marquee_fpp_models() : null; ?>
+					<table class="mq__screens" id="mq-screens">
 						<thead><tr><th><?php esc_html_e( 'Screen', 'marquee' ); ?></th><th><?php esc_html_e( 'FPP address', 'marquee' ); ?></th><th><?php esc_html_e( 'Overlay model name', 'marquee' ); ?></th></tr></thead>
 						<tbody>
 						<?php
@@ -406,7 +411,25 @@ function marquee_admin_page() {
 							<tr class="mq__scr-main">
 								<td><input type="text" name="fpp_screens[<?php echo (int) $i; ?>][name]" value="<?php echo esc_attr( $r['name'] ); ?>" placeholder="<?php echo 0 === $i ? esc_attr__( 'Matrix', 'marquee' ) : ''; ?>" aria-label="<?php esc_attr_e( 'Screen name', 'marquee' ); ?>"></td>
 								<td><input type="text" name="fpp_screens[<?php echo (int) $i; ?>][fpp]" value="<?php echo esc_attr( $r['fpp'] ); ?>" placeholder="<?php echo 0 === $i ? '127.0.0.1' : '192.168.1.'; ?>" aria-label="<?php esc_attr_e( 'FPP address', 'marquee' ); ?>"></td>
-								<td><input type="text" name="fpp_screens[<?php echo (int) $i; ?>][model]" value="<?php echo esc_attr( $r['model'] ); ?>" placeholder="<?php echo 0 === $i ? esc_attr__( 'MatrixText', 'marquee' ) : ''; ?>" aria-label="<?php esc_attr_e( 'Overlay model name', 'marquee' ); ?>"></td>
+								<td>
+									<?php
+									$mq_pick = is_array( $mq_models ) && $mq_models && marquee_screen_is_local( $r['fpp'] );
+									$mq_in   = $mq_pick && in_array( $r['model'], wp_list_pluck( $mq_models, 'name' ), true );
+									if ( $mq_pick ) :
+										?>
+										<select data-mq-model-pick aria-label="<?php esc_attr_e( 'Overlay model', 'marquee' ); ?>">
+											<option value=""><?php esc_html_e( '— Pick a screen —', 'marquee' ); ?></option>
+											<?php foreach ( $mq_models as $mm ) : ?>
+												<option value="<?php echo esc_attr( $mm['name'] ); ?>" <?php selected( $r['model'], $mm['name'] ); ?>><?php echo esc_html( $mm['name'] . ( $mm['w'] ? sprintf( ' (%d × %d)', $mm['w'], $mm['h'] ) : '' ) ); ?></option>
+											<?php endforeach; ?>
+											<?php if ( '' !== $r['model'] && ! $mq_in ) : ?>
+												<option value="<?php echo esc_attr( $r['model'] ); ?>" selected><?php /* translators: %s: model name */ echo esc_html( sprintf( __( '%s (not on your FPP)', 'marquee' ), $r['model'] ) ); ?></option>
+											<?php endif; ?>
+											<option value="__type"><?php esc_html_e( 'Type a name…', 'marquee' ); ?></option>
+										</select>
+									<?php endif; ?>
+									<input type="text" name="fpp_screens[<?php echo (int) $i; ?>][model]" value="<?php echo esc_attr( $r['model'] ); ?>" placeholder="<?php echo 0 === $i ? esc_attr__( 'MatrixText', 'marquee' ) : ''; ?>" aria-label="<?php esc_attr_e( 'Overlay model name', 'marquee' ); ?>" <?php echo $mq_pick ? 'data-mq-model-typed hidden' : ''; ?>>
+								</td>
 							</tr>
 							<tr class="mq__scr-look">
 								<td colspan="3">
@@ -435,7 +458,7 @@ function marquee_admin_page() {
 						<?php endfor; ?>
 						</tbody>
 					</table>
-					<small><?php esc_html_e( 'FPP address: the FPP that drives that screen (127.0.0.1 means the FPP running the script). Overlay model: its name under FPP → Input/Output Setup → Pixel Overlay Models.', 'marquee' ); ?></small>
+					<small><?php echo is_array( $mq_models ) && $mq_models ? esc_html__( 'Pick your screen from the list: those are the Pixel Overlay Models on the FPP running the plugin. For a screen on a different FPP, type that FPP’s address and the model name. Not in the list? Upload your models to the FPP with FPP Connect (Models ticked).', 'marquee' ) : esc_html__( 'FPP address: the FPP that drives that screen (127.0.0.1 means the FPP running the script). Overlay model: its name under FPP → Input/Output Setup → Pixel Overlay Models.', 'marquee' ); ?></small>
 					<small class="mq__fine"><?php esc_html_e( 'Text and Size: Automatic works for most screens. Small pixel matrices (64 pixels tall or less) get one big line that scrolls across when the message won’t fit; TVs and projectors get still text with the name on its own line. Scrolling text always crosses the screen in the time each name is up; Slow may not quite finish on long messages. Custom size: the font size FPP uses, about how many pixels tall the letters are (a 10-pixel-tall matrix looks good at 8 or 9). Still text that won’t fit at that size is made just small enough to fit; scrolling text keeps it.', 'marquee' ); ?></small>
 					<div class="mq__fppplug" data-mq-fppplug>
 						<h4><?php esc_html_e( 'Put it on your FPP: the Marquee plugin (easiest)', 'marquee' ); ?></h4>
@@ -533,7 +556,7 @@ function marquee_admin_page() {
 						</div>
 					</details>
 
-					<details class="mq__card mq-only-break">
+					<details class="mq__card mq-only-break" data-mq-card="seq">
 						<summary>
 							<span class="mq__card-n">4</span>
 							<span class="mq__card-t"><b><?php esc_html_e( 'Sequence maker', 'marquee' ); ?></b><small><?php esc_html_e( 'Makes the xLights files for your names break and themes, from your layout. Then render them and send them to your FPP.', 'marquee' ); ?></small></span>

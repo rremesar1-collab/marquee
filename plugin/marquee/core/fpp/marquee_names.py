@@ -40,7 +40,7 @@ import urllib.parse
 import socket
 import urllib.request
 
-VERSION = "3.9.0"
+VERSION = "3.10.0"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -92,6 +92,7 @@ DEFAULTS = {
     "mode": "break",                  # "break": a names break between songs; "live": during songs on a spare screen
     "live_show_for": 6,               # live mode: seconds each name stays up
     "only_playlists": [],             # names go up only while one of these playlists plays ([] = any playlist)
+    "simple_break": False,            # no names break playlist on this FPP: make a simple one (no sequence needed)
 }
 MODE = {"mode": None, "show_for": None}   # what the website said last (it wins over the settings file)
 ADVISORY = {"now": None, "last": 0.0}     # traffic & parking alert from Show Control, put on the screens now and then
@@ -147,6 +148,15 @@ def load_settings():
     return problems
 
 
+def load_settings_keep():
+    """Settings-file problems for a re-check, without losing what the website sent since start-up."""
+    keep = {k: S[k] for k in ("screens", "only_playlists", "simple_break") + SITE_KEYS}
+    problems = load_settings()
+    S.update(keep)
+    break_timing()
+    return problems
+
+
 def clean_screens(rows):
     screens = []
     for i, sc in enumerate(rows or []):
@@ -182,14 +192,25 @@ def site_config(cfg):
         new = clean_screens(cfg.get("screens"))
         if new != LAST.get("screens"):
             log("screens from the website:", ", ".join("%s=%s on %s" % (x["name"], x["model"], x["fpp"]) for x in new) or "none")
+            if "screens" in LAST:
+                CHECK["want"] = CHECK["want"] or "changed"       # run the setup check again with the new screens
             LAST["screens"] = new
             _info.clear()
         S["screens"] = new
+    if "simple_break" in cfg:
+        S["simple_break"] = bool(cfg.get("simple_break"))
+        LAST["site_simple"] = True                  # the website (Marquee 0.9+) has the "simple names break" switch
     if isinstance(cfg.get("only_playlists"), list):
         new = [str(p).strip() for p in cfg["only_playlists"] if str(p).strip()][:20]
         if new != S["only_playlists"]:
             log("names only during:", ", ".join(new) if new else "any playlist")
+            if "only" in LAST:
+                CHECK["want"] = CHECK["want"] or "changed"
             S["only_playlists"] = new
+        LAST["only"] = True
+    if cfg.get("break_playlist") not in (None, "") and str(cfg["break_playlist"]) != S["break_playlist"] and "bp" in LAST:
+        CHECK["want"] = CHECK["want"] or "changed"
+    LAST["bp"] = True
     for k in SITE_KEYS:
         if cfg.get(k) not in (None, ""):
             try:
@@ -238,10 +259,29 @@ def pull(done_ids, st=None, report=None):
             if pls:
                 info["playlists"] = [str(p) for p in pls][:60]
                 PL_SENT["t"] = time.time()
+                # 3.10+: what the website needs to make setup easy (screens to pick from, the show playlist to suggest)
+                info["script"] = VERSION
+                info["fpp_version"] = str(st.get("version") or "")[:20]
+                models = fpp_models()
+                if models is not None:
+                    info["models"] = models
+                info["scheduled"] = fpp_scheduled()
+        if TESTS["results"]:
+            info["tested"] = TESTS["results"][-5:]
+            TESTS["results"] = []
         data["fpp"] = json.dumps(info)
     if report is not None:
         data["report"] = json.dumps(report)
     res = http_json(url, data)
+    if isinstance(res, dict) and isinstance(res.get("data"), dict):
+        d = res["data"]
+        if d.get("check") and str(d["check"]) != CHECK["done"]:      # "Check again" on the website
+            CHECK["want"] = str(d["check"])
+        t = d.get("test")
+        if isinstance(t, dict) and t.get("id") and str(t["id"]) not in TESTS["done"]:
+            TESTS["want"] = t
+        if d.get("fast"):                                            # someone is setting up: check in more often for a bit
+            FAST["until"] = time.time() + 180
     if not res or not res.get("success"):
         raise RuntimeError("website said: %s" % (res,))
     if isinstance(res["data"], dict):
@@ -307,12 +347,24 @@ def sync_break(b):
     st = break_state()
     if str(st.get("v")) == str(b["v"]) or in_break(master_status()):
         return
+    bp = S["break_playlist"]
+    base = fpp_playlist(bp)
+    simple = is_simple(base, st) or (base is None and S["simple_break"] and not live())
+    if base is None and not simple:
+        raise RuntimeError("there's no playlist named '%s' on this FPP - add one with your names sequence in it" % bp)
     for k, name in BREAK_FILES.items():
         if not b.get(k):
             return
         download(b[k], os.path.join(MUSIC, name))
-    bp = S["break_playlist"]
-    base = fpp_get(MASTER, "/api/playlist/" + urllib.parse.quote(bp)) or {}
+    if simple:                                  # Marquee's own names break: it just plays the new audio
+        st.update({"v": str(b["v"]), "start": float(b.get("start") or S["names_start"]), "slot": float(b.get("slot") or S["slot"]),
+                   "t": time.strftime("%Y-%m-%d %H:%M"), "simple": True})
+        st.pop("simple_sig", None)
+        save_state(st)
+        S["names_start"], S["slot"] = st["start"], st["slot"]
+        S["show_for"] = max(2.0, st["slot"] - 0.6)
+        ensure_simple_break()
+        return
     entries = [e for e in (base.get("mainPlaylist") or []) if isinstance(e, dict) and e.get("sequenceName")]
     if not entries:
         raise RuntimeError("playlist '%s' has no sequence in it - add your names sequence to it first" % bp)
@@ -328,14 +380,10 @@ def sync_break(b):
         new["mainPlaylist"] = [e]
         new["leadIn"] = []
         new["leadOut"] = []
-        body = json.dumps(new).encode()
-        req = urllib.request.Request(MASTER.rstrip("/") + "/api/playlist/" + urllib.parse.quote(pl), data=body,
-                                     headers={"Content-Type": "application/json"})
-        urllib.request.urlopen(req, timeout=10).read()
+        save_playlist(pl, new)
     st.update({"v": str(b["v"]), "start": float(b.get("start") or S["names_start"]), "slot": float(b.get("slot") or S["slot"]),
                "seq": entry.get("sequenceName"), "t": time.strftime("%Y-%m-%d %H:%M")})
-    with open(STATE, "w") as f:
-        json.dump(st, f, indent=1)
+    save_state(st)
     S["names_start"], S["slot"] = st["start"], st["slot"]
     S["show_for"] = max(2.0, st["slot"] - 0.6)
     _playlists["t"] = 0
@@ -343,9 +391,97 @@ def sync_break(b):
         "(names start at %ss, one every %ss)" % (bp, bp, bp, st["start"], st["slot"]))
 
 
+def save_state(st):
+    with open(STATE, "w") as f:
+        json.dump(st, f, indent=1)
+
+
+def fpp_playlist(name):
+    """One playlist from this FPP, or None when there's no playlist by that name."""
+    try:
+        pl = fpp_get(MASTER, "/api/playlist/" + urllib.parse.quote(name))
+    except urllib.error.HTTPError as e:
+        if e.code == 404:
+            return None
+        raise
+    if not isinstance(pl, dict) or (str(pl.get("Status", "")).lower() == "error" and not pl.get("mainPlaylist")):
+        return None
+    return pl
+
+
+def save_playlist(name, data):
+    req = urllib.request.Request(MASTER.rstrip("/") + "/api/playlist/" + urllib.parse.quote(name), data=json.dumps(data).encode(),
+                                 headers={"Content-Type": "application/json"})
+    urllib.request.urlopen(req, timeout=10).read()
+
+
+# --------------------------------------------- simple break (no sequence) ----
+SIMPLE_DESC = "Made by Marquee: names break with no sequence"
+
+
+def is_simple(pl, st=None):
+    """A names break playlist Marquee made itself (and nobody has put a sequence in since)."""
+    if not isinstance(pl, dict):
+        return False
+    if str(pl.get("desc") or "") != SIMPLE_DESC:
+        return False
+    return not any(isinstance(e, dict) and e.get("sequenceName") for e in (pl.get("mainPlaylist") or []))
+
+
+def simple_sig(st):
+    return "%s|%s|%s|%s" % ((st.get("v") or "") if st.get("simple") else "", float(S["names_start"]), float(S["slot"]), int(S["max_names"]))
+
+
+def ensure_simple_break():
+    """No names break on this FPP? Make a simple one: the lights pause, the names go up on the screens,
+    and the names break audio plays if it's been built on the website. A names break playlist the show
+    already has is never touched. Returns a line for the log ('' = nothing to do)."""
+    if live() or not S["simple_break"]:
+        return ""
+    bp = S["break_playlist"]
+    base = fpp_playlist(bp)
+    st = break_state()
+    if base is not None and not is_simple(base):
+        if st.get("simple"):                        # someone put a sequence in it: it's theirs now
+            st.pop("simple", None)
+            st.pop("simple_sig", None)
+            save_state(st)
+        return ""
+    _playlists["t"] = 0
+    have = fpp_playlists()
+    sig = simple_sig(st)
+    if base is not None and st.get("simple_sig") == sig and all("%s %d" % (bp, n) in have for n in (1, 2)):
+        return ""
+    if in_break(master_status()):
+        return ""
+    audio = bool(st.get("simple") and st.get("v"))
+    for key, pl, slots in (("full", bp, int(S["max_names"])), ("short2", bp + " 2", 4), ("short1", bp + " 1", 2)):
+        if pl != bp:
+            other = fpp_playlist(pl)
+            if other is not None and not is_simple(other):
+                continue                            # a short break of the show's own: leave it
+        if audio and os.path.exists(os.path.join(MUSIC, BREAK_FILES[key])):
+            entry = {"type": "media", "enabled": 1, "playOnce": 0, "mediaName": BREAK_FILES[key]}
+        else:
+            entry = {"type": "pause", "enabled": 1, "playOnce": 0,
+                     "duration": round(float(S["names_start"]) + slots * float(S["slot"]) + 1.5, 1)}
+        save_playlist(pl, {"name": pl, "desc": SIMPLE_DESC, "mainPlaylist": [entry], "leadIn": [], "leadOut": [],
+                           "repeat": 0, "loopCount": 0})
+    st.update({"simple": True, "simple_sig": sig})
+    save_state(st)
+    _playlists["t"] = 0
+    msg = "made a simple names break: '%s' (and '%s 1', '%s 2' for one or two names) - %s, then the names go up on your screens" % (
+        bp, bp, bp, "the names break audio plays" if audio else "the show pauses")
+    log(msg)
+    return msg
+
+
 # ------------------------------------------------------------- support ----
 SUPPORT = {"on": False, "id": "", "sent": 0, "tests": set(), "done": set()}
 LAST = {"break": None}
+CHECK = {"want": "", "done": ""}           # a setup check the website asked for, or one owed after a settings change
+TESTS = {"want": None, "done": set(), "results": []}   # "Send a test name" from the website
+FAST = {"until": 0.0}
 
 
 def support_view():
@@ -427,7 +563,7 @@ def support_action(do):
         if do == "restart":
             return True, "names script restarting"
         if do == "check":
-            checks, site_ok = run_checks(load_settings())
+            checks, site_ok = run_checks(load_settings_keep())
             if site_ok:
                 send_report(checks)
             bad = [c["msg"] for c in checks if not c["ok"]]
@@ -527,6 +663,63 @@ def fpp_playlists():
         except Exception:
             pass
     return _playlists["names"]
+
+
+def fpp_models():
+    """This FPP's Pixel Overlay Models with their size, for the website's screen picker: [{"name", "w", "h"}].
+    None when FPP can't be asked (an older FPP, or it's busy)."""
+    try:
+        raw = fpp_get(MASTER, "/api/overlays/models") or []
+    except Exception:
+        return None
+    names = []
+    for m in raw if isinstance(raw, list) else []:
+        n = m.get("Name") or m.get("name") if isinstance(m, dict) else m
+        if n and str(n) not in names:
+            names.append(str(n))
+    out = []
+    for n in names[:30]:
+        row = {"name": n[:60]}
+        try:
+            m = fpp_get(MASTER, "/api/overlays/model/" + urllib.parse.quote(n)) or {}
+            row["w"], row["h"] = int(m.get("width") or 0), int(m.get("height") or 0)
+        except Exception:
+            pass
+        out.append(row)
+    return out
+
+
+def fpp_scheduled():
+    """Playlists FPP's scheduler runs, with how many items each has (the show is the long one,
+    a static or background playlist is short): [{"name", "items"}]."""
+    try:
+        sched = fpp_get(MASTER, "/api/schedule") or []
+    except Exception:
+        return []
+    found = []
+
+    def walk(x):
+        if isinstance(x, dict):
+            if str(x.get("enabled", 1)) not in ("0", "false", "False") and isinstance(x.get("playlist"), str) and x["playlist"].strip():
+                if x["playlist"] not in found:
+                    found.append(x["playlist"])
+            for v in x.values():
+                if isinstance(v, (dict, list)):
+                    walk(v)
+        elif isinstance(x, list):
+            for v in x:
+                walk(v)
+    walk(sched)
+    out = []
+    for name in found[:12]:
+        row = {"name": name[:80], "items": 0}
+        try:
+            pl = fpp_get(MASTER, "/api/playlist/" + urllib.parse.quote(name)) or {}
+            row["items"] = len(pl.get("mainPlaylist") or [])
+        except Exception:
+            pass
+        out.append(row)
+    return out
 
 
 def short_playlists():
@@ -801,8 +994,12 @@ def show(text, color):
 
 
 # --------------------------------------------------------------- break ----
+BRK = {"t0": 0.0}
+
+
 def run_break(color):
     """Called when the break starts: fetch names, show them on the break's clock."""
+    BRK["t0"] = time.time()
     keep = (S["names_start"], S["slot"], S["show_for"])
     try:
         return _run_break(color)
@@ -860,7 +1057,10 @@ def _show_names(names, slots, color):
                 if talk_until:
                     stop_talking()
                 return done
-            if elapsed(st) >= at:
+            el = elapsed(st)
+            if el <= 0.05 and time.time() - BRK["t0"] > 0.5:
+                el = time.time() - BRK["t0"] + 0.5   # no clock from FPP (a pause in the playlist): count it ourselves
+            if el >= at:
                 break
             time.sleep(0.1)
         if show(item["text"], color):
@@ -940,6 +1140,11 @@ def run_checks(problems=None):
             add(True, "fpp", "FPP status: %s - names go up only while your show PLAYLIST is playing on this FPP (start it as a playlist, not a single sequence or Play Media)" % sn)
     else:
         add(False, "fpp", "could not read this FPP's status")
+    made = ""
+    try:
+        made = ensure_simple_break()
+    except Exception as e:
+        add(False, "playlist", "could not make a simple names break on this FPP: %s" % e)
     try:
         pls = fpp_get(MASTER, "/api/playlists") or []
         if live():
@@ -954,14 +1159,20 @@ def run_checks(problems=None):
             pass
         elif S["break_playlist"] in pls:
             short = [p for p in pls if p in ("%s 1" % S["break_playlist"], "%s 2" % S["break_playlist"])]
-            add(True, "playlist", "playlist '%s' found%s" % (S["break_playlist"], (" (short breaks: %s)" % ", ".join(short)) if short else ""))
+            if is_simple(fpp_playlist(S["break_playlist"])):
+                add(True, "playlist", "playlist '%s' found - a simple names break Marquee made, no sequence needed%s" % (
+                    S["break_playlist"], " (just made)" if made else ""))
+            else:
+                add(True, "playlist", "playlist '%s' found%s" % (S["break_playlist"], (" (short breaks: %s)" % ", ".join(short)) if short else ""))
             for t in THEMES.values():
                 if t["playlist"] in pls:
                     add(True, "theme", "themed sequence '%s': playlist '%s' found" % (t.get("name", ""), t["playlist"]))
                 else:
                     add(False, "theme", "themed sequence '%s': no playlist named '%s' on this FPP (those names go up in the classic break)" % (t.get("name", ""), t["playlist"]))
         else:
-            add(False, "playlist", "no playlist named '%s' on this FPP (found: %s)" % (S["break_playlist"], ", ".join(pls) or "none"))
+            add(False, "playlist", "no playlist named '%s' on this FPP (found: %s)%s" % (S["break_playlist"], ", ".join(pls) or "none",
+                "" if S["simple_break"] else (" - make one with your names sequence, or turn on 'Make a simple names break for me' on your website"
+                                               if LAST.get("site_simple") else " - make one with your names sequence (or update Marquee on your website: it can make a simple one for you)")))
     except Exception as e:
         add(False, "playlist", "could not list playlists: %s" % e)
     if S["voice"] and site_voice and not live():
@@ -991,13 +1202,17 @@ def run_checks(problems=None):
             else:
                 add(True, "screen", "%s: overlay model '%s' on %s is %d x %d, font %s" % (sc["name"], sc["model"], sc["fpp"], w, h, font or "none!"))
         except Exception as e:
-            add(False, "screen", "%s (%s): %s" % (sc["name"], sc["fpp"], e))
+            msg = "%s (%s): %s" % (sc["name"], sc["fpp"], e)
+            if "no overlay model" in str(e) and sc["fpp"].rstrip("/") == MASTER.rstrip("/").replace("://localhost", "://127.0.0.1"):
+                ms = fpp_models() or []
+                msg += " - models on this FPP: %s" % (", ".join(m["name"] for m in ms) or "none (upload your models with FPP Connect, Models ticked)")
+            add(False, "screen", msg)
     return out, site_ok
 
 
-def send_report(checks):
+def send_report(checks, req=""):
     try:
-        pull([], None, {"v": VERSION, "checks": checks})
+        pull([], None, {"v": VERSION, "checks": checks, "req": req})
     except Exception as e:
         log("could not send the setup check to the website:", e)
 
@@ -1145,6 +1360,9 @@ def main():
         log(("ok: " if c["ok"] else "PROBLEM: ") + c["msg"])
     if site_ok:
         send_report(checks)
+    if CHECK["want"] == "changed":      # the first check already used the website's settings
+        CHECK["want"] = ""
+    simple_t = time.time()
     done = []
     queued = False
     last_check = 0.0
@@ -1166,6 +1384,37 @@ def main():
                     pass
                 restart_self("settings changed - restarting")
             st = master_status()
+            if not in_break(st):
+                if CHECK["want"]:                                   # "Check again" on the website, or settings changed there
+                    req = "" if CHECK["want"] == "changed" else CHECK["want"]
+                    CHECK["want"] = ""
+                    if req:
+                        CHECK["done"] = req                          # so the check-ins during the check don't ask again
+                    checks, site_ok = run_checks(load_settings_keep())
+                    log("setup check%s: %s" % (" (asked for on the website)" if req else " (settings changed)",
+                        "all good" if all(c["ok"] for c in checks) else "; ".join(c["msg"] for c in checks if not c["ok"])))
+                    if site_ok:
+                        send_report(checks, req)
+                    if req:
+                        CHECK["done"] = req
+                    PL_SENT["t"] = 0                                # send the FPP's playlists and models again too
+                    simple_t = time.time()
+                    last_check = 0.0
+                if TESTS["want"]:                                   # "Send a test name" on the website
+                    t = TESTS["want"]
+                    TESTS["want"] = None
+                    TESTS["done"].add(str(t["id"]))
+                    text = str(t.get("text") or "TEST")[:40]
+                    n = show(text, "#FFFFFF")
+                    log("test name %r from the website shown on %d screen(s)" % (text, n))
+                    TESTS["results"].append({"id": str(t["id"]), "screens": n, "of": len(S["screens"]), "t": int(time.time())})
+                    last_check = 0.0
+                if time.time() - simple_t > 300:                     # the simple names break follows timing changes
+                    simple_t = time.time()
+                    try:
+                        ensure_simple_break()
+                    except Exception as e:
+                        log("could not update the simple names break:", e)
             if in_break(st):
                 done += run_break(color)
                 queued = False
@@ -1175,7 +1424,7 @@ def main():
                 continue
             if status_name(st) != "playing":
                 queued = False
-                if done or time.time() - last_check >= (5 if SUPPORT["on"] else 60):      # idle: check in once a minute (every 5 s during a support session)
+                if done or time.time() - last_check >= (5 if SUPPORT["on"] or time.time() < FAST["until"] else 60):   # idle: once a minute (every 5 s while someone is setting up or in support)
                     last_check = time.time()
                     data = pull(done, st) or {}
                     done = []
@@ -1196,7 +1445,7 @@ def main():
                         log("traffic alert on the screens:", adv["text"])
                 finally:
                     S["show_for"] = keep
-            if time.time() - last_check >= (min(every, 5) if SUPPORT["on"] else every):
+            if time.time() - last_check >= (min(every, 5) if SUPPORT["on"] or time.time() < FAST["until"] else every):
                 last_check = time.time()
                 data = pull(done, st)
                 done = []
