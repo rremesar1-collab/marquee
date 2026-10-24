@@ -64,6 +64,7 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 * A tip when names would scroll too fast to read on a screen big enough to show them still.
 * Put it in line: a test name goes in the queue like a kid's name (voice and all), for testing the names break from your computer.
 * Names script 3.10.0 (in the Marquee FPP plugin):
+  * The start of a names break is caught within a quarter second: checking in with your website and downloading spoken names happen in the background, and the break uses the names it already has instead of waiting on the internet.
   * A screen whose FPP is switched off or unplugged no longer delays every name (and Santa's voice) by several seconds: names go to all screens at once, and a screen that doesn't answer is skipped for a minute.
   * Spoken names are fetched as soon as they arrive, even before the show starts, so the first name isn't late.
   * A name running late skips its turn instead of two going up at once.

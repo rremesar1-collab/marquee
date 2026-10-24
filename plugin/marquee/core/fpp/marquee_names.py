@@ -38,6 +38,7 @@ import time
 import urllib.error
 import urllib.parse
 import socket
+import threading
 import urllib.request
 
 VERSION = "3.10.0"
@@ -250,6 +251,7 @@ def fpp_command(host, name, args, timeout=5):
 # ------------------------------------------------------------- website ----
 def pull(done_ids, st=None, report=None):
     """Ask the website for waiting names; report the ones already shown, what FPP is doing, and the setup check."""
+    t_start = time.time()
     url = str(S["site"]).rstrip("/") + "/wp-admin/admin-ajax.php?action=rr_names_pull&key=" + urllib.parse.quote(str(S["key"]))
     data = {"done": ",".join(str(i) for i in done_ids)} if done_ids else {"ping": "1"}
     if st is not None:
@@ -302,10 +304,12 @@ def pull(done_ids, st=None, report=None):
                 support_answer(sup)
             except Exception as e:
                 log("support view: could not send -", e)
-        THEMES.clear()
-        for t in res["data"].get("themes") or []:
-            if isinstance(t, dict) and t.get("slug") and t.get("playlist"):
-                THEMES[t["slug"]] = t
+        new = {t["slug"]: t for t in (res["data"].get("themes") or []) if isinstance(t, dict) and t.get("slug") and t.get("playlist")}
+        if new != THEMES:
+            THEMES.clear()
+            THEMES.update(new)
+        if t_start >= LATEST["t"]:
+            LATEST.update(data=res["data"], t=t_start)
     if isinstance(res["data"], dict) and res["data"].get("break"):
         try:
             sync_break(res["data"]["break"])
@@ -482,6 +486,8 @@ LAST = {"break": None}
 CHECK = {"want": "", "done": ""}           # a setup check the website asked for, or one owed after a settings change
 TESTS = {"want": None, "done": set(), "results": []}   # "Send a test name" from the website
 FAST = {"until": 0.0}
+LATEST = {"data": None, "t": 0.0}          # the newest answer from the website (when that check-in started)
+BG = {"thread": None, "result": None, "error": None, "done": [], "started": 0.0}
 
 
 def support_view():
@@ -1033,7 +1039,42 @@ def show(text, color):
 
 
 # --------------------------------------------------------------- break ----
-BRK = {"t0": 0.0}
+BRK = {"t0": 0.0, "end": 0.0}
+
+
+def bg_pull(done, st):
+    """Check in with the website in the background, and download the waiting names' voices, so the
+    FPP keeps watching the show (and catches the start of a names break) however slow the website is."""
+    if BG["thread"] is not None:
+        return False
+
+    def run():
+        try:
+            d = pull(done, st) or {}
+            if d.get("names") and not live():
+                prefetch(d["names"])
+            BG["result"] = d
+        except Exception as e:
+            BG["error"] = e
+    BG.update(result=None, error=None, done=list(done), started=time.time())
+    BG["thread"] = threading.Thread(target=run, daemon=True)
+    BG["thread"].start()
+    return True
+
+
+def bg_take():
+    """The finished background check-in's answer, or None while it's still going. A failed one hands back
+    the shown names it was reporting; an answer from before the last break ended is stale and dropped."""
+    t = BG["thread"]
+    if t is None or t.is_alive():
+        return None
+    BG["thread"] = None
+    if BG["error"] is not None:
+        log("problem checking in with the website:", BG["error"], "- trying again shortly")
+        return {"_failed": BG["done"]}
+    if BG["started"] < BRK["end"]:
+        return {}
+    return BG["result"] or {}
 
 
 def run_break(color):
@@ -1048,7 +1089,8 @@ def run_break(color):
 
 def _run_break(color):
     try:
-        data = pull([])
+        fresh = LATEST["data"] is not None and time.time() - LATEST["t"] < 90 and LATEST["t"] >= BRK["end"]
+        data = LATEST["data"] if fresh else pull([])      # the names we already have: no waiting on the internet
         st = master_status()
         theme = current_theme(st)
         everyone = data.get("names") or []
@@ -1492,26 +1534,35 @@ def main():
                     except Exception as e:
                         log("could not update the simple names break:", e)
             if in_break(st):
+                if BG["thread"] is not None:                  # don't wait for a check-in that's still going
+                    BG["thread"].join(0)
                 done += run_break(color)
+                BRK["end"] = time.time()
                 queued = False
-                pull(done)            # report what was shown
-                done = []
+                try:
+                    pull(done)            # report what was shown (the next break must not show them again)
+                    done = []
+                except Exception as e:
+                    log("could not tell the website which names were shown:", e, "- trying again shortly")
                 last_check = time.time()
                 continue
+            res = bg_take()
+            if res is not None and "_failed" in res:
+                done = res["_failed"] + done
+                res = None
             if status_name(st) != "playing":
                 queued = False
-                if done or time.time() - last_check >= (5 if SUPPORT["on"] or time.time() < FAST["until"] else 60):   # idle: once a minute (every 5 s while someone is setting up or in support)
-                    last_check = time.time()
-                    data = pull(done, st) or {}
-                    done = []
-                    waiting = len(data.get("names") or [])
-                    if waiting:
-                        prefetch(data.get("names") or [])      # spoken names ready before anyone starts the break
+                if res:
+                    waiting = len(res.get("names") or [])
                     if waiting and time.time() - idle_said >= 600:   # say why names wait, every 10 minutes at most
                         idle_said = time.time()
                         log("%d name(s) waiting, but FPP is '%s', not playing a playlist - names go up once your show playlist plays on this FPP"
                             % (waiting, status_name(st) or "?"))
-                time.sleep(5)
+                if done or time.time() - last_check >= (5 if SUPPORT["on"] or time.time() < FAST["until"] else 60):   # idle: once a minute (every 5 s while someone is setting up or in support)
+                    if bg_pull(done, st):
+                        last_check = time.time()
+                        done = []
+                time.sleep(0.5)          # watch closely: a names break started by hand is caught within half a second
                 continue
             adv = ADVISORY["now"]
             if adv and adv.get("text") and time.time() - ADVISORY["last"] >= float(adv.get("every") or 180):
@@ -1524,9 +1575,11 @@ def main():
                 finally:
                     S["show_for"] = keep
             if time.time() - last_check >= (min(every, 5) if SUPPORT["on"] or time.time() < FAST["until"] else every):
-                last_check = time.time()
-                data = pull(done, st)
-                done = []
+                if bg_pull(done, st):
+                    last_check = time.time()
+                    done = []
+            if res is not None:
+                data = res
                 color = data.get("color") or color
                 waiting = len(data.get("names") or [])
                 if waiting and not names_allowed(st):
@@ -1539,16 +1592,14 @@ def main():
                 if waiting and live():
                     shown = show_live(data.get("names") or [], color)
                     if shown:
-                        pull(shown, st)                   # tell the website right away
+                        done += shown                     # reported at the next check-in, right away
                     last_check = time.time() - every + 2  # check again soon for more
                     continue
-                if waiting:
-                    prefetch(data.get("names") or [])     # spoken names are ready before the break
                 if waiting and not queued:
                     pl = queue_break(data.get("names") or [])
                     queued = True
                     log("%d name(s) waiting - '%s' queued after the current song" % (waiting, pl))
-            time.sleep(1)
+            time.sleep(0.25 if queued else 1)   # a break is coming: catch its start within a quarter second
         except Exception as e:
             log("problem:", e, "- trying again shortly")
             time.sleep(every)
