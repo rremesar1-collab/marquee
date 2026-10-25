@@ -1,0 +1,231 @@
+/*
+ * Marquee Festive: the Christmas Village and Santa's North Pole looks.
+ * Loaded after style.css only when one of these looks is picked (Customize → Show Website → Look).
+ * Pictures are plain illustrations; every word on them is real page text.
+ */
+@font-face { font-family: "Fredoka"; font-style: normal; font-weight: 600; font-display: swap; src: url(../assets/fonts/fredoka-latin-600-normal.woff2) format("woff2"); }
+@font-face { font-family: "Fredoka"; font-style: normal; font-weight: 700; font-display: swap; src: url(../assets/fonts/fredoka-latin-700-normal.woff2) format("woff2"); }
+
+/* ---------- Colors for each look ---------- */
+body.rr-look--village {
+	--lk-page: radial-gradient(ellipse at 50% -10%, #1b3d86 0%, #0b1d4a 45%, #060f2a 100%);
+	--lk-gold: #e9d08f;
+	--lk-gold-soft: rgba(233, 208, 143, .45);
+	--lk-panel: linear-gradient(165deg, #183a7c 0%, #0d2252 55%, #081639 100%);
+	--lk-show: var(--lk-panel);
+	--lk-weather: var(--lk-panel);
+	--lk-sign: linear-gradient(165deg, #1b6a3c 0%, #0f4a28 60%, #0a3920 100%);
+	--lk-ruby: linear-gradient(180deg, #c4183a, #8c0d25);
+	--lk-menu: linear-gradient(180deg, #14306b, #0a1a42);
+	--lk-card: linear-gradient(110deg, #10285e 0%, #0b1d4a 60%, #0a3920 100%);
+	--lk-head: "Cinzel", "Libre Baskerville", Georgia, serif;
+	--lk-title: "Great Vibes", "Playball", cursive;
+	--lk-accent: #f3dfa6;
+}
+body.rr-look--northpole {
+	--lk-page: radial-gradient(ellipse at 50% -10%, #263f86 0%, #0e1b45 45%, #090f29 100%);
+	--lk-gold: #f4c95d;
+	--lk-gold-soft: rgba(244, 201, 93, .5);
+	--lk-panel: linear-gradient(165deg, #15306a 0%, #0c1d48 60%, #081434 100%);
+	--lk-show: linear-gradient(165deg, #9b1622 0%, #6e0d17 55%, #45070e 100%);
+	--lk-weather: var(--lk-panel);
+	--lk-sign: linear-gradient(165deg, #12663a 0%, #0b4a29 60%, #06331c 100%);
+	--lk-ruby: linear-gradient(180deg, #d81e30, #9a0e1c);
+	--lk-menu: linear-gradient(180deg, #a3121f, #6a0912);
+	--lk-card: linear-gradient(110deg, #7e0f1a 0%, #4f0910 55%, #0b4a29 100%);
+	--lk-head: "Fredoka", "Nunito Sans", Arial, sans-serif;
+	--lk-title: "Great Vibes", "Playball", cursive;
+	--lk-accent: #ffe08a;
+}
+
+/* ---------- Page ---------- */
+body.rr-look { background: #070f2a; }
+body.rr-look::before { background: var(--lk-page); }
+body.rr-look::after { /* faint stars */
+	background:
+		radial-gradient(1.4px 1.4px at 30px 40px, rgba(255, 255, 255, .8) 50%, transparent 51%) 0 0 / 230px 190px,
+		radial-gradient(1px 1px at 140px 110px, rgba(255, 245, 220, .7) 50%, transparent 51%) 0 0 / 230px 190px,
+		radial-gradient(1.2px 1.2px at 190px 20px, rgba(255, 255, 255, .6) 50%, transparent 51%) 0 0 / 230px 190px,
+		radial-gradient(ellipse at 50% 35%, transparent 35%, rgba(2, 6, 18, .5) 100%);
+}
+.rr-look .rr-main { padding-top: 26px; }
+
+/* ---------- Menu ---------- */
+.rr-look .rr-header { padding-top: 12px; }
+.rr-look .rr-menu {
+	margin: 0; padding: 4px 12px; border-radius: 999px; background: var(--lk-menu);
+	border: 2px solid var(--lk-gold); box-shadow: 0 6px 18px rgba(0, 0, 0, .5), inset 0 0 0 3px rgba(0, 0, 0, .25), inset 0 0 0 4px var(--lk-gold-soft);
+}
+.rr-look .rr-menu a { color: #fff7e3; }
+.rr-look .rr-menu a:hover, .rr-look .rr-menu a.is-active, .rr-look .rr-menu .current-menu-item > a { background: rgba(255, 255, 255, .12); color: var(--lk-accent); }
+
+/* ---------- Header picture with the show name ---------- */
+.rr-look .rr-hero--scene { max-width: 1280px; margin: 16px auto 0; padding: 0; }
+.rr-look .rr-scene {
+	position: relative; overflow: hidden; border-radius: 22px; aspect-ratio: 16 / 9;
+	border: 3px solid var(--lk-gold);
+	box-shadow: 0 0 0 5px rgba(5, 10, 30, .85), 0 0 0 6px var(--lk-gold-soft), 0 0 40px rgba(255, 200, 100, .25), 0 22px 50px rgba(0, 0, 0, .6);
+	background: #0b1d4a;
+}
+.rr-look .rr-scene__art, .rr-look .rr-scene__art img { display: block; width: 100%; height: 100%; }
+.rr-look .rr-scene__art img { object-fit: cover; object-position: 50% 30%; }
+.rr-look .rr-scene__title {
+	position: absolute; left: 50%; top: 24%; transform: translate(-50%, -50%); width: min(78%, 960px); text-align: center;
+}
+.rr-look .rr-scene__title::before { /* soft dark glow behind the name so it reads on any sky */
+	content: ""; position: absolute; inset: -18% -8%; z-index: -1; pointer-events: none;
+	background: radial-gradient(ellipse at 50% 50%, rgba(4, 10, 32, .62) 0%, rgba(4, 10, 32, .35) 45%, transparent 72%);
+}
+.rr-look .rr-scene .rr-logo { display: inline-block; text-decoration: none; }
+.rr-look .rr-scene .rr-logo img { max-height: 30vw; max-height: min(30vw, 300px); width: auto; filter: drop-shadow(0 4px 12px rgba(0, 0, 0, .7)); }
+.rr-look .rr-logo__text {
+	max-width: none; padding: 0 .3em .08em; font: 400 clamp(46px, 6.6vw, 108px)/1.05 var(--lk-title); color: var(--lk-accent);
+	background: linear-gradient(180deg, #fffbe8 10%, var(--lk-accent) 45%, #d9a43a 92%); -webkit-background-clip: text; background-clip: text; color: transparent;
+	filter: drop-shadow(0 0 1px rgba(60, 35, 0, .9)) drop-shadow(0 3px 4px rgba(0, 0, 0, .85)) drop-shadow(0 0 22px rgba(255, 200, 90, .45));
+	text-shadow: none;
+}
+.rr-look .rr-scene .rr-subtitle {
+	display: inline-block; margin: 6px 0 0; padding: 5px 16px; border-radius: 999px; font-size: clamp(12px, 1.1vw, 15px);
+	background: rgba(5, 12, 36, .6); border: 1px solid var(--lk-gold-soft); color: #fff4d6;
+}
+.rr-look .rr-hero--scene + * { margin-top: 0; }
+.rr-look .rr-hero--scene .rr-hero__text { margin: 18px auto 0; text-align: center; }
+.rr-look .rr-tagline { font-family: var(--lk-title); }
+.rr-look .rr-hero--small { padding-top: 10px; }
+.rr-look .rr-hero--small .rr-logo__text { font-size: clamp(38px, 5vw, 66px); }
+
+/* ---------- Boxes: gold frames, snow caps, a string of lights ---------- */
+.rr-look .rr-panel {
+	border: 2px solid var(--lk-gold); border-radius: 18px;
+	box-shadow: inset 0 0 0 4px rgba(0, 0, 0, .22), inset 0 0 0 5px var(--lk-gold-soft), 0 0 20px rgba(255, 205, 110, .16), 0 16px 36px rgba(0, 0, 0, .55);
+}
+.rr-look .rr-panel--blue, .rr-look .rr-panel--night { background: var(--lk-panel); backdrop-filter: none; }
+.rr-look .rr-panel--red { background: var(--lk-panel); }
+.rr-look--northpole .rr-panel--red { background: var(--lk-show); }
+.rr-look .rr-weather { background: var(--lk-weather); }
+.rr-look .rr-panel--green { background: var(--lk-sign); }
+.rr-look .rr-show::after, .rr-look .rr-weather::after, .rr-look .rr-donate::after, .rr-look .rr-social::after, .rr-look .rr-banner::after {
+	content: ""; position: absolute; left: 26px; right: 26px; top: 6px; height: 16px; pointer-events: none; opacity: 1;
+	background:
+		radial-gradient(circle at 50% 70%, #ffd86b 0 4px, transparent 5px) 0 0 / 64px 16px repeat-x,
+		radial-gradient(circle at 50% 70%, #ff4d5e 0 4px, transparent 5px) 16px 0 / 64px 16px repeat-x,
+		radial-gradient(circle at 50% 70%, #5fe38f 0 4px, transparent 5px) 32px 0 / 64px 16px repeat-x,
+		radial-gradient(circle at 50% 70%, #86baff 0 4px, transparent 5px) 48px 0 / 64px 16px repeat-x,
+		linear-gradient(rgba(20, 40, 20, .9), rgba(20, 40, 20, .9)) 0 6px / 100% 1.5px no-repeat;
+	filter: drop-shadow(0 0 4px rgba(255, 225, 140, .85));
+	animation: rr-lk-twinkle 3.2s ease-in-out infinite alternate;
+}
+@keyframes rr-lk-twinkle { from { opacity: .78; } to { opacity: 1; } }
+.rr-look .rr-show, .rr-look .rr-weather, .rr-look .rr-donate, .rr-look .rr-social { padding-top: 36px; }
+.rr-look .rr-h, .rr-look .rr-banner__title, .rr-look .rr-weather__city, .rr-look .rr-kids-teaser__text b {
+	font-family: var(--lk-head); color: var(--lk-accent); letter-spacing: .01em;
+}
+.rr-look--village .rr-h, .rr-look--village .rr-banner__title { letter-spacing: .03em; }
+
+/* ---------- Status sign ---------- */
+.rr-look .rr-banner { margin-top: 24px; padding: 30px 34px 22px; text-align: left; }
+.rr-look .rr-banner__title { font-size: clamp(22px, 2.4vw, 32px); }
+.rr-look .rr-banner__text { color: #eef6ea; }
+.rr-look .rr-banner--off, .rr-look .rr-banner--canceled { background: var(--lk-panel); }
+.rr-look .rr-banner--canceled { background: linear-gradient(165deg, #8d1218, #3a0508); }
+
+/* ---------- Buttons ---------- */
+.rr-look .rr-btn--red, .rr-look--village .rr-btn--blue {
+	background: var(--lk-ruby); border: 1px solid var(--lk-gold); color: #fff;
+	box-shadow: 0 0 0 2px rgba(0, 0, 0, .25), 0 6px 14px rgba(0, 0, 0, .4), 0 0 14px rgba(220, 30, 60, .35);
+}
+.rr-look--northpole .rr-btn--blue { background: linear-gradient(180deg, #1c3f8f, #102a66); border: 1px solid var(--lk-gold); }
+.rr-look .rr-kids-teaser__go { background: linear-gradient(180deg, #fff0bf, var(--lk-gold) 60%, #c9973a); color: #2b1600; }
+
+/* ---------- Home cards: Kids' Corner with its picture, Songs ---------- */
+.rr-look .rr-kids-teaser {
+	background: var(--lk-card); border: 2px solid var(--lk-gold);
+	box-shadow: inset 0 0 0 4px rgba(0, 0, 0, .2), inset 0 0 0 5px var(--lk-gold-soft), 0 12px 28px rgba(0, 0, 0, .45);
+}
+.rr-look .rr-kids-teaser--songs { background: var(--lk-panel); }
+body.rr-look .rr-kids-teaser__art {
+	display: block; flex: none; width: 116px; height: 116px; border-radius: 14px; overflow: hidden;
+	border: 2px solid var(--lk-gold); box-shadow: 0 4px 12px rgba(0, 0, 0, .5);
+	background: #0b1d4a center / contain no-repeat;
+}
+body.rr-look--village .rr-kids-teaser__art { background-image: url(village/kids.webp); }
+body.rr-look--northpole .rr-kids-teaser__art { background-image: url(northpole/kids.webp); }
+.rr-look .rr-kids-teaser:has(.rr-kids-teaser__art) .rr-kids-teaser__icon { display: none; }
+.rr-look .rr-explore--two .rr-kids-teaser { flex-wrap: nowrap; align-items: center; }
+.rr-look .rr-explore--two .rr-kids-teaser__go { display: none; } /* the whole card is the link; keeps two cards the same height */
+.rr-look .rr-explore--two .rr-kids-teaser__text::after { content: " \2192"; color: var(--lk-accent); font-weight: 800; }
+
+/* ---------- Donation box with the gift picture ---------- */
+.rr-look .rr-donate { grid-template-columns: auto 1fr auto; }
+body.rr-look .rr-donate__art {
+	display: block; width: 150px; height: 150px; border-radius: 14px; border: 2px solid var(--lk-gold);
+	background: #3b0609 center / contain no-repeat; box-shadow: 0 4px 12px rgba(0, 0, 0, .5);
+}
+body.rr-look--village .rr-donate__art { background-image: url(village/donation.webp); }
+body.rr-look--northpole .rr-donate__art { background-image: url(northpole/donation.webp); }
+
+/* ---------- "Your Name in Lights" sign on the home page ---------- */
+.rr-namesign {
+	position: relative; max-width: 1100px; margin: 34px auto 0; aspect-ratio: 3 / 2; border-radius: 20px; overflow: hidden;
+	border: 3px solid var(--lk-gold); background: #0b1d4a center / cover no-repeat;
+	box-shadow: 0 0 0 5px rgba(5, 10, 30, .85), 0 0 0 6px var(--lk-gold-soft), 0 20px 44px rgba(0, 0, 0, .55);
+	display: grid; place-items: center;
+}
+.rr-look--village .rr-namesign { background-image: image-set(url(village/names-background-small.webp) 1x, url(village/names-background.webp) 2x); }
+.rr-look--northpole .rr-namesign { background-image: image-set(url(northpole/names-background-small.webp) 1x, url(northpole/names-background.webp) 2x); }
+@media (min-width: 900px) {
+	.rr-look--village .rr-namesign { background-image: url(village/names-background.webp); }
+	.rr-look--northpole .rr-namesign { background-image: url(northpole/names-background.webp); }
+}
+.rr-namesign__board { /* sits on the empty wall / clearing in the picture */
+	width: 44%; margin-top: -4%; text-align: center; display: grid; justify-items: center; gap: 10px;
+}
+.rr-look--northpole .rr-namesign__board { margin-top: 0; padding: 18px 20px; border-radius: 16px; background: rgba(6, 12, 34, .55); }
+.rr-namesign__title { font: 400 clamp(30px, 3.6vw, 52px)/1.1 var(--lk-title); color: var(--lk-accent); text-shadow: 0 2px 4px rgba(0, 0, 0, .9), 0 0 16px rgba(255, 200, 90, .5); -webkit-text-stroke: 0; }
+.rr-namesign__led { /* LED name board: amber dots */
+	position: relative; margin: 0; width: 100%; padding: 12px 10px; border-radius: 10px; overflow: hidden;
+	background: #050505; border: 3px solid #2b2b2b; box-shadow: 0 0 0 2px var(--lk-gold-soft), inset 0 0 18px #000;
+	font: 800 clamp(20px, 2.6vw, 36px)/1 var(--f-body); letter-spacing: .12em; text-transform: uppercase; white-space: nowrap;
+	color: #ffd27a; text-shadow: 0 0 4px #ffb02e, 0 0 12px #ff9a1f, 0 0 22px rgba(255, 140, 20, .8);
+}
+.rr-namesign__led::after { /* dot grid over the letters */
+	content: ""; position: absolute; inset: 0; pointer-events: none;
+	background: radial-gradient(circle, transparent 1.5px, rgba(5, 5, 5, .85) 2.1px) 0 0 / 4px 4px;
+}
+.rr-namesign__text { margin: 0; font-size: clamp(14px, 1.3vw, 17px); font-weight: 700; color: #fff; text-shadow: 0 1px 3px #000, 0 0 10px #000; }
+
+/* ---------- Kids' Corner: name form on the picture ---------- */
+.rr-look .rr-kc__act#names { border-radius: 20px; padding: 20px; background: center / cover no-repeat; }
+.rr-look--village .rr-kc__act#names { background-image: linear-gradient(rgba(5, 12, 36, .35), rgba(5, 12, 36, .35)), url(village/names-background.webp); }
+.rr-look--northpole .rr-kc__act#names { background-image: linear-gradient(rgba(5, 12, 36, .3), rgba(5, 12, 36, .3)), url(northpole/names-background.webp); }
+
+/* ---------- Phones and tablets ---------- */
+@media (max-width: 860px) {
+	.rr-look .rr-hero--scene { margin-top: 12px; }
+	.rr-look .rr-scene { aspect-ratio: auto; border-radius: 18px; }
+	.rr-look .rr-scene__art, .rr-look .rr-scene__art img { height: auto; aspect-ratio: 3 / 2; }
+	.rr-look .rr-scene__title { /* whole picture first, the name just below it */
+		position: static; transform: none; width: auto; padding: 14px 14px 16px; background: var(--lk-panel);
+		border-top: 2px solid var(--lk-gold);
+	}
+	.rr-look .rr-scene__title::before { display: none; }
+	.rr-look .rr-logo__text { font-size: clamp(40px, 11vw, 64px); }
+	.rr-look .rr-scene .rr-subtitle { margin-top: 4px; }
+	.rr-look .rr-donate { grid-template-columns: 1fr; }
+	body.rr-look .rr-donate__art { width: 140px; height: 140px; }
+	.rr-look .rr-kids-teaser__art { width: 84px; height: 84px; }
+	.rr-namesign { aspect-ratio: auto; display: block; background-size: 100% auto; background-position: top center; padding-top: 66.6%; background-color: transparent; }
+	.rr-namesign__board, .rr-look--northpole .rr-namesign__board {
+		width: auto; margin: 0; padding: 18px 16px 20px; border-radius: 0; background: var(--lk-panel); border-top: 2px solid var(--lk-gold);
+	}
+	.rr-look .rr-kc__act#names { padding: 12px; }
+}
+@media (max-width: 480px) {
+	.rr-look .rr-kids-teaser { flex-wrap: wrap; }
+	.rr-look .rr-menu { border-radius: 18px; }
+}
+
+/* ---------- Less motion when the visitor asks for it ---------- */
+@media (prefers-reduced-motion: reduce) {
+	.rr-look .rr-show::after, .rr-look .rr-weather::after, .rr-look .rr-donate::after, .rr-look .rr-social::after, .rr-look .rr-banner::after { animation: none; }
+}

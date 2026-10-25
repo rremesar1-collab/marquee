@@ -196,6 +196,7 @@
 .mq-skin:not(#mq-0) .rr-tip h3 { margin: 6px 0 8px; font-size: 21px; color: var(--gold); }
 .mq-skin:not(#mq-0) .rr-tip p { font-size: 15.5px; color: #eef4ea; }
 .mq-skin:not(#mq-0) .rr-donate { display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; }
+.rr-donate__art, .rr-kids-teaser__art { display: none; }
 .mq-skin:not(#mq-0) .rr-donate p { margin: 10px 0 14px; font-size: 15px; color: #f6e2d8; }
 .mq-skin:not(#mq-0) .rr-qr { position: relative; width: 150px; height: 150px; padding: 8px; background: #fff; border-radius: 12px; }
 .mq-skin:not(#mq-0) .rr-qr img, .mq-skin:not(#mq-0) .rr-qr__gen, .mq-skin:not(#mq-0) .rr-qr__gen svg { display: block; width: 100% !important; height: 100% !important; }

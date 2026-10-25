@@ -14,6 +14,8 @@
 <?php wp_body_open(); ?>
 <a class="screen-reader-text skip-link" href="#main"><?php esc_html_e( 'Skip to content', 'ridgeroad' ); ?></a>
 
+<?php $rr_look = function_exists( 'ridgeroad_look' ) ? ridgeroad_look() : 'classic'; ?>
+<?php if ( 'classic' === $rr_look ) : ?>
 <div class="rr-side rr-side--left" aria-hidden="true"></div>
 <div class="rr-side rr-side--right" aria-hidden="true"></div>
 <div class="rr-frame" aria-hidden="true">
@@ -21,6 +23,7 @@
 	<img class="rr-bow rr-bow--left" src="<?php echo esc_url( ridgeroad_img( 'bow-left-v137.webp' ) ); ?>" alt="">
 	<img class="rr-bow rr-bow--right" src="<?php echo esc_url( ridgeroad_img( 'bow-right-v137.webp' ) ); ?>" alt="">
 </div>
+<?php endif; ?>
 
 <canvas class="rr-snow" aria-hidden="true"></canvas>
 
@@ -40,6 +43,11 @@
 		?>
 	</nav>
 
+	<?php if ( 'classic' !== $rr_look && is_front_page() ) : ?>
+	<div class="rr-hero rr-hero--scene">
+		<?php ridgeroad_look_hero(); ?>
+	</div>
+	<?php else : ?>
 	<div class="rr-hero<?php echo is_front_page() ? '' : ' rr-hero--small'; ?>">
 		<?php if ( is_front_page() ) : ?><h1 class="rr-logo-h"><?php endif; // the logo (its alt text, the show name) is the home page's main heading for Google ?>
 		<a class="rr-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
@@ -74,6 +82,7 @@
 		<?php endif; ?>
 		</div>
 	</div>
+	<?php endif; ?>
 </header>
 <div class="rr-scroll">
 <main id="main" class="rr-main">

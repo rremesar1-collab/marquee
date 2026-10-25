@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'RIDGEROAD_VERSION' ) ) {
-	define( 'RIDGEROAD_VERSION', '2.11.10' );
+	define( 'RIDGEROAD_VERSION', '2.12.0' );
 }
 // Show location: from Marquee → Settings (0,0 until the Marquee plugin is set up).
 $rr_mq = function_exists( 'marquee_get' ) ? marquee_get() : array();
@@ -42,6 +42,7 @@ if ( ! defined( 'MARQUEE_CORE' ) ) {
 	require get_template_directory() . '/inc/seo.php';
 	require get_template_directory() . '/inc/assets.php';
 }
+require get_template_directory() . '/looks/looks.php'; // Classic, Christmas Village, Santa's North Pole
 
 /*
  * Marquee Festive (the copy shared with other shows, marked by a .marquee-dist file):

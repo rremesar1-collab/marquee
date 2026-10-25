@@ -21,6 +21,7 @@ if ( $rr_kids || $rr_songs ) : ?>
 	<?php endif; ?>
 	<?php if ( $rr_kids ) : ?>
 	<a class="rr-kids-teaser" href="<?php echo esc_url( ridgeroad_kids_url() ); ?>">
+		<span class="rr-kids-teaser__art" aria-hidden="true"></span>
 		<span class="rr-kids-teaser__icon"><?php echo ridgeroad_cicon( 'gift' ); ?></span>
 		<span class="rr-kids-teaser__text"><b><?php echo esc_html( ridgeroad_mod( 'kids_title' ) ); ?></b> <?php
 			$rr_lab  = ridgeroad_mod( 'lab_on' );

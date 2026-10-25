@@ -21,6 +21,9 @@ ridgeroad_part( 'playlist' );
 ridgeroad_part( 'live-cam' );
 ridgeroad_part( 'visit' );
 ridgeroad_part( 'explore' );
+if ( function_exists( 'ridgeroad_look_names' ) ) {
+	ridgeroad_look_names(); // the looks add a "Your Name in Lights" sign
+}
 ridgeroad_part( 'showwall' );
 ridgeroad_part( 'stats' );
 ridgeroad_part( 'guestbook' );

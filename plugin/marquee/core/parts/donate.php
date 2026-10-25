@@ -10,6 +10,7 @@ extract( ridgeroad_home_ctx(), EXTR_SKIP ); // $status, $np, $wx, $opts, $b_titl
 ?>
 <?php if ( ridgeroad_mod( 'cashapp_url' ) ) : ?>
 	<section class="rr-panel rr-panel--red rr-donate">
+		<span class="rr-donate__art" aria-hidden="true"></span>
 		<div class="rr-donate__copy">
 			<h2 class="rr-h"><span class="rr-h__heart"><?php echo ridgeroad_cicon( 'heart' ); ?></span><?php echo esc_html( ridgeroad_mod( 'donate_title' ) ); ?></h2>
 			<p><?php echo esc_html( ridgeroad_mod( 'donate_text' ) ); ?></p>
