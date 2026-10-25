@@ -3,6 +3,7 @@
    FPP) show a picture instead. Plays by itself; Pause / Back / Next / Esc. */
 (function () {
 	'use strict';
+	var tr = function (s) { var d = window.rrI18n; return (d && d[s]) || s; };
 	var PER_STEP = 7000;
 	var ui = null, tour = null, i = 0, playing = true, timer = null, t0 = 0, raf = 0, target = null, ptr = { x: 0, y: 0 };
 
@@ -15,7 +16,7 @@
 			'<div class="mqt-xl__files"><b>Show folder</b><span>xlights_rgbeffects.xml</span><span class="is-hl">Names - Candy Cane Swirl.xsq</span><span>Names in Lights.xsq</span><span>marquee-break-full.wav</span></div></div>',
 		'xl-render': '<div class="mqt-xl"><div class="mqt-xl__bar"><span>File</span><span>Edit</span><span>View</span><span>Audio</span><span>Tools</span><span class="mqt-xl__icons"><i>▶</i><i>■</i><i class="is-hl" title="Render All">⟳ Render All</i><i class="is-hl2">💾 Save</i></span></div>' +
 			'<div class="mqt-xl__seq"><div class="mqt-xl__rows"><span>Mega Tree</span><span>Arches</span><span>Roofline</span><span>Matrix</span><span>TV</span></div><div class="mqt-xl__fx"><i style="left:8%;width:70%" class="r"></i><i style="left:8%;width:70%;top:22%" class="w"></i><i style="left:8%;width:70%;top:42%" class="r"></i><i style="left:0;width:100%;top:62%;opacity:.15"></i><i style="left:0;width:100%;top:82%;opacity:.15"></i><em></em></div></div>' +
-			'<p class="mqt-xl__note">Render All, play it, then Save → <b>.fseq</b></p></div>',
+			'<p class="mqt-xl__note">' + tr('Render All, play it, then Save → <b>.fseq</b>') + '</p></div>',
 		'xl-fppconnect': '<div class="mqt-xl mqt-xl--dlg"><div class="mqt-xl__title">FPP Connect</div><div class="mqt-xl__dlg"><div><b>FPP instances</b><label class="is-hl"><i>☑</i> FPP-Master</label><label><i>☐</i> FPP-TV</label></div>' +
 			'<div><b>Sequences</b><label class="is-hl"><i>☑</i> Names - Candy Cane Swirl</label><label class="is-hl"><i>☑</i> Names - Snowfall</label><label><i>☐</i> 2026 Intro</label></div></div><div class="mqt-xl__btns"><span>Cancel</span><span class="is-hl">Upload</span></div></div>'
 	};
@@ -23,9 +24,9 @@
 	function build() {
 		ui = document.createElement('div'); ui.className = 'mqt'; ui.setAttribute('role', 'dialog'); ui.setAttribute('aria-modal', 'false');
 		ui.innerHTML = '<div class="mqt__shade"></div><div class="mqt__spot"></div><div class="mqt__ptr" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M4 2l15 9-7 1.5L9 20z" fill="#fff" stroke="#1d2327" stroke-width="1.6" stroke-linejoin="round"/></svg><span class="mqt__ring"></span></div>' +
-			'<div class="mqt__card" tabindex="-1"><div class="mqt__top"><span class="mqt__count"></span><b class="mqt__name"></b><button type="button" class="mqt__x" aria-label="Close">×</button></div>' +
+			'<div class="mqt__card" tabindex="-1"><div class="mqt__top"><span class="mqt__count"></span><b class="mqt__name"></b><button type="button" class="mqt__x" aria-label="' + tr('Close') + '">×</button></div>' +
 			'<div class="mqt__pic"></div><h3 class="mqt__t"></h3><p class="mqt__x2"></p><div class="mqt__prog"><i></i></div>' +
-			'<div class="mqt__btns"><button type="button" class="button" data-t="back">◀ Back</button><button type="button" class="button" data-t="play">❚❚ Pause</button><button type="button" class="button button-primary" data-t="next">Next ▶</button></div></div>';
+			'<div class="mqt__btns"><button type="button" class="button" data-t="back">◀ ' + tr('Back') + '</button><button type="button" class="button" data-t="play">❚❚ ' + tr('Pause') + '</button><button type="button" class="button button-primary" data-t="next">' + tr('Next') + ' ▶</button></div></div>';
 		document.body.appendChild(ui);
 		ui.querySelector('.mqt__x').addEventListener('click', stop);
 		ui.querySelector('[data-t="back"]').addEventListener('click', function () { go(i - 1); });
@@ -37,7 +38,7 @@
 		});
 		window.addEventListener('resize', place); window.addEventListener('scroll', place, true);
 	}
-	function label() { ui.querySelector('[data-t="play"]').textContent = playing ? '❚❚ Pause' : '▶ Play'; }
+	function label() { ui.querySelector('[data-t="play"]').textContent = playing ? '❚❚ ' + tr('Pause') : '▶ ' + tr('Play'); }
 
 	/* Find the control: open its card (and the settings section it's in) first. */
 	function find(step) {
@@ -101,12 +102,12 @@
 		ui.querySelector('.mqt__t').textContent = s.t;
 		ui.querySelector('.mqt__x2').textContent = s.x;
 		ui.querySelector('[data-t="back"]').disabled = i === 0;
-		ui.querySelector('[data-t="next"]').textContent = i === tour.steps.length - 1 ? 'Done ✓' : 'Next ▶';
+		ui.querySelector('[data-t="next"]').textContent = i === tour.steps.length - 1 ? tr('Done') + ' ✓' : tr('Next') + ' ▶';
 		pic.innerHTML = '';
 		if (s.img) {
-			pic.innerHTML = '<div class="mqt__shot"><img alt="" src="' + esc(s.img) + '">' + (s.box || []).map(function (b) { return '<span class="mqt__box" style="left:' + b[0] + '%;top:' + b[1] + '%;width:' + b[2] + '%;height:' + b[3] + '%"></span>'; }).join('') + '</div><small>' + ({ rf: 'On remotefalcon.com', el: 'On elevenlabs.io' }[s.where] || 'On your FPP') + '</small>';
+			pic.innerHTML = '<div class="mqt__shot"><img alt="" src="' + esc(s.img) + '">' + (s.box || []).map(function (b) { return '<span class="mqt__box" style="left:' + b[0] + '%;top:' + b[1] + '%;width:' + b[2] + '%;height:' + b[3] + '%"></span>'; }).join('') + '</div><small>' + ({ rf: tr('On remotefalcon.com'), el: tr('On elevenlabs.io') }[s.where] || tr('On your FPP')) + '</small>';
 		} else if (s.art && ART[s.art]) {
-			pic.innerHTML = ART[s.art] + '<small>In xLights (picture)</small>';
+			pic.innerHTML = ART[s.art] + '<small>' + tr('In xLights (picture)') + '</small>';
 		}
 		ui.classList.toggle('has-pic', !!(s.img || s.art));
 		if (target) {

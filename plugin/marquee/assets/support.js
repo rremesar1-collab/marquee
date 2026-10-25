@@ -1,6 +1,7 @@
 /* Marquee → Get help: the support chat, session controls and the live FPP view. */
 (function () {
 	'use strict';
+	var tr = function (s) { var d = window.rrI18n; return (d && d[s]) || s; };
 	var C = window.MQSupport, root = document.querySelector('[data-mq-sup]');
 	if (!C || !root) { return; }
 	var $ = function (s) { return root.querySelector(s); };
@@ -17,8 +18,8 @@
 	function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
 	function who(w) {
 		if (w === 'system') { return ''; }
-		if (w === C.who) { return 'You'; }
-		return w === 'support' ? 'Marquee Support' : 'Show owner';
+		if (w === C.who) { return tr('You'); }
+		return w === 'support' ? tr('Marquee Support') : tr('Show owner');
 	}
 	function add(list) {
 		var atBottom = msgs.scrollHeight - msgs.scrollTop - msgs.clientHeight < 60;
@@ -29,7 +30,7 @@
 			li.className = 'mq-sup__m mq-sup__m--' + (m.who === 'system' ? 'sys' : (m.who === C.who ? 'me' : 'them'));
 			li.innerHTML = (who(m.who) ? '<b>' + esc(who(m.who)) + '</b>' : '') +
 				(m.text ? '<p>' + esc(m.text).replace(/\n/g, '<br>') + '</p>' : '') +
-				(m.img ? '<a href="' + esc(m.full) + '" target="_blank" rel="noopener"><img src="' + esc(m.img) + '" alt="Picture"></a>' : '') +
+				(m.img ? '<a href="' + esc(m.full) + '" target="_blank" rel="noopener"><img src="' + esc(m.img) + '" alt="' + esc(tr('Picture')) + '"></a>' : '') +
 				'<time>' + esc(m.time) + '</time>';
 			msgs.appendChild(li);
 		});
@@ -39,20 +40,20 @@
 		var box = $('[data-mq-sup-fpp]');
 		if (!box || !v) { return; }
 		var rows = [
-			['Status', v.status + (v.status && v.status !== 'playing' ? ' (names only go up while a playlist is playing)' : '')],
-			['Playlist', v.playlist], ['Sequence', v.sequence], ['Song', v.song],
-			['Names', v.mode === 'live' ? 'during songs' : 'between songs' + (v.break_playlist ? ' · break playlist: ' + v.break_playlist : '')],
-			['FPP', v.fpp_version], ['Names script', v.v + (v.plugin ? ' (Marquee plugin)' : ' (by hand)')], ['Checked in', v.ago + ' ago']
+			[tr('Status'), v.status + (v.status && v.status !== 'playing' ? ' ' + tr('(names only go up while a playlist is playing)') : '')],
+			[tr('Playlist'), v.playlist], [tr('Sequence'), v.sequence], [tr('Song'), v.song],
+			[tr('Names'), v.mode === 'live' ? tr('during songs') : tr('between songs') + (v.break_playlist ? ' · ' + tr('break playlist: %s').replace('%s', function () { return v.break_playlist; }) : '')],
+			['FPP', v.fpp_version], [tr('Names script'), v.v + ' ' + (v.plugin ? tr('(Marquee plugin)') : tr('(by hand)'))], [tr('Checked in'), v.ago ? tr('%s ago').replace('%s', function () { return v.ago; }) : v.ago + ' ago']
 		];
 		var h = '<dl>' + rows.filter(function (r) { return r[1]; }).map(function (r) { return '<dt>' + esc(r[0]) + '</dt><dd>' + esc(r[1]) + '</dd>'; }).join('') + '</dl>';
 		if (v.screens && v.screens.length) {
-			h += '<p><b>Screens</b></p><ul class="mq-sup__scr">' + v.screens.map(function (s) {
+			h += '<p><b>' + tr('Screens') + '</b></p><ul class="mq-sup__scr">' + v.screens.map(function (s) {
 				return '<li class="' + (s.ok ? 'is-ok' : 'is-bad') + '">' + (s.ok ? '✓ ' : '✗ ') + esc(s.name || s.model) + ' <small>' + esc([s.fpp, s.model, s.size].filter(Boolean).join(' · ')) + (s.error ? ' — ' + esc(s.error) : '') + '</small></li>';
 			}).join('') + '</ul>';
 		}
-		if (v.sequences && v.sequences.length) { h += '<details><summary>Sequences on the FPP (' + v.sequences.length + ')</summary><p>' + v.sequences.map(esc).join('<br>') + '</p></details>'; }
-		if (v.playlists && v.playlists.length) { h += '<details><summary>Playlists on the FPP (' + v.playlists.length + ')</summary><p>' + v.playlists.map(esc).join('<br>') + '</p></details>'; }
-		if (v.log && v.log.length) { h += '<details' + (C.who === 'support' ? ' open' : '') + '><summary>Names script log</summary><pre>' + v.log.map(esc).join('\n') + '</pre></details>'; }
+		if (v.sequences && v.sequences.length) { h += '<details><summary>' + tr('Sequences on the FPP (%s)').replace('%s', v.sequences.length) + '</summary><p>' + v.sequences.map(esc).join('<br>') + '</p></details>'; }
+		if (v.playlists && v.playlists.length) { h += '<details><summary>' + tr('Playlists on the FPP (%s)').replace('%s', v.playlists.length) + '</summary><p>' + v.playlists.map(esc).join('<br>') + '</p></details>'; }
+		if (v.log && v.log.length) { h += '<details' + (C.who === 'support' ? ' open' : '') + '><summary>' + tr('Names script log') + '</summary><pre>' + v.log.map(esc).join('\n') + '</pre></details>'; }
 		var open = Array.prototype.map.call(box.querySelectorAll('details'), function (d) { return d.open; });
 		box.innerHTML = h;
 		box.querySelectorAll('details').forEach(function (d, k) { if (open[k] !== undefined) { d.open = open[k]; } });
@@ -84,16 +85,16 @@
 	if (go) {
 		go.addEventListener('click', function () {
 			var t = $('[data-mq-sup-first]').value.trim(), err = $('[data-mq-sup-err]');
-			if (t.length < 5) { err.textContent = 'Please tell Marquee Support what’s wrong.'; return; }
-			go.disabled = true; err.textContent = 'Sending…';
+			if (t.length < 5) { err.textContent = tr('Please tell Marquee Support what’s wrong.'); return; }
+			go.disabled = true; err.textContent = tr('Sending…');
 			post('marquee_support_start', { message: t, access: $('[data-mq-sup-access]').checked ? 1 : '' }).then(function (r) {
-				if (!r.success) { go.disabled = false; err.textContent = (r.data && r.data.message) || 'Something went wrong. Please try again.'; return; }
+				if (!r.success) { go.disabled = false; err.textContent = (r.data && r.data.message) || tr('Something went wrong. Please try again.'); return; }
 				$('[data-mq-sup-start]').hidden = true;
 				msgs.innerHTML = ''; next = 0;
 				['[data-mq-sup-main]', '[data-mq-sup-form]', '[data-mq-sup-session]', '[data-mq-sup-fppcard]'].forEach(function (s) { var e = $(s); if (e) { e.hidden = false; } });
 				$('[data-mq-sup-ended]').hidden = true;
 				active = true; apply(r.data); poll();
-			}).catch(function () { go.disabled = false; err.textContent = 'Something went wrong. Please try again.'; });
+			}).catch(function () { go.disabled = false; err.textContent = tr('Something went wrong. Please try again.'); });
 		});
 	}
 
@@ -120,8 +121,8 @@
 			busy = true; form.classList.add('is-busy');
 			post('marquee_support_send', { text: t }, f).then(function (r) {
 				if (r.success) { text.value = ''; pic.value = ''; picname.textContent = ''; apply(r.data); }
-				else { window.alert((r.data && r.data.message) || 'That didn’t send. Please try again.'); }
-			}).catch(function () { window.alert('That didn’t send. Please try again.'); }).then(function () { busy = false; form.classList.remove('is-busy'); text.focus(); });
+				else { window.alert((r.data && r.data.message) || tr('That didn’t send. Please try again.')); }
+			}).catch(function () { window.alert(tr('That didn’t send. Please try again.')); }).then(function () { busy = false; form.classList.remove('is-busy'); text.focus(); });
 		});
 	}
 

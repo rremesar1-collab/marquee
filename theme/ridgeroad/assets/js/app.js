@@ -2,6 +2,7 @@
 (function () {
 	'use strict';
 	var C = window.RRApp || {};
+	var tr = function (s) { var d = window.rrI18n; return (d && d[s]) || s; };
 	var ua = navigator.userAgent || '';
 	var isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 	var isAndroid = /Android/i.test(ua);
@@ -72,10 +73,10 @@
 	}
 	function whyText(err) {
 		if (err && err.message === 'denied') {
-			return isIOS ? 'Alerts are turned off for this app. Turn them on in Settings > Notifications > ' + (C.short || 'this app') + '.' : 'Alerts are blocked for this website. Allow notifications in your browser’s site settings, then try again.';
+			return isIOS ? tr('Alerts are turned off for this app. Turn them on in Settings > Notifications > %s.').replace('%s', function () { return C.short || tr('this app'); }) : tr('Alerts are blocked for this website. Allow notifications in your browser’s site settings, then try again.');
 		}
-		if (err && err.message === 'unsupported') { return isIOS && !standalone ? 'On iPhone, add the app to your home screen first, then turn on alerts there.' : 'This browser can’t get alerts.'; }
-		return 'Something went wrong. Please try again.';
+		if (err && err.message === 'unsupported') { return isIOS && !standalone ? tr('On iPhone, add the app to your home screen first, then turn on alerts there.') : tr('This browser can’t get alerts.'); }
+		return tr('Something went wrong. Please try again.');
 	}
 
 	/* API for the Kids’ Corner name buzz */
@@ -96,26 +97,26 @@
 		share: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M8 7l4-4 4 4"/><path d="M6 11H5v10h14V11h-1"/></svg>',
 		add: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8v8M8 12h8"/></svg>',
 		menu: '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg>',
-		ok: '<b>Add</b>'
+		ok: '<b>' + tr('Add') + '</b>'
 	};
 	function steps() {
 		if (isIOS) {
 			var chrome = /CriOS/.test(ua), other = /FxiOS|EdgiOS|OPiOS/.test(ua);
 			return {
-				h: 'Add it to your iPhone',
+				h: tr('Add it to your iPhone'),
 				s: [
-					[chrome ? 'Tap the <b>Share</b> button at the top right, next to the address' : (other ? 'Tap your browser’s <b>Share</b> button (it may be in the menu)' : 'Tap the <b>Share</b> button in Safari (or tap <b>•••</b> first, then Share)'), 'share'],
-					['Scroll down and tap <b>Add to Home Screen</b>', 'add'],
-					['Tap <b>Add</b> in the top corner', 'ok']
+					[chrome ? tr('Tap the <b>Share</b> button at the top right, next to the address') : (other ? tr('Tap your browser’s <b>Share</b> button (it may be in the menu)') : tr('Tap the <b>Share</b> button in Safari (or tap <b>•••</b> first, then Share)')), 'share'],
+					[tr('Scroll down and tap <b>Add to Home Screen</b>'), 'add'],
+					[tr('Tap <b>Add</b> in the top corner'), 'ok']
 				]
 			};
 		}
 		return {
-			h: phone ? 'Add it to your phone' : 'Install it on this computer',
+			h: phone ? tr('Add it to your phone') : tr('Install it on this computer'),
 			s: [
-				['Tap your browser’s <b>menu</b> button (usually <b>⋮</b> at the top right)', 'menu'],
-				['Tap <b>Add to Home screen</b> or <b>Install app</b>', 'add'],
-				['Tap <b>Install</b> or <b>Add</b>', 'ok']
+				[tr('Tap your browser’s <b>menu</b> button (usually <b>⋮</b> at the top right)'), 'menu'],
+				[tr('Tap <b>Add to Home screen</b> or <b>Install app</b>'), 'add'],
+				[tr('Tap <b>Install</b> or <b>Add</b>'), 'ok']
 			]
 		};
 	}
@@ -179,7 +180,7 @@
 		part('install').hidden = true; part('alerts').hidden = false; card.hidden = false;
 		$c('[data-rr-app-new]').hidden = !!have;
 		$c('[data-rr-app-have]').hidden = !have;
-		$c('[data-rr-app-intro]').textContent = have ? 'Your alerts are on. Change what you get any time:' : 'Pick what you want. You can change it any time from the link at the bottom of the page.';
+		$c('[data-rr-app-intro]').textContent = have ? tr('Your alerts are on. Change what you get any time:') : tr('Pick what you want. You can change it any time from the link at the bottom of the page.');
 	}
 	var subbed = false;
 	function openAlertsSettings() {
@@ -200,7 +201,7 @@
 
 	function decide() {
 		if (standalone) {
-			if (link) { link.hidden = !canPush; link.textContent = 'Show alerts'; }
+			if (link) { link.hidden = !canPush; link.textContent = tr('Show alerts'); }
 			if (!card || !canPush || Notification.permission === 'denied') { return; }
 			currentSub().then(function (s) {
 				subbed = !!s;
@@ -226,17 +227,17 @@
 				b.setAttribute('aria-checked', String(b.getAttribute('aria-checked') !== 'true'));
 				if (!subbed) { return; }
 				var t = topics();
-				if (!t.start && !t.news) { msg('Both are off, so this phone won’t get show alerts. Tap Turn off all alerts to remove it.'); }
+				if (!t.start && !t.news) { msg(tr('Both are off, so this phone won’t get show alerts. Tap Turn off all alerts to remove it.')); }
 				currentSub().then(function (s) {
 					if (!s) { return; }
 					var d = fields(s); d.start = t.start ? '1' : '0'; d.news = t.news ? '1' : '0';
-					return post('rr_push_sub', d).then(function (j) { if (j && j.success && (t.start || t.news)) { msg('Saved.'); } });
-				}).catch(function () { msg('Could not save. Please try again.'); });
+					return post('rr_push_sub', d).then(function (j) { if (j && j.success && (t.start || t.news)) { msg(tr('Saved.')); } });
+				}).catch(function () { msg(tr('Could not save. Please try again.')); });
 			});
 		});
 		$c('[data-rr-app-on]').addEventListener('click', function () {
 			var t = topics(), btn = this;
-			if (!t.start && !t.news) { msg('Pick at least one.'); return; }
+			if (!t.start && !t.news) { msg(tr('Pick at least one.')); return; }
 			btn.disabled = true; msg('');
 			getSub().then(function (sub) {
 				var d = fields(sub); d.start = t.start ? '1' : '0'; d.news = t.news ? '1' : '0'; d.first = '1';
@@ -245,15 +246,15 @@
 				btn.disabled = false;
 				if (!j || !j.success) { throw new Error('server'); }
 				subbed = true; showAlerts(true);
-				msg('Alerts are on! We’ll only buzz you for what you picked.');
+				msg(tr('Alerts are on! We’ll only buzz you for what you picked.'));
 			}).catch(function (err) { btn.disabled = false; msg(whyText(err)); });
 		});
 		$c('[data-rr-app-off]').addEventListener('click', function () {
 			currentSub().then(function (s) {
 				if (!s) { return; }
 				return post('rr_push_unsub', { endpoint: s.endpoint }).then(function () { return s.unsubscribe(); });
-			}).then(function () { subbed = false; setTopics({ start: true, news: true }); showAlerts(false); msg('Alerts are off. This phone won’t get any more.'); })
-				.catch(function () { msg('Could not turn them off. Please try again.'); });
+			}).then(function () { subbed = false; setTopics({ start: true, news: true }); showAlerts(false); msg(tr('Alerts are off. This phone won’t get any more.')); })
+				.catch(function () { msg(tr('Could not turn them off. Please try again.')); });
 		});
 	}
 	if (link) {

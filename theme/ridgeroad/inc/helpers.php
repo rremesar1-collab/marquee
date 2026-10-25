@@ -86,7 +86,7 @@ if ( ! function_exists( 'ridgeroad_clock' ) ) {
 		if ( ! $t ) {
 			return $hm;
 		}
-		return $t->format( '00' === $t->format( 'i' ) ? 'g A' : 'g:i A' );
+		return $t->format( '00' === $t->format( 'i' ) ? __( 'g A', 'ridgeroad' ) : __( 'g:i A', 'ridgeroad' ) );
 	}
 }
 
@@ -182,9 +182,40 @@ if ( ! function_exists( 'ridgeroad_coloring_pages' ) ) {
 	}
 }
 
+if ( ! function_exists( 'ridgeroad_door_words' ) ) {
+	/**
+	 * Kids' Corner doors: the built-in pictures have English words painted on. On a site in another
+	 * language, use the same pictures without words and write the words on top as page text.
+	 * (A door picture the owner uploaded is used as is.)
+	 */
+	function ridgeroad_door_words( $key ) {
+		if ( 0 === strpos( determine_locale(), 'en' ) ) {
+			return false;
+		}
+		if ( ridgeroad_is_marquee() ) {
+			$d = (array) marquee_get( 'art_doors' );
+			if ( ! empty( $d[ $key ] ) && wp_get_attachment_image_url( (int) $d[ $key ], 'large' ) ) {
+				return false;
+			}
+		}
+		return true;
+	}
+}
+
+if ( ! function_exists( 'ridgeroad_door_title' ) ) {
+	/** A door's title on the picture; long ones get smaller letters so they fit above the button. */
+	function ridgeroad_door_title( $text ) {
+		$len = function_exists( 'mb_strlen' ) ? mb_strlen( $text ) : strlen( $text );
+		printf( '<b%s>%s</b>', $len > 26 ? ' class="is-longer"' : ( $len > 17 ? ' class="is-long"' : '' ), esc_html( $text ) );
+	}
+}
+
 if ( ! function_exists( 'ridgeroad_door_url' ) ) {
 	/** Kids' Corner door picture: the show's own upload (Marquee → Artwork), else the standard one. */
 	function ridgeroad_door_url( $key, $file ) {
+		if ( ridgeroad_door_words( $key ) ) {
+			return ridgeroad_asset_url( 'img/kids/' ) . str_replace( '.jpg', '-blank.jpg', $file ) . '?v=' . RIDGEROAD_VERSION;
+		}
 		if ( ridgeroad_is_marquee() ) {
 			$d = (array) marquee_get( 'art_doors' );
 			if ( ! empty( $d[ $key ] ) ) {

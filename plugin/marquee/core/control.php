@@ -132,7 +132,7 @@ function ridgeroad_control_page() {
 		<header class="rrc__hero">
 			<div class="rrc__hero-top">
 				<div>
-					<p class="rrc__eyebrow"><?php esc_html_e( 'Show Control', 'ridgeroad' ); ?> · <span data-rrc="today"><?php echo esc_html( wp_date( 'l, F j', null, ridgeroad_tz() ) ); ?></span></p>
+					<p class="rrc__eyebrow"><?php esc_html_e( 'Show Control', 'ridgeroad' ); ?> · <span data-rrc="today"><?php echo esc_html( wp_date( __( 'l, F j', 'ridgeroad' ), null, ridgeroad_tz() ) ); ?></span></p>
 					<p class="rrc__headline"><span data-rrc="show"></span></p>
 					<p class="rrc__headsub" data-rrc="show-sub"></p>
 				</div>
@@ -318,7 +318,7 @@ function ridgeroad_control_state() {
 
 	$waiting = array();
 	foreach ( ridgeroad_name_queue( 30 ) as $p ) {
-		$waiting[] = array( 'id' => $p->ID, 'text' => get_post_meta( $p->ID, '_rr_text', true ), 'time' => get_the_date( 'g:i A', $p ) );
+		$waiting[] = array( 'id' => $p->ID, 'text' => get_post_meta( $p->ID, '_rr_text', true ), 'time' => get_the_date( __( 'g:i A', 'ridgeroad' ), $p ) );
 	}
 	$shown = array();
 	$q     = get_posts( array(
@@ -331,7 +331,7 @@ function ridgeroad_control_state() {
 		'meta_query'  => array( array( 'key' => '_rr_shown', 'value' => 0, 'compare' => '>', 'type' => 'NUMERIC' ) ), // phpcs:ignore
 	) );
 	foreach ( $q as $p ) {
-		$shown[] = array( 'text' => get_post_meta( $p->ID, '_rr_text', true ), 'time' => wp_date( 'g:i A', (int) get_post_meta( $p->ID, '_rr_shown', true ) ) );
+		$shown[] = array( 'text' => get_post_meta( $p->ID, '_rr_text', true ), 'time' => wp_date( __( 'g:i A', 'ridgeroad' ), (int) get_post_meta( $p->ID, '_rr_shown', true ) ) );
 	}
 
 	$pending = array();
@@ -347,7 +347,7 @@ function ridgeroad_control_state() {
 	$gb = array();
 	if ( function_exists( 'ridgeroad_gb_wp' ) && ridgeroad_gb_wp() ) {
 		foreach ( get_comments( array( 'post_id' => (int) get_option( 'ridgeroad_gb_page' ), 'status' => 'hold', 'type' => 'comment', 'number' => 30, 'orderby' => 'comment_date_gmt', 'order' => 'ASC' ) ) as $c ) {
-			$gb[] = array( 'id' => (int) $c->comment_ID, 'name' => $c->comment_author, 'text' => wp_strip_all_tags( $c->comment_content ), 'when' => wp_date( 'M j, g:i A', strtotime( $c->comment_date_gmt . ' UTC' ), ridgeroad_tz() ) );
+			$gb[] = array( 'id' => (int) $c->comment_ID, 'name' => $c->comment_author, 'text' => wp_strip_all_tags( $c->comment_content ), 'when' => wp_date( __( 'M j, g:i A', 'ridgeroad' ), strtotime( $c->comment_date_gmt . ' UTC' ), ridgeroad_tz() ) );
 		}
 	}
 
@@ -376,7 +376,7 @@ function ridgeroad_control_state() {
 	ksort( $all );
 	$nights = array();
 	foreach ( array_slice( $all, -14, null, true ) as $d => $row ) {
-		$nights[] = array( wp_date( 'M j', strtotime( $d . ' 12:00' ), ridgeroad_tz() ), isset( $row['name_sent'] ) ? (int) $row['name_sent'] : 0 );
+		$nights[] = array( wp_date( __( 'M j', 'ridgeroad' ), strtotime( $d . ' 12:00' ), ridgeroad_tz() ), isset( $row['name_sent'] ) ? (int) $row['name_sent'] : 0 );
 	}
 	$top_song = '';
 	if ( function_exists( 'ridgeroad_votes_public' ) ) {
@@ -399,7 +399,7 @@ function ridgeroad_control_state() {
 		'traffic'  => array(
 			'now'     => ( function () {
 				$a = ridgeroad_advisory();
-				return $a ? array( 'kind' => $a['kind'], 'icon' => $a['icon'], 'title' => $a['title'], 'left' => human_time_diff( time(), (int) $a['until'] ), 'until' => wp_date( 'g:i A', (int) $a['until'], ridgeroad_tz() ), 'screens' => ! empty( $a['screens'] ) ) : null;
+				return $a ? array( 'kind' => $a['kind'], 'icon' => $a['icon'], 'title' => $a['title'], 'left' => human_time_diff( time(), (int) $a['until'] ), 'until' => wp_date( __( 'g:i A', 'ridgeroad' ), (int) $a['until'], ridgeroad_tz() ), 'screens' => ! empty( $a['screens'] ) ) : null;
 			} )(),
 			'presets' => array_map( function ( $p ) {
 				return array( 'icon' => $p['icon'], 'label' => $p['label'] );
@@ -453,7 +453,7 @@ function ridgeroad_control_state() {
 			'buzz'     => isset( $tn['buzz_sent'] ) ? (int) $tn['buzz_sent'] : 0,
 			'sent_on'  => get_option( 'ridgeroad_push_on_night' ) === $today,
 			'log'      => array_map( function ( $l ) {
-				return array( 'title' => $l['title'], 'body' => $l['body'], 'kind' => $l['kind'], 'sent' => (int) $l['sent'], 'failed' => (int) $l['failed'], 'when' => wp_date( 'M j, g:i A', (int) $l['t'], ridgeroad_tz() ) );
+				return array( 'title' => $l['title'], 'body' => $l['body'], 'kind' => $l['kind'], 'sent' => (int) $l['sent'], 'failed' => (int) $l['failed'], 'when' => wp_date( __( 'M j, g:i A', 'ridgeroad' ), (int) $l['t'], ridgeroad_tz() ) );
 			}, array_slice( (array) get_option( 'ridgeroad_push_log', array() ), 0, 6 ) ),
 		),
 	);

@@ -363,7 +363,7 @@ add_action( 'manage_rr_shoutout_posts_custom_column', function ( $col, $id ) {
 		echo esc_html( get_post_meta( $id, '_rr_text', true ) );
 	} elseif ( 'rr_shown' === $col ) {
 		$t = (int) get_post_meta( $id, '_rr_shown', true );
-		echo $t ? esc_html( sprintf( __( 'Shown at %s', 'ridgeroad' ), wp_date( 'g:i a', $t ) ) ) : esc_html__( 'Waiting', 'ridgeroad' );
+		echo $t ? esc_html( sprintf( __( 'Shown at %s', 'ridgeroad' ), wp_date( __( 'g:i a', 'ridgeroad' ), $t ) ) ) : esc_html__( 'Waiting', 'ridgeroad' );
 	}
 }, 10, 2 );
 add_filter( 'post_row_actions', function ( $a, $post ) {

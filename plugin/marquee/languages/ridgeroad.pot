@@ -1,0 +1,4580 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Marquee\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"X-Domain: ridgeroad\n"
+
+#: plugin/marquee/core/customizer.php:17 theme/ridgeroad/inc/customizer.php:17
+msgid "A Little Christmas Magic"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:18 theme/ridgeroad/inc/customizer.php:18
+msgid ""
+"Thousands of lights dancing to holiday music. Tune your car radio, sit back,"
+" and enjoy the show!"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:27 theme/ridgeroad/inc/customizer.php:27
+msgid "Sun – Thu"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:29 theme/ridgeroad/inc/customizer.php:29
+msgid "Fri – Sat"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:35 theme/ridgeroad/inc/customizer.php:35
+msgid "Show Planned as Scheduled"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:36 theme/ridgeroad/inc/customizer.php:36
+msgid ""
+"No weather cancellation announced. Please check back before traveling during"
+" severe weather."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:37 theme/ridgeroad/inc/customizer.php:37
+msgid "Tonight’s Show Is Canceled"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:38 theme/ridgeroad/inc/customizer.php:38
+msgid ""
+"Due to weather, the light show will not run tonight. Thank you for "
+"understanding — please check back tomorrow!"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:39 theme/ridgeroad/inc/customizer.php:39
+msgid "See You This Christmas Season"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:40 theme/ridgeroad/inc/customizer.php:40
+msgid "The show is resting for now. Check back for opening night!"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:49 theme/ridgeroad/inc/customizer.php:49
+msgid "Tonight’s Playlist"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:51 theme/ridgeroad/inc/customizer.php:51
+msgid "Please park on the shoulder and keep the road clear."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:55 theme/ridgeroad/inc/customizer.php:55
+msgid "Behind the Lights"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:56 theme/ridgeroad/inc/customizer.php:56
+msgid "Every song is programmed by hand, one light at a time."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:57 theme/ridgeroad/inc/customizer.php:57
+msgid "LED Pixels"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:58 theme/ridgeroad/inc/customizer.php:58
+msgid "Light-Up Props"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:59 theme/ridgeroad/inc/customizer.php:59
+msgid "Songs in the Show"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:60 theme/ridgeroad/inc/customizer.php:60
+msgid "Light Channels"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:61 theme/ridgeroad/inc/customizer.php:61
+msgid "Video Panels"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:62 theme/ridgeroad/inc/customizer.php:62
+msgid "FM — Tune In!"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:66
+#: plugin/marquee/core/customizer.php:253 plugin/marquee/core/control.php:174
+msgid "Kids’ Corner"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:69 theme/ridgeroad/inc/customizer.php:69
+msgid "This Year’s Show Videos"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:70 theme/ridgeroad/inc/customizer.php:70
+msgid "Watch every song from this year’s show, then come see it in person!"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:73 theme/ridgeroad/inc/customizer.php:73
+msgid "Vote for Your Favorite Song"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:74 theme/ridgeroad/inc/customizer.php:74
+msgid ""
+"Tap the heart on your favorite song in this year’s show. You can change your"
+" vote anytime!"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:78 theme/ridgeroad/inc/customizer.php:78
+msgid "We’ll play it to open the show tonight!"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:89 theme/ridgeroad/inc/customizer.php:89
+msgid "$25 gift card"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:90 theme/ridgeroad/inc/customizer.php:90
+msgid "Holiday treat bag"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:100
+#: theme/ridgeroad/inc/customizer.php:100
+msgid "Watch the Show Live"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:101
+#: theme/ridgeroad/inc/customizer.php:101
+msgid ""
+"Can’t make it out tonight? Watch the lights from home — turn up the volume!"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:103
+#: theme/ridgeroad/inc/customizer.php:103
+msgid "Before You Visit"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:105
+#: theme/ridgeroad/inc/customizer.php:105
+msgid "Park Safely"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:106
+#: theme/ridgeroad/inc/customizer.php:106
+msgid "Use a legal parking spot and keep the road open for passing traffic."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:108
+#: theme/ridgeroad/inc/customizer.php:108
+msgid "Headlights Off"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:109
+#: theme/ridgeroad/inc/customizer.php:109
+msgid ""
+"Once parked, turn off your headlights and leave parking or running lights "
+"on."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:111
+#: theme/ridgeroad/inc/customizer.php:111
+msgid "Respect Our Neighbors"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:112
+#: theme/ridgeroad/inc/customizer.php:112
+msgid "Please don’t block driveways or entrances. Keep noise considerate."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:114
+#: theme/ridgeroad/inc/customizer.php:114
+msgid "Enjoy the Memories"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:115
+#: theme/ridgeroad/inc/customizer.php:115
+msgid ""
+"Photos and videos are welcome. Stay in a safe spot while watching the show."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:117
+#: theme/ridgeroad/inc/customizer.php:117
+msgid "Keep the Magic Glowing"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:118
+#: theme/ridgeroad/inc/customizer.php:118
+msgid ""
+"Donations help maintain our synchronized Christmas display and add new "
+"surprises. They’re never required to enjoy the show."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:120
+#: theme/ridgeroad/inc/customizer.php:120
+msgid "Support via Cash App"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:123
+#: theme/ridgeroad/inc/customizer.php:123
+msgid "Stay Connected"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:124
+#: theme/ridgeroad/inc/customizer.php:124
+msgid "Follow us for weather updates, new songs, and show announcements."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:140
+#: theme/ridgeroad/inc/customizer.php:140
+msgid "A message from your family to ours"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:141
+#: theme/ridgeroad/inc/customizer.php:141
+msgid "Leave a Little Christmas Cheer"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:142
+#: theme/ridgeroad/inc/customizer.php:142
+msgid ""
+"Enjoyed the lights? We’d love to hear from you! Sign our guestbook and share"
+" a holiday message with our family."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:152
+#: theme/ridgeroad/inc/customizer.php:152
+msgid "Christmas %s"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:158
+#: theme/ridgeroad/inc/customizer.php:158
+msgid "Donate"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:159
+#: theme/ridgeroad/inc/customizer.php:159
+msgid ""
+"Donations help keep the lights on and add new surprises each year. They’re "
+"never required to enjoy the show."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:195
+#: plugin/marquee/core/customizer.php:332
+#: theme/ridgeroad/inc/customizer.php:195
+msgid "Christmas"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:195 plugin/marquee/core/i18n.php:24
+#: theme/ridgeroad/inc/customizer.php:195
+msgid "%d days until Christmas"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:195 plugin/marquee/core/i18n.php:25
+#: theme/ridgeroad/inc/customizer.php:195
+msgid "Christmas Eve is here!"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:195 plugin/marquee/core/i18n.php:26
+#: theme/ridgeroad/looks/looks.php:134
+msgid "Merry Christmas!"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:198
+#: plugin/marquee/core/customizer.php:332
+#: theme/ridgeroad/inc/customizer.php:198
+msgid "Halloween"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:198
+#: theme/ridgeroad/inc/customizer.php:198
+msgid "%d days until Halloween"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:198
+#: theme/ridgeroad/inc/customizer.php:198
+msgid "Halloween is tomorrow!"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:198
+#: theme/ridgeroad/inc/customizer.php:198
+msgid "Happy Halloween!"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:202
+#: theme/ridgeroad/inc/customizer.php:202
+msgid "%%d days until %s"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:202
+#: theme/ridgeroad/inc/customizer.php:202
+msgid "%s is tomorrow!"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:202
+#: theme/ridgeroad/inc/customizer.php:202
+msgid "It’s %s!"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:241
+#: theme/ridgeroad/inc/customizer.php:241
+msgid "Show Website"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:246
+#: theme/ridgeroad/inc/customizer.php:246
+msgid "Header & Intro"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:247
+#: theme/ridgeroad/inc/customizer.php:247
+msgid "Show Hours & Status"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:248 plugin/marquee/core/control.php:157
+#: theme/ridgeroad/inc/customizer.php:248
+msgid "Weather"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:249
+#: theme/ridgeroad/inc/customizer.php:249
+msgid "Live Camera (YouTube)"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:250
+#: theme/ridgeroad/inc/customizer.php:250
+msgid "Visitor Tips"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:251
+#: theme/ridgeroad/inc/customizer.php:251
+msgid "Songs Page: Show Videos"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:252
+#: theme/ridgeroad/inc/customizer.php:252
+msgid "Songs Page: Favorite Song Voting"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:254
+#: theme/ridgeroad/inc/customizer.php:254
+msgid "Behind the Lights (Stats)"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:255
+#: theme/ridgeroad/inc/customizer.php:255
+msgid "Donations & Social"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:256
+#: theme/ridgeroad/inc/customizer.php:256
+msgid "Guestbook"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:303
+#: theme/ridgeroad/inc/customizer.php:303
+msgid "Line under the logo"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:304
+#: theme/ridgeroad/inc/customizer.php:304
+msgid "Script tagline"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:305
+#: theme/ridgeroad/inc/customizer.php:305
+msgid "Intro sentence"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:306 plugin/marquee/core/control.php:194
+#: plugin/marquee/core/control.php:195
+msgid "Falling snow"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:306 plugin/marquee/core/i18n.php:168
+#: plugin/marquee/core/control.php:195
+msgid "Off"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:306
+#: theme/ridgeroad/inc/customizer.php:306
+msgid "Light flurries"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:306
+#: theme/ridgeroad/inc/customizer.php:306
+msgid "Gentle snowfall"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:306
+#: theme/ridgeroad/inc/customizer.php:306
+msgid "Snowstorm"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:307 plugin/marquee/core/control.php:196
+#: plugin/marquee/core/control.php:197
+msgid "Snowflake size"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:307 plugin/marquee/core/control.php:197
+#: theme/ridgeroad/inc/customizer.php:307
+msgid "Small"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:307 plugin/marquee/core/control.php:195
+#: plugin/marquee/core/control.php:197
+msgid "Medium"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:307 plugin/marquee/core/control.php:197
+#: theme/ridgeroad/inc/customizer.php:307
+msgid "Large"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:308
+#: theme/ridgeroad/inc/customizer.php:308
+msgid "Snow harder when it is really snowing at the show"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:309
+#: theme/ridgeroad/inc/customizer.php:309
+msgid "Background photo (optional)"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:309
+#: theme/ridgeroad/inc/customizer.php:309
+msgid ""
+"Replaces the built-in night forest. A wide night photo works best (2400px+)."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:312
+#: theme/ridgeroad/inc/customizer.php:312
+msgid "Radio frequency"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:313
+#: theme/ridgeroad/inc/customizer.php:313
+msgid "Share picture (optional)"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:313
+#: theme/ridgeroad/inc/customizer.php:313
+msgid ""
+"Shown when someone shares the website on Facebook or in a text. Best size "
+"1200 × 630. Leave empty to use the built-in picture."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:314
+#: theme/ridgeroad/inc/customizer.php:314
+msgid "Season opening night"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:315
+#: theme/ridgeroad/inc/customizer.php:315
+msgid "Season last night"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:316
+#: theme/ridgeroad/inc/customizer.php:316
+msgid "Weeknight label"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:317
+#: theme/ridgeroad/inc/customizer.php:317
+msgid "Sun–Thu end time"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:318
+#: theme/ridgeroad/inc/customizer.php:318
+msgid "Weekend label"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:319
+#: theme/ridgeroad/inc/customizer.php:319
+msgid "Fri–Sat end time"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:320
+#: theme/ridgeroad/inc/customizer.php:320
+msgid "Sun–Thu start time"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:321
+#: theme/ridgeroad/inc/customizer.php:321
+msgid "Fri–Sat start time"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:322
+#: theme/ridgeroad/inc/customizer.php:322
+msgid "Start at sunset instead of the times above"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:323
+#: theme/ridgeroad/inc/customizer.php:323
+msgid "Minutes after sunset the show starts (only when starting at sunset)"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:324
+#: theme/ridgeroad/inc/customizer.php:324
+msgid "Banner title — show on"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:325
+#: theme/ridgeroad/inc/customizer.php:325
+msgid "Banner text — show on"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:326
+#: theme/ridgeroad/inc/customizer.php:326
+msgid "Banner title — canceled"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:326
+#: theme/ridgeroad/inc/customizer.php:326
+msgid ""
+"Cancel the show from Show Control (Cancel tonight’s show). Its message "
+"replaces the text below when filled in."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:327
+#: theme/ridgeroad/inc/customizer.php:327
+msgid "Banner text — canceled"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:328
+#: theme/ridgeroad/inc/customizer.php:328
+msgid "Banner title — off season"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:329
+#: theme/ridgeroad/inc/customizer.php:329
+msgid "Banner text — off season"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:331
+#: theme/ridgeroad/inc/customizer.php:331
+msgid "Show the countdown clocks"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:332
+#: theme/ridgeroad/inc/customizer.php:332
+msgid "Count down to"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:332
+#: theme/ridgeroad/inc/customizer.php:332
+msgid ""
+"Automatic (Halloween if your last night is in August to October, otherwise "
+"Christmas)"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:332
+#: theme/ridgeroad/inc/customizer.php:332
+msgid "A date I pick"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:333
+#: theme/ridgeroad/inc/customizer.php:333
+msgid "Your date’s name (like New Year’s Eve)"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:333
+#: plugin/marquee/core/customizer.php:334
+#: theme/ridgeroad/inc/customizer.php:333
+msgid "For “A date I pick”."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:334
+#: theme/ridgeroad/inc/customizer.php:334
+msgid "Your date (the year doesn’t matter; it repeats every year)"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:335
+#: theme/ridgeroad/inc/customizer.php:335
+msgid ""
+"Remote Falcon viewer page (adds “Pick the next song” to Tonight’s Show)"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:335
+#: theme/ridgeroad/inc/customizer.php:335
+msgid ""
+"Like https://yourshow.remotefalcon.com. Visitors pick songs right on your "
+"website while the show is running (your Remote Falcon rules still apply). "
+"Leave empty to hide it."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:336
+#: theme/ridgeroad/inc/customizer.php:336
+msgid "Show the playlist section"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:337
+#: theme/ridgeroad/inc/customizer.php:337
+msgid "When to show the playlist"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:337
+#: theme/ridgeroad/inc/customizer.php:337
+msgid "Only while the show is running"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:337
+#: theme/ridgeroad/inc/customizer.php:337
+msgid "All season (hide off-season and canceled nights)"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:337
+#: theme/ridgeroad/inc/customizer.php:337
+msgid "Always"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:338
+#: theme/ridgeroad/inc/customizer.php:338
+msgid "Playlist title"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:339
+#: theme/ridgeroad/inc/customizer.php:339
+msgid "Show address (for the Get Directions button)"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:339
+#: theme/ridgeroad/inc/customizer.php:339
+msgid ""
+"A street address (123 Main St, Springfield, IL 62701), map coordinates "
+"(39.7817, -89.6501) or a Google Maps link. Coordinates take visitors to the "
+"exact spot. Leave empty to hide the button."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:340
+#: theme/ridgeroad/inc/customizer.php:340
+msgid "Parking note next to the button"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:343
+#: theme/ridgeroad/inc/customizer.php:343
+msgid "City name"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:344
+#: theme/ridgeroad/inc/customizer.php:344
+msgid "ZIP code"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:345
+#: theme/ridgeroad/inc/customizer.php:345
+msgid "Show live radar loop"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:346
+#: theme/ridgeroad/inc/customizer.php:346
+msgid "NWS radar station"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:346
+#: theme/ridgeroad/inc/customizer.php:346
+msgid "KHTX = Huntsville. Use KBMX for Birmingham."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:349
+#: theme/ridgeroad/inc/customizer.php:349
+msgid "YouTube channel or live video link"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:349
+#: theme/ridgeroad/inc/customizer.php:349
+msgid ""
+"Paste your channel link (youtube.com/channel/UC…) or channel ID — the "
+"section then always shows whatever you are streaming. A single live video "
+"link also works. Leave empty to hide the section."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:350
+#: plugin/marquee/core/customizer.php:355
+#: plugin/marquee/core/customizer.php:360
+msgid "Section title"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:351
+#: theme/ridgeroad/inc/customizer.php:351
+msgid "Text under the title"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:354
+#: theme/ridgeroad/inc/customizer.php:354
+msgid "Show the show videos (on the Songs & Videos page)"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:354
+#: theme/ridgeroad/inc/customizer.php:354
+msgid ""
+"Add your MP4 videos in WP Admin → My Sequences. They appear on the Songs & "
+"Videos page (yoursite.com/songs/), not the home page."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:356
+#: plugin/marquee/core/customizer.php:361
+#: plugin/marquee/core/customizer.php:398
+msgid "Line under the title"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:359
+#: theme/ridgeroad/inc/customizer.php:359
+msgid "Show favorite song voting (on the Songs & Videos page)"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:359
+#: theme/ridgeroad/inc/customizer.php:359
+msgid ""
+"See the votes on your WordPress Dashboard. You can clear all votes there to "
+"start a new season."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:362
+#: theme/ridgeroad/inc/customizer.php:362
+msgid "Where the song list comes from"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:363
+#: theme/ridgeroad/inc/customizer.php:363
+msgid "Remote Falcon (automatic, uses your sequence display names)"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:364
+#: theme/ridgeroad/inc/customizer.php:364
+msgid "My own list (below)"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:366
+#: theme/ridgeroad/inc/customizer.php:366
+msgid "My song list"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:366
+#: theme/ridgeroad/inc/customizer.php:366
+msgid ""
+"One song per line, like: Wizards in Winter — Trans-Siberian Orchestra. Start"
+" a line with * to mark it NEW this year."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:367
+#: theme/ridgeroad/inc/customizer.php:367
+msgid "Fan Favorite Friday (this week’s top song is featured every Friday)"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:368
+#: theme/ridgeroad/inc/customizer.php:368
+msgid "Fan Favorite Friday message"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:371
+#: theme/ridgeroad/inc/customizer.php:371
+msgid "Show the Kids’ Corner (elf names, coloring page, trivia)"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:372
+#: theme/ridgeroad/inc/customizer.php:372
+msgid "Make a Light Show (the Light Lab) in the Kids’ Corner"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:372
+#: theme/ridgeroad/inc/customizer.php:372
+msgid ""
+"Off hides it and the light show contest; the rest of the Kids’ Corner stays."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:374
+#: theme/ridgeroad/inc/customizer.php:374
+msgid ""
+"“Your Name in Lights”: kids send their name to your show’s screens (needs "
+"the FPP script)"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:377
+#: theme/ridgeroad/inc/customizer.php:377
+msgid ""
+"Put these two lines at the top of the FPP script: SITE = “%1$s” and KEY = "
+"“%2$s”. Keep the key private."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:382
+#: theme/ridgeroad/inc/customizer.php:382
+msgid ""
+"Accept names any time (for testing). Normally names are only accepted while "
+"the show is running."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:383
+#: theme/ridgeroad/inc/customizer.php:383
+msgid ""
+"Only at the show: names can only be sent from phones near your show (the "
+"phone shares its location; it is never saved)"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:384
+#: theme/ridgeroad/inc/customizer.php:384
+msgid "How close they must be (miles from the show)"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:384
+#: theme/ridgeroad/inc/customizer.php:384
+msgid ""
+"0.5 works for most shows. Phones can be off by a few hundred feet, so don’t "
+"go much smaller."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:385
+#: theme/ridgeroad/inc/customizer.php:385
+msgid "Name text color on the screens (like #FFD45C)"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:386
+#: theme/ridgeroad/inc/customizer.php:386
+msgid "Extra names or words to block (comma separated)"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:387
+#: theme/ridgeroad/inc/customizer.php:387
+msgid "Run the light show contest (entries, Show Wall and hearts)"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:387
+#: theme/ridgeroad/inc/customizer.php:387
+msgid ""
+"Review entries under Kids’ Light Shows in the WordPress menu. Nothing shows "
+"on the Show Wall until you publish it."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:388
+#: theme/ridgeroad/inc/customizer.php:388
+msgid "Show the newest kids’ shows on the home page (when the contest is on)"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:389
+#: theme/ridgeroad/inc/customizer.php:389
+msgid "Last day to enter and vote"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:390
+#: theme/ridgeroad/inc/customizer.php:390
+msgid "Judges’ Pick prize"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:391
+#: theme/ridgeroad/inc/customizer.php:391
+msgid "People’s Choice prize"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:392
+#: theme/ridgeroad/inc/customizer.php:392
+msgid "Winners pick up their prize by"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:393
+#: theme/ridgeroad/inc/customizer.php:393
+msgid "Email new entries to (empty = site admin email)"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:396
+#: theme/ridgeroad/inc/customizer.php:396
+msgid "Show the Behind the Lights section"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:401
+#: theme/ridgeroad/inc/customizer.php:401
+msgid "Stat %d number"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:401
+#: theme/ridgeroad/inc/customizer.php:401
+msgid "Leave empty to count the songs from Remote Falcon automatically."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:403
+#: theme/ridgeroad/inc/customizer.php:403
+msgid "Stat %d label (empty hides it)"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:405
+#: theme/ridgeroad/inc/customizer.php:405
+msgid "Stat %d icon"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:412
+#: theme/ridgeroad/inc/customizer.php:412
+msgid "Tip %d icon"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:414
+#: theme/ridgeroad/inc/customizer.php:414
+msgid "Tip %d title"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:416
+#: theme/ridgeroad/inc/customizer.php:416
+msgid "Tip %d text"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:420
+#: theme/ridgeroad/inc/customizer.php:420
+msgid "Donation title"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:421
+#: theme/ridgeroad/inc/customizer.php:421
+msgid "Donation text"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:422
+#: theme/ridgeroad/inc/customizer.php:422
+msgid "Cash App link"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:422
+#: theme/ridgeroad/inc/customizer.php:422
+msgid ""
+"e.g. https://cash.app/$YourCashtag — leave empty to hide the donation box."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:423
+#: theme/ridgeroad/inc/customizer.php:423
+msgid "Button text"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:424
+#: theme/ridgeroad/inc/customizer.php:424
+msgid "Cash App QR image (optional)"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:424
+#: theme/ridgeroad/inc/customizer.php:424
+msgid "If empty, a QR code is generated from the link automatically."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:425
+#: theme/ridgeroad/inc/customizer.php:425
+msgid "Social title"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:426
+#: theme/ridgeroad/inc/customizer.php:426
+msgid "Social text"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:427
+#: theme/ridgeroad/inc/customizer.php:427
+msgid "Hashtag for visitor photos (leave empty to hide)"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:428
+#: theme/ridgeroad/inc/customizer.php:428
+msgid "Show a “Share the Show” button"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:430
+#: theme/ridgeroad/inc/customizer.php:430
+msgid "Show the %s button"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:431
+#: theme/ridgeroad/inc/customizer.php:431
+msgid "%s link"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:433
+#: theme/ridgeroad/inc/customizer.php:433
+msgid "Guestbook link (menu)"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:433
+#: theme/ridgeroad/inc/customizer.php:433
+msgid "Leave empty to jump to the guestbook section on the home page."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:434
+#: theme/ridgeroad/inc/customizer.php:434
+msgid "Show the guestbook section"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:435
+#: theme/ridgeroad/inc/customizer.php:435
+msgid "Where messages are kept"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:436
+#: theme/ridgeroad/inc/customizer.php:436
+msgid "WordPress (I approve every message first)"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:436
+#: theme/ridgeroad/inc/customizer.php:436
+msgid "RF Page Builder (posts right away)"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:437
+#: theme/ridgeroad/inc/customizer.php:437
+msgid ""
+"With WordPress, new messages wait in Comments → Pending until you approve "
+"them."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:439
+#: theme/ridgeroad/inc/customizer.php:439
+msgid "Small line above the title"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:440
+#: theme/ridgeroad/inc/customizer.php:440
+msgid "Title"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:441
+#: theme/ridgeroad/inc/customizer.php:441
+msgid "Intro text"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:442
+#: theme/ridgeroad/inc/customizer.php:442
+msgid "Messages to show"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:443
+#: theme/ridgeroad/inc/customizer.php:443
+msgid "RF Page Builder site key"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:443
+#: theme/ridgeroad/inc/customizer.php:443
+msgid ""
+"From RF Page Builder: a key with dashes, like 1a2b3c4d-…. Leave empty to "
+"turn the guestbook off."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:444
+#: theme/ridgeroad/inc/customizer.php:444
+msgid "Footer text (optional)"
+msgstr ""
+
+#: plugin/marquee/core/shoutouts.php:44 plugin/marquee/core/shoutouts.php:46
+#: theme/ridgeroad/inc/shoutouts.php:44
+msgid "Kids’ Names"
+msgstr ""
+
+#: plugin/marquee/core/shoutouts.php:45 theme/ridgeroad/inc/shoutouts.php:45
+msgid "Kid’s Name"
+msgstr ""
+
+#: plugin/marquee/core/shoutouts.php:47 theme/ridgeroad/inc/shoutouts.php:47
+msgid "Names in Lights"
+msgstr ""
+
+#: plugin/marquee/core/shoutouts.php:48 theme/ridgeroad/inc/shoutouts.php:48
+msgid "No names yet."
+msgstr ""
+
+#: plugin/marquee/core/shoutouts.php:169 plugin/marquee/core/contest.php:393
+#: plugin/marquee/core/songs.php:177
+msgid "Please refresh the page and try again."
+msgstr ""
+
+#: plugin/marquee/core/shoutouts.php:175 theme/ridgeroad/inc/shoutouts.php:175
+msgid ""
+"Names can only be sent while the show is on. Come back during show time!"
+msgstr ""
+
+#: plugin/marquee/core/shoutouts.php:184 theme/ridgeroad/inc/shoutouts.php:184
+msgid ""
+"To send your name, let this page see your location when your phone asks. "
+"It’s only used to check you’re at the show."
+msgstr ""
+
+#: plugin/marquee/core/shoutouts.php:189 theme/ridgeroad/inc/shoutouts.php:189
+msgid ""
+"Your name can only go up in lights when you’re at the show. Come see us!"
+msgstr ""
+
+#: plugin/marquee/core/shoutouts.php:194 theme/ridgeroad/inc/shoutouts.php:194
+msgid ""
+"Hmm, Santa’s elves can’t put that one in lights. Please type just your first"
+" name."
+msgstr ""
+
+#: plugin/marquee/core/shoutouts.php:207 theme/ridgeroad/inc/shoutouts.php:207
+msgid ""
+"You already sent 3 names! Watch for them in the show. You can send more in a"
+" little while."
+msgstr ""
+
+#: plugin/marquee/core/shoutouts.php:207 theme/ridgeroad/inc/shoutouts.php:207
+msgid ""
+"You already sent 3 names! Watch for them on the garage door. You can send "
+"more in a little while."
+msgstr ""
+
+#: plugin/marquee/core/shoutouts.php:221 theme/ridgeroad/inc/shoutouts.php:221
+msgid "Lots of names right now! Please try again in a few minutes."
+msgstr ""
+
+#: plugin/marquee/core/shoutouts.php:225 plugin/marquee/core/i18n.php:50
+#: plugin/marquee/core/contest.php:123
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+#: plugin/marquee/core/shoutouts.php:359 theme/ridgeroad/inc/shoutouts.php:359
+msgid "Name"
+msgstr ""
+
+#: plugin/marquee/core/shoutouts.php:359 theme/ridgeroad/inc/shoutouts.php:359
+msgid "Shows as"
+msgstr ""
+
+#: plugin/marquee/core/shoutouts.php:359 theme/ridgeroad/inc/shoutouts.php:359
+msgid "On the screens"
+msgstr ""
+
+#: plugin/marquee/core/shoutouts.php:359 plugin/marquee/core/contest.php:430
+#: theme/ridgeroad/inc/shoutouts.php:359
+msgid "Sent"
+msgstr ""
+
+#: plugin/marquee/core/shoutouts.php:366 theme/ridgeroad/inc/shoutouts.php:366
+msgid "Shown at %s"
+msgstr ""
+
+#: plugin/marquee/core/shoutouts.php:366 theme/ridgeroad/inc/shoutouts.php:366
+msgid "g:i a"
+msgstr ""
+
+#: plugin/marquee/core/shoutouts.php:366 theme/ridgeroad/inc/shoutouts.php:366
+msgid "Waiting"
+msgstr ""
+
+#: plugin/marquee/core/shoutouts.php:371 theme/ridgeroad/inc/shoutouts.php:371
+msgid "Block"
+msgstr ""
+
+#: plugin/marquee/core/shoutouts.php:384 theme/ridgeroad/inc/shoutouts.php:384
+msgid ""
+"Names go up in the show automatically if they pass the word filter. Click "
+"“Block” under any name to stop it."
+msgstr ""
+
+#: plugin/marquee/core/shoutouts.php:384 theme/ridgeroad/inc/shoutouts.php:384
+msgid ""
+"Names go on the garage door and TV automatically if they pass the word "
+"filter. Click “Block” under any name to stop it."
+msgstr ""
+
+#: plugin/marquee/core/shoutouts.php:385 theme/ridgeroad/inc/shoutouts.php:385
+msgid "FPP last checked in %s ago."
+msgstr ""
+
+#: plugin/marquee/core/shoutouts.php:385 theme/ridgeroad/inc/shoutouts.php:385
+msgid "FPP has not checked in yet."
+msgstr ""
+
+#: plugin/marquee/core/shoutouts.php:386 theme/ridgeroad/inc/shoutouts.php:386
+msgid ""
+"Add words to block in Appearance → Customize → Show Website → Kids’ Corner."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:14 plugin/marquee/core/helpers.php:54
+#: theme/ridgeroad/inc/i18n.php:14
+msgid "Between songs — stay tuned!"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:15 plugin/marquee/core/helpers.php:58
+#: theme/ridgeroad/inc/i18n.php:15
+msgid "No show tonight"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:16 theme/ridgeroad/inc/i18n.php:16
+msgid "Come see the Christmas lights!"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:17 theme/ridgeroad/inc/i18n.php:17
+msgid "Link copied!"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:18 theme/ridgeroad/inc/i18n.php:18
+msgid "Live camera"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:19 theme/ridgeroad/inc/i18n.php:19
+msgid "Opening Night In"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:20 theme/ridgeroad/inc/i18n.php:20
+msgid "Lights On In"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:21 theme/ridgeroad/inc/i18n.php:21
+msgid "The Show Is On Right Now — Tune to %s!"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:22 theme/ridgeroad/inc/i18n.php:22
+msgid "The Show Is On Right Now!"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:23 theme/ridgeroad/inc/i18n.php:23
+msgid "Next Show In"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:27 theme/ridgeroad/inc/i18n.php:27
+msgid "Type your name first!"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:28 theme/ridgeroad/inc/i18n.php:28
+msgid "Your elf name is"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:29 theme/ridgeroad/inc/i18n.php:29
+msgid "All done!"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:30 theme/ridgeroad/inc/i18n.php:30
+msgid "Perfect! You got 5 out of 5 — you’re on the Nice List!"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:31 theme/ridgeroad/inc/i18n.php:31
+msgid "You got %s out of 5! Great job!"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:32 theme/ridgeroad/inc/i18n.php:32
+msgid "Play Again"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:33 theme/ridgeroad/inc/i18n.php:33
+msgid "Question %s of 5"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:34 theme/ridgeroad/inc/i18n.php:34
+msgid "That’s right!"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:35 theme/ridgeroad/inc/i18n.php:35
+msgid "Nice try! It’s “%s”."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:36 theme/ridgeroad/inc/i18n.php:36
+msgid "%s vote this week"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:37 theme/ridgeroad/inc/i18n.php:37
+msgid "%s votes this week"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:38 theme/ridgeroad/inc/i18n.php:38
+msgid "%s vote this season"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:39 theme/ridgeroad/inc/i18n.php:39
+msgid "%s votes this season"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:40 theme/ridgeroad/inc/i18n.php:40
+msgid "Your vote: <b>%s</b>. Tap another song to change it."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:41 plugin/marquee/core/parts/vote.php:31
+#: plugin/marquee/core/parts/vote.php:34
+msgid "It’s Fan Favorite Friday!"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:42 theme/ridgeroad/inc/i18n.php:42
+msgid "This week’s winner is <strong>%s</strong>."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:43 plugin/marquee/core/parts/vote.php:35
+#: theme/ridgeroad/parts/vote.php:35
+msgid "No votes yet this week. Vote now to pick next Friday’s favorite!"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:44 plugin/marquee/core/parts/vote.php:39
+#: theme/ridgeroad/parts/vote.php:39
+msgid "Fan Favorite Friday is tomorrow!"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:45 theme/ridgeroad/inc/i18n.php:45
+msgid "Fan Favorite Friday is in %s days"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:46 theme/ridgeroad/inc/i18n.php:46
+msgid "Leading this week: <strong>%s</strong>."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:47 plugin/marquee/core/parts/vote.php:41
+#: theme/ridgeroad/parts/vote.php:41
+msgid "The song with the most votes this week gets featured on Friday!"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:48 theme/ridgeroad/inc/i18n.php:48
+msgid "That’s already your favorite!"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:49 theme/ridgeroad/inc/i18n.php:49
+msgid "Thanks for voting!"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:51 theme/ridgeroad/inc/i18n.php:51
+msgid "We couldn’t reach the website. Please try again."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:52 theme/ridgeroad/inc/i18n.php:52
+msgid "“%s”"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:53 plugin/marquee/core/parts/kids-wall.php:18
+#: plugin/marquee/core/parts/kids-wall.php:24
+msgid "My Light Show"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:54 theme/ridgeroad/inc/i18n.php:54
+msgid "Song: %s"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:55 theme/ridgeroad/inc/i18n.php:55
+msgid "First make your light show in step 1."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:56 plugin/marquee/core/contest.php:133
+#: theme/ridgeroad/inc/i18n.php:56
+msgid "Please type your child’s first name."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:57 theme/ridgeroad/inc/i18n.php:57
+msgid "Please pick an age."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:58 theme/ridgeroad/inc/i18n.php:58
+msgid "Please enter a parent email so we can send your claim code."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:59 plugin/marquee/core/contest.php:142
+#: theme/ridgeroad/inc/i18n.php:59
+msgid "A parent or guardian needs to check the permission box."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:60 theme/ridgeroad/inc/i18n.php:60
+msgid "Sending your show…"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:61 theme/ridgeroad/inc/i18n.php:61
+msgid "Stop"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:62 plugin/marquee/core/parts/kids-wall.php:45
+#: theme/ridgeroad/parts/kids-wall.php:45
+msgid "Play"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:63 theme/ridgeroad/inc/i18n.php:63
+msgid "Light Show"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:64 theme/ridgeroad/inc/i18n.php:64
+msgid "by %s"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:65 theme/ridgeroad/inc/i18n.php:65
+msgid "NAME"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:66 theme/ridgeroad/inc/i18n.php:66
+msgid "That’s a long one! Names can have up to 14 letters."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:67 theme/ridgeroad/inc/i18n.php:67
+msgid "Please type just your first name (letters only)."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:68 theme/ridgeroad/inc/i18n.php:68
+msgid "Checking you’re at the show…"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:69 theme/ridgeroad/inc/i18n.php:69
+msgid "Sending to Santa’s elves…"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:70 theme/ridgeroad/inc/i18n.php:70
+msgid "Your name is already in line!"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:71 theme/ridgeroad/inc/i18n.php:71
+msgid "You’re next! Watch our screens: your name goes up in a minute."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:72 theme/ridgeroad/inc/i18n.php:72
+msgid ""
+"You’re #%s in line. Watch our screens: your name goes up in a few minutes."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:73 theme/ridgeroad/inc/i18n.php:73
+msgid "You’re next! Watch for your name in about %s songs."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:74 theme/ridgeroad/inc/i18n.php:74
+msgid "You’re #%1$s in line. Watch for your name in about %2$s songs."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:75 theme/ridgeroad/inc/i18n.php:75
+msgid "You’re next! Watch for your name after this song."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:76 theme/ridgeroad/inc/i18n.php:76
+msgid "You’re #%s in line. Watch for your name after this song."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:77 theme/ridgeroad/inc/i18n.php:77
+msgid "You’re #%s in line. Your name will show after a few songs."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:78 theme/ridgeroad/inc/i18n.php:78
+msgid ""
+"It goes up in %s (if lots of kids picked other shows, it may be one song "
+"later)."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:79 theme/ridgeroad/inc/i18n.php:79
+msgid ""
+"Names can only be sent from the show, so we need to see where your phone is."
+" Allow location for this website in your phone’s settings, then try again."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:80 theme/ridgeroad/inc/i18n.php:80
+msgid ""
+"We couldn’t find your location. Make sure Location is turned on, then try "
+"again."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:81 plugin/marquee/core/parts/kids-names.php:66
+#: theme/ridgeroad/parts/kids-names.php:66
+msgid "Want a buzz on this phone right before your name shows?"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:82 theme/ridgeroad/inc/i18n.php:82
+msgid "Okay! This phone will buzz when your name is up next."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:83 theme/ridgeroad/inc/i18n.php:83
+msgid ""
+"Alerts are turned off for this app. Turn them on in Settings > Notifications"
+" > %s."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:84 theme/ridgeroad/inc/i18n.php:84
+msgid "this app"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:85 theme/ridgeroad/inc/i18n.php:85
+msgid ""
+"Alerts are blocked for this website. Allow notifications in your browser’s "
+"site settings, then try again."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:86 theme/ridgeroad/inc/i18n.php:86
+msgid ""
+"On iPhone, add the app to your home screen first, then turn on alerts there."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:87 theme/ridgeroad/inc/i18n.php:87
+msgid "This browser can’t get alerts."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:88 theme/ridgeroad/inc/i18n.php:88
+msgid "Add"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:89 theme/ridgeroad/inc/i18n.php:89
+msgid "Add it to your iPhone"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:90 theme/ridgeroad/inc/i18n.php:90
+msgid "Tap the <b>Share</b> button at the top right, next to the address"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:91 theme/ridgeroad/inc/i18n.php:91
+msgid "Tap your browser’s <b>Share</b> button (it may be in the menu)"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:92 theme/ridgeroad/inc/i18n.php:92
+msgid ""
+"Tap the <b>Share</b> button in Safari (or tap <b>•••</b> first, then Share)"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:93 theme/ridgeroad/inc/i18n.php:93
+msgid "Scroll down and tap <b>Add to Home Screen</b>"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:94 theme/ridgeroad/inc/i18n.php:94
+msgid "Tap <b>Add</b> in the top corner"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:95 plugin/marquee/core/parts/app-sheet.php:12
+#: theme/ridgeroad/parts/app-sheet.php:12
+msgid "Add it to your phone"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:96 theme/ridgeroad/inc/i18n.php:96
+msgid "Install it on this computer"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:97 theme/ridgeroad/inc/i18n.php:97
+msgid ""
+"Tap your browser’s <b>menu</b> button (usually <b>⋮</b> at the top right)"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:98 theme/ridgeroad/inc/i18n.php:98
+msgid "Tap <b>Add to Home screen</b> or <b>Install app</b>"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:99 theme/ridgeroad/inc/i18n.php:99
+msgid "Tap <b>Install</b> or <b>Add</b>"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:100 theme/ridgeroad/inc/i18n.php:100
+msgid "Your alerts are on. Change what you get any time:"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:101 plugin/marquee/core/parts/app-card.php:31
+#: theme/ridgeroad/parts/app-card.php:31
+msgid ""
+"Pick what you want. You can change it any time from the link at the bottom "
+"of the page."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:102 theme/ridgeroad/inc/i18n.php:102
+msgid "Show alerts"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:103 theme/ridgeroad/inc/i18n.php:103
+msgid ""
+"Both are off, so this phone won’t get show alerts. Tap Turn off all alerts "
+"to remove it."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:104 theme/ridgeroad/inc/i18n.php:104
+msgid "Saved."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:105 theme/ridgeroad/inc/i18n.php:105
+msgid "Could not save. Please try again."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:106 theme/ridgeroad/inc/i18n.php:106
+msgid "Pick at least one."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:107 theme/ridgeroad/inc/i18n.php:107
+msgid "Alerts are on! We’ll only buzz you for what you picked."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:108 theme/ridgeroad/inc/i18n.php:108
+msgid "Alerts are off. This phone won’t get any more."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:109 theme/ridgeroad/inc/i18n.php:109
+msgid "Could not turn them off. Please try again."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:110 theme/ridgeroad/inc/i18n.php:110
+msgid "You already voted. Votes start over after the winning song plays."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:111 theme/ridgeroad/inc/i18n.php:111
+msgid "You already picked a song. You can pick another after yours plays."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:112 theme/ridgeroad/inc/i18n.php:112
+msgid "The line is full right now. Try again in a few minutes."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:113 theme/ridgeroad/inc/i18n.php:113
+msgid "You need to be at the show to pick songs."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:114 theme/ridgeroad/inc/i18n.php:114
+msgid "That song is playing or already in line. Pick another one!"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:115 theme/ridgeroad/inc/i18n.php:115
+msgid "Song picking isn’t available from this device."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:116 theme/ridgeroad/inc/i18n.php:116
+msgid "<b>Now playing:</b> %s"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:117 theme/ridgeroad/inc/i18n.php:117
+msgid "<b>In line:</b> %s"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:118 theme/ridgeroad/inc/i18n.php:118
+msgid "<b>Up next:</b> %s"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:119 theme/ridgeroad/inc/i18n.php:119
+msgid ""
+"Vote for the song you want next. The one with the most votes plays after "
+"this song."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:120 theme/ridgeroad/inc/i18n.php:120
+msgid "Pick a song and it gets in line to play."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:121 theme/ridgeroad/inc/i18n.php:121
+msgid "Song picking is off right now. Check back during the show!"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:122 theme/ridgeroad/inc/i18n.php:122
+msgid "%s vote"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:123 theme/ridgeroad/inc/i18n.php:123
+msgid "%s votes"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:124 theme/ridgeroad/functions.php:160
+#: theme/ridgeroad/inc/i18n.php:124
+msgid "Vote"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:125 theme/ridgeroad/inc/i18n.php:125
+msgid "Pick"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:126 theme/ridgeroad/inc/i18n.php:126
+msgid "No songs to pick yet."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:127 theme/ridgeroad/inc/i18n.php:127
+msgid "We couldn’t reach Remote Falcon. Try again in a minute."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:128 theme/ridgeroad/inc/i18n.php:128
+msgid "Checking that you’re at the show…"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:129 theme/ridgeroad/inc/i18n.php:129
+msgid "Thanks! Your vote is in."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:130 theme/ridgeroad/inc/i18n.php:130
+msgid "Got it! Your song is in line."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:131 theme/ridgeroad/inc/i18n.php:131
+msgid "Something went wrong. Try again."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:132 theme/ridgeroad/inc/i18n.php:132
+msgid "Loading the songs…"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:133 theme/ridgeroad/inc/i18n.php:133
+msgid "The Light Lab could not load. Please refresh the page."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:134 theme/ridgeroad/inc/i18n.php:134
+msgid "TUNE TO"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:135 theme/ridgeroad/inc/i18n.php:135
+msgid "Tap Play again to start the music."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:136 plugin/marquee/core/parts/kids-lab.php:22
+#: plugin/marquee/core/parts/kids-lab.php:50
+msgid "Play my show"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:137 theme/ridgeroad/inc/i18n.php:137
+msgid "whole house"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:138 theme/ridgeroad/inc/i18n.php:138
+msgid "Saved on this device!"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:139 theme/ridgeroad/inc/i18n.php:139
+msgid "Could not save on this device."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:140 theme/ridgeroad/inc/i18n.php:140
+msgid ""
+"What should we light up? Tap a decoration on the house, or pick one here!"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:141 theme/ridgeroad/inc/i18n.php:141
+msgid "How should the whole house light up in the %s of the song?"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:142 theme/ridgeroad/inc/i18n.php:142
+msgid "How should the %1$s light up in the %2$s of the song?"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:143 theme/ridgeroad/inc/i18n.php:143
+msgid "How should the whole house light up?"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:144 theme/ridgeroad/inc/i18n.php:144
+msgid "How should the %s light up?"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:145 theme/ridgeroad/inc/i18n.php:145
+msgid "What color should the whole house be?"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:146 theme/ridgeroad/inc/i18n.php:146
+msgid "What color should the %s be?"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:147 theme/ridgeroad/inc/i18n.php:147
+msgid "The whole house looks great!"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:148 theme/ridgeroad/inc/i18n.php:148
+msgid "Your %s looks great!"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:149 theme/ridgeroad/inc/i18n.php:149
+msgid "Light up something else, or play your show!"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:150 theme/ridgeroad/inc/i18n.php:150
+msgid "Tap it on the house"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:151 theme/ridgeroad/inc/i18n.php:151
+msgid "Twinkle, chase and more"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:152 theme/ridgeroad/inc/i18n.php:152
+msgid "Not needed"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:153 theme/ridgeroad/inc/i18n.php:153
+msgid "Red, green, blue…"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:154 theme/ridgeroad/inc/i18n.php:154
+msgid "Changing: %s"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:155 theme/ridgeroad/inc/i18n.php:155
+msgid "a young light designer"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:156 theme/ridgeroad/inc/i18n.php:156
+msgid "has not checked in yet"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:157 theme/ridgeroad/inc/i18n.php:157
+msgid "checked in %s sec ago"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:158 theme/ridgeroad/inc/i18n.php:158
+msgid "checked in %s min ago"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:159 theme/ridgeroad/inc/i18n.php:159
+msgid "last checked in %s h ago"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:160 theme/ridgeroad/inc/i18n.php:160
+msgid "Undo: the show is on"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:161 plugin/marquee/core/control.php:142
+#: theme/ridgeroad/inc/i18n.php:161
+msgid "Cancel tonight"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:162 theme/ridgeroad/inc/i18n.php:162
+msgid "Resume names"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:163 plugin/marquee/core/control.php:145
+#: theme/ridgeroad/inc/i18n.php:163
+msgid "Pause names"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:164 theme/ridgeroad/inc/i18n.php:164
+msgid "Not connected"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:165 theme/ridgeroad/inc/i18n.php:165
+msgid "Not checking in"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:166 theme/ridgeroad/inc/i18n.php:166
+msgid "Playing"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:167 theme/ridgeroad/inc/i18n.php:167
+msgid "Idle"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:169 theme/ridgeroad/inc/i18n.php:169
+msgid "Paused"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:170 theme/ridgeroad/inc/i18n.php:170
+msgid "Open"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:171 theme/ridgeroad/inc/i18n.php:171
+msgid "Closed"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:172 theme/ridgeroad/inc/i18n.php:172
+msgid "%s waiting"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:173 theme/ridgeroad/inc/i18n.php:173
+msgid "Names wait until you un-pause"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:174 theme/ridgeroad/inc/i18n.php:174
+msgid "Next break in about %s songs"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:175 theme/ridgeroad/inc/i18n.php:175
+msgid "Next break after the current song"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:176 theme/ridgeroad/inc/i18n.php:176
+msgid "Opens when the show starts"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:177 theme/ridgeroad/inc/i18n.php:177
+msgid "%s person"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:178 theme/ridgeroad/inc/i18n.php:178
+msgid "%s people"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:179 theme/ridgeroad/inc/i18n.php:179
+msgid "%s in the Kids’ Corner"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:180 theme/ridgeroad/inc/i18n.php:180
+msgid "No names waiting."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:181 theme/ridgeroad/inc/i18n.php:181
+msgid "sent %s"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:182 plugin/marquee/core/sequences.php:60
+#: theme/ridgeroad/inc/i18n.php:182
+msgid "Remove"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:183 theme/ridgeroad/inc/i18n.php:183
+msgid "Removed"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:184 theme/ridgeroad/inc/i18n.php:184
+msgid "Block word"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:185 theme/ridgeroad/inc/i18n.php:185
+msgid "Removed and blocked"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:186 theme/ridgeroad/inc/i18n.php:186
+msgid "Nothing shown yet."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:187 theme/ridgeroad/inc/i18n.php:187
+msgid "Closes %s"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:188 theme/ridgeroad/inc/i18n.php:188
+msgid "%s entry"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:189 theme/ridgeroad/inc/i18n.php:189
+msgid "%s entries"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:190 theme/ridgeroad/inc/i18n.php:190
+msgid "All caught up."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:191 theme/ridgeroad/inc/i18n.php:191
+msgid "%1$s, age %2$s"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:192 plugin/marquee/core/parts/explore.php:19
+#: theme/ridgeroad/parts/explore.php:19
+msgid "Watch"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:193 theme/ridgeroad/inc/i18n.php:193
+msgid "Approve"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:194 theme/ridgeroad/inc/i18n.php:194
+msgid "Approved: now on the Show Wall"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:195 theme/ridgeroad/inc/i18n.php:195
+msgid "Decline"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:196 theme/ridgeroad/inc/i18n.php:196
+msgid "Declined"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:197 theme/ridgeroad/inc/i18n.php:197
+msgid "No shows on the Show Wall yet."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:198 theme/ridgeroad/inc/i18n.php:198
+msgid "Up to %s% chance of rain during the show"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:199 theme/ridgeroad/inc/i18n.php:199
+msgid "No rain expected during the show"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:200 theme/ridgeroad/inc/i18n.php:200
+msgid "Weather isn’t available"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:201 theme/ridgeroad/inc/i18n.php:201
+msgid "Connected"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:202 theme/ridgeroad/inc/i18n.php:202
+msgid "%s posted this season"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:203 theme/ridgeroad/inc/i18n.php:203
+msgid "Not set up"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:204 theme/ridgeroad/inc/i18n.php:204
+msgid "Post cancellations for you"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:205 theme/ridgeroad/inc/i18n.php:205
+msgid "%1$s get news · %2$s get “lights on”"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:206 theme/ridgeroad/inc/i18n.php:206
+msgid "Posting to %s"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:207 theme/ridgeroad/inc/i18n.php:207
+msgid "Not set up yet"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:208 theme/ridgeroad/inc/i18n.php:208
+msgid "Posts this season"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:209 theme/ridgeroad/inc/i18n.php:209
+msgid "Posted tonight"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:210 theme/ridgeroad/inc/i18n.php:210
+msgid "none yet"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:211 theme/ridgeroad/inc/i18n.php:211
+msgid "Nothing posted yet. Posts go out when you cancel the show."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:212 theme/ridgeroad/inc/i18n.php:212
+msgid "Nothing posted yet."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:213 theme/ridgeroad/inc/i18n.php:213
+msgid "Back on"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:214 plugin/marquee/core/control.php:304
+#: theme/ridgeroad/inc/i18n.php:214
+msgid "Canceled"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:215 theme/ridgeroad/inc/i18n.php:215
+msgid "View"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:216 theme/ridgeroad/inc/i18n.php:216
+msgid ""
+"When you cancel, Marquee can post it on Facebook, Instagram and Threads."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:217 theme/ridgeroad/inc/i18n.php:217
+msgid "Set it up"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:218 theme/ridgeroad/inc/i18n.php:218
+msgid "On your website until %1$s (%2$s left)"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:219 theme/ridgeroad/inc/i18n.php:219
+msgid "on your screens too"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:220 theme/ridgeroad/inc/i18n.php:220
+msgid "Turn it off"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:221 theme/ridgeroad/inc/i18n.php:221
+msgid "Traffic alert off"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:222 theme/ridgeroad/inc/i18n.php:222
+msgid "On now: %s"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:223 theme/ridgeroad/inc/i18n.php:223
+msgid "Nothing posted"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:224 theme/ridgeroad/inc/i18n.php:224
+msgid "Also send a phone alert to %s phone"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:225 theme/ridgeroad/inc/i18n.php:225
+msgid "Also send a phone alert to %s phones"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:226 theme/ridgeroad/inc/i18n.php:226
+msgid "Updated just now"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:227 theme/ridgeroad/inc/i18n.php:227
+msgid "Updated %s sec ago"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:228 theme/ridgeroad/inc/i18n.php:228
+msgid "Posting on social media…"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:229 theme/ridgeroad/inc/i18n.php:229
+msgid "Copy the post for other sites (Nextdoor, groups…)"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:230 theme/ridgeroad/inc/i18n.php:230
+msgid "Copied!"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:231 theme/ridgeroad/inc/i18n.php:231
+msgid "App installs"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:232 theme/ridgeroad/inc/i18n.php:232
+msgid "this season"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:233 theme/ridgeroad/inc/i18n.php:233
+msgid "Getting alerts"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:234 theme/ridgeroad/inc/i18n.php:234
+msgid "%1$s lights-on · %2$s news"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:235 theme/ridgeroad/inc/i18n.php:235
+msgid "Name buzzes"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:236 theme/ridgeroad/inc/i18n.php:236
+msgid "tonight"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:237 theme/ridgeroad/inc/i18n.php:237
+msgid "%s app open tonight"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:238 theme/ridgeroad/inc/i18n.php:238
+msgid "%s app opens tonight"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:239 theme/ridgeroad/inc/i18n.php:239
+msgid "Alerts can’t be sent: this server’s PHP is missing OpenSSL features"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:240 theme/ridgeroad/inc/i18n.php:240
+msgid "Sent tonight when the show started"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:241 theme/ridgeroad/inc/i18n.php:241
+msgid "Sent automatically once a night when FPP starts the show playlist"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:242 theme/ridgeroad/inc/i18n.php:242
+msgid "Goes to 1 phone that chose “special news”."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:243 theme/ridgeroad/inc/i18n.php:243
+msgid "Goes to the %s phones that chose “special news”."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:244 theme/ridgeroad/inc/i18n.php:244
+msgid "Also send a “No show tonight” alert to %s phone"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:245 theme/ridgeroad/inc/i18n.php:245
+msgid "Also send a “No show tonight” alert to %s phones"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:246 theme/ridgeroad/inc/i18n.php:246
+msgid "Automatic"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:247 theme/ridgeroad/inc/i18n.php:247
+msgid "From “Cancel tonight’s show”"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:248 theme/ridgeroad/inc/i18n.php:248
+msgid "Sent by you"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:249 plugin/marquee/core/control.php:143
+#: theme/ridgeroad/inc/i18n.php:249
+msgid "Traffic alert"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:250 theme/ridgeroad/inc/i18n.php:250
+msgid "No alerts sent yet."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:251 theme/ridgeroad/inc/i18n.php:251
+msgid "%s sent"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:252 theme/ridgeroad/inc/i18n.php:252
+msgid "%s failed"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:253 theme/ridgeroad/inc/i18n.php:253
+msgid "avg %s of 5 right"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:254 theme/ridgeroad/inc/i18n.php:254
+msgid "Names sent"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:255 theme/ridgeroad/inc/i18n.php:255
+msgid "%s shown"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:256 theme/ridgeroad/inc/i18n.php:256
+msgid "Light shows played"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:257 theme/ridgeroad/inc/i18n.php:257
+msgid "Play pressed in the Light Lab"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:258 theme/ridgeroad/inc/i18n.php:258
+msgid "Contest entries"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:259 theme/ridgeroad/inc/i18n.php:259
+msgid "Hearts given"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:260 theme/ridgeroad/inc/i18n.php:260
+msgid "Song votes"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:261 theme/ridgeroad/inc/i18n.php:261
+msgid "Top: %s"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:262 theme/ridgeroad/inc/i18n.php:262
+msgid "Elf names"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:263 theme/ridgeroad/inc/i18n.php:263
+msgid "Trivia games"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:264 theme/ridgeroad/inc/i18n.php:264
+msgid "Coloring pages"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:265 theme/ridgeroad/inc/i18n.php:265
+msgid "opened to print"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:266 theme/ridgeroad/inc/i18n.php:266
+msgid "Kids’ Corner visits"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:267 theme/ridgeroad/inc/i18n.php:267
+msgid "Website visits"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:268 theme/ridgeroad/inc/i18n.php:268
+msgid "Names said out loud"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:269 theme/ridgeroad/inc/i18n.php:269
+msgid "new voice clips"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:270 theme/ridgeroad/inc/i18n.php:270
+msgid "Themed picks"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:271 theme/ridgeroad/inc/i18n.php:271
+msgid "names sent with a theme"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:272 plugin/marquee/core/control.php:158
+#: plugin/marquee/core/control.php:232
+msgid "Social posts"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:273 theme/ridgeroad/inc/i18n.php:273
+msgid "Traffic alerts"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:274 theme/ridgeroad/inc/i18n.php:274
+msgid "Phone alerts on"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:275 theme/ridgeroad/inc/i18n.php:275
+msgid "people who turned alerts on"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:276 theme/ridgeroad/inc/i18n.php:276
+msgid "No show nights yet"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:277 plugin/marquee/core/control.php:288
+#: theme/ridgeroad/inc/i18n.php:277
+msgid "Names sent each night"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:278 theme/ridgeroad/inc/i18n.php:278
+msgid "%1$s: %2$s names"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:279 theme/ridgeroad/inc/i18n.php:279
+msgid "Canceled. Alert sent to %s phone"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:280 theme/ridgeroad/inc/i18n.php:280
+msgid "Canceled. Alert sent to %s phones"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:281 theme/ridgeroad/inc/i18n.php:281
+msgid "Saved"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:282 theme/ridgeroad/inc/i18n.php:282
+msgid "Could not save. Please reload the page."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:283 theme/ridgeroad/inc/i18n.php:283
+msgid "Could not reach the website."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:284 theme/ridgeroad/inc/i18n.php:284
+msgid "Canceled for tonight"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:285 theme/ridgeroad/inc/i18n.php:285
+msgid "Traffic alert is on"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:286 theme/ridgeroad/inc/i18n.php:286
+msgid "Type a message first."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:287 theme/ridgeroad/inc/i18n.php:287
+msgid "Send “%1$s” to %2$s phone?"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:288 theme/ridgeroad/inc/i18n.php:288
+msgid "Send “%1$s” to %2$s phones?"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:289 theme/ridgeroad/inc/i18n.php:289
+msgid "Sending…"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:290 theme/ridgeroad/inc/i18n.php:290
+msgid "Sent to %s phone"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:291 theme/ridgeroad/inc/i18n.php:291
+msgid "Sent to %s phones"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:292 theme/ridgeroad/inc/i18n.php:292
+msgid "(%s did not go through)"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:293 theme/ridgeroad/inc/i18n.php:293
+msgid "Could not send. Please reload the page."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:294 theme/ridgeroad/inc/i18n.php:294
+msgid "Mega Tree"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:295 theme/ridgeroad/inc/i18n.php:295
+msgid "Rooflines"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:296 theme/ridgeroad/inc/i18n.php:296
+msgid "Windows"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:297 theme/ridgeroad/inc/i18n.php:297
+msgid "Snowflakes"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:298 theme/ridgeroad/inc/i18n.php:298
+msgid "Spinners"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:299 theme/ridgeroad/inc/i18n.php:299
+msgid "Singing Faces"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:300 theme/ridgeroad/inc/i18n.php:300
+msgid "Arches"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:301 theme/ridgeroad/inc/i18n.php:301
+msgid "Mini Trees"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:302 theme/ridgeroad/inc/i18n.php:302
+msgid "Gifts"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:303 theme/ridgeroad/inc/i18n.php:303
+msgid "Garage Matrix"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:304 theme/ridgeroad/inc/i18n.php:304
+msgid "Steady"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:305 theme/ridgeroad/inc/i18n.php:305
+msgid "Always on"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:306 theme/ridgeroad/inc/i18n.php:306
+msgid "Twinkle"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:307 theme/ridgeroad/inc/i18n.php:307
+msgid "Sparkles"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:308 theme/ridgeroad/inc/i18n.php:308
+msgid "Chase"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:309 theme/ridgeroad/inc/i18n.php:309
+msgid "Lights run"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:310 theme/ridgeroad/inc/i18n.php:310
+msgid "Pulse"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:311 theme/ridgeroad/inc/i18n.php:311
+msgid "Blinks to the beat"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:312 theme/ridgeroad/inc/i18n.php:312
+msgid "Rainbow"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:313 theme/ridgeroad/inc/i18n.php:313
+msgid "All the colors"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:314 theme/ridgeroad/inc/i18n.php:314
+msgid "Candy Cane"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:315 theme/ridgeroad/inc/i18n.php:315
+msgid "Red and white"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:316 theme/ridgeroad/inc/i18n.php:316
+msgid "Lights off"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:317 theme/ridgeroad/inc/i18n.php:317
+msgid "Red"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:318 theme/ridgeroad/inc/i18n.php:318
+msgid "Green"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:319 theme/ridgeroad/inc/i18n.php:319
+msgid "Blue"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:320 theme/ridgeroad/inc/i18n.php:320
+msgid "Gold"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:321 theme/ridgeroad/inc/i18n.php:321
+msgid "Purple"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:322 theme/ridgeroad/inc/i18n.php:322
+msgid "Icy Blue"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:323 theme/ridgeroad/inc/i18n.php:323
+msgid "Warm White"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:324 theme/ridgeroad/inc/i18n.php:324
+msgid "Orange"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:325 theme/ridgeroad/inc/i18n.php:325
+msgid "Pink"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:326 theme/ridgeroad/inc/i18n.php:326
+msgid "Mixed Colors"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:327 theme/ridgeroad/inc/i18n.php:327
+msgid "Whole House"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:328 theme/ridgeroad/inc/i18n.php:328
+msgid "Start"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:329 theme/ridgeroad/inc/i18n.php:329
+msgid "Middle"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:330 theme/ridgeroad/inc/i18n.php:330
+msgid "Big Finish"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:20 theme/ridgeroad/inc/contest.php:20
+msgid "Light Show Contest"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:21 theme/ridgeroad/inc/contest.php:21
+msgid "Light Show Entry"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:22 theme/ridgeroad/inc/contest.php:22
+msgid "Kids’ Light Shows"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:23 theme/ridgeroad/inc/contest.php:23
+msgid "All Entries"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:24 theme/ridgeroad/inc/contest.php:24
+msgid "Review Entry"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:25 theme/ridgeroad/inc/contest.php:25
+msgid "No entries yet."
+msgstr ""
+
+#: plugin/marquee/core/contest.php:60 theme/ridgeroad/inc/contest.php:60
+msgid "F j"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:108 theme/ridgeroad/inc/contest.php:108
+msgid "This page has been open a while. Please refresh it and try again."
+msgstr ""
+
+#: plugin/marquee/core/contest.php:111 theme/ridgeroad/inc/contest.php:111
+msgid ""
+"Sorry, the contest is closed for this year. You can still make and download "
+"shows for fun!"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:120 theme/ridgeroad/inc/contest.php:120
+msgid "Lots of entries from here today! Please try again tomorrow."
+msgstr ""
+
+#: plugin/marquee/core/contest.php:136 theme/ridgeroad/inc/contest.php:136
+msgid "The contest is for kids ages 3 to 12."
+msgstr ""
+
+#: plugin/marquee/core/contest.php:139 theme/ridgeroad/inc/contest.php:139
+msgid ""
+"Please enter a parent email so we can send your claim code and tell you if "
+"your child wins."
+msgstr ""
+
+#: plugin/marquee/core/contest.php:148 theme/ridgeroad/inc/contest.php:148
+msgid ""
+"Please make a light show first: light up at least one decoration in the "
+"Light Lab."
+msgstr ""
+
+#: plugin/marquee/core/contest.php:159 theme/ridgeroad/inc/contest.php:159
+msgid ""
+"Something went wrong making the picture of your show. Please try again."
+msgstr ""
+
+#: plugin/marquee/core/contest.php:168 theme/ridgeroad/inc/contest.php:168
+msgid "Something went wrong saving the picture. Please try again."
+msgstr ""
+
+#: plugin/marquee/core/contest.php:208 theme/ridgeroad/inc/contest.php:208
+msgid "New light show contest entry from %s"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:300 plugin/marquee/core/songs.php:217
+#: theme/ridgeroad/inc/contest.php:300
+msgid "Sorry, you can’t do that."
+msgstr ""
+
+#: plugin/marquee/core/contest.php:317 theme/ridgeroad/inc/contest.php:317
+msgid "The “You won!” email was sent to the parent."
+msgstr ""
+
+#: plugin/marquee/core/contest.php:317 theme/ridgeroad/inc/contest.php:317
+msgid ""
+"The email could not be sent. Check that the entry has a parent email and is "
+"marked as a winner (and saved), and that your site can send email."
+msgstr ""
+
+#: plugin/marquee/core/contest.php:398 theme/ridgeroad/inc/contest.php:398
+msgid "That show isn’t on the Show Wall."
+msgstr ""
+
+#: plugin/marquee/core/contest.php:402 theme/ridgeroad/inc/contest.php:402
+msgid "Voting is closed."
+msgstr ""
+
+#: plugin/marquee/core/contest.php:423 theme/ridgeroad/inc/contest.php:423
+msgid "Show"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:424 theme/ridgeroad/inc/contest.php:424
+msgid "First name"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:425 theme/ridgeroad/inc/contest.php:425
+msgid "Song / show name"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:426 plugin/marquee/core/contest.php:493
+#: plugin/marquee/core/parts/kids-enter.php:27
+msgid "Age"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:427 theme/ridgeroad/inc/contest.php:427
+msgid "Hearts"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:428 plugin/marquee/core/contest.php:494
+#: theme/ridgeroad/inc/contest.php:428
+msgid "Claim code"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:429 plugin/marquee/core/contest.php:501
+#: theme/ridgeroad/inc/contest.php:429
+msgid "Winner"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:438 theme/ridgeroad/inc/contest.php:438
+msgid "Watch this show"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:440 theme/ridgeroad/inc/contest.php:440
+msgid "Watch show"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:461 plugin/marquee/core/contest.php:503
+#: plugin/marquee/core/parts/kids-prize.php:19
+msgid "Judges’ Pick"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:464 plugin/marquee/core/contest.php:505
+#: plugin/marquee/core/parts/kids-prize.php:20
+msgid "People’s Choice"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:482 theme/ridgeroad/inc/contest.php:482
+msgid "Contest details"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:490 theme/ridgeroad/inc/contest.php:490
+msgid "Watch this light show"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:494 theme/ridgeroad/inc/contest.php:494
+msgid ""
+"The family was shown this code. Ask for it when they pick up a prize. It is "
+"never shown on the website."
+msgstr ""
+
+#: plugin/marquee/core/contest.php:495 theme/ridgeroad/inc/contest.php:495
+msgid "Parent email (private)"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:496 theme/ridgeroad/inc/contest.php:496
+msgid "People’s Choice hearts"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:497 plugin/marquee/core/sequences.php:104
+#: plugin/marquee/core/parts/kids-lab.php:19
+msgid "Song"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:498 theme/ridgeroad/inc/contest.php:498
+msgid "Show name"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:506 theme/ridgeroad/inc/contest.php:506
+msgid ""
+"Winners are announced on the Kids’ Corner page (first name and age only). "
+"The entry must be Published."
+msgstr ""
+
+#: plugin/marquee/core/contest.php:510 theme/ridgeroad/inc/contest.php:510
+msgid "Tell the winner"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:512 theme/ridgeroad/inc/contest.php:512
+msgid "No parent email on this entry."
+msgstr ""
+
+#: plugin/marquee/core/contest.php:514 theme/ridgeroad/inc/contest.php:514
+msgid ""
+"Tick Judges’ Pick or People’s Choice and click Update first. Then a button "
+"appears here to email the parent."
+msgstr ""
+
+#: plugin/marquee/core/contest.php:520 theme/ridgeroad/inc/contest.php:520
+msgid "Send the “You won!” email to the parent now?"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:521 theme/ridgeroad/inc/contest.php:521
+msgid "Send the “You won!” email again"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:521 theme/ridgeroad/inc/contest.php:521
+msgid "Send “You won!” email"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:525 theme/ridgeroad/inc/contest.php:525
+msgid "Sent %s"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:525 theme/ridgeroad/inc/contest.php:525
+msgid "M j, g:i a"
+msgstr ""
+
+#: plugin/marquee/core/contest.php:527 theme/ridgeroad/inc/contest.php:527
+msgid ""
+"Tells them what they won, to bring the claim code, and when to pick up the "
+"prize."
+msgstr ""
+
+#: plugin/marquee/core/contest.php:531 theme/ridgeroad/inc/contest.php:531
+msgid ""
+"To show it on the Show Wall, click Publish. To turn it down, move it to the "
+"Trash."
+msgstr ""
+
+#: plugin/marquee/core/sequences.php:14 theme/ridgeroad/inc/sequences.php:14
+msgid "My Sequences"
+msgstr ""
+
+#: plugin/marquee/core/sequences.php:15 theme/ridgeroad/inc/sequences.php:15
+msgid "Sequence Video"
+msgstr ""
+
+#: plugin/marquee/core/sequences.php:16 plugin/marquee/core/sequences.php:17
+#: theme/ridgeroad/inc/sequences.php:16
+msgid "Add Sequence Video"
+msgstr ""
+
+#: plugin/marquee/core/sequences.php:18 theme/ridgeroad/inc/sequences.php:18
+msgid "Edit Sequence Video"
+msgstr ""
+
+#: plugin/marquee/core/sequences.php:19 theme/ridgeroad/inc/sequences.php:19
+msgid "All Sequence Videos"
+msgstr ""
+
+#: plugin/marquee/core/sequences.php:20 theme/ridgeroad/inc/sequences.php:20
+msgid "No sequence videos yet."
+msgstr ""
+
+#: plugin/marquee/core/sequences.php:33 theme/ridgeroad/inc/sequences.php:33
+msgid "Song title"
+msgstr ""
+
+#: plugin/marquee/core/sequences.php:39 theme/ridgeroad/inc/sequences.php:39
+msgid "Cover picture (optional)"
+msgstr ""
+
+#: plugin/marquee/core/sequences.php:50 plugin/marquee/core/sequences.php:103
+#: theme/ridgeroad/inc/sequences.php:50
+msgid "Video"
+msgstr ""
+
+#: plugin/marquee/core/sequences.php:55 plugin/marquee/core/sequences.php:105
+#: theme/ridgeroad/inc/sequences.php:55
+msgid "Artist"
+msgstr ""
+
+#: plugin/marquee/core/sequences.php:56 theme/ridgeroad/inc/sequences.php:56
+msgid "MP4 video"
+msgstr ""
+
+#: plugin/marquee/core/sequences.php:59 theme/ridgeroad/inc/sequences.php:59
+msgid "Upload or choose MP4"
+msgstr ""
+
+#: plugin/marquee/core/sequences.php:61 theme/ridgeroad/inc/sequences.php:61
+msgid ""
+"Upload the MP4 to your Media Library (or paste a link to an MP4). Tip: "
+"export at 1080p, H.264, and keep it under about 150 MB so it loads fast on "
+"phones."
+msgstr ""
+
+#: plugin/marquee/core/sequences.php:64 theme/ridgeroad/inc/sequences.php:64
+msgid "Badge"
+msgstr ""
+
+#: plugin/marquee/core/sequences.php:64
+#: plugin/marquee/core/parts/sequences.php:29
+#: theme/ridgeroad/parts/sequences.php:29
+msgid "New this year"
+msgstr ""
+
+#: plugin/marquee/core/sequences.php:66 theme/ridgeroad/inc/sequences.php:66
+msgid ""
+"Use “Order” in the box on the right to arrange the videos (lower numbers "
+"first). Add a cover picture on the right, or the first frame of the video is"
+" used."
+msgstr ""
+
+#: plugin/marquee/core/sequences.php:106 theme/ridgeroad/inc/sequences.php:106
+msgid "Order"
+msgstr ""
+
+#: plugin/marquee/core/sequences.php:118 theme/ridgeroad/inc/sequences.php:118
+msgid "No video yet"
+msgstr ""
+
+#: plugin/marquee/core/guestbook.php:109 theme/ridgeroad/inc/guestbook.php:109
+msgid "%d guestbook message to review"
+msgid_plural "%d guestbook messages to review"
+msgstr[0] ""
+msgstr[1] ""
+
+#: plugin/marquee/core/guestbook.php:119 theme/ridgeroad/inc/guestbook.php:119
+msgid "A Friend"
+msgstr ""
+
+#: plugin/marquee/core/control.php:110 plugin/marquee/core/control.php:110
+#: plugin/marquee/core/control.php:131
+msgid "Show Control"
+msgstr ""
+
+#: plugin/marquee/core/control.php:135 plugin/marquee/core/live.php:144
+#: theme/ridgeroad/inc/control.php:135
+msgid "l, F j"
+msgstr ""
+
+#: plugin/marquee/core/control.php:139 theme/ridgeroad/inc/control.php:139
+msgid "Updates every 15 seconds"
+msgstr ""
+
+#: plugin/marquee/core/control.php:141 theme/ridgeroad/inc/control.php:141
+msgid "Quick actions"
+msgstr ""
+
+#: plugin/marquee/core/control.php:144 theme/ridgeroad/inc/control.php:144
+msgid "Send a phone alert"
+msgstr ""
+
+#: plugin/marquee/core/control.php:147 theme/ridgeroad/inc/control.php:147
+msgid "Open the Show Manager"
+msgstr ""
+
+#: plugin/marquee/core/control.php:153 theme/ridgeroad/inc/control.php:153
+msgid "Right now"
+msgstr ""
+
+#: plugin/marquee/core/control.php:154 theme/ridgeroad/inc/control.php:154
+msgid "FPP"
+msgstr ""
+
+#: plugin/marquee/core/control.php:155 plugin/marquee/core/control.php:169
+#: theme/ridgeroad/inc/control.php:155
+msgid "Name in Lights"
+msgstr ""
+
+#: plugin/marquee/core/control.php:156 theme/ridgeroad/inc/control.php:156
+msgid "On the website now"
+msgstr ""
+
+#: plugin/marquee/core/control.php:159 theme/ridgeroad/inc/control.php:159
+msgid "Phones getting alerts"
+msgstr ""
+
+#: plugin/marquee/core/control.php:164 theme/ridgeroad/inc/control.php:164
+msgid "Switches"
+msgstr ""
+
+#: plugin/marquee/core/control.php:168 theme/ridgeroad/inc/control.php:168
+msgid "Cancel tonight’s show"
+msgstr ""
+
+#: plugin/marquee/core/control.php:168 theme/ridgeroad/inc/control.php:168
+msgid "Shows the canceled banner on the website until 6 AM"
+msgstr ""
+
+#: plugin/marquee/core/control.php:169 theme/ridgeroad/inc/control.php:169
+msgid "Kids can send names to your show’s screens"
+msgstr ""
+
+#: plugin/marquee/core/control.php:169 theme/ridgeroad/inc/control.php:169
+msgid "Kids can send names to the garage door and TV"
+msgstr ""
+
+#: plugin/marquee/core/control.php:170 theme/ridgeroad/inc/control.php:170
+msgid "Pause the name queue"
+msgstr ""
+
+#: plugin/marquee/core/control.php:170 theme/ridgeroad/inc/control.php:170
+msgid "Names still come in, but wait until you turn this off"
+msgstr ""
+
+#: plugin/marquee/core/control.php:171 theme/ridgeroad/inc/control.php:171
+msgid "Accept names any time"
+msgstr ""
+
+#: plugin/marquee/core/control.php:171 theme/ridgeroad/inc/control.php:171
+msgid "For testing outside show hours"
+msgstr ""
+
+#: plugin/marquee/core/control.php:172 plugin/marquee/core/control.php:267
+#: theme/ridgeroad/inc/control.php:172
+msgid "Light show contest"
+msgstr ""
+
+#: plugin/marquee/core/control.php:172 theme/ridgeroad/inc/control.php:172
+msgid "Entries, Show Wall and hearts"
+msgstr ""
+
+#: plugin/marquee/core/control.php:173 theme/ridgeroad/inc/control.php:173
+msgid "Favorite song voting"
+msgstr ""
+
+#: plugin/marquee/core/control.php:173 theme/ridgeroad/inc/control.php:173
+msgid "On the Songs & Videos page"
+msgstr ""
+
+#: plugin/marquee/core/control.php:174 theme/ridgeroad/inc/control.php:174
+msgid "The whole kids’ page"
+msgstr ""
+
+#: plugin/marquee/core/control.php:184 theme/ridgeroad/inc/control.php:184
+msgid "Cancel tonight’s show?"
+msgstr ""
+
+#: plugin/marquee/core/control.php:184 theme/ridgeroad/inc/control.php:184
+msgid "The website will show the canceled banner until 6 AM."
+msgstr ""
+
+#: plugin/marquee/core/control.php:187 theme/ridgeroad/inc/control.php:187
+msgid "Cancel the show"
+msgstr ""
+
+#: plugin/marquee/core/control.php:187 theme/ridgeroad/inc/control.php:187
+msgid "Keep it on"
+msgstr ""
+
+#: plugin/marquee/core/control.php:194 theme/ridgeroad/inc/control.php:194
+msgid "On every page"
+msgstr ""
+
+#: plugin/marquee/core/control.php:195 theme/ridgeroad/inc/control.php:195
+msgid "Light"
+msgstr ""
+
+#: plugin/marquee/core/control.php:195 theme/ridgeroad/inc/control.php:195
+msgid "Heavy"
+msgstr ""
+
+#: plugin/marquee/core/control.php:196 theme/ridgeroad/inc/control.php:196
+msgid "How big the falling flakes are"
+msgstr ""
+
+#: plugin/marquee/core/control.php:198 plugin/marquee/core/control.php:199
+#: theme/ridgeroad/inc/control.php:198
+msgid "Name color on the screens"
+msgstr ""
+
+#: plugin/marquee/core/control.php:198 theme/ridgeroad/inc/control.php:198
+msgid "White works best on the marquee"
+msgstr ""
+
+#: plugin/marquee/core/control.php:204 theme/ridgeroad/inc/control.php:204
+msgid "Name queue"
+msgstr ""
+
+#: plugin/marquee/core/control.php:204 theme/ridgeroad/inc/control.php:204
+msgid "Shown tonight:"
+msgstr ""
+
+#: plugin/marquee/core/control.php:206 theme/ridgeroad/inc/control.php:206
+msgid "Waiting for the next break"
+msgstr ""
+
+#: plugin/marquee/core/control.php:208 theme/ridgeroad/inc/control.php:208
+msgid "Just shown"
+msgstr ""
+
+#: plugin/marquee/core/control.php:210 theme/ridgeroad/inc/control.php:210
+msgid ""
+"“Block word” removes the name and adds it to your block list, so it can’t be"
+" sent again."
+msgstr ""
+
+#: plugin/marquee/core/control.php:217 theme/ridgeroad/inc/control.php:217
+msgid "Traffic & parking"
+msgstr ""
+
+#: plugin/marquee/core/control.php:219 theme/ridgeroad/inc/control.php:219
+msgid ""
+"One tap puts a message at the top of every page of your website. It turns "
+"itself off when the time is up."
+msgstr ""
+
+#: plugin/marquee/core/control.php:221 theme/ridgeroad/inc/control.php:221
+msgid "Or type your own: Road closed at Elm St, please use Oak St"
+msgstr ""
+
+#: plugin/marquee/core/control.php:221 theme/ridgeroad/inc/control.php:221
+msgid "Post it"
+msgstr ""
+
+#: plugin/marquee/core/control.php:223 theme/ridgeroad/inc/control.php:223
+msgid "For"
+msgstr ""
+
+#: plugin/marquee/core/control.php:223 theme/ridgeroad/inc/control.php:223
+msgid "30 minutes"
+msgstr ""
+
+#: plugin/marquee/core/control.php:223 theme/ridgeroad/inc/control.php:223
+msgid "1 hour"
+msgstr ""
+
+#: plugin/marquee/core/control.php:223 theme/ridgeroad/inc/control.php:223
+msgid "2 hours"
+msgstr ""
+
+#: plugin/marquee/core/control.php:223 theme/ridgeroad/inc/control.php:223
+msgid "the rest of the night"
+msgstr ""
+
+#: plugin/marquee/core/control.php:224 theme/ridgeroad/inc/control.php:224
+msgid "Also send a phone alert"
+msgstr ""
+
+#: plugin/marquee/core/control.php:225 theme/ridgeroad/inc/control.php:225
+msgid "Also show it on my screens every 3 minutes"
+msgstr ""
+
+#: plugin/marquee/core/control.php:227 theme/ridgeroad/inc/control.php:227
+msgid ""
+"Screens: needs the names script 3.5 on your FPP. It goes over whatever is "
+"playing for a few seconds, so leave it off if your matrix is busy in every "
+"song."
+msgstr ""
+
+#: plugin/marquee/core/control.php:235 theme/ridgeroad/inc/control.php:235
+msgid "Recent posts"
+msgstr ""
+
+#: plugin/marquee/core/control.php:243 theme/ridgeroad/inc/control.php:243
+msgid "App & Alerts"
+msgstr ""
+
+#: plugin/marquee/core/control.php:247 theme/ridgeroad/inc/control.php:247
+msgid "“The lights are on!” alert"
+msgstr ""
+
+#: plugin/marquee/core/control.php:247 theme/ridgeroad/inc/control.php:247
+msgid "The lights are on alert"
+msgstr ""
+
+#: plugin/marquee/core/control.php:248 theme/ridgeroad/inc/control.php:248
+msgid "“Your name is up next” buzz"
+msgstr ""
+
+#: plugin/marquee/core/control.php:248 theme/ridgeroad/inc/control.php:248
+msgid "Kids can ask for a buzz when they send a name"
+msgstr ""
+
+#: plugin/marquee/core/control.php:248 theme/ridgeroad/inc/control.php:248
+msgid "Your name is up next buzz"
+msgstr ""
+
+#: plugin/marquee/core/control.php:249 theme/ridgeroad/inc/control.php:249
+msgid "Recent alerts"
+msgstr ""
+
+#: plugin/marquee/core/control.php:253 theme/ridgeroad/inc/control.php:253
+msgid "Send an alert"
+msgstr ""
+
+#: plugin/marquee/core/control.php:254 theme/ridgeroad/inc/control.php:254
+msgid "Santa is visiting Saturday from 6 to 8 PM!"
+msgstr ""
+
+#: plugin/marquee/core/control.php:256 theme/ridgeroad/inc/control.php:256
+msgid "Send alert"
+msgstr ""
+
+#: plugin/marquee/core/control.php:259 theme/ridgeroad/inc/control.php:259
+msgid "Yes, send it"
+msgstr ""
+
+#: plugin/marquee/core/control.php:259 theme/ridgeroad/inc/control.php:259
+msgid "Not yet"
+msgstr ""
+
+#: plugin/marquee/core/control.php:261 theme/ridgeroad/inc/control.php:261
+msgid ""
+"The alert’s title is your site name. Keep it short: phones show about two "
+"lines."
+msgstr ""
+
+#: plugin/marquee/core/control.php:270 theme/ridgeroad/inc/control.php:270
+msgid "Waiting for you to check"
+msgstr ""
+
+#: plugin/marquee/core/control.php:274 theme/ridgeroad/inc/control.php:274
+msgid "Most hearts (People’s Choice)"
+msgstr ""
+
+#: plugin/marquee/core/control.php:276 theme/ridgeroad/inc/control.php:276
+msgid "Prizes and dates"
+msgstr ""
+
+#: plugin/marquee/core/control.php:277 theme/ridgeroad/inc/control.php:277
+msgid "Change"
+msgstr ""
+
+#: plugin/marquee/core/control.php:283 theme/ridgeroad/inc/control.php:283
+msgid "Stats"
+msgstr ""
+
+#: plugin/marquee/core/control.php:284 theme/ridgeroad/inc/control.php:284
+msgid "Time range"
+msgstr ""
+
+#: plugin/marquee/core/control.php:284 theme/ridgeroad/inc/control.php:284
+msgid "Tonight"
+msgstr ""
+
+#: plugin/marquee/core/control.php:284 theme/ridgeroad/inc/control.php:284
+msgid "This season"
+msgstr ""
+
+#: plugin/marquee/core/control.php:289 theme/ridgeroad/inc/control.php:289
+msgid "Last 14 show nights. Point at a bar for the exact number."
+msgstr ""
+
+#: plugin/marquee/core/control.php:293 theme/ridgeroad/inc/control.php:293
+msgid ""
+"Counts are totals only. The site never records who did what, and nothing "
+"here is shown to visitors."
+msgstr ""
+
+#: plugin/marquee/core/control.php:304 theme/ridgeroad/inc/control.php:304
+msgid "Running"
+msgstr ""
+
+#: plugin/marquee/core/control.php:304 theme/ridgeroad/inc/control.php:304
+msgid "Not started yet"
+msgstr ""
+
+#: plugin/marquee/core/control.php:304 theme/ridgeroad/inc/control.php:304
+msgid "Ended for tonight"
+msgstr ""
+
+#: plugin/marquee/core/control.php:304 theme/ridgeroad/inc/control.php:304
+msgid "Off season"
+msgstr ""
+
+#: plugin/marquee/core/control.php:307 theme/ridgeroad/inc/control.php:307
+msgid "ends in %s"
+msgstr ""
+
+#: plugin/marquee/core/control.php:309 theme/ridgeroad/inc/control.php:309
+msgid "starts in %s"
+msgstr ""
+
+#: plugin/marquee/core/control.php:311 theme/ridgeroad/inc/control.php:311
+msgid "The website shows the canceled banner"
+msgstr ""
+
+#: plugin/marquee/core/control.php:321 plugin/marquee/core/control.php:334
+#: plugin/marquee/core/control.php:402
+msgid "g:i A"
+msgstr ""
+
+#: plugin/marquee/core/control.php:350 plugin/marquee/core/control.php:456
+#: theme/ridgeroad/inc/control.php:350
+msgid "M j, g:i A"
+msgstr ""
+
+#: plugin/marquee/core/control.php:379 plugin/marquee/core/seo.php:54
+#: plugin/marquee/core/seo.php:54
+msgid "M j"
+msgstr ""
+
+#: plugin/marquee/core/control.php:430 theme/ridgeroad/inc/control.php:430
+msgid "Judges’ Pick: %1$s · People’s Choice: %2$s · Pick-up by %3$s"
+msgstr ""
+
+#: plugin/marquee/core/control.php:584 theme/ridgeroad/inc/control.php:584
+msgid "Type a message of up to 180 characters."
+msgstr ""
+
+#: plugin/marquee/core/control.php:622 theme/ridgeroad/inc/control.php:622
+msgid "Heavy traffic"
+msgstr ""
+
+#: plugin/marquee/core/control.php:622 theme/ridgeroad/inc/control.php:622
+msgid "Heavy traffic tonight"
+msgstr ""
+
+#: plugin/marquee/core/control.php:622 theme/ridgeroad/inc/control.php:622
+msgid ""
+"Please keep moving and don’t stop in the road. Thanks for your patience!"
+msgstr ""
+
+#: plugin/marquee/core/control.php:622 plugin/marquee/core/control.php:624
+#: theme/ridgeroad/inc/control.php:622
+msgid "PLEASE KEEP MOVING"
+msgstr ""
+
+#: plugin/marquee/core/control.php:623 theme/ridgeroad/inc/control.php:623
+msgid "Driveway blocked"
+msgstr ""
+
+#: plugin/marquee/core/control.php:623 theme/ridgeroad/inc/control.php:623
+msgid "Please don’t block driveways"
+msgstr ""
+
+#: plugin/marquee/core/control.php:623 theme/ridgeroad/inc/control.php:623
+msgid ""
+"Our neighbors need to get in and out. Please only park where it’s allowed."
+msgstr ""
+
+#: plugin/marquee/core/control.php:623 theme/ridgeroad/inc/control.php:623
+msgid "PLEASE DON’T BLOCK DRIVEWAYS"
+msgstr ""
+
+#: plugin/marquee/core/control.php:624 plugin/marquee/core/control.php:624
+#: theme/ridgeroad/inc/control.php:624
+msgid "Please keep moving"
+msgstr ""
+
+#: plugin/marquee/core/control.php:624 theme/ridgeroad/inc/control.php:624
+msgid ""
+"Enjoy the show from your car and keep traffic flowing so everyone gets a "
+"turn."
+msgstr ""
+
+#: plugin/marquee/core/control.php:625 theme/ridgeroad/inc/control.php:625
+msgid "Parking full"
+msgstr ""
+
+#: plugin/marquee/core/control.php:625 theme/ridgeroad/inc/control.php:625
+msgid "Parking is full"
+msgstr ""
+
+#: plugin/marquee/core/control.php:625 theme/ridgeroad/inc/control.php:625
+msgid "Please drive by slowly and enjoy the show from your car."
+msgstr ""
+
+#: plugin/marquee/core/control.php:625 theme/ridgeroad/inc/control.php:625
+msgid "PARKING FULL - PLEASE DRIVE THRU"
+msgstr ""
+
+#: plugin/marquee/core/control.php:659 theme/ridgeroad/inc/control.php:659
+msgid "Message"
+msgstr ""
+
+#: plugin/marquee/core/control.php:663 theme/ridgeroad/inc/control.php:663
+msgid "Type the message first."
+msgstr ""
+
+#: plugin/marquee/core/songs.php:180 theme/ridgeroad/inc/songs.php:180
+msgid "Voting is closed right now."
+msgstr ""
+
+#: plugin/marquee/core/songs.php:186 theme/ridgeroad/inc/songs.php:186
+msgid "That song isn’t in this year’s show."
+msgstr ""
+
+#: plugin/marquee/core/songs.php:200 theme/ridgeroad/inc/songs.php:200
+msgid "Lots of votes from here today! Try again tomorrow."
+msgstr ""
+
+#: plugin/marquee/core/songs.php:225 theme/ridgeroad/inc/songs.php:225
+msgid "All song votes were cleared."
+msgstr ""
+
+#: plugin/marquee/core/songs.php:232 theme/ridgeroad/inc/songs.php:232
+msgid "Favorite Song Votes"
+msgstr ""
+
+#: plugin/marquee/core/songs.php:234 theme/ridgeroad/inc/songs.php:234
+msgid "This week (Fan Favorite Friday)"
+msgstr ""
+
+#: plugin/marquee/core/songs.php:234 plugin/marquee/core/songs.php:238
+#: theme/ridgeroad/inc/songs.php:234
+msgid "votes"
+msgstr ""
+
+#: plugin/marquee/core/songs.php:238 theme/ridgeroad/inc/songs.php:238
+msgid "All season"
+msgstr ""
+
+#: plugin/marquee/core/songs.php:246 theme/ridgeroad/inc/songs.php:246
+msgid "Clear ALL song votes? This can’t be undone."
+msgstr ""
+
+#: plugin/marquee/core/songs.php:247 theme/ridgeroad/inc/songs.php:247
+msgid "Clear all votes (start a new season)"
+msgstr ""
+
+#: plugin/marquee/core/helpers.php:63 theme/ridgeroad/inc/helpers.php:63
+msgid ""
+"Not connected — check the Remote Falcon access token and secret key in "
+"Marquee → Settings (only admins see this)."
+msgstr ""
+
+#: plugin/marquee/core/helpers.php:64 theme/ridgeroad/inc/helpers.php:64
+msgid ""
+"Not connected — check the Access Token and Secret Key in Settings → Lights "
+"on Ridge Road (only admins see this)."
+msgstr ""
+
+#: plugin/marquee/core/helpers.php:89 plugin/marquee/core/live.php:407
+#: theme/ridgeroad/inc/helpers.php:89
+msgid "g A"
+msgstr ""
+
+#: plugin/marquee/core/helpers.php:160 plugin/marquee/core/helpers.php:289
+#: theme/ridgeroad/inc/helpers.php:160
+msgid "Our light show"
+msgstr ""
+
+#: plugin/marquee/core/helpers.php:290 theme/ridgeroad/inc/helpers.php:290
+msgid "Snowman"
+msgstr ""
+
+#: plugin/marquee/core/helpers.php:291 theme/ridgeroad/inc/helpers.php:291
+msgid "Reindeer"
+msgstr ""
+
+#: plugin/marquee/core/helpers.php:292 theme/ridgeroad/inc/helpers.php:292
+msgid "Gingerbread"
+msgstr ""
+
+#: plugin/marquee/core/helpers.php:293 theme/ridgeroad/inc/helpers.php:293
+msgid "Snowman friends"
+msgstr ""
+
+#: plugin/marquee/core/helpers.php:294 theme/ridgeroad/inc/helpers.php:294
+msgid "Santa’s tree"
+msgstr ""
+
+#: plugin/marquee/core/helpers.php:295 theme/ridgeroad/inc/helpers.php:295
+msgid "Santa’s cookies"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-enter.php:10
+#: theme/ridgeroad/parts/kids-enter.php:10
+msgid "Enter your show to win a prize"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-enter.php:11
+#: theme/ridgeroad/parts/kids-enter.php:11
+msgid "Ask a grown-up to help with this part."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-enter.php:15
+#: theme/ridgeroad/parts/kids-enter.php:15
+msgid "Picture of your light show"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-enter.php:19
+#: theme/ridgeroad/parts/kids-enter.php:19
+msgid "Change my show"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-enter.php:22
+#: theme/ridgeroad/parts/kids-enter.php:22
+msgid ""
+"You haven’t made a light show yet. Make one in step 1, then come back here "
+"to send it!"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-enter.php:25
+#: theme/ridgeroad/parts/kids-enter.php:25
+msgid "Child’s first name"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-enter.php:29
+#: theme/ridgeroad/parts/kids-enter.php:29
+msgid "Pick…"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-enter.php:32
+#: theme/ridgeroad/parts/kids-enter.php:32
+msgid "Parent email"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-enter.php:34
+#: theme/ridgeroad/parts/kids-enter.php:34
+msgid ""
+"We’ll email you the claim code and let you know if your child wins. Never "
+"shown or shared."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-enter.php:37
+#: theme/ridgeroad/parts/kids-enter.php:37
+msgid ""
+"I’m the parent or guardian, and I give permission to post my child’s light "
+"show, first name, and age on this website."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-enter.php:38
+#: theme/ridgeroad/parts/kids-enter.php:38
+msgid "Send My Light Show"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-enter.php:42
+#: theme/ridgeroad/parts/kids-enter.php:42
+msgid "Your show is in!"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-enter.php:43
+#: theme/ridgeroad/parts/kids-enter.php:43
+msgid "We’ll add it to the Show Wall after we check it. Your claim code is:"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-enter.php:45
+#: theme/ridgeroad/parts/kids-enter.php:45
+msgid ""
+"We also emailed it to you. If your child wins, we’ll email you, and you "
+"bring this code to the house during show hours to pick up the prize. Keep it"
+" secret!"
+msgstr ""
+
+#: plugin/marquee/core/parts/vote.php:32 theme/ridgeroad/parts/vote.php:32
+msgid "This week’s winner is"
+msgstr ""
+
+#: plugin/marquee/core/parts/vote.php:39 theme/ridgeroad/parts/vote.php:39
+msgid "Fan Favorite Friday is in %d days"
+msgstr ""
+
+#: plugin/marquee/core/parts/vote.php:41 theme/ridgeroad/parts/vote.php:41
+msgid "Leading this week:"
+msgstr ""
+
+#: plugin/marquee/core/parts/vote.php:49 theme/ridgeroad/parts/vote.php:49
+msgid "Pick Your Favorite"
+msgstr ""
+
+#: plugin/marquee/core/parts/vote.php:57 theme/ridgeroad/parts/vote.php:57
+msgid "New"
+msgstr ""
+
+#: plugin/marquee/core/parts/vote.php:58
+#: plugin/marquee/core/parts/playlist.php:25
+#: plugin/marquee/core/parts/show.php:36
+msgid "Now Playing"
+msgstr ""
+
+#: plugin/marquee/core/parts/vote.php:59 theme/ridgeroad/parts/vote.php:59
+msgid "Vote for %s"
+msgstr ""
+
+#: plugin/marquee/core/parts/vote.php:66 theme/ridgeroad/parts/vote.php:66
+msgid "Leaderboard"
+msgstr ""
+
+#: plugin/marquee/core/parts/vote.php:67 theme/ridgeroad/parts/vote.php:67
+msgid "Leaderboard period"
+msgstr ""
+
+#: plugin/marquee/core/parts/vote.php:68 theme/ridgeroad/parts/vote.php:68
+msgid "This Week"
+msgstr ""
+
+#: plugin/marquee/core/parts/vote.php:69 theme/ridgeroad/parts/vote.php:69
+msgid "All Season"
+msgstr ""
+
+#: plugin/marquee/core/parts/vote.php:72 theme/ridgeroad/parts/vote.php:72
+msgid "No votes yet. Be the first!"
+msgstr ""
+
+#: plugin/marquee/core/parts/live-cam.php:17
+#: theme/ridgeroad/parts/live-cam.php:17
+msgid "Play the live camera"
+msgstr ""
+
+#: plugin/marquee/core/parts/live-cam.php:18
+#: theme/ridgeroad/parts/live-cam.php:18
+msgid "LIVE CAM"
+msgstr ""
+
+#: plugin/marquee/core/parts/live-cam.php:20
+#: theme/ridgeroad/parts/live-cam.php:20
+msgid "Tap to watch & listen"
+msgstr ""
+
+#: plugin/marquee/core/parts/live-cam.php:23
+#: theme/ridgeroad/parts/live-cam.php:23
+msgid "If the stream is off, check back during show hours."
+msgstr ""
+
+#: plugin/marquee/core/parts/app-sheet.php:13
+#: theme/ridgeroad/parts/app-sheet.php:13
+msgid "Takes 10 seconds. You only do this once."
+msgstr ""
+
+#: plugin/marquee/core/parts/app-sheet.php:15
+#: theme/ridgeroad/parts/app-sheet.php:15
+msgid "Got it"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-names.php:12
+#: theme/ridgeroad/parts/kids-names.php:12
+msgid "Your Name in Lights!"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-names.php:13
+#: theme/ridgeroad/looks/looks.php:135 theme/ridgeroad/parts/kids-names.php:13
+msgid "Type your first name and watch for it in our light show between songs!"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-names.php:13
+#: theme/ridgeroad/parts/kids-names.php:13
+msgid ""
+"Type your first name and watch for it on our garage door and TV between "
+"songs!"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-names.php:16
+#: plugin/marquee/core/parts/kids.php:165
+#: plugin/marquee/core/parts/kids.php:166
+msgid "Your first name"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-names.php:19
+#: theme/ridgeroad/parts/kids-names.php:19
+msgid "Pick your message"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-names.php:38
+#: theme/ridgeroad/parts/kids-names.php:38
+msgid "Pick your show"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-names.php:40
+#: theme/ridgeroad/looks/looks.php:16 theme/ridgeroad/parts/kids-names.php:40
+msgid "Classic"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-names.php:53
+#: theme/ridgeroad/parts/kids-names.php:53
+msgid "Put My Name in Lights!"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-names.php:55
+#: theme/ridgeroad/parts/kids-names.php:55
+msgid ""
+"First names only. Our elves check every name before it goes on the screens."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-names.php:56
+#: theme/ridgeroad/parts/kids-names.php:56
+msgid "Turn up your radio: we’ll say your name out loud too!"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-names.php:57
+#: theme/ridgeroad/parts/kids-names.php:57
+msgid ""
+"Names can only be sent from the show. Your phone will ask to share its "
+"location: it’s only used to check you’re here, and it isn’t saved."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-names.php:63
+#: theme/ridgeroad/parts/kids-names.php:63
+msgid "Watch for your name on our screens in a minute!"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-names.php:63
+#: theme/ridgeroad/parts/kids-names.php:63
+msgid "Watch for your name in the show after the next song!"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-names.php:63
+#: theme/ridgeroad/parts/kids-names.php:63
+msgid ""
+"Watch for your name after the next song on the garage door and the TV by the"
+" front door!"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-names.php:67
+#: theme/ridgeroad/parts/kids-names.php:67
+msgid "Buzz me!"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-names.php:69
+#: theme/ridgeroad/parts/kids-names.php:69
+msgid "Send another name"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-names.php:73
+#: theme/ridgeroad/parts/kids-names.php:73
+msgid "Names go up in lights while the show is on."
+msgstr ""
+
+#: plugin/marquee/core/parts/weather.php:23
+#: theme/ridgeroad/parts/weather.php:23
+msgid "Feels Like"
+msgstr ""
+
+#: plugin/marquee/core/parts/weather.php:25
+#: theme/ridgeroad/parts/weather.php:25
+msgid "Humidity"
+msgstr ""
+
+#: plugin/marquee/core/parts/weather.php:26
+#: theme/ridgeroad/parts/weather.php:26
+msgid "Wind"
+msgstr ""
+
+#: plugin/marquee/core/parts/weather.php:28
+#: theme/ridgeroad/parts/weather.php:28
+msgid "Precipitation"
+msgstr ""
+
+#: plugin/marquee/core/parts/weather.php:45
+#: theme/ridgeroad/parts/weather.php:45
+msgid "Weather is temporarily unavailable. Please use the forecast link."
+msgstr ""
+
+#: plugin/marquee/core/parts/weather.php:56
+#: theme/ridgeroad/parts/weather.php:56
+msgid "Live weather radar loop"
+msgstr ""
+
+#: plugin/marquee/core/parts/weather.php:57
+#: plugin/marquee/core/parts/weather.php:63
+#: theme/ridgeroad/parts/weather.php:57
+msgid "Live Radar"
+msgstr ""
+
+#: plugin/marquee/core/parts/weather.php:62
+#: theme/ridgeroad/parts/weather.php:62
+msgid "Live weather radar"
+msgstr ""
+
+#: plugin/marquee/core/parts/weather.php:70
+#: plugin/marquee/core/parts/weather.php:72
+#: theme/ridgeroad/parts/weather.php:70
+msgid "View Full Weather Forecast"
+msgstr ""
+
+#: plugin/marquee/core/parts/weather.php:75
+#: theme/ridgeroad/parts/weather.php:75
+msgid "National Weather Service"
+msgstr ""
+
+#: plugin/marquee/core/parts/weather.php:75
+#: theme/ridgeroad/parts/weather.php:75
+msgid "NWS Huntsville Forecast"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-prize.php:14
+#: plugin/marquee/core/parts/kids.php:55 plugin/marquee/core/parts/kids.php:58
+msgid "Win a prize!"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-prize.php:16
+#: theme/ridgeroad/parts/kids-prize.php:16
+msgid "Make a light show and send it in by %s. Kids ages 3 to 12."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-prize.php:16
+#: theme/ridgeroad/parts/kids-prize.php:16
+msgid "Make a light show and send it in. Kids ages 3 to 12."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-prize.php:19
+#: theme/ridgeroad/parts/kids-prize.php:19
+msgid "Our family picks the most creative show"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-prize.php:20
+#: theme/ridgeroad/parts/kids-prize.php:20
+msgid "The show with the most hearts wins"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-prize.php:23
+#: theme/ridgeroad/parts/kids-prize.php:23
+msgid "Official contest rules"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-prize.php:25
+#: theme/ridgeroad/parts/kids-prize.php:25
+msgid ""
+"Who can enter: kids ages 3 to 12. A parent or guardian must send the entry."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-prize.php:26
+#: theme/ridgeroad/parts/kids-prize.php:26
+msgid ""
+"How to enter: make a light show in the Christmas Light Lab on this page and "
+"send it with the form. One entry per child."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-prize.php:27
+#: theme/ridgeroad/parts/kids-prize.php:27
+msgid "Deadline: entries and hearts close at 11:59 PM (%1$s) on %2$s."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-prize.php:27
+#: theme/ridgeroad/parts/kids-prize.php:27
+msgid "Deadline: entries and hearts close at 11:59 PM Central time on %s."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-prize.php:28
+#: theme/ridgeroad/parts/kids-prize.php:28
+msgid ""
+"Judges’ Pick: chosen by our family for creativity and effort. Prize: %s."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-prize.php:28
+#: theme/ridgeroad/parts/kids-prize.php:28
+msgid ""
+"Judges’ Pick: chosen by the Lights On Ridge Road family for creativity and "
+"effort. Prize: %s."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-prize.php:29
+#: theme/ridgeroad/parts/kids-prize.php:29
+msgid ""
+"People’s Choice: the show with the most hearts on the Show Wall when voting "
+"closes. One heart per show from each device. Hearts that look automated may "
+"be removed. Prize: %s."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-prize.php:30
+#: theme/ridgeroad/parts/kids-prize.php:30
+msgid ""
+"Winners are announced on this page by first name and age. Prizes are picked "
+"up at the house during show hours by %s, with a parent and the claim code. "
+"Prizes not picked up by then may go to the runner-up."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-prize.php:31
+#: theme/ridgeroad/parts/kids-prize.php:31
+msgid ""
+"Privacy: only your child’s first name, age and show appear on the website. A"
+" parent email is required so we can send the claim code and contact winners."
+" It is used only for the contest and never shown or shared."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-prize.php:32
+#: theme/ridgeroad/parts/kids-prize.php:32
+msgid ""
+"No purchase or donation is necessary. Every entry is reviewed before it is "
+"shown, and we may decline entries that are not appropriate."
+msgstr ""
+
+#: plugin/marquee/core/parts/donate.php:21
+#: plugin/marquee/core/parts/donate.php:23 theme/ridgeroad/parts/donate.php:21
+msgid "Cash App QR code"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:29 theme/ridgeroad/parts/kids.php:29
+msgid "All activities"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:39 theme/ridgeroad/parts/kids.php:39
+msgid "What do you want to do?"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:44 theme/ridgeroad/parts/kids.php:44
+msgid "Your Name in Lights. See your name in our light show."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:44 theme/ridgeroad/parts/kids.php:44
+msgid "Your Name in Lights. See your name on our garage door."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:45 theme/ridgeroad/parts/kids.php:45
+msgid "At showtime"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:47 theme/ridgeroad/parts/kids.php:47
+msgid "On now!"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:48
+#: plugin/marquee/core/parts/kids.php:133 plugin/marquee/core/app.php:112
+msgid "Your Name in Lights"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:48 theme/ridgeroad/parts/kids.php:48
+msgid "See your name in our light show"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:48 theme/ridgeroad/parts/kids.php:48
+msgid "See your name on our garage door"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:49 plugin/marquee/core/parts/kids.php:60
+#: plugin/marquee/core/parts/kids.php:69
+msgid "Let’s go!"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:55 theme/ridgeroad/parts/kids.php:55
+msgid "Make a Light Show. Light up a house your way."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:55 theme/ridgeroad/parts/kids.php:55
+msgid "Make a Light Show. Light up our house your way."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:56 theme/ridgeroad/parts/kids.php:56
+msgid "Just for fun"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:59 plugin/marquee/core/parts/kids.php:91
+#: plugin/marquee/core/parts/kids-wall.php:35
+msgid "Make a Light Show"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:59 theme/ridgeroad/parts/kids.php:59
+msgid "Light up a house your way"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:59 theme/ridgeroad/parts/kids.php:59
+msgid "Light up our house your way"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:66 theme/ridgeroad/parts/kids.php:66
+msgid "Coloring Pages. Pick a picture to print and color."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:68
+#: plugin/marquee/core/parts/kids.php:139 theme/ridgeroad/parts/kids.php:68
+msgid "Coloring Pages"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:68 theme/ridgeroad/parts/kids.php:68
+msgid "Pick a picture to print and color it!"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:74 theme/ridgeroad/parts/kids.php:74
+msgid "Games. Elf names and Christmas trivia."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:76
+#: plugin/marquee/core/parts/kids.php:157 theme/ridgeroad/parts/kids.php:76
+msgid "Games"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:76 theme/ridgeroad/parts/kids.php:76
+msgid "Elf names and Christmas trivia"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:91 theme/ridgeroad/parts/kids.php:91
+msgid "& Win a Prize!"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:95 theme/ridgeroad/parts/kids.php:95
+msgid "And the winners are…"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:99 theme/ridgeroad/parts/kids.php:99
+msgid "Judges’ Pick:"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:100 theme/ridgeroad/parts/kids.php:100
+msgid "People’s Choice:"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:105 theme/ridgeroad/parts/kids.php:105
+msgid ""
+"Congratulations! Bring a parent and your claim code to the house during show"
+" hours by %s to pick up your prize."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:111 theme/ridgeroad/parts/kids.php:111
+msgid "Light show steps"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:112 theme/ridgeroad/parts/kids.php:112
+msgid "Make it"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:113 theme/ridgeroad/parts/kids.php:113
+msgid "Enter to win"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:117 theme/ridgeroad/parts/kids.php:117
+msgid "Watch the other kids’ shows and give your favorites a heart"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:117 theme/ridgeroad/parts/kids.php:117
+msgid "Watch the shows other kids made"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:141 theme/ridgeroad/parts/kids.php:141
+msgid "Pick a picture, print it out and grab your crayons!"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:148 theme/ridgeroad/parts/kids.php:148
+msgid "Print"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:158 theme/ridgeroad/parts/kids.php:158
+msgid "Pick a game"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:159 theme/ridgeroad/parts/kids.php:159
+msgid "Elf Name"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:159 theme/ridgeroad/parts/kids.php:159
+msgid "What do Santa’s elves call you?"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:160 theme/ridgeroad/parts/kids.php:160
+msgid "Christmas Trivia"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:160 theme/ridgeroad/parts/kids.php:160
+msgid "5 quick questions"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:163 theme/ridgeroad/parts/kids.php:163
+msgid "Type your first name and find out what Santa’s elves call you!"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:167 theme/ridgeroad/parts/kids.php:167
+msgid "Elf Me!"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:170 theme/ridgeroad/parts/kids.php:170
+msgid "Just for fun — names are never saved or sent anywhere."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids.php:174 theme/ridgeroad/parts/kids.php:174
+msgid "Loading…"
+msgstr ""
+
+#: plugin/marquee/core/parts/sequences.php:42
+#: theme/ridgeroad/parts/sequences.php:42
+msgid "Show all %d videos"
+msgstr ""
+
+#: plugin/marquee/core/parts/sequences.php:46
+#: theme/ridgeroad/parts/sequences.php:46
+msgid "Sequence video"
+msgstr ""
+
+#: plugin/marquee/core/parts/sequences.php:48
+#: plugin/marquee/core/parts/kids-wall.php:41
+#: plugin/marquee/core/parts/kids-wall.php:46
+msgid "Close"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-lab.php:16
+#: theme/ridgeroad/parts/kids-lab.php:16
+msgid "Christmas Light Lab"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-lab.php:26
+#: theme/ridgeroad/parts/kids-lab.php:26
+msgid "Now watching the show by"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-lab.php:27
+#: theme/ridgeroad/parts/kids-lab.php:27
+msgid "Back to my show"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-lab.php:31
+#: theme/ridgeroad/parts/kids-lab.php:31
+msgid "A house with Christmas lights. Tap a decoration to pick it."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-lab.php:31
+#: theme/ridgeroad/parts/kids-lab.php:31
+msgid "Our house with Christmas lights. Tap a decoration to pick it."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-lab.php:32
+#: theme/ridgeroad/parts/kids-lab.php:32
+msgid "Plugging in the lights…"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-lab.php:33
+#: theme/ridgeroad/parts/kids-lab.php:33
+msgid "Tap a decoration on the house!"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-lab.php:35
+#: theme/ridgeroad/parts/kids-lab.php:35
+msgid "Full screen"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-lab.php:40
+#: theme/ridgeroad/parts/kids-lab.php:40
+msgid "Pick a decoration"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-lab.php:41
+#: theme/ridgeroad/parts/kids-lab.php:41
+msgid "Pick how it lights up"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-lab.php:42
+#: theme/ridgeroad/parts/kids-lab.php:42
+msgid "Pick a color"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-lab.php:49
+#: theme/ridgeroad/parts/kids-lab.php:49
+msgid "Light up something else"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-lab.php:55
+#: theme/ridgeroad/parts/kids-lab.php:55
+msgid "For big kids: change the lights during the song"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-lab.php:55
+#: theme/ridgeroad/parts/kids-lab.php:55
+msgid "(optional)"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-lab.php:57
+#: theme/ridgeroad/parts/kids-lab.php:57
+msgid ""
+"The song has three parts. Pick a part, then use steps 1–3 above. Each row "
+"shows what a decoration does in each part."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-lab.php:58
+#: theme/ridgeroad/parts/kids-lab.php:58
+msgid "Whole song"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-lab.php:64
+#: theme/ridgeroad/parts/kids-lab.php:64
+msgid "Name your show"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-lab.php:64
+#: theme/ridgeroad/parts/kids-lab.php:64
+msgid "Sparkle Storm"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-lab.php:65
+#: theme/ridgeroad/parts/kids-lab.php:65
+msgid "Save my show"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-lab.php:66
+#: theme/ridgeroad/parts/kids-lab.php:66
+msgid "Watch full screen"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-lab.php:68
+#: theme/ridgeroad/parts/kids-lab.php:68
+msgid "I’m done! Enter to win"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-lab.php:72
+#: theme/ridgeroad/parts/kids-lab.php:72
+msgid ""
+"Your show saves on this device automatically. These are pretend lights: they"
+" never change the real show."
+msgstr ""
+
+#: plugin/marquee/core/parts/guestbook.php:27
+#: theme/ridgeroad/parts/guestbook.php:27
+msgid "Messages From Our Visitors"
+msgstr ""
+
+#: plugin/marquee/core/parts/guestbook.php:35
+#: theme/ridgeroad/parts/guestbook.php:35
+msgid "%s ago"
+msgstr ""
+
+#: plugin/marquee/core/parts/guestbook.php:40
+#: theme/ridgeroad/parts/guestbook.php:40
+msgid "Show more messages"
+msgstr ""
+
+#: plugin/marquee/core/parts/guestbook.php:43
+#: plugin/marquee/core/parts/guestbook.php:47
+#: theme/ridgeroad/parts/guestbook.php:43
+msgid "No messages yet — be the first to sign!"
+msgstr ""
+
+#: plugin/marquee/core/parts/guestbook.php:46
+#: theme/ridgeroad/parts/guestbook.php:46
+msgid "Recent visitor guestbook messages"
+msgstr ""
+
+#: plugin/marquee/core/parts/guestbook.php:48
+#: theme/ridgeroad/parts/guestbook.php:48
+msgid "View all guestbook messages"
+msgstr ""
+
+#: plugin/marquee/core/parts/guestbook.php:52
+#: theme/ridgeroad/parts/guestbook.php:52
+msgid "Sign Our Guestbook"
+msgstr ""
+
+#: plugin/marquee/core/parts/guestbook.php:56
+#: theme/ridgeroad/parts/guestbook.php:56
+msgid ""
+"Thank you! Your message was sent and will appear here after we read it."
+msgstr ""
+
+#: plugin/marquee/core/parts/guestbook.php:58
+#: theme/ridgeroad/parts/guestbook.php:58
+msgid "Something went wrong — please try again."
+msgstr ""
+
+#: plugin/marquee/core/parts/guestbook.php:65
+#: plugin/marquee/core/parts/guestbook.php:66
+#: plugin/marquee/core/parts/guestbook.php:78
+msgid "Your name"
+msgstr ""
+
+#: plugin/marquee/core/parts/guestbook.php:67
+#: plugin/marquee/core/parts/guestbook.php:80
+#: theme/ridgeroad/parts/guestbook.php:67
+msgid "Your Christmas message"
+msgstr ""
+
+#: plugin/marquee/core/parts/guestbook.php:68
+#: plugin/marquee/core/parts/guestbook.php:81
+#: theme/ridgeroad/parts/guestbook.php:68
+msgid "Leave a message..."
+msgstr ""
+
+#: plugin/marquee/core/parts/guestbook.php:69
+#: plugin/marquee/core/parts/guestbook.php:82
+#: theme/ridgeroad/parts/guestbook.php:69
+msgid "Sign Guestbook"
+msgstr ""
+
+#: plugin/marquee/core/parts/guestbook.php:70
+#: theme/ridgeroad/parts/guestbook.php:70
+msgid "Messages appear after we review them."
+msgstr ""
+
+#: plugin/marquee/core/parts/explore.php:18
+#: theme/ridgeroad/parts/explore.php:18
+msgid "Show Videos & Voting"
+msgstr ""
+
+#: plugin/marquee/core/parts/explore.php:18
+#: theme/ridgeroad/parts/explore.php:18
+msgid "Watch videos of this year’s songs and vote for Fan Favorite Friday!"
+msgstr ""
+
+#: plugin/marquee/core/parts/explore.php:18
+#: theme/ridgeroad/parts/explore.php:18
+msgid "Watch the videos of this year’s songs!"
+msgstr ""
+
+#: plugin/marquee/core/parts/explore.php:29
+#: theme/ridgeroad/parts/explore.php:29
+msgid ""
+"Make your own light show to win a prize, and vote for your favorite kids’ "
+"shows on the Show Wall! Plus coloring, elf names & trivia."
+msgstr ""
+
+#: plugin/marquee/core/parts/explore.php:29
+#: theme/ridgeroad/parts/explore.php:29
+msgid "Design your own light show, plus coloring, elf names & trivia!"
+msgstr ""
+
+#: plugin/marquee/core/parts/explore.php:29
+#: theme/ridgeroad/parts/explore.php:29
+msgid "Coloring pages, elf names & Christmas trivia!"
+msgstr ""
+
+#: plugin/marquee/core/parts/explore.php:31
+#: theme/ridgeroad/parts/explore.php:31
+msgid "Let’s Play"
+msgstr ""
+
+#: plugin/marquee/core/parts/songs.php:14 theme/ridgeroad/parts/songs.php:14
+msgid "Check back soon for this year’s songs!"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-wall.php:12
+#: plugin/marquee/core/parts/showwall.php:27
+#: theme/ridgeroad/parts/kids-wall.php:12
+msgid "Kids’ Show Wall"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-wall.php:14
+#: theme/ridgeroad/parts/kids-wall.php:14
+msgid "Watch the shows and tap the heart on your favorites!"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-wall.php:14
+#: theme/ridgeroad/parts/kids-wall.php:14
+msgid "Watch the shows our young light designers made!"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-wall.php:21
+#: plugin/marquee/core/parts/showwall.php:61
+#: theme/ridgeroad/parts/kids-wall.php:21
+msgid "Watch the show by %s"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-wall.php:29
+#: theme/ridgeroad/parts/kids-wall.php:29
+msgid "Give this show a heart"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-wall.php:34
+#: theme/ridgeroad/parts/kids-wall.php:34
+msgid ""
+"No shows yet. Make one and be the first! Shows appear here after we check "
+"them."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-wall.php:39
+#: theme/ridgeroad/parts/kids-wall.php:39
+msgid "Light show player"
+msgstr ""
+
+#: plugin/marquee/core/parts/playlist.php:29
+#: theme/ridgeroad/parts/playlist.php:29
+msgid "Recently played:"
+msgstr ""
+
+#: plugin/marquee/core/parts/social.php:19 theme/ridgeroad/parts/social.php:19
+msgid "Share the Show"
+msgstr ""
+
+#: plugin/marquee/core/parts/social.php:23 theme/ridgeroad/parts/social.php:23
+msgid "Snap a photo? Tag it"
+msgstr ""
+
+#: plugin/marquee/core/parts/countdown.php:14
+#: plugin/marquee/core/parts/countdown.php:16
+#: theme/ridgeroad/parts/countdown.php:14
+msgid "Countdown"
+msgstr ""
+
+#: plugin/marquee/core/parts/countdown.php:18
+#: theme/ridgeroad/parts/countdown.php:18
+msgid "Days"
+msgstr ""
+
+#: plugin/marquee/core/parts/countdown.php:19
+#: theme/ridgeroad/parts/countdown.php:19
+msgid "Hours"
+msgstr ""
+
+#: plugin/marquee/core/parts/countdown.php:20
+#: theme/ridgeroad/parts/countdown.php:20
+msgid "Minutes"
+msgstr ""
+
+#: plugin/marquee/core/parts/countdown.php:21
+#: theme/ridgeroad/parts/countdown.php:21
+msgid "Seconds"
+msgstr ""
+
+#: plugin/marquee/core/parts/app-card.php:16
+#: theme/ridgeroad/parts/app-card.php:16
+msgid "App"
+msgstr ""
+
+#: plugin/marquee/core/parts/app-card.php:20 theme/ridgeroad/footer.php:9
+#: theme/ridgeroad/parts/app-card.php:20
+msgid "Get the app"
+msgstr ""
+
+#: plugin/marquee/core/parts/app-card.php:21
+#: theme/ridgeroad/parts/app-card.php:21
+msgid ""
+"It’s free. Put the show on your home screen and get a buzz when the lights "
+"come on."
+msgstr ""
+
+#: plugin/marquee/core/parts/app-card.php:24
+#: theme/ridgeroad/parts/app-card.php:24
+msgid "Add to my phone"
+msgstr ""
+
+#: plugin/marquee/core/parts/app-card.php:25
+#: plugin/marquee/core/parts/app-card.php:39
+#: theme/ridgeroad/parts/app-card.php:25
+msgid "Not now"
+msgstr ""
+
+#: plugin/marquee/core/parts/app-card.php:30
+#: theme/ridgeroad/parts/app-card.php:30
+msgid "Get show alerts"
+msgstr ""
+
+#: plugin/marquee/core/parts/app-card.php:33
+#: theme/ridgeroad/parts/app-card.php:33
+msgid "When the lights come on"
+msgstr ""
+
+#: plugin/marquee/core/parts/app-card.php:33
+#: theme/ridgeroad/parts/app-card.php:33
+msgid "Once a night, when the show starts"
+msgstr ""
+
+#: plugin/marquee/core/parts/app-card.php:34
+#: theme/ridgeroad/parts/app-card.php:34
+msgid "Cancellations and special news"
+msgstr ""
+
+#: plugin/marquee/core/parts/app-card.php:34
+#: theme/ridgeroad/parts/app-card.php:34
+msgid "Weather, Santa visits, last night"
+msgstr ""
+
+#: plugin/marquee/core/parts/app-card.php:38
+#: theme/ridgeroad/parts/app-card.php:38
+msgid "Turn on alerts"
+msgstr ""
+
+#: plugin/marquee/core/parts/app-card.php:42
+#: theme/ridgeroad/parts/app-card.php:42
+msgid "Done"
+msgstr ""
+
+#: plugin/marquee/core/parts/app-card.php:43
+#: theme/ridgeroad/parts/app-card.php:43
+msgid "Turn off all alerts"
+msgstr ""
+
+#: plugin/marquee/core/parts/show.php:13 theme/ridgeroad/parts/show.php:13
+msgid "Tonight’s Show"
+msgstr ""
+
+#: plugin/marquee/core/parts/show.php:20 theme/ridgeroad/parts/show.php:20
+msgid "Tune Your Radio"
+msgstr ""
+
+#: plugin/marquee/core/parts/show.php:27 theme/ridgeroad/parts/show.php:27
+msgid "Show Hours"
+msgstr ""
+
+#: plugin/marquee/core/parts/show.php:28 plugin/marquee/core/parts/show.php:29
+#: theme/ridgeroad/parts/show.php:28
+msgid "Sunset"
+msgstr ""
+
+#: plugin/marquee/core/parts/show.php:38 theme/ridgeroad/parts/show.php:38
+msgid "Up next:"
+msgstr ""
+
+#: plugin/marquee/core/parts/show.php:63 plugin/marquee/core/parts/show.php:71
+#: theme/ridgeroad/parts/show.php:63
+msgid "Pick the Next Song"
+msgstr ""
+
+#: plugin/marquee/core/parts/show.php:64 theme/ridgeroad/parts/show.php:64
+msgid "Choose what plays next!"
+msgstr ""
+
+#: plugin/marquee/core/parts/show.php:65 theme/ridgeroad/parts/show.php:65
+msgid ""
+"Only you can see this right now (you’re logged in). Visitors see it while "
+"the show is running."
+msgstr ""
+
+#: plugin/marquee/core/parts/show.php:82 theme/ridgeroad/parts/show.php:82
+msgid "Get Directions"
+msgstr ""
+
+#: plugin/marquee/core/parts/showwall.php:31
+#: theme/ridgeroad/parts/showwall.php:31
+msgid "Light shows made by kids"
+msgstr ""
+
+#: plugin/marquee/core/parts/showwall.php:31
+#: theme/ridgeroad/parts/showwall.php:31
+msgid "Our young light designers"
+msgstr ""
+
+#: plugin/marquee/core/parts/showwall.php:33
+#: theme/ridgeroad/parts/showwall.php:33
+msgid ""
+"Kids design their own light show for our house in the Christmas Light Lab. "
+"Watch them and give your favorites a heart: the show with the most hearts "
+"wins People’s Choice!"
+msgstr ""
+
+#: plugin/marquee/core/parts/showwall.php:34
+#: theme/ridgeroad/parts/showwall.php:34
+msgid ""
+"Kids designed their own light shows for our house in the Christmas Light "
+"Lab. Tap one to watch it!"
+msgstr ""
+
+#: plugin/marquee/core/parts/showwall.php:38
+#: theme/ridgeroad/parts/showwall.php:38
+msgid "Prizes: %s."
+msgstr ""
+
+#: plugin/marquee/core/parts/showwall.php:38
+#: theme/ridgeroad/parts/showwall.php:38
+msgid "Enter and vote by %s."
+msgstr ""
+
+#: plugin/marquee/core/parts/showwall.php:42
+#: theme/ridgeroad/parts/showwall.php:42
+msgid "See all shows & vote"
+msgstr ""
+
+#: plugin/marquee/core/parts/showwall.php:42
+#: theme/ridgeroad/parts/showwall.php:42
+msgid "See all the shows"
+msgstr ""
+
+#: plugin/marquee/core/parts/showwall.php:43
+#: theme/ridgeroad/parts/showwall.php:43
+msgid "Make your own"
+msgstr ""
+
+#: plugin/marquee/core/parts/showwall.php:60
+#: theme/ridgeroad/parts/showwall.php:60
+msgid "%d heart"
+msgid_plural "%d hearts"
+msgstr[0] ""
+msgstr[1] ""
+
+#: plugin/marquee/core/app.php:160 theme/ridgeroad/inc/app.php:160
+msgid "You’re offline"
+msgstr ""
+
+#: plugin/marquee/core/app.php:161 theme/ridgeroad/inc/app.php:161
+msgid "The app needs the internet to load. The show still plays on the radio:"
+msgstr ""
+
+#: plugin/marquee/core/app.php:163 theme/ridgeroad/inc/app.php:163
+msgid "Try again"
+msgstr ""
+
+#: plugin/marquee/core/app.php:594 theme/ridgeroad/inc/app.php:594
+msgid "The lights are on! 🎄"
+msgstr ""
+
+#: plugin/marquee/core/app.php:596 theme/ridgeroad/inc/app.php:596
+msgid "The show just started. Tune your radio to %s."
+msgstr ""
+
+#: plugin/marquee/core/app.php:626 theme/ridgeroad/inc/app.php:626
+msgid "Your name is up next! ⭐"
+msgstr ""
+
+#: plugin/marquee/core/app.php:628 theme/ridgeroad/inc/app.php:628
+msgid "Watch for your name after this song: %s"
+msgstr ""
+
+#: plugin/marquee/core/live.php:134 theme/ridgeroad/inc/live.php:134
+msgid "Canceled Tonight"
+msgstr ""
+
+#: plugin/marquee/core/live.php:140 theme/ridgeroad/inc/live.php:140
+msgid "Off Season"
+msgstr ""
+
+#: plugin/marquee/core/live.php:144 theme/ridgeroad/inc/live.php:144
+msgid "Opening night: %s"
+msgstr ""
+
+#: plugin/marquee/core/live.php:146 theme/ridgeroad/inc/live.php:146
+msgid "Thanks for a wonderful season!"
+msgstr ""
+
+#: plugin/marquee/core/live.php:154 theme/ridgeroad/inc/live.php:154
+msgid "Show Running"
+msgstr ""
+
+#: plugin/marquee/core/live.php:156 theme/ridgeroad/inc/live.php:156
+msgid "Running until %s tonight"
+msgstr ""
+
+#: plugin/marquee/core/live.php:160 theme/ridgeroad/inc/live.php:160
+msgid "Starts %s"
+msgstr ""
+
+#: plugin/marquee/core/live.php:162 theme/ridgeroad/inc/live.php:162
+msgid "Lights on at sunset — about %s tonight"
+msgstr ""
+
+#: plugin/marquee/core/live.php:162 theme/ridgeroad/inc/live.php:162
+msgid "Lights on at %s tonight"
+msgstr ""
+
+#: plugin/marquee/core/live.php:166 theme/ridgeroad/inc/live.php:166
+msgid "Show Ended"
+msgstr ""
+
+#: plugin/marquee/core/live.php:169 theme/ridgeroad/inc/live.php:169
+msgid "See you tomorrow at sunset — about %s"
+msgstr ""
+
+#: plugin/marquee/core/live.php:169 theme/ridgeroad/inc/live.php:169
+msgid "See you tomorrow at %s"
+msgstr ""
+
+#: plugin/marquee/core/live.php:170 theme/ridgeroad/inc/live.php:170
+msgid "That was our last night — thank you!"
+msgstr ""
+
+#: plugin/marquee/core/seo.php:37 theme/ridgeroad/inc/seo.php:37
+msgid "sunset"
+msgstr ""
+
+#: plugin/marquee/core/seo.php:41 theme/ridgeroad/inc/seo.php:41
+msgid "Nightly %1$s – %2$s"
+msgstr ""
+
+#: plugin/marquee/core/seo.php:41 theme/ridgeroad/inc/seo.php:41
+msgid "Nightly %1$s – %2$s (Fri & Sat until %3$s)"
+msgstr ""
+
+#: plugin/marquee/core/seo.php:47 theme/ridgeroad/inc/seo.php:47
+msgid ""
+"Kids’ Corner at %s: put your name in lights, design your own light show, "
+"print coloring pages and play Christmas games."
+msgstr ""
+
+#: plugin/marquee/core/seo.php:54 theme/ridgeroad/inc/seo.php:54
+msgid "%1$s – %2$s."
+msgstr ""
+
+#: plugin/marquee/core/seo.php:57 theme/ridgeroad/inc/seo.php:57
+msgid "Tune to %s."
+msgstr ""
+
+#: plugin/marquee/core/seo.php:79 theme/ridgeroad/inc/seo.php:79
+msgid "free drive-by Christmas light show"
+msgstr ""
+
+#: theme/ridgeroad/looks/looks.php:17
+msgid "Christmas Village"
+msgstr ""
+
+#: theme/ridgeroad/looks/looks.php:18
+msgid "Santa’s North Pole"
+msgstr ""
+
+#: theme/ridgeroad/looks/looks.php:35 theme/ridgeroad/looks/looks.php:48
+msgid "Look"
+msgstr ""
+
+#: theme/ridgeroad/looks/looks.php:36
+msgid ""
+"Pick the style of your website. Only the pictures and colors change; your "
+"sections and settings stay the same."
+msgstr ""
+
+#: theme/ridgeroad/looks/looks.php:135
+msgid ""
+"Send your name to the show during show hours and watch for it between songs!"
+msgstr ""
+
+#: theme/ridgeroad/looks/looks.php:136
+msgid "Put my name in lights"
+msgstr ""
+
+#: theme/ridgeroad/looks/looks.php:136
+msgid "See how it works"
+msgstr ""
+
+#: theme/ridgeroad/index.php:13
+msgid "Search: %s"
+msgstr ""
+
+#: theme/ridgeroad/index.php:17
+msgid "Show News"
+msgstr ""
+
+#: theme/ridgeroad/index.php:37
+msgid "Nothing here yet — check back soon!"
+msgstr ""
+
+#: theme/ridgeroad/page-kids.php:9
+msgid "The Kids’ Corner is resting right now — check back soon!"
+msgstr ""
+
+#: theme/ridgeroad/page-kids.php:12 theme/ridgeroad/404.php:10
+#: theme/ridgeroad/page-songs.php:7
+msgid "Back to the Show"
+msgstr ""
+
+#: theme/ridgeroad/404.php:8
+msgid "This light must have burned out!"
+msgstr ""
+
+#: theme/ridgeroad/404.php:9
+msgid "We couldn’t find that page."
+msgstr ""
+
+#: theme/ridgeroad/functions.php:75
+msgid "Our show’s website is getting ready. Check back soon!"
+msgstr ""
+
+#: theme/ridgeroad/functions.php:98
+msgid "Top Menu"
+msgstr ""
+
+#: theme/ridgeroad/functions.php:154
+msgid "Home"
+msgstr ""
+
+#: theme/ridgeroad/functions.php:157
+msgid "Videos"
+msgstr ""
+
+#: theme/ridgeroad/header.php:15
+msgid "Skip to content"
+msgstr ""
+
+#: theme/ridgeroad/header.php:31
+msgid "Main"
+msgstr ""

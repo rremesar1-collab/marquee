@@ -93,7 +93,7 @@ function marquee_social_fill( $text ) {
 		'{site}'    => preg_replace( '#^https?://(www\.)?#', '', untrailingslashit( home_url() ) ),
 		'{radio}'   => function_exists( 'ridgeroad_mod' ) ? (string) ridgeroad_mod( 'radio' ) : '',
 		'{tagline}' => wp_specialchars_decode( get_bloginfo( 'description' ), ENT_QUOTES ),
-		'{date}'    => wp_date( 'l, F j' ),
+		'{date}'    => wp_date( __( 'l, F j', 'marquee' ) ),
 	);
 	$out = array();
 	foreach ( explode( "\n", str_replace( "\r", '', $text ) ) as $line ) {
@@ -408,7 +408,7 @@ add_filter( 'ridgeroad_social_state', function () {
 		marquee_social_th_ready( $s ) && $s['th_on'] ? 'Threads' : '',
 	) ) );
 	$out['history'] = array_map( function ( $l ) {
-		return array( 'ok' => (bool) $l['ok'], 'what' => $l['what'], 'net' => $l['net'], 'msg' => $l['msg'], 'link' => $l['link'], 'when' => wp_date( 'M j, g:i A', (int) $l['t'] ) );
+		return array( 'ok' => (bool) $l['ok'], 'what' => $l['what'], 'net' => $l['net'], 'msg' => $l['msg'], 'link' => $l['link'], 'when' => wp_date( __( 'M j, g:i A', 'marquee' ), (int) $l['t'] ) );
 	}, array_slice( array_values( array_filter( (array) $s['log'], function ( $l ) { return 'connect' !== $l['what']; } ) ), 0, 5 ) );
 	/* translators: %s: Facebook, Instagram and Threads */
 	$out['label'] = sprintf( __( 'Also post “Show canceled tonight” on %s', 'marquee' ), marquee_social_where( $s ) );
@@ -603,7 +603,7 @@ function marquee_social_box() {
 		'{site}'    => preg_replace( '#^https?://(www\.)?#', '', untrailingslashit( home_url() ) ),
 		'{radio}'   => function_exists( 'ridgeroad_mod' ) ? (string) ridgeroad_mod( 'radio' ) : '',
 		'{tagline}' => wp_specialchars_decode( get_bloginfo( 'description' ), ENT_QUOTES ),
-		'{date}'    => wp_date( 'l, F j' ),
+		'{date}'    => wp_date( __( 'l, F j', 'marquee' ) ),
 	);
 	?>
 	<input type="hidden" name="social_sent" value="1">
@@ -714,7 +714,7 @@ function marquee_social_box() {
 			<ul class="mq-so__log">
 				<?php foreach ( $s['log'] as $l ) : ?>
 					<li class="<?php echo $l['ok'] ? 'is-ok' : 'is-bad'; ?>">
-						<span><?php echo esc_html( wp_date( 'M j, g:i a', (int) $l['t'] ) ); ?></span>
+						<span><?php echo esc_html( wp_date( __( 'M j, g:i a', 'marquee' ), (int) $l['t'] ) ); ?></span>
 						<b><?php echo esc_html( array( 'cancel' => __( 'Canceled post', 'marquee' ), 'resume' => __( 'Back on post', 'marquee' ), 'connect' => __( 'Connection', 'marquee' ) )[ $l['what'] ] ?? $l['what'] ); ?> · <?php echo esc_html( array( 'instagram' => 'Instagram', 'threads' => 'Threads', 'all' => __( 'All', 'marquee' ) )[ $l['net'] ] ?? 'Facebook' ); ?></b>
 						<span><?php echo esc_html( $l['msg'] ); ?><?php if ( $l['link'] ) : ?> <a href="<?php echo esc_url( $l['link'] ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'View', 'marquee' ); ?></a><?php endif; ?></span>
 					</li>

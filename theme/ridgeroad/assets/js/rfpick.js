@@ -4,6 +4,7 @@
    one vote / one request each, queue length, and the "be at the show" location check. */
 (function () {
 	'use strict';
+	var tr = function (s) { var d = window.rrI18n; return (d && d[s]) || s; };
 	var box = document.querySelector('[data-rr-rfpick]');
 	var dlg = document.querySelector('[data-rr-rfdlg]');
 	if (!box || !dlg) { return; }
@@ -16,12 +17,12 @@
 	function title(q) { return (q.displayName || String(q.name || '').replace(/\.(fseq|xsq|mp3)$/i, '').replace(/_/g, ' ')).trim(); }
 
 	var SAY = {
-		ALREADY_VOTED: 'You already voted. Votes start over after the winning song plays.',
-		ALREADY_REQUESTED: 'You already picked a song. You can pick another after yours plays.',
-		QUEUE_FULL: 'The line is full right now. Try again in a few minutes.',
-		INVALID_LOCATION: 'You need to be at the show to pick songs.',
-		SEQUENCE_REQUESTED: 'That song is playing or already in line. Pick another one!',
-		NAUGHTY: 'Song picking isn’t available from this device.'
+		ALREADY_VOTED: tr('You already voted. Votes start over after the winning song plays.'),
+		ALREADY_REQUESTED: tr('You already picked a song. You can pick another after yours plays.'),
+		QUEUE_FULL: tr('The line is full right now. Try again in a few minutes.'),
+		INVALID_LOCATION: tr('You need to be at the show to pick songs.'),
+		SEQUENCE_REQUESTED: tr('That song is playing or already in line. Pick another one!'),
+		NAUGHTY: tr('Song picking isn’t available from this device.')
 	};
 	function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
 	function gql(query, vars) {
@@ -52,14 +53,14 @@
 	}
 	function draw() {
 		var p = show.preferences || {}, voting = p.viewerControlMode === 'VOTING';
-		var now = show.playingNow ? '<p><b>Now playing:</b> ' + esc(show.playingNow) + '</p>' : '';
+		var now = show.playingNow ? '<p>' + tr('<b>Now playing:</b> %s').replace('%s', function () { return esc(show.playingNow); }) + '</p>' : '';
 		var q = (show.requests || []).slice().sort(function (a, b) { return a.position - b.position; })
 			.map(function (r) { return r.sequence ? esc(r.sequence.displayName || r.sequence.name) : ''; }).filter(Boolean);
-		var line = !voting && q.length ? '<p><b>In line:</b> ' + q.join(', ') + '</p>' : (show.playingNext ? '<p><b>Up next:</b> ' + esc(show.playingNext) + '</p>' : '');
-		head.innerHTML = now + line + '<p class="rr-rf__how">' + (voting ? 'Vote for the song you want next. The one with the most votes plays after this song.' : 'Pick a song and it gets in line to play.') + '</p>';
+		var line = !voting && q.length ? '<p>' + tr('<b>In line:</b> %s').replace('%s', function () { return q.join(', '); }) + '</p>' : (show.playingNext ? '<p>' + tr('<b>Up next:</b> %s').replace('%s', function () { return esc(show.playingNext); }) + '</p>' : '');
+		head.innerHTML = now + line + '<p class="rr-rf__how">' + (voting ? tr('Vote for the song you want next. The one with the most votes plays after this song.') : tr('Pick a song and it gets in line to play.')) + '</p>';
 		if (!p.viewerControlEnabled) {
 			list.innerHTML = '';
-			say('Song picking is off right now. Check back during the show!', 'warn');
+			say(tr('Song picking is off right now. Check back during the show!'), 'warn');
 			return;
 		}
 		list.innerHTML = items().map(function (it) {
@@ -67,16 +68,16 @@
 			return '<li><button type="button" class="rr-rf__song" data-rf-pick="' + esc(it.name) + '">' +
 				(it.img ? '<img src="' + esc(it.img) + '" alt="" loading="lazy">' : '<span class="rr-rf__note" aria-hidden="true">&#9835;</span>') +
 				'<span class="rr-rf__t"><b>' + esc(it.title) + '</b>' + (it.artist ? '<small>' + esc(it.artist) + '</small>' : '') + '</span>' +
-				(voting ? '<span class="rr-rf__votes">' + v + (v === 1 ? ' vote' : ' votes') + '</span>' : '') +
-				'<span class="rr-rf__go">' + (voting ? 'Vote' : 'Pick') + '</span></button></li>';
-		}).join('') || '<li class="rr-rf__empty">No songs to pick yet.</li>';
+				(voting ? '<span class="rr-rf__votes">' + (v === 1 ? tr('%s vote') : tr('%s votes')).replace('%s', v) + '</span>' : '') +
+				'<span class="rr-rf__go">' + (voting ? tr('Vote') : tr('Pick')) + '</span></button></li>';
+		}).join('') || '<li class="rr-rf__empty">' + tr('No songs to pick yet.') + '</li>';
 	}
 	function load(first) {
 		return gql(Q, { s: SUB }).then(function (j) {
 			if (!j || !j.data || !j.data.getShow) { throw new Error('no show'); }
 			show = j.data.getShow; draw();
 			if (first) { say(''); }
-		}).catch(function () { if (first) { list.innerHTML = ''; say('We couldn’t reach Remote Falcon. Try again in a minute.', 'bad'); } });
+		}).catch(function () { if (first) { list.innerHTML = ''; say(tr('We couldn’t reach Remote Falcon. Try again in a minute.'), 'bad'); } });
 	}
 	function where() {
 		var m = show && show.preferences && show.preferences.locationCheckMethod;
@@ -84,7 +85,7 @@
 		if (pos) { return Promise.resolve(pos); }
 		return new Promise(function (ok) {
 			if (!navigator.geolocation) { ok(null); return; }
-			say('Checking that you’re at the show…');
+			say(tr('Checking that you’re at the show…'));
 			navigator.geolocation.getCurrentPosition(function (p) { pos = { lat: p.coords.latitude, lon: p.coords.longitude }; ok(pos); }, function () { ok(null); }, { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 });
 		});
 	}
@@ -102,14 +103,14 @@
 				var code = (j.errors[0].extensions && j.errors[0].extensions.message) || j.errors[0].message;
 				throw { code: code };
 			}
-			say(voting ? 'Thanks! Your vote is in.' : 'Got it! Your song is in line.', 'ok');
+			say(voting ? tr('Thanks! Your vote is in.') : tr('Got it! Your song is in line.'), 'ok');
 			return load(false);
 		}).catch(function (err) {
-			say((err && SAY[err.code]) || 'Something went wrong. Try again.', 'bad');
+			say((err && SAY[err.code]) || tr('Something went wrong. Try again.'), 'bad');
 		}).then(function () { busy = false; b.classList.remove('is-busy'); });
 	});
 	function open() {
-		say('Loading the songs…');
+		say(tr('Loading the songs…'));
 		if (dlg.showModal) { dlg.showModal(); } else { dlg.setAttribute('open', ''); }
 		load(true);
 		clearInterval(timer); timer = setInterval(function () { if (!document.hidden) { load(false); } }, 8000);

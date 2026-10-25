@@ -20,6 +20,15 @@ defined( 'RIDGEROAD_LAT' ) || define( 'RIDGEROAD_LAT', ( isset( $rr_mq['lat'] ) 
 defined( 'RIDGEROAD_LON' ) || define( 'RIDGEROAD_LON', ( isset( $rr_mq['lon'] ) && '' !== $rr_mq['lon'] ) ? (float) $rr_mq['lon'] : 0.0 );
 unset( $rr_mq );
 
+/* Languages: follows Settings → General → Site Language. Spanish and French come with the theme. */
+add_action( 'after_setup_theme', function () {
+	$lang = strtolower( substr( determine_locale(), 0, 2 ) );
+	$mo   = get_template_directory() . '/languages/ridgeroad-' . $lang . '.mo';
+	if ( in_array( $lang, array( 'es', 'fr' ), true ) && file_exists( $mo ) ) {
+		load_textdomain( 'ridgeroad', $mo );
+	}
+}, -2000 );
+
 require get_template_directory() . '/inc/helpers.php'; // shared helpers (Marquee has the same file)
 
 // Show features: from the Marquee plugin when it is active, else the theme's own copy.
@@ -41,6 +50,7 @@ if ( ! defined( 'MARQUEE_CORE' ) ) {
 	require get_template_directory() . '/inc/app.php';
 	require get_template_directory() . '/inc/seo.php';
 	require get_template_directory() . '/inc/assets.php';
+	require get_template_directory() . '/inc/i18n.php';
 }
 require get_template_directory() . '/looks/looks.php'; // Classic, Christmas Village, Santa's North Pole
 

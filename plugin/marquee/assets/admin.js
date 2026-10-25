@@ -1,5 +1,8 @@
 /* Marquee setup wizard / settings page */
 (function () {
+var tr = function (s) { var d = window.rrI18n; return (d && d[s]) || s; };
+
+(function () {
 	'use strict';
 	var root = document.querySelector('[data-mq]');
 	if (!root) { return; }
@@ -52,10 +55,10 @@
 	/* address → pin, time zone, radar */
 	var lk = $('[data-mq-lookup]'), lkMsg = $('[data-mq-lookup-msg]');
 	lk.addEventListener('click', function () {
-		lk.disabled = true; say(lkMsg, 'Looking it up…', true);
+		lk.disabled = true; say(lkMsg, tr('Looking it up…'), true);
 		post('marquee_lookup', { address: $('#mq-addr').value }).then(function (j) {
 			lk.disabled = false;
-			if (!j || !j.success) { say(lkMsg, (j && j.data && j.data.message) || 'Couldn’t look that up.', false); return; }
+			if (!j || !j.success) { say(lkMsg, (j && j.data && j.data.message) || tr('Couldn’t look that up.'), false); return; }
 			var d = j.data;
 			$('#mq-lat').value = (+d.lat).toFixed(5); $('#mq-lon').value = (+d.lon).toFixed(5);
 			if (d.tz) { var o = $('#mq-tz').querySelector('option[value="' + d.tz + '"]'); if (o) { $('#mq-tz').value = d.tz; } }
@@ -65,8 +68,8 @@
 			if (d.region) { $('#mq-region').value = d.region; }
 			if (d.zip) { $('#mq-zip').value = d.zip; }
 			if (d.country) { $('[data-mq-country]').value = d.country; $('#mq-units').value = d.country === 'US' ? 'us' : 'metric'; }
-			say(lkMsg, 'Found it: ' + [d.city, d.region].filter(Boolean).join(', ') + (d.tz ? ' · ' + d.tz : '') + (d.radar ? ' · radar ' + d.radar : '') + '. Check the fields below.', true);
-		}).catch(function () { lk.disabled = false; say(lkMsg, 'Couldn’t reach the website. Try again.', false); });
+			say(lkMsg, tr('Found it: %s. Check the fields below.').replace('%s', function () { return [d.city, d.region].filter(Boolean).join(', ') + (d.tz ? ' · ' + d.tz : '') + (d.radar ? ' · ' + tr('radar %s').replace('%s', function () { return d.radar; }) : ''); }), true);
+		}).catch(function () { lk.disabled = false; say(lkMsg, tr('Couldn’t reach the website. Try again.'), false); });
 	});
 
 	/* "Only at the show": switching miles/km converts the number in the box */
@@ -87,18 +90,18 @@
 			if (!f || !box || !img) { return; }
 			img.src = URL.createObjectURL(f);
 			box.hidden = false;
-			if (note) { note.textContent = 'New logo picked. Click Save settings to use it.'; }
+			if (note) { note.textContent = tr('New logo picked. Click Save settings to use it.'); }
 		});
 	}
 
 	/* Remote Falcon test */
 	var rt = $('[data-mq-rftest]'), rtMsg = $('[data-mq-rfmsg]');
 	rt.addEventListener('click', function () {
-		rt.disabled = true; say(rtMsg, 'Testing…', true);
+		rt.disabled = true; say(rtMsg, tr('Testing…'), true);
 		post('marquee_rf_test', { token: $('#mq-rft').value.trim(), secret: $('#mq-rfs').value.trim() }).then(function (j) {
 			rt.disabled = false;
-			say(rtMsg, (j && j.data && j.data.message) || 'Test failed.', !!(j && j.success));
-		}).catch(function () { rt.disabled = false; say(rtMsg, 'Couldn’t reach the website. Try again.', false); });
+			say(rtMsg, (j && j.data && j.data.message) || tr('Test failed.'), !!(j && j.success));
+		}).catch(function () { rt.disabled = false; say(rtMsg, tr('Couldn’t reach the website. Try again.'), false); });
 	});
 
 	/* standard coloring pages: Remove / Restore */
@@ -110,9 +113,9 @@
 			var card = x.closest('[data-mq-std]'), box = card.querySelector('input[type=checkbox]'), flag = card.querySelector('input[name="art_removed[]"]');
 			var gone = card.parentNode === stdGone;
 			if (gone) {
-				stdList.appendChild(card); box.disabled = false; box.checked = true; flag.disabled = true; x.textContent = 'Remove';
+				stdList.appendChild(card); box.disabled = false; box.checked = true; flag.disabled = true; x.textContent = tr('Remove');
 			} else {
-				stdGone.appendChild(card); box.checked = false; box.disabled = true; flag.disabled = false; x.textContent = 'Restore';
+				stdGone.appendChild(card); box.checked = false; box.disabled = true; flag.disabled = false; x.textContent = tr('Restore');
 			}
 			$('[data-mq-std-gone]').hidden = !stdGone.children.length;
 		});
@@ -137,7 +140,7 @@
 		var keyBad = function (msgEl) {
 			var k = vKey();
 			if (k && k !== '••••••••' && k.indexOf('sk_') !== 0) {
-				say(msgEl, 'That’s the key ID, not the key. The API key starts with sk_ and ElevenLabs shows it only once, when you create the key.', false);
+				say(msgEl, tr('That’s the key ID, not the key. The API key starts with sk_ and ElevenLabs shows it only once, when you create the key.'), false);
 				return true;
 			}
 			return false;
@@ -149,13 +152,13 @@
 		vLoad.addEventListener('click', function () {
 			var lm = $('[data-mq-vlmsg]');
 			if (keyBad(lm)) { return; }
-			say(lm, 'Loading…', true);
+			say(lm, tr('Loading…'), true);
 			post('marquee_voice_list', { key: vKey() }).then(function (j) {
-				if (!j || !j.success) { say(lm, (j && j.data && j.data.message) || 'Couldn’t load your voices.', false); return; }
+				if (!j || !j.success) { say(lm, (j && j.data && j.data.message) || tr('Couldn’t load your voices.'), false); return; }
 				var cur = vId.value, list = j.data.voices || [];
 				vPick.innerHTML = '';
 				var g1 = document.createElement('optgroup'), g2 = document.createElement('optgroup');
-				g1.label = 'My voices'; g2.label = 'ElevenLabs voices';
+				g1.label = tr('My voices'); g2.label = tr('ElevenLabs voices');
 				list.forEach(function (v) {
 					var o = document.createElement('option'); o.value = v.id; o.textContent = v.name;
 					if (v.id === cur) { o.selected = true; }
@@ -165,8 +168,8 @@
 				if (g2.children.length) { vPick.appendChild(g2); }
 				if (!cur || !list.some(function (v) { return v.id === cur; })) { vPick.selectedIndex = 0; }
 				vPick.dispatchEvent(new Event('change'));
-				say(lm, list.length + ' voices. Pick one, then Test voice.', true);
-			}).catch(function () { say(lm, 'Couldn’t reach the website. Try again.', false); });
+				say(lm, tr('%s voices. Pick one, then Test voice.').replace('%s', list.length), true);
+			}).catch(function () { say(lm, tr('Couldn’t reach the website. Try again.'), false); });
 		});
 		var loaded = false;
 		var autoLoad = function () { if (!loaded && vKey()) { loaded = true; vLoad.click(); } };
@@ -176,13 +179,13 @@
 		vTest.addEventListener('click', function () {
 			var tm = $('[data-mq-vmsg]');
 			if (keyBad(tm)) { return; }
-			vTest.disabled = true; say(tm, 'Making the clip…', true);
+			vTest.disabled = true; say(tm, tr('Making the clip…'), true);
 			post('marquee_voice_test', { key: vKey(), voice: vId.value, model: $('#mq-vmodel').value, name: $('#mq-vtest').value, speed: $('#mq-vspeed').value, santa: $('#mq-vsanta').checked ? 1 : 0, greet: $('#mq-vsanta').checked ? 'santa' : 'merry' }).then(function (j) {
 				vTest.disabled = false;
-				if (!j || !j.success) { say(tm, (j && j.data && j.data.message) || 'Test failed.', false); return; }
+				if (!j || !j.success) { say(tm, (j && j.data && j.data.message) || tr('Test failed.'), false); return; }
 				say(tm, j.data.message, true);
 				vAudio.hidden = false; vAudio.src = j.data.url; vAudio.play().catch(function () {});
-			}).catch(function () { vTest.disabled = false; say(tm, 'Couldn’t reach the website. Try again.', false); });
+			}).catch(function () { vTest.disabled = false; say(tm, tr('Couldn’t reach the website. Try again.'), false); });
 		});
 	}
 
@@ -194,14 +197,14 @@
 		function ids() { return input.value ? input.value.split(',').filter(Boolean) : []; }
 		function thumb(id, url, title) {
 			var s = document.createElement('span'); s.className = 'mq__thumb' + (kind === 'audio' ? ' is-audio' : ''); s.setAttribute('data-id', id);
-			if (kind === 'audio') { var t = document.createElement('span'); t.className = 'mq__song'; t.textContent = '♪ ' + (title || 'Song'); s.appendChild(t); }
+			if (kind === 'audio') { var t = document.createElement('span'); t.className = 'mq__song'; t.textContent = '♪ ' + (title || tr('Song')); s.appendChild(t); }
 			else { var i = document.createElement('img'); i.src = url; i.alt = ''; s.appendChild(i); }
-			if (multi) { var x = document.createElement('button'); x.type = 'button'; x.className = 'mq__x'; x.setAttribute('data-mq-x', ''); x.setAttribute('aria-label', 'Remove'); x.textContent = '×'; s.appendChild(x); }
+			if (multi) { var x = document.createElement('button'); x.type = 'button'; x.className = 'mq__x'; x.setAttribute('data-mq-x', ''); x.setAttribute('aria-label', tr('Remove')); x.textContent = '×'; s.appendChild(x); }
 			return s;
 		}
 		function showStd() {
 			if (!std || ids().length) { return; }
-			thumbs.innerHTML = '<span class="mq__thumb is-std"><img alt=""><em>Standard</em></span>';
+			thumbs.innerHTML = '<span class="mq__thumb is-std"><img alt=""><em>' + tr('Standard') + '</em></span>';
 			thumbs.querySelector('img').src = std;
 		}
 		thumbs.addEventListener('click', function (e) {
@@ -210,12 +213,12 @@
 			input.value = ids().filter(function (v) { return v !== id; }).join(','); t.remove();
 		});
 		if (clear) {
-			clear.addEventListener('click', function () { input.value = ''; thumbs.innerHTML = ''; clear.hidden = true; pick.textContent = 'Choose picture'; showStd(); });
+			clear.addEventListener('click', function () { input.value = ''; thumbs.innerHTML = ''; clear.hidden = true; pick.textContent = tr('Choose picture'); showStd(); });
 		}
 		pick.addEventListener('click', function () {
 			if (!window.wp || !wp.media) { return; }
 			if (!frame) {
-				frame = wp.media({ title: box.getAttribute('data-title'), multiple: multi ? 'add' : false, library: { type: kind }, button: { text: kind === 'audio' ? 'Use these songs' : 'Use ' + (multi ? 'these pictures' : 'this picture') } });
+				frame = wp.media({ title: box.getAttribute('data-title'), multiple: multi ? 'add' : false, library: { type: kind }, button: { text: kind === 'audio' ? tr('Use these songs') : (multi ? tr('Use these pictures') : tr('Use this picture')) } });
 				frame.on('select', function () {
 					var sel = frame.state().get('selection').toJSON();
 					if (!multi) { thumbs.innerHTML = ''; input.value = ''; }
@@ -229,7 +232,7 @@
 					});
 					input.value = cur.join(',');
 					if (clear) { clear.hidden = !cur.length; }
-					if (!multi) { pick.textContent = cur.length ? 'Change' : 'Choose picture'; }
+					if (!multi) { pick.textContent = cur.length ? tr('Change') : tr('Choose picture'); }
 				});
 			}
 			frame.open();
@@ -399,54 +402,54 @@
 			ask.addEventListener('click', function () { cf.hidden = false; ask.hidden = true; });
 			card.querySelector('[data-so-no]').addEventListener('click', function () { cf.hidden = true; ask.hidden = false; });
 			now.addEventListener('click', function () {
-				now.disabled = true; msg.textContent = 'Posting…';
+				now.disabled = true; msg.textContent = tr('Posting…');
 				post('marquee_social_now', { what: now.getAttribute('data-so-now') }).then(function (j) {
 					now.disabled = false; cf.hidden = true; ask.hidden = false;
 					var log = (j && j.success && j.data.log) || [];
 					var nets = { facebook: 'Facebook: ', instagram: 'Instagram: ', threads: 'Threads: ', all: '' };
-					msg.textContent = log.length ? log.map(function (l) { return (l.ok ? '✓ ' : '✗ ') + (nets[l.net] || '') + l.msg; }).join('  ') : 'Nothing was posted.';
-				}).catch(function () { now.disabled = false; msg.textContent = 'Couldn’t reach your website.'; });
+					msg.textContent = log.length ? log.map(function (l) { return (l.ok ? '✓ ' : '✗ ') + (nets[l.net] || '') + l.msg; }).join('  ') : tr('Nothing was posted.');
+				}).catch(function () { now.disabled = false; msg.textContent = tr('Couldn’t reach your website.'); });
 			});
 		}
 	});
 	var chk = box.querySelector('[data-so-check]');
 	if (chk) {
 		chk.addEventListener('click', function () {
-			var m = box.querySelector('[data-so-checkmsg]'); m.textContent = 'Checking…';
-			post('marquee_social_check').then(function (j) { m.textContent = (j && j.data && j.data.message) || 'Something went wrong.'; });
+			var m = box.querySelector('[data-so-checkmsg]'); m.textContent = tr('Checking…');
+			post('marquee_social_check').then(function (j) { m.textContent = (j && j.data && j.data.message) || tr('Something went wrong.'); });
 		});
 	}
 	var thc = box.querySelector('[data-so-thconnect]'), thm = box.querySelector('[data-so-thmsg]');
 	thc.addEventListener('click', function () {
-		thc.disabled = true; thm.textContent = 'Connecting…';
+		thc.disabled = true; thm.textContent = tr('Connecting…');
 		post('marquee_social_threads', { token: box.querySelector('[data-so-thtoken]').value, secret: box.querySelector('[data-so-thsecret]').value }).then(function (j) {
 			thc.disabled = false;
-			if (j && j.success) { thm.textContent = 'Connected to @' + j.data.name + '!'; try { location.hash = '#mq-step-7'; } catch (e) {} location.reload(); }
-			else { thm.textContent = (j && j.data && j.data.message) || 'Something went wrong.'; }
-		}).catch(function () { thc.disabled = false; thm.textContent = 'Couldn’t reach your website.'; });
+			if (j && j.success) { thm.textContent = tr('Connected to @%s!').replace('%s', function () { return j.data.name; }); try { location.hash = '#mq-step-7'; } catch (e) {} location.reload(); }
+			else { thm.textContent = (j && j.data && j.data.message) || tr('Something went wrong.'); }
+		}).catch(function () { thc.disabled = false; thm.textContent = tr('Couldn’t reach your website.'); });
 	});
 	var con = box.querySelector('[data-so-connect]'), cmsg = box.querySelector('[data-so-msg]'), pages = box.querySelector('[data-so-pages]');
 	con.addEventListener('click', function () {
-		con.disabled = true; cmsg.textContent = 'Connecting…'; pages.hidden = true;
+		con.disabled = true; cmsg.textContent = tr('Connecting…'); pages.hidden = true;
 		post('marquee_social_connect', { app: box.querySelector('[data-so-app]').value, secret: box.querySelector('[data-so-secret]').value, token: box.querySelector('[data-so-token]').value }).then(function (j) {
 			con.disabled = false;
-			if (!j || !j.success) { cmsg.textContent = (j && j.data && j.data.message) || 'Something went wrong.'; return; }
-			cmsg.textContent = j.data.pages.length === 1 ? '' : 'Which Page should Marquee post on?';
+			if (!j || !j.success) { cmsg.textContent = (j && j.data && j.data.message) || tr('Something went wrong.'); return; }
+			cmsg.textContent = j.data.pages.length === 1 ? '' : tr('Which Page should Marquee post on?');
 			pages.innerHTML = ''; pages.hidden = false;
 			j.data.pages.forEach(function (p) {
 				var b = document.createElement('button'); b.type = 'button'; b.className = 'button';
 				b.textContent = p.name + (p.ig ? ' + Instagram @' + p.ig : '');
 				b.addEventListener('click', function () {
-					cmsg.textContent = 'Saving…';
+					cmsg.textContent = tr('Saving…');
 					post('marquee_social_pick', { page: p.id }).then(function (k) {
-						if (k && k.success) { cmsg.textContent = 'Connected to ' + k.data.name + '!'; try { location.hash = '#mq-step-7'; } catch (e) {} location.reload(); }
-						else { cmsg.textContent = (k && k.data && k.data.message) || 'Something went wrong.'; }
+						if (k && k.success) { cmsg.textContent = tr('Connected to %s!').replace('%s', function () { return k.data.name; }); try { location.hash = '#mq-step-7'; } catch (e) {} location.reload(); }
+						else { cmsg.textContent = (k && k.data && k.data.message) || tr('Something went wrong.'); }
 					});
 				});
 				pages.appendChild(b);
 			});
 			if (j.data.pages.length === 1) { pages.querySelector('button').click(); }
-		}).catch(function () { con.disabled = false; cmsg.textContent = 'Couldn’t reach your website.'; });
+		}).catch(function () { con.disabled = false; cmsg.textContent = tr('Couldn’t reach your website.'); });
 	});
 })();
 
@@ -460,16 +463,16 @@
 		function draw() {
 			var st = parseFloat(a.value) || 0, sl = parseFloat(b.value) || 0, end = st + 6 * sl, L = Math.max(len, end + 1), h = '';
 			function pc(x) { return Math.max(0, Math.min(100, x / L * 100)); }
-			h += '<span class="mq-nt__seg is-intro" style="left:0;width:' + pc(st) + '%">' + (st >= 2 ? 'Intro' : '') + '</span>';
+			h += '<span class="mq-nt__seg is-intro" style="left:0;width:' + pc(st) + '%">' + (st >= 2 ? tr('Intro') : '') + '</span>';
 			for (var k = 0; k < 6; k++) { h += '<span class="mq-nt__seg is-name" style="left:' + pc(st + k * sl) + '%;width:' + Math.max(0, pc(sl) - 0.6) + '%">' + (k + 1) + '</span>'; }
-			if (end < len) { h += '<span class="mq-nt__seg is-outro" style="left:' + pc(end) + '%;width:' + (pc(len) - pc(end)) + '%">' + (len - end >= 2 ? 'Outro' : '') + '</span>'; }
+			if (end < len) { h += '<span class="mq-nt__seg is-outro" style="left:' + pc(end) + '%;width:' + (pc(len) - pc(end)) + '%">' + (len - end >= 2 ? tr('Outro') : '') + '</span>'; }
 			bar.innerHTML = h;
 			var ax = ''; for (var t = 0; t <= L; t += 5) { ax += '<span style="left:' + pc(t) + '%">' + t + 's</span>'; }
 			axis.innerHTML = ax;
 			var times = []; for (var j = 0; j < 6; j++) { times.push(fmt(st + j * sl) + ' s'); }
-			var txt = 'Names go up at ' + times.join(', ') + '. Each one stays up about ' + fmt(Math.max(2, sl - 0.6)) + ' s.';
-			if (end > len + 0.05) { txt += ' ⚠ The 6th name ends at ' + fmt(end) + ' s, after your ' + fmt(len) + ' s break: lower one of the numbers.'; nt.classList.add('is-over'); }
-			else { txt += ' The last name is done at ' + fmt(end) + ' s of your ' + fmt(len) + ' s break.'; nt.classList.remove('is-over'); }
+			var txt = tr('Names go up at %1$s. Each one stays up about %2$s s.').replace('%1$s', function () { return times.join(', '); }).replace('%2$s', function () { return fmt(Math.max(2, sl - 0.6)); });
+			if (end > len + 0.05) { txt += ' ⚠ ' + tr('The 6th name ends at %1$s s, after your %2$s s break: lower one of the numbers.').replace('%1$s', function () { return fmt(end); }).replace('%2$s', function () { return fmt(len); }); nt.classList.add('is-over'); }
+			else { txt += ' ' + tr('The last name is done at %1$s s of your %2$s s break.').replace('%1$s', function () { return fmt(end); }).replace('%2$s', function () { return fmt(len); }); nt.classList.remove('is-over'); }
 			say.textContent = txt;
 		}
 		a.addEventListener('input', draw); b.addEventListener('input', draw); draw();
@@ -487,8 +490,8 @@
 		if (!v) { scr.textContent = ''; warn.hidden = true; return; }
 		var t = v.replace(/\[\s*name\s*\]|\{\s*name\s*\}/ig, 'NAME');
 		if (t.indexOf('NAME') < 0 && /\bname\b/i.test(t)) { t = t.replace(/\bname\b/i, 'NAME'); }
-		if (t.indexOf('NAME') < 0) { t = t.replace(/[\s,!.]+$/, '') + ', NAME!'; say = 'No NAME in it, so the name goes at the end.'; }
-		if (/[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}]/u.test(t)) { t = t.replace(/[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}️]/gu, ''); say = (say ? say + ' ' : '') + 'Emoji are left out: the screens can’t show them.'; }
+		if (t.indexOf('NAME') < 0) { t = t.replace(/[\s,!.]+$/, '') + ', NAME!'; say = tr('No NAME in it, so the name goes at the end.'); }
+		if (/[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}]/u.test(t)) { t = t.replace(/[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}️]/gu, ''); say = (say ? say + ' ' : '') + tr('Emoji are left out: the screens can’t show them.'); }
 		var k = t.indexOf('NAME');
 		scr.textContent = '→ ' + t.slice(0, k).toUpperCase() + 'Emma' + t.slice(k + 4).replace(/NAME/g, '').toUpperCase();
 		warn.textContent = say; warn.hidden = !say;
@@ -515,13 +518,13 @@
 		words.forEach(function (w, i) {
 			var li = document.createElement('li'), b = document.createElement('button');
 			li.textContent = w;
-			b.type = 'button'; b.textContent = '×'; b.setAttribute('aria-label', 'Unblock ' + w);
+			b.type = 'button'; b.textContent = '×'; b.setAttribute('aria-label', tr('Unblock %s').replace('%s', function () { return w; }));
 			b.addEventListener('click', function () { words.splice(i, 1); draw(); });
 			li.appendChild(b); list.appendChild(li);
 		});
 		none.hidden = words.length > 0;
 		val.value = words.join(', ');
-		pill.textContent = words.length + ' blocked';
+		pill.textContent = tr('%s blocked').replace('%s', words.length);
 	}
 	function addWord() {
 		var w = inp.value.trim().toLowerCase().replace(/[,]/g, '');
@@ -540,7 +543,7 @@ document.addEventListener('click', function (e) {
 	var inp = b.parentNode.querySelector('[data-mq-copysrc]');
 	if (!inp) { return; }
 	inp.select();
-	var done = function () { var t = b.textContent; b.textContent = 'Copied ✓'; setTimeout(function () { b.textContent = t; }, 1500); };
+	var done = function () { var t = b.textContent; b.textContent = tr('Copied ✓'); setTimeout(function () { b.textContent = t; }, 1500); };
 	if (navigator.clipboard) { navigator.clipboard.writeText(inp.value).then(done, function () { document.execCommand('copy'); done(); }); }
 	else { document.execCommand('copy'); done(); }
 });
@@ -577,7 +580,7 @@ document.addEventListener('change', function (e) {
 			.then(function (r) { return r.json(); })
 			.then(function (j) {
 				if (j && j.success && j.data && j.data.html) { box.innerHTML = j.data.html; }
-				else if (btn) { btn.disabled = false; alert((j && j.data && j.data.message) || 'That didn’t work. Try again.'); }
+				else if (btn) { btn.disabled = false; alert((j && j.data && j.data.message) || tr('That didn’t work. Try again.')); }
 				return j;
 			})
 			.catch(function () { if (btn) { btn.disabled = false; } });
@@ -670,17 +673,18 @@ document.addEventListener('click', function (e) {
 	var said = function (t) { if (from) { from.textContent = (from.textContent.split(' · ').length > 1 ? from.textContent.split(' · ')[0] + ' · ' : '') + t; } };
 	if (b.hasAttribute('data-mq-cover-set')) {
 		id.value = b.getAttribute('data-mq-cover-set');
-		if (id.value === '-1') { pic.innerHTML = ''; said('No cover (save to keep)'); } else { said('Automatic (save to see it)'); }
+		if (id.value === '-1') { pic.innerHTML = ''; said(tr('No cover (save to keep)')); } else { said(tr('Automatic (save to see it)')); }
 		return;
 	}
 	if (!window.wp || !wp.media) { return; }
-	var frame = wp.media({ title: 'Cover for this song', multiple: false, library: { type: 'image' }, button: { text: 'Use this picture' } });
+	var frame = wp.media({ title: tr('Cover for this song'), multiple: false, library: { type: 'image' }, button: { text: tr('Use this picture') } });
 	frame.on('select', function () {
 		var a = frame.state().get('selection').first().toJSON();
 		id.value = a.id;
 		var u = (a.sizes && a.sizes.thumbnail ? a.sizes.thumbnail.url : a.url);
 		pic.innerHTML = '<img src="' + u.replace(/"/g, '&quot;') + '" alt="" width="44" height="44">';
-		said('Your picture (save to keep)');
+		said(tr('Your picture (save to keep)'));
 	});
 	frame.open();
 });
+})();

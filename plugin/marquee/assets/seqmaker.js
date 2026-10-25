@@ -14,6 +14,7 @@
 */
 (function (root) {
 	'use strict';
+	var tr = function (s) { var d = root && root.rrI18n; return (d && d[s]) || s; };   // error messages shown to people
 
 	/* Effects the themes use, with settings xLights understands. */
 	var TPL = {
@@ -49,7 +50,7 @@
 	}
 	function parse(text, what) {
 		var X = xml(), d = new X.P().parseFromString(text, 'text/xml');
-		if (!d || !d.documentElement || d.getElementsByTagName('parsererror').length) { throw new Error(what + ' isn’t a valid file.'); }
+		if (!d || !d.documentElement || d.getElementsByTagName('parsererror').length) { throw new Error(tr('%s isn’t a valid file.').replace('%s', function () { return what; })); }
 		return d;
 	}
 	function kids(el, tag) { var out = []; for (var n = el.firstChild; n; n = n.nextSibling) { if (n.nodeType === 1 && (!tag || n.nodeName === tag)) { out.push(n); } } return out; }
@@ -75,7 +76,7 @@
 	function layoutKinds(rgb) {
 		var kinds = {}, groups = {};
 		if (!rgb) { return { kinds: kinds, groups: groups }; }
-		var d = parse(rgb, 'The layout file (xlights_rgbeffects.xml)');
+		var d = parse(rgb, tr('The layout file (xlights_rgbeffects.xml)'));
 		var models = first(d, 'models');
 		if (models) {
 			kids(models, 'model').forEach(function (m) {
@@ -126,9 +127,9 @@
 	/** Check and tidy a theme (from a preset or from the AI). */
 	function cleanTheme(t) {
 		if (typeof t === 'string') { t = THEMES[t]; }
-		if (!t) { throw new Error('Unknown theme.'); }
+		if (!t) { throw new Error(tr('Unknown theme.')); }
 		var cols = (t.colors || []).filter(function (c) { return /^#[0-9a-f]{6}$/i.test(c); }).slice(0, 6);
-		if (!cols.length) { throw new Error('The theme needs at least one color.'); }
+		if (!cols.length) { throw new Error(tr('The theme needs at least one color.')); }
 		var sw = {};
 		Object.keys(t.swaps || {}).forEach(function (k) { if (KINDS.indexOf(k) >= 0 && EFFECTS.indexOf(t.swaps[k]) >= 0) { sw[k] = t.swaps[k]; } });
 		return { name: String(t.name || 'Theme').slice(0, 40), colors: cols, swaps: sw };
@@ -137,10 +138,10 @@
 	/** Make a themed copy of a names break sequence. */
 	function theme(xsqText, rgbText, spec, opts) {
 		opts = opts || {};
-		var T = cleanTheme(spec), L = layoutKinds(rgbText), d = parse(xsqText, 'The sequence (.xsq)');
+		var T = cleanTheme(spec), L = layoutKinds(rgbText), d = parse(xsqText, tr('The sequence (.xsq)'));
 		var screens = {}; (opts.screens || []).forEach(function (s) { screens[String(s).trim().toLowerCase()] = 1; });
 		var cp = first(d, 'ColorPalettes'), db = first(d, 'EffectDB'), ee = first(d, 'ElementEffects');
-		if (!cp || !db || !ee) { throw new Error('That doesn’t look like an xLights sequence.'); }
+		if (!cp || !db || !ee) { throw new Error(tr('That doesn’t look like an xLights sequence.')); }
 		var pals = kids(cp, 'ColorPalette'), dbs = kids(db, 'Effect');
 		var report = { theme: T.name, recolored: 0, swapped: [], kept: [], screens: [] };
 
@@ -225,7 +226,7 @@
 	function propsSummary(rgbText, xsqText) {
 		var L = layoutKinds(rgbText), names = [];
 		if (xsqText) {
-			var d = parse(xsqText, 'The sequence (.xsq)'), ee = first(d, 'ElementEffects');
+			var d = parse(xsqText, tr('The sequence (.xsq)')), ee = first(d, 'ElementEffects');
 			kids(ee, 'Element').forEach(function (el) { if (el.getAttribute('type') === 'model' && el.getElementsByTagName('Effect').length) { names.push(el.getAttribute('name')); } });
 		} else { names = Object.keys(L.kinds); }
 		var by = {};
@@ -243,7 +244,7 @@
 	    the rest of the house in gentle effects, a flash as each name goes up. */
 	function build(rgbText, opts, spec) {
 		opts = opts || {};
-		var T = cleanTheme(spec || CLASSIC), d = parse(rgbText, 'The layout file (xlights_rgbeffects.xml)');
+		var T = cleanTheme(spec || CLASSIC), d = parse(rgbText, tr('The layout file (xlights_rgbeffects.xml)'));
 		var L = layoutKinds(rgbText), screens = {};
 		(opts.screens || []).forEach(function (n) { screens[String(n).trim().toLowerCase()] = 1; });
 		var start = Math.max(1, +opts.start || 4), slot = Math.max(2.5, +opts.slot || 3.75), count = Math.max(1, Math.min(6, +opts.names || 6));
@@ -255,7 +256,7 @@
 			if (!n || seen[n] || /^(Image|Label|DmxMovingHead.*|DmxFloodlight|Dmx.*)$/.test(m.getAttribute('DisplayAs') || '')) { return; }
 			seen[n] = 1; models.push(n);
 		});
-		if (!models.length) { throw new Error('No props found in that layout file.'); }
+		if (!models.length) { throw new Error(tr('No props found in that layout file.')); }
 		var pals = [], palIdx = {}, db = [], dbIdx = {};
 		function pal(cols) { var s = palString(cols); if (palIdx[s] === undefined) { palIdx[s] = pals.length; pals.push(s); } return palIdx[s]; }
 		function ref(key, extra) { var s = TPL[key][1] + (extra ? ',' + extra : ''); if (dbIdx[s] === undefined) { dbIdx[s] = db.length; db.push(s); } return dbIdx[s]; }
@@ -288,7 +289,7 @@
 			'<DisplayElements><Element collapsed="false" type="timing" name="Names" visible="true" views="" active="true"/>' + els.join('') + '</DisplayElements>\n' +
 			'<ElementEffects><Element type="timing" name="Names"><EffectLayer>' + tim + '</EffectLayer></Element>' + elx.join('') + '</ElementEffects>\n' +
 			'<lastView>0</lastView><TimingTags/>\n</xsequence>\n';
-		parse(x, 'The new sequence');    // make sure it's well formed
+		parse(x, tr('The new sequence'));    // make sure it's well formed
 		report.duration = ms(dur) / 1000;
 		return { xsq: x, report: report };
 	}
@@ -296,7 +297,7 @@
 	/** Where the names go in a names break sequence, from its "Names" timing track (Name 1, Name 2…)
 	    if it has one. Returns { start, slot, count, len } in seconds, or null. */
 	function timing(xsqText) {
-		var d = parse(xsqText, 'The sequence (.xsq)'), ee = first(d, 'ElementEffects'), head = first(d, 'head');
+		var d = parse(xsqText, tr('The sequence (.xsq)')), ee = first(d, 'ElementEffects'), head = first(d, 'head');
 		var len = head && first(head, 'sequenceDuration') ? parseFloat(first(head, 'sequenceDuration').textContent) || 0 : 0;
 		var best = null;
 		kids(ee, 'Element').forEach(function (el) {

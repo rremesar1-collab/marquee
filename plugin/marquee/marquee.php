@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Marquee – Show Website for xLights & FPP
  * Description: Show status, Remote Falcon, Your Name in Lights, Kids' Corner, app and alerts for Christmas light shows. Start with Marquee → Setup.
- * Version: 0.9.6
+ * Version: 0.10.0
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Alateka Corporation
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MARQUEE_VERSION', '0.9.6' );
+define( 'MARQUEE_VERSION', '0.10.0' );
 defined( 'MARQUEE_FPP_PLUGIN_INFO' ) || define( 'MARQUEE_FPP_PLUGIN_INFO', 'https://raw.githubusercontent.com/rremesar1-collab/fpp-marquee/main/pluginInfo.json' );
 define( 'MARQUEE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'MARQUEE_URL', plugin_dir_url( __FILE__ ) );
@@ -41,6 +41,7 @@ require MARQUEE_DIR . 'inc/walk.php';
 require MARQUEE_DIR . 'inc/support.php';
 require MARQUEE_DIR . 'inc/names-setup.php';
 require MARQUEE_DIR . 'inc/covers.php';
+require MARQUEE_DIR . 'inc/i18n-js.php';
 
 /* -------------------------------------------------------------------------
  * The show features (status, Remote Falcon, names, Kids' Corner, contest, songs,
@@ -69,13 +70,32 @@ if ( ! function_exists( 'ridgeroad_mod' ) && ! marquee_old_theme() ) {
 	defined( 'RIDGEROAD_LON' ) || define( 'RIDGEROAD_LON', '' !== $marquee_loc['lon'] ? (float) $marquee_loc['lon'] : 0.0 );
 	unset( $marquee_loc );
 }
+/*
+ * Languages: the website follows the language picked in Settings → General → Site Language
+ * (and each admin's own language in their profile). Spanish and French come with Marquee;
+ * any Spanish or French variant (es_MX, fr_CA…) uses them.
+ */
+function marquee_load_languages() {
+	$lang = strtolower( substr( determine_locale(), 0, 2 ) );
+	if ( ! in_array( $lang, array( 'es', 'fr' ), true ) ) {
+		return;
+	}
+	foreach ( array( 'marquee', 'ridgeroad' ) as $domain ) {
+		$mo = MARQUEE_DIR . 'languages/' . $domain . '-' . $lang . '.mo';
+		if ( file_exists( $mo ) ) {
+			load_textdomain( $domain, $mo );
+		}
+	}
+}
+add_action( 'after_setup_theme', 'marquee_load_languages', -2000 );
+
 function marquee_load_core() {
 	if ( function_exists( 'ridgeroad_mod' ) ) { // the theme brought its own copy → use that, no double load
 		$GLOBALS['marquee_core_by_theme'] = true;
 		return;
 	}
 	defined( 'RIDGEROAD_VERSION' ) || define( 'RIDGEROAD_VERSION', MARQUEE_VERSION );
-	foreach ( array( 'helpers', 'customizer', 'live', 'icons', 'cicons', 'guestbook', 'contest', 'songs', 'sequences', 'shoutouts', 'control', 'app', 'seo', 'assets' ) as $f ) {
+	foreach ( array( 'helpers', 'customizer', 'live', 'icons', 'cicons', 'guestbook', 'contest', 'songs', 'sequences', 'shoutouts', 'control', 'app', 'seo', 'assets', 'i18n' ) as $f ) {
 		require_once MARQUEE_DIR . 'core/' . $f . '.php';
 	}
 }

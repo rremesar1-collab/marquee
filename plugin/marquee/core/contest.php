@@ -57,7 +57,7 @@ function ridgeroad_contest_open() {
 function ridgeroad_contest_date( $key ) {
 	$d = ridgeroad_mod( $key );
 	$t = $d ? DateTime::createFromFormat( '!Y-m-d', $d ) : false;
-	return $t ? $t->format( 'F j' ) : '';
+	return $t ? wp_date( __( 'F j', 'ridgeroad' ), $t->getTimestamp() + 12 * HOUR_IN_SECONDS, new DateTimeZone( 'UTC' ) ) : '';
 }
 function ridgeroad_ip_hash() {
 	$ip = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '';
@@ -522,7 +522,7 @@ function ridgeroad_art_box( $post ) {
 		);
 		if ( $sent ) {
 			/* translators: %s: date */
-			echo ' <span class="description">' . esc_html( sprintf( __( 'Sent %s', 'ridgeroad' ), wp_date( 'M j, g:i a', $sent ) ) ) . '</span>';
+			echo ' <span class="description">' . esc_html( sprintf( __( 'Sent %s', 'ridgeroad' ), wp_date( __( 'M j, g:i a', 'ridgeroad' ), $sent ) ) ) . '</span>';
 		}
 		echo '<p class="description">' . esc_html__( 'Tells them what they won, to bring the claim code, and when to pick up the prize.', 'ridgeroad' ) . '</p>';
 	}

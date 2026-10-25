@@ -9,6 +9,8 @@
 	'use strict';
 	var root = document.querySelector('[data-rr-lab]');
 	if (!root) { return; }
+	/* names below stay English as data (ids are what get saved); tr() translates them where shown */
+	var tr = function (s) { var d = window.rrI18n; return (d && d[s]) || s; };
 	var $ = function (s, r) { return (r || root).querySelector(s); };
 	var $$ = function (s, r) { return Array.prototype.slice.call((r || root).querySelectorAll(s)); };
 	var BASE = root.getAttribute('data-base'), VER = root.getAttribute('data-v') || '1';
@@ -99,7 +101,7 @@
 		var one = function () { if (++got === need) { build(); } };
 		bg.onload = one; bg.src = BASE + 'house.jpg?v=' + VER;
 		keys.forEach(function (k) { var i = new Image(); i.onload = one; i.src = BASE + 'm-' + k + '.png?v=' + VER; maskImg[k] = i; });
-	}).catch(function () { var l = $s('.rr-ll__loading'); if (l) { l.textContent = 'The Light Lab could not load. Please refresh the page.'; } });
+	}).catch(function () { var l = $s('.rr-ll__loading'); if (l) { l.textContent = tr('The Light Lab could not load. Please refresh the page.'); } });
 
 	var FX = {}, lights, lctx, glowA, glowB, cv, ctx, hitMap, HW = Math.ceil(BW / 4), HH = Math.ceil(BH / 4);
 	function build() {
@@ -195,7 +197,7 @@
 		if (SIGN) { drawSign(c2, W / BW, H / BH); }
 	}
 	function drawSign(c2, sx, sy) {
-		var lines = ['TUNE TO', SIGN.toUpperCase()], cx = 771, top = 419, boxW = 72, lh = 18;
+		var lines = [tr('TUNE TO'), SIGN.toUpperCase()], cx = 771, top = 419, boxW = 72, lh = 18;
 		c2.save(); c2.scale(sx, sy); c2.fillStyle = '#fbf8f0'; c2.textAlign = 'center'; c2.textBaseline = 'top';
 		c2.shadowColor = 'rgba(255, 250, 235, 0.85)'; c2.shadowBlur = 5 * Math.max(sx, sy);
 		lines.forEach(function (l, i) {
@@ -270,7 +272,7 @@
 			introT = null;
 			try { audio.currentTime = 0; } catch (e) {}
 			var pr = audio.play();
-			if (pr && pr.catch) { pr.catch(function () { mode = 'edit'; playing(false); toast('Tap Play again to start the music.'); }); }
+			if (pr && pr.catch) { pr.catch(function () { mode = 'edit'; playing(false); toast(tr('Tap Play again to start the music.')); }); }
 			mode = 'play'; tMode = performance.now();
 		}, 950);
 		if (!watching) { stat('lab_play'); }
@@ -288,7 +290,7 @@
 		$$('[data-ll="play"]').forEach(function (b) {
 			b.setAttribute('aria-pressed', String(on));
 			var ico = b.querySelector('[data-ico]'); if (ico) { ico.innerHTML = on ? '<path d="M6 6h12v12H6z"/>' : '<path d="M8 5v14l11-7z"/>'; }
-			var tx = b.querySelector('[data-ll="playtxt"]'); if (tx) { tx.textContent = on ? 'Stop' : (watching ? 'Play' : 'Play my show'); }
+			var tx = b.querySelector('[data-ll="playtxt"]'); if (tx) { tx.textContent = on ? tr('Stop') : (watching ? tr('Play') : tr('Play my show')); }
 		});
 		if (on) { var h = $s('[data-ll="hint"]'); if (h) { h.hidden = true; } }
 	}
@@ -296,8 +298,7 @@
 	/* ---------------- the three steps ---------------- */
 	var step = 1;
 	function fmt(s) { s = Math.max(0, Math.round(s)); return Math.floor(s / 60) + ':' + ('0' + s % 60).slice(-2); }
-	function propName(id) { return id === 'all' ? 'whole house' : PROPS[PIDS.indexOf(id)].n; }
-	function the(id) { return id === 'all' ? 'the whole house' : 'the ' + propName(id); }
+	function propName(id) { return id === 'all' ? tr('whole house') : tr(PROPS[PIDS.indexOf(id)].n); }
 	function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) { e.className = cls; } if (txt) { e.textContent = txt; } return e; }
 	function thumb(e, id, w, h) {
 		var r = THUMB[id], sc = Math.min(w / r[2], h / r[3]);
@@ -329,14 +330,14 @@
 		[{ id: 'all', n: 'Whole House' }].concat(PROPS).forEach(function (p) {
 			var b = el('button', 'rr-ll__tile' + (p.id === 'all' ? ' is-all' : '')); b.type = 'button'; b.setAttribute('data-prop', p.id); b.setAttribute('aria-pressed', 'false');
 			var th = el('span', 'rr-ll__th'); if (p.id === 'all') { th.textContent = '★'; } else { thumb(th, p.id, 54, 54); }
-			b.appendChild(th); b.appendChild(el('span', '', p.n));
+			b.appendChild(th); b.appendChild(el('span', '', tr(p.n)));
 			b.addEventListener('click', function () { pick(p.id, true); go(2); }); pBox.appendChild(b);
 		});
 		var sBox = $('[data-ll-step="2"]');
 		STYLES.forEach(function (x) {
 			var b = el('button', 'rr-ll__tile rr-ll__tile--style'); b.type = 'button'; b.setAttribute('data-style', x.id); b.setAttribute('aria-pressed', 'false');
 			var c = document.createElement('canvas'); styleIcon(c, x.id); b.appendChild(c);
-			b.appendChild(el('span', '', x.n)); b.appendChild(el('small', '', x.d));
+			b.appendChild(el('span', '', tr(x.n))); b.appendChild(el('small', '', tr(x.d)));
 			b.addEventListener('click', function () { apply('s', x.id); go(NO_COLOR[x.id] ? 4 : 3); }); sBox.appendChild(b);
 		});
 		var cBox = $('[data-ll-step="3"]');
@@ -345,7 +346,7 @@
 			var ball = el('span', 'rr-ll__ball');
 			ball.style.background = x.mix ? 'conic-gradient(#ff2828,#ffc81e,#1eff5a,#286eff,#be46ff,#ff50be,#ff2828)' : 'radial-gradient(circle at 35% 30%, #fff 0, ' + rgb(x.c, 1) + ' 45%)';
 			ball.style.setProperty('--glow', x.mix ? 'rgba(255,255,255,.3)' : rgb(x.c, .55));
-			b.appendChild(ball); b.appendChild(el('span', '', x.n));
+			b.appendChild(ball); b.appendChild(el('span', '', tr(x.n)));
 			b.addEventListener('click', function () { apply('c', x.id); go(4); }); cBox.appendChild(b);
 		});
 		$$('[data-ll-goto]').forEach(function (b) { b.addEventListener('click', function () { go(+b.getAttribute('data-ll-goto')); }); });
@@ -354,9 +355,9 @@
 		var rows = $('[data-ll="rows"]');
 		PROPS.forEach(function (p) {
 			var r = el('div', 'rr-ll__row'); r.setAttribute('data-row', p.id);
-			var rn = el('span', 'rr-ll__rn'), rt = el('span', 'rr-ll__rt'); thumb(rt, p.id, 22, 15); rn.appendChild(rt); rn.appendChild(el('span', '', p.n)); r.appendChild(rn);
+			var rn = el('span', 'rr-ll__rn'), rt = el('span', 'rr-ll__rt'); thumb(rt, p.id, 22, 15); rn.appendChild(rt); rn.appendChild(el('span', '', tr(p.n))); r.appendChild(rn);
 			[0, 1, 2].forEach(function (i) {
-				var b = el('button', 'rr-ll__seg'); b.type = 'button'; b.setAttribute('aria-label', p.n + ', ' + PART_N[i]);
+				var b = el('button', 'rr-ll__seg'); b.type = 'button'; b.setAttribute('aria-label', tr(p.n) + ', ' + tr(PART_N[i]));
 				b.addEventListener('click', function () { setPart(i); pick(p.id, true); go(2); });
 				r.appendChild(b);
 			});
@@ -370,7 +371,7 @@
 		var nm = $('[data-ll="name"]');
 		nm.value = mine.name || '';
 		nm.addEventListener('input', function () { mine.name = nm.value.slice(0, 40); saveLocal(); });
-		$('[data-ll="save"]').addEventListener('click', function () { toast(saveLocal() ? 'Saved on this device!' : 'Could not save on this device.'); stat('lab_save'); });
+		$('[data-ll="save"]').addEventListener('click', function () { toast(saveLocal() ? tr('Saved on this device!') : tr('Could not save on this device.')); stat('lab_save'); });
 		$('[data-ll="unwatch"]').addEventListener('click', unwatch);
 		cv.addEventListener('click', function (e) {
 			if (watching) { return; }
@@ -381,12 +382,13 @@
 		renderParts(); pick('all', false); go(1);
 	}
 	function say() {
-		var n = the(sel.prop), part = sel.part === 'all' ? '' : ' in the ' + PART_N[sel.part].toLowerCase() + ' of the song';
+		var all = sel.prop === 'all', n = all ? '' : propName(sel.prop), pn = sel.part === 'all' ? '' : tr(PART_N[sel.part]).toLowerCase();
+		var put = function (s) { return s.replace('%1$s', function () { return n; }).replace('%2$s', function () { return pn; }).replace('%s', function () { return n || pn; }); };
 		$('[data-ll="say"]').textContent = {
-			1: 'What should we light up? Tap a decoration on the house, or pick one here!',
-			2: 'How should ' + n + ' light up' + part + '?',
-			3: 'What color should ' + n + ' be?',
-			4: (sel.prop === 'all' ? 'The whole house looks great!' : 'Your ' + propName(sel.prop) + ' looks great!') + ' Light up something else, or play your show!'
+			1: tr('What should we light up? Tap a decoration on the house, or pick one here!'),
+			2: put(pn ? (all ? tr('How should the whole house light up in the %s of the song?') : tr('How should the %1$s light up in the %2$s of the song?')) : (all ? tr('How should the whole house light up?') : tr('How should the %s light up?'))),
+			3: put(all ? tr('What color should the whole house be?') : tr('What color should the %s be?')),
+			4: put(all ? tr('The whole house looks great!') : tr('Your %s looks great!')) + ' ' + tr('Light up something else, or play your show!')
 		}[step];
 	}
 	function cur1() { return mine.cells[sel.prop === 'all' ? 'tree' : sel.prop][sel.part === 'all' ? 0 : sel.part]; }
@@ -399,16 +401,16 @@
 			b.classList.toggle('is-done', k < n);
 		});
 		var c = cur1();
-		$('[data-ll-sum="1"]').textContent = n > 1 ? propName(sel.prop) : 'Tap it on the house';
-		$('[data-ll-sum="2"]').textContent = n > 2 ? SMAP[c.s].n : 'Twinkle, chase and more';
-		$('[data-ll-sum="3"]').textContent = n > 3 ? (NO_COLOR[c.s] ? 'Not needed' : CMAP[c.c].n) : 'Red, green, blue…';
+		$('[data-ll-sum="1"]').textContent = n > 1 ? propName(sel.prop) : tr('Tap it on the house');
+		$('[data-ll-sum="2"]').textContent = n > 2 ? tr(SMAP[c.s].n) : tr('Twinkle, chase and more');
+		$('[data-ll-sum="3"]').textContent = n > 3 ? (NO_COLOR[c.s] ? tr('Not needed') : tr(CMAP[c.c].n)) : tr('Red, green, blue…');
 		say(); refresh();
 	}
 	function renderParts() {
 		var len = songInfo(show.song).len, box = $('[data-ll="parts"]');
 		$$('[data-part]', box).forEach(function (b) { b.remove(); });
 		PART_N.forEach(function (n, i) {
-			var b = el('button', 'rr-ll__part', n); b.type = 'button'; b.setAttribute('data-part', i); b.setAttribute('aria-pressed', String(sel.part === i));
+			var b = el('button', 'rr-ll__part', tr(n)); b.type = 'button'; b.setAttribute('data-part', i); b.setAttribute('aria-pressed', String(sel.part === i));
 			b.appendChild(el('small', '', fmt(len / 3 * i) + ' – ' + fmt(len / 3 * (i + 1))));
 			b.addEventListener('click', function () { setPart(i); go(1); }); box.appendChild(b);
 		});
@@ -417,7 +419,7 @@
 	function pick(id, scroll) {
 		sel.prop = id; flashProp = id; flashT = performance.now();
 		$$('[data-prop]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-prop') === id)); });
-		var pk = $s('[data-ll="picked"]'); pk.hidden = id === 'all'; pk.textContent = id === 'all' ? '' : 'Changing: ' + propName(id);
+		var pk = $s('[data-ll="picked"]'); pk.hidden = id === 'all'; pk.textContent = id === 'all' ? '' : tr('Changing: %s').replace('%s', function () { return propName(id); });
 		if (id !== 'all') { $s('[data-ll="hint"]').hidden = true; }
 		if (id !== 'all' && scroll !== false) {
 			var r = THUMB[id], sc = $s('.rr-ll__scroll');
@@ -481,7 +483,7 @@
 		s = clean(s); if (!s) { return false; }
 		stopAll(); watching = s; show = s; lastPart = -1;
 		root.classList.add('is-watching');
-		var w = $('[data-ll="watchname"]'); if (w) { w.textContent = label || 'a young light designer'; }
+		var w = $('[data-ll="watchname"]'); if (w) { w.textContent = label || tr('a young light designer'); }
 		var pk = $s('[data-ll="picked"]'); if (pk) { pk.hidden = true; }
 		playing(false);
 		if (!noAuto) { setTimeout(startAll, 150); }

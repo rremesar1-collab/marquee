@@ -86,7 +86,7 @@ function ridgeroad_in_season( $ymd ) {
 }
 
 function ridgeroad_time( DateTimeImmutable $t ) {
-	return wp_date( 'g:i A', $t->getTimestamp(), ridgeroad_tz() );
+	return wp_date( __( 'g:i A', 'ridgeroad' ), $t->getTimestamp(), ridgeroad_tz() );
 }
 
 /**
@@ -141,7 +141,7 @@ function ridgeroad_status() {
 		$s            = ridgeroad_mod( 'season_start' );
 		if ( $s && $night['date'] < $s ) {
 			/* translators: %s: opening date */
-			$out['note'] = sprintf( __( 'Opening night: %s', 'ridgeroad' ), wp_date( 'l, F j', strtotime( $s . ' 12:00' ), ridgeroad_tz() ) );
+			$out['note'] = sprintf( __( 'Opening night: %s', 'ridgeroad' ), wp_date( __( 'l, F j', 'ridgeroad' ), strtotime( $s . ' 12:00' ), ridgeroad_tz() ) );
 		} else {
 			$out['note'] = __( 'Thanks for a wonderful season!', 'ridgeroad' );
 		}
@@ -404,7 +404,7 @@ function ridgeroad_weather() {
 			continue;
 		}
 		$out['hours'][] = array(
-			'label'  => wp_date( 'g A', $ts, ridgeroad_tz() ),
+			'label'  => wp_date( __( 'g A', 'ridgeroad' ), $ts, ridgeroad_tz() ),
 			'temp'   => round( $h['temperature_2m'][ $i ] ),
 			'code'   => (int) $h['weather_code'][ $i ],
 			'is_day' => (int) $h['is_day'][ $i ],

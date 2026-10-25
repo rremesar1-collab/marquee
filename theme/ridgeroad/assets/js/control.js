@@ -2,6 +2,7 @@
 (function () {
 	'use strict';
 	var cfg = window.RRCtl || {};
+	var tr = function (s) { var d = window.rrI18n; return (d && d[s]) || s; };
 	var root = document.querySelector('[data-rrc]');
 	if (!root) { return; }
 	var $ = function (s) { return root.querySelector(s); };
@@ -18,7 +19,7 @@
 	function set(k, txt) { var e = $('[data-rrc="' + k + '"]'); if (e) { e.textContent = txt; } return e; }
 	function pill(k, cls, txt) { var e = $('[data-rrc="' + k + '"]'); e.innerHTML = ''; e.appendChild(el('span', 'rrc__pill ' + cls, txt)); }
 	function stCls(k, cls) { var e = $('[data-rrc-st="' + k + '"]'); e.className = 'rrc__st ' + (cls ? 'is-' + cls : ''); }
-	function ago(s) { if (s === null || s === undefined) { return 'has not checked in yet'; } if (s < 90) { return 'checked in ' + s + ' sec ago'; } if (s < 5400) { return 'checked in ' + Math.round(s / 60) + ' min ago'; } return 'last checked in ' + Math.round(s / 3600) + ' h ago'; }
+	function ago(s) { if (s === null || s === undefined) { return tr('has not checked in yet'); } if (s < 90) { return tr('checked in %s sec ago').replace('%s', s); } if (s < 5400) { return tr('checked in %s min ago').replace('%s', Math.round(s / 60)); } return tr('last checked in %s h ago').replace('%s', Math.round(s / 3600)); }
 
 	function render(d) {
 		state = d;
@@ -26,22 +27,22 @@
 		var sc = { running: 'good', canceled: 'bad', upcoming: 'off', ended: 'off', offseason: 'off' }[d.show.state] || 'off';
 		pill('show', 'is-' + sc, d.show.label); set('show-sub', d.show.sub);
 		var hero = root.querySelector('.rrc__hero'); if (hero) { hero.setAttribute('data-state', d.show.state); }
-		set('qa-cancel', sw0(d).cancel ? 'Undo: the show is on' : 'Cancel tonight');
-		set('qa-pause', sw0(d).paused ? 'Resume names' : 'Pause names');
+		set('qa-cancel', sw0(d).cancel ? tr('Undo: the show is on') : tr('Cancel tonight'));
+		set('qa-pause', sw0(d).paused ? tr('Resume names') : tr('Pause names'));
 		lastAt = Date.now();
 		var f = d.fpp, fresh = f.seen !== null && f.seen < 120;
-		if (!fresh) { set('fpp', f.seen === null ? 'Not connected' : 'Not checking in'); stCls('fpp', f.seen === null ? '' : 'warn'); }
-		else if (f.status === 'playing') { set('fpp', f.sequence || 'Playing'); stCls('fpp', 'good'); }
-		else { set('fpp', f.status ? f.status.charAt(0).toUpperCase() + f.status.slice(1) : 'Idle'); stCls('fpp', ''); }
+		if (!fresh) { set('fpp', f.seen === null ? tr('Not connected') : tr('Not checking in')); stCls('fpp', f.seen === null ? '' : 'warn'); }
+		else if (f.status === 'playing') { set('fpp', f.sequence || tr('Playing')); stCls('fpp', 'good'); }
+		else { set('fpp', f.status ? f.status.charAt(0).toUpperCase() + f.status.slice(1) : tr('Idle')); stCls('fpp', ''); }
 		set('fpp-sub', (fresh && f.playlist ? f.playlist + ' · ' : '') + ago(f.seen));
 		var sw = d.switches, ncls = !sw.names_on ? 'bad' : (sw.paused ? 'warn' : (d.names.open ? 'good' : 'off'));
 		var nb = $('[data-rrc="names"]'); nb.innerHTML = '';
-		nb.appendChild(el('span', 'rrc__pill is-' + ncls, !sw.names_on ? 'Off' : (sw.paused ? 'Paused' : (d.names.open ? 'Open' : 'Closed'))));
-		nb.appendChild(document.createTextNode(' · ' + d.names.waiting.length + ' waiting'));
-		set('names-sub', sw.paused ? 'Names wait until you un-pause' : (d.names.open ? (d.names.songs > 1 ? 'Next break in about ' + d.names.songs + ' songs' : 'Next break after the current song') : 'Opens when the show starts'));
+		nb.appendChild(el('span', 'rrc__pill is-' + ncls, !sw.names_on ? tr('Off') : (sw.paused ? tr('Paused') : (d.names.open ? tr('Open') : tr('Closed')))));
+		nb.appendChild(document.createTextNode(' · ' + tr('%s waiting').replace('%s', d.names.waiting.length)));
+		set('names-sub', sw.paused ? tr('Names wait until you un-pause') : (d.names.open ? (d.names.songs > 1 ? tr('Next break in about %s songs').replace('%s', d.names.songs) : tr('Next break after the current song')) : tr('Opens when the show starts')));
 		stCls('names', ncls === 'off' ? '' : ncls);
-		set('people', d.people.now + (d.people.now === 1 ? ' person' : ' people'));
-		set('people-sub', d.people.kids + ' in the Kids’ Corner');
+		set('people', (d.people.now === 1 ? tr('%s person') : tr('%s people')).replace('%s', d.people.now));
+		set('people-sub', tr('%s in the Kids’ Corner').replace('%s', d.people.kids));
 
 		/* switches */
 		if (!busy) {
@@ -54,37 +55,37 @@
 		/* name queue */
 		set('shown-n', d.names.shown_tonight);
 		var w = $('[data-rrc-list="waiting"]'); w.innerHTML = '';
-		if (!d.names.waiting.length) { w.appendChild(el('li', 'empty', 'No names waiting.')); }
+		if (!d.names.waiting.length) { w.appendChild(el('li', 'empty', tr('No names waiting.'))); }
 		d.names.waiting.forEach(function (n, i) {
 			var li = el('li'); li.appendChild(el('span', 'n', i + 1));
-			var t = el('span', 't'); t.appendChild(el('b', '', n.text)); t.appendChild(el('small', '', 'sent ' + n.time)); li.appendChild(t);
-			var rm = el('button', 'rrc__btn del', 'Remove'); rm.type = 'button'; rm.addEventListener('click', function () { act('rr_ctl_name', { id: n.id }, 'Removed'); });
-			var bl = el('button', 'rrc__btn', 'Block word'); bl.type = 'button'; bl.addEventListener('click', function () { act('rr_ctl_name', { id: n.id, block: 1 }, 'Removed and blocked'); });
+			var t = el('span', 't'); t.appendChild(el('b', '', n.text)); t.appendChild(el('small', '', tr('sent %s').replace('%s', function () { return n.time; }))); li.appendChild(t);
+			var rm = el('button', 'rrc__btn del', tr('Remove')); rm.type = 'button'; rm.addEventListener('click', function () { act('rr_ctl_name', { id: n.id }, tr('Removed')); });
+			var bl = el('button', 'rrc__btn', tr('Block word')); bl.type = 'button'; bl.addEventListener('click', function () { act('rr_ctl_name', { id: n.id, block: 1 }, tr('Removed and blocked')); });
 			li.appendChild(rm); li.appendChild(bl); w.appendChild(li);
 		});
 		var sh = $('[data-rrc-list="shown"]'); sh.innerHTML = '';
-		if (!d.names.shown.length) { sh.appendChild(el('li', 'empty', 'Nothing shown yet.')); }
+		if (!d.names.shown.length) { sh.appendChild(el('li', 'empty', tr('Nothing shown yet.'))); }
 		d.names.shown.forEach(function (n) { var li = el('li'), t = el('span', 't'); t.appendChild(el('b', '', n.text)); t.appendChild(el('small', '', n.time)); li.appendChild(t); sh.appendChild(li); });
 
 		/* contest */
 		var c = d.contest;
-		set('contest-sub', (c.closes ? 'Closes ' + c.closes + ' · ' : '') + c.total + (c.total === 1 ? ' entry' : ' entries'));
+		set('contest-sub', (c.closes ? tr('Closes %s').replace('%s', function () { return c.closes; }) + ' · ' : '') + (c.total === 1 ? tr('%s entry') : tr('%s entries')).replace('%s', c.total));
 		set('prizes', c.prizes);
 		var pd = $('[data-rrc-list="pending"]'); pd.innerHTML = '';
-		if (!c.pending.length) { pd.appendChild(el('li', 'empty', 'All caught up.')); }
+		if (!c.pending.length) { pd.appendChild(el('li', 'empty', tr('All caught up.'))); }
 		c.pending.forEach(function (e) {
 			var li = el('li');
 			if (e.thumb) { var im = el('img'); im.src = e.thumb; im.alt = ''; li.appendChild(im); }
-			var t = el('span', 't'); t.appendChild(el('b', '', e.title || 'My Light Show')); t.appendChild(el('small', '', e.name + ', age ' + e.age)); li.appendChild(t);
-			var wa = el('a', 'rrc__btn', 'Watch'); wa.href = e.watch; wa.target = '_blank'; wa.rel = 'noopener'; li.appendChild(wa);
-			var ok = el('button', 'rrc__btn pri', 'Approve'); ok.type = 'button'; ok.addEventListener('click', function () { act('rr_ctl_entry', { id: e.id, approve: 1 }, 'Approved: now on the Show Wall'); });
-			var no = el('button', 'rrc__btn del', 'Decline'); no.type = 'button'; no.addEventListener('click', function () { act('rr_ctl_entry', { id: e.id }, 'Declined'); });
+			var t = el('span', 't'); t.appendChild(el('b', '', e.title || tr('My Light Show'))); t.appendChild(el('small', '', tr('%1$s, age %2$s').replace('%1$s', function () { return e.name; }).replace('%2$s', function () { return e.age; }))); li.appendChild(t);
+			var wa = el('a', 'rrc__btn', tr('Watch')); wa.href = e.watch; wa.target = '_blank'; wa.rel = 'noopener'; li.appendChild(wa);
+			var ok = el('button', 'rrc__btn pri', tr('Approve')); ok.type = 'button'; ok.addEventListener('click', function () { act('rr_ctl_entry', { id: e.id, approve: 1 }, tr('Approved: now on the Show Wall')); });
+			var no = el('button', 'rrc__btn del', tr('Decline')); no.type = 'button'; no.addEventListener('click', function () { act('rr_ctl_entry', { id: e.id }, tr('Declined')); });
 			li.appendChild(ok); li.appendChild(no); pd.appendChild(li);
 		});
 		var tp = $('[data-rrc-list="top"]'); tp.innerHTML = '';
-		if (!c.top.length) { tp.appendChild(el('li', '', 'No shows on the Show Wall yet.')); }
+		if (!c.top.length) { tp.appendChild(el('li', '', tr('No shows on the Show Wall yet.'))); }
 		c.top.forEach(function (e) {
-			var li = el('li'); li.appendChild(el('b', '', e.title || 'My Light Show')); li.appendChild(el('span', '', ' · ' + e.name + ', ' + e.age));
+			var li = el('li'); li.appendChild(el('b', '', e.title || tr('My Light Show'))); li.appendChild(el('span', '', ' · ' + e.name + ', ' + e.age));
 			li.appendChild(el('em', '', e.votes + ' ♥')); tp.appendChild(li);
 		});
 
@@ -98,23 +99,23 @@
 		var w = d.weather;
 		if (w) {
 			set('wx', w.temp + w.unit + ' · ' + w.label); set('wx-icon', WX(w.code));
-			set('wx-sub', w.rain ? 'Up to ' + w.rain + '% chance of rain during the show' : 'No rain expected during the show');
+			set('wx-sub', w.rain ? tr('Up to %s% chance of rain during the show').replace('%s', w.rain) : tr('No rain expected during the show'));
 			stCls('wx', w.rain >= 60 ? 'warn' : '');
-		} else { set('wx', '—'); set('wx-sub', 'Weather isn’t available'); }
+		} else { set('wx', '—'); set('wx-sub', tr('Weather isn’t available')); }
 		var so = d.social || {}, sea = (d.stats.season || {}), tn = (d.stats.tonight || {});
 		if (so.ready) {
-			set('social', (so.nets || []).join(', ') || 'Connected'); set('social-sub', (sea.social_post || 0) + ' posted this season');
+			set('social', (so.nets || []).join(', ') || tr('Connected')); set('social-sub', tr('%s posted this season').replace('%s', sea.social_post || 0));
 			stCls('social', so.last && so.last.lines && so.last.lines.some(function (l) { return !l.ok; }) ? 'warn' : 'good');
-		} else { set('social', 'Not set up'); set('social-sub', 'Post cancellations for you'); stCls('social', ''); }
+		} else { set('social', tr('Not set up')); set('social-sub', tr('Post cancellations for you')); stCls('social', ''); }
 		var a = d.app || {};
-		set('phones', (a.subs || 0).toLocaleString()); set('phones-sub', (a.news || 0) + ' get news · ' + (a.start || 0) + ' get “lights on”');
+		set('phones', (a.subs || 0).toLocaleString()); set('phones-sub', tr('%1$s get news · %2$s get “lights on”').replace('%1$s', a.news || 0).replace('%2$s', a.start || 0));
 
 		/* social card */
-		set('social-card-sub', so.ready ? 'Posting to ' + (so.nets || []).join(', ') : 'Not set up yet');
+		set('social-card-sub', so.ready ? tr('Posting to %s').replace('%s', function () { return (so.nets || []).join(', '); }) : tr('Not set up yet'));
 		var st = $('[data-rrc-social-tiles]');
 		if (st) {
 			st.innerHTML = '';
-			[['Posts this season', sea.social_post, ''], ['Posted tonight', tn.social_post, ''], ['Connected', (so.nets || []).length, (so.nets || []).join(', ') || 'none yet']].forEach(function (t) {
+			[[tr('Posts this season'), sea.social_post, ''], [tr('Posted tonight'), tn.social_post, ''], [tr('Connected'), (so.nets || []).length, (so.nets || []).join(', ') || tr('none yet')]].forEach(function (t) {
 				var x = el('div', 'rrc__tile'); x.appendChild(el('small', '', t[0])); x.appendChild(el('b', '', (t[1] || 0).toLocaleString())); x.appendChild(el('span', '', t[2] || ' ')); st.appendChild(x);
 			});
 		}
@@ -122,44 +123,44 @@
 		if (sl) {
 			sl.innerHTML = '';
 			var hist = so.history || [];
-			if (!hist.length) { sl.appendChild(el('li', 'empty', so.ready ? 'Nothing posted yet. Posts go out when you cancel the show.' : 'Nothing posted yet.')); }
+			if (!hist.length) { sl.appendChild(el('li', 'empty', so.ready ? tr('Nothing posted yet. Posts go out when you cancel the show.') : tr('Nothing posted yet.'))); }
 			var nets = { facebook: 'Facebook', instagram: 'Instagram', threads: 'Threads', all: '' };
 			hist.forEach(function (h) {
 				var li = el('li'), t = el('span', 't');
-				t.appendChild(el('b', h.ok ? '' : 'bad', (h.ok ? '✓ ' : '✗ ') + (nets[h.net] ? nets[h.net] + ' · ' : '') + (h.what === 'resume' ? 'Back on' : 'Canceled')));
+				t.appendChild(el('b', h.ok ? '' : 'bad', (h.ok ? '✓ ' : '✗ ') + (nets[h.net] ? nets[h.net] + ' · ' : '') + (h.what === 'resume' ? tr('Back on') : tr('Canceled'))));
 				t.appendChild(el('small', '', h.when + ' · ' + h.msg)); li.appendChild(t);
-				if (h.link) { var v = el('a', 'rrc__btn', 'View'); v.href = h.link; v.target = '_blank'; v.rel = 'noopener'; li.appendChild(v); }
+				if (h.link) { var v = el('a', 'rrc__btn', tr('View')); v.href = h.link; v.target = '_blank'; v.rel = 'noopener'; li.appendChild(v); }
 				sl.appendChild(li);
 			});
 		}
 		var help = $('[data-rrc="social-help"]');
-		if (help) { help.innerHTML = ''; if (!so.ready && so.setup) { help.appendChild(document.createTextNode('When you cancel, Marquee can post it on Facebook, Instagram and Threads. ')); var l = el('a', '', 'Set it up'); l.href = so.setup; help.appendChild(l); } }
+		if (help) { help.innerHTML = ''; if (!so.ready && so.setup) { help.appendChild(document.createTextNode(tr('When you cancel, Marquee can post it on Facebook, Instagram and Threads.') + ' ')); var l = el('a', '', tr('Set it up')); l.href = so.setup; help.appendChild(l); } }
 
 		/* traffic */
-		var tr = d.traffic || {}, now = tr.now, box = $('[data-rrc-traffic-now]');
+		var trf = d.traffic || {}, now = trf.now, box = $('[data-rrc-traffic-now]');
 		if (box) {
 			box.hidden = !now; box.innerHTML = '';
 			if (now) {
 				box.appendChild(el('span', 'ic', now.icon));
-				var tx = el('span', 'tx'); tx.appendChild(el('b', '', now.title)); tx.appendChild(el('small', '', 'On your website until ' + now.until + ' (' + now.left + ' left)' + (now.screens ? ' · on your screens too' : ''))); box.appendChild(tx);
-				var cl = el('button', 'rrc__btn', 'Turn it off'); cl.type = 'button'; cl.addEventListener('click', function () { act('rr_ctl_traffic', { kind: 'clear' }, 'Traffic alert off'); }); box.appendChild(cl);
+				var tx = el('span', 'tx'); tx.appendChild(el('b', '', now.title)); tx.appendChild(el('small', '', tr('On your website until %1$s (%2$s left)').replace('%1$s', function () { return now.until; }).replace('%2$s', function () { return now.left; }) + (now.screens ? ' · ' + tr('on your screens too') : ''))); box.appendChild(tx);
+				var cl = el('button', 'rrc__btn', tr('Turn it off')); cl.type = 'button'; cl.addEventListener('click', function () { act('rr_ctl_traffic', { kind: 'clear' }, tr('Traffic alert off')); }); box.appendChild(cl);
 			}
 		}
-		set('traffic-sub', now ? 'On now: ' + now.title : 'Nothing posted');
+		set('traffic-sub', now ? tr('On now: %s').replace('%s', function () { return now.title; }) : tr('Nothing posted'));
 		var tb = $('[data-rrc-tbtns]');
-		if (tb && !tb.children.length && tr.presets) {
-			Object.keys(tr.presets).forEach(function (k) {
-				var p = tr.presets[k], b = el('button', 'rrc__tbtn'); b.type = 'button'; b.setAttribute('data-rrc-tsend', k);
+		if (tb && !tb.children.length && trf.presets) {
+			Object.keys(trf.presets).forEach(function (k) {
+				var p = trf.presets[k], b = el('button', 'rrc__tbtn'); b.type = 'button'; b.setAttribute('data-rrc-tsend', k);
 				b.appendChild(el('span', 'ic', p.icon)); b.appendChild(el('span', '', p.label)); tb.appendChild(b);
 			});
 		}
 		$$('[data-rrc-tsend]').forEach(function (b) { b.classList.toggle('is-on', !!now && now.kind === b.getAttribute('data-rrc-tsend')); });
-		var ar = $('[data-rrc-talert-row]'); if (ar) { ar.hidden = !a.ready || !a.news; set('talert-label', 'Also send a phone alert to ' + (a.news || 0) + ((a.news === 1) ? ' phone' : ' phones')); }
+		var ar = $('[data-rrc-talert-row]'); if (ar) { ar.hidden = !a.ready || !a.news; set('talert-label', ((a.news === 1) ? tr('Also send a phone alert to %s phone') : tr('Also send a phone alert to %s phones')).replace('%s', a.news || 0)); }
 	}
 	var lastAt = 0;
 	setInterval(function () {
 		var c = $('[data-rrc="clock"]'); if (c) { c.textContent = new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }); }
-		var u = $('[data-rrc="updated"]'); if (u && lastAt) { var s2 = Math.round((Date.now() - lastAt) / 1000); u.textContent = s2 < 5 ? 'Updated just now' : 'Updated ' + s2 + ' sec ago'; }
+		var u = $('[data-rrc="updated"]'); if (u && lastAt) { var s2 = Math.round((Date.now() - lastAt) / 1000); u.textContent = s2 < 5 ? tr('Updated just now') : tr('Updated %s sec ago').replace('%s', s2); }
 	}, 1000);
 
 	/* Social posts beside the cancel switch: a hint to set it up, or what was posted tonight. */
@@ -169,23 +170,23 @@
 		var h = '';
 		function esc(t) { return String(t || '').replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
 		if (!so.ready) {
-			if (confirmOpen || canceled) { h = '<p class="so-hint">' + esc(so.hint || '') + ' <a href="' + esc(so.setup || '#') + '">Set it up</a></p>'; }
+			if (confirmOpen || canceled) { h = '<p class="so-hint">' + esc(so.hint || '') + ' <a href="' + esc(so.setup || '#') + '">' + tr('Set it up') + '</a></p>'; }
 		} else if (canceled) {
-			if (so.posting) { h += '<p class="so-wait">Posting on social media…</p>'; }
+			if (so.posting) { h += '<p class="so-wait">' + tr('Posting on social media…') + '</p>'; }
 			if (so.last && so.last.what === 'cancel' && so.last.lines && so.last.lines.length) {
 				h += '<ul class="so-lines">' + so.last.lines.map(function (l) {
-					return '<li class="' + (l.ok ? 'is-ok' : 'is-bad') + '">' + (l.ok ? '✓ ' : '✗ ') + (l.net ? esc(l.net) + ': ' : '') + esc(l.msg) + (l.link ? ' <a href="' + esc(l.link) + '" target="_blank" rel="noopener">View</a>' : '') + '</li>';
+					return '<li class="' + (l.ok ? 'is-ok' : 'is-bad') + '">' + (l.ok ? '✓ ' : '✗ ') + (l.net ? esc(l.net) + ': ' : '') + esc(l.msg) + (l.link ? ' <a href="' + esc(l.link) + '" target="_blank" rel="noopener">' + tr('View') + '</a>' : '') + '</li>';
 				}).join('') + '</ul>';
 			}
 		}
-		if (canceled && so.text) { h += '<p><button type="button" class="so-copy" data-so-copy>Copy the post for other sites (Nextdoor, groups…)</button> <span class="so-copied" aria-live="polite"></span></p>'; }
+		if (canceled && so.text) { h += '<p><button type="button" class="so-copy" data-so-copy>' + tr('Copy the post for other sites (Nextdoor, groups…)') + '</button> <span class="so-copied" aria-live="polite"></span></p>'; }
 		if (box.getAttribute('data-h') !== h) { box.innerHTML = h; box.setAttribute('data-h', h); }
 		box.hidden = !h;
 		var cp = box.querySelector('[data-so-copy]');
 		if (cp && !cp.dataset.on) {
 			cp.dataset.on = '1';
 			cp.addEventListener('click', function () {
-				var done = function () { box.querySelector('.so-copied').textContent = 'Copied!'; };
+				var done = function () { box.querySelector('.so-copied').textContent = tr('Copied!'); };
 				if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(so.text).then(done, function () {}); }
 				else { var t = document.createElement('textarea'); t.value = so.text; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); done(); } catch (e) {} t.remove(); }
 			});
@@ -194,35 +195,35 @@
 
 	function app() {
 		var a = state.app, box = $('[data-rrc-app-tiles]'); box.innerHTML = '';
-		[['App installs', a.installs, 'this season'], ['Getting alerts', a.subs, a.start + ' lights-on · ' + a.news + ' news'], ['Name buzzes', a.buzz, 'tonight']].forEach(function (t) {
+		[[tr('App installs'), a.installs, tr('this season')], [tr('Getting alerts'), a.subs, tr('%1$s lights-on · %2$s news').replace('%1$s', a.start).replace('%2$s', a.news)], [tr('Name buzzes'), a.buzz, tr('tonight')]].forEach(function (t) {
 			var d = el('div', 'rrc__tile'); d.appendChild(el('small', '', t[0])); d.appendChild(el('b', '', (t[1] || 0).toLocaleString())); d.appendChild(el('span', '', t[2])); box.appendChild(d);
 		});
-		set('app-sub', a.ready ? (a.opens + (a.opens === 1 ? ' app open tonight' : ' app opens tonight')) : 'Alerts can’t be sent: this server’s PHP is missing OpenSSL features');
-		set('auto-sub', a.sent_on ? 'Sent tonight when the show started' : 'Sent automatically once a night when FPP starts the show playlist');
-		set('app-to', a.news === 1 ? 'Goes to 1 phone that chose “special news”.' : 'Goes to the ' + a.news + ' phones that chose “special news”.');
-		set('cancel-alert-label', 'Also send a “No show tonight” alert to ' + a.news + (a.news === 1 ? ' phone' : ' phones'));
+		set('app-sub', a.ready ? (a.opens === 1 ? tr('%s app open tonight') : tr('%s app opens tonight')).replace('%s', a.opens) : tr('Alerts can’t be sent: this server’s PHP is missing OpenSSL features'));
+		set('auto-sub', a.sent_on ? tr('Sent tonight when the show started') : tr('Sent automatically once a night when FPP starts the show playlist'));
+		set('app-to', a.news === 1 ? tr('Goes to 1 phone that chose “special news”.') : tr('Goes to the %s phones that chose “special news”.').replace('%s', a.news));
+		set('cancel-alert-label', (a.news === 1 ? tr('Also send a “No show tonight” alert to %s phone') : tr('Also send a “No show tonight” alert to %s phones')).replace('%s', a.news));
 		$('[data-rrc-cancel-alert-row]').hidden = !a.ready || !a.news;
 		socialBox($('[data-rrc-social]'), state.social, !!(state.switches && state.switches.cancel), !$('[data-rrc-cancel-confirm]').hidden);
 		var so = state.social || {}, sr = $('[data-rrc-cancel-social-row]');
 		if (sr) { sr.hidden = !so.ready; set('cancel-social-label', so.label || ''); if (!sr.dataset.touched) { $('[data-rrc-cancel-social]').checked = !!so.auto; } }
-		var kinds = { auto: 'Automatic', cancel: 'From “Cancel tonight’s show”', you: 'Sent by you', traffic: 'Traffic alert' };
+		var kinds = { auto: tr('Automatic'), cancel: tr('From “Cancel tonight’s show”'), you: tr('Sent by you'), traffic: tr('Traffic alert') };
 		var ul = $('[data-rrc-list="alerts"]'); ul.innerHTML = '';
-		if (!a.log.length) { ul.appendChild(el('li', 'empty', 'No alerts sent yet.')); }
+		if (!a.log.length) { ul.appendChild(el('li', 'empty', tr('No alerts sent yet.'))); }
 		a.log.forEach(function (l) {
 			var li = el('li'), t = el('span', 't'); t.appendChild(el('b', '', l.kind === 'you' ? l.body : l.title)); t.appendChild(el('small', '', (kinds[l.kind] || '') + ' · ' + l.when)); li.appendChild(t);
-			li.appendChild(el('small', 'rrc__sent', l.sent + ' sent' + (l.failed ? ' · ' + l.failed + ' failed' : ''))); ul.appendChild(li);
+			li.appendChild(el('small', 'rrc__sent', tr('%s sent').replace('%s', l.sent) + (l.failed ? ' · ' + tr('%s failed').replace('%s', l.failed) : ''))); ul.appendChild(li);
 		});
 	}
 
 	function tiles() {
 		var s = state.stats[range] || {}, box = $('[data-rrc-tiles]'); box.innerHTML = '';
-		var avg = s.trivia ? ' · avg ' + (s.trivia_sum / s.trivia).toFixed(1) + ' of 5 right' : '';
-		[['Names sent', s.name_sent, (s.name_shown || 0) + ' shown'], ['Light shows played', s.lab_play, 'Play pressed in the Light Lab'], ['Contest entries', s.entry, ''],
-			['Hearts given', s.heart, ''], ['Song votes', s.song_vote, state.stats.top_song ? 'Top: ' + state.stats.top_song : ''],
-			['Elf names', s.elf, ''], ['Trivia games', s.trivia, avg.replace(' · ', '')], ['Coloring pages', s.coloring, 'opened to print'],
-			['Kids’ Corner visits', s.kids, ''], ['Website visits', s.visit, ''],
-			['Names said out loud', s.voice_made, 'new voice clips'], ['Themed picks', s.name_theme, 'names sent with a theme'], ['Social posts', s.social_post, 'Facebook, Instagram, Threads'],
-			['Traffic alerts', s.traffic, ''], ['Phone alerts on', s.alerts_on, 'people who turned alerts on'], ['App installs', s.app_install, '']].forEach(function (t) {
+		var avg = s.trivia ? ' · ' + tr('avg %s of 5 right').replace('%s', (s.trivia_sum / s.trivia).toFixed(1)) : '';
+		[[tr('Names sent'), s.name_sent, tr('%s shown').replace('%s', s.name_shown || 0)], [tr('Light shows played'), s.lab_play, tr('Play pressed in the Light Lab')], [tr('Contest entries'), s.entry, ''],
+			[tr('Hearts given'), s.heart, ''], [tr('Song votes'), s.song_vote, state.stats.top_song ? tr('Top: %s').replace('%s', function () { return state.stats.top_song; }) : ''],
+			[tr('Elf names'), s.elf, ''], [tr('Trivia games'), s.trivia, avg.replace(' · ', '')], [tr('Coloring pages'), s.coloring, tr('opened to print')],
+			[tr('Kids’ Corner visits'), s.kids, ''], [tr('Website visits'), s.visit, ''],
+			[tr('Names said out loud'), s.voice_made, tr('new voice clips')], [tr('Themed picks'), s.name_theme, tr('names sent with a theme')], [tr('Social posts'), s.social_post, 'Facebook, Instagram, Threads'],
+			[tr('Traffic alerts'), s.traffic, ''], [tr('Phone alerts on'), s.alerts_on, tr('people who turned alerts on')], [tr('App installs'), s.app_install, '']].forEach(function (t) {
 			var d = el('div', 'rrc__tile'); d.appendChild(el('small', '', t[0])); d.appendChild(el('b', '', (t[1] || 0).toLocaleString())); d.appendChild(el('span', '', t[2] || ' '));
 			box.appendChild(d);
 		});
@@ -231,11 +232,11 @@
 		var plot = $('[data-rrc-plot]'), tip = $('[data-rrc-tip]'), old = plot.querySelector('svg');
 		if (old) { old.remove(); }
 		var data = state.stats.nights;
-		if (!data.length) { data = [['No show nights yet', 0]]; }
+		if (!data.length) { data = [[tr('No show nights yet'), 0]]; }
 		var max = Math.max(10, Math.ceil(Math.max.apply(null, data.map(function (d) { return d[1]; })) / 10) * 10);
 		var W = 760, H = 230, ml = 34, mr = 8, mt = 10, mb = 26, pw = W - ml - mr, ph = H - mt - mb, bw = pw / Math.max(data.length, 7);
 		var ns = 'http://www.w3.org/2000/svg', svg = document.createElementNS(ns, 'svg');
-		svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.setAttribute('role', 'img'); svg.setAttribute('aria-label', 'Names sent each night');
+		svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.setAttribute('role', 'img'); svg.setAttribute('aria-label', tr('Names sent each night'));
 		function mk(n, a) { var e = document.createElementNS(ns, n); for (var k in a) { e.setAttribute(k, a[k]); } return e; }
 		[0, max / 2, max].forEach(function (v) {
 			var y = mt + ph - v / max * ph;
@@ -251,7 +252,7 @@
 			hit.addEventListener('mouseenter', function () {
 				p.setAttribute('fill', '#135e96');
 				var sx = svg.getBoundingClientRect().width / W;
-				tip.hidden = false; tip.textContent = d[0] + ': ' + d[1] + ' names';
+				tip.hidden = false; tip.textContent = tr('%1$s: %2$s names').replace('%1$s', function () { return d[0]; }).replace('%2$s', d[1]);
 				tip.style.left = ((x + w / 2) * sx - plot.scrollLeft) + 'px'; tip.style.top = (Math.min(y, mt + ph - 10) * sx) + 'px';
 			});
 			hit.addEventListener('mouseleave', function () { p.setAttribute('fill', '#2271b1'); tip.hidden = true; });
@@ -264,8 +265,8 @@
 		busy++;
 		return call(action, data).then(function (j) {
 			busy--;
-			if (j && j.success) { render(j.data); saved(j.data.pushed ? 'Canceled. Alert sent to ' + j.data.pushed.sent + (j.data.pushed.sent === 1 ? ' phone' : ' phones') : (msg || 'Saved')); } else { saved('Could not save. Please reload the page.'); refresh(); }
-		}).catch(function () { busy--; saved('Could not reach the website.'); });
+			if (j && j.success) { render(j.data); saved(j.data.pushed ? (j.data.pushed.sent === 1 ? tr('Canceled. Alert sent to %s phone') : tr('Canceled. Alert sent to %s phones')).replace('%s', j.data.pushed.sent) : (msg || tr('Saved'))); } else { saved(tr('Could not save. Please reload the page.')); refresh(); }
+		}).catch(function () { busy--; saved(tr('Could not reach the website.')); });
 	}
 	$$('[data-rrc-tog]').forEach(function (b) {
 		b.addEventListener('click', function () {
@@ -283,7 +284,7 @@
 		cc.hidden = true; $('[data-rrc-tog="cancel"]').setAttribute('aria-checked', 'true');
 		var sr = $('[data-rrc-cancel-social-row]'), socialToo = sr && !sr.hidden ? ($('[data-rrc-cancel-social]').checked ? '1' : '0') : null;
 		var args = { key: 'cancel', value: '1', alert: alertToo ? '1' : '' }; if (socialToo !== null) { args.social = socialToo; }
-		act('rr_ctl_set', args, 'Canceled for tonight');
+		act('rr_ctl_set', args, tr('Canceled for tonight'));
 	});
 
 	/* quick actions in the header */
@@ -302,7 +303,7 @@
 		var k = b.getAttribute('data-rrc-tsend'), txt = k === 'custom' ? $('[data-rrc-tcustom]').value.trim() : '';
 		if (k === 'custom' && !txt) { $('[data-rrc-tcustom]').focus(); return; }
 		var ar = $('[data-rrc-talert-row]');
-		act('rr_ctl_traffic', { kind: k, text: txt, minutes: $('[data-rrc-tmin]').value, alert: ar && !ar.hidden && $('[data-rrc-talert]').checked ? '1' : '', screens: $('[data-rrc-tscreens]').checked ? '1' : '' }, 'Traffic alert is on');
+		act('rr_ctl_traffic', { kind: k, text: txt, minutes: $('[data-rrc-tmin]').value, alert: ar && !ar.hidden && $('[data-rrc-talert]').checked ? '1' : '', screens: $('[data-rrc-tscreens]').checked ? '1' : '' }, tr('Traffic alert is on'));
 		if (k === 'custom') { $('[data-rrc-tcustom]').value = ''; }
 	});
 
@@ -311,22 +312,22 @@
 	msgBox.addEventListener('input', function () { set('msg-count', msgBox.value.length + ' / 180'); sc.hidden = true; sendRow.hidden = false; });
 	$('[data-rrc-send]').addEventListener('click', function () {
 		var m = msgBox.value.trim();
-		if (!m) { saved('Type a message first.'); msgBox.focus(); return; }
+		if (!m) { saved(tr('Type a message first.')); msgBox.focus(); return; }
 		var n = state ? state.app.news : 0;
-		set('send-q', 'Send “' + m + '” to ' + n + (n === 1 ? ' phone?' : ' phones?'));
+		set('send-q', (n === 1 ? tr('Send “%1$s” to %2$s phone?') : tr('Send “%1$s” to %2$s phones?')).replace('%1$s', function () { return m; }).replace('%2$s', n));
 		sendRow.hidden = true; sc.hidden = false; $('[data-rrc-send-yes]').focus();
 	});
 	$('[data-rrc-send-no]').addEventListener('click', function () { sc.hidden = true; sendRow.hidden = false; });
 	$('[data-rrc-send-yes]').addEventListener('click', function () {
-		var b = this; b.disabled = true; saved('Sending…');
+		var b = this; b.disabled = true; saved(tr('Sending…'));
 		busy++;
 		call('rr_ctl_push', { message: msgBox.value.trim() }).then(function (j) {
 			busy--; b.disabled = false; sc.hidden = true; sendRow.hidden = false;
 			if (j && j.success) {
 				render(j.data); msgBox.value = ''; set('msg-count', '0 / 180');
-				var p = j.data.pushed; saved('Sent to ' + p.sent + (p.sent === 1 ? ' phone' : ' phones') + (p.failed ? ' (' + p.failed + ' did not go through)' : ''));
-			} else { saved((j && j.data && j.data.message) || 'Could not send. Please reload the page.'); }
-		}).catch(function () { busy--; b.disabled = false; saved('Could not reach the website.'); });
+				var p = j.data.pushed; saved((p.sent === 1 ? tr('Sent to %s phone') : tr('Sent to %s phones')).replace('%s', p.sent) + (p.failed ? ' ' + tr('(%s did not go through)').replace('%s', p.failed) : ''));
+			} else { saved((j && j.data && j.data.message) || tr('Could not send. Please reload the page.')); }
+		}).catch(function () { busy--; b.disabled = false; saved(tr('Could not reach the website.')); });
 	});
 
 	$$('[data-rrc-set]').forEach(function (i) { i.addEventListener('change', function () { act('rr_ctl_set', { key: i.getAttribute('data-rrc-set'), value: i.value }); }); });

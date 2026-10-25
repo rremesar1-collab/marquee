@@ -51,7 +51,7 @@ function ridgeroad_seo_description() {
 	$d = '';
 	if ( $s && $e ) {
 		/* translators: 1: opening date, 2: closing date */
-		$d = sprintf( __( '%1$s – %2$s.', 'ridgeroad' ), wp_date( 'M j', strtotime( $s . ' 12:00' ), ridgeroad_tz() ), wp_date( 'M j', strtotime( $e . ' 12:00' ), ridgeroad_tz() ) ) . ' ';
+		$d = sprintf( __( '%1$s – %2$s.', 'ridgeroad' ), wp_date( __( 'M j', 'ridgeroad' ), strtotime( $s . ' 12:00' ), ridgeroad_tz() ), wp_date( __( 'M j', 'ridgeroad' ), strtotime( $e . ' 12:00' ), ridgeroad_tz() ) ) . ' ';
 	}
 	/* translators: %s: radio frequency */
 	return trim( ridgeroad_mod( 'intro' ) . ' ' . $d . ridgeroad_hours_text() . '. ' . sprintf( __( 'Tune to %s.', 'ridgeroad' ), ridgeroad_mod( 'radio' ) ) );

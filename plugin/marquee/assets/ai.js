@@ -1,5 +1,6 @@
 /* Marquee: "Need help?" assistant on the Settings page. */
 (function () {
+	var tr = function (s) { var d = window.rrI18n; return (d && d[s]) || s; };
 	var C = window.MarqueeAdmin || {};
 	var box = document.querySelector('[data-mq-ai]'), fab = document.querySelector('[data-mq-ai-open]');
 	if (!box || !fab) { return; }
@@ -65,9 +66,9 @@
 			btn.disabled = false; wait.remove();
 			if (j && j.success) { chat.push({ role: 'assistant', text: j.data.text }); add('bot', j.data.text); save(); return; }
 			chat.pop(); save();
-			add('bot', (j && j.data && j.data.message) || 'Something went wrong. Please try again.', 'is-err');
+			add('bot', (j && j.data && j.data.message) || tr('Something went wrong. Please try again.'), 'is-err');
 			if (j && j.data && j.data.need_key) { keybox.hidden = false; box.setAttribute('data-ready', '0'); }
-		}).catch(function () { btn.disabled = false; wait.remove(); chat.pop(); save(); add('bot', 'Couldn’t reach your website. Try again.', 'is-err'); });
+		}).catch(function () { btn.disabled = false; wait.remove(); chat.pop(); save(); add('bot', tr('Couldn’t reach your website. Try again.'), 'is-err'); });
 	}
 	form.addEventListener('submit', function (e) { e.preventDefault(); ask(input.value); });
 	input.addEventListener('keydown', function (e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); ask(input.value); } });
@@ -82,7 +83,7 @@
 		if (p && saved.indexOf(p) < 0) { saved.push(p); }
 		var a = AIS[p];
 		box.querySelectorAll('[data-mq-ai-name]').forEach(function (n) { n.textContent = a ? a.name : ''; });
-		var to = box.querySelector('[data-mq-ai-to]'); if (to) { to.textContent = a ? a.name + ' (' + a.by + ')' : 'the AI you pick'; }
+		var to = box.querySelector('[data-mq-ai-to]'); if (to) { to.textContent = a ? a.name + ' (' + a.by + ')' : tr('the AI you pick'); }
 		if (who) { who.hidden = !a; }
 		if (kc) { kc.hidden = !a; }
 		box.querySelectorAll('[data-mq-ai-pick]').forEach(function (c) { c.classList.toggle('is-on', c.getAttribute('data-mq-ai-pick') === p); });
@@ -95,7 +96,7 @@
 			b.disabled = true;
 			post('marquee_ai_key', { use: b.getAttribute('data-mq-ai-use') }).then(function (j) {
 				b.disabled = false;
-				if (j && j.success) { setAI(j.data.provider); keybox.hidden = true; add('bot', 'OK, ' + j.data.name + ' answers from now on.'); input.focus(); }
+				if (j && j.success) { setAI(j.data.provider); keybox.hidden = true; add('bot', tr('OK, %s answers from now on.').replace('%s', function () { return j.data.name; })); input.focus(); }
 			});
 		});
 	});
@@ -104,12 +105,12 @@
 	if (ks) {
 		ks.addEventListener('click', function () {
 			if (!kin.value.trim()) { kin.focus(); return; }
-			ks.disabled = true; kmsg.textContent = 'Saving…';
+			ks.disabled = true; kmsg.textContent = tr('Saving…');
 			post('marquee_ai_key', { key: kin.value }).then(function (j) {
 				ks.disabled = false;
-				if (j && j.success && j.data.saved) { kmsg.textContent = ''; keybox.hidden = true; kin.value = ''; setAI(j.data.provider); add('bot', 'Got it, ' + j.data.name + ' will answer. Ask away!'); input.focus(); }
-				else { kmsg.textContent = (j && j.data && j.data.message) || 'Couldn’t save the key.'; }
-			}).catch(function () { ks.disabled = false; kmsg.textContent = 'Couldn’t reach your website.'; });
+				if (j && j.success && j.data.saved) { kmsg.textContent = ''; keybox.hidden = true; kin.value = ''; setAI(j.data.provider); add('bot', tr('Got it, %s will answer. Ask away!').replace('%s', function () { return j.data.name; })); input.focus(); }
+				else { kmsg.textContent = (j && j.data && j.data.message) || tr('Couldn’t save the key.'); }
+			}).catch(function () { ks.disabled = false; kmsg.textContent = tr('Couldn’t reach your website.'); });
 		});
 	}
 	if (kc) {

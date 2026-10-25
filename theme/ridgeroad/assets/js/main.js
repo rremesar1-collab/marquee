@@ -2,6 +2,7 @@
 (function () {
 	'use strict';
 	var cfg = window.RidgeRoad || {};
+	var tr = function (s) { var d = window.rrI18n; return (d && d[s]) || s; };
 	var $ = function (sel) { return document.querySelector(sel); };
 	var set = function (key, text) {
 		var el = $('[data-rr="' + key + '"]');
@@ -41,8 +42,8 @@
 
 	/* Live data */
 	var idle = {
-		running: 'Between songs — stay tuned!',
-		canceled: 'No show tonight'
+		running: tr('Between songs — stay tuned!'),
+		canceled: tr('No show tonight')
 	};
 	/* Traffic & parking alert from Show Control: a strip at the top of every page while it's on. */
 	function advisory(a) {
@@ -193,9 +194,9 @@
 			var label = btn.querySelector('span'), orig = label ? label.textContent : '';
 			var done = function (msg) { if (label) { label.textContent = msg; setTimeout(function () { label.textContent = orig; }, 2200); } };
 			if (navigator.share) {
-				navigator.share({ title: title, text: 'Come see the Christmas lights!', url: url }).catch(function () {});
+				navigator.share({ title: title, text: tr('Come see the Christmas lights!'), url: url }).catch(function () {});
 			} else if (navigator.clipboard) {
-				navigator.clipboard.writeText(url).then(function () { done('Link copied!'); }, function () { done(url); });
+				navigator.clipboard.writeText(url).then(function () { done(tr('Link copied!')); }, function () { done(url); });
 			} else {
 				done(url);
 			}
@@ -210,7 +211,7 @@
 		btn.addEventListener('click', function () {
 			var f = document.createElement('iframe');
 			f.src = box.getAttribute('data-rr-live');
-			f.title = 'Live camera';
+			f.title = tr('Live camera');
 			f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
 			f.allowFullscreen = true;
 			box.innerHTML = '';
@@ -233,13 +234,13 @@
 		var now = (Date.now() + skew) / 1000;
 		var opening = +cd.getAttribute('data-opening'), start = +cd.getAttribute('data-start'), end = +cd.getAttribute('data-end');
 		var label = $('[data-rr="count-label"]'), tiles = $('[data-rr="count-tiles"]'), target = 0, text = '';
-		if (opening && now < opening) { target = opening; text = 'Opening Night In'; }
-		else if (now < start) { target = start; text = 'Lights On In'; }
+		if (opening && now < opening) { target = opening; text = tr('Opening Night In'); }
+		else if (now < start) { target = start; text = tr('Lights On In'); }
 		else if (now < end) {
 			var rEl = document.querySelector('.rr-radio'), radio = rEl ? rEl.textContent.trim() : '';   // the show's own station, from Tonight's Show
-			text = radio ? 'The Show Is On Right Now — Tune to ' + radio + '!' : 'The Show Is On Right Now!';
+			text = radio ? tr('The Show Is On Right Now — Tune to %s!').replace('%s', function () { return radio; }) : tr('The Show Is On Right Now!');
 		}
-		else { target = start; text = 'Next Show In'; }
+		else { target = start; text = tr('Next Show In'); }
 		if (label && label.textContent !== text) { label.textContent = text; }
 		cd.classList.toggle('is-live', !target);
 		if (target) {
@@ -249,8 +250,8 @@
 		}
 		var x = +cd.getAttribute('data-xmas'), dx = Math.ceil((x - now) / 86400), xe = $('[data-rr="xmas"]');
 		if (xe) {
-			var many = cd.getAttribute('data-hol-many') || '%d days until Christmas';
-			xe.textContent = dx > 1 ? many.replace('%d', dx) : (dx === 1 ? (cd.getAttribute('data-hol-one') || 'Christmas Eve is here!') : (cd.getAttribute('data-hol-day') || 'Merry Christmas!'));
+			var many = cd.getAttribute('data-hol-many') || tr('%d days until Christmas');
+			xe.textContent = dx > 1 ? many.replace('%d', dx) : (dx === 1 ? (cd.getAttribute('data-hol-one') || tr('Christmas Eve is here!')) : (cd.getAttribute('data-hol-day') || tr('Merry Christmas!')));
 		}
 	}
 
@@ -305,11 +306,11 @@
 			e.preventDefault();
 			var name = f.querySelector('input').value.trim().toLowerCase().replace(/[^a-z]/g, '');
 			var out = $('[data-rr="elf"]');
-			if (!name) { out.hidden = false; out.textContent = 'Type your name first!'; return; }
+			if (!name) { out.hidden = false; out.textContent = tr('Type your name first!'); return; }
 			var h = 0; for (var i = 0; i < name.length; i++) { h = (h * 31 + name.charCodeAt(i)) >>> 0; }
 			out.hidden = false;
 			out.innerHTML = '';
-			var s1 = document.createElement('span'); s1.textContent = 'Your elf name is';
+			var s1 = document.createElement('span'); s1.textContent = tr('Your elf name is');
 			var s2 = document.createElement('strong'); s2.textContent = A[h % A.length] + ' ' + B[Math.floor(h / A.length) % B.length] + '!';
 			out.appendChild(s1); out.appendChild(s2);
 			out.classList.remove('pop'); void out.offsetWidth; out.classList.add('pop');
@@ -329,13 +330,13 @@
 			mEl.textContent = ''; oEl.innerHTML = '';
 			if (n >= qs.length) {
 				statSend('trivia', score);
-				pEl.textContent = 'All done!';
-				qEl.textContent = score === 5 ? 'Perfect! You got 5 out of 5 — you’re on the Nice List!' : 'You got ' + score + ' out of 5! Great job!';
-				var again = document.createElement('button'); again.className = 'rr-btn rr-btn--gold'; again.type = 'button'; again.textContent = 'Play Again';
+				pEl.textContent = tr('All done!');
+				qEl.textContent = score === 5 ? tr('Perfect! You got 5 out of 5 — you’re on the Nice List!') : tr('You got %s out of 5! Great job!').replace('%s', score);
+				var again = document.createElement('button'); again.className = 'rr-btn rr-btn--gold'; again.type = 'button'; again.textContent = tr('Play Again');
 				again.addEventListener('click', start); oEl.appendChild(again); return;
 			}
 			var q = qs[n];
-			pEl.textContent = 'Question ' + (n + 1) + ' of 5';
+			pEl.textContent = tr('Question %s of 5').replace('%s', n + 1);
 			qEl.textContent = q[0];
 			q[1].forEach(function (opt, i) {
 				var b = document.createElement('button'); b.type = 'button'; b.className = 'rr-quiz__opt'; b.textContent = opt;
@@ -343,7 +344,7 @@
 					var btns = oEl.querySelectorAll('button');
 					btns.forEach(function (x) { x.disabled = true; });
 					btns[q[2]].classList.add('is-right');
-					if (i === q[2]) { score++; mEl.textContent = 'That’s right!'; } else { b.classList.add('is-wrong'); mEl.textContent = 'Nice try! It’s “' + q[1][q[2]] + '”.'; }
+					if (i === q[2]) { score++; mEl.textContent = tr('That’s right!'); } else { b.classList.add('is-wrong'); mEl.textContent = tr('Nice try! It’s “%s”.').replace('%s', function () { return q[1][q[2]]; }); }
 					setTimeout(function () { n++; show(); }, 1500);
 				});
 				oEl.appendChild(b);
@@ -482,18 +483,18 @@
 		}).join('');
 		VOTE.el.querySelector('[data-rr-lb-empty]').hidden = list.length > 0;
 		var tot = VOTE.board === 'week' ? v.weekTotal : v.total;
-		VOTE.el.querySelector('[data-rr-lb-total]').textContent = tot ? tot + (tot === 1 ? ' vote ' : ' votes ') + (VOTE.board === 'week' ? 'this week' : 'this season') : '';
+		VOTE.el.querySelector('[data-rr-lb-total]').textContent = tot ? (VOTE.board === 'week' ? (tot === 1 ? tr('%s vote this week') : tr('%s votes this week')) : (tot === 1 ? tr('%s vote this season') : tr('%s votes this season'))).replace('%s', tot) : '';
 		var mine = VOTE.el.querySelector('[data-rr-mine]'), li = VOTE.mine && VOTE.el.querySelector('.rr-vlist__item[data-key="' + VOTE.mine + '"]');
 		mine.hidden = !li;
-		if (li) { mine.innerHTML = 'Your vote: <b>' + esc(li.getAttribute('data-title')) + '</b>. Tap another song to change it.'; }
+		if (li) { mine.innerHTML = tr('Your vote: <b>%s</b>. Tap another song to change it.').replace('%s', function () { return esc(li.getAttribute('data-title')); }); }
 		var ff = v.friday, body = VOTE.el.querySelector('[data-rr-ff-body]');
 		if (ff && body) {
 			var t = VOTE.el.getAttribute('data-ff-text') || '', L = ff.leader;
 			if (ff.today) {
-				body.innerHTML = '<b>It\u2019s Fan Favorite Friday!</b><span>' + (L ? 'This week\u2019s winner is <strong>' + esc(L.title) + '</strong>. ' + esc(t) : 'No votes yet this week. Vote now to pick next Friday\u2019s favorite!') + '</span>';
+				body.innerHTML = '<b>' + tr('It’s Fan Favorite Friday!') + '</b><span>' + (L ? tr('This week’s winner is <strong>%s</strong>.').replace('%s', function () { return esc(L.title); }) + ' ' + esc(t) : tr('No votes yet this week. Vote now to pick next Friday’s favorite!')) + '</span>';
 			} else {
-				body.innerHTML = '<b>' + (ff.days === 1 ? 'Fan Favorite Friday is tomorrow!' : 'Fan Favorite Friday is in ' + ff.days + ' days') + '</b><span>' +
-					(L ? 'Leading this week: <strong>' + esc(L.title) + '</strong>. ' : '') + 'The song with the most votes this week gets featured on Friday!</span>';
+				body.innerHTML = '<b>' + (ff.days === 1 ? tr('Fan Favorite Friday is tomorrow!') : tr('Fan Favorite Friday is in %s days').replace('%s', ff.days)) + '</b><span>' +
+					(L ? tr('Leading this week: <strong>%s</strong>.').replace('%s', function () { return esc(L.title); }) + ' ' : '') + tr('The song with the most votes this week gets featured on Friday!') + '</span>';
 			}
 		}
 	}
@@ -514,7 +515,7 @@
 			var btn = e.target.closest('.rr-vlist__vote');
 			if (!btn) { return; }
 			var li = btn.closest('.rr-vlist__item'), key = li.getAttribute('data-key');
-			if (key === VOTE.mine) { msg.textContent = 'That\u2019s already your favorite!'; return; }
+			if (key === VOTE.mine) { msg.textContent = tr('That’s already your favorite!'); return; }
 			btn.classList.add('is-pop'); msg.textContent = '';
 			fetch(ajax + '?action=rr_song_nonce&_=' + Date.now(), { credentials: 'same-origin' }).then(function (r) { return r.json(); }).then(function (j) {
 				var fd = new FormData();
@@ -524,10 +525,10 @@
 				btn.classList.remove('is-pop');
 				if (j && j.success) {
 					VOTE.mine = j.data.mine; vstore('rrSongVote', VOTE.mine);
-					msg.textContent = 'Thanks for voting!';
+					msg.textContent = tr('Thanks for voting!');
 					voteData(j.data.votes);
-				} else { msg.textContent = (j && j.data && j.data.message) || 'Something went wrong. Please try again.'; }
-			}).catch(function () { btn.classList.remove('is-pop'); msg.textContent = 'We couldn\u2019t reach the website. Please try again.'; });
+				} else { msg.textContent = (j && j.data && j.data.message) || tr('Something went wrong. Please try again.'); }
+			}).catch(function () { btn.classList.remove('is-pop'); msg.textContent = tr('We couldn’t reach the website. Please try again.'); });
 		});
 	}
 

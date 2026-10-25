@@ -167,6 +167,11 @@ function marquee_manager_render() {
 <?php if ( get_site_icon_url() ) : ?><link rel="icon" href="<?php echo esc_url( get_site_icon_url( 192 ) ); ?>"><link rel="apple-touch-icon" href="<?php echo esc_url( get_site_icon_url( 180 ) ); ?>"><?php endif; ?>
 <style>@font-face{font-family:"Fredoka";font-weight:600;font-display:swap;src:url(<?php echo esc_url( MARQUEE_URL . 'core/assets/fonts/fredoka-latin-600-normal.woff2' ); ?>) format("woff2")}</style>
 <link rel="stylesheet" href="<?php echo esc_url( MARQUEE_URL . 'assets/manager.css?ver=' . $v ); ?>">
+<?php
+if ( function_exists( 'ridgeroad_js_i18n_print' ) ) {
+	ridgeroad_js_i18n_print(); // this page skips wp_head(): give manager.js its words here
+}
+?>
 </head>
 <body class="mm<?php echo $can ? ' mm--app' : ' mm--gate'; ?>">
 <header class="mm-top">

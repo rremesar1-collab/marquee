@@ -1,0 +1,3493 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Marquee\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: ridgeroad\n"
+
+msgid "A Little Christmas Magic"
+msgstr "Un poquito de magia navideña"
+
+msgid ""
+"Thousands of lights dancing to holiday music. Tune your car radio, sit back,"
+" and enjoy the show!"
+msgstr ""
+"Miles de luces bailando al ritmo de música navideña. Sintoniza la radio de "
+"tu carro, relájate y ¡disfruta el espectáculo!"
+
+msgid "Sun – Thu"
+msgstr "Dom – Jue"
+
+msgid "Fri – Sat"
+msgstr "Vie – Sáb"
+
+msgid "Show Planned as Scheduled"
+msgstr "El espectáculo sigue según lo previsto"
+
+msgid ""
+"No weather cancellation announced. Please check back before traveling during"
+" severe weather."
+msgstr ""
+"No hay cancelación por clima. Si hace mal tiempo, vuelve a consultar antes "
+"de salir."
+
+msgid "Tonight’s Show Is Canceled"
+msgstr "El espectáculo de esta noche se canceló"
+
+msgid ""
+"Due to weather, the light show will not run tonight. Thank you for "
+"understanding — please check back tomorrow!"
+msgstr ""
+"Por el clima, el espectáculo de luces no funcionará esta noche. Gracias por "
+"tu comprensión. ¡Vuelve a consultar mañana!"
+
+msgid "See You This Christmas Season"
+msgstr "Nos vemos esta Navidad"
+
+msgid "The show is resting for now. Check back for opening night!"
+msgstr ""
+"El espectáculo está descansando por ahora. ¡Vuelve para la noche de estreno!"
+
+msgid "Tonight’s Playlist"
+msgstr "Canciones de esta noche"
+
+msgid "Please park on the shoulder and keep the road clear."
+msgstr "Por favor, estaciónate en el acotamiento y deja libre el camino."
+
+msgid "Behind the Lights"
+msgstr "Detrás de las luces"
+
+msgid "Every song is programmed by hand, one light at a time."
+msgstr "Cada canción se programa a mano, una luz a la vez."
+
+msgid "LED Pixels"
+msgstr "Píxeles LED"
+
+msgid "Light-Up Props"
+msgstr "Decoraciones iluminadas"
+
+msgid "Songs in the Show"
+msgstr "Canciones en el espectáculo"
+
+msgid "Light Channels"
+msgstr "Canales de luz"
+
+msgid "Video Panels"
+msgstr "Paneles de video"
+
+msgid "FM — Tune In!"
+msgstr "FM: ¡sintoniza!"
+
+msgid "Kids’ Corner"
+msgstr "Rincón de los niños"
+
+msgid "This Year’s Show Videos"
+msgstr "Videos del espectáculo de este año"
+
+msgid "Watch every song from this year’s show, then come see it in person!"
+msgstr ""
+"Mira cada canción del espectáculo de este año, ¡y luego ven a verlo en "
+"persona!"
+
+msgid "Vote for Your Favorite Song"
+msgstr "Vota por tu canción favorita"
+
+msgid ""
+"Tap the heart on your favorite song in this year’s show. You can change your"
+" vote anytime!"
+msgstr ""
+"Toca el corazón de tu canción favorita del espectáculo de este año. ¡Puedes "
+"cambiar tu voto cuando quieras!"
+
+msgid "We’ll play it to open the show tonight!"
+msgstr "¡La pondremos para abrir el espectáculo esta noche!"
+
+msgid "$25 gift card"
+msgstr "Tarjeta de regalo de $25"
+
+msgid "Holiday treat bag"
+msgstr "Bolsita de dulces navideños"
+
+msgid "Watch the Show Live"
+msgstr "Mira el espectáculo en vivo"
+
+msgid ""
+"Can’t make it out tonight? Watch the lights from home — turn up the volume!"
+msgstr ""
+"¿No puedes venir esta noche? Mira las luces desde casa, ¡y sube el volumen!"
+
+msgid "Before You Visit"
+msgstr "Antes de tu visita"
+
+msgid "Park Safely"
+msgstr "Estaciónate con cuidado"
+
+msgid "Use a legal parking spot and keep the road open for passing traffic."
+msgstr ""
+"Usa un lugar permitido para estacionarte y deja libre el camino para los "
+"demás autos."
+
+msgid "Headlights Off"
+msgstr "Apaga los faros"
+
+msgid ""
+"Once parked, turn off your headlights and leave parking or running lights "
+"on."
+msgstr ""
+"Ya estacionado, apaga los faros y deja encendidas las luces de posición."
+
+msgid "Respect Our Neighbors"
+msgstr "Respeta a los vecinos"
+
+msgid "Please don’t block driveways or entrances. Keep noise considerate."
+msgstr "Por favor, no bloquees cocheras ni entradas. Cuida el ruido."
+
+msgid "Enjoy the Memories"
+msgstr "Disfruta los recuerdos"
+
+msgid ""
+"Photos and videos are welcome. Stay in a safe spot while watching the show."
+msgstr ""
+"Las fotos y los videos son bienvenidos. Quédate en un lugar seguro mientras "
+"ves el espectáculo."
+
+msgid "Keep the Magic Glowing"
+msgstr "Mantén viva la magia"
+
+msgid ""
+"Donations help maintain our synchronized Christmas display and add new "
+"surprises. They’re never required to enjoy the show."
+msgstr ""
+"Las donaciones ayudan a mantener nuestro espectáculo navideño sincronizado y"
+" a sumar sorpresas. Nunca son necesarias para disfrutar el espectáculo."
+
+msgid "Support via Cash App"
+msgstr "Apoya por Cash App"
+
+msgid "Stay Connected"
+msgstr "Mantente en contacto"
+
+msgid "Follow us for weather updates, new songs, and show announcements."
+msgstr ""
+"Síguenos para saber del clima, las canciones nuevas y los avisos del "
+"espectáculo."
+
+msgid "A message from your family to ours"
+msgstr "Un mensaje de tu familia para la nuestra"
+
+msgid "Leave a Little Christmas Cheer"
+msgstr "Deja un poco de alegría navideña"
+
+msgid ""
+"Enjoyed the lights? We’d love to hear from you! Sign our guestbook and share"
+" a holiday message with our family."
+msgstr ""
+"¿Te gustaron las luces? ¡Nos encantaría saber de ti! Firma nuestro libro de "
+"visitas y deja un mensaje navideño para nuestra familia."
+
+msgid "Christmas %s"
+msgstr "Navidad %s"
+
+msgid "Donate"
+msgstr "Donar"
+
+msgid ""
+"Donations help keep the lights on and add new surprises each year. They’re "
+"never required to enjoy the show."
+msgstr ""
+"Las donaciones ayudan a mantener las luces encendidas y a sumar sorpresas "
+"cada año. Nunca son necesarias para disfrutar el espectáculo."
+
+msgid "Christmas"
+msgstr "Navidad"
+
+msgid "%d days until Christmas"
+msgstr "%d días para Navidad"
+
+msgid "Christmas Eve is here!"
+msgstr "¡Llegó la Nochebuena!"
+
+msgid "Merry Christmas!"
+msgstr "¡Feliz Navidad!"
+
+msgid "Halloween"
+msgstr "Halloween"
+
+msgid "%d days until Halloween"
+msgstr "%d días para Halloween"
+
+msgid "Halloween is tomorrow!"
+msgstr "¡Halloween es mañana!"
+
+msgid "Happy Halloween!"
+msgstr "¡Feliz Halloween!"
+
+msgid "%%d days until %s"
+msgstr "%%d días para %s"
+
+msgid "%s is tomorrow!"
+msgstr "¡%s es mañana!"
+
+msgid "It’s %s!"
+msgstr "¡Hoy es %s!"
+
+msgid "Show Website"
+msgstr "Sitio web del espectáculo"
+
+msgid "Header & Intro"
+msgstr "Encabezado e introducción"
+
+msgid "Show Hours & Status"
+msgstr "Horario y estado del espectáculo"
+
+msgid "Weather"
+msgstr "Clima"
+
+msgid "Live Camera (YouTube)"
+msgstr "Cámara en vivo (YouTube)"
+
+msgid "Visitor Tips"
+msgstr "Consejos para visitantes"
+
+msgid "Songs Page: Show Videos"
+msgstr "Página de canciones: videos del espectáculo"
+
+msgid "Songs Page: Favorite Song Voting"
+msgstr "Página de canciones: votación de canción favorita"
+
+msgid "Behind the Lights (Stats)"
+msgstr "Detrás de las luces (estadísticas)"
+
+msgid "Donations & Social"
+msgstr "Donaciones y redes sociales"
+
+msgid "Guestbook"
+msgstr "Libro de visitas"
+
+msgid "Line under the logo"
+msgstr "Línea debajo del logo"
+
+msgid "Script tagline"
+msgstr "Lema en letra cursiva"
+
+msgid "Intro sentence"
+msgstr "Frase de introducción"
+
+msgid "Falling snow"
+msgstr "Nieve cayendo"
+
+msgid "Off"
+msgstr "Apagado"
+
+msgid "Light flurries"
+msgstr "Nieve ligera"
+
+msgid "Gentle snowfall"
+msgstr "Nevada suave"
+
+msgid "Snowstorm"
+msgstr "Tormenta de nieve"
+
+msgid "Snowflake size"
+msgstr "Tamaño de los copos"
+
+msgid "Small"
+msgstr "Pequeño"
+
+msgid "Medium"
+msgstr "Mediano"
+
+msgid "Large"
+msgstr "Grande"
+
+msgid "Snow harder when it is really snowing at the show"
+msgstr "Nevar más fuerte cuando de verdad está nevando en el espectáculo"
+
+msgid "Background photo (optional)"
+msgstr "Foto de fondo (opcional)"
+
+msgid ""
+"Replaces the built-in night forest. A wide night photo works best (2400px+)."
+msgstr ""
+"Reemplaza el bosque nocturno incluido. Una foto nocturna ancha funciona "
+"mejor (2400px+)."
+
+msgid "Radio frequency"
+msgstr "Frecuencia de radio"
+
+msgid "Share picture (optional)"
+msgstr "Imagen para compartir (opcional)"
+
+msgid ""
+"Shown when someone shares the website on Facebook or in a text. Best size "
+"1200 × 630. Leave empty to use the built-in picture."
+msgstr ""
+"Se muestra cuando alguien comparte el sitio web en Facebook o en un mensaje "
+"de texto. Mejor tamaño: 1200 × 630. Déjalo vacío para usar la imagen "
+"incluida."
+
+msgid "Season opening night"
+msgstr "Noche de estreno de la temporada"
+
+msgid "Season last night"
+msgstr "Última noche de la temporada"
+
+msgid "Weeknight label"
+msgstr "Etiqueta de entre semana"
+
+msgid "Sun–Thu end time"
+msgstr "Hora de fin dom–jue"
+
+msgid "Weekend label"
+msgstr "Etiqueta de fin de semana"
+
+msgid "Fri–Sat end time"
+msgstr "Hora de fin vie–sáb"
+
+msgid "Sun–Thu start time"
+msgstr "Hora de inicio dom–jue"
+
+msgid "Fri–Sat start time"
+msgstr "Hora de inicio vie–sáb"
+
+msgid "Start at sunset instead of the times above"
+msgstr "Empezar al atardecer en lugar de las horas de arriba"
+
+msgid "Minutes after sunset the show starts (only when starting at sunset)"
+msgstr ""
+"Minutos después del atardecer en que empieza el espectáculo (solo si empieza"
+" al atardecer)"
+
+msgid "Banner title — show on"
+msgstr "Título del aviso — espectáculo encendido"
+
+msgid "Banner text — show on"
+msgstr "Texto del aviso — espectáculo encendido"
+
+msgid "Banner title — canceled"
+msgstr "Título del aviso — cancelado"
+
+msgid ""
+"Cancel the show from Show Control (Cancel tonight’s show). Its message "
+"replaces the text below when filled in."
+msgstr ""
+"Cancela el espectáculo desde Control del espectáculo (Cancelar el "
+"espectáculo de esta noche). Si escribes un mensaje ahí, reemplaza el texto "
+"de abajo."
+
+msgid "Banner text — canceled"
+msgstr "Texto del aviso — cancelado"
+
+msgid "Banner title — off season"
+msgstr "Título del aviso — fuera de temporada"
+
+msgid "Banner text — off season"
+msgstr "Texto del aviso — fuera de temporada"
+
+msgid "Show the countdown clocks"
+msgstr "Mostrar los relojes de cuenta regresiva"
+
+msgid "Count down to"
+msgstr "Cuenta regresiva hasta"
+
+msgid ""
+"Automatic (Halloween if your last night is in August to October, otherwise "
+"Christmas)"
+msgstr ""
+"Automático (Halloween si tu última noche es de agosto a octubre; si no, "
+"Navidad)"
+
+msgid "A date I pick"
+msgstr "Una fecha que yo elija"
+
+msgid "Your date’s name (like New Year’s Eve)"
+msgstr "Nombre de tu fecha (como Fin de Año)"
+
+msgid "For “A date I pick”."
+msgstr "Para “Una fecha que yo elija”."
+
+msgid "Your date (the year doesn’t matter; it repeats every year)"
+msgstr "Tu fecha (el año no importa; se repite cada año)"
+
+msgid ""
+"Remote Falcon viewer page (adds “Pick the next song” to Tonight’s Show)"
+msgstr ""
+"Página de espectador de Remote Falcon (agrega “Elige la próxima canción” al "
+"Espectáculo de esta noche)"
+
+msgid ""
+"Like https://yourshow.remotefalcon.com. Visitors pick songs right on your "
+"website while the show is running (your Remote Falcon rules still apply). "
+"Leave empty to hide it."
+msgstr ""
+"Como https://yourshow.remotefalcon.com. Los visitantes eligen canciones "
+"directamente en tu sitio web mientras el espectáculo está en marcha (se "
+"siguen aplicando tus reglas de Remote Falcon). Déjalo vacío para ocultarlo."
+
+msgid "Show the playlist section"
+msgstr "Mostrar la sección de la lista de reproducción"
+
+msgid "When to show the playlist"
+msgstr "Cuándo mostrar la lista de reproducción"
+
+msgid "Only while the show is running"
+msgstr "Solo mientras el espectáculo está en marcha"
+
+msgid "All season (hide off-season and canceled nights)"
+msgstr "Toda la temporada (ocultar fuera de temporada y noches canceladas)"
+
+msgid "Always"
+msgstr "Siempre"
+
+msgid "Playlist title"
+msgstr "Título de la lista de reproducción"
+
+msgid "Show address (for the Get Directions button)"
+msgstr "Dirección del espectáculo (para el botón Cómo llegar)"
+
+msgid ""
+"A street address (123 Main St, Springfield, IL 62701), map coordinates "
+"(39.7817, -89.6501) or a Google Maps link. Coordinates take visitors to the "
+"exact spot. Leave empty to hide the button."
+msgstr ""
+"Una dirección (123 Main St, Springfield, IL 62701), coordenadas del mapa "
+"(39.7817, -89.6501) o un enlace de Google Maps. Las coordenadas llevan a los"
+" visitantes al lugar exacto. Déjalo vacío para ocultar el botón."
+
+msgid "Parking note next to the button"
+msgstr "Nota de estacionamiento junto al botón"
+
+msgid "City name"
+msgstr "Nombre de la ciudad"
+
+msgid "ZIP code"
+msgstr "Código postal"
+
+msgid "Show live radar loop"
+msgstr "Mostrar radar en vivo animado"
+
+msgid "NWS radar station"
+msgstr "Estación de radar del NWS"
+
+msgid "KHTX = Huntsville. Use KBMX for Birmingham."
+msgstr "KHTX = Huntsville. Usa KBMX para Birmingham."
+
+msgid "YouTube channel or live video link"
+msgstr "Canal de YouTube o enlace de video en vivo"
+
+msgid ""
+"Paste your channel link (youtube.com/channel/UC…) or channel ID — the "
+"section then always shows whatever you are streaming. A single live video "
+"link also works. Leave empty to hide the section."
+msgstr ""
+"Pega el enlace de tu canal (youtube.com/channel/UC…) o el ID del canal — así"
+" la sección siempre muestra lo que estés transmitiendo. También funciona un "
+"enlace a un solo video en vivo. Déjalo vacío para ocultar la sección."
+
+msgid "Section title"
+msgstr "Título de la sección"
+
+msgid "Text under the title"
+msgstr "Texto debajo del título"
+
+msgid "Show the show videos (on the Songs & Videos page)"
+msgstr ""
+"Mostrar los videos del espectáculo (en la página de Canciones y videos)"
+
+msgid ""
+"Add your MP4 videos in WP Admin → My Sequences. They appear on the Songs & "
+"Videos page (yoursite.com/songs/), not the home page."
+msgstr ""
+"Agrega tus videos MP4 en WP Admin → Mis secuencias. Aparecen en la página de"
+" Canciones y videos (yoursite.com/songs/), no en la página principal."
+
+msgid "Line under the title"
+msgstr "Línea debajo del título"
+
+msgid "Show favorite song voting (on the Songs & Videos page)"
+msgstr ""
+"Mostrar la votación de canción favorita (en la página de Canciones y videos)"
+
+msgid ""
+"See the votes on your WordPress Dashboard. You can clear all votes there to "
+"start a new season."
+msgstr ""
+"Mira los votos en tu Escritorio de WordPress. Ahí puedes borrar todos los "
+"votos para empezar una nueva temporada."
+
+msgid "Where the song list comes from"
+msgstr "De dónde sale la lista de canciones"
+
+msgid "Remote Falcon (automatic, uses your sequence display names)"
+msgstr ""
+"Remote Falcon (automático, usa los nombres visibles de tus secuencias)"
+
+msgid "My own list (below)"
+msgstr "Mi propia lista (abajo)"
+
+msgid "My song list"
+msgstr "Mi lista de canciones"
+
+msgid ""
+"One song per line, like: Wizards in Winter — Trans-Siberian Orchestra. Start"
+" a line with * to mark it NEW this year."
+msgstr ""
+"Una canción por línea, como: Wizards in Winter — Trans-Siberian Orchestra. "
+"Empieza una línea con * para marcarla como NUEVA este año."
+
+msgid "Fan Favorite Friday (this week’s top song is featured every Friday)"
+msgstr ""
+"Viernes del favorito (la canción más votada de la semana se destaca cada "
+"viernes)"
+
+msgid "Fan Favorite Friday message"
+msgstr "Mensaje del Viernes del favorito"
+
+msgid "Show the Kids’ Corner (elf names, coloring page, trivia)"
+msgstr ""
+"Mostrar el Rincón de los niños (nombres de duende, página para colorear, "
+"trivia)"
+
+msgid "Make a Light Show (the Light Lab) in the Kids’ Corner"
+msgstr ""
+"Crea un espectáculo de luces (el Laboratorio de luces) en el Rincón de los "
+"niños"
+
+msgid ""
+"Off hides it and the light show contest; the rest of the Kids’ Corner stays."
+msgstr ""
+"Apagado lo oculta junto con el concurso de espectáculos de luces; el resto "
+"del Rincón de los niños se queda."
+
+msgid ""
+"“Your Name in Lights”: kids send their name to your show’s screens (needs "
+"the FPP script)"
+msgstr ""
+"“Tu nombre en luces”: los niños envían su nombre a las pantallas de tu "
+"espectáculo (necesita el script de FPP)"
+
+msgid ""
+"Put these two lines at the top of the FPP script: SITE = “%1$s” and KEY = "
+"“%2$s”. Keep the key private."
+msgstr ""
+"Pon estas dos líneas al principio del script de FPP: SITE = “%1$s” y KEY = "
+"“%2$s”. Mantén la clave en privado."
+
+msgid ""
+"Accept names any time (for testing). Normally names are only accepted while "
+"the show is running."
+msgstr ""
+"Aceptar nombres a cualquier hora (para pruebas). Normalmente los nombres "
+"solo se aceptan mientras el espectáculo está en marcha."
+
+msgid ""
+"Only at the show: names can only be sent from phones near your show (the "
+"phone shares its location; it is never saved)"
+msgstr ""
+"Solo en el espectáculo: los nombres solo se pueden enviar desde celulares "
+"cerca de tu espectáculo (el celular comparte su ubicación; nunca se guarda)"
+
+msgid "How close they must be (miles from the show)"
+msgstr "Qué tan cerca deben estar (millas desde el espectáculo)"
+
+msgid ""
+"0.5 works for most shows. Phones can be off by a few hundred feet, so don’t "
+"go much smaller."
+msgstr ""
+"0.5 funciona para la mayoría de los espectáculos. Los celulares pueden "
+"fallar por unos cientos de pies, así que no lo hagas mucho más pequeño."
+
+msgid "Name text color on the screens (like #FFD45C)"
+msgstr "Color del texto del nombre en las pantallas (como #FFD45C)"
+
+msgid "Extra names or words to block (comma separated)"
+msgstr "Nombres o palabras extra para bloquear (separados por comas)"
+
+msgid "Run the light show contest (entries, Show Wall and hearts)"
+msgstr ""
+"Organizar el concurso de espectáculos de luces (participaciones, Muro del "
+"espectáculo y corazones)"
+
+msgid ""
+"Review entries under Kids’ Light Shows in the WordPress menu. Nothing shows "
+"on the Show Wall until you publish it."
+msgstr ""
+"Revisa las participaciones en Espectáculos de luces de los niños en el menú "
+"de WordPress. Nada aparece en el Muro del espectáculo hasta que lo "
+"publiques."
+
+msgid "Show the newest kids’ shows on the home page (when the contest is on)"
+msgstr ""
+"Mostrar los espectáculos de niños más recientes en la página principal "
+"(cuando el concurso está activo)"
+
+msgid "Last day to enter and vote"
+msgstr "Último día para participar y votar"
+
+msgid "Judges’ Pick prize"
+msgstr "Premio Elección del jurado"
+
+msgid "People’s Choice prize"
+msgstr "Premio Favorito del público"
+
+msgid "Winners pick up their prize by"
+msgstr "Los ganadores recogen su premio antes del"
+
+msgid "Email new entries to (empty = site admin email)"
+msgstr ""
+"Enviar nuevas participaciones por correo a (vacío = correo del administrador"
+" del sitio)"
+
+msgid "Show the Behind the Lights section"
+msgstr "Mostrar la sección Detrás de las luces"
+
+msgid "Stat %d number"
+msgstr "Número de la estadística %d"
+
+msgid "Leave empty to count the songs from Remote Falcon automatically."
+msgstr ""
+"Déjalo vacío para contar las canciones de Remote Falcon automáticamente."
+
+msgid "Stat %d label (empty hides it)"
+msgstr "Etiqueta de la estadística %d (vacía la oculta)"
+
+msgid "Stat %d icon"
+msgstr "Ícono de la estadística %d"
+
+msgid "Tip %d icon"
+msgstr "Ícono del consejo %d"
+
+msgid "Tip %d title"
+msgstr "Título del consejo %d"
+
+msgid "Tip %d text"
+msgstr "Texto del consejo %d"
+
+msgid "Donation title"
+msgstr "Título de donaciones"
+
+msgid "Donation text"
+msgstr "Texto de donaciones"
+
+msgid "Cash App link"
+msgstr "Enlace de Cash App"
+
+msgid ""
+"e.g. https://cash.app/$YourCashtag — leave empty to hide the donation box."
+msgstr ""
+"p. ej. https://cash.app/$YourCashtag — déjalo vacío para ocultar el cuadro "
+"de donaciones."
+
+msgid "Button text"
+msgstr "Texto del botón"
+
+msgid "Cash App QR image (optional)"
+msgstr "Imagen QR de Cash App (opcional)"
+
+msgid "If empty, a QR code is generated from the link automatically."
+msgstr ""
+"Si está vacío, se genera un código QR a partir del enlace automáticamente."
+
+msgid "Social title"
+msgstr "Título de redes sociales"
+
+msgid "Social text"
+msgstr "Texto de redes sociales"
+
+msgid "Hashtag for visitor photos (leave empty to hide)"
+msgstr ""
+"Hashtag para las fotos de los visitantes (déjalo vacío para ocultarlo)"
+
+msgid "Show a “Share the Show” button"
+msgstr "Mostrar un botón “Comparte el espectáculo”"
+
+msgid "Show the %s button"
+msgstr "Mostrar el botón de %s"
+
+msgid "%s link"
+msgstr "Enlace de %s"
+
+msgid "Guestbook link (menu)"
+msgstr "Enlace del libro de visitas (menú)"
+
+msgid "Leave empty to jump to the guestbook section on the home page."
+msgstr ""
+"Déjalo vacío para saltar a la sección del libro de visitas en la página "
+"principal."
+
+msgid "Show the guestbook section"
+msgstr "Mostrar la sección del libro de visitas"
+
+msgid "Where messages are kept"
+msgstr "Dónde se guardan los mensajes"
+
+msgid "WordPress (I approve every message first)"
+msgstr "WordPress (yo apruebo cada mensaje primero)"
+
+msgid "RF Page Builder (posts right away)"
+msgstr "RF Page Builder (se publica de inmediato)"
+
+msgid ""
+"With WordPress, new messages wait in Comments → Pending until you approve "
+"them."
+msgstr ""
+"Con WordPress, los mensajes nuevos esperan en Comentarios → Pendientes hasta"
+" que los apruebes."
+
+msgid "Small line above the title"
+msgstr "Línea pequeña arriba del título"
+
+msgid "Title"
+msgstr "Título"
+
+msgid "Intro text"
+msgstr "Texto de introducción"
+
+msgid "Messages to show"
+msgstr "Mensajes a mostrar"
+
+msgid "RF Page Builder site key"
+msgstr "Clave del sitio de RF Page Builder"
+
+msgid ""
+"From RF Page Builder: a key with dashes, like 1a2b3c4d-…. Leave empty to "
+"turn the guestbook off."
+msgstr ""
+"De RF Page Builder: una clave con guiones, como 1a2b3c4d-…. Déjala vacía "
+"para apagar el libro de visitas."
+
+msgid "Footer text (optional)"
+msgstr "Texto del pie de página (opcional)"
+
+msgid "Kids’ Names"
+msgstr "Nombres de los niños"
+
+msgid "Kid’s Name"
+msgstr "Nombre del niño"
+
+msgid "Names in Lights"
+msgstr "Tu nombre en luces"
+
+msgid "No names yet."
+msgstr "Todavía no hay nombres."
+
+msgid "Please refresh the page and try again."
+msgstr "Actualiza la página e intenta de nuevo."
+
+msgid ""
+"Names can only be sent while the show is on. Come back during show time!"
+msgstr ""
+"Los nombres solo se pueden enviar mientras el espectáculo está encendido. "
+"¡Vuelve durante el horario del espectáculo!"
+
+msgid ""
+"To send your name, let this page see your location when your phone asks. "
+"It’s only used to check you’re at the show."
+msgstr ""
+"Para enviar tu nombre, deja que esta página vea tu ubicación cuando tu "
+"teléfono lo pida. Solo se usa para comprobar que estás en el espectáculo."
+
+msgid ""
+"Your name can only go up in lights when you’re at the show. Come see us!"
+msgstr ""
+"Tu nombre solo puede aparecer en luces cuando estás en el espectáculo. ¡Ven "
+"a vernos!"
+
+msgid ""
+"Hmm, Santa’s elves can’t put that one in lights. Please type just your first"
+" name."
+msgstr ""
+"Mmm, los duendes de Santa Claus no pueden poner ese en luces. Escribe solo "
+"tu nombre de pila."
+
+msgid ""
+"You already sent 3 names! Watch for them in the show. You can send more in a"
+" little while."
+msgstr ""
+"¡Ya enviaste 3 nombres! Búscalos en el espectáculo. Puedes enviar más en un "
+"ratito."
+
+msgid ""
+"You already sent 3 names! Watch for them on the garage door. You can send "
+"more in a little while."
+msgstr ""
+"¡Ya enviaste 3 nombres! Búscalos en la puerta del garaje. Puedes enviar más "
+"en un ratito."
+
+msgid "Lots of names right now! Please try again in a few minutes."
+msgstr "¡Hay muchos nombres ahora mismo! Inténtalo de nuevo en unos minutos."
+
+msgid "Something went wrong. Please try again."
+msgstr "Algo salió mal. Intenta de nuevo."
+
+msgid "Name"
+msgstr "Nombre"
+
+msgid "Shows as"
+msgstr "Se muestra como"
+
+msgid "On the screens"
+msgstr "En las pantallas"
+
+msgid "Sent"
+msgstr "Enviado"
+
+msgid "Shown at %s"
+msgstr "Se mostró a las %s"
+
+msgid "g:i a"
+msgstr "g:i a"
+
+msgid "Waiting"
+msgstr "En espera"
+
+msgid "Block"
+msgstr "Bloquear"
+
+msgid ""
+"Names go up in the show automatically if they pass the word filter. Click "
+"“Block” under any name to stop it."
+msgstr ""
+"Los nombres aparecen en el espectáculo automáticamente si pasan el filtro de"
+" palabras. Haz clic en “Bloquear” debajo de cualquier nombre para detenerlo."
+
+msgid ""
+"Names go on the garage door and TV automatically if they pass the word "
+"filter. Click “Block” under any name to stop it."
+msgstr ""
+"Los nombres aparecen en la puerta del garaje y en la TV automáticamente si "
+"pasan el filtro de palabras. Haz clic en “Bloquear” debajo de cualquier "
+"nombre para detenerlo."
+
+msgid "FPP last checked in %s ago."
+msgstr "FPP se conectó por última vez hace %s."
+
+msgid "FPP has not checked in yet."
+msgstr "FPP todavía no se ha conectado."
+
+msgid ""
+"Add words to block in Appearance → Customize → Show Website → Kids’ Corner."
+msgstr ""
+"Agrega palabras para bloquear en Apariencia → Personalizar → Sitio web del "
+"espectáculo → Rincón de los niños."
+
+msgid "Between songs — stay tuned!"
+msgstr "Entre canciones — ¡no te vayas!"
+
+msgid "No show tonight"
+msgstr "No hay espectáculo esta noche"
+
+msgid "Come see the Christmas lights!"
+msgstr "¡Ven a ver las luces de Navidad!"
+
+msgid "Link copied!"
+msgstr "¡Enlace copiado!"
+
+msgid "Live camera"
+msgstr "Cámara en vivo"
+
+msgid "Opening Night In"
+msgstr "La noche de estreno es en"
+
+msgid "Lights On In"
+msgstr "Las luces se encienden en"
+
+msgid "The Show Is On Right Now — Tune to %s!"
+msgstr "¡El espectáculo está en marcha! ¡Sintoniza %s!"
+
+msgid "The Show Is On Right Now!"
+msgstr "¡El espectáculo está en marcha ahora mismo!"
+
+msgid "Next Show In"
+msgstr "Próximo espectáculo en"
+
+msgid "Type your name first!"
+msgstr "¡Primero escribe tu nombre!"
+
+msgid "Your elf name is"
+msgstr "Tu nombre de duende es"
+
+msgid "All done!"
+msgstr "¡Listo!"
+
+msgid "Perfect! You got 5 out of 5 — you’re on the Nice List!"
+msgstr "¡Perfecto! Acertaste 5 de 5: ¡estás en la Lista de los Buenos!"
+
+msgid "You got %s out of 5! Great job!"
+msgstr "¡Acertaste %s de 5! ¡Buen trabajo!"
+
+msgid "Play Again"
+msgstr "Jugar otra vez"
+
+msgid "Question %s of 5"
+msgstr "Pregunta %s de 5"
+
+msgid "That’s right!"
+msgstr "¡Correcto!"
+
+msgid "Nice try! It’s “%s”."
+msgstr "¡Buen intento! Es “%s”."
+
+msgid "%s vote this week"
+msgstr "%s voto esta semana"
+
+msgid "%s votes this week"
+msgstr "%s votos esta semana"
+
+msgid "%s vote this season"
+msgstr "%s voto esta temporada"
+
+msgid "%s votes this season"
+msgstr "%s votos esta temporada"
+
+msgid "Your vote: <b>%s</b>. Tap another song to change it."
+msgstr "Tu voto: <b>%s</b>. Toca otra canción para cambiarlo."
+
+msgid "It’s Fan Favorite Friday!"
+msgstr "¡Es Viernes del favorito!"
+
+msgid "This week’s winner is <strong>%s</strong>."
+msgstr "La ganadora de esta semana es <strong>%s</strong>."
+
+msgid "No votes yet this week. Vote now to pick next Friday’s favorite!"
+msgstr ""
+"Todavía no hay votos esta semana. ¡Vota ahora para elegir el favorito del "
+"próximo viernes!"
+
+msgid "Fan Favorite Friday is tomorrow!"
+msgstr "¡El Viernes del favorito es mañana!"
+
+msgid "Fan Favorite Friday is in %s days"
+msgstr "El Viernes del favorito es en %s días"
+
+msgid "Leading this week: <strong>%s</strong>."
+msgstr "Va ganando esta semana: <strong>%s</strong>."
+
+msgid "The song with the most votes this week gets featured on Friday!"
+msgstr "¡La canción con más votos esta semana sonará destacada el viernes!"
+
+msgid "That’s already your favorite!"
+msgstr "¡Esa ya es tu favorita!"
+
+msgid "Thanks for voting!"
+msgstr "¡Gracias por votar!"
+
+msgid "We couldn’t reach the website. Please try again."
+msgstr "No pudimos conectar con el sitio web. Inténtalo de nuevo."
+
+msgid "“%s”"
+msgstr "“%s”"
+
+msgid "My Light Show"
+msgstr "Mi espectáculo de luces"
+
+msgid "Song: %s"
+msgstr "Canción: %s"
+
+msgid "First make your light show in step 1."
+msgstr "Primero crea tu espectáculo de luces en el paso 1."
+
+msgid "Please type your child’s first name."
+msgstr "Escribe el primer nombre de tu hijo o hija."
+
+msgid "Please pick an age."
+msgstr "Elige una edad."
+
+msgid "Please enter a parent email so we can send your claim code."
+msgstr "Escribe el correo de un padre o madre para enviarte tu código."
+
+msgid "A parent or guardian needs to check the permission box."
+msgstr "Un padre, madre o tutor debe marcar la casilla de permiso."
+
+msgid "Sending your show…"
+msgstr "Enviando tu espectáculo…"
+
+msgid "Stop"
+msgstr "Detener"
+
+msgid "Play"
+msgstr "Reproducir"
+
+msgid "Light Show"
+msgstr "Espectáculo de luces"
+
+msgid "by %s"
+msgstr "por %s"
+
+msgid "NAME"
+msgstr "NOMBRE"
+
+msgid "That’s a long one! Names can have up to 14 letters."
+msgstr "¡Qué nombre tan largo! Los nombres pueden tener hasta 14 letras."
+
+msgid "Please type just your first name (letters only)."
+msgstr "Escribe solo tu primer nombre (solo letras)."
+
+msgid "Checking you’re at the show…"
+msgstr "Comprobando que estás en el espectáculo…"
+
+msgid "Sending to Santa’s elves…"
+msgstr "Enviando a los duendes de Santa Claus…"
+
+msgid "Your name is already in line!"
+msgstr "¡Tu nombre ya está en la fila!"
+
+msgid "You’re next! Watch our screens: your name goes up in a minute."
+msgstr "¡Sigues tú! Mira nuestras pantallas: tu nombre aparece en un minuto."
+
+msgid ""
+"You’re #%s in line. Watch our screens: your name goes up in a few minutes."
+msgstr ""
+"Eres el #%s en la fila. Mira nuestras pantallas: tu nombre aparece en unos "
+"minutos."
+
+msgid "You’re next! Watch for your name in about %s songs."
+msgstr "¡Sigues tú! Busca tu nombre en unas %s canciones."
+
+msgid "You’re #%1$s in line. Watch for your name in about %2$s songs."
+msgstr "Eres el #%1$s en la fila. Busca tu nombre en unas %2$s canciones."
+
+msgid "You’re next! Watch for your name after this song."
+msgstr "¡Sigues tú! Busca tu nombre después de esta canción."
+
+msgid "You’re #%s in line. Watch for your name after this song."
+msgstr "Eres el #%s en la fila. Busca tu nombre después de esta canción."
+
+msgid "You’re #%s in line. Your name will show after a few songs."
+msgstr ""
+"Eres el #%s en la fila. Tu nombre aparecerá después de unas canciones."
+
+msgid ""
+"It goes up in %s (if lots of kids picked other shows, it may be one song "
+"later)."
+msgstr ""
+"Aparece en %s (si muchos niños eligieron otros espectáculos, puede ser una "
+"canción después)."
+
+msgid ""
+"Names can only be sent from the show, so we need to see where your phone is."
+" Allow location for this website in your phone’s settings, then try again."
+msgstr ""
+"Los nombres solo se pueden enviar desde el espectáculo, así que necesitamos "
+"ver dónde está tu celular. Permite la ubicación para este sitio web en los "
+"ajustes de tu celular y vuelve a intentarlo."
+
+msgid ""
+"We couldn’t find your location. Make sure Location is turned on, then try "
+"again."
+msgstr ""
+"No pudimos encontrar tu ubicación. Asegúrate de que la ubicación esté "
+"activada y vuelve a intentarlo."
+
+msgid "Want a buzz on this phone right before your name shows?"
+msgstr "¿Quieres que este teléfono vibre justo antes de que salga tu nombre?"
+
+msgid "Okay! This phone will buzz when your name is up next."
+msgstr "¡Listo! Este celular vibrará cuando tu nombre sea el siguiente."
+
+msgid ""
+"Alerts are turned off for this app. Turn them on in Settings > Notifications"
+" > %s."
+msgstr ""
+"Las alertas están desactivadas para esta app. Actívalas en Configuración > "
+"Notificaciones > %s."
+
+msgid "this app"
+msgstr "esta app"
+
+msgid ""
+"Alerts are blocked for this website. Allow notifications in your browser’s "
+"site settings, then try again."
+msgstr ""
+"Las alertas están bloqueadas para este sitio web. Permite las notificaciones"
+" en la configuración del sitio de tu navegador y vuelve a intentarlo."
+
+msgid ""
+"On iPhone, add the app to your home screen first, then turn on alerts there."
+msgstr ""
+"En iPhone, primero agrega la app a tu pantalla de inicio y luego activa las "
+"alertas desde ahí."
+
+msgid "This browser can’t get alerts."
+msgstr "Este navegador no puede recibir alertas."
+
+msgid "Add"
+msgstr "Agregar"
+
+msgid "Add it to your iPhone"
+msgstr "Agrégala a tu iPhone"
+
+msgid "Tap the <b>Share</b> button at the top right, next to the address"
+msgstr ""
+"Toca el botón <b>Compartir</b> arriba a la derecha, junto a la dirección"
+
+msgid "Tap your browser’s <b>Share</b> button (it may be in the menu)"
+msgstr ""
+"Toca el botón <b>Compartir</b> de tu navegador (puede estar en el menú)"
+
+msgid ""
+"Tap the <b>Share</b> button in Safari (or tap <b>•••</b> first, then Share)"
+msgstr ""
+"Toca el botón <b>Compartir</b> en Safari (o toca primero <b>•••</b> y luego "
+"Compartir)"
+
+msgid "Scroll down and tap <b>Add to Home Screen</b>"
+msgstr "Desplázate hacia abajo y toca <b>Agregar a inicio</b>"
+
+msgid "Tap <b>Add</b> in the top corner"
+msgstr "Toca <b>Agregar</b> en la esquina superior"
+
+msgid "Add it to your phone"
+msgstr "Agrégala a tu celular"
+
+msgid "Install it on this computer"
+msgstr "Instálala en esta computadora"
+
+msgid ""
+"Tap your browser’s <b>menu</b> button (usually <b>⋮</b> at the top right)"
+msgstr ""
+"Toca el botón de <b>menú</b> de tu navegador (normalmente <b>⋮</b> arriba a "
+"la derecha)"
+
+msgid "Tap <b>Add to Home screen</b> or <b>Install app</b>"
+msgstr "Toca <b>Agregar a la pantalla principal</b> o <b>Instalar app</b>"
+
+msgid "Tap <b>Install</b> or <b>Add</b>"
+msgstr "Toca <b>Instalar</b> o <b>Agregar</b>"
+
+msgid "Your alerts are on. Change what you get any time:"
+msgstr "Tus alertas están activadas. Cambia lo que recibes cuando quieras:"
+
+msgid ""
+"Pick what you want. You can change it any time from the link at the bottom "
+"of the page."
+msgstr ""
+"Elige lo que quieras. Puedes cambiarlo cuando quieras desde el enlace al "
+"final de la página."
+
+msgid "Show alerts"
+msgstr "Alertas del espectáculo"
+
+msgid ""
+"Both are off, so this phone won’t get show alerts. Tap Turn off all alerts "
+"to remove it."
+msgstr ""
+"Ambas están desactivadas, así que este celular no recibirá alertas del "
+"espectáculo. Toca Desactivar todas las alertas para quitarlo."
+
+msgid "Saved."
+msgstr "Guardado."
+
+msgid "Could not save. Please try again."
+msgstr "No se pudo guardar. Inténtalo de nuevo."
+
+msgid "Pick at least one."
+msgstr "Elige al menos una."
+
+msgid "Alerts are on! We’ll only buzz you for what you picked."
+msgstr "¡Alertas activadas! Solo te avisaremos de lo que elegiste."
+
+msgid "Alerts are off. This phone won’t get any more."
+msgstr "Alertas desactivadas. Este celular no recibirá más."
+
+msgid "Could not turn them off. Please try again."
+msgstr "No se pudieron desactivar. Inténtalo de nuevo."
+
+msgid "You already voted. Votes start over after the winning song plays."
+msgstr ""
+"Ya votaste. Los votos empiezan de nuevo después de que suene la canción "
+"ganadora."
+
+msgid "You already picked a song. You can pick another after yours plays."
+msgstr "Ya elegiste una canción. Puedes elegir otra cuando suene la tuya."
+
+msgid "The line is full right now. Try again in a few minutes."
+msgstr "La fila está llena en este momento. Inténtalo en unos minutos."
+
+msgid "You need to be at the show to pick songs."
+msgstr "Tienes que estar en el espectáculo para elegir canciones."
+
+msgid "That song is playing or already in line. Pick another one!"
+msgstr "Esa canción está sonando o ya está en la fila. ¡Elige otra!"
+
+msgid "Song picking isn’t available from this device."
+msgstr "No se pueden elegir canciones desde este dispositivo."
+
+msgid "<b>Now playing:</b> %s"
+msgstr "<b>Sonando ahora:</b> %s"
+
+msgid "<b>In line:</b> %s"
+msgstr "<b>En la fila:</b> %s"
+
+msgid "<b>Up next:</b> %s"
+msgstr "<b>Sigue:</b> %s"
+
+msgid ""
+"Vote for the song you want next. The one with the most votes plays after "
+"this song."
+msgstr ""
+"Vota por la canción que quieres que suene después. La que tenga más votos "
+"sonará después de esta canción."
+
+msgid "Pick a song and it gets in line to play."
+msgstr "Elige una canción y se pondrá en la fila para sonar."
+
+msgid "Song picking is off right now. Check back during the show!"
+msgstr ""
+"Elegir canciones está desactivado por ahora. ¡Vuelve durante el espectáculo!"
+
+msgid "%s vote"
+msgstr "%s voto"
+
+msgid "%s votes"
+msgstr "%s votos"
+
+msgid "Vote"
+msgstr "Votar"
+
+msgid "Pick"
+msgstr "Elegir"
+
+msgid "No songs to pick yet."
+msgstr "Todavía no hay canciones para elegir."
+
+msgid "We couldn’t reach Remote Falcon. Try again in a minute."
+msgstr "No pudimos conectar con Remote Falcon. Inténtalo en un minuto."
+
+msgid "Checking that you’re at the show…"
+msgstr "Comprobando que estás en el espectáculo…"
+
+msgid "Thanks! Your vote is in."
+msgstr "¡Gracias! Tu voto quedó registrado."
+
+msgid "Got it! Your song is in line."
+msgstr "¡Listo! Tu canción está en la fila."
+
+msgid "Something went wrong. Try again."
+msgstr "Algo salió mal. Inténtalo de nuevo."
+
+msgid "Loading the songs…"
+msgstr "Cargando las canciones…"
+
+msgid "The Light Lab could not load. Please refresh the page."
+msgstr "El Laboratorio de luces no se pudo cargar. Actualiza la página."
+
+msgid "TUNE TO"
+msgstr "SINTONIZA"
+
+msgid "Tap Play again to start the music."
+msgstr "Toca Reproducir otra vez para iniciar la música."
+
+msgid "Play my show"
+msgstr "Reproducir mi espectáculo"
+
+msgid "whole house"
+msgstr "toda la casa"
+
+msgid "Saved on this device!"
+msgstr "¡Guardado en este dispositivo!"
+
+msgid "Could not save on this device."
+msgstr "No se pudo guardar en este dispositivo."
+
+msgid ""
+"What should we light up? Tap a decoration on the house, or pick one here!"
+msgstr "¿Qué iluminamos? ¡Toca una decoración en la casa o elige una aquí!"
+
+msgid "How should the whole house light up in the %s of the song?"
+msgstr "¿Cómo debe iluminarse toda la casa en esta parte de la canción (%s)?"
+
+msgid "How should the %1$s light up in the %2$s of the song?"
+msgstr ""
+"¿Cómo debe iluminarse esta decoración (%1$s) en esta parte de la canción "
+"(%2$s)?"
+
+msgid "How should the whole house light up?"
+msgstr "¿Cómo debe iluminarse toda la casa?"
+
+msgid "How should the %s light up?"
+msgstr "¿Cómo debe iluminarse esta decoración (%s)?"
+
+msgid "What color should the whole house be?"
+msgstr "¿De qué color debe ser toda la casa?"
+
+msgid "What color should the %s be?"
+msgstr "¿De qué color debe ser esta decoración (%s)?"
+
+msgid "The whole house looks great!"
+msgstr "¡Toda la casa se ve genial!"
+
+msgid "Your %s looks great!"
+msgstr "¡Tu decoración (%s) se ve genial!"
+
+msgid "Light up something else, or play your show!"
+msgstr "¡Ilumina otra cosa o reproduce tu espectáculo!"
+
+msgid "Tap it on the house"
+msgstr "Tócala en la casa"
+
+msgid "Twinkle, chase and more"
+msgstr "Destellos, persecución y más"
+
+msgid "Not needed"
+msgstr "No hace falta"
+
+msgid "Red, green, blue…"
+msgstr "Rojo, verde, azul…"
+
+msgid "Changing: %s"
+msgstr "Cambiando: %s"
+
+msgid "a young light designer"
+msgstr "un joven diseñador de luces"
+
+msgid "has not checked in yet"
+msgstr "aún no se ha reportado"
+
+msgid "checked in %s sec ago"
+msgstr "se reportó hace %s s"
+
+msgid "checked in %s min ago"
+msgstr "se reportó hace %s min"
+
+msgid "last checked in %s h ago"
+msgstr "se reportó por última vez hace %s h"
+
+msgid "Undo: the show is on"
+msgstr "Deshacer: sí hay espectáculo"
+
+msgid "Cancel tonight"
+msgstr "Cancelar esta noche"
+
+msgid "Resume names"
+msgstr "Reanudar nombres"
+
+msgid "Pause names"
+msgstr "Pausar nombres"
+
+msgid "Not connected"
+msgstr "No conectado"
+
+msgid "Not checking in"
+msgstr "No se reporta"
+
+msgid "Playing"
+msgstr "Reproduciendo"
+
+msgid "Idle"
+msgstr "Inactivo"
+
+msgid "Paused"
+msgstr "En pausa"
+
+msgid "Open"
+msgstr "Abierto"
+
+msgid "Closed"
+msgstr "Cerrado"
+
+msgid "%s waiting"
+msgstr "%s en espera"
+
+msgid "Names wait until you un-pause"
+msgstr "Los nombres esperan hasta que quites la pausa"
+
+msgid "Next break in about %s songs"
+msgstr "Próxima pausa en unas %s canciones"
+
+msgid "Next break after the current song"
+msgstr "Próxima pausa después de la canción actual"
+
+msgid "Opens when the show starts"
+msgstr "Se abre cuando empieza el espectáculo"
+
+msgid "%s person"
+msgstr "%s persona"
+
+msgid "%s people"
+msgstr "%s personas"
+
+msgid "%s in the Kids’ Corner"
+msgstr "%s en el Rincón de los niños"
+
+msgid "No names waiting."
+msgstr "No hay nombres en espera."
+
+msgid "sent %s"
+msgstr "enviado %s"
+
+msgid "Remove"
+msgstr "Quitar"
+
+msgid "Removed"
+msgstr "Eliminado"
+
+msgid "Block word"
+msgstr "Bloquear palabra"
+
+msgid "Removed and blocked"
+msgstr "Eliminado y bloqueado"
+
+msgid "Nothing shown yet."
+msgstr "Todavía no se ha mostrado nada."
+
+msgid "Closes %s"
+msgstr "Cierra %s"
+
+msgid "%s entry"
+msgstr "%s participación"
+
+msgid "%s entries"
+msgstr "%s participaciones"
+
+msgid "All caught up."
+msgstr "Todo al día."
+
+msgid "%1$s, age %2$s"
+msgstr "%1$s, %2$s años"
+
+msgid "Watch"
+msgstr "Ver"
+
+msgid "Approve"
+msgstr "Aprobar"
+
+msgid "Approved: now on the Show Wall"
+msgstr "Aprobado: ya está en el Muro del espectáculo"
+
+msgid "Decline"
+msgstr "Rechazar"
+
+msgid "Declined"
+msgstr "Rechazado"
+
+msgid "No shows on the Show Wall yet."
+msgstr "Todavía no hay espectáculos en el Muro del espectáculo."
+
+msgid "Up to %s% chance of rain during the show"
+msgstr "Probabilidad de lluvia durante el espectáculo: hasta %s%"
+
+msgid "No rain expected during the show"
+msgstr "No se espera lluvia durante el espectáculo"
+
+msgid "Weather isn’t available"
+msgstr "El clima no está disponible"
+
+msgid "Connected"
+msgstr "Conectado"
+
+msgid "%s posted this season"
+msgstr "%s publicadas esta temporada"
+
+msgid "Not set up"
+msgstr "Sin configurar"
+
+msgid "Post cancellations for you"
+msgstr "Publica las cancelaciones por ti"
+
+msgid "%1$s get news · %2$s get “lights on”"
+msgstr "%1$s reciben noticias · %2$s reciben “luces encendidas”"
+
+msgid "Posting to %s"
+msgstr "Publicando en %s"
+
+msgid "Not set up yet"
+msgstr "Aún sin configurar"
+
+msgid "Posts this season"
+msgstr "Publicaciones esta temporada"
+
+msgid "Posted tonight"
+msgstr "Publicado esta noche"
+
+msgid "none yet"
+msgstr "ninguna todavía"
+
+msgid "Nothing posted yet. Posts go out when you cancel the show."
+msgstr ""
+"Todavía no se ha publicado nada. Las publicaciones salen cuando cancelas el "
+"espectáculo."
+
+msgid "Nothing posted yet."
+msgstr "Aún no se ha publicado nada."
+
+msgid "Back on"
+msgstr "Reactivado"
+
+msgid "Canceled"
+msgstr "Cancelado"
+
+msgid "View"
+msgstr "Ver"
+
+msgid ""
+"When you cancel, Marquee can post it on Facebook, Instagram and Threads."
+msgstr ""
+"Cuando canceles, Marquee puede publicarlo en Facebook, Instagram y Threads."
+
+msgid "Set it up"
+msgstr "Configurarlo"
+
+msgid "On your website until %1$s (%2$s left)"
+msgstr "En tu sitio web hasta %1$s (quedan %2$s)"
+
+msgid "on your screens too"
+msgstr "también en tus pantallas"
+
+msgid "Turn it off"
+msgstr "Desactivarlo"
+
+msgid "Traffic alert off"
+msgstr "Alerta de tráfico desactivada"
+
+msgid "On now: %s"
+msgstr "Activo ahora: %s"
+
+msgid "Nothing posted"
+msgstr "Nada publicado"
+
+msgid "Also send a phone alert to %s phone"
+msgstr "Enviar también una alerta a %s celular"
+
+msgid "Also send a phone alert to %s phones"
+msgstr "Enviar también una alerta a %s celulares"
+
+msgid "Updated just now"
+msgstr "Actualizado hace un momento"
+
+msgid "Updated %s sec ago"
+msgstr "Actualizado hace %s s"
+
+msgid "Posting on social media…"
+msgstr "Publicando en redes sociales…"
+
+msgid "Copy the post for other sites (Nextdoor, groups…)"
+msgstr "Copia la publicación para otros sitios (Nextdoor, grupos…)"
+
+msgid "Copied!"
+msgstr "¡Copiado!"
+
+msgid "App installs"
+msgstr "Instalaciones de la app"
+
+msgid "this season"
+msgstr "esta temporada"
+
+msgid "Getting alerts"
+msgstr "Reciben alertas"
+
+msgid "%1$s lights-on · %2$s news"
+msgstr "%1$s luces encendidas · %2$s noticias"
+
+msgid "Name buzzes"
+msgstr "Avisos de nombre"
+
+msgid "tonight"
+msgstr "esta noche"
+
+msgid "%s app open tonight"
+msgstr "%s apertura de la app esta noche"
+
+msgid "%s app opens tonight"
+msgstr "%s aperturas de la app esta noche"
+
+msgid "Alerts can’t be sent: this server’s PHP is missing OpenSSL features"
+msgstr ""
+"No se pueden enviar alertas: al PHP de este servidor le faltan funciones de "
+"OpenSSL"
+
+msgid "Sent tonight when the show started"
+msgstr "Enviada esta noche cuando empezó el espectáculo"
+
+msgid "Sent automatically once a night when FPP starts the show playlist"
+msgstr ""
+"Se envía automáticamente una vez por noche cuando FPP inicia la lista de "
+"reproducción del espectáculo"
+
+msgid "Goes to 1 phone that chose “special news”."
+msgstr "Llega a 1 celular que eligió “noticias especiales”."
+
+msgid "Goes to the %s phones that chose “special news”."
+msgstr "Llega a los %s celulares que eligieron “noticias especiales”."
+
+msgid "Also send a “No show tonight” alert to %s phone"
+msgstr ""
+"Enviar también una alerta de “No hay espectáculo esta noche” a %s celular"
+
+msgid "Also send a “No show tonight” alert to %s phones"
+msgstr ""
+"Enviar también una alerta de “No hay espectáculo esta noche” a %s celulares"
+
+msgid "Automatic"
+msgstr "Automático"
+
+msgid "From “Cancel tonight’s show”"
+msgstr "Desde “Cancelar el espectáculo de esta noche”"
+
+msgid "Sent by you"
+msgstr "Enviada por ti"
+
+msgid "Traffic alert"
+msgstr "Alerta de tráfico"
+
+msgid "No alerts sent yet."
+msgstr "Todavía no se han enviado alertas."
+
+msgid "%s sent"
+msgstr "%s enviadas"
+
+msgid "%s failed"
+msgstr "%s fallidas"
+
+msgid "avg %s of 5 right"
+msgstr "prom. %s de 5 correctas"
+
+msgid "Names sent"
+msgstr "Nombres enviados"
+
+msgid "%s shown"
+msgstr "%s mostrados"
+
+msgid "Light shows played"
+msgstr "Espectáculos de luces reproducidos"
+
+msgid "Play pressed in the Light Lab"
+msgstr "Veces que se tocó Reproducir en el Laboratorio de luces"
+
+msgid "Contest entries"
+msgstr "Participaciones del concurso"
+
+msgid "Hearts given"
+msgstr "Corazones dados"
+
+msgid "Song votes"
+msgstr "Votos por canciones"
+
+msgid "Top: %s"
+msgstr "Más votada: %s"
+
+msgid "Elf names"
+msgstr "Nombres de duende"
+
+msgid "Trivia games"
+msgstr "Juegos de trivia"
+
+msgid "Coloring pages"
+msgstr "Páginas para colorear"
+
+msgid "opened to print"
+msgstr "abiertos para imprimir"
+
+msgid "Kids’ Corner visits"
+msgstr "Visitas al Rincón de los niños"
+
+msgid "Website visits"
+msgstr "Visitas al sitio web"
+
+msgid "Names said out loud"
+msgstr "Nombres dichos en voz alta"
+
+msgid "new voice clips"
+msgstr "clips de voz nuevos"
+
+msgid "Themed picks"
+msgstr "Elecciones con tema"
+
+msgid "names sent with a theme"
+msgstr "nombres enviados con un tema"
+
+msgid "Social posts"
+msgstr "Publicaciones en redes"
+
+msgid "Traffic alerts"
+msgstr "Alertas de tráfico"
+
+msgid "Phone alerts on"
+msgstr "Alertas activadas en celulares"
+
+msgid "people who turned alerts on"
+msgstr "personas que activaron las alertas"
+
+msgid "No show nights yet"
+msgstr "Todavía no hay noches de espectáculo"
+
+msgid "Names sent each night"
+msgstr "Nombres enviados cada noche"
+
+msgid "%1$s: %2$s names"
+msgstr "%1$s: %2$s nombres"
+
+msgid "Canceled. Alert sent to %s phone"
+msgstr "Cancelado. Alerta enviada a %s celular"
+
+msgid "Canceled. Alert sent to %s phones"
+msgstr "Cancelado. Alerta enviada a %s celulares"
+
+msgid "Saved"
+msgstr "Guardado"
+
+msgid "Could not save. Please reload the page."
+msgstr "No se pudo guardar. Recarga la página."
+
+msgid "Could not reach the website."
+msgstr "No se pudo conectar con el sitio web."
+
+msgid "Canceled for tonight"
+msgstr "Cancelado por esta noche"
+
+msgid "Traffic alert is on"
+msgstr "Alerta de tráfico activada"
+
+msgid "Type a message first."
+msgstr "Primero escribe un mensaje."
+
+msgid "Send “%1$s” to %2$s phone?"
+msgstr "¿Enviar “%1$s” a %2$s celular?"
+
+msgid "Send “%1$s” to %2$s phones?"
+msgstr "¿Enviar “%1$s” a %2$s celulares?"
+
+msgid "Sending…"
+msgstr "Enviando…"
+
+msgid "Sent to %s phone"
+msgstr "Enviado a %s celular"
+
+msgid "Sent to %s phones"
+msgstr "Enviado a %s celulares"
+
+msgid "(%s did not go through)"
+msgstr "(fallaron: %s)"
+
+msgid "Could not send. Please reload the page."
+msgstr "No se pudo enviar. Vuelve a cargar la página."
+
+msgid "Mega Tree"
+msgstr "Megaárbol"
+
+msgid "Rooflines"
+msgstr "Contornos del techo"
+
+msgid "Windows"
+msgstr "Ventanas"
+
+msgid "Snowflakes"
+msgstr "Copos de nieve"
+
+msgid "Spinners"
+msgstr "Ruedas giratorias"
+
+msgid "Singing Faces"
+msgstr "Caras cantantes"
+
+msgid "Arches"
+msgstr "Arcos"
+
+msgid "Mini Trees"
+msgstr "Miniárboles"
+
+msgid "Gifts"
+msgstr "Regalos"
+
+msgid "Garage Matrix"
+msgstr "Matriz del garaje"
+
+msgid "Steady"
+msgstr "Fijo"
+
+msgid "Always on"
+msgstr "Siempre encendidas"
+
+msgid "Twinkle"
+msgstr "Parpadeo"
+
+msgid "Sparkles"
+msgstr "Destellos"
+
+msgid "Chase"
+msgstr "Persecución"
+
+msgid "Lights run"
+msgstr "Las luces corren"
+
+msgid "Pulse"
+msgstr "Pulso"
+
+msgid "Blinks to the beat"
+msgstr "Parpadea al ritmo"
+
+msgid "Rainbow"
+msgstr "Arcoíris"
+
+msgid "All the colors"
+msgstr "Todos los colores"
+
+msgid "Candy Cane"
+msgstr "Bastón de caramelo"
+
+msgid "Red and white"
+msgstr "Rojo y blanco"
+
+msgid "Lights off"
+msgstr "Luces apagadas"
+
+msgid "Red"
+msgstr "Rojo"
+
+msgid "Green"
+msgstr "Verde"
+
+msgid "Blue"
+msgstr "Azul"
+
+msgid "Gold"
+msgstr "Dorado"
+
+msgid "Purple"
+msgstr "Morado"
+
+msgid "Icy Blue"
+msgstr "Azul hielo"
+
+msgid "Warm White"
+msgstr "Blanco cálido"
+
+msgid "Orange"
+msgstr "Naranja"
+
+msgid "Pink"
+msgstr "Rosa"
+
+msgid "Mixed Colors"
+msgstr "Colores mezclados"
+
+msgid "Whole House"
+msgstr "Toda la casa"
+
+msgid "Start"
+msgstr "Inicio"
+
+msgid "Middle"
+msgstr "Medio"
+
+msgid "Big Finish"
+msgstr "Gran final"
+
+msgid "Light Show Contest"
+msgstr "Concurso de espectáculos de luces"
+
+msgid "Light Show Entry"
+msgstr "Participación en el concurso"
+
+msgid "Kids’ Light Shows"
+msgstr "Espectáculos de luces de los niños"
+
+msgid "All Entries"
+msgstr "Todas las participaciones"
+
+msgid "Review Entry"
+msgstr "Revisar participación"
+
+msgid "No entries yet."
+msgstr "Todavía no hay participaciones."
+
+msgid "F j"
+msgstr "j \\d\\e F"
+
+msgid "This page has been open a while. Please refresh it and try again."
+msgstr ""
+"Esta página lleva un buen rato abierta. Actualízala e intenta de nuevo."
+
+msgid ""
+"Sorry, the contest is closed for this year. You can still make and download "
+"shows for fun!"
+msgstr ""
+"Lo sentimos, el concurso ya cerró este año. ¡Igual puedes crear y descargar "
+"espectáculos por diversión!"
+
+msgid "Lots of entries from here today! Please try again tomorrow."
+msgstr ""
+"¡Hoy llegaron muchas participaciones desde aquí! Intenta de nuevo mañana."
+
+msgid "The contest is for kids ages 3 to 12."
+msgstr "El concurso es para niños de 3 a 12 años."
+
+msgid ""
+"Please enter a parent email so we can send your claim code and tell you if "
+"your child wins."
+msgstr ""
+"Escribe el correo de un padre o madre para enviarte el código de reclamo y "
+"avisarte si tu hijo gana."
+
+msgid ""
+"Please make a light show first: light up at least one decoration in the "
+"Light Lab."
+msgstr ""
+"Primero crea un espectáculo de luces: enciende al menos una decoración en el"
+" Laboratorio de luces."
+
+msgid ""
+"Something went wrong making the picture of your show. Please try again."
+msgstr ""
+"Algo salió mal al crear la imagen de tu espectáculo. Intenta de nuevo."
+
+msgid "Something went wrong saving the picture. Please try again."
+msgstr "Algo salió mal al guardar la imagen. Intenta de nuevo."
+
+msgid "New light show contest entry from %s"
+msgstr "Nueva participación en el concurso de espectáculos de luces de %s"
+
+msgid "Sorry, you can’t do that."
+msgstr "Lo sentimos, no puedes hacer eso."
+
+msgid "The “You won!” email was sent to the parent."
+msgstr "Se envió el correo “¡Ganaste!” al padre o madre."
+
+msgid ""
+"The email could not be sent. Check that the entry has a parent email and is "
+"marked as a winner (and saved), and that your site can send email."
+msgstr ""
+"No se pudo enviar el correo. Revisa que la participación tenga un correo de "
+"padre o madre, que esté marcada como ganadora (y guardada) y que tu sitio "
+"pueda enviar correos."
+
+msgid "That show isn’t on the Show Wall."
+msgstr "Ese espectáculo no está en el Muro del espectáculo."
+
+msgid "Voting is closed."
+msgstr "La votación está cerrada."
+
+msgid "Show"
+msgstr "Espectáculo"
+
+msgid "First name"
+msgstr "Primer nombre"
+
+msgid "Song / show name"
+msgstr "Canción / nombre del espectáculo"
+
+msgid "Age"
+msgstr "Edad"
+
+msgid "Hearts"
+msgstr "Corazones"
+
+msgid "Claim code"
+msgstr "Código de reclamo"
+
+msgid "Winner"
+msgstr "Ganador"
+
+msgid "Watch this show"
+msgstr "Ver este espectáculo"
+
+msgid "Watch show"
+msgstr "Ver espectáculo"
+
+msgid "Judges’ Pick"
+msgstr "Elección del jurado"
+
+msgid "People’s Choice"
+msgstr "Favorito del público"
+
+msgid "Contest details"
+msgstr "Detalles del concurso"
+
+msgid "Watch this light show"
+msgstr "Ver este espectáculo de luces"
+
+msgid ""
+"The family was shown this code. Ask for it when they pick up a prize. It is "
+"never shown on the website."
+msgstr ""
+"A la familia se le mostró este código. Pídelo cuando vengan a recoger el "
+"premio. Nunca se muestra en el sitio web."
+
+msgid "Parent email (private)"
+msgstr "Correo del padre o madre (privado)"
+
+msgid "People’s Choice hearts"
+msgstr "Corazones del Favorito del público"
+
+msgid "Song"
+msgstr "Canción"
+
+msgid "Show name"
+msgstr "Nombre del espectáculo"
+
+msgid ""
+"Winners are announced on the Kids’ Corner page (first name and age only). "
+"The entry must be Published."
+msgstr ""
+"Los ganadores se anuncian en la página del Rincón de los niños (solo primer "
+"nombre y edad). La participación debe estar Publicada."
+
+msgid "Tell the winner"
+msgstr "Avisar al ganador"
+
+msgid "No parent email on this entry."
+msgstr "Esta participación no tiene correo del padre o madre."
+
+msgid ""
+"Tick Judges’ Pick or People’s Choice and click Update first. Then a button "
+"appears here to email the parent."
+msgstr ""
+"Marca Elección del jurado o Favorito del público y haz clic en Actualizar "
+"primero. Luego aparecerá aquí un botón para enviar el correo al padre o "
+"madre."
+
+msgid "Send the “You won!” email to the parent now?"
+msgstr "¿Enviar ahora el correo “¡Ganaste!” al padre o madre?"
+
+msgid "Send the “You won!” email again"
+msgstr "Enviar de nuevo el correo “¡Ganaste!”"
+
+msgid "Send “You won!” email"
+msgstr "Enviar correo “¡Ganaste!”"
+
+msgid "Sent %s"
+msgstr "Enviado %s"
+
+msgid "M j, g:i a"
+msgstr "j M, g:i a"
+
+msgid ""
+"Tells them what they won, to bring the claim code, and when to pick up the "
+"prize."
+msgstr ""
+"Les dice qué ganaron, que traigan el código de reclamo y cuándo recoger el "
+"premio."
+
+msgid ""
+"To show it on the Show Wall, click Publish. To turn it down, move it to the "
+"Trash."
+msgstr ""
+"Para mostrarlo en el Muro del espectáculo, haz clic en Publicar. Para "
+"rechazarlo, muévelo a la Papelera."
+
+msgid "My Sequences"
+msgstr "Mis secuencias"
+
+msgid "Sequence Video"
+msgstr "Video de secuencia"
+
+msgid "Add Sequence Video"
+msgstr "Agregar video de secuencia"
+
+msgid "Edit Sequence Video"
+msgstr "Editar video de secuencia"
+
+msgid "All Sequence Videos"
+msgstr "Todos los videos de secuencias"
+
+msgid "No sequence videos yet."
+msgstr "Todavía no hay videos de secuencias."
+
+msgid "Song title"
+msgstr "Título de la canción"
+
+msgid "Cover picture (optional)"
+msgstr "Imagen de portada (opcional)"
+
+msgid "Video"
+msgstr "Video"
+
+msgid "Artist"
+msgstr "Artista"
+
+msgid "MP4 video"
+msgstr "Video MP4"
+
+msgid "Upload or choose MP4"
+msgstr "Subir o elegir MP4"
+
+msgid ""
+"Upload the MP4 to your Media Library (or paste a link to an MP4). Tip: "
+"export at 1080p, H.264, and keep it under about 150 MB so it loads fast on "
+"phones."
+msgstr ""
+"Sube el MP4 a tu Biblioteca de medios (o pega un enlace a un MP4). Consejo: "
+"exporta en 1080p, H.264, y mantenlo por debajo de unos 150 MB para que "
+"cargue rápido en los celulares."
+
+msgid "Badge"
+msgstr "Etiqueta"
+
+msgid "New this year"
+msgstr "Nuevo este año"
+
+msgid ""
+"Use “Order” in the box on the right to arrange the videos (lower numbers "
+"first). Add a cover picture on the right, or the first frame of the video is"
+" used."
+msgstr ""
+"Usa “Orden” en el cuadro de la derecha para acomodar los videos (los números"
+" más bajos van primero). Agrega una imagen de portada a la derecha; si no, "
+"se usa el primer cuadro del video."
+
+msgid "Order"
+msgstr "Orden"
+
+msgid "No video yet"
+msgstr "Todavía no hay video"
+
+msgid "%d guestbook message to review"
+msgid_plural "%d guestbook messages to review"
+msgstr[0] "%d mensaje del libro de visitas por revisar"
+msgstr[1] "%d mensajes del libro de visitas por revisar"
+
+msgid "A Friend"
+msgstr "Un amigo"
+
+msgid "Show Control"
+msgstr "Control del espectáculo"
+
+msgid "l, F j"
+msgstr "l j \\d\\e F"
+
+msgid "Updates every 15 seconds"
+msgstr "Se actualiza cada 15 segundos"
+
+msgid "Quick actions"
+msgstr "Acciones rápidas"
+
+msgid "Send a phone alert"
+msgstr "Enviar una alerta al celular"
+
+msgid "Open the Show Manager"
+msgstr "Abrir el Administrador del espectáculo"
+
+msgid "Right now"
+msgstr "Ahora mismo"
+
+msgid "FPP"
+msgstr "FPP"
+
+msgid "Name in Lights"
+msgstr "Nombre en luces"
+
+msgid "On the website now"
+msgstr "En el sitio web ahora"
+
+msgid "Phones getting alerts"
+msgstr "Celulares que reciben alertas"
+
+msgid "Switches"
+msgstr "Interruptores"
+
+msgid "Cancel tonight’s show"
+msgstr "Cancelar el espectáculo de esta noche"
+
+msgid "Shows the canceled banner on the website until 6 AM"
+msgstr "Muestra el aviso de cancelación en el sitio web hasta las 6 AM"
+
+msgid "Kids can send names to your show’s screens"
+msgstr "Los niños pueden enviar nombres a las pantallas de tu espectáculo"
+
+msgid "Kids can send names to the garage door and TV"
+msgstr "Los niños pueden enviar nombres a la puerta del garaje y la TV"
+
+msgid "Pause the name queue"
+msgstr "Pausar la cola de nombres"
+
+msgid "Names still come in, but wait until you turn this off"
+msgstr "Los nombres siguen llegando, pero esperan hasta que lo apagues"
+
+msgid "Accept names any time"
+msgstr "Aceptar nombres a cualquier hora"
+
+msgid "For testing outside show hours"
+msgstr "Para pruebas fuera del horario del espectáculo"
+
+msgid "Light show contest"
+msgstr "Concurso de espectáculos de luces"
+
+msgid "Entries, Show Wall and hearts"
+msgstr "Participaciones, Muro del espectáculo y corazones"
+
+msgid "Favorite song voting"
+msgstr "Votación de canción favorita"
+
+msgid "On the Songs & Videos page"
+msgstr "En la página de Canciones y videos"
+
+msgid "The whole kids’ page"
+msgstr "Toda la página de los niños"
+
+msgid "Cancel tonight’s show?"
+msgstr "¿Cancelar el espectáculo de esta noche?"
+
+msgid "The website will show the canceled banner until 6 AM."
+msgstr "El sitio web mostrará el aviso de cancelación hasta las 6 AM."
+
+msgid "Cancel the show"
+msgstr "Cancelar el espectáculo"
+
+msgid "Keep it on"
+msgstr "Mantenerlo"
+
+msgid "On every page"
+msgstr "En todas las páginas"
+
+msgid "Light"
+msgstr "Ligera"
+
+msgid "Heavy"
+msgstr "Fuerte"
+
+msgid "How big the falling flakes are"
+msgstr "Qué tan grandes son los copos que caen"
+
+msgid "Name color on the screens"
+msgstr "Color del nombre en las pantallas"
+
+msgid "White works best on the marquee"
+msgstr "El blanco se ve mejor en el letrero"
+
+msgid "Name queue"
+msgstr "Cola de nombres"
+
+msgid "Shown tonight:"
+msgstr "Mostrados esta noche:"
+
+msgid "Waiting for the next break"
+msgstr "Esperando la próxima pausa"
+
+msgid "Just shown"
+msgstr "Recién mostrado"
+
+msgid ""
+"“Block word” removes the name and adds it to your block list, so it can’t be"
+" sent again."
+msgstr ""
+"“Bloquear palabra” quita el nombre y lo agrega a tu lista de bloqueo, para "
+"que no se pueda enviar de nuevo."
+
+msgid "Traffic & parking"
+msgstr "Tráfico y estacionamiento"
+
+msgid ""
+"One tap puts a message at the top of every page of your website. It turns "
+"itself off when the time is up."
+msgstr ""
+"Con un toque pones un mensaje arriba de cada página de tu sitio web. Se "
+"apaga solo cuando se acaba el tiempo."
+
+msgid "Or type your own: Road closed at Elm St, please use Oak St"
+msgstr "O escribe el tuyo: Calle cerrada en Elm St, usa Oak St"
+
+msgid "Post it"
+msgstr "Publicar"
+
+msgid "For"
+msgstr "Durante"
+
+msgid "30 minutes"
+msgstr "30 minutos"
+
+msgid "1 hour"
+msgstr "1 hora"
+
+msgid "2 hours"
+msgstr "2 horas"
+
+msgid "the rest of the night"
+msgstr "el resto de la noche"
+
+msgid "Also send a phone alert"
+msgstr "Enviar también una alerta al celular"
+
+msgid "Also show it on my screens every 3 minutes"
+msgstr "Mostrarlo también en mis pantallas cada 3 minutos"
+
+msgid ""
+"Screens: needs the names script 3.5 on your FPP. It goes over whatever is "
+"playing for a few seconds, so leave it off if your matrix is busy in every "
+"song."
+msgstr ""
+"Pantallas: necesita el script de nombres 3.5 en tu FPP. Se muestra encima de"
+" lo que esté sonando por unos segundos, así que déjalo apagado si tu matriz "
+"está ocupada en todas las canciones."
+
+msgid "Recent posts"
+msgstr "Publicaciones recientes"
+
+msgid "App & Alerts"
+msgstr "App y alertas"
+
+msgid "“The lights are on!” alert"
+msgstr "Alerta “¡Las luces están encendidas!”"
+
+msgid "The lights are on alert"
+msgstr "Alerta de luces encendidas"
+
+msgid "“Your name is up next” buzz"
+msgstr "Aviso “Tu nombre es el siguiente”"
+
+msgid "Kids can ask for a buzz when they send a name"
+msgstr "Los niños pueden pedir un aviso cuando envían un nombre"
+
+msgid "Your name is up next buzz"
+msgstr "Aviso de tu nombre es el siguiente"
+
+msgid "Recent alerts"
+msgstr "Alertas recientes"
+
+msgid "Send an alert"
+msgstr "Enviar una alerta"
+
+msgid "Santa is visiting Saturday from 6 to 8 PM!"
+msgstr "¡Santa Claus nos visita el sábado de 6 a 8 PM!"
+
+msgid "Send alert"
+msgstr "Enviar alerta"
+
+msgid "Yes, send it"
+msgstr "Sí, enviarla"
+
+msgid "Not yet"
+msgstr "Todavía no"
+
+msgid ""
+"The alert’s title is your site name. Keep it short: phones show about two "
+"lines."
+msgstr ""
+"El título de la alerta es el nombre de tu sitio. Hazla corta: los celulares "
+"muestran unas dos líneas."
+
+msgid "Waiting for you to check"
+msgstr "Esperando tu revisión"
+
+msgid "Most hearts (People’s Choice)"
+msgstr "Más corazones (Favorito del público)"
+
+msgid "Prizes and dates"
+msgstr "Premios y fechas"
+
+msgid "Change"
+msgstr "Cambiar"
+
+msgid "Stats"
+msgstr "Estadísticas"
+
+msgid "Time range"
+msgstr "Período"
+
+msgid "Tonight"
+msgstr "Esta noche"
+
+msgid "This season"
+msgstr "Esta temporada"
+
+msgid "Last 14 show nights. Point at a bar for the exact number."
+msgstr ""
+"Últimas 14 noches de espectáculo. Apunta a una barra para ver el número "
+"exacto."
+
+msgid ""
+"Counts are totals only. The site never records who did what, and nothing "
+"here is shown to visitors."
+msgstr ""
+"Los conteos son solo totales. El sitio nunca registra quién hizo qué, y nada"
+" de esto se muestra a los visitantes."
+
+msgid "Running"
+msgstr "En marcha"
+
+msgid "Not started yet"
+msgstr "Todavía no empieza"
+
+msgid "Ended for tonight"
+msgstr "Terminado por esta noche"
+
+msgid "Off season"
+msgstr "Fuera de temporada"
+
+msgid "ends in %s"
+msgstr "termina en %s"
+
+msgid "starts in %s"
+msgstr "empieza en %s"
+
+msgid "The website shows the canceled banner"
+msgstr "El sitio web muestra el aviso de cancelación"
+
+msgid "g:i A"
+msgstr "g:i a"
+
+msgid "M j, g:i A"
+msgstr "j M, g:i a"
+
+msgid "M j"
+msgstr "j M"
+
+msgid "Judges’ Pick: %1$s · People’s Choice: %2$s · Pick-up by %3$s"
+msgstr ""
+"Elección del jurado: %1$s · Favorito del público: %2$s · Recoger antes del "
+"%3$s"
+
+msgid "Type a message of up to 180 characters."
+msgstr "Escribe un mensaje de hasta 180 caracteres."
+
+msgid "Heavy traffic"
+msgstr "Mucho tráfico"
+
+msgid "Heavy traffic tonight"
+msgstr "Mucho tráfico esta noche"
+
+msgid ""
+"Please keep moving and don’t stop in the road. Thanks for your patience!"
+msgstr ""
+"Sigue avanzando y no te detengas en la calle. ¡Gracias por tu paciencia!"
+
+msgid "PLEASE KEEP MOVING"
+msgstr "SIGUE AVANZANDO"
+
+msgid "Driveway blocked"
+msgstr "Entrada bloqueada"
+
+msgid "Please don’t block driveways"
+msgstr "No bloquees las entradas de las casas"
+
+msgid ""
+"Our neighbors need to get in and out. Please only park where it’s allowed."
+msgstr ""
+"Nuestros vecinos necesitan entrar y salir. Estaciona solo donde está "
+"permitido."
+
+msgid "PLEASE DON’T BLOCK DRIVEWAYS"
+msgstr "NO BLOQUEES LAS ENTRADAS"
+
+msgid "Please keep moving"
+msgstr "Sigue avanzando"
+
+msgid ""
+"Enjoy the show from your car and keep traffic flowing so everyone gets a "
+"turn."
+msgstr ""
+"Disfruta el espectáculo desde tu carro y mantén el tráfico en movimiento "
+"para que todos tengan su turno."
+
+msgid "Parking full"
+msgstr "Estacionamiento lleno"
+
+msgid "Parking is full"
+msgstr "El estacionamiento está lleno"
+
+msgid "Please drive by slowly and enjoy the show from your car."
+msgstr "Pasa despacio y disfruta el espectáculo desde tu carro."
+
+msgid "PARKING FULL - PLEASE DRIVE THRU"
+msgstr "ESTACIONAMIENTO LLENO - PASA EN CARRO"
+
+msgid "Message"
+msgstr "Mensaje"
+
+msgid "Type the message first."
+msgstr "Primero escribe el mensaje."
+
+msgid "Voting is closed right now."
+msgstr "La votación está cerrada en este momento."
+
+msgid "That song isn’t in this year’s show."
+msgstr "Esa canción no está en el espectáculo de este año."
+
+msgid "Lots of votes from here today! Try again tomorrow."
+msgstr "¡Muchos votos desde aquí hoy! Inténtalo de nuevo mañana."
+
+msgid "All song votes were cleared."
+msgstr "Se borraron todos los votos de canciones."
+
+msgid "Favorite Song Votes"
+msgstr "Votos de canción favorita"
+
+msgid "This week (Fan Favorite Friday)"
+msgstr "Esta semana (Viernes del favorito)"
+
+msgid "votes"
+msgstr "votos"
+
+msgid "All season"
+msgstr "Toda la temporada"
+
+msgid "Clear ALL song votes? This can’t be undone."
+msgstr "¿Borrar TODOS los votos de canciones? Esto no se puede deshacer."
+
+msgid "Clear all votes (start a new season)"
+msgstr "Borrar todos los votos (empezar una nueva temporada)"
+
+msgid ""
+"Not connected — check the Remote Falcon access token and secret key in "
+"Marquee → Settings (only admins see this)."
+msgstr ""
+"Sin conexión — revisa el token de acceso y la clave secreta de Remote Falcon"
+" en Marquee → Ajustes (solo los administradores ven esto)."
+
+msgid ""
+"Not connected — check the Access Token and Secret Key in Settings → Lights "
+"on Ridge Road (only admins see this)."
+msgstr ""
+"Sin conexión — revisa el Access Token y la Secret Key en Ajustes → Lights on"
+" Ridge Road (solo los administradores ven esto)."
+
+msgid "g A"
+msgstr "g a"
+
+msgid "Our light show"
+msgstr "Nuestro espectáculo de luces"
+
+msgid "Snowman"
+msgstr "Muñeco de nieve"
+
+msgid "Reindeer"
+msgstr "Reno"
+
+msgid "Gingerbread"
+msgstr "Galleta de jengibre"
+
+msgid "Snowman friends"
+msgstr "Amigos muñecos de nieve"
+
+msgid "Santa’s tree"
+msgstr "El árbol de Santa Claus"
+
+msgid "Santa’s cookies"
+msgstr "Las galletas de Santa Claus"
+
+msgid "Enter your show to win a prize"
+msgstr "Inscribe tu espectáculo para ganar un premio"
+
+msgid "Ask a grown-up to help with this part."
+msgstr "Pídele a un adulto que te ayude con esta parte."
+
+msgid "Picture of your light show"
+msgstr "Imagen de tu espectáculo de luces"
+
+msgid "Change my show"
+msgstr "Cambiar mi espectáculo"
+
+msgid ""
+"You haven’t made a light show yet. Make one in step 1, then come back here "
+"to send it!"
+msgstr ""
+"Todavía no has creado un espectáculo de luces. ¡Crea uno en el paso 1 y "
+"luego vuelve aquí para enviarlo!"
+
+msgid "Child’s first name"
+msgstr "Primer nombre del niño o niña"
+
+msgid "Pick…"
+msgstr "Elige…"
+
+msgid "Parent email"
+msgstr "Correo del padre o madre"
+
+msgid ""
+"We’ll email you the claim code and let you know if your child wins. Never "
+"shown or shared."
+msgstr ""
+"Te enviaremos por correo el código de reclamo y te avisaremos si tu hijo "
+"gana. Nunca se muestra ni se comparte."
+
+msgid ""
+"I’m the parent or guardian, and I give permission to post my child’s light "
+"show, first name, and age on this website."
+msgstr ""
+"Soy el padre, madre o tutor, y doy permiso para publicar en este sitio web "
+"el espectáculo de luces, el primer nombre y la edad de mi hijo o hija."
+
+msgid "Send My Light Show"
+msgstr "Enviar mi espectáculo de luces"
+
+msgid "Your show is in!"
+msgstr "¡Tu espectáculo está inscrito!"
+
+msgid "We’ll add it to the Show Wall after we check it. Your claim code is:"
+msgstr ""
+"Lo agregaremos al Muro del espectáculo después de revisarlo. Tu código de "
+"reclamo es:"
+
+msgid ""
+"We also emailed it to you. If your child wins, we’ll email you, and you "
+"bring this code to the house during show hours to pick up the prize. Keep it"
+" secret!"
+msgstr ""
+"También te lo enviamos por correo. Si tu hijo gana, te escribiremos, y traes"
+" este código a la casa durante el horario del espectáculo para recoger el "
+"premio. ¡Guárdalo en secreto!"
+
+msgid "This week’s winner is"
+msgstr "El ganador de esta semana es"
+
+msgid "Fan Favorite Friday is in %d days"
+msgstr "El Viernes del favorito es en %d días"
+
+msgid "Leading this week:"
+msgstr "Va ganando esta semana:"
+
+msgid "Pick Your Favorite"
+msgstr "Elige tu favorita"
+
+msgid "New"
+msgstr "Nueva"
+
+msgid "Now Playing"
+msgstr "Sonando ahora"
+
+msgid "Vote for %s"
+msgstr "Votar por %s"
+
+msgid "Leaderboard"
+msgstr "Clasificación"
+
+msgid "Leaderboard period"
+msgstr "Periodo de la clasificación"
+
+msgid "This Week"
+msgstr "Esta semana"
+
+msgid "All Season"
+msgstr "Toda la temporada"
+
+msgid "No votes yet. Be the first!"
+msgstr "Todavía no hay votos. ¡Sé el primero!"
+
+msgid "Play the live camera"
+msgstr "Reproducir la cámara en vivo"
+
+msgid "LIVE CAM"
+msgstr "CÁMARA EN VIVO"
+
+msgid "Tap to watch & listen"
+msgstr "Toca para ver y escuchar"
+
+msgid "If the stream is off, check back during show hours."
+msgstr ""
+"Si la transmisión está apagada, vuelve durante el horario del espectáculo."
+
+msgid "Takes 10 seconds. You only do this once."
+msgstr "Toma 10 segundos. Solo lo haces una vez."
+
+msgid "Got it"
+msgstr "Entendido"
+
+msgid "Your Name in Lights!"
+msgstr "¡Tu nombre en luces!"
+
+msgid "Type your first name and watch for it in our light show between songs!"
+msgstr ""
+"¡Escribe tu nombre y búscalo en nuestro espectáculo de luces entre "
+"canciones!"
+
+msgid ""
+"Type your first name and watch for it on our garage door and TV between "
+"songs!"
+msgstr ""
+"¡Escribe tu nombre y búscalo en la puerta del garaje y en la TV entre "
+"canciones!"
+
+msgid "Your first name"
+msgstr "Tu nombre"
+
+msgid "Pick your message"
+msgstr "Elige tu mensaje"
+
+msgid "Pick your show"
+msgstr "Elige tu espectáculo"
+
+msgid "Classic"
+msgstr "Clásico"
+
+msgid "Put My Name in Lights!"
+msgstr "¡Pon mi nombre en luces!"
+
+msgid ""
+"First names only. Our elves check every name before it goes on the screens."
+msgstr ""
+"Solo nombres de pila. Nuestros duendes revisan cada nombre antes de que "
+"salga en las pantallas."
+
+msgid "Turn up your radio: we’ll say your name out loud too!"
+msgstr "Sube el volumen de tu radio: ¡también diremos tu nombre en voz alta!"
+
+msgid ""
+"Names can only be sent from the show. Your phone will ask to share its "
+"location: it’s only used to check you’re here, and it isn’t saved."
+msgstr ""
+"Los nombres solo se pueden enviar desde el espectáculo. Tu teléfono te "
+"pedirá compartir tu ubicación: solo se usa para comprobar que estás aquí y "
+"no se guarda."
+
+msgid "Watch for your name on our screens in a minute!"
+msgstr "¡Busca tu nombre en nuestras pantallas en un minuto!"
+
+msgid "Watch for your name in the show after the next song!"
+msgstr "¡Busca tu nombre en el espectáculo después de la próxima canción!"
+
+msgid ""
+"Watch for your name after the next song on the garage door and the TV by the"
+" front door!"
+msgstr ""
+"¡Busca tu nombre después de la próxima canción en la puerta del garaje y en "
+"la TV junto a la puerta principal!"
+
+msgid "Buzz me!"
+msgstr "¡Avísame!"
+
+msgid "Send another name"
+msgstr "Enviar otro nombre"
+
+msgid "Names go up in lights while the show is on."
+msgstr "Los nombres aparecen en luces mientras el espectáculo está encendido."
+
+msgid "Feels Like"
+msgstr "Sensación térmica"
+
+msgid "Humidity"
+msgstr "Humedad"
+
+msgid "Wind"
+msgstr "Viento"
+
+msgid "Precipitation"
+msgstr "Precipitación"
+
+msgid "Weather is temporarily unavailable. Please use the forecast link."
+msgstr "El clima no está disponible por ahora. Usa el enlace del pronóstico."
+
+msgid "Live weather radar loop"
+msgstr "Animación del radar meteorológico en vivo"
+
+msgid "Live Radar"
+msgstr "Radar en vivo"
+
+msgid "Live weather radar"
+msgstr "Radar meteorológico en vivo"
+
+msgid "View Full Weather Forecast"
+msgstr "Ver el pronóstico completo"
+
+msgid "National Weather Service"
+msgstr "Servicio Meteorológico Nacional"
+
+msgid "NWS Huntsville Forecast"
+msgstr "Pronóstico del NWS de Huntsville"
+
+msgid "Win a prize!"
+msgstr "¡Gana un premio!"
+
+msgid "Make a light show and send it in by %s. Kids ages 3 to 12."
+msgstr ""
+"Crea un espectáculo de luces y envíalo antes del %s. Para niños de 3 a 12 "
+"años."
+
+msgid "Make a light show and send it in. Kids ages 3 to 12."
+msgstr "Crea un espectáculo de luces y envíalo. Para niños de 3 a 12 años."
+
+msgid "Our family picks the most creative show"
+msgstr "Nuestra familia elige el espectáculo más creativo"
+
+msgid "The show with the most hearts wins"
+msgstr "Gana el espectáculo con más corazones"
+
+msgid "Official contest rules"
+msgstr "Reglas oficiales del concurso"
+
+msgid ""
+"Who can enter: kids ages 3 to 12. A parent or guardian must send the entry."
+msgstr ""
+"Quién puede participar: niños de 3 a 12 años. Un padre, madre o tutor debe "
+"enviar la participación."
+
+msgid ""
+"How to enter: make a light show in the Christmas Light Lab on this page and "
+"send it with the form. One entry per child."
+msgstr ""
+"Cómo participar: crea un espectáculo de luces en el Laboratorio de luces "
+"navideñas de esta página y envíalo con el formulario. Una participación por "
+"niño."
+
+msgid "Deadline: entries and hearts close at 11:59 PM (%1$s) on %2$s."
+msgstr ""
+"Fecha límite: las participaciones y los corazones cierran a las 11:59 p. m. "
+"(%1$s) del %2$s."
+
+msgid "Deadline: entries and hearts close at 11:59 PM Central time on %s."
+msgstr ""
+"Fecha límite: las participaciones y los corazones cierran a las 11:59 p. m.,"
+" hora del Centro, del %s."
+
+msgid ""
+"Judges’ Pick: chosen by our family for creativity and effort. Prize: %s."
+msgstr ""
+"Elección del jurado: elegido por nuestra familia por su creatividad y "
+"esfuerzo. Premio: %s."
+
+msgid ""
+"Judges’ Pick: chosen by the Lights On Ridge Road family for creativity and "
+"effort. Prize: %s."
+msgstr ""
+"Elección del jurado: elegido por la familia de Lights On Ridge Road por su "
+"creatividad y esfuerzo. Premio: %s."
+
+msgid ""
+"People’s Choice: the show with the most hearts on the Show Wall when voting "
+"closes. One heart per show from each device. Hearts that look automated may "
+"be removed. Prize: %s."
+msgstr ""
+"Elección del público: el espectáculo con más corazones en el Muro del "
+"espectáculo al cerrar la votación. Un corazón por espectáculo desde cada "
+"dispositivo. Los corazones que parezcan automatizados pueden eliminarse. "
+"Premio: %s."
+
+msgid ""
+"Winners are announced on this page by first name and age. Prizes are picked "
+"up at the house during show hours by %s, with a parent and the claim code. "
+"Prizes not picked up by then may go to the runner-up."
+msgstr ""
+"Los ganadores se anuncian en esta página con su nombre de pila y su edad. "
+"Los premios se recogen en la casa durante el horario del espectáculo hasta "
+"el %s, con un padre o madre y el código de reclamo. Los premios que no se "
+"recojan para entonces pueden pasar al segundo lugar."
+
+msgid ""
+"Privacy: only your child’s first name, age and show appear on the website. A"
+" parent email is required so we can send the claim code and contact winners."
+" It is used only for the contest and never shown or shared."
+msgstr ""
+"Privacidad: en el sitio web solo aparecen el nombre de pila, la edad y el "
+"espectáculo de tu hijo. Se requiere el correo electrónico de un padre o "
+"madre para enviar el código de reclamo y contactar a los ganadores. Solo se "
+"usa para el concurso y nunca se muestra ni se comparte."
+
+msgid ""
+"No purchase or donation is necessary. Every entry is reviewed before it is "
+"shown, and we may decline entries that are not appropriate."
+msgstr ""
+"No es necesario comprar ni donar. Cada participación se revisa antes de "
+"mostrarse y podemos rechazar las que no sean apropiadas."
+
+msgid "Cash App QR code"
+msgstr "Código QR de Cash App"
+
+msgid "All activities"
+msgstr "Todas las actividades"
+
+msgid "What do you want to do?"
+msgstr "¿Qué quieres hacer?"
+
+msgid "Your Name in Lights. See your name in our light show."
+msgstr "Tu nombre en luces. Mira tu nombre en nuestro espectáculo de luces."
+
+msgid "Your Name in Lights. See your name on our garage door."
+msgstr "Tu nombre en luces. Mira tu nombre en la puerta de nuestro garaje."
+
+msgid "At showtime"
+msgstr "A la hora del espectáculo"
+
+msgid "On now!"
+msgstr "¡Ahora!"
+
+msgid "Your Name in Lights"
+msgstr "Tu nombre en luces"
+
+msgid "See your name in our light show"
+msgstr "Mira tu nombre en nuestro espectáculo de luces"
+
+msgid "See your name on our garage door"
+msgstr "Mira tu nombre en la puerta de nuestra cochera"
+
+msgid "Let’s go!"
+msgstr "¡Vamos!"
+
+msgid "Make a Light Show. Light up a house your way."
+msgstr "Crea un espectáculo de luces. Ilumina una casa a tu manera."
+
+msgid "Make a Light Show. Light up our house your way."
+msgstr "Crea un espectáculo de luces. Ilumina nuestra casa a tu manera."
+
+msgid "Just for fun"
+msgstr "Solo por diversión"
+
+msgid "Make a Light Show"
+msgstr "Crea un espectáculo de luces"
+
+msgid "Light up a house your way"
+msgstr "Ilumina una casa a tu manera"
+
+msgid "Light up our house your way"
+msgstr "Ilumina nuestra casa a tu manera"
+
+msgid "Coloring Pages. Pick a picture to print and color."
+msgstr "Páginas para colorear. Elige un dibujo para imprimir y colorear."
+
+msgid "Coloring Pages"
+msgstr "Páginas para colorear"
+
+msgid "Pick a picture to print and color it!"
+msgstr "¡Elige un dibujo para imprimir y colorear!"
+
+msgid "Games. Elf names and Christmas trivia."
+msgstr "Juegos. Nombres de duende y trivia navideña."
+
+msgid "Games"
+msgstr "Juegos"
+
+msgid "Elf names and Christmas trivia"
+msgstr "Nombres de duende y trivia navideña"
+
+msgid "& Win a Prize!"
+msgstr "¡y gana un premio!"
+
+msgid "And the winners are…"
+msgstr "Y los ganadores son…"
+
+msgid "Judges’ Pick:"
+msgstr "Elección del jurado:"
+
+msgid "People’s Choice:"
+msgstr "Elección del público:"
+
+msgid ""
+"Congratulations! Bring a parent and your claim code to the house during show"
+" hours by %s to pick up your prize."
+msgstr ""
+"¡Felicidades! Trae a un padre o madre y tu código de reclamo a la casa "
+"durante el horario del espectáculo hasta el %s para recoger tu premio."
+
+msgid "Light show steps"
+msgstr "Pasos del espectáculo de luces"
+
+msgid "Make it"
+msgstr "Créalo"
+
+msgid "Enter to win"
+msgstr "Participa para ganar"
+
+msgid "Watch the other kids’ shows and give your favorites a heart"
+msgstr ""
+"Mira los espectáculos de los otros niños y dale un corazón a tus favoritos"
+
+msgid "Watch the shows other kids made"
+msgstr "Mira los espectáculos que hicieron otros niños"
+
+msgid "Pick a picture, print it out and grab your crayons!"
+msgstr "¡Elige un dibujo, imprímelo y toma tus crayones!"
+
+msgid "Print"
+msgstr "Imprimir"
+
+msgid "Pick a game"
+msgstr "Elige un juego"
+
+msgid "Elf Name"
+msgstr "Nombre de duende"
+
+msgid "What do Santa’s elves call you?"
+msgstr "¿Cómo te llaman los duendes de Santa Claus?"
+
+msgid "Christmas Trivia"
+msgstr "Trivia navideña"
+
+msgid "5 quick questions"
+msgstr "5 preguntas rápidas"
+
+msgid "Type your first name and find out what Santa’s elves call you!"
+msgstr ""
+"¡Escribe tu nombre y descubre cómo te llaman los duendes de Santa Claus!"
+
+msgid "Elf Me!"
+msgstr "¡Hazme duende!"
+
+msgid "Just for fun — names are never saved or sent anywhere."
+msgstr ""
+"Solo por diversión: los nombres nunca se guardan ni se envían a ningún lado."
+
+msgid "Loading…"
+msgstr "Cargando…"
+
+msgid "Show all %d videos"
+msgstr "Ver los %d videos"
+
+msgid "Sequence video"
+msgstr "Video de la secuencia"
+
+msgid "Close"
+msgstr "Cerrar"
+
+msgid "Christmas Light Lab"
+msgstr "Laboratorio de luces navideñas"
+
+msgid "Now watching the show by"
+msgstr "Ahora ves el espectáculo de"
+
+msgid "Back to my show"
+msgstr "Volver a mi espectáculo"
+
+msgid "A house with Christmas lights. Tap a decoration to pick it."
+msgstr "Una casa con luces de Navidad. Toca una decoración para elegirla."
+
+msgid "Our house with Christmas lights. Tap a decoration to pick it."
+msgstr "Nuestra casa con luces de Navidad. Toca una decoración para elegirla."
+
+msgid "Plugging in the lights…"
+msgstr "Conectando las luces…"
+
+msgid "Tap a decoration on the house!"
+msgstr "¡Toca una decoración de la casa!"
+
+msgid "Full screen"
+msgstr "Pantalla completa"
+
+msgid "Pick a decoration"
+msgstr "Elige una decoración"
+
+msgid "Pick how it lights up"
+msgstr "Elige cómo se enciende"
+
+msgid "Pick a color"
+msgstr "Elige un color"
+
+msgid "Light up something else"
+msgstr "Encender otra cosa"
+
+msgid "For big kids: change the lights during the song"
+msgstr "Para niños grandes: cambia las luces durante la canción"
+
+msgid "(optional)"
+msgstr "(opcional)"
+
+msgid ""
+"The song has three parts. Pick a part, then use steps 1–3 above. Each row "
+"shows what a decoration does in each part."
+msgstr ""
+"La canción tiene tres partes. Elige una parte y luego usa los pasos 1–3 de "
+"arriba. Cada fila muestra lo que hace una decoración en cada parte."
+
+msgid "Whole song"
+msgstr "Toda la canción"
+
+msgid "Name your show"
+msgstr "Ponle nombre a tu espectáculo"
+
+msgid "Sparkle Storm"
+msgstr "Tormenta de destellos"
+
+msgid "Save my show"
+msgstr "Guardar mi espectáculo"
+
+msgid "Watch full screen"
+msgstr "Ver en pantalla completa"
+
+msgid "I’m done! Enter to win"
+msgstr "¡Ya terminé! Participa para ganar"
+
+msgid ""
+"Your show saves on this device automatically. These are pretend lights: they"
+" never change the real show."
+msgstr ""
+"Tu espectáculo se guarda automáticamente en este dispositivo. Estas luces "
+"son de mentira: nunca cambian el espectáculo de verdad."
+
+msgid "Messages From Our Visitors"
+msgstr "Mensajes de nuestros visitantes"
+
+msgid "%s ago"
+msgstr "hace %s"
+
+msgid "Show more messages"
+msgstr "Ver más mensajes"
+
+msgid "No messages yet — be the first to sign!"
+msgstr "Todavía no hay mensajes — ¡sé el primero en firmar!"
+
+msgid "Recent visitor guestbook messages"
+msgstr "Mensajes recientes de visitantes en el libro de visitas"
+
+msgid "View all guestbook messages"
+msgstr "Ver todos los mensajes del libro de visitas"
+
+msgid "Sign Our Guestbook"
+msgstr "Firma nuestro libro de visitas"
+
+msgid ""
+"Thank you! Your message was sent and will appear here after we read it."
+msgstr ""
+"¡Gracias! Tu mensaje se envió y aparecerá aquí después de que lo leamos."
+
+msgid "Something went wrong — please try again."
+msgstr "Algo salió mal — intenta de nuevo."
+
+msgid "Your name"
+msgstr "Tu nombre"
+
+msgid "Your Christmas message"
+msgstr "Tu mensaje navideño"
+
+msgid "Leave a message..."
+msgstr "Deja un mensaje..."
+
+msgid "Sign Guestbook"
+msgstr "Firmar el libro de visitas"
+
+msgid "Messages appear after we review them."
+msgstr "Los mensajes aparecen después de que los revisemos."
+
+msgid "Show Videos & Voting"
+msgstr "Videos y votación del espectáculo"
+
+msgid "Watch videos of this year’s songs and vote for Fan Favorite Friday!"
+msgstr ""
+"¡Mira los videos de las canciones de este año y vota por el Viernes del "
+"favorito!"
+
+msgid "Watch the videos of this year’s songs!"
+msgstr "¡Mira los videos de las canciones de este año!"
+
+msgid ""
+"Make your own light show to win a prize, and vote for your favorite kids’ "
+"shows on the Show Wall! Plus coloring, elf names & trivia."
+msgstr ""
+"¡Crea tu propio espectáculo de luces para ganar un premio y vota por tus "
+"espectáculos favoritos de los niños en el Muro del espectáculo! Además, "
+"dibujos para colorear, nombres de duende y trivia."
+
+msgid "Design your own light show, plus coloring, elf names & trivia!"
+msgstr ""
+"¡Diseña tu propio espectáculo de luces, además dibujos para colorear, "
+"nombres de duende y trivia!"
+
+msgid "Coloring pages, elf names & Christmas trivia!"
+msgstr "¡Dibujos para colorear, nombres de duende y trivia navideña!"
+
+msgid "Let’s Play"
+msgstr "¡A jugar!"
+
+msgid "Check back soon for this year’s songs!"
+msgstr "¡Vuelve pronto para ver las canciones de este año!"
+
+msgid "Kids’ Show Wall"
+msgstr "Muro del espectáculo de los niños"
+
+msgid "Watch the shows and tap the heart on your favorites!"
+msgstr "¡Mira los espectáculos y toca el corazón en tus favoritos!"
+
+msgid "Watch the shows our young light designers made!"
+msgstr ""
+"¡Mira los espectáculos que hicieron nuestros pequeños diseñadores de luces!"
+
+msgid "Watch the show by %s"
+msgstr "Ver el espectáculo de %s"
+
+msgid "Give this show a heart"
+msgstr "Dale un corazón a este espectáculo"
+
+msgid ""
+"No shows yet. Make one and be the first! Shows appear here after we check "
+"them."
+msgstr ""
+"Todavía no hay espectáculos. ¡Crea uno y sé el primero! Los espectáculos "
+"aparecen aquí después de que los revisamos."
+
+msgid "Light show player"
+msgstr "Reproductor de espectáculos de luces"
+
+msgid "Recently played:"
+msgstr "Sonaron hace poco:"
+
+msgid "Share the Show"
+msgstr "Comparte el espectáculo"
+
+msgid "Snap a photo? Tag it"
+msgstr "¿Tomaste una foto? Etiquétala"
+
+msgid "Countdown"
+msgstr "Cuenta regresiva"
+
+msgid "Days"
+msgstr "Días"
+
+msgid "Hours"
+msgstr "Horas"
+
+msgid "Minutes"
+msgstr "Minutos"
+
+msgid "Seconds"
+msgstr "Segundos"
+
+msgid "App"
+msgstr "App"
+
+msgid "Get the app"
+msgstr "Descarga la app"
+
+msgid ""
+"It’s free. Put the show on your home screen and get a buzz when the lights "
+"come on."
+msgstr ""
+"Es gratis. Pon el espectáculo en tu pantalla de inicio y recibe un aviso "
+"cuando se enciendan las luces."
+
+msgid "Add to my phone"
+msgstr "Agregar a mi celular"
+
+msgid "Not now"
+msgstr "Ahora no"
+
+msgid "Get show alerts"
+msgstr "Recibe alertas del espectáculo"
+
+msgid "When the lights come on"
+msgstr "Cuando se encienden las luces"
+
+msgid "Once a night, when the show starts"
+msgstr "Una vez por noche, cuando empieza el espectáculo"
+
+msgid "Cancellations and special news"
+msgstr "Cancelaciones y noticias especiales"
+
+msgid "Weather, Santa visits, last night"
+msgstr "Clima, visitas de Santa Claus, última noche"
+
+msgid "Turn on alerts"
+msgstr "Activar alertas"
+
+msgid "Done"
+msgstr "Listo"
+
+msgid "Turn off all alerts"
+msgstr "Desactivar todas las alertas"
+
+msgid "Tonight’s Show"
+msgstr "El espectáculo de esta noche"
+
+msgid "Tune Your Radio"
+msgstr "Sintoniza tu radio"
+
+msgid "Show Hours"
+msgstr "Horario del espectáculo"
+
+msgid "Sunset"
+msgstr "Atardecer"
+
+msgid "Up next:"
+msgstr "A continuación:"
+
+msgid "Pick the Next Song"
+msgstr "Elige la próxima canción"
+
+msgid "Choose what plays next!"
+msgstr "¡Elige lo que suena después!"
+
+msgid ""
+"Only you can see this right now (you’re logged in). Visitors see it while "
+"the show is running."
+msgstr ""
+"Por ahora solo tú puedes ver esto (iniciaste sesión). Los visitantes lo ven "
+"mientras el espectáculo está en marcha."
+
+msgid "Get Directions"
+msgstr "Cómo llegar"
+
+msgid "Light shows made by kids"
+msgstr "Espectáculos de luces hechos por niños"
+
+msgid "Our young light designers"
+msgstr "Nuestros pequeños diseñadores de luces"
+
+msgid ""
+"Kids design their own light show for our house in the Christmas Light Lab. "
+"Watch them and give your favorites a heart: the show with the most hearts "
+"wins People’s Choice!"
+msgstr ""
+"Los niños diseñan su propio espectáculo de luces para nuestra casa en el "
+"Laboratorio de luces navideñas. Míralos y dale un corazón a tus favoritos: "
+"¡el espectáculo con más corazones gana la Elección del público!"
+
+msgid ""
+"Kids designed their own light shows for our house in the Christmas Light "
+"Lab. Tap one to watch it!"
+msgstr ""
+"Los niños diseñaron sus propios espectáculos de luces para nuestra casa en "
+"el Laboratorio de luces navideñas. ¡Toca uno para verlo!"
+
+msgid "Prizes: %s."
+msgstr "Premios: %s."
+
+msgid "Enter and vote by %s."
+msgstr "Participa y vota antes del %s."
+
+msgid "See all shows & vote"
+msgstr "Ver todos los espectáculos y votar"
+
+msgid "See all the shows"
+msgstr "Ver todos los espectáculos"
+
+msgid "Make your own"
+msgstr "Crea el tuyo"
+
+msgid "%d heart"
+msgid_plural "%d hearts"
+msgstr[0] "%d corazón"
+msgstr[1] "%d corazones"
+
+msgid "You’re offline"
+msgstr "No tienes conexión"
+
+msgid "The app needs the internet to load. The show still plays on the radio:"
+msgstr ""
+"La app necesita internet para cargar. El espectáculo sigue sonando en la "
+"radio:"
+
+msgid "Try again"
+msgstr "Intentar de nuevo"
+
+msgid "The lights are on! 🎄"
+msgstr "¡Las luces están encendidas! 🎄"
+
+msgid "The show just started. Tune your radio to %s."
+msgstr "El espectáculo acaba de empezar. Sintoniza tu radio en %s."
+
+msgid "Your name is up next! ⭐"
+msgstr "¡Tu nombre es el siguiente! ⭐"
+
+msgid "Watch for your name after this song: %s"
+msgstr "Busca tu nombre después de esta canción: %s"
+
+msgid "Canceled Tonight"
+msgstr "Cancelado esta noche"
+
+msgid "Off Season"
+msgstr "Fuera de temporada"
+
+msgid "Opening night: %s"
+msgstr "Noche de estreno: %s"
+
+msgid "Thanks for a wonderful season!"
+msgstr "¡Gracias por una temporada maravillosa!"
+
+msgid "Show Running"
+msgstr "Espectáculo en marcha"
+
+msgid "Running until %s tonight"
+msgstr "En marcha hasta las %s esta noche"
+
+msgid "Starts %s"
+msgstr "Empieza %s"
+
+msgid "Lights on at sunset — about %s tonight"
+msgstr "Las luces se encienden al atardecer — hoy cerca de las %s"
+
+msgid "Lights on at %s tonight"
+msgstr "Las luces se encienden a las %s esta noche"
+
+msgid "Show Ended"
+msgstr "Espectáculo terminado"
+
+msgid "See you tomorrow at sunset — about %s"
+msgstr "Nos vemos mañana al atardecer — cerca de las %s"
+
+msgid "See you tomorrow at %s"
+msgstr "Nos vemos mañana a las %s"
+
+msgid "That was our last night — thank you!"
+msgstr "Esa fue nuestra última noche — ¡gracias!"
+
+msgid "sunset"
+msgstr "atardecer"
+
+msgid "Nightly %1$s – %2$s"
+msgstr "Todas las noches %1$s – %2$s"
+
+msgid "Nightly %1$s – %2$s (Fri & Sat until %3$s)"
+msgstr "Todas las noches %1$s – %2$s (viernes y sábado hasta las %3$s)"
+
+msgid ""
+"Kids’ Corner at %s: put your name in lights, design your own light show, "
+"print coloring pages and play Christmas games."
+msgstr ""
+"Rincón de los niños en %s: pon tu nombre en luces, diseña tu propio "
+"espectáculo de luces, imprime páginas para colorear y juega juegos "
+"navideños."
+
+msgid "%1$s – %2$s."
+msgstr "%1$s – %2$s."
+
+msgid "Tune to %s."
+msgstr "Sintoniza el %s."
+
+msgid "free drive-by Christmas light show"
+msgstr "espectáculo de luces de Navidad gratis para ver desde el carro"
+
+msgid "Christmas Village"
+msgstr "Pueblo navideño"
+
+msgid "Santa’s North Pole"
+msgstr "El Polo Norte de Santa Claus"
+
+msgid "Look"
+msgstr "Aspecto"
+
+msgid ""
+"Pick the style of your website. Only the pictures and colors change; your "
+"sections and settings stay the same."
+msgstr ""
+"Elige el estilo de tu sitio web. Solo cambian las imágenes y los colores; "
+"tus secciones y ajustes siguen igual."
+
+msgid ""
+"Send your name to the show during show hours and watch for it between songs!"
+msgstr ""
+"¡Envía tu nombre al espectáculo durante el horario del espectáculo y búscalo"
+" entre canciones!"
+
+msgid "Put my name in lights"
+msgstr "Pon mi nombre en luces"
+
+msgid "See how it works"
+msgstr "Mira cómo funciona"
+
+msgid "Search: %s"
+msgstr "Búsqueda: %s"
+
+msgid "Show News"
+msgstr "Noticias del espectáculo"
+
+msgid "Nothing here yet — check back soon!"
+msgstr "Aún no hay nada aquí. ¡Vuelve pronto!"
+
+msgid "The Kids’ Corner is resting right now — check back soon!"
+msgstr "El Rincón de los niños está descansando ahora mismo. ¡Vuelve pronto!"
+
+msgid "Back to the Show"
+msgstr "Volver al espectáculo"
+
+msgid "This light must have burned out!"
+msgstr "¡Parece que esta luz se fundió!"
+
+msgid "We couldn’t find that page."
+msgstr "No pudimos encontrar esa página."
+
+msgid "Our show’s website is getting ready. Check back soon!"
+msgstr ""
+"El sitio web de nuestro espectáculo se está preparando. ¡Vuelve pronto!"
+
+msgid "Top Menu"
+msgstr "Menú superior"
+
+msgid "Home"
+msgstr "Inicio"
+
+msgid "Videos"
+msgstr "Videos"
+
+msgid "Skip to content"
+msgstr "Saltar al contenido"
+
+msgid "Main"
+msgstr "Principal"

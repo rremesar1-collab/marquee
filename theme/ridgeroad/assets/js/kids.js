@@ -2,6 +2,7 @@
 (function () {
 	'use strict';
 	var cfg = window.RRShow || {};
+	var t = function (s) { var d = window.rrI18n; return (d && d[s]) || s; };
 	var lab = function () { return window.RRLab; };
 	var kc = document.querySelector('[data-rr-kc]');
 	if (!kc) { return; }
@@ -97,8 +98,8 @@
 		card.hidden = !has; empty.hidden = !!has;
 		if (!has) { return; }
 		form.querySelector('[data-rr-enter-thumb]').src = lab().snapshot(s);
-		form.querySelector('[data-rr-enter-name]').textContent = s.name ? '“' + s.name + '”' : 'My Light Show';
-		form.querySelector('[data-rr-enter-song]').textContent = 'Song: ' + lab().songName(s.song);
+		form.querySelector('[data-rr-enter-name]').textContent = s.name ? t('“%s”').replace('%s', function () { return s.name; }) : t('My Light Show');
+		form.querySelector('[data-rr-enter-song]').textContent = t('Song: %s').replace('%s', function () { return lab().songName(s.song); });
 	}
 	if (form) {
 		var msg = form.querySelector('[data-rr-enter-msg]'), done = document.querySelector('[data-rr-enter-done]');
@@ -107,13 +108,13 @@
 			e.preventDefault();
 			msg.textContent = '';
 			var s = lab() ? lab().get() : null;
-			if (!s || !lab().filled(s)) { msg.textContent = 'First make your light show in step 1.'; return; }
-			if (!form.child.value.trim()) { msg.textContent = 'Please type your child’s first name.'; form.child.focus(); return; }
-			if (!form.age.value) { msg.textContent = 'Please pick an age.'; form.age.focus(); return; }
-			if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(form.email.value.trim())) { msg.textContent = 'Please enter a parent email so we can send your claim code.'; form.email.focus(); return; }
-			if (!form.consent.checked) { msg.textContent = 'A parent or guardian needs to check the permission box.'; return; }
+			if (!s || !lab().filled(s)) { msg.textContent = t('First make your light show in step 1.'); return; }
+			if (!form.child.value.trim()) { msg.textContent = t('Please type your child’s first name.'); form.child.focus(); return; }
+			if (!form.age.value) { msg.textContent = t('Please pick an age.'); form.age.focus(); return; }
+			if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(form.email.value.trim())) { msg.textContent = t('Please enter a parent email so we can send your claim code.'); form.email.focus(); return; }
+			if (!form.consent.checked) { msg.textContent = t('A parent or guardian needs to check the permission box.'); return; }
 			var btn = form.querySelector('button[type=submit]');
-			btn.disabled = true; msg.textContent = 'Sending your show…';
+			btn.disabled = true; msg.textContent = t('Sending your show…');
 			var fd = new FormData(form);
 			fd.append('action', 'rr_art_submit');
 			fd.append('show', JSON.stringify(s));
@@ -126,10 +127,10 @@
 					store('rrShowCode', j.data.code);
 					done.scrollIntoView({ behavior: 'smooth', block: 'center' });
 				} else {
-					msg.textContent = (j && j.data && j.data.message) || 'Something went wrong. Please try again.';
+					msg.textContent = (j && j.data && j.data.message) || t('Something went wrong. Please try again.');
 					btn.disabled = false;
 				}
-			}).catch(function () { msg.textContent = 'We couldn’t reach the website. Please try again.'; btn.disabled = false; });
+			}).catch(function () { msg.textContent = t('We couldn’t reach the website. Please try again.'); btn.disabled = false; });
 		});
 	}
 
@@ -139,7 +140,7 @@
 		if (!sm || !lab()) { return; }
 		var on = lab().playing(), b = sm.querySelector('[data-rr-sm-play]');
 		b.querySelector('b').innerHTML = on ? '&#9632;' : '&#9654;';
-		b.querySelector('span').textContent = on ? 'Stop' : 'Play';
+		b.querySelector('span').textContent = on ? t('Stop') : t('Play');
 	}
 	function openShow(seq, label, title, noAuto) {
 		if (!lab() || !sm) { return; }
@@ -147,8 +148,8 @@
 		if (!stage) { return; }
 		smHome = { parent: stage.parentNode, next: stage.nextSibling };
 		sm.querySelector('[data-rr-sm-stage]').appendChild(stage);
-		sm.querySelector('[data-rr-sm-title]').textContent = title || 'Light Show';
-		sm.querySelector('[data-rr-sm-by]').textContent = label ? 'by ' + label : '';
+		sm.querySelector('[data-rr-sm-title]').textContent = title || t('Light Show');
+		sm.querySelector('[data-rr-sm-by]').textContent = label ? t('by %s').replace('%s', function () { return label; }) : '';
 		if (sm.showModal) { sm.showModal(); } else { sm.setAttribute('open', ''); }
 		if (!lab().watch(seq, label, noAuto)) { closeShow(); return; }
 		smSync(); clearInterval(smTimer); smTimer = setInterval(smSync, 300);
@@ -209,6 +210,7 @@
 		if (door && doors) {
 			if (open) { doors.insertBefore(door, doors.firstChild); } else { doors.insertBefore(door, $('[data-kc-door="coloring"]')); }
 			if (sign) { sign.hidden = !!open; }
+			var on = $('[data-kc-names-on]'); if (on) { on.hidden = !open; }
 		}
 		if (nb) {
 			var nf = nb.querySelector('[data-rr-names-form]'), ndone = nb.querySelector('[data-rr-names-done]'), nclosed = nb.querySelector('[data-rr-names-closed]');
@@ -225,9 +227,9 @@
 		   the 14-letter limit is checked here and on send instead. Never change the box while the kid types. */
 		var preview = function () {
 			var raw = nf.kid.value.trim().split(/\s+/)[0] || '';
-			var nm = (raw || 'NAME').toUpperCase();
+			var nm = (raw || t('NAME')).toUpperCase();
 			nb.querySelectorAll('[data-greet]').forEach(function (sp) { sp.textContent = sp.getAttribute('data-greet').replace('NAME', nm); });
-			nmsg.textContent = raw.length > 14 ? 'That’s a long one! Names can have up to 14 letters.' : '';
+			nmsg.textContent = raw.length > 14 ? t('That’s a long one! Names can have up to 14 letters.') : '';
 		};
 		nf.kid.addEventListener('input', preview);
 		nf.addEventListener('submit', function (e) {
@@ -235,18 +237,18 @@
 			nmsg.textContent = '';
 			nf.kid.value = nf.kid.value.trim();
 			if (!/^[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ'\-]{1,13}$/.test(nf.kid.value)) {
-				nmsg.textContent = nf.kid.value.length > 14 ? 'That’s a long one! Names can have up to 14 letters.' : 'Please type just your first name (letters only).'; nf.kid.focus(); return;
+				nmsg.textContent = nf.kid.value.length > 14 ? t('That’s a long one! Names can have up to 14 letters.') : t('Please type just your first name (letters only).'); nf.kid.focus(); return;
 			}
 			var btn = nf.querySelector('button[type=submit]'); btn.disabled = true;
 			var geo = !!nb.querySelector('[data-rr-names-geo]'), pos = null;
-			nmsg.textContent = geo ? 'Checking you’re at the show…' : 'Sending to Santa’s elves…';
+			nmsg.textContent = geo ? t('Checking you’re at the show…') : t('Sending to Santa’s elves…');
 			/* "Only at the show": ask the phone where it is (compared on the website, never saved) */
 			var where = !geo ? Promise.resolve() : new Promise(function (ok, no) {
 				if (!navigator.geolocation || !window.isSecureContext) { no('unsupported'); return; }
 				navigator.geolocation.getCurrentPosition(function (p) { pos = p.coords; ok(); }, function (er) { no(er && er.code === 1 ? 'denied' : 'unavailable'); }, { enableHighAccuracy: true, timeout: 15000, maximumAge: 60000 });
 			});
 			where.then(function () {
-				nmsg.textContent = 'Sending to Santa’s elves…';
+				nmsg.textContent = t('Sending to Santa’s elves…');
 				return nonceN();
 			}).then(function (j) {
 				var fd = new FormData(nf);
@@ -262,21 +264,24 @@
 					nf.hidden = true; ndone.hidden = false;
 					nb.querySelector('[data-rr-names-text]').textContent = j.data.text;
 					var p = j.data.place;
-					nb.querySelector('[data-rr-names-place]').textContent = j.data.again ? 'Your name is already in line!' :
-						(j.data.live ? (p <= 1 ? 'You’re next! Watch our screens: your name goes up in a minute.' : 'You’re #' + p + ' in line. Watch our screens: your name goes up in a few minutes.') :
-						(p <= 6 ? (p <= 1 ? 'You’re next! ' : 'You’re #' + p + ' in line. ') + (j.data.songs > 1 ? 'Watch for your name in about ' + j.data.songs + ' songs.' : 'Watch for your name after this song.') : 'You’re #' + p + ' in line. Your name will show after a few songs.'));
+					nb.querySelector('[data-rr-names-place]').textContent = j.data.again ? t('Your name is already in line!') :
+						(j.data.live ? (p <= 1 ? t('You’re next! Watch our screens: your name goes up in a minute.') : t('You’re #%s in line. Watch our screens: your name goes up in a few minutes.').replace('%s', p)) :
+						(p <= 6 ? (j.data.songs > 1 ?
+							(p <= 1 ? t('You’re next! Watch for your name in about %s songs.').replace('%s', j.data.songs) : t('You’re #%1$s in line. Watch for your name in about %2$s songs.').replace('%1$s', p).replace('%2$s', j.data.songs)) :
+							(p <= 1 ? t('You’re next! Watch for your name after this song.') : t('You’re #%s in line. Watch for your name after this song.').replace('%s', p))) :
+							t('You’re #%s in line. Your name will show after a few songs.').replace('%s', p)));
 					if (j.data.theme && !j.data.again) {
-						nb.querySelector('[data-rr-names-place]').textContent += ' It goes up in ' + j.data.theme + ' (if lots of kids picked other shows, it may be one song later).';
+						nb.querySelector('[data-rr-names-place]').textContent += ' ' + t('It goes up in %s (if lots of kids picked other shows, it may be one song later).').replace('%s', function () { return j.data.theme; });
 					}
 					buzzSetup(j.data);
 				} else {
-					nmsg.textContent = (j && j.data && j.data.message) || 'Something went wrong. Please try again.';
+					nmsg.textContent = (j && j.data && j.data.message) || t('Something went wrong. Please try again.');
 				}
 			}).catch(function (e) {
 				btn.disabled = false;
-				if (e && e.geo === 'denied') { nmsg.textContent = 'Names can only be sent from the show, so we need to see where your phone is. Allow location for this website in your phone’s settings, then try again.'; return; }
-				if (e && e.geo) { nmsg.textContent = 'We couldn’t find your location. Make sure Location is turned on, then try again.'; return; }
-				nmsg.textContent = 'We couldn’t reach the website. Please try again.';
+				if (e && e.geo === 'denied') { nmsg.textContent = t('Names can only be sent from the show, so we need to see where your phone is. Allow location for this website in your phone’s settings, then try again.'); return; }
+				if (e && e.geo) { nmsg.textContent = t('We couldn’t find your location. Make sure Location is turned on, then try again.'); return; }
+				nmsg.textContent = t('We couldn’t reach the website. Please try again.');
 			});
 		});
 		/* "Buzz me when my name is up" (only where this phone can get alerts) */
@@ -288,7 +293,7 @@
 			bz.hidden = !(bzFor && api && api.canBuzz());
 			bz.classList.remove('is-done');
 			bzBtn.hidden = false; bzBtn.disabled = false;
-			bzTxt.textContent = 'Want a buzz on this phone right before your name shows?';
+			bzTxt.textContent = t('Want a buzz on this phone right before your name shows?');
 		};
 		if (bzBtn) {
 			bzBtn.addEventListener('click', function () {
@@ -296,7 +301,7 @@
 				bzBtn.disabled = true;
 				window.RRAppAPI.buzz(bzFor.id, bzFor.buzz).then(function () {
 					bz.classList.add('is-done'); bzBtn.hidden = true;
-					bzTxt.textContent = 'Okay! This phone will buzz when your name is up next.';
+					bzTxt.textContent = t('Okay! This phone will buzz when your name is up next.');
 				}).catch(function (err) {
 					bzBtn.disabled = false;
 					bzTxt.textContent = window.RRAppAPI.why(err);

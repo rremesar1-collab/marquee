@@ -441,7 +441,7 @@ function marquee_support_mail_support( $kind, $text ) {
 		/* translators: 1: site name, 2: first words of the request */
 		$subj = sprintf( __( '[Marquee support] %1$s: %2$s', 'marquee' ), $site, mb_strimwidth( preg_replace( '/\s+/', ' ', $text ), 0, 60, '…' ) );
 		$body = __( 'New support request.', 'marquee' ) . "\n\n" . $text . "\n\n"
-			. ( $link ? __( 'Sign in to help (works until', 'marquee' ) . ' ' . wp_date( 'M j, g:i A', (int) $s['expires'] ) . "):\n" . $link . "\n\n" : __( 'The owner didn’t allow sign-in. Answer in the chat:', 'marquee' ) . "\n" . admin_url( 'admin.php?page=marquee-support' ) . "\n\n" )
+			. ( $link ? __( 'Sign in to help (works until', 'marquee' ) . ' ' . wp_date( __( 'M j, g:i A', 'marquee' ), (int) $s['expires'] ) . "):\n" . $link . "\n\n" : __( 'The owner didn’t allow sign-in. Answer in the chat:', 'marquee' ) . "\n" . admin_url( 'admin.php?page=marquee-support' ) . "\n\n" )
 			. "---- " . __( 'Support report', 'marquee' ) . " ----\n" . marquee_support_report_text();
 	} else {
 		/* translators: %s: site name */
@@ -581,7 +581,7 @@ function marquee_support_state( $since = 0 ) {
 			'i'    => $id,
 			'who'  => $m['who'],
 			'text' => $m['text'],
-			'time' => wp_date( 'g:i A', (int) $m['t'] ),
+			'time' => wp_date( __( 'g:i A', 'marquee' ), (int) $m['t'] ),
 			'img'  => $m['img'] ? wp_get_attachment_image_url( (int) $m['img'], 'large' ) : '',
 			'full' => $m['img'] ? wp_get_attachment_url( (int) $m['img'] ) : '',
 		);

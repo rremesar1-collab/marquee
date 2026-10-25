@@ -1,5 +1,6 @@
 /* Marquee: step-by-step screenshot walkthroughs (Settings page). */
 (function () {
+	var tr = function (s) { var d = window.rrI18n; return (d && d[s]) || s; };
 	document.querySelectorAll('[data-mq-walk]').forEach(function (w) {
 		var slides = w.querySelectorAll('[data-walk-slide]'), dots = w.querySelectorAll('[data-walk-dot]'), play = w.querySelector('[data-walk-play]');
 		var cur = 0, timer = null, playing = true, hover = false;
@@ -12,11 +13,11 @@
 		w.querySelector('[data-walk-prev]').addEventListener('click', function () { go(cur - 1); tick(); });
 		w.querySelector('[data-walk-next]').addEventListener('click', function () { go(cur + 1); tick(); });
 		dots.forEach(function (d) { d.addEventListener('click', function () { go(+d.getAttribute('data-walk-dot')); tick(); }); });
-		play.addEventListener('click', function () { playing = !playing; play.textContent = playing ? 'Pause' : 'Play'; tick(); });
+		play.addEventListener('click', function () { playing = !playing; play.textContent = playing ? tr('Pause') : tr('Play'); tick(); });
 		w.addEventListener('mouseenter', function () { hover = true; clearTimeout(timer); });
 		w.addEventListener('mouseleave', function () { hover = false; tick(); });
 		w.addEventListener('toggle', function () { if (w.open) { go(0); } tick(); });
-		if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { playing = false; play.textContent = 'Play'; }
+		if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { playing = false; play.textContent = tr('Play'); }
 		tick();
 	});
 })();

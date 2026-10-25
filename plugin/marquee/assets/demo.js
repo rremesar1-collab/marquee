@@ -1,6 +1,9 @@
 /* Marquee: "See it in action" preview on the Settings page. A phone sends a name (and picks a
    theme), then a matrix / TV shows the names break with the name going up and the spoken line. */
 (function () {
+var tr = function (s) { var d = window.rrI18n; return (d && d[s]) || s; };
+
+(function () {
 	document.querySelectorAll('[data-mq-demo]').forEach(function (box) {
 		var themes = []; try { themes = JSON.parse(box.getAttribute('data-themes') || '[]'); } catch (e) {}
 		var mode = box.getAttribute('data-mode') || 'names', santa = box.getAttribute('data-santa') === '1';
@@ -42,7 +45,7 @@
 			p.c = c; p.col = col; return c;
 		}
 		var t0 = performance.now(), scene = 0, name = kids[0], theme = picks[0], text = '';
-		function greet(n) { return santa && scene % 2 ? 'HO HO HO, ' + n + '!' : 'MERRY CHRISTMAS, ' + n + '!'; }
+		function greet(n) { return tr(santa && scene % 2 ? 'HO HO HO, %s!' : 'MERRY CHRISTMAS, %s!').replace('%s', function () { return n; }); }
 
 		/* the phone: type a name, tap a theme, send */
 		function drawPhone(p) {
@@ -51,14 +54,14 @@
 			if (mode === 'themes' && themes.length) {
 				themeHtml = '<div class="mq-demo__themes">' + ['Classic'].concat(themes.slice(0, 3)).map(function (n) {
 					var l = look(n), on = p > .45 && n === theme;
-					return '<span class="mq-demo__th' + (on ? ' is-on' : '') + '" style="--a:' + l.a + ';--b:' + l.b + '">' + n.replace(/</g, '') + '</span>';
+					return '<span class="mq-demo__th' + (on ? ' is-on' : '') + '" style="--a:' + l.a + ';--b:' + l.b + '">' + (n === 'Classic' ? tr('Classic') : n).replace(/</g, '') + '</span>';
 				}).join('') + '</div>';
 			}
 			var sent = p > .75;
-			phone.innerHTML = '<div class="mq-demo__app"><b>★ Your Name in Lights!</b>' +
-				(sent ? '<div class="mq-demo__ok">✓ Sent!<small>Watch for your name after this song' + (mode === 'themes' ? ' in ' + theme.replace(/</g, '') : '') + '</small></div>' :
-					'<span class="mq-demo__in">' + (typed || '<i>Your first name</i>') + (p < .45 ? '<em>|</em>' : '') + '</span>' + themeHtml +
-					'<span class="mq-demo__btn' + (p > .65 ? ' is-press' : '') + '">Put My Name in Lights!</span>') + '</div>';
+			phone.innerHTML = '<div class="mq-demo__app"><b>★ ' + tr('Your Name in Lights!') + '</b>' +
+				(sent ? '<div class="mq-demo__ok">✓ ' + tr('Sent!') + '<small>' + (mode === 'themes' ? tr('Watch for your name after this song in %s').replace('%s', function () { return (theme === 'Classic' ? tr('Classic') : theme).replace(/</g, ''); }) : tr('Watch for your name after this song')) + '</small></div>' :
+					'<span class="mq-demo__in">' + (typed || '<i>' + tr('Your first name') + '</i>') + (p < .45 ? '<em>|</em>' : '') + '</span>' + themeHtml +
+					'<span class="mq-demo__btn' + (p > .65 ? ' is-press' : '') + '">' + tr('Put My Name in Lights!') + '</span>') + '</div>';
 		}
 		/* the screen: the house with its props lit in the theme's style; names on the garage-door matrix */
 		function drawScreen(now, show, alpha) {
@@ -94,7 +97,7 @@
 				nameOn(tv.x, tv.y, tv.w, tv.h, alpha, l);
 			} else {
 				ctx.fillStyle = 'rgba(255,212,92,.55)'; ctx.font = '700 ' + Math.round(tv.h * .22) + 'px system-ui, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-				ctx.fillText('★ Names in Lights', tv.x + tv.w / 2, tv.y + tv.h / 2);
+				ctx.fillText('★ ' + tr('Names in Lights'), tv.x + tv.w / 2, tv.y + tv.h / 2);
 			}
 		}
 		function nameOn(x, y, w, h, alpha, l) {
@@ -111,13 +114,13 @@
 			var phase;
 			if (dt < 4) { phase = 1; drawPhone(dt / 4); drawScreen(now, false, 0); }
 			else { phase = dt < 4.6 ? 2 : 3; drawPhone(1); var a = Math.min(1, (dt - 4.6) / .5); drawScreen(now, dt >= 4.6, Math.max(0, a)); }
-			step.textContent = phase === 1 ? (mode === 'themes' ? '1. A kid types their name and picks a show' : '1. A kid types their name on your website') :
-				phase === 2 ? '2. After the current song, the names break plays…' : (mode === 'themes' ? '3. …in the show they picked, with their name on your matrix or TV' : '3. …and their name goes up on your matrix or TV');
+			step.textContent = phase === 1 ? (mode === 'themes' ? tr('1. A kid types their name and picks a show') : tr('1. A kid types their name on your website')) :
+				phase === 2 ? tr('2. After the current song, the names break plays…') : (mode === 'themes' ? tr('3. …in the show they picked, with their name on your matrix or TV') : tr('3. …and their name goes up on your matrix or TV'));
 			say.hidden = !(dt > 4.9 && box.getAttribute('data-voice') === '1');
-			say.textContent = '🔊 “' + (santa && scene % 2 ? 'Ho ho ho, ' : 'Merry Christmas, ') + name.charAt(0) + name.slice(1).toLowerCase() + '!”';
+			say.textContent = '🔊 “' + tr(santa && scene % 2 ? 'Ho ho ho, %s!' : 'Merry Christmas, %s!').replace('%s', function () { return name.charAt(0) + name.slice(1).toLowerCase(); }) + '”';
 			if (box.isConnected) { requestAnimationFrame(frame); }
 		}
-		if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { drawPhone(1); text = greet(name); drawScreen(0, true, 1); step.textContent = 'A kid sends their name → it goes up on your matrix or TV between songs'; return; }
+		if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { drawPhone(1); text = greet(name); drawScreen(0, true, 1); step.textContent = tr('A kid sends their name → it goes up on your matrix or TV between songs'); return; }
 		requestAnimationFrame(frame);
 	});
 })();
@@ -138,7 +141,7 @@
 		var lab = box.querySelector('[data-bd-label]'), scr = box.querySelector('[data-bd-screen]'), tabs = box.querySelectorAll('[data-bd-mode]');
 		var audioBtn = box.querySelector('[data-bd-listen]'), audio = null;
 		var mode = 0, total = seq, events = [], t0 = performance.now(), speed = 2.4, live = false;
-		function greet(n, k) { return santa && k % 3 === 2 ? 'Ho ho ho! Hi ' + n + ', Santa loves you too!' : (k % 2 ? 'Happy Holidays, ' + n + '!' : 'Merry Christmas, ' + n + '!'); }
+		function greet(n, k) { return tr(santa && k % 3 === 2 ? 'Ho ho ho! Hi %s, Santa loves you too!' : (k % 2 ? 'Happy Holidays, %s!' : 'Merry Christmas, %s!')).replace('%s', function () { return n; }); }
 		function build() {
 			var m = modes[mode];
 			var outroAt = start + m.slots * slot + 0.2;
@@ -146,13 +149,13 @@
 			events = [{ at: 0.15, len: Math.max(2.5, start - 0.5), kind: 'intro', text: intro }];
 			for (var k = 0; k < m.slots; k++) {
 				var n = m.names[k % m.names.length];
-				events.push({ at: start + k * slot, len: Math.min(slot - 0.4, 1.8), kind: 'name', text: greet(n, k), name: n, scr: (k % 2 ? 'HAPPY HOLIDAYS, ' : 'MERRY CHRISTMAS, ') + n.toUpperCase() + '!' });
+				events.push({ at: start + k * slot, len: Math.min(slot - 0.4, 1.8), kind: 'name', text: greet(n, k), name: n, scr: tr(k % 2 ? 'HAPPY HOLIDAYS, %s!' : 'MERRY CHRISTMAS, %s!').replace('%s', function () { return n.toUpperCase(); }) });
 			}
 			events.push({ at: outroAt, len: Math.min(total - outroAt - 0.2, 4.5), kind: 'outro', text: outro });
 			var pct = function (s) { return (s / total * 100).toFixed(2) + '%'; };
-			var h = '<div class="bd-row bd-row--voice"><span class="bd-rl">🎙 Voice</span><div class="bd-lane">';
-			events.forEach(function (e, i) { h += '<span class="bd-blk bd-' + e.kind + '" data-ev="' + i + '" style="left:' + pct(e.at) + ';width:' + pct(e.len) + '">' + (e.kind === 'name' ? e.name : (e.kind === 'intro' ? 'Intro' : 'Outro')) + '</span>'; });
-			h += '</div></div><div class="bd-row bd-row--music"><span class="bd-rl">♪ Music</span><div class="bd-lane">' +
+			var h = '<div class="bd-row bd-row--voice"><span class="bd-rl">🎙 ' + tr('Voice') + '</span><div class="bd-lane">';
+			events.forEach(function (e, i) { h += '<span class="bd-blk bd-' + e.kind + '" data-ev="' + i + '" style="left:' + pct(e.at) + ';width:' + pct(e.len) + '">' + (e.kind === 'name' ? e.name : (e.kind === 'intro' ? tr('Intro') : tr('Outro'))) + '</span>'; });
+			h += '</div></div><div class="bd-row bd-row--music"><span class="bd-rl">♪ ' + tr('Music') + '</span><div class="bd-lane">' +
 				'<span class="bd-mus is-loud" style="left:0;width:' + pct(start) + '"></span>' +
 				'<span class="bd-mus is-soft" style="left:' + pct(start) + ';width:' + pct(outroAt - start) + '"></span>' +
 				'<span class="bd-mus is-loud" style="left:' + pct(outroAt) + ';width:' + pct(total - outroAt) + '"></span></div></div>' +
@@ -198,4 +201,5 @@
 		build();
 		requestAnimationFrame(frame);
 	});
+})();
 })();

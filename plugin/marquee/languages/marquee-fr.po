@@ -1,0 +1,5704 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Marquee\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Domain: marquee\n"
+
+msgid ""
+"Your festive theme is older than 2.9.0, so it is still using its own built-"
+"in show features. Upload Marquee Festive 2.9.0 or newer (Appearance → Themes"
+" → Add New → Upload, then “Replace current”) to finish the switch."
+msgstr ""
+"Votre thème festif est antérieur à la version 2.9.0 : il utilise donc encore"
+" ses propres fonctions de spectacle intégrées. Téléversez Marquee Festive "
+"2.9.0 ou plus récent (Apparence → Thèmes → Ajouter → Téléverser, puis « "
+"Remplacer l’actuel ») pour terminer le passage."
+
+msgid "Type a first name to put in line."
+msgstr "Saisissez un prénom à mettre dans la file."
+
+msgid ""
+"“%s” is in line. It goes up at the next names break (start your Names in "
+"Lights playlist to see it now)."
+msgstr ""
+"« %s » est dans la file. Il s’affiche à la prochaine pause des noms (lancez "
+"votre liste de lecture Votre nom en lumières pour le voir maintenant)."
+
+msgid "That playlist isn’t on your FPP."
+msgstr "Cette liste de lecture n’est pas sur votre FPP."
+
+msgid "Your FPP is connected"
+msgstr "Votre FPP est connecté"
+
+msgid "It last checked in %s ago."
+msgstr "Dernier contact il y a %s."
+
+msgid ""
+"Update the Marquee plugin on your FPP (Content Setup → Plugin Manager) for "
+"the screen picker and the simple names break."
+msgstr ""
+"Mettez à jour le plugin Marquee sur votre FPP (Content Setup → Plugin "
+"Manager) pour obtenir le choix de l’écran et la pause des noms simple."
+
+msgid "Your FPP hasn’t checked in lately"
+msgstr "Votre FPP ne s’est pas manifesté récemment"
+
+msgid ""
+"Last time was %s ago. Is the FPP on, and is the Marquee plugin running on "
+"it?"
+msgstr ""
+"La dernière fois, c’était il y a %s. Le FPP est-il allumé, et le plugin "
+"Marquee y fonctionne-t-il ?"
+
+msgid "Connect your FPP"
+msgstr "Connectez votre FPP"
+
+msgid ""
+"Install the Marquee plugin on the FPP that plays your show and paste your "
+"connection code. The steps are in card 1 below."
+msgstr ""
+"Installez le plugin Marquee sur le FPP qui joue votre spectacle et collez "
+"votre code de connexion. Les étapes sont dans la carte 1 ci-dessous."
+
+msgid "Pick your screen"
+msgstr "Choisissez votre écran"
+
+msgid ""
+"Pick the matrix, TV or projector the names go on from the list in card 1, "
+"then Save."
+msgstr ""
+"Choisissez la matrice, la télé ou le projecteur où vont les noms dans la "
+"liste de la carte 1, puis Enregistrez."
+
+msgid ""
+"Type the overlay model name of your matrix, TV or projector in card 1, then "
+"Save."
+msgstr ""
+"Saisissez le nom du modèle overlay de votre matrice, télé ou projecteur dans"
+" la carte 1, puis Enregistrez."
+
+msgid "Can’t reach the FPP for %s"
+msgstr "Impossible de joindre le FPP de %s"
+
+msgid "%s: screen not found"
+msgstr "%s : écran introuvable"
+
+msgid "Your other screen is ready."
+msgid_plural "Your other %d screens are ready."
+msgstr[0] "Votre autre écran est prêt."
+msgstr[1] "Vos %d autres écrans sont prêts."
+
+msgid ""
+"If it’s just switched off, that’s fine: names go up on it once it’s on."
+msgstr ""
+"S’il est simplement éteint, pas de souci : les noms s’y afficheront une fois"
+" allumé."
+
+msgid "Your screen is ready"
+msgstr "Votre écran est prêt"
+
+msgid "Names may scroll too fast on %s"
+msgstr "Les noms risquent de défiler trop vite sur %s"
+
+msgid ""
+"Each name is up for only a couple of seconds, so a scrolling message has to "
+"fly across. Show it still (Text: Still in card 1), or give each name more "
+"time with fewer Names per break."
+msgstr ""
+"Chaque nom ne s’affiche que quelques secondes, donc un message qui défile "
+"doit traverser à toute vitesse. Affichez-le fixe (Texte : Fixe dans la carte"
+" 1), ou donnez plus de temps à chaque nom avec moins de Noms par pause."
+
+msgid "Your screen"
+msgstr "Votre écran"
+
+msgid "Saved. The FPP checks it at its next setup check."
+msgstr ""
+"Enregistré. Le FPP le vérifie lors de sa prochaine vérification de "
+"configuration."
+
+msgid "Names break is ready"
+msgstr "La pause des noms est prête"
+
+msgid ""
+"Marquee made a simple names break on your FPP: the show pauses and the names"
+" go up on your screens. Want music, a voice or a light show with it? Cards 2"
+" to 4 add them."
+msgstr ""
+"Marquee a créé une pause des noms simple sur votre FPP : le spectacle fait "
+"une pause et les noms s’affichent sur vos écrans. Envie d’y ajouter de la "
+"musique, une voix ou un spectacle de lumières ? Les cartes 2 à 4 les "
+"ajoutent."
+
+msgid "Your FPP has the “%s” playlist."
+msgstr "Votre FPP a la liste de lecture « %s »."
+
+msgid "Names break"
+msgstr "Pause des noms"
+
+msgid ""
+"Marquee makes a simple names break on your FPP for you. Click Check again."
+msgstr ""
+"Marquee crée pour vous une pause des noms simple sur votre FPP. Cliquez sur "
+"Vérifier à nouveau."
+
+msgid ""
+"Turn on Your Name in Lights (Features) and Marquee makes a simple names "
+"break on your FPP for you."
+msgstr ""
+"Activez Votre nom en lumières (Fonctionnalités) et Marquee créera pour vous "
+"une pause des noms simple sur votre FPP."
+
+msgid ""
+"Your FPP has no “%s” playlist. Update the Marquee plugin on your FPP and it "
+"makes a simple one for you, or make one with your names sequence (card 4 can"
+" make the sequence)."
+msgstr ""
+"Votre FPP n’a pas de liste de lecture « %s ». Mettez à jour le plugin "
+"Marquee sur votre FPP et il en créera une simple pour vous, ou créez-en une "
+"avec votre séquence des noms (la carte 4 peut créer la séquence)."
+
+msgid ""
+"Your FPP has no “%s” playlist. Make one with your names sequence in it (card"
+" 4 can make the sequence)."
+msgstr ""
+"Votre FPP n’a pas de liste de lecture « %s ». Créez-en une avec votre "
+"séquence des noms (la carte 4 peut créer la séquence)."
+
+msgid "Shows here after the FPP’s next setup check."
+msgstr ""
+"S’affiche ici après la prochaine vérification de configuration du FPP."
+
+msgid "Names wait for your show"
+msgstr "Les noms attendent votre spectacle"
+
+msgid "Names go up only while %s plays."
+msgstr "Les noms ne s’affichent que pendant %s."
+
+msgid "Names wait for your show?"
+msgstr "Les noms attendent votre spectacle ?"
+
+msgid ""
+"Your FPP runs more than one playlist. “%s” looks like your show: names can "
+"wait for it, so they don’t go up during the others."
+msgstr ""
+"Votre FPP joue plus d’une liste de lecture. « %s » semble être votre "
+"spectacle : les noms peuvent l’attendre, pour ne pas s’afficher pendant les "
+"autres."
+
+msgid "Names go up during any playlist"
+msgstr "Les noms s’affichent pendant n’importe quelle liste"
+
+msgid ""
+"Running something like a static display too? Pick your show playlist under "
+"“Only during these playlists” in card 1."
+msgstr ""
+"Vous avez aussi un décor statique, par exemple ? Choisissez la liste de "
+"votre spectacle sous « Uniquement pendant ces listes » dans la carte 1."
+
+msgid "Test name sent"
+msgstr "Nom de test envoyé"
+
+msgid ""
+"It goes up on your screens within a minute (when the FPP next checks in)."
+msgstr ""
+"Il s’affiche sur vos écrans en moins d’une minute (au prochain contact du "
+"FPP)."
+
+msgid "Test name worked"
+msgstr "Le nom de test a fonctionné"
+
+msgid "It went up on %1$d of %2$d screen(s). Did you see it?"
+msgstr "Il s’est affiché sur %1$d écran(s) sur %2$d. L’avez-vous vu ?"
+
+msgid "Test name didn’t show"
+msgstr "Le nom de test ne s’est pas affiché"
+
+msgid "No screen took it. Check the screen step above, then try again."
+msgstr ""
+"Aucun écran ne l’a reçu. Vérifiez l’étape de l’écran ci-dessus, puis "
+"réessayez."
+
+msgid "Try a test name"
+msgstr "Essayez un nom de test"
+
+msgid "Once your FPP is connected."
+msgstr "Une fois votre FPP connecté."
+
+msgid "Puts a name on your screens right now, to see how it looks."
+msgstr "Affiche un nom sur vos écrans tout de suite, pour voir le rendu."
+
+msgid ""
+"Update the Marquee plugin on your FPP for the test button here, or send your"
+" name from your website while the show plays."
+msgstr ""
+"Mettez à jour le plugin Marquee sur votre FPP pour avoir le bouton de test "
+"ici, ou envoyez votre nom depuis votre site pendant le spectacle."
+
+msgid "Setting up Your Name in Lights"
+msgstr "Configuration de Votre nom en lumières"
+
+msgid "Your Name in Lights is ready"
+msgstr "Votre nom en lumières est prêt"
+
+msgid "Checking… (the FPP answers within a minute)"
+msgstr "Vérification… (le FPP répond en moins d’une minute)"
+
+msgid "Setup check from %s ago"
+msgstr "Vérification de configuration d’il y a %s"
+
+msgid "Check again"
+msgstr "Vérifier à nouveau"
+
+msgid "Only during %s"
+msgstr "Uniquement pendant %s"
+
+msgid "Test name"
+msgstr "Nom de test"
+
+msgid "Shows it on your screens right now"
+msgstr "L’affiche sur vos écrans tout de suite"
+
+msgid "Send a test name"
+msgstr "Envoyer un nom de test"
+
+msgid ""
+"Adds it to the line like a kid’s name, with the voice; it goes up at the "
+"next names break"
+msgstr ""
+"L’ajoute à la file comme le prénom d’un enfant, avec la voix ; il s’affiche "
+"à la prochaine pause des noms"
+
+msgid "Put it in line"
+msgstr "Le mettre dans la file"
+
+msgid "Show me"
+msgstr "Montrez-moi"
+
+msgid ""
+"Don’t want to sequence the names break yourself? Marquee makes it from your "
+"xLights layout: your screens stay dark for the names, the rest of your house"
+" plays gentle effects, and every prop flashes as each name goes up. It can "
+"also make themed versions for kids to pick from (Candy Cane Swirl, "
+"Snowfall…). You open them in xLights, render, and upload, like any sequence."
+msgstr ""
+"Vous ne voulez pas séquencer vous-même la pause des noms ? Marquee la crée à"
+" partir de votre disposition xLights : vos écrans restent sombres pour les "
+"noms, le reste de la maison joue des effets doux, et chaque élément clignote"
+" quand un nom s’affiche. Il peut aussi créer des versions à thème que les "
+"enfants peuvent choisir (Candy Cane Swirl, Snowfall…). Vous les ouvrez dans "
+"xLights, faites le rendu et les envoyez, comme n’importe quelle séquence."
+
+msgid "Your xLights layout"
+msgstr "Votre disposition xLights"
+
+msgid ""
+"The file xlights_rgbeffects.xml in your xLights show folder. It stays on "
+"your computer: Marquee reads it right here in your browser."
+msgstr ""
+"Le fichier xlights_rgbeffects.xml dans le dossier de votre spectacle "
+"xLights. Il reste sur votre ordinateur : Marquee le lit ici même, dans votre"
+" navigateur."
+
+msgid "Choose or drop your xlights_rgbeffects.xml"
+msgstr "Choisissez ou déposez votre xlights_rgbeffects.xml"
+
+msgid ""
+"Not chosen yet. On Windows it’s usually in Documents → xLights (your show "
+"folder)."
+msgstr ""
+"Pas encore choisi. Sous Windows, il est généralement dans Documents → "
+"xLights (le dossier de votre spectacle)."
+
+msgid "Your names break sequence (if you have one)"
+msgstr "Votre séquence de pause des noms (si vous en avez une)"
+
+msgid ""
+"Optional. Give it your own names break (.xsq) and the themed versions are "
+"made from it: same music, same timing, same singing faces, just new colors "
+"and effects. Leave it empty and Marquee makes everything from scratch."
+msgstr ""
+"Facultatif. Fournissez votre propre pause des noms (.xsq) et les versions à "
+"thème sont créées à partir d’elle : même musique, même minutage, mêmes "
+"visages chantants, avec juste de nouvelles couleurs et de nouveaux effets. "
+"Laissez vide et Marquee crée tout de zéro."
+
+msgid "Choose or drop your names break .xsq (optional)"
+msgstr "Choisissez ou déposez votre .xsq de pause des noms (facultatif)"
+
+msgid "Not chosen: everything is made from scratch."
+msgstr "Non choisi : tout est créé de zéro."
+
+msgid "What to make"
+msgstr "Quoi créer"
+
+msgid "My names break (“%s”)"
+msgstr "Ma pause des noms (« %s »)"
+
+msgid "Or describe your own: purple and gold Mardi Gras…"
+msgstr "Ou décrivez le vôtre : Mardi Gras violet et or…"
+
+msgid "Add it"
+msgstr "L’ajouter"
+
+msgid "Add as many ideas as you like, one at a time. "
+msgstr "Ajoutez autant d’idées que vous voulez, une à la fois. "
+
+msgid ""
+"How the AI helps: Marquee reads your layout (step 1) here in your browser "
+"and tells the AI only your prop names and what kind each is (trees, arches, "
+"rooflines…). The AI picks the colors and an effect for each kind; Marquee "
+"then writes the sequence from your layout. Your layout file itself never "
+"leaves your computer."
+msgstr ""
+"Comment l’IA aide : Marquee lit votre disposition (étape 1) ici, dans votre "
+"navigateur, et ne communique à l’IA que les noms de vos éléments et leur "
+"type (arbres, arches, contours de toit…). L’IA choisit les couleurs et un "
+"effet pour chaque type ; Marquee écrit ensuite la séquence à partir de votre"
+" disposition. Votre fichier de disposition ne quitte jamais votre "
+"ordinateur."
+
+msgid ""
+"Describing your own theme uses the AI under “Need help?” (add a ChatGPT or "
+"Claude key there). The ready-made themes don’t need it."
+msgstr ""
+"Décrire votre propre thème utilise l’IA de « Besoin d’aide ? » (ajoutez-y "
+"une clé ChatGPT ou Claude). Les thèmes prêts à l’emploi n’en ont pas besoin."
+
+msgid "You don’t need to set up any timing."
+msgstr "Vous n’avez aucun minutage à régler."
+
+msgid ""
+"Marquee makes sure each kid’s name shows up at the right moment: right after"
+" the announcer’s intro, then a new name every few seconds, so the names "
+"always line up with the music. It works this out for you, and “Use it” fills"
+" in the numbers. There’s nothing to measure in xLights."
+msgstr ""
+"Marquee veille à ce que le prénom de chaque enfant apparaisse au bon moment "
+": juste après l’intro de l’annonceur, puis un nouveau nom toutes les "
+"quelques secondes, pour que les noms restent toujours calés sur la musique. "
+"Il calcule tout pour vous, et « L’utiliser » remplit les chiffres. Rien à "
+"mesurer dans xLights."
+
+msgid "Make my sequences"
+msgstr "Créer mes séquences"
+
+msgid "Then: render them in xLights (FPP can only play rendered sequences)"
+msgstr ""
+"Ensuite : faites-en le rendu dans xLights (FPP ne peut jouer que des "
+"séquences rendues)"
+
+msgid ""
+"Save the .xsq files into your xLights show folder (the folder with "
+"xlights_rgbeffects.xml in it)."
+msgstr ""
+"Enregistrez les fichiers .xsq dans le dossier de votre spectacle xLights "
+"(celui qui contient xlights_rgbeffects.xml)."
+
+msgid ""
+"Open one in xLights. If it asks for the music, pick %s (download it below "
+"and put it in your show folder)."
+msgstr ""
+"Ouvrez-en une dans xLights. Si on vous demande la musique, choisissez %s "
+"(téléchargez-la ci-dessous et placez-la dans le dossier de votre spectacle)."
+
+msgid ""
+"Click Render All, play it in the house preview, change anything you like, "
+"then Save. Saving writes the .fseq file next to it: that’s what FPP plays."
+msgstr ""
+"Cliquez sur Render All, lisez-la dans l’aperçu de la maison, modifiez ce que"
+" vous voulez, puis Enregistrez. L’enregistrement crée le fichier .fseq à "
+"côté : c’est ce que joue FPP."
+
+msgid ""
+"Send them to your FPP, either way: in xLights, Tools → FPP Connect, tick "
+"your FPP and the new sequences, and click Upload (it sends the .fseq and the"
+" music together); or in FPP → Content Setup → File Manager, upload the .fseq"
+" (Sequences tab) and the music (Audio tab)."
+msgstr ""
+"Envoyez-les sur votre FPP, au choix : dans xLights, Tools → FPP Connect, "
+"cochez votre FPP et les nouvelles séquences, puis cliquez sur Upload (il "
+"envoie le .fseq et la musique ensemble) ; ou dans FPP → Content Setup → File"
+" Manager, envoyez le .fseq (onglet Sequences) et la musique (onglet Audio)."
+
+msgid ""
+"In FPP → Content Setup → Playlists, make a playlist for each one with just "
+"that sequence and its music: “%s” for your names break, “Names - Candy Cane "
+"Swirl” and so on for the themes. Don’t add them to your show schedule; "
+"Marquee plays them between songs."
+msgstr ""
+"Dans FPP → Content Setup → Playlists, créez une liste de lecture pour "
+"chacune avec seulement cette séquence et sa musique : « %s » pour votre "
+"pause des noms, « Names - Candy Cane Swirl » et ainsi de suite pour les "
+"thèmes. Ne les ajoutez pas à la planification de votre spectacle ; Marquee "
+"les joue entre les chansons."
+
+msgid ""
+"Themes: click “Use it” next to each one below so kids can pick it, then Save"
+" settings. The setup check in card 1 tells you if FPP can’t find a playlist."
+msgstr ""
+"Thèmes : cliquez sur « L’utiliser » à côté de chacun ci-dessous pour que les"
+" enfants puissent le choisir, puis Enregistrer les réglages. La vérification"
+" de configuration de la carte 1 vous indique si FPP ne trouve pas une liste "
+"de lecture."
+
+msgid "Download the music (%s)"
+msgstr "Télécharger la musique (%s)"
+
+msgid ""
+"Your names break audio from card 4: the announcer, the soft music and the "
+"outro."
+msgstr ""
+"L’audio de votre pause des noms de la carte 4 : l’annonceur, la musique "
+"douce et la conclusion."
+
+msgid ""
+"Soft music for the break. Build your names break audio in card 3 to get one "
+"with your announcer in it."
+msgstr ""
+"Musique douce pour la pause. Créez l’audio de votre pause des noms dans la "
+"carte 3 pour en obtenir un avec votre annonceur."
+
+msgid "Show helper"
+msgstr "Assistant du spectacle"
+
+msgid "Show Manager"
+msgstr "Gestionnaire du spectacle"
+
+msgid "Show Manager ↗"
+msgstr "Gestionnaire du spectacle ↗"
+
+msgid "Show Manager · %s"
+msgstr "Gestionnaire du spectacle · %s"
+
+msgid "Sign out"
+msgstr "Se déconnecter"
+
+msgid "This account can’t manage the show"
+msgstr "Ce compte ne peut pas gérer le spectacle"
+
+msgid ""
+"You’re signed in as %s. Ask the show owner to make your account a Show "
+"helper, or sign out and use the owner’s account."
+msgstr ""
+"Vous êtes connecté en tant que %s. Demandez au propriétaire du spectacle de "
+"faire de votre compte un Assistant du spectacle, ou déconnectez-vous et "
+"utilisez le compte du propriétaire."
+
+msgid "Sign in to run your show"
+msgstr "Connectez-vous pour gérer votre spectacle"
+
+msgid ""
+"Use your website account. On your own phone, leave “Keep me signed in” on "
+"and you won’t be asked again."
+msgstr ""
+"Utilisez votre compte du site. Sur votre propre téléphone, laissez « Rester "
+"connecté » activé et on ne vous le redemandera pas."
+
+msgid "Type your username and password."
+msgstr "Saisissez votre identifiant et votre mot de passe."
+
+msgid "That username or password isn’t right. Try again."
+msgstr "Cet identifiant ou ce mot de passe est incorrect. Réessayez."
+
+msgid "Username or email"
+msgstr "Identifiant ou e-mail"
+
+msgid "Password"
+msgstr "Mot de passe"
+
+msgid "Keep me signed in"
+msgstr "Rester connecté"
+
+msgid "Sign in"
+msgstr "Se connecter"
+
+msgid "Forgot your password?"
+msgstr "Mot de passe oublié ?"
+
+msgid "Right now"
+msgstr "En ce moment"
+
+msgid "Tonight’s show"
+msgstr "Le spectacle de ce soir"
+
+msgid "Now playing"
+msgstr "En ce moment"
+
+msgid "Names in Lights"
+msgstr "Votre nom en lumières"
+
+msgid "On the website"
+msgstr "Sur le site"
+
+msgid "Weather or trouble?"
+msgstr "Mauvais temps ou problème ?"
+
+msgid "Shows the “No show tonight” banner on your website until 6 AM."
+msgstr ""
+"Affiche la bannière « Pas de spectacle ce soir » sur votre site jusqu’à 6 h."
+
+msgid "Cancel tonight’s show"
+msgstr "Annuler le spectacle de ce soir"
+
+msgid "Cancel tonight’s show?"
+msgstr "Annuler le spectacle de ce soir ?"
+
+msgid "Yes, cancel it"
+msgstr "Oui, l’annuler"
+
+msgid "Keep it on"
+msgstr "Le maintenir"
+
+msgid "Tonight’s show is canceled"
+msgstr "Le spectacle de ce soir est annulé"
+
+msgid "Your website shows the “No show tonight” banner until 6 AM."
+msgstr ""
+"Votre site affiche la bannière « Pas de spectacle ce soir » jusqu’à 6 h."
+
+msgid "Undo: the show is on"
+msgstr "Annuler : le spectacle a lieu"
+
+msgid "Traffic & parking"
+msgstr "Circulation et stationnement"
+
+msgid ""
+"One tap puts a message at the top of your website. It turns itself off when "
+"the time is up."
+msgstr ""
+"Un appui affiche un message en haut de votre site. Il se désactive tout seul"
+" une fois le temps écoulé."
+
+msgid "Or type your own message"
+msgstr "Ou écrivez votre propre message"
+
+msgid "Post"
+msgstr "Publier"
+
+msgid "For"
+msgstr "Pendant"
+
+msgid "30 min"
+msgstr "30 min"
+
+msgid "1 hour"
+msgstr "1 heure"
+
+msgid "2 hours"
+msgstr "2 heures"
+
+msgid "rest of the night"
+msgstr "le reste de la soirée"
+
+msgid "Also send a phone alert"
+msgstr "Envoyer aussi une alerte sur téléphone"
+
+msgid "Also on my screens every 3 minutes"
+msgstr "Aussi sur mes écrans toutes les 3 minutes"
+
+msgid "Your Name in Lights"
+msgstr "Votre nom en lumières"
+
+msgid "Kids can send names to your screens"
+msgstr "Les enfants peuvent envoyer des noms sur vos écrans"
+
+msgid "Light show contest"
+msgstr "Concours de spectacles de lumières"
+
+msgid "Entries, Show Wall and hearts"
+msgstr "Participations, Mur des spectacles et cœurs"
+
+msgid "Favorite song voting"
+msgstr "Vote pour la chanson préférée"
+
+msgid "On the Songs & Videos page"
+msgstr "Sur la page Chansons et vidéos"
+
+msgid "Kids’ Corner"
+msgstr "Coin des enfants"
+
+msgid "The whole kids’ page"
+msgstr "Toute la page des enfants"
+
+msgid "Falling snow"
+msgstr "Chute de neige"
+
+msgid "On every page"
+msgstr "Sur toutes les pages"
+
+msgid "Off"
+msgstr "Désactivé"
+
+msgid "Light"
+msgstr "Légère"
+
+msgid "Medium"
+msgstr "Moyen"
+
+msgid "Heavy"
+msgstr "Forte"
+
+msgid "Tonight so far"
+msgstr "Ce soir jusqu’ici"
+
+msgid "Pause the name queue"
+msgstr "Mettre la file des noms en pause"
+
+msgid "Names still come in, but wait until you turn this off"
+msgstr ""
+"Les noms continuent d’arriver, mais attendent que vous désactiviez ceci"
+
+msgid "Accept names any time"
+msgstr "Accepter les noms à toute heure"
+
+msgid "For testing outside show hours"
+msgstr "Pour tester en dehors des horaires du spectacle"
+
+msgid "Only at the show"
+msgstr "Uniquement au spectacle"
+
+msgid "Names only from phones near your show"
+msgstr "Noms uniquement depuis des téléphones près de votre spectacle"
+
+msgid "Waiting for the next break"
+msgstr "En attente de la prochaine pause"
+
+msgid ""
+"“Block” removes the name and adds it to your block list, so it can’t be sent"
+" again."
+msgstr ""
+"« Bloquer » retire le nom et l’ajoute à votre liste de blocage, pour qu’il "
+"ne puisse plus être envoyé."
+
+msgid "Just shown"
+msgstr "Tout juste affiché"
+
+msgid "Guestbook messages"
+msgstr "Messages du livre d’or"
+
+msgid "Send an alert"
+msgstr "Envoyer une alerte"
+
+msgid "Santa is visiting Saturday from 6 to 8 PM!"
+msgstr "Le père Noël nous rend visite samedi de 18 h à 20 h !"
+
+msgid "Phones show about two lines."
+msgstr "Les téléphones affichent environ deux lignes."
+
+msgid "Send alert"
+msgstr "Envoyer l’alerte"
+
+msgid "Yes, send it"
+msgstr "Oui, l’envoyer"
+
+msgid "Not yet"
+msgstr "Pas encore"
+
+msgid ""
+"Alerts need your website on https with a recent PHP. Ask your web host if "
+"alerts don’t work."
+msgstr ""
+"Les alertes nécessitent votre site en https avec un PHP récent. Demandez à "
+"votre hébergeur si les alertes ne fonctionnent pas."
+
+msgid "“The lights are on!” alert"
+msgstr "Alerte « Les lumières sont allumées ! »"
+
+msgid "Sent once a night when the show starts"
+msgstr "Envoyée une fois par soir au début du spectacle"
+
+msgid "“Your name is up next” buzz"
+msgstr "Notification « Votre nom est le prochain »"
+
+msgid "Kids can ask for a buzz when they send a name"
+msgstr ""
+"Les enfants peuvent demander une notification quand ils envoient un nom"
+
+msgid "Recent alerts"
+msgstr "Alertes récentes"
+
+msgid "Setup, artwork and connections:"
+msgstr "Configuration, visuels et connexions :"
+
+msgid "Marquee settings in WP Admin"
+msgstr "Réglages Marquee dans WP Admin"
+
+msgid "Tonight"
+msgstr "Ce soir"
+
+msgid "Names"
+msgstr "Noms"
+
+msgid "Approve"
+msgstr "Approuver"
+
+msgid "Alerts"
+msgstr "Alertes"
+
+msgid "Show owner"
+msgstr "Propriétaire du spectacle"
+
+msgid "Add your Remote Falcon access token and secret key."
+msgstr "Ajoutez votre jeton d’accès et votre clé secrète Remote Falcon."
+
+msgid "Could not reach Remote Falcon. Try again in a minute."
+msgstr "Impossible de joindre Remote Falcon. Réessayez dans une minute."
+
+msgid ""
+"Remote Falcon did not accept the token and secret key. Copy both again from "
+"Remote Falcon → Account → API Access."
+msgstr ""
+"Remote Falcon n’a pas accepté le jeton et la clé secrète. Copiez-les à "
+"nouveau depuis Remote Falcon → Account → API Access."
+
+msgid "Remote Falcon answered with an error (%d)."
+msgstr "Remote Falcon a répondu par une erreur (%d)."
+
+msgid "Set up “Say each name out loud” first (API key and voice), and Save."
+msgstr ""
+"Configurez d’abord « Prononcer chaque nom à voix haute » (clé API et voix), "
+"puis Enregistrez."
+
+msgid ""
+"Your web host refused the upload (it may only allow very small uploads)."
+msgstr ""
+"Votre hébergeur a refusé l’envoi (il n’autorise peut-être que de très petits"
+" fichiers)."
+
+msgid "That isn’t a WAV file."
+msgstr "Ce n’est pas un fichier WAV."
+
+msgid "Couldn’t make the uploads/marquee-voice/break folder."
+msgstr "Impossible de créer le dossier uploads/marquee-voice/break."
+
+msgid "Couldn’t save the break audio."
+msgstr "Impossible d’enregistrer l’audio de la pause."
+
+msgid "Names break audio"
+msgstr "Audio de la pause des noms"
+
+msgid "optional"
+msgstr "facultatif"
+
+msgid ""
+"When kids have sent names, your show plays a short <b>names break</b> "
+"between songs: your “%s” playlist. This builds the sound for that break, so "
+"you don’t need any audio software. Your lights and screens stay exactly as "
+"you sequenced them."
+msgstr ""
+"Quand des enfants envoient des noms, votre spectacle joue une courte "
+"<b>pause des noms</b> entre les chansons : votre liste de lecture « %s ». "
+"Ceci crée le son de cette pause, vous n’avez donc besoin d’aucun logiciel "
+"audio. Vos lumières et écrans restent exactement comme vous les avez "
+"séquencés."
+
+msgid "What the names break sounds like"
+msgstr "Le son de la pause des noms"
+
+msgid "Intro"
+msgstr "Intro"
+
+msgid "about 4 seconds"
+msgstr "environ 4 secondes"
+
+msgid "Soft music + the names"
+msgstr "Musique douce + les noms"
+
+msgid "up to 6 names, each read out as it goes up on your screens"
+msgstr "jusqu’à 6 noms, chacun lu quand il s’affiche sur vos écrans"
+
+msgid "Outro"
+msgstr "Conclusion"
+
+msgid ""
+"Only 1 or 2 names waiting? A shorter break plays instead and says each name "
+"twice, so nobody sits through 30 seconds of music for one name. Everything "
+"is set to the same loudness as your songs, so nobody has to touch the radio "
+"volume."
+msgstr ""
+"Seulement 1 ou 2 noms en attente ? Une pause plus courte est jouée et dit "
+"chaque nom deux fois, pour que personne n’écoute 30 secondes de musique pour"
+" un seul nom. Tout est réglé au même volume que vos chansons, personne n’a "
+"donc à toucher au volume de la radio."
+
+msgid "Use my own names break audio"
+msgstr "Utiliser mon propre audio pour la pause des noms"
+
+msgid ""
+"Your names break playlists already play audio you made. Marquee leaves it "
+"alone and puts the names up at “When the first name appears” and “Time "
+"between names” in card 1, so set those to the gaps in your audio. Turn this "
+"off to use the audio built here."
+msgstr ""
+"Vos listes de lecture de la pause des noms jouent déjà un audio que vous "
+"avez créé. Marquee n’y touche pas et affiche les noms selon « Moment "
+"d’apparition du premier nom » et « Temps entre les noms » dans la carte 1 : "
+"réglez-les sur les blancs de votre audio. Désactivez ceci pour utiliser "
+"l’audio créé ici."
+
+msgid "Before you start"
+msgstr "Avant de commencer"
+
+msgid "A voice is set up (step 2, “Say each name out loud”)."
+msgstr ""
+"Une voix est configurée (étape 2, « Prononcer chaque nom à voix haute »)."
+
+msgid ""
+"Set up step 2, <b>Say each name out loud</b>, first (ElevenLabs key and a "
+"voice), and Save. The intro and outro are made with that voice."
+msgstr ""
+"Configurez d’abord l’étape 2, <b>Prononcer chaque nom à voix haute</b> (clé "
+"ElevenLabs et une voix), puis Enregistrez. L’intro et la conclusion sont "
+"créées avec cette voix."
+
+msgid ""
+"Your FPP needs the names script 3.3 or newer. It hasn’t reported its version"
+" yet."
+msgstr ""
+"Votre FPP a besoin du script des noms 3.3 ou plus récent. Il n’a pas encore "
+"indiqué sa version."
+
+msgid "Your FPP runs a names script that can set up the break by itself."
+msgstr ""
+"Votre FPP utilise un script des noms qui peut configurer la pause tout seul."
+
+msgid ""
+"Your FPP runs names script %s. Download <b>marquee_names.py</b> in step 1 "
+"and upload it to your FPP (it must be 3.3 or newer)."
+msgstr ""
+"Votre FPP utilise le script des noms %s. Téléchargez <b>marquee_names.py</b>"
+" à l’étape 1 et envoyez-le sur votre FPP (il doit être en 3.3 ou plus "
+"récent)."
+
+msgid ""
+"Your FPP has a playlist named <b>%s</b> with your names sequence in it (the "
+"one you already use for names)."
+msgstr ""
+"Votre FPP a une liste de lecture nommée <b>%s</b> contenant votre séquence "
+"des noms (celle que vous utilisez déjà pour les noms)."
+
+msgid "What the voice says"
+msgstr "Ce que dit la voix"
+
+msgid "Intro (before the names)"
+msgstr "Intro (avant les noms)"
+
+msgid "One short sentence. Leave it empty to use the example."
+msgstr "Une phrase courte. Laissez vide pour utiliser l’exemple."
+
+msgid "Ideas:"
+msgstr "Idées :"
+
+msgid "Outro (after the names)"
+msgstr "Conclusion (après les noms)"
+
+msgid ""
+"Tell people how to send a name. Write your website the way it’s said out "
+"loud, like “lights on main street dot com”, or the voice may spell it out."
+msgstr ""
+"Expliquez aux gens comment envoyer un nom. Écrivez votre site comme il se "
+"prononce, par exemple « lumières rue principale point com », sinon la voix "
+"risque de l’épeler."
+
+msgid "How long is your names sequence?"
+msgstr "Quelle est la durée de votre séquence des noms ?"
+
+msgid "Length in seconds"
+msgstr "Durée en secondes"
+
+msgid "seconds"
+msgstr "secondes"
+
+msgid ""
+"The full break is made exactly this long, so it fits the sequence you "
+"already have. You can see the length in xLights (the end time of the "
+"sequence) or in FPP when the playlist plays. About 30 seconds works well."
+msgstr ""
+"La pause complète est créée exactement de cette durée, pour correspondre à "
+"la séquence que vous avez déjà. Vous pouvez voir la durée dans xLights "
+"(l’heure de fin de la séquence) ou dans FPP quand la liste de lecture joue. "
+"Environ 30 secondes, c’est bien."
+
+msgid "Music under the names"
+msgstr "Musique sous les noms"
+
+msgid "Your own music"
+msgstr "Votre propre musique"
+
+msgid ""
+"Use music only: no singing and no talking, or it will talk over the names. A"
+" soft, calm tune at least 30 seconds long works best. Leave it empty to use "
+"the soft music box that comes with Marquee."
+msgstr ""
+"Utilisez uniquement de la musique : sans chant ni paroles, sinon elle "
+"couvrira les noms. Un air doux et calme d’au moins 30 secondes convient le "
+"mieux. Laissez vide pour utiliser la boîte à musique douce fournie avec "
+"Marquee."
+
+msgid "Build it and listen"
+msgstr "Créer et écouter"
+
+msgid "Build it again"
+msgstr "Recréer"
+
+msgid "Build the names break"
+msgstr "Créer la pause des noms"
+
+msgid ""
+"✓ Last built %1$s ago. Names start %2$s seconds in, one every %3$s seconds. "
+"Listen:"
+msgstr ""
+"✓ Créée il y a %1$s. Les noms commencent à %2$s secondes, un toutes les %3$s"
+" secondes. Écoutez :"
+
+msgid "full break"
+msgstr "pause complète"
+
+msgid "2 names"
+msgstr "2 noms"
+
+msgid "1 name"
+msgstr "1 nom"
+
+msgid ""
+"📋 <b>You’ll see three playlists on your FPP: “%1$s”, “%1$s 2” and “%1$s 1”. "
+"Keep all three.</b> They aren’t copies by mistake: they play the same light "
+"sequence with the full, 2-name and 1-name sound, and your FPP picks the "
+"right one for how many names are waiting. If you delete one, Marquee makes "
+"it again the next time you build."
+msgstr ""
+"📋 <b>Vous verrez trois listes de lecture sur votre FPP : « %1$s », « %1$s 2 "
+"» et « %1$s 1 ». Gardez les trois.</b> Ce ne sont pas des copies par erreur "
+": elles jouent la même séquence de lumières avec le son complet, à 2 noms et"
+" à 1 nom, et votre FPP choisit la bonne selon le nombre de noms en attente. "
+"Si vous en supprimez une, Marquee la recrée à la prochaine création."
+
+msgid ""
+"You’ll get three versions to listen to right here. They start the same on "
+"purpose: the names aren’t in the files, because your FPP says each name live"
+" over the soft music as it goes up. The versions only differ in length: the "
+"full break (3 to 6 names waiting), a shorter one for 2 names and the "
+"shortest for 1 name (each said twice), so nobody waits through 30 seconds of"
+" music for one name. Your FPP picks the right one by itself. Happy with it? "
+"You’re done: within a minute your FPP downloads it and sets up the playlists"
+" by itself. Not happy? Change a line or the music and build again. Each "
+"build uses about 100 ElevenLabs credits."
+msgstr ""
+"Vous aurez trois versions à écouter ici même. Elles commencent pareil exprès"
+" : les noms ne sont pas dans les fichiers, car votre FPP prononce chaque nom"
+" en direct sur la musique douce quand il s’affiche. Les versions ne "
+"diffèrent que par la durée : la pause complète (3 à 6 noms en attente), une "
+"plus courte pour 2 noms et la plus courte pour 1 nom (chacun dit deux fois),"
+" pour que personne n’attende 30 secondes de musique pour un seul nom. Votre "
+"FPP choisit la bonne tout seul. Satisfait ? C’est terminé : en une minute, "
+"votre FPP la télécharge et configure les listes de lecture tout seul. Pas "
+"satisfait ? Modifiez une ligne ou la musique et recréez-la. Chaque création "
+"utilise environ 100 crédits ElevenLabs."
+
+msgid "Questions"
+msgstr "Questions"
+
+msgid "Why do the full, 2-name and 1-name versions sound the same?"
+msgstr ""
+"Pourquoi les versions complète, à 2 noms et à 1 nom sonnent-elles pareil ?"
+
+msgid ""
+"Because the names aren’t in them: your FPP plays each kid’s name live, in "
+"its own sound slot, over the soft music. The three versions are the same "
+"intro, music and outro, just with a shorter soft part for fewer names, so "
+"the outro comes sooner. Listen to the end of each and you’ll hear the "
+"difference."
+msgstr ""
+"Parce que les noms n’y sont pas : votre FPP joue le prénom de chaque enfant "
+"en direct, dans son propre créneau sonore, sur la musique douce. Les trois "
+"versions ont la même intro, la même musique et la même conclusion, avec "
+"juste une partie douce plus courte pour moins de noms, donc la conclusion "
+"arrive plus tôt. Écoutez la fin de chacune et vous entendrez la différence."
+
+msgid "Do I have to change my xLights sequence?"
+msgstr "Dois-je modifier ma séquence xLights ?"
+
+msgid ""
+"No. Only the sound changes. Marquee times the names to fit your sequence’s "
+"length."
+msgstr ""
+"Non. Seul le son change. Marquee cale les noms sur la durée de votre "
+"séquence."
+
+msgid "I already made my own break audio. Do I need this?"
+msgstr "J’ai déjà créé mon propre audio de pause. Ai-je besoin de ceci ?"
+
+msgid ""
+"No. Nothing changes on your FPP until you click Build. Just make sure your "
+"audio has a quiet part for the names, and set “When the first name appears” "
+"and “Time between names” in Connect your FPP to match it."
+msgstr ""
+"Non. Rien ne change sur votre FPP tant que vous ne cliquez pas sur Créer. "
+"Assurez-vous simplement que votre audio a une partie calme pour les noms, et"
+" réglez « Moment d’apparition du premier nom » et « Temps entre les noms » "
+"dans Connectez votre FPP pour qu’ils correspondent."
+
+msgid "What exactly changes on my FPP?"
+msgstr "Qu’est-ce qui change exactement sur mon FPP ?"
+
+msgid ""
+"Three sound files are added (marquee-break-full.wav, -2 and -1). Your “%1$s”"
+" playlist is set to play the full one with your names sequence, and two "
+"playlists are added for the short breaks: “%1$s 2” and “%1$s 1”. Keep all "
+"three playlists. A copy of your original playlist is kept on the FPP."
+msgstr ""
+"Trois fichiers son sont ajoutés (marquee-break-full.wav, -2 et -1). Votre "
+"liste de lecture « %1$s » est réglée pour jouer le complet avec votre "
+"séquence des noms, et deux listes sont ajoutées pour les pauses courtes : « "
+"%1$s 2 » et « %1$s 1 ». Gardez les trois listes. Une copie de votre liste "
+"d’origine est conservée sur le FPP."
+
+msgid "Can I use Santa?"
+msgstr "Puis-je utiliser le père Noël ?"
+
+msgid ""
+"Yes. Pick a Santa voice above and tick “My voice is Santa”. The example "
+"lines change to Santa ones."
+msgstr ""
+"Oui. Choisissez une voix de père Noël ci-dessus et cochez « Ma voix est le "
+"père Noël ». Les phrases d’exemple deviennent celles du père Noël."
+
+msgid "The names start too early or too late."
+msgstr "Les noms commencent trop tôt ou trop tard."
+
+msgid ""
+"Make the intro shorter or longer and build again. The timing is set from how"
+" long the intro and outro take to say."
+msgstr ""
+"Raccourcissez ou allongez l’intro et recréez. Le minutage dépend du temps "
+"nécessaire pour dire l’intro et la conclusion."
+
+msgid "6 names waiting: the full break"
+msgstr "6 noms en attente : la pause complète"
+
+msgid "2 names waiting: a shorter break, each name said twice"
+msgstr "2 noms en attente : une pause plus courte, chaque nom dit deux fois"
+
+msgid "1 name waiting: the shortest break, the name said twice"
+msgstr "1 nom en attente : la pause la plus courte, le nom dit deux fois"
+
+msgid "See how the break sounds"
+msgstr "Écoutez le son de la pause"
+
+msgid "Full"
+msgstr "Complète"
+
+msgid "Play the one you built"
+msgstr "Écouter celle que vous avez créée"
+
+msgid "Your screens"
+msgstr "Vos écrans"
+
+msgid ""
+"The music plays soft while names are said, and louder under the intro and "
+"outro. Everything is at the loudness of your songs."
+msgstr ""
+"La musique est douce pendant que les noms sont dits, et plus forte sous "
+"l’intro et la conclusion. Tout est au volume de vos chansons."
+
+msgid "Classic: warm multicolor twinkle"
+msgstr "Classique : scintillement multicolore chaleureux"
+
+msgid "Candy cane: red and white stripes"
+msgstr "Sucre d’orge : rayures rouges et blanches"
+
+msgid "Snowfall: white and icy blue, falling snow"
+msgstr "Chute de neige : blanc et bleu glacier, neige qui tombe"
+
+msgid "Rainbow: every color, moving"
+msgstr "Arc-en-ciel : toutes les couleurs, en mouvement"
+
+msgid "Christmas: red and green chase"
+msgstr "Noël : chenillard rouge et vert"
+
+msgid "Northern lights: green and purple waves"
+msgstr "Aurores boréales : vagues vertes et violettes"
+
+msgid "Gold: warm gold sparkle"
+msgstr "Or : scintillement doré chaleureux"
+
+msgid "Gingerbread: warm orange and cream"
+msgstr "Pain d’épices : orange chaud et crème"
+
+msgid "Frozen: blue and white shimmer"
+msgstr "Givré : miroitement bleu et blanc"
+
+msgid "Purple and pink party"
+msgstr "Fête violette et rose"
+
+msgid "Theme"
+msgstr "Thème"
+
+msgid "Classic"
+msgstr "Classique"
+
+msgid "Don’t have themed sequences yet?"
+msgstr "Pas encore de séquences à thème ?"
+
+msgid ""
+"Marquee can make them from your xLights layout: pick Candy Cane Swirl, "
+"Snowfall… or describe your own and the AI designs it."
+msgstr ""
+"Marquee peut les créer à partir de votre disposition xLights : choisissez "
+"Candy Cane Swirl, Snowfall… ou décrivez la vôtre et l’IA la conçoit."
+
+msgid "Make them for me"
+msgstr "Créez-les pour moi"
+
+msgid ""
+"Give kids a choice: when they send their name, they also pick the show it "
+"goes up in. Between songs, your FPP plays the sequence they picked, with "
+"their name on your screens (and said out loud, if that’s on)."
+msgstr ""
+"Laissez le choix aux enfants : quand ils envoient leur nom, ils choisissent "
+"aussi le spectacle dans lequel il s’affiche. Entre les chansons, votre FPP "
+"joue la séquence choisie, avec leur nom sur vos écrans (et prononcé à voix "
+"haute, si c’est activé)."
+
+msgid "1. You make them"
+msgstr "1. Vous les créez"
+
+msgid ""
+"A few short sequences in xLights (about 30 seconds), like your names break: "
+"screens dark where the names go. Each one in its own FPP playlist."
+msgstr ""
+"Quelques courtes séquences dans xLights (environ 30 secondes), comme votre "
+"pause des noms : écrans éteints là où vont les noms. Chacune dans sa propre "
+"liste de lecture FPP."
+
+msgid "2. Kids pick one"
+msgstr "2. Les enfants en choisissent une"
+
+msgid ""
+"On your website they type their name and tap a picture: Candy Cane Swirl, "
+"Snowfall, Rainbow Party…"
+msgstr ""
+"Sur votre site web, ils tapent leur nom et touchent une image : Candy Cane "
+"Swirl, Snowfall, Rainbow Party…"
+
+msgid "3. It plays"
+msgstr "3. Elle est jouée"
+
+msgid ""
+"After the current song, the theme the longest-waiting kid picked plays. Kids"
+" who picked the same one go up together; nobody waits more than one extra "
+"break."
+msgstr ""
+"Après la chanson en cours, le thème choisi par l’enfant qui attend depuis le"
+" plus longtemps est joué. Les enfants qui ont choisi le même passent "
+"ensemble ; personne n’attend plus d’une pause supplémentaire."
+
+msgid "Let kids pick a themed sequence"
+msgstr "Laisser les enfants choisir une séquence à thème"
+
+msgid "Your regular “%s” break stays as the “Classic” choice."
+msgstr "Votre pause habituelle « %s » reste le choix « Classique »."
+
+msgid ""
+"Each card on the right is what kids see when they pick. Without a picture "
+"it’s a little animated house in that theme’s colors; add a picture (a photo "
+"of your house during that sequence works great) to use it instead."
+msgstr ""
+"Chaque carte à droite correspond à ce que voient les enfants quand ils "
+"choisissent. Sans image, c’est une petite maison animée aux couleurs du "
+"thème ; ajoutez une image (une photo de votre maison pendant cette séquence,"
+" c’est parfait) pour l’utiliser à la place."
+
+msgid "Your regular names break (“%s”). Always there for kids to pick."
+msgstr ""
+"Votre pause des noms habituelle (« %s »). Toujours proposée aux enfants."
+
+msgid "Picture"
+msgstr "Image"
+
+msgid "Name kids see"
+msgstr "Nom vu par les enfants"
+
+msgid "FPP playlist"
+msgstr "Liste de lecture FPP"
+
+msgid "First name appears at"
+msgstr "Le premier nom apparaît à"
+
+msgid "Time between names"
+msgstr "Délai entre les noms"
+
+msgid ""
+"Made with the Sequence maker? These two numbers were filled in for you: "
+"leave them as they are."
+msgstr ""
+"Créée avec le créateur de séquences ? Ces deux nombres ont été remplis pour "
+"vous : laissez-les tels quels."
+
+msgid "Preview kids see (when there’s no picture)"
+msgstr "Aperçu vu par les enfants (sans image)"
+
+msgid "Pick for me from the name"
+msgstr "Choisir pour moi d’après le nom"
+
+msgid "+ Add another theme"
+msgstr "+ Ajouter un autre thème"
+
+msgid "How do I make a themed sequence?"
+msgstr "Comment créer une séquence à thème ?"
+
+msgid ""
+"Copy your names break sequence in xLights and change the effects on your "
+"house to fit the theme (red and white swirls for Candy Cane, white twinkles "
+"for Snowfall…). Keep your screens dark where the names go: FPP draws the "
+"names on top. Give it soft music with no singing so the spoken names can be "
+"heard. Upload it to FPP and put it in its own playlist, named like the "
+"examples."
+msgstr ""
+"Copiez votre séquence de pause des noms dans xLights et changez les effets "
+"sur votre maison pour coller au thème (tourbillons rouges et blancs pour "
+"Candy Cane, scintillements blancs pour Snowfall…). Gardez vos écrans éteints"
+" là où vont les noms : le FPP dessine les noms par-dessus. Mettez une "
+"musique douce sans chant pour qu’on entende les noms prononcés. Envoyez-la "
+"sur le FPP et placez-la dans sa propre liste de lecture, nommée comme les "
+"exemples."
+
+msgid "What are “First name appears at” and “Time between names”?"
+msgstr ""
+"Que signifient « Le premier nom apparaît à » et « Temps entre les noms » ?"
+
+msgid ""
+"While the themed sequence plays, the first name shows up this many seconds "
+"in, then a new one every “time between names” seconds, up to 6. The little "
+"timeline under each theme shows exactly where they land. If the theme was "
+"made by the Sequence maker from your names break, use the same numbers as "
+"your names break (“Use it” fills them in)."
+msgstr ""
+"Pendant la séquence à thème, le premier nom apparaît au bout de ce nombre de"
+" secondes, puis un nouveau toutes les « temps entre les noms » secondes, "
+"jusqu’à 6. La petite frise sous chaque thème montre exactement où ils "
+"tombent. Si le thème a été créé par le créateur de séquences à partir de "
+"votre pause des noms, utilisez les mêmes nombres que votre pause des noms («"
+" Utiliser » les remplit)."
+
+msgid "What if a playlist is missing on my FPP?"
+msgstr "Et si une liste de lecture manque sur mon FPP ?"
+
+msgid ""
+"Names for that theme go up in your Classic break instead, and the setup "
+"check on this page tells you which playlist it couldn’t find."
+msgstr ""
+"Les noms de ce thème passent alors dans votre pause Classique, et la "
+"vérification de configuration de cette page vous indique quelle liste de "
+"lecture est introuvable."
+
+msgid "Do I need pictures?"
+msgstr "Ai-je besoin d’images ?"
+
+msgid ""
+"No. Without one, kids see a little animated picture of a lit-up house in "
+"that theme’s colors (pick the look under each theme). A photo or short clip "
+"of your own house during that sequence is even better."
+msgstr ""
+"Non. Sans image, les enfants voient une petite image animée d’une maison "
+"illuminée aux couleurs du thème (choisissez le style sous chaque thème). Une"
+" photo ou un court clip de votre propre maison pendant cette séquence, c’est"
+" encore mieux."
+
+msgid ""
+"Couldn’t check GitHub for Marquee updates (%1$s ago): %2$s. It tries again "
+"every 15 minutes, or click “Check again”."
+msgstr ""
+"Impossible de consulter GitHub pour les mises à jour de Marquee (il y a "
+"%1$s) : %2$s. Nouvel essai toutes les 15 minutes, ou cliquez sur « Vérifier "
+"à nouveau »."
+
+msgid "Update check %1$s ago: %2$s"
+msgstr "Vérification des mises à jour il y a %1$s : %2$s"
+
+msgid "OK, latest is %s"
+msgstr "OK, la plus récente est %s"
+
+msgid "failed"
+msgstr "échec"
+
+msgid "Check for updates now"
+msgstr "Rechercher des mises à jour"
+
+msgid "You can’t check for updates."
+msgstr "Vous ne pouvez pas rechercher de mises à jour."
+
+msgid ""
+"Marquee %1$s is available (you have %2$s). Click “update now” under Marquee "
+"below, or go to Dashboard → Updates."
+msgstr ""
+"Marquee %1$s est disponible (vous avez la %2$s). Cliquez sur « mettre à jour"
+" maintenant » sous Marquee ci-dessous, ou allez dans Tableau de bord → Mises"
+" à jour."
+
+msgid "You have the latest Marquee (%s)."
+msgstr "Vous avez la dernière version de Marquee (%s)."
+
+msgid ""
+"Marquee couldn’t reach GitHub just now. Try again in a few minutes, or "
+"download the newest zip from the Releases page and upload it (Plugins → Add "
+"New → Upload Plugin)."
+msgstr ""
+"Marquee n’a pas pu joindre GitHub pour le moment. Réessayez dans quelques "
+"minutes, ou téléchargez le dernier zip depuis la page Releases et "
+"téléversez-le (Extensions → Ajouter → Téléverser une extension)."
+
+msgid "and"
+msgstr "et"
+
+msgid "l, F j"
+msgstr "l j F"
+
+msgid "Couldn’t reach Facebook: "
+msgstr "Impossible de joindre Facebook : "
+
+msgid "Unexpected answer from Facebook."
+msgstr "Réponse inattendue de Facebook."
+
+msgid ""
+"Facebook no longer accepts the saved connection (the password was changed or"
+" the app was removed). Connect your Page again under Social posts."
+msgstr ""
+"Facebook n’accepte plus la connexion enregistrée (le mot de passe a été "
+"changé ou l’appli supprimée). Reconnectez votre page dans Publications "
+"sociales."
+
+msgid "Couldn’t reach Threads: "
+msgstr "Impossible de joindre Threads : "
+
+msgid ""
+"Threads no longer accepts the saved connection. Connect Threads again under "
+"Social posts."
+msgstr ""
+"Threads n’accepte plus la connexion enregistrée. Reconnectez Threads dans "
+"Publications sociales."
+
+msgid "Unexpected answer from Threads."
+msgstr "Réponse inattendue de Threads."
+
+msgid "Already posted for tonight, so it wasn’t posted again."
+msgstr "Déjà publié ce soir, donc pas publié une deuxième fois."
+
+msgid "Posted on your Facebook Page."
+msgstr "Publié sur votre page Facebook."
+
+msgid "Instagram posts need a picture: pick one under Social posts."
+msgstr ""
+"Les publications Instagram nécessitent une image : choisissez-en une dans "
+"Publications sociales."
+
+msgid "Posted on Instagram."
+msgstr "Publié sur Instagram."
+
+msgid "Posted on Threads."
+msgstr "Publié sur Threads."
+
+msgid "Marquee can also post this on Facebook, Instagram and Threads for you."
+msgstr ""
+"Marquee peut aussi publier ceci sur Facebook, Instagram et Threads pour "
+"vous."
+
+msgid "M j, g:i A"
+msgstr "j M, G\\hi"
+
+msgid "Also post “Show canceled tonight” on %s"
+msgstr "Publier aussi « Spectacle annulé ce soir » sur %s"
+
+msgid "Fill in all three: App ID, App secret and the token."
+msgstr "Remplissez les trois : App ID, App secret et le jeton."
+
+msgid ""
+"Facebook didn’t accept that: %s. Check the App ID and secret, and make a new"
+" token in the Graph API Explorer (they only last about an hour)."
+msgstr ""
+"Facebook n’a pas accepté cela : %s. Vérifiez l’App ID et le secret, et créez"
+" un nouveau jeton dans le Graph API Explorer (ils ne durent qu’environ une "
+"heure)."
+
+msgid ""
+"Facebook didn’t list any Pages. In the Graph API Explorer, make sure you "
+"picked your Page when it asked, and added pages_show_list and "
+"pages_manage_posts."
+msgstr ""
+"Facebook n’a listé aucune page. Dans le Graph API Explorer, vérifiez que "
+"vous avez choisi votre page quand il l’a demandé, et ajouté pages_show_list "
+"et pages_manage_posts."
+
+msgid "Connected to %s."
+msgstr "Connecté à %s."
+
+msgid "Instagram: @%s."
+msgstr "Instagram : @%s."
+
+msgid "That Page isn’t in the list anymore. Connect again."
+msgstr "Cette page n’est plus dans la liste. Reconnectez-vous."
+
+msgid "Paste the Threads token first."
+msgstr "Collez d’abord le jeton Threads."
+
+msgid ""
+"Threads didn’t accept that token%s. Make a new one with the User Token "
+"Generator (step 2) and paste it right away."
+msgstr ""
+"Threads n’a pas accepté ce jeton%s. Créez-en un nouveau avec le User Token "
+"Generator (étape 2) et collez-le tout de suite."
+
+msgid "Connected to Threads: @%s."
+msgstr "Connecté à Threads : @%s."
+
+msgid "Facebook: %s."
+msgstr "Facebook : %s."
+
+msgid "No Instagram account is linked to this Page."
+msgstr "Aucun compte Instagram n’est lié à cette Page."
+
+msgid "Threads: @%s."
+msgstr "Threads : @%s."
+
+msgid "Not connected yet."
+msgstr "Pas encore connecté."
+
+msgid "Disconnected."
+msgstr "Déconnecté."
+
+msgid "You cancel tonight"
+msgstr "Vous annulez ce soir"
+
+msgid "Show Control or your phone"
+msgstr "Contrôle du spectacle ou votre téléphone"
+
+msgid "Website says"
+msgstr "Le site web affiche"
+
+msgid "“No show tonight”"
+msgstr "« Pas de spectacle ce soir »"
+
+msgid "Phones get an alert"
+msgstr "Les téléphones reçoivent une alerte"
+
+msgid "if you tick it"
+msgstr "si vous cochez la case"
+
+msgid "Facebook, Instagram, Threads"
+msgstr "Facebook, Instagram, Threads"
+
+msgid "your post goes up"
+msgstr "votre publication est mise en ligne"
+
+msgid "Connect your Facebook Page"
+msgstr "Connectez votre Page Facebook"
+
+msgid "And the Instagram account linked to it, if you have one"
+msgstr "Et le compte Instagram qui y est lié, si vous en avez un"
+
+msgid "Not connected"
+msgstr "Non connecté"
+
+msgid ""
+"No Instagram account is linked to this Page (in Instagram: Settings → "
+"Account type → Business or Creator, then link it to your Facebook Page, and "
+"connect again)."
+msgstr ""
+"Aucun compte Instagram n’est lié à cette Page (dans Instagram : Paramètres →"
+" Type de compte → Professionnel ou Créateur, puis liez-le à votre Page "
+"Facebook et reconnectez-vous)."
+
+msgid "Check the connection"
+msgstr "Vérifier la connexion"
+
+msgid "Disconnect (when you Save)"
+msgstr "Déconnecter (à l’enregistrement)"
+
+msgid "Connect a different Page"
+msgstr "Connecter une autre Page"
+
+msgid "Make a free Meta app (one time, about 5 minutes)"
+msgstr "Créez une app Meta gratuite (une seule fois, environ 5 minutes)"
+
+msgid ""
+"Go to developers.facebook.com, log in with the Facebook account that runs "
+"your Page, and choose My Apps → Create app. Name it after your show (only "
+"you see it). If it asks what it’s for, pick managing your Page / “Other” → "
+"Business. No app review is needed: it only posts on your own Page."
+msgstr ""
+"Allez sur developers.facebook.com, connectez-vous avec le compte Facebook "
+"qui gère votre Page, puis choisissez My Apps → Create app. Donnez-lui le nom"
+" de votre spectacle (vous seul le voyez). Si on vous demande à quoi elle "
+"sert, choisissez la gestion de votre Page / « Other » → Business. Aucun "
+"examen de l’app n’est nécessaire : elle publie uniquement sur votre propre "
+"Page."
+
+msgid "Open Meta for Developers"
+msgstr "Ouvrir Meta for Developers"
+
+msgid "Copy the App ID and App secret"
+msgstr "Copiez l’App ID et l’App secret"
+
+msgid "In your app: App settings → Basic. Click Show next to App secret."
+msgstr ""
+"Dans votre app : App settings → Basic. Cliquez sur Show à côté de App "
+"secret."
+
+msgid "App ID"
+msgstr "App ID"
+
+msgid "App secret"
+msgstr "App secret"
+
+msgid "Get a token from the Graph API Explorer"
+msgstr "Obtenez un jeton dans le Graph API Explorer"
+
+msgid ""
+"Tools → Graph API Explorer. Pick your app at the top right, then add these "
+"permissions: pages_show_list, pages_read_engagement, pages_manage_posts (for"
+" Instagram also: instagram_basic, instagram_content_publish, "
+"business_management). Click Generate Access Token, choose your Page (and "
+"Instagram account) when it asks, and copy the token."
+msgstr ""
+"Tools → Graph API Explorer. Choisissez votre app en haut à droite, puis "
+"ajoutez ces autorisations : pages_show_list, pages_read_engagement, "
+"pages_manage_posts (pour Instagram aussi : instagram_basic, "
+"instagram_content_publish, business_management). Cliquez sur Generate Access"
+" Token, choisissez votre Page (et votre compte Instagram) quand on vous le "
+"demande, puis copiez le jeton."
+
+msgid "Open the Graph API Explorer"
+msgstr "Ouvrir le Graph API Explorer"
+
+msgid "Paste the token (starts with EAA…)"
+msgstr "Collez le jeton (il commence par EAA…)"
+
+msgid "Connect and pick your Page"
+msgstr "Connectez-vous et choisissez votre Page"
+
+msgid ""
+"Marquee swaps that token for a Page connection that doesn’t expire. Your App"
+" secret is only used for that and isn’t saved."
+msgstr ""
+"Marquee échange ce jeton contre une connexion à la Page qui n’expire pas. "
+"Votre App secret ne sert qu’à cela et n’est pas enregistré."
+
+msgid "Connect"
+msgstr "Connecter"
+
+msgid "Connect Threads"
+msgstr "Connecter Threads"
+
+msgid "Optional. Uses the same Meta app as Facebook"
+msgstr "Facultatif. Utilise la même app Meta que Facebook"
+
+msgid "Connect again"
+msgstr "Reconnecter"
+
+msgid ""
+"Connected to Threads: @%s. Marquee renews the connection every week by "
+"itself (Threads connections last 60 days)."
+msgstr ""
+"Connecté à Threads : @%s. Marquee renouvelle la connexion chaque semaine "
+"tout seul (les connexions Threads durent 60 jours)."
+
+msgid "Disconnect Threads (when you Save)"
+msgstr "Déconnecter Threads (à l’enregistrement)"
+
+msgid "Add Threads to your Meta app"
+msgstr "Ajoutez Threads à votre app Meta"
+
+msgid ""
+"In the same app as Facebook (developers.facebook.com → My Apps → your app): "
+"Use cases → Add use case → “Access the Threads API”. Under its Permissions, "
+"turn on threads_basic and threads_content_publish."
+msgstr ""
+"Dans la même app que Facebook (developers.facebook.com → My Apps → votre "
+"app) : Use cases → Add use case → « Access the Threads API ». Dans ses "
+"Permissions, activez threads_basic et threads_content_publish."
+
+msgid "Let the app post as you"
+msgstr "Autorisez l’app à publier en votre nom"
+
+msgid ""
+"In the Threads use case settings, add your Threads username as a Threads "
+"tester. Then in the Threads app: Settings → Account → Website permissions → "
+"Invites, and accept. Back in the settings, the User Token Generator now "
+"shows your account: click Generate and copy the token. The Threads app "
+"secret is on the same page."
+msgstr ""
+"Dans les réglages du cas d’usage Threads, ajoutez votre nom d’utilisateur "
+"Threads comme Threads tester. Puis, dans l’app Threads : Paramètres → Compte"
+" → Autorisations des sites web → Invitations, et acceptez. De retour dans "
+"les réglages, le User Token Generator affiche maintenant votre compte : "
+"cliquez sur Generate et copiez le jeton. L’App secret Threads se trouve sur "
+"la même page."
+
+msgid "Threads token"
+msgstr "Jeton Threads"
+
+msgid "Threads app secret (optional)"
+msgstr "App secret Threads (facultatif)"
+
+msgid ""
+"With the secret, a short token is swapped for a 60-day one; Marquee keeps "
+"renewing it. The secret isn’t saved."
+msgstr ""
+"Avec le secret, un jeton court est échangé contre un jeton de 60 jours ; "
+"Marquee continue de le renouveler. Le secret n’est pas enregistré."
+
+msgid "When you cancel the show"
+msgstr "Quand vous annulez le spectacle"
+
+msgid "Posted once a night, the moment you cancel"
+msgstr "Publié une fois par soir, dès que vous annulez"
+
+msgid "When the show is back on"
+msgstr "Quand le spectacle reprend"
+
+msgid "Optional: if you undo the cancel the same night"
+msgstr "Facultatif : si vous annulez l’annulation le soir même"
+
+msgid "On"
+msgstr "Activé"
+
+msgid "Post automatically when I cancel"
+msgstr "Publier automatiquement quand j’annule"
+
+msgid "The cancel button also shows a box to skip it for one night."
+msgstr "Le bouton d’annulation affiche aussi une case pour l’ignorer un soir."
+
+msgid "Also post on Instagram"
+msgstr "Publier aussi sur Instagram"
+
+msgid "Instagram needs a picture with every post."
+msgstr "Instagram exige une image pour chaque publication."
+
+msgid "Also post on Threads"
+msgstr "Publier aussi sur Threads"
+
+msgid ""
+"Up to 500 characters (a longer post is shortened), with your picture if "
+"there is one."
+msgstr ""
+"Jusqu’à 500 caractères (une publication plus longue est raccourcie), avec "
+"votre image s’il y en a une."
+
+msgid "Post “We’re back on” when I undo a cancel"
+msgstr "Publier « C’est reparti » quand j’annule une annulation"
+
+msgid ""
+"Only if tonight’s cancel was posted, so followers aren’t left confused."
+msgstr ""
+"Seulement si l’annulation de ce soir a été publiée, pour ne pas semer la "
+"confusion chez vos abonnés."
+
+msgid "The post"
+msgstr "La publication"
+
+msgid ""
+"These fill in for you: {show} {city} {site} {radio} {tagline} {date}. A line"
+" whose fill-in is empty (no city set, say) is left out."
+msgstr ""
+"Ces champs se remplissent tout seuls : {show} {city} {site} {radio} "
+"{tagline} {date}. Une ligne dont le champ est vide (pas de ville, par "
+"exemple) est omise."
+
+msgid "How it will look"
+msgstr "Aperçu"
+
+msgid "Just now"
+msgstr "À l’instant"
+
+msgid ""
+"Your “Show canceled tonight” graphic. Square or 4:5 pictures look best on "
+"both. Without one, Facebook gets a text post with a link to your website."
+msgstr ""
+"Votre visuel « Spectacle annulé ce soir ». Les images carrées ou en 4:5 "
+"rendent mieux sur les deux. Sans image, Facebook reçoit une publication "
+"texte avec un lien vers votre site web."
+
+msgid "Post it now…"
+msgstr "Publier maintenant…"
+
+msgid "This posts it publicly right now (Save first if you changed it)."
+msgstr ""
+"Cela le publie immédiatement pour tout le monde (enregistrez d’abord si vous"
+" l’avez modifié)."
+
+msgid "Yes, post it"
+msgstr "Oui, publier"
+
+msgid "Not now"
+msgstr "Pas maintenant"
+
+msgid "Posting history"
+msgstr "Historique des publications"
+
+msgid "Nothing posted yet."
+msgstr "Rien n’a encore été publié."
+
+msgid "M j, g:i a"
+msgstr "j M, G\\hi"
+
+msgid "Canceled post"
+msgstr "Publication d’annulation"
+
+msgid "Back on post"
+msgstr "Publication de reprise"
+
+msgid "Connection"
+msgstr "Connexion"
+
+msgid "All"
+msgstr "Tout"
+
+msgid "View"
+msgstr "Voir"
+
+msgid "Connect Remote Falcon, step by step"
+msgstr "Connecter Remote Falcon, étape par étape"
+
+msgid "Log in at remotefalcon.com and click Account Settings."
+msgstr "Connectez-vous sur remotefalcon.com et cliquez sur Account Settings."
+
+msgid "Open the Account tab."
+msgstr "Ouvrez l’onglet Account."
+
+msgid ""
+"Click Request API Access (only the first time). Once it’s approved, the API "
+"Access Token shows up here."
+msgstr ""
+"Cliquez sur Request API Access (la première fois seulement). Une fois "
+"l’accès approuvé, l’API Access Token s’affiche ici."
+
+msgid ""
+"Copy the API Access Token (the copy icon). Then click Refresh Secret and "
+"copy the secret key it shows you."
+msgstr ""
+"Copiez l’API Access Token (l’icône de copie). Puis cliquez sur Refresh "
+"Secret et copiez la clé secrète affichée."
+
+msgid ""
+"Paste both here, in Marquee → Remote Falcon, click Test connection, then "
+"Save settings."
+msgstr ""
+"Collez les deux ici, dans Marquee → Remote Falcon, cliquez sur Tester la "
+"connexion, puis sur Enregistrer les réglages."
+
+msgid ""
+"On your FPP: Content Setup → Plugin Manager. Install the Remote Falcon "
+"plugin."
+msgstr ""
+"Sur votre FPP : Content Setup → Plugin Manager. Installez le plugin Remote "
+"Falcon."
+
+msgid ""
+"Open the plugin, paste your Show Token (Remote Falcon → Account Settings → "
+"Account → Show Token) and pick the playlist with your show."
+msgstr ""
+"Ouvrez le plugin, collez votre Show Token (Remote Falcon → Account Settings "
+"→ Account → Show Token) et choisissez la liste de lecture de votre "
+"spectacle."
+
+msgid ""
+"Back on the Remote Falcon dashboard, FPP Plugin says Connected. Now Playing "
+"and voting work on your site."
+msgstr ""
+"De retour sur le tableau de bord Remote Falcon, FPP Plugin indique "
+"Connected. En ce moment et le vote fonctionnent sur votre site."
+
+msgid "Connect your FPP, step by step"
+msgstr "Connecter votre FPP, étape par étape"
+
+msgid ""
+"Find your screen’s name: FPP → Input/Output Setup → Pixel Overlay Models (a "
+"matrix like GARAGE_DOOR, or the HDMI model for a projector or TV)."
+msgstr ""
+"Trouvez le nom de votre écran : FPP → Input/Output Setup → Pixel Overlay "
+"Models (une matrice comme GARAGE_DOOR, ou le modèle HDMI pour un projecteur "
+"ou une télé)."
+
+msgid ""
+"Type each screen here with its FPP’s address and that model name, then Save "
+"settings."
+msgstr ""
+"Saisissez ici chaque écran avec l’adresse de son FPP et ce nom de modèle, "
+"puis Enregistrer les réglages."
+
+msgid ""
+"Running a static or background playlist too? Tick your show playlist under "
+"Only during these playlists, so names wait for it. Leave it empty to put "
+"names up during any playlist."
+msgstr ""
+"Vous faites aussi tourner une liste de lecture statique ou de fond ? Cochez "
+"la liste de votre spectacle sous Uniquement pendant ces listes, pour que les"
+" noms l’attendent. Laissez vide pour afficher les noms pendant n’importe "
+"quelle liste."
+
+msgid "Under Put it on your FPP, copy the plugin address."
+msgstr "Sous Installez-le sur votre FPP, copiez l’adresse du plugin."
+
+msgid ""
+"On your FPP: Status/Control → Settings → UI → User Interface Level: "
+"Developer. Then Content Setup → Plugin Manager, paste the address in Find a "
+"Plugin and click Install. Marquee shows under Installed."
+msgstr ""
+"Sur votre FPP : Status/Control → Settings → UI → User Interface Level: "
+"Developer. Puis Content Setup → Plugin Manager, collez l’adresse dans Find a"
+" Plugin et cliquez sur Install. Marquee apparaît sous Installed."
+
+msgid ""
+"Back here, copy your connection code. It holds your private key, so keep it "
+"private."
+msgstr ""
+"De retour ici, copiez votre code de connexion. Il contient votre clé privée,"
+" gardez-le donc confidentiel."
+
+msgid ""
+"On your FPP: Content Setup → Marquee. Paste the code and click Connect."
+msgstr ""
+"Sur votre FPP : Content Setup → Marquee. Collez le code et cliquez sur "
+"Connect."
+
+msgid ""
+"It says RUNNING and Connected to your website. Within a minute this card "
+"shows the setup check with green ticks. No files to upload and nothing to "
+"start by hand."
+msgstr ""
+"Il affiche RUNNING et Connected to your website. En moins d’une minute, "
+"cette carte montre la vérification de configuration avec des coches vertes. "
+"Aucun fichier à envoyer et rien à lancer à la main."
+
+msgid ""
+"Start your show as a playlist: your own show playlist, whatever you named it"
+" (this one is called 2026 Playlist). Names go up only while it plays on this"
+" FPP, the one running the script; a single sequence or Play Media won’t "
+"bring the names break. More than one FPP? Put the script on the one that "
+"plays the show."
+msgstr ""
+"Lancez votre spectacle en liste de lecture : votre propre liste du "
+"spectacle, quel que soit son nom (celle-ci s’appelle 2026 Playlist). Les "
+"noms ne s’affichent que pendant sa lecture sur ce FPP, celui qui exécute le "
+"script ; une séquence seule ou Play Media ne déclenche pas la pause des "
+"noms. Plusieurs FPP ? Installez le script sur celui qui joue le spectacle."
+
+msgid "Get your ElevenLabs key, step by step"
+msgstr "Obtenir votre clé ElevenLabs, étape par étape"
+
+msgid "At elevenlabs.io: Developers → API Keys → Create Key."
+msgstr "Sur elevenlabs.io : Developers → API Keys → Create Key."
+
+msgid ""
+"Turn on Restrict Key, set Text to Speech to Access and Voices to Read, then "
+"Create Key. Copy the key right away: it starts with sk_ and is only shown "
+"once."
+msgstr ""
+"Activez Restrict Key, réglez Text to Speech sur Access et Voices sur Read, "
+"puis Create Key. Copiez la clé tout de suite : elle commence par sk_ et ne "
+"s’affiche qu’une fois."
+
+msgid ""
+"Paste it here, click Load my voices, pick a voice and click Test voice. Turn"
+" on Speak the names and Save settings."
+msgstr ""
+"Collez-la ici, cliquez sur Charger mes voix, choisissez une voix et cliquez "
+"sur Tester la voix. Activez Prononcer les noms et enregistrez les réglages."
+
+msgid "%d step"
+msgid_plural "%d steps"
+msgstr[0] "%d étape"
+msgstr[1] "%d étapes"
+
+msgid "Previous step"
+msgstr "Étape précédente"
+
+msgid "Step %d"
+msgstr "Étape %d"
+
+msgid "Next step"
+msgstr "Étape suivante"
+
+msgid "Pause"
+msgstr "Pause"
+
+msgid "Type your show’s address first."
+msgstr "Saisissez d’abord l’adresse de votre spectacle."
+
+msgid ""
+"Couldn’t find that place. Try “Town, State ZIP”, or paste a Google Maps link"
+" to your house."
+msgstr ""
+"Lieu introuvable. Essayez « Ville, État Code postal », ou collez un lien "
+"Google Maps vers votre maison."
+
+msgid ""
+"Your request was sent to Marquee Support with a support report (your "
+"settings without any keys or passwords, and your FPP’s setup check). Marquee"
+" Support can sign in to this site for 24 hours to help; you’ll see "
+"everything they change right here."
+msgstr ""
+"Votre demande a été envoyée à Marquee Support avec un rapport d’assistance "
+"(vos réglages sans aucune clé ni mot de passe, et la vérification de "
+"configuration de votre FPP). Marquee Support peut se connecter à ce site "
+"pendant 24 heures pour vous aider ; vous verrez ici tout ce qu’ils "
+"modifient."
+
+msgid ""
+"Your request was sent to Marquee Support with a support report (your "
+"settings without any keys or passwords, and your FPP’s setup check). They’ll"
+" answer here."
+msgstr ""
+"Votre demande a été envoyée à Marquee Support avec un rapport d’assistance "
+"(vos réglages sans aucune clé ni mot de passe, et la vérification de "
+"configuration de votre FPP). Ils vous répondront ici."
+
+msgid "You ended the support session."
+msgstr "Vous avez mis fin à la session d’assistance."
+
+msgid "Marquee Support finished and ended the session."
+msgstr "Marquee Support a terminé et fermé la session."
+
+msgid "The support session ended (24 hours passed)."
+msgstr "La session d’assistance est terminée (24 heures écoulées)."
+
+msgid "Marquee Support is signed out and can’t sign in again."
+msgstr "Marquee Support est déconnecté et ne peut plus se reconnecter."
+
+msgid "What Marquee Support changed:"
+msgstr "Ce que Marquee Support a modifié :"
+
+msgid "No settings were changed."
+msgstr "Aucun réglage n’a été modifié."
+
+msgid "Too many tries. Please wait a few minutes."
+msgstr "Trop de tentatives. Veuillez patienter quelques minutes."
+
+msgid ""
+"This support link has ended. The site owner can start a new request from "
+"Marquee → Get help."
+msgstr ""
+"Ce lien d’assistance a expiré. Le propriétaire du site peut faire une "
+"nouvelle demande depuis Marquee → Obtenir de l’aide."
+
+msgid "Support link ended"
+msgstr "Lien d’assistance expiré"
+
+msgid "Marquee Support can’t do that on this site."
+msgstr "Marquee Support ne peut pas faire cela sur ce site."
+
+msgid "Marquee Support can’t use this."
+msgstr "Marquee Support ne peut pas utiliser ceci."
+
+msgid "Use the support link."
+msgstr "Utilisez le lien d’assistance."
+
+msgid "Show name"
+msgstr "Nom du spectacle"
+
+msgid "Short name"
+msgstr "Nom court"
+
+msgid "Radio station"
+msgstr "Station de radio"
+
+msgid "City"
+msgstr "Ville"
+
+msgid "State"
+msgstr "État / province"
+
+msgid "ZIP code"
+msgstr "Code postal"
+
+msgid "Country"
+msgstr "Pays"
+
+msgid "Map location"
+msgstr "Emplacement sur la carte"
+
+msgid "Time zone"
+msgstr "Fuseau horaire"
+
+msgid "Address"
+msgstr "Adresse"
+
+msgid "Opening night"
+msgstr "Soirée d’ouverture"
+
+msgid "Last night"
+msgstr "Dernière soirée"
+
+msgid "Sun–Thu start time"
+msgstr "Heure de début dim–jeu"
+
+msgid "Sun–Thu end time"
+msgstr "Heure de fin dim–jeu"
+
+msgid "Fri–Sat start time"
+msgstr "Heure de début ven–sam"
+
+msgid "Fri–Sat end time"
+msgstr "Heure de fin ven–sam"
+
+msgid "Start at sunset"
+msgstr "Commencer au coucher du soleil"
+
+msgid "How names go up"
+msgstr "Affichage des noms"
+
+msgid "FPP playlist with your names break"
+msgstr "Liste de lecture FPP avec votre pause des noms"
+
+msgid "When the first name appears"
+msgstr "Quand le premier nom apparaît"
+
+msgid "Seconds each name stays up"
+msgstr "Secondes d’affichage de chaque nom"
+
+msgid "Speak the names"
+msgstr "Prononcer les noms"
+
+msgid "Voice"
+msgstr "Voix"
+
+msgid "Voice quality"
+msgstr "Qualité de la voix"
+
+msgid "Speaking speed"
+msgstr "Vitesse de parole"
+
+msgid "My voice is Santa"
+msgstr "Ma voix est celle du père Noël"
+
+msgid "Talking faces effect"
+msgstr "Effet visages parlants"
+
+msgid "Names break intro"
+msgstr "Intro de la pause des noms"
+
+msgid "Names break outro"
+msgstr "Conclusion de la pause des noms"
+
+msgid "Names sequence length"
+msgstr "Durée de la séquence des noms"
+
+msgid "Themes kids can pick"
+msgstr "Thèmes que les enfants peuvent choisir"
+
+msgid "Classic card picture"
+msgstr "Image de la carte classique"
+
+msgid "Messages kids can pick"
+msgstr "Messages que les enfants peuvent choisir"
+
+msgid "Blocked names and words"
+msgstr "Noms et mots bloqués"
+
+msgid "Distance for names"
+msgstr "Distance pour les noms"
+
+msgid "Guestbook"
+msgstr "Livre d’or"
+
+msgid "Make a Light Show"
+msgstr "Créez un spectacle de lumières"
+
+msgid "Song voting"
+msgstr "Vote des chansons"
+
+msgid "“The lights are on” alert"
+msgstr "Alerte « Les lumières sont allumées »"
+
+msgid "Behind the Lights section"
+msgstr "Section Dans les coulisses"
+
+msgid "Donation link"
+msgstr "Lien pour les dons"
+
+msgid "ElevenLabs key"
+msgstr "Clé ElevenLabs"
+
+msgid "Remote Falcon access token"
+msgstr "Jeton d’accès Remote Falcon"
+
+msgid "Remote Falcon secret key"
+msgstr "Clé secrète Remote Falcon"
+
+msgid "Facebook link"
+msgstr "Lien Facebook"
+
+msgid "Instagram link"
+msgstr "Lien Instagram"
+
+msgid "YouTube link"
+msgstr "Lien YouTube"
+
+msgid "TikTok link"
+msgstr "Lien TikTok"
+
+msgid "Left out of song voting"
+msgstr "Exclues du vote des chansons"
+
+msgid "Light Lab songs"
+msgstr "Chansons du Labo des lumières"
+
+msgid "Coloring pages"
+msgstr "Coloriages"
+
+msgid "During songs"
+msgstr "Pendant les chansons"
+
+msgid "Between songs"
+msgstr "Entre les chansons"
+
+msgid "(empty)"
+msgstr "(vide)"
+
+msgid "Changed %s (hidden)"
+msgstr "A modifié %s (masqué)"
+
+msgid "Updated %s"
+msgstr "A mis à jour %s"
+
+msgid "Changed %1$s from %2$s to %3$s"
+msgstr "A modifié %1$s de %2$s à %3$s"
+
+msgid "Marquee Support: %s"
+msgstr "Marquee Support : %s"
+
+msgid "Took the name “%s” off the list"
+msgstr "A retiré le nom « %s » de la liste"
+
+msgid "Built the names break audio again"
+msgstr "A recréé l’audio de la pause des noms"
+
+msgid "[Marquee support] %1$s: %2$s"
+msgstr "[Marquee support] %1$s : %2$s"
+
+msgid "New support request."
+msgstr "Nouvelle demande d’assistance."
+
+msgid "Sign in to help (works until"
+msgstr "Connectez-vous pour aider (valable jusqu’au"
+
+msgid "The owner didn’t allow sign-in. Answer in the chat:"
+msgstr ""
+"Le propriétaire n’a pas autorisé la connexion. Répondez dans le chat :"
+
+msgid "Support report"
+msgstr "Rapport d’assistance"
+
+msgid "[Marquee support] %s wrote back"
+msgstr "[Marquee support] %s a répondu"
+
+msgid "Open the session:"
+msgstr "Ouvrir la session :"
+
+msgid "Marquee Support answered"
+msgstr "Marquee Support a répondu"
+
+msgid "Read and answer it here:"
+msgstr "Lisez et répondez ici :"
+
+msgid "Your FPP: %s"
+msgstr "Votre FPP : %s"
+
+msgid "Your FPP couldn’t do that: %s"
+msgstr "Votre FPP n’a pas pu le faire : %s"
+
+msgid "The test name %1$s went up on %2$d screen."
+msgid_plural "The test name %1$s went up on %2$d screens."
+msgstr[0] "Le nom de test %1$s s’est affiché sur %2$d écran."
+msgstr[1] "Le nom de test %1$s s’est affiché sur %2$d écrans."
+
+msgid "The FPP tried the test name %s, but no screen took it."
+msgstr "Le FPP a essayé le nom de test %s, mais aucun écran ne l’a pris."
+
+msgid "Not allowed."
+msgstr "Non autorisé."
+
+msgid "g:i A"
+msgstr "G\\hi"
+
+msgid "A support session is already open."
+msgstr "Une session d’assistance est déjà ouverte."
+
+msgid "Please tell Marquee Support what’s wrong."
+msgstr "Veuillez indiquer à Marquee Support ce qui ne va pas."
+
+msgid "The support session has ended."
+msgstr "La session d’assistance est terminée."
+
+msgid "Pictures only (JPG, PNG, GIF or WebP)."
+msgstr "Images uniquement (JPG, PNG, GIF ou WebP)."
+
+msgid "Support picture"
+msgstr "Image d’assistance"
+
+msgid "Type a message first."
+msgstr "Saisissez d’abord un message."
+
+msgid "(sent a picture)"
+msgstr "(a envoyé une image)"
+
+msgid "You gave Marquee Support more time: the session now ends %s."
+msgstr ""
+"Vous avez accordé plus de temps à Marquee Support : la session se termine "
+"maintenant %s."
+
+msgid "Marquee Support ran the setup check on your FPP."
+msgstr ""
+"Marquee Support a lancé la vérification de configuration sur votre FPP."
+
+msgid "Marquee Support set up your names break playlists on the FPP again."
+msgstr ""
+"Marquee Support a reconfiguré vos listes de lecture de la pause des noms sur"
+" le FPP."
+
+msgid "Marquee Support restarted the names script on your FPP."
+msgstr "Marquee Support a redémarré le script des noms sur votre FPP."
+
+msgid "Wait for the FPP to finish the last one first."
+msgstr "Attendez d’abord que le FPP termine le précédent."
+
+msgid "Use one plain word for the test, like TEST."
+msgstr "Utilisez un seul mot simple pour le test, comme TEST."
+
+msgid "Wait for the FPP to show the last test first."
+msgstr "Attendez d’abord que le FPP affiche le test précédent."
+
+msgid "Marquee Support sent a test name to your screens: %s"
+msgstr "Marquee Support a envoyé un nom de test à vos écrans : %s"
+
+msgid "Get help"
+msgstr "Obtenir de l’aide"
+
+msgid "End the support session? Marquee Support is signed out right away."
+msgstr ""
+"Mettre fin à la session d’assistance ? Marquee Support sera déconnecté "
+"immédiatement."
+
+msgid ""
+"Support session for %1$s, until %2$s. Every setting you change is shown to "
+"the owner in the chat."
+msgstr ""
+"Session d’assistance pour %1$s, jusqu’au %2$s. Chaque réglage que vous "
+"modifiez est affiché au propriétaire dans le chat."
+
+msgid "Open the chat"
+msgstr "Ouvrir le chat"
+
+msgid ""
+"Marquee Support is helping you (until %s). Everything they change shows in "
+"the chat."
+msgstr ""
+"Marquee Support vous aide (jusqu’au %s). Tout ce qu’ils modifient s’affiche "
+"dans le chat."
+
+msgid "Your request to Marquee Support is open."
+msgstr "Votre demande à Marquee Support est ouverte."
+
+msgid "End support"
+msgstr "Terminer l’assistance"
+
+msgid "Support session: %s"
+msgstr "Session d’assistance : %s"
+
+msgid "Get help from Marquee Support"
+msgstr "Obtenir de l’aide de Marquee Support"
+
+msgid ""
+"Stuck? Tell Marquee Support what’s going on. They get a support report so "
+"they can see your setup right away, and can sign in to fix it with you."
+msgstr ""
+"Bloqué ? Dites à Marquee Support ce qui se passe. Ils reçoivent un rapport "
+"d’assistance pour voir votre configuration tout de suite, et peuvent se "
+"connecter pour régler le problème avec vous."
+
+msgid "What’s wrong?"
+msgstr "Quel est le problème ?"
+
+msgid ""
+"For example: kids can send names and it says they’re in the queue, but they "
+"never show up on my matrix."
+msgstr ""
+"Par exemple : les enfants peuvent envoyer des noms et le site dit qu’ils "
+"sont dans la file d’attente, mais ils n’apparaissent jamais sur ma matrice."
+
+msgid "Let Marquee Support sign in to fix it"
+msgstr "Autoriser Marquee Support à se connecter pour régler le problème"
+
+msgid ""
+"For 24 hours, or until you end it. They can use Marquee’s pages and your "
+"media library only (no plugins, themes or users), and see your FPP’s status,"
+" playlists and log through the names script. Every change shows up in the "
+"chat."
+msgstr ""
+"Pendant 24 heures, ou jusqu’à ce que vous y mettiez fin. Ils peuvent "
+"utiliser uniquement les pages de Marquee et votre médiathèque (pas les "
+"extensions, thèmes ni utilisateurs), et voir l’état, les listes de lecture "
+"et le journal de votre FPP via le script des noms. Chaque modification "
+"s’affiche dans le chat."
+
+msgid "See the support report that’s sent"
+msgstr "Voir le rapport d’assistance envoyé"
+
+msgid "No keys, tokens or passwords are included."
+msgstr "Aucune clé, aucun jeton ni mot de passe n’est inclus."
+
+msgid "Send to Marquee Support"
+msgstr "Envoyer à Marquee Support"
+
+msgid "Your last support chat is below."
+msgstr "Votre dernier chat d’assistance est ci-dessous."
+
+msgid "Chat"
+msgstr "Chat"
+
+msgid "The owner is here"
+msgstr "Le propriétaire est là"
+
+msgid "Marquee Support is here"
+msgstr "Marquee Support est là"
+
+msgid "Write a message…"
+msgstr "Écrivez un message…"
+
+msgid "Add a picture"
+msgstr "Ajouter une image"
+
+msgid "Send"
+msgstr "Envoyer"
+
+msgid "This support session has ended. The chat is kept here for 30 days."
+msgstr ""
+"Cette session d’assistance est terminée. Le chat est conservé ici pendant 30"
+" jours."
+
+msgid "Support session"
+msgstr "Session d’assistance"
+
+msgid "Open until"
+msgstr "Ouverte jusqu’au"
+
+msgid "Give 24 more hours"
+msgstr "Accorder 24 heures de plus"
+
+msgid "Finish and sign out"
+msgstr "Terminer et se déconnecter"
+
+msgid "Your FPP right now"
+msgstr "Votre FPP en ce moment"
+
+msgid ""
+"Waiting for your FPP to check in (the names script needs to be running)…"
+msgstr ""
+"En attente du signal de votre FPP (le script des noms doit être en marche)…"
+
+msgid "Refresh"
+msgstr "Actualiser"
+
+msgid "Fixes on the FPP"
+msgstr "Correctifs sur le FPP"
+
+msgid "Run the setup check"
+msgstr "Lancer la vérification de configuration"
+
+msgid "Set up names break playlists again"
+msgstr "Reconfigurer les listes de lecture de la pause des noms"
+
+msgid "Restart the names script"
+msgstr "Redémarrer le script des noms"
+
+msgid "Open Marquee Settings"
+msgstr "Ouvrir les réglages de Marquee"
+
+msgid "Their setup"
+msgstr "Leur configuration"
+
+msgid "Best quality"
+msgstr "Meilleure qualité"
+
+msgid "Faster, about half the credits"
+msgstr "Plus rapide, environ moitié moins de crédits"
+
+msgid "Couldn’t reach ElevenLabs: "
+msgstr "Impossible de joindre ElevenLabs : "
+
+msgid ""
+"ElevenLabs didn’t accept the API key. Copy it again from ElevenLabs → "
+"Developers → API Keys."
+msgstr ""
+"ElevenLabs n’a pas accepté la clé API. Copiez-la à nouveau depuis ElevenLabs"
+" → Developers → API Keys."
+
+msgid "Your ElevenLabs account is out of credits for this month."
+msgstr "Votre compte ElevenLabs n’a plus de crédits pour ce mois-ci."
+
+msgid ""
+"This API key isn’t allowed to do that. In ElevenLabs → Developers → API "
+"Keys, give it Text to Speech access (and Voices: Read to list your voices)."
+msgstr ""
+"Cette clé API n’a pas le droit de faire cela. Dans ElevenLabs → Developers →"
+" API Keys, donnez-lui l’accès Text to Speech (et Voices : Read pour lister "
+"vos voix)."
+
+msgid "ElevenLabs can’t find that voice. Click “Load my voices” and pick one."
+msgstr ""
+"ElevenLabs ne trouve pas cette voix. Cliquez sur « Charger mes voix » et "
+"choisissez-en une."
+
+msgid "ElevenLabs answered %1$d. %2$s"
+msgstr "ElevenLabs a répondu %1$d. %2$s"
+
+msgid "Add your ElevenLabs API key and pick a voice first."
+msgstr "Ajoutez d’abord votre clé API ElevenLabs et choisissez une voix."
+
+msgid "ElevenLabs sent back no audio."
+msgstr "ElevenLabs n’a renvoyé aucun audio."
+
+msgid "Couldn’t make the uploads/marquee-voice folder."
+msgstr "Impossible de créer le dossier uploads/marquee-voice."
+
+msgid "Couldn’t save the voice clip in uploads."
+msgstr "Impossible d’enregistrer le clip vocal dans uploads."
+
+msgid "Used this month: %1$s of %2$s credits."
+msgstr "Utilisé ce mois-ci : %1$s crédits sur %2$s."
+
+msgid "It works! Playing it now."
+msgstr "Ça marche ! Lecture en cours."
+
+msgid "Paste your ElevenLabs API key first."
+msgstr "Collez d’abord votre clé API ElevenLabs."
+
+msgid ""
+"When you send a first name for “Your Name in Lights”, the name and the "
+"greeting you picked are sent to ElevenLabs (elevenlabs.io) to make the "
+"spoken version that plays during the show. Nothing else about you is sent."
+msgstr ""
+"Quand vous envoyez un prénom pour « Votre nom en lumières », le prénom et le"
+" message d’accueil choisi sont envoyés à ElevenLabs (elevenlabs.io) pour "
+"créer la version parlée diffusée pendant le spectacle. Rien d’autre vous "
+"concernant n’est envoyé."
+
+msgid "Show Home Page"
+msgstr "Page d’accueil du spectacle"
+
+msgid ""
+"The whole show page in one block: status, countdown, tonight’s show, "
+"weather, playlist, tips, guestbook, donate and social."
+msgstr ""
+"Toute la page du spectacle en un bloc : statut, compte à rebours, spectacle "
+"de ce soir, météo, liste de lecture, conseils, livre d’or, dons et réseaux "
+"sociaux."
+
+msgid "Show Status"
+msgstr "Statut du spectacle"
+
+msgid ""
+"Big banner: show tonight, starting soon, canceled or off season. Updates by "
+"itself."
+msgstr ""
+"Grande bannière : spectacle ce soir, bientôt, annulé ou hors saison. Se met "
+"à jour tout seul."
+
+msgid "Countdown"
+msgstr "Compte à rebours"
+
+msgid "Counts down to showtime and to Christmas."
+msgstr "Compte à rebours jusqu’au spectacle et jusqu’à Noël."
+
+msgid "Tonight’s Show + Weather"
+msgstr "Spectacle de ce soir + météo"
+
+msgid "Tonight’s Show and Weather side by side."
+msgstr "Le spectacle de ce soir et la météo, côte à côte."
+
+msgid "Tonight’s Show"
+msgstr "Le spectacle de ce soir"
+
+msgid ""
+"Radio station, show hours, Now Playing from Remote Falcon and directions."
+msgstr ""
+"Station de radio, horaires du spectacle, En ce moment depuis Remote Falcon "
+"et itinéraire."
+
+msgid "Weather"
+msgstr "Météo"
+
+msgid "Weather now, tonight hour by hour, and the radar."
+msgstr "La météo maintenant, ce soir heure par heure, et le radar."
+
+msgid "Tonight’s Playlist"
+msgstr "Au programme ce soir"
+
+msgid "The song list from Remote Falcon, with the song playing now lit up."
+msgstr ""
+"La liste des chansons de Remote Falcon, avec la chanson en cours mise en "
+"évidence."
+
+msgid "Live Camera"
+msgstr "Caméra en direct"
+
+msgid "Your YouTube live stream (set it in Appearance → Customize)."
+msgstr "Votre direct YouTube (à régler dans Apparence → Personnaliser)."
+
+msgid "Before You Visit"
+msgstr "Avant votre visite"
+
+msgid "Your visitor tips."
+msgstr "Vos conseils aux visiteurs."
+
+msgid "Songs & Kids’ Corner Links"
+msgstr "Liens Chansons et Coin des enfants"
+
+msgid "Two big buttons to the Songs page and the Kids’ Corner."
+msgstr "Deux grands boutons vers la page Chansons et le Coin des enfants."
+
+msgid "Kids’ Show Wall"
+msgstr "Mur des spectacles des enfants"
+
+msgid ""
+"The newest kids’ light shows from the contest, with their hearts (shows only"
+" when the contest has approved shows)."
+msgstr ""
+"Les derniers spectacles de lumières des enfants du concours, avec leurs "
+"cœurs (s’affiche seulement quand le concours a des spectacles approuvés)."
+
+msgid "Behind the Lights"
+msgstr "Dans les coulisses des lumières"
+
+msgid "Your show’s numbers (lights, channels, songs…)."
+msgstr "Les chiffres de votre spectacle (lumières, canaux, chansons…)."
+
+msgid "Visitor messages and the sign-the-guestbook form."
+msgstr ""
+"Les messages des visiteurs et le formulaire pour signer le livre d’or."
+
+msgid "Donate"
+msgstr "Faire un don"
+
+msgid "Your donation link with a QR code."
+msgstr "Votre lien de don avec un code QR."
+
+msgid "Stay Connected"
+msgstr "Restez en contact"
+
+msgid "Facebook, TikTok and Share the Show buttons."
+msgstr "Boutons Facebook, TikTok et Partager le spectacle."
+
+msgid "Get the App"
+msgstr "Obtenez l’appli"
+
+msgid ""
+"Install-the-app and show alerts card (shows only on phones that can use it)."
+msgstr ""
+"Carte pour installer l’appli et recevoir les alertes du spectacle (s’affiche"
+" seulement sur les téléphones compatibles)."
+
+msgid ""
+"Your Name in Lights, Make a Light Show (and the contest), coloring pages and"
+" games."
+msgstr ""
+"Votre nom en lumières, Créez un spectacle de lumières (et le concours), "
+"coloriages et jeux."
+
+msgid "Songs & Videos"
+msgstr "Chansons et vidéos"
+
+msgid "This year’s show videos and favorite song voting."
+msgstr ""
+"Les vidéos du spectacle de cette année et le vote pour la chanson préférée."
+
+msgid "The Kids’ Corner is resting right now — check back soon!"
+msgstr "Le Coin des enfants se repose pour le moment. Revenez bientôt !"
+
+msgid ""
+"Marquee: “%s” has nothing to show right now (turned off, or not set up yet "
+"in Marquee → Settings or Appearance → Customize). Only editors see this "
+"note."
+msgstr ""
+"Marquee : « %s » n’a rien à afficher pour l’instant (désactivé, ou pas "
+"encore configuré dans Marquee → Réglages ou Apparence → Personnaliser). "
+"Seuls les éditeurs voient cette note."
+
+msgid "It shows live on your site; preview the page to see it."
+msgstr ""
+"Il s’affiche en direct sur votre site ; prévisualisez la page pour le voir."
+
+msgid "Marquee (light show)"
+msgstr "Marquee (spectacle de lumières)"
+
+msgid "Home"
+msgstr "Accueil"
+
+msgid "Marquee Settings"
+msgstr "Réglages de Marquee"
+
+msgid "Settings"
+msgstr "Réglages"
+
+msgid "Setup"
+msgstr "Configuration"
+
+msgid "You can’t change these settings."
+msgstr "Vous ne pouvez pas modifier ces réglages."
+
+msgid "Connected. Remote Falcon has %d sequence."
+msgid_plural "Connected. Remote Falcon has %d sequences."
+msgstr[0] "Connecté. Remote Falcon a %d séquence."
+msgstr[1] "Connecté. Remote Falcon a %d séquences."
+
+msgid ""
+"Visitors leave messages; each one waits for your OK in WordPress → Comments"
+msgstr ""
+"Les visiteurs laissent des messages ; chacun attend votre accord dans "
+"WordPress → Commentaires"
+
+msgid ""
+"Kids send a name to your matrix, projector or TV (needs the FPP script)"
+msgstr ""
+"Les enfants envoient un prénom à votre matrice, projecteur ou télé "
+"(nécessite le script FPP)"
+
+msgid "Light Lab and contest, coloring pages, games"
+msgstr "Labo des lumières et concours, coloriages, jeux"
+
+msgid "The Light Lab in the Kids’ Corner: kids light up a house to a song"
+msgstr ""
+"Le Labo des lumières dans le Coin des enfants : les enfants illuminent une "
+"maison sur une chanson"
+
+msgid "Entries, Show Wall and hearts in the Kids’ Corner"
+msgstr "Participations, Mur des spectacles et cœurs dans le Coin des enfants"
+
+msgid "Uses your Remote Falcon song list"
+msgstr "Utilise votre liste de chansons Remote Falcon"
+
+msgid "Sent to app users when FPP starts your show (needs https)"
+msgstr ""
+"Envoyé aux utilisateurs de l’appli quand FPP lance votre spectacle "
+"(nécessite https)"
+
+msgid "Snowflakes on every page (size and amount in Show Control)"
+msgstr ""
+"Flocons de neige sur toutes les pages (taille et quantité dans Contrôle du "
+"spectacle)"
+
+msgid "Welcome to Marquee"
+msgstr "Bienvenue dans Marquee"
+
+msgid ""
+"Answer a few questions and your show’s website is ready. You can change any "
+"of this later."
+msgstr ""
+"Répondez à quelques questions et le site de votre spectacle est prêt. Vous "
+"pourrez tout modifier plus tard."
+
+msgid ""
+"Everything about your show in one place. Night-of switches are in Show "
+"Control, or on your phone in the Show Manager."
+msgstr ""
+"Tout votre spectacle au même endroit. Les commandes du soir sont dans "
+"Contrôle du spectacle, ou sur votre téléphone dans le Gestionnaire du "
+"spectacle."
+
+msgid "Send feedback"
+msgstr "Envoyer un avis"
+
+msgid "Buy me a coffee"
+msgstr "Offrez-moi un café"
+
+msgid "Your show’s website is ready!"
+msgstr "Le site de votre spectacle est prêt !"
+
+msgid "View your site"
+msgstr "Voir votre site"
+
+msgid ""
+"A few more things make it shine. Do them now or any time; this list stays at"
+" the top of Marquee → Settings until they’re done."
+msgstr ""
+"Quelques détails de plus le feront briller. Faites-les maintenant ou plus "
+"tard ; cette liste reste en haut de Marquee → Réglages jusqu’à ce qu’ils "
+"soient faits."
+
+msgid "Saved."
+msgstr "Enregistré."
+
+msgid "Steps"
+msgstr "Étapes"
+
+msgid "Your show"
+msgstr "Votre spectacle"
+
+msgid "Location"
+msgstr "Emplacement"
+
+msgid "Schedule"
+msgstr "Calendrier"
+
+msgid "Remote Falcon"
+msgstr "Remote Falcon"
+
+msgid "Names & FPP"
+msgstr "Noms et FPP"
+
+msgid "Features"
+msgstr "Fonctionnalités"
+
+msgid "Artwork"
+msgstr "Visuels"
+
+msgid "Social posts"
+msgstr "Publications sur les réseaux"
+
+msgid "Shown in the header, alerts, Google and share previews."
+msgstr ""
+"Affiché dans l’en-tête, les alertes, Google et les aperçus de partage."
+
+msgid "Under the app icon on phones, 12 letters max."
+msgstr "Sous l’icône de l’appli sur les téléphones, 12 lettres max."
+
+msgid "Donation link (optional)"
+msgstr "Lien pour les dons (facultatif)"
+
+msgid "Cash App, PayPal, Venmo or any link. Empty hides the donation box."
+msgstr ""
+"Cash App, PayPal, Venmo ou tout autre lien. Vide, le cadre des dons est "
+"masqué."
+
+msgid "Logo (optional)"
+msgstr "Logo (facultatif)"
+
+msgid "Your logo"
+msgstr "Votre logo"
+
+msgid "This is your current logo. Choose a file only to replace it."
+msgstr ""
+"Voici votre logo actuel. Choisissez un fichier uniquement pour le remplacer."
+
+msgid "PNG with a see-through background works best."
+msgstr "Un PNG à fond transparent donne le meilleur résultat."
+
+msgid "Remove logo (your show name is shown instead)"
+msgstr "Retirer le logo (le nom de votre spectacle s’affiche à la place)"
+
+msgid "App icon: not set yet."
+msgstr "Icône de l’appli : pas encore définie."
+
+msgid ""
+"Phones and Google show a plain star until you add one. Pick a square "
+"picture, 512 × 512 pixels."
+msgstr ""
+"Les téléphones et Google affichent une simple étoile tant que vous n’en "
+"ajoutez pas. Choisissez une image carrée de 512 × 512 pixels."
+
+msgid "Choose the icon"
+msgstr "Choisir l’icône"
+
+msgid ""
+"Your app icon is only %1$d × %1$d pixels, so it looks blurry on phones and "
+"in Google."
+msgstr ""
+"Votre icône d’appli ne fait que %1$d × %1$d pixels, elle paraît donc floue "
+"sur les téléphones et dans Google."
+
+msgid ""
+"Pick a square picture 512 × 512 pixels (WordPress makes the small sizes from"
+" it)."
+msgstr ""
+"Choisissez une image carrée de 512 × 512 pixels (WordPress en crée les "
+"petites tailles)."
+
+msgid "Change the icon"
+msgstr "Changer l’icône"
+
+msgid "App icon: sharp and ready."
+msgstr "Icône de l’appli : nette et prête."
+
+msgid "Used on phones, browser tabs and Google."
+msgstr "Utilisée sur les téléphones, les onglets du navigateur et Google."
+
+msgid "Change it"
+msgstr "La changer"
+
+msgid "Social links"
+msgstr "Liens sociaux"
+
+msgid ""
+"Buttons in Stay Connected and small icons at the bottom of every page. A "
+"button shows when it is turned on and has a link."
+msgstr ""
+"Boutons dans Restez connectés et petites icônes en bas de chaque page. Un "
+"bouton s’affiche quand il est activé et a un lien."
+
+msgid "%s link"
+msgstr "Lien %s"
+
+msgid "Show"
+msgstr "Spectacle"
+
+msgid "Show address"
+msgstr "Adresse du spectacle"
+
+msgid "Find"
+msgstr "Trouver"
+
+msgid ""
+"Or paste a Google Maps link to your house. Used for sunset, weather, radar "
+"and directions."
+msgstr ""
+"Ou collez un lien Google Maps vers votre maison. Sert pour le coucher du "
+"soleil, la météo, le radar et l’itinéraire."
+
+msgid "Latitude"
+msgstr "Latitude"
+
+msgid "Longitude"
+msgstr "Longitude"
+
+msgid "Radar station"
+msgstr "Station radar"
+
+msgid ""
+"US only, filled in by Find. Outside the US a Windy.com radar map is used "
+"instead."
+msgstr ""
+"États-Unis uniquement, rempli par Trouver. Hors des États-Unis, une carte "
+"radar Windy.com est utilisée."
+
+msgid "Town"
+msgstr "Ville"
+
+msgid "ZIP / postcode"
+msgstr "Code postal"
+
+msgid "Weather units"
+msgstr "Unités météo"
+
+msgid "Two-letter code, filled in by Find."
+msgstr "Code à deux lettres, rempli par Trouver."
+
+msgid ""
+"Weather: forecast from Open-Meteo, radar and forecast links from the "
+"National Weather Service."
+msgstr ""
+"Météo : prévisions d’Open-Meteo, radar et liens de prévisions du National "
+"Weather Service."
+
+msgid ""
+"Weather: forecast from Open-Meteo, plus a live Windy.com radar map and “View"
+" Full Weather Forecast” button for your location. Pick °C, km/h above for "
+"metric."
+msgstr ""
+"Météo : prévisions d’Open-Meteo, plus une carte radar Windy.com en direct et"
+" un bouton « Voir les prévisions complètes » pour votre emplacement. "
+"Choisissez °C, km/h ci-dessus pour le système métrique."
+
+msgid "Lights on"
+msgstr "Allumage"
+
+msgid "At a set time"
+msgstr "À heure fixe"
+
+msgid "At sunset"
+msgstr "Au coucher du soleil"
+
+msgid "Sun–Thu start"
+msgstr "Début dim–jeu"
+
+msgid "Sun–Thu end"
+msgstr "Fin dim–jeu"
+
+msgid "Fri–Sat start"
+msgstr "Début ven–sam"
+
+msgid "Fri–Sat end"
+msgstr "Fin ven–sam"
+
+msgid "An end time after midnight counts as the same show night."
+msgstr ""
+"Une heure de fin après minuit compte pour la même soirée de spectacle."
+
+msgid "Count down to"
+msgstr "Compte à rebours jusqu’à"
+
+msgid "Automatic"
+msgstr "Automatique"
+
+msgid "Christmas"
+msgstr "Noël"
+
+msgid "Halloween"
+msgstr "Halloween"
+
+msgid "A date I pick"
+msgstr "Une date de mon choix"
+
+msgid ""
+"Automatic: Halloween if your last night is in August, September or October, "
+"otherwise Christmas. Shown under the countdown on your home page (“12 days "
+"until Halloween”)."
+msgstr ""
+"Automatique : Halloween si votre dernière soirée est en août, septembre ou "
+"octobre, sinon Noël. Affiché sous le compte à rebours de votre page "
+"d’accueil (« Halloween dans 12 jours »)."
+
+msgid "Its name"
+msgstr "Son nom"
+
+msgid "New Year’s Eve"
+msgstr "Réveillon du Nouvel An"
+
+msgid "The date"
+msgstr "La date"
+
+msgid "It repeats every year, so the year doesn’t matter."
+msgstr "Elle revient chaque année, l’année n’a donc pas d’importance."
+
+msgid ""
+"Optional. Connect it and your site shows what’s playing now, your playlist, "
+"and song voting. Without it the site still shows hours, weather and the "
+"Kids’ Corner."
+msgstr ""
+"Facultatif. Connectez-le et votre site affiche ce qui passe en ce moment, "
+"votre liste de lecture et le vote des chansons. Sans lui, le site affiche "
+"quand même les horaires, la météo et le Coin des enfants."
+
+msgid "Access token"
+msgstr "Jeton d’accès"
+
+msgid "Secret key"
+msgstr "Clé secrète"
+
+msgid "Your Remote Falcon viewer page (optional)"
+msgstr "Votre page spectateurs Remote Falcon (facultatif)"
+
+msgid ""
+"Adds a “Pick the Next Song” button to Tonight’s Show while the show is "
+"running. Visitors pick right on your website: Marquee shows your Remote "
+"Falcon songs and sends their vote or request to Remote Falcon, with your "
+"Remote Falcon rules (one pick each, queue size, location check). Copy the "
+"address from Remote Falcon → Control Panel → View Viewer Page."
+msgstr ""
+"Ajoute un bouton « Choisissez la prochaine chanson » à Le spectacle de ce "
+"soir pendant le spectacle. Les visiteurs choisissent directement sur votre "
+"site : Marquee affiche vos chansons Remote Falcon et envoie leur vote ou "
+"leur demande à Remote Falcon, avec vos règles Remote Falcon (un choix "
+"chacun, taille de la file, vérification de la position). Copiez l’adresse "
+"depuis Remote Falcon → Control Panel → View Viewer Page."
+
+msgid "Test connection"
+msgstr "Tester la connexion"
+
+msgid ""
+"Both are on Remote Falcon → Account → API Access. They turn on Now Playing, "
+"the playlist and song voting, and never leave this server."
+msgstr ""
+"Les deux se trouvent dans Remote Falcon → Account → API Access. Ils activent"
+" En ce moment, la liste de lecture et le vote des chansons, et ne quittent "
+"jamais ce serveur."
+
+msgid ""
+"Your FPP also needs the Remote Falcon plugin installed and running (FPP → "
+"Content Setup → Plugin Manager), or Now Playing stays empty."
+msgstr ""
+"Votre FPP doit aussi avoir l’extension Remote Falcon installée et active "
+"(FPP → Content Setup → Plugin Manager), sinon En ce moment reste vide."
+
+msgid "Leave out of song voting"
+msgstr "Exclure du vote des chansons"
+
+msgid ""
+"Tick anything that isn’t really a song, like your intro or an announcement. "
+"It stays in your show; people just can’t vote for it."
+msgstr ""
+"Cochez ce qui n’est pas vraiment une chanson, comme votre intro ou une "
+"annonce. Cela reste dans votre spectacle ; on ne peut simplement pas voter "
+"pour."
+
+msgid ""
+"Your songs show up here once Remote Falcon is connected (save this page "
+"after a successful test)."
+msgstr ""
+"Vos chansons apparaissent ici une fois Remote Falcon connecté (enregistrez "
+"cette page après un test réussi)."
+
+msgid ""
+"Connect your FPP and set up “Your Name in Lights”: kids type their first "
+"name on your website and your show puts it up on your screens."
+msgstr ""
+"Connectez votre FPP et configurez « Votre nom en lumières » : les enfants "
+"tapent leur prénom sur votre site et votre spectacle l’affiche sur vos "
+"écrans."
+
+msgid "Your Name in Lights isn’t available with this theme."
+msgstr "Votre nom en lumières n’est pas disponible avec ce thème."
+
+msgid ""
+"Your Name in Lights is switched off, so kids can’t send names yet. Turn it "
+"on under Features when you’re ready."
+msgstr ""
+"Votre nom en lumières est désactivé, les enfants ne peuvent donc pas encore "
+"envoyer de prénoms. Activez-le dans Fonctionnalités quand vous êtes prêt."
+
+msgid "How it works"
+msgstr "Comment ça marche"
+
+msgid "Marquee doesn’t change your show. Pick how the names go up:"
+msgstr ""
+"Marquee ne modifie pas votre spectacle. Choisissez comment les noms "
+"s’affichent :"
+
+msgid "Between songs: a names break"
+msgstr "Entre les chansons : une pause des noms"
+
+msgid "Recommended"
+msgstr "Recommandé"
+
+msgid "Your song"
+msgstr "Votre chanson"
+
+msgid "about 30 seconds"
+msgstr "environ 30 secondes"
+
+msgid "Next song"
+msgstr "Chanson suivante"
+
+msgid ""
+"When kids have sent names, your FPP slips a short “names break” sequence in "
+"after the current song: the names go up on your screens one by one (and a "
+"voice can say them), then your playlist carries on. No names waiting? "
+"Nothing changes. Your show needs to be playing as a playlist on the FPP that"
+" runs the names script. You need one short extra sequence for the break; "
+"Marquee can make it for you (card 4)."
+msgstr ""
+"Quand des enfants ont envoyé des prénoms, votre FPP glisse une courte "
+"séquence de « pause des noms » après la chanson en cours : les noms "
+"s’affichent un par un sur vos écrans (et une voix peut les dire), puis votre"
+" liste de lecture reprend. Aucun nom en attente ? Rien ne change. Votre "
+"spectacle doit être lu en liste de lecture sur le FPP qui exécute le script "
+"des noms. Il vous faut une courte séquence en plus pour la pause ; Marquee "
+"peut la créer pour vous (carte 4)."
+
+msgid "During songs, on a spare screen"
+msgstr "Pendant les chansons, sur un écran libre"
+
+msgid "Your show keeps playing"
+msgstr "Votre spectacle continue"
+
+msgid "+ names on a spare TV or projector"
+msgstr "+ noms sur une télé ou un projecteur libre"
+
+msgid ""
+"For a TV or projector your sequences don’t use: names appear on it while "
+"your show plays. No extra sequence to make. Names aren’t spoken (it would "
+"talk over your music) and kids don’t pick a themed sequence."
+msgstr ""
+"Pour une télé ou un projecteur que vos séquences n’utilisent pas : les noms "
+"y apparaissent pendant votre spectacle. Aucune séquence en plus à créer. Les"
+" noms ne sont pas prononcés (cela couvrirait votre musique) et les enfants "
+"ne choisissent pas de séquence à thème."
+
+msgid "Your screens, and the small script that puts the names on them"
+msgstr "Vos écrans, et le petit script qui y affiche les noms"
+
+msgid "Connected"
+msgstr "Connecté"
+
+msgid "Last seen %s ago"
+msgstr "Vu pour la dernière fois il y a %s"
+
+msgid "Not set up"
+msgstr "Non configuré"
+
+msgid ""
+"Fill in your screens and Save, then put the Marquee plugin on your FPP "
+"(below). Your website never connects into your house: the FPP checks in with"
+" it."
+msgstr ""
+"Renseignez vos écrans et enregistrez, puis installez l’extension Marquee sur"
+" votre FPP (ci-dessous). Votre site ne se connecte jamais à votre maison : "
+"c’est le FPP qui le contacte."
+
+msgid ""
+"Names go up one after another while your show plays, within about 20 seconds"
+" of being sent."
+msgstr ""
+"Les noms s’affichent l’un après l’autre pendant votre spectacle, environ 20 "
+"secondes après leur envoi."
+
+msgid ""
+"A short sequence (about 30 seconds) in its own playlist, with your screens "
+"left dark where the names go. Don’t have one? The Sequence maker (card 4) "
+"makes it for you, or leave “Make a simple names break for me” on."
+msgstr ""
+"Une courte séquence (environ 30 secondes) dans sa propre liste de lecture, "
+"avec vos écrans éteints là où vont les noms. Vous n’en avez pas ? Le "
+"créateur de séquences (carte 4) la fait pour vous, ou laissez « Créer une "
+"pause des noms simple pour moi » activé."
+
+msgid "seconds into the break"
+msgstr "secondes après le début de la pause"
+
+msgid ""
+"Usually right after the announcer’s intro ends (“It’s time for Names in "
+"Lights!”)."
+msgstr ""
+"En général juste après la fin de l’intro de l’annonceur (« C’est l’heure de "
+"Votre nom en lumières ! »)."
+
+msgid ""
+"How long each name gets before the next one goes up (up to 6 names per "
+"break)."
+msgstr ""
+"Durée d’affichage de chaque nom avant le suivant (jusqu’à 6 noms par pause)."
+
+msgid "Names per break"
+msgstr "Noms par pause"
+
+msgid "6 (standard)"
+msgstr "6 (standard)"
+
+msgid ""
+"Fewer names, each up longer: at 3, every name gets twice the time, so a "
+"scrolling message can move half as fast and is easier to read. The names "
+"still fit the same part of your break audio. Any extra names go up in the "
+"next break."
+msgstr ""
+"Moins de noms, chacun affiché plus longtemps : à 3, chaque nom a deux fois "
+"plus de temps, un message défilant peut donc aller deux fois moins vite et "
+"se lit mieux. Les noms tiennent toujours dans la même partie de l’audio de "
+"la pause. Les noms en trop passent à la pause suivante."
+
+msgid "Names break after every"
+msgstr "Pause des noms après chaque"
+
+msgid "song (standard)"
+msgstr "chanson (standard)"
+
+msgid "%d songs"
+msgstr "%d chansons"
+
+msgid ""
+"Names collect while your show plays and go up together after that many "
+"songs, so a busy night doesn’t put a break between every song. If 6 names "
+"are waiting, the break comes sooner."
+msgstr ""
+"Les noms s’accumulent pendant votre spectacle et s’affichent ensemble après "
+"ce nombre de chansons, pour qu’une soirée chargée ne mette pas une pause "
+"entre chaque chanson. Si 6 noms attendent, la pause arrive plus tôt."
+
+msgid "Make a simple names break for me"
+msgstr "Créer une pause des noms simple pour moi"
+
+msgid ""
+"If your FPP has no names break playlist yet, Marquee makes one: the show "
+"pauses, the names go up on your screens (with the names break audio from "
+"card 3, if you build it), then your show carries on. No sequence needed. A "
+"names break playlist you already have is never touched."
+msgstr ""
+"Si votre FPP n’a pas encore de liste de lecture de pause des noms, Marquee "
+"en crée une : le spectacle se met en pause, les noms s’affichent sur vos "
+"écrans (avec l’audio de la pause des noms de la carte 3, si vous le créez), "
+"puis votre spectacle reprend. Aucune séquence nécessaire. Une liste de pause"
+" des noms existante n’est jamais modifiée."
+
+msgid ""
+"You don’t normally need to touch these: building the names break audio (card"
+" 3) sets both to match your intro and outro. Change them only if you made "
+"your own break audio; then match them to where your audio goes quiet."
+msgstr ""
+"Normalement, vous n’avez pas à y toucher : créer l’audio de la pause des "
+"noms (carte 3) règle les deux sur votre intro et votre conclusion. Modifiez-"
+"les seulement si vous avez fait votre propre audio de pause ; alignez-les "
+"alors sur les moments où votre audio devient silencieux."
+
+msgid "Only during these playlists"
+msgstr "Uniquement pendant ces listes de lecture"
+
+msgid "Other playlists (comma separated)"
+msgstr "Autres listes de lecture (séparées par des virgules)"
+
+msgid "Playlist names (comma separated)"
+msgstr "Noms des listes de lecture (séparés par des virgules)"
+
+msgid "e.g. Show"
+msgstr "p. ex. Show"
+
+msgid ""
+"Leave everything blank to put names up during any playlist. Pick your main "
+"show playlist if you also run something like a static or background "
+"playlist: names then wait until the show playlist plays."
+msgstr ""
+"Laissez tout vide pour afficher les noms pendant n’importe quelle liste de "
+"lecture. Choisissez la liste principale de votre spectacle si vous utilisez "
+"aussi une liste statique ou de fond : les noms attendront alors que la liste"
+" du spectacle soit lue."
+
+msgid ""
+"Your FPP playlists show up here as checkboxes once the names script has "
+"checked in."
+msgstr ""
+"Vos listes de lecture FPP apparaissent ici sous forme de cases à cocher une "
+"fois que le script des noms s’est manifesté."
+
+msgid "Screen"
+msgstr "Écran"
+
+msgid "FPP address"
+msgstr "Adresse du FPP"
+
+msgid "Overlay model name"
+msgstr "Nom du modèle de superposition"
+
+msgid "Matrix"
+msgstr "Matrice"
+
+msgid "Screen name"
+msgstr "Nom de l’écran"
+
+msgid "Overlay model"
+msgstr "Modèle de superposition"
+
+msgid "— Pick a screen —"
+msgstr "— Choisissez un écran —"
+
+msgid "Screens"
+msgstr "Écrans"
+
+msgid "Other models"
+msgstr "Autres modèles"
+
+msgid "%s (not on your FPP)"
+msgstr "%s (absent de votre FPP)"
+
+msgid "Type a name…"
+msgstr "Tapez un nom…"
+
+msgid "MatrixText"
+msgstr "MatrixText"
+
+msgid "Text"
+msgstr "Texte"
+
+msgid "Still"
+msgstr "Fixe"
+
+msgid "Scrolling"
+msgstr "Défilant"
+
+msgid "Size"
+msgstr "Taille"
+
+msgid "Small"
+msgstr "Petit"
+
+msgid "Large"
+msgstr "Grand"
+
+msgid "Fill the screen"
+msgstr "Remplir l’écran"
+
+msgid "Custom…"
+msgstr "Personnalisé…"
+
+msgid "Scroll speed"
+msgstr "Vitesse de défilement"
+
+msgid "Normal"
+msgstr "Normale"
+
+msgid "Slow"
+msgstr "Lente"
+
+msgid "Fast"
+msgstr "Rapide"
+
+msgid "Font size"
+msgstr "Taille de police"
+
+msgid "About how many pixels tall the letters are"
+msgstr "Hauteur approximative des lettres en pixels"
+
+msgid ""
+"Pick your screen from the list: those are the Pixel Overlay Models on the "
+"FPP running the plugin. For a screen on a different FPP, type that FPP’s "
+"address and the model name. Not in the list? Upload your models to the FPP "
+"with FPP Connect (Models ticked)."
+msgstr ""
+"Choisissez votre écran dans la liste : ce sont les Pixel Overlay Models du "
+"FPP qui exécute l’extension. Pour un écran sur un autre FPP, tapez l’adresse"
+" de ce FPP et le nom du modèle. Absent de la liste ? Envoyez vos modèles au "
+"FPP avec FPP Connect (Models coché)."
+
+msgid ""
+"FPP address: the FPP that drives that screen (127.0.0.1 means the FPP "
+"running the script). Overlay model: its name under FPP → Input/Output Setup "
+"→ Pixel Overlay Models."
+msgstr ""
+"Adresse du FPP : le FPP qui pilote cet écran (127.0.0.1 désigne le FPP qui "
+"exécute le script). Modèle de superposition : son nom dans FPP → "
+"Input/Output Setup → Pixel Overlay Models."
+
+msgid ""
+"Text and Size: Automatic works for most screens. Small pixel matrices (64 "
+"pixels tall or less) get one big line that scrolls across when the message "
+"won’t fit; TVs and projectors get still text with the name on its own line. "
+"Scrolling text always crosses the screen in the time each name is up; Slow "
+"may not quite finish on long messages. Custom size: the font size FPP uses, "
+"about how many pixels tall the letters are (a 10-pixel-tall matrix looks "
+"good at 8 or 9). Still text that won’t fit at that size is made just small "
+"enough to fit; scrolling text keeps it."
+msgstr ""
+"Texte et Taille : Automatique convient à la plupart des écrans. Les petites "
+"matrices de pixels (64 pixels de haut ou moins) reçoivent une seule grande "
+"ligne qui défile quand le message ne tient pas ; les télés et projecteurs "
+"reçoivent un texte fixe avec le nom sur sa propre ligne. Le texte défilant "
+"traverse toujours l’écran pendant la durée d’affichage de chaque nom ; Lente"
+" peut ne pas tout à fait finir sur les longs messages. Taille personnalisée "
+": la taille de police utilisée par FPP, soit la hauteur approximative des "
+"lettres en pixels (une matrice de 10 pixels de haut rend bien à 8 ou 9). Un "
+"texte fixe qui ne tient pas à cette taille est réduit juste assez pour tenir"
+" ; un texte défilant la conserve."
+
+msgid "Put it on your FPP: the Marquee plugin (easiest)"
+msgstr "Installez-le sur votre FPP : l’extension Marquee (le plus simple)"
+
+msgid ""
+"On the FPP that plays your show: Status/Control → Settings → UI → User "
+"Interface Level: Developer (FPP only takes a plugin address at that level). "
+"Then Content Setup → Plugin Manager, paste this address in the Find a Plugin"
+" box and click Install:"
+msgstr ""
+"Sur le FPP qui joue votre spectacle : Status/Control → Settings → UI → User "
+"Interface Level : Developer (FPP n’accepte une adresse d’extension qu’à ce "
+"niveau). Puis Content Setup → Plugin Manager, collez cette adresse dans le "
+"champ Find a Plugin et cliquez sur Install :"
+
+msgid "Plugin address"
+msgstr "Adresse de l’extension"
+
+msgid "Copy"
+msgstr "Copier"
+
+msgid ""
+"Click Install. Then open Content Setup → Marquee and paste your connection "
+"code:"
+msgstr ""
+"Cliquez sur Install. Ouvrez ensuite Content Setup → Marquee et collez votre "
+"code de connexion :"
+
+msgid "(hidden during a support session: it contains your private key)"
+msgstr ""
+"(masqué pendant une session d’assistance : il contient votre clé privée)"
+
+msgid "Connection code"
+msgstr "Code de connexion"
+
+msgid ""
+"Click Connect. Within a minute the setup check shows here. No Command "
+"Presets, no files to upload, and when you change your screens here the FPP "
+"picks it up by itself."
+msgstr ""
+"Cliquez sur Connect. En moins d’une minute, la vérification de la "
+"configuration s’affiche ici. Pas de Command Presets, aucun fichier à "
+"téléverser, et quand vous modifiez vos écrans ici, le FPP le prend en compte"
+" tout seul."
+
+msgid "The connection code contains your private key, so keep it private."
+msgstr "Le code de connexion contient votre clé privée, gardez-le pour vous."
+
+msgid "Or put the script on your FPP by hand"
+msgstr "Ou installez le script sur votre FPP à la main"
+
+msgid "Download marquee_names.json"
+msgstr "Télécharger marquee_names.json"
+
+msgid "Download marquee_names.py"
+msgstr "Télécharger marquee_names.py"
+
+msgid "Setup guide"
+msgstr "Guide d’installation"
+
+msgid ""
+"Save first if you changed anything above; the settings file is made from the"
+" saved values. It contains your private key, so keep it private."
+msgstr ""
+"Enregistrez d’abord si vous avez modifié quelque chose ci-dessus ; le "
+"fichier de réglages est créé à partir des valeurs enregistrées. Il contient "
+"votre clé privée, gardez-le pour vous."
+
+msgid ""
+"Spoken names, the names break audio and themed sequences work with the names"
+" break. Pick “Between songs” above to use them."
+msgstr ""
+"Les noms prononcés, l’audio de la pause des noms et les séquences à thème "
+"fonctionnent avec la pause des noms. Choisissez « Entre les chansons » ci-"
+"dessus pour les utiliser."
+
+msgid "Say each name out loud"
+msgstr "Prononcer chaque nom à voix haute"
+
+msgid ""
+"An ElevenLabs voice (Santa, if you like) reads each name on your radio "
+"station"
+msgstr ""
+"Une voix ElevenLabs (le père Noël, si vous voulez) lit chaque nom sur votre "
+"station de radio"
+
+msgid ""
+"An ElevenLabs voice reads each name over your radio station as it goes up on"
+" the screens: “Merry Christmas, Emma!”. Use the same voice as your show "
+"announcer and it sounds like part of the show."
+msgstr ""
+"Une voix ElevenLabs lit chaque nom sur votre station de radio quand il "
+"s’affiche sur les écrans : « Joyeux Noël, Emma ! ». Utilisez la même voix "
+"que l’annonceur de votre spectacle et cela semblera faire partie du "
+"spectacle."
+
+msgid "The last spoken name didn’t work (%1$s ago): %2$s"
+msgstr "Le dernier nom prononcé n’a pas fonctionné (il y a %1$s) : %2$s"
+
+msgid ""
+"Needs an ElevenLabs account and the names script 3.1 or newer on your FPP."
+msgstr ""
+"Nécessite un compte ElevenLabs et le script des noms 3.1 ou plus récent sur "
+"votre FPP."
+
+msgid "ElevenLabs API key"
+msgstr "Clé API ElevenLabs"
+
+msgid ""
+"ElevenLabs → Developers → API Keys. Give it Text to Speech access, plus "
+"Voices: Read so the list below works. It stays on this server."
+msgstr ""
+"ElevenLabs → Developers → API Keys. Donnez-lui l’accès Text to Speech, plus "
+"Voices : Read pour que la liste ci-dessous fonctionne. Elle reste sur ce "
+"serveur."
+
+msgid "— Load my voices first —"
+msgstr "— Chargez d’abord mes voix —"
+
+msgid "Load my voices"
+msgstr "Charger mes voix"
+
+msgid "Try it with a name"
+msgstr "Essayez avec un nom"
+
+msgid "Test voice"
+msgstr "Tester la voix"
+
+msgid "A little slow"
+msgstr "Un peu lente"
+
+msgid "Relaxed (recommended)"
+msgstr "Posée (recommandée)"
+
+msgid "Quick"
+msgstr "Rapide"
+
+msgid ""
+"Then “Hi Santa! Love, Mia” is answered “Ho ho ho! Hi Mia, Santa loves you "
+"too!” (the screens still show the kid’s message)."
+msgstr ""
+"Alors « Coucou le père Noël ! Bisous, Mia » reçoit la réponse « Ho ho ho ! "
+"Coucou Mia, le père Noël t’aime aussi ! » (les écrans affichent toujours le "
+"message de l’enfant)."
+
+msgid "Talking faces effect (optional)"
+msgstr "Effet visages parlants (facultatif)"
+
+msgid "Names Talking"
+msgstr "Noms parlés"
+
+msgid ""
+"The name of an FPP effect (.eseq) that moves your singing faces’ mouths "
+"(several with commas). It plays while each name is spoken. Leave empty for "
+"voice only. The setup guide shows how to make one."
+msgstr ""
+"Le nom d’un effet FPP (.eseq) qui fait bouger la bouche de vos visages "
+"chantants (plusieurs séparés par des virgules). Il est joué pendant que "
+"chaque nom est prononcé. Laissez vide pour la voix seule. Le guide "
+"d’installation explique comment en créer un."
+
+msgid ""
+"Cost: about 25 ElevenLabs credits per name, and a name that was already said"
+" is free after that (the clip is saved on your website). Kids’ first names "
+"are sent to ElevenLabs to make the audio; Settings → Privacy has a line you "
+"can add to your privacy page."
+msgstr ""
+"Coût : environ 25 crédits ElevenLabs par nom, et un nom déjà prononcé est "
+"ensuite gratuit (l’extrait est enregistré sur votre site). Les prénoms des "
+"enfants sont envoyés à ElevenLabs pour créer l’audio ; Réglages → "
+"Confidentialité propose un texte à ajouter à votre page de confidentialité."
+
+msgid "Remove my ElevenLabs key"
+msgstr "Supprimer ma clé ElevenLabs"
+
+msgid ""
+"What your radio plays during the names break: an intro, soft music under the"
+" names, and an outro, made for you"
+msgstr ""
+"Ce que votre radio diffuse pendant la pause des noms : une intro, une "
+"musique douce sous les noms et une conclusion, créées pour vous"
+
+msgid "Built"
+msgstr "Créé"
+
+msgid "Not built"
+msgstr "Non créé"
+
+msgid "Sequence maker"
+msgstr "Créateur de séquences"
+
+msgid ""
+"Makes the xLights files for your names break and themes, from your layout. "
+"Then render them and send them to your FPP."
+msgstr ""
+"Crée les fichiers xLights pour votre pause des noms et vos thèmes, à partir "
+"de votre disposition. Ensuite, faites-en le rendu et envoyez-les à votre "
+"FPP."
+
+msgid "Optional"
+msgstr "Facultatif"
+
+msgid ""
+"Which themes kids see on your website (Candy Cane Swirl, Snowfall…) and the "
+"FPP playlist for each. Make the sequences first in card 4."
+msgstr ""
+"Les thèmes que les enfants voient sur votre site (Candy Cane Swirl, "
+"Snowfall…) et la liste de lecture FPP de chacun. Créez d’abord les séquences"
+" dans la carte 4."
+
+msgid "%d theme"
+msgid_plural "%d themes"
+msgstr[0] "%d thème"
+msgstr[1] "%d thèmes"
+
+msgid ""
+"The messages under “Pick your message” on your website, like “Merry "
+"Christmas, Emma!”. Write your own if you like."
+msgstr ""
+"Les messages sous « Choisissez votre message » sur votre site, comme « "
+"Joyeux Noël, Emma ! ». Écrivez les vôtres si vous le souhaitez."
+
+msgid "Your own"
+msgstr "Les vôtres"
+
+msgid "Standard"
+msgstr "Standard"
+
+msgid ""
+"Type <b>NAME</b> where the kid’s name goes. Kids pick one of these when they"
+" send their name; it goes up on your screens in capital letters (and the "
+"voice says it, if you set that up). Up to 6 messages, 34 letters each. Leave"
+" a box empty to drop it."
+msgstr ""
+"Tapez <b>NAME</b> là où va le prénom de l’enfant. Les enfants en choisissent"
+" un quand ils envoient leur prénom ; il s’affiche sur vos écrans en "
+"majuscules (et la voix le prononce, si vous l’avez configurée). Jusqu’à 6 "
+"messages, de 34 lettres chacun. Laissez une case vide pour le supprimer."
+
+msgid "Merry Christmas, NAME!"
+msgstr "Joyeux Noël, NAME !"
+
+msgid "Another message (optional)"
+msgstr "Autre message (facultatif)"
+
+msgid "Message %d"
+msgstr "Message %d"
+
+msgid "Put back the standard messages"
+msgstr "Rétablir les messages standard"
+
+msgid ""
+"Ideas: “Feliz Navidad, NAME!”, “Happy Hanukkah, NAME!”, “Thanks for "
+"visiting, NAME!”, “Go team, NAME!”. Kids can’t type their own message: only "
+"these, so nothing unexpected goes up on your screens. Save when you’re done."
+msgstr ""
+"Idées : « Feliz Navidad, NAME ! », « Joyeux Hanoukka, NAME ! », « Merci de "
+"votre visite, NAME ! », « Allez, NAME ! ». Les enfants ne peuvent pas écrire"
+" leur propre message : seulement ceux-ci, donc rien d’inattendu ne s’affiche"
+" sur vos écrans. Enregistrez quand vous avez terminé."
+
+msgid ""
+"Names you blocked, and your own words to keep off your screens. Bad words "
+"are always blocked for you."
+msgstr ""
+"Les noms que vous avez bloqués et vos propres mots à tenir à l’écart de vos "
+"écrans. Les gros mots sont toujours bloqués pour vous."
+
+msgid "%d blocked"
+msgid_plural "%d blocked"
+msgstr[0] "%d bloqué"
+msgstr[1] "%d bloqués"
+
+msgid ""
+"Marquee already stops bad words, rude names and tricks like swapping letters"
+" for numbers (“b4d”). You don’t need to set anything up. Every name also "
+"shows in Show Control and the Show Manager, where “Block word” takes it off "
+"the screens and adds it here."
+msgstr ""
+"Marquee arrête déjà les gros mots, les noms grossiers et les astuces comme "
+"remplacer des lettres par des chiffres (« b4d »). Vous n’avez rien à "
+"configurer. Chaque nom s’affiche aussi dans Contrôle du spectacle et dans le"
+" Gestionnaire du spectacle, où « Bloquer le mot » le retire des écrans et "
+"l’ajoute ici."
+
+msgid "Nothing blocked yet."
+msgstr "Rien de bloqué pour l’instant."
+
+msgid "Name or word to block"
+msgstr "Nom ou mot à bloquer"
+
+msgid "A name or word to block"
+msgstr "Un nom ou un mot à bloquer"
+
+msgid "Block it"
+msgstr "Bloquer"
+
+msgid ""
+"Blocked one by mistake? Click × next to it and Save, and that name can be "
+"sent again. A blocked word is stopped when it’s the whole name (blocking "
+"“Bob” doesn’t block “Bobby”)."
+msgstr ""
+"Vous en avez bloqué un par erreur ? Cliquez sur × à côté et Enregistrez, et "
+"ce nom pourra être renvoyé. Un mot bloqué est arrêté quand il constitue le "
+"nom entier (bloquer « Bob » ne bloque pas « Bobby »)."
+
+msgid "Show pages"
+msgstr "Pages du spectacle"
+
+msgid "Make my show pages"
+msgstr "Créer mes pages du spectacle"
+
+msgid ""
+"Creates Home (the whole show, made your front page), Kids’ Corner and Songs "
+"& Videos with the show sections in them. Pages that already have content are"
+" left alone. You can edit them like any page."
+msgstr ""
+"Crée Accueil (tout le spectacle, défini comme page d’accueil), Coin des "
+"enfants et Chansons et vidéos avec les sections du spectacle. Les pages qui "
+"ont déjà du contenu ne sont pas modifiées. Vous pouvez les modifier comme "
+"n’importe quelle page."
+
+msgid ""
+"Pictures for the Kids’ Corner. All optional: anything left empty uses the "
+"standard pictures."
+msgstr ""
+"Images pour le Coin des enfants. Tout est facultatif : ce qui reste vide "
+"utilise les images standard."
+
+msgid "Your logo is printed in the corner of every standard coloring page."
+msgstr "Votre logo est imprimé dans le coin de chaque coloriage standard."
+
+msgid ""
+"Your show name is printed in the corner of every standard coloring page (or "
+"your logo, once you add one in step 1)."
+msgstr ""
+"Le nom de votre spectacle est imprimé dans le coin de chaque coloriage "
+"standard (ou votre logo, une fois ajouté à l’étape 1)."
+
+msgid "Your house or display"
+msgstr "Votre maison ou décor"
+
+msgid ""
+"A black-and-white line drawing of your house, shown first as “Our light "
+"show”."
+msgstr ""
+"Un dessin au trait en noir et blanc de votre maison, affiché en premier sous"
+" le nom « Notre spectacle de lumières »."
+
+msgid "Coloring pages that come with Marquee"
+msgstr "Coloriages fournis avec Marquee"
+
+msgid ""
+"Untick any you want off for now, or click Remove to take it out of this "
+"list. If every page is off and you add none of your own, the Coloring Pages "
+"door is hidden."
+msgstr ""
+"Décochez ceux que vous voulez désactiver pour l’instant, ou cliquez sur "
+"Retirer pour l’enlever de cette liste. Si tous les coloriages sont "
+"désactivés et que vous n’en ajoutez aucun, la porte Coloriages est masquée."
+
+msgid "Restore"
+msgstr "Restaurer"
+
+msgid "Remove"
+msgstr "Retirer"
+
+msgid "Removed pages"
+msgstr "Coloriages retirés"
+
+msgid "Kids never see these. Click Restore to bring one back."
+msgstr ""
+"Les enfants ne les voient jamais. Cliquez sur Restaurer pour en récupérer "
+"un."
+
+msgid "More coloring pages"
+msgstr "Plus de coloriages"
+
+msgid ""
+"Up to 12. Black-and-white line drawings print best. The picture’s title in "
+"the Media Library is the name kids see."
+msgstr ""
+"Jusqu’à 12. Les dessins au trait en noir et blanc s’impriment le mieux. Le "
+"titre de l’image dans la Médiathèque est le nom que voient les enfants."
+
+msgid "Songs kids can pick in Make a Light Show"
+msgstr ""
+"Chansons que les enfants peuvent choisir dans Créez un spectacle de lumières"
+
+msgid ""
+"MP3 files, up to 12. Use songs you have the right to share on your website. "
+"The song’s title in the Media Library is the name kids see. With no songs, "
+"the lights play on their own for a minute."
+msgstr ""
+"Fichiers MP3, jusqu’à 12. Utilisez des chansons que vous avez le droit de "
+"partager sur votre site. Le titre de la chanson dans la Médiathèque est le "
+"nom que voient les enfants. Sans chansons, les lumières s’animent seules "
+"pendant une minute."
+
+msgid "Kids’ Corner door pictures"
+msgstr "Images des portes du Coin des enfants"
+
+msgid ""
+"Replace any of the four big pictures kids tap. Tall pictures work best (490 "
+"× 685 or bigger, same shape)."
+msgstr ""
+"Remplacez n’importe laquelle des quatre grandes images que touchent les "
+"enfants. Les images verticales conviennent le mieux (490 × 685 ou plus, même"
+" format)."
+
+msgid "Coloring Pages"
+msgstr "Coloriages"
+
+msgid "Games"
+msgstr "Jeux"
+
+msgid ""
+"When you cancel tonight’s show (in Show Control or on your phone in the Show"
+" Manager), Marquee can post it on your Facebook Page and Instagram for you, "
+"with your picture. Once per night, so it never posts twice."
+msgstr ""
+"Quand vous annulez le spectacle de ce soir (dans Contrôle du spectacle ou "
+"sur votre téléphone dans le Gestionnaire du spectacle), Marquee peut le "
+"publier pour vous sur votre page Facebook et sur Instagram, avec votre "
+"image. Une fois par soir, donc jamais deux publications."
+
+msgid "Back"
+msgstr "Retour"
+
+msgid "Next"
+msgstr "Suivant"
+
+msgid "Finish setup"
+msgstr "Terminer la configuration"
+
+msgid "Save settings"
+msgstr "Enregistrer les réglages"
+
+msgid "Add songs"
+msgstr "Ajouter des chansons"
+
+msgid "Add pictures"
+msgstr "Ajouter des images"
+
+msgid "Change"
+msgstr "Modifier"
+
+msgid "Choose MP3"
+msgstr "Choisir un MP3"
+
+msgid "Choose picture"
+msgstr "Choisir une image"
+
+msgid "Use the standard picture"
+msgstr "Utiliser l’image standard"
+
+msgid "FPP hasn’t checked in yet."
+msgstr "FPP ne s’est pas encore manifesté."
+
+msgid "Once the script runs on your FPP, its setup check appears here."
+msgstr ""
+"Une fois le script lancé sur votre FPP, sa vérification de configuration "
+"apparaîtra ici."
+
+msgid "FPP last checked in %s ago."
+msgstr "Dernier contact de FPP il y a %s."
+
+msgid "Setup check from %s ago:"
+msgstr "Vérification de configuration d’il y a %s :"
+
+msgid "You can’t download this."
+msgstr "Vous ne pouvez pas télécharger ceci."
+
+msgid "Your show pages:"
+msgstr "Vos pages du spectacle :"
+
+msgid ""
+"Your front page already had content, so it was left alone. To add the show "
+"to it, edit it and add the “Show Home Page” block from the Marquee group."
+msgstr ""
+"Votre page d’accueil avait déjà du contenu, elle n’a donc pas été modifiée. "
+"Pour y ajouter le spectacle, modifiez-la et ajoutez le bloc « Page d’accueil"
+" du spectacle » du groupe Marquee."
+
+msgid "Connect Remote Falcon"
+msgstr "Connecter Remote Falcon"
+
+msgid "Now Playing, the playlist and song voting."
+msgstr "En ce moment, la liste de lecture et le vote des chansons."
+
+msgid "Add your logo"
+msgstr "Ajoutez votre logo"
+
+msgid "Header, app icon fallback, share previews and coloring pages."
+msgstr "En-tête, icône d’appli de secours, aperçus de partage et coloriages."
+
+msgid "Add a donation link"
+msgstr "Ajoutez un lien de don"
+
+msgid "Optional: Cash App, PayPal, Venmo or any link."
+msgstr "Facultatif : Cash App, PayPal, Venmo ou tout autre lien."
+
+msgid "Add songs for the Light Lab"
+msgstr "Ajoutez des chansons pour le Labo des lumières"
+
+msgid "Kids light up the house to them."
+msgstr "Les enfants illuminent la maison dessus."
+
+msgid "Set up Your Name in Lights on FPP"
+msgstr "Configurez Votre nom en lumières sur FPP"
+
+msgid "Download the script and settings file, then follow the guide."
+msgstr ""
+"Téléchargez le script et le fichier de réglages, puis suivez le guide."
+
+msgid "Put the show on your pages"
+msgstr "Mettez le spectacle sur vos pages"
+
+msgid "Tick “Make my show pages”, or add Marquee blocks to any page."
+msgstr ""
+"Cochez « Créer mes pages du spectacle », ou ajoutez des blocs Marquee à "
+"n’importe quelle page."
+
+msgid "Check your visitor tips and text"
+msgstr "Vérifiez vos conseils et textes pour les visiteurs"
+
+msgid "Before You Visit, guestbook and Kids’ Corner wording."
+msgstr "Textes de Avant votre visite, du livre d’or et du Coin des enfants."
+
+msgid "Customize"
+msgstr "Personnaliser"
+
+msgid "Use https for the app and alerts"
+msgstr "Utilisez https pour l’appli et les alertes"
+
+msgid ""
+"Phones only install the app and allow alerts on a secure (https) site. Most "
+"hosts turn it on for free."
+msgstr ""
+"Les téléphones n’installent l’appli et n’autorisent les alertes que sur un "
+"site sécurisé (https). La plupart des hébergeurs l’activent gratuitement."
+
+msgid "Setup checklist: %1$d of %2$d done"
+msgstr "Liste de configuration : %1$d sur %2$d terminés"
+
+msgid "Contest entries"
+msgstr "Participations au concours"
+
+msgid "Show videos"
+msgstr "Vidéos du spectacle"
+
+msgid "Run show nights from your phone: the Show Manager"
+msgstr ""
+"Gérez les soirées du spectacle depuis votre téléphone : le Gestionnaire du "
+"spectacle"
+
+msgid "QR code for the Show Manager"
+msgstr "Code QR pour le Gestionnaire du spectacle"
+
+msgid ""
+"Cancel the show, approve names, contest entries and guestbook messages, and "
+"send alerts, all from a page on your own website. Scan the code with your "
+"phone, sign in, then add it to your home screen."
+msgstr ""
+"Annulez le spectacle, approuvez les noms, les participations au concours et "
+"les messages du livre d’or, et envoyez des alertes, le tout depuis une page "
+"de votre propre site. Scannez le code avec votre téléphone, connectez-vous, "
+"puis ajoutez-le à votre écran d’accueil."
+
+msgid "Helpers:"
+msgstr "Assistants :"
+
+msgid ""
+"give a family member or friend their own account with the role “Show "
+"helper”. They can use the Show Manager, and nothing else in WordPress."
+msgstr ""
+"donnez à un proche ou un ami son propre compte avec le rôle « Assistant du "
+"spectacle ». Il peut utiliser le Gestionnaire du spectacle, et rien d’autre "
+"dans WordPress."
+
+msgid "Add a helper"
+msgstr "Ajouter un assistant"
+
+msgid "within"
+msgstr "à moins de"
+
+msgid "Distance unit"
+msgstr "Unité de distance"
+
+msgid "miles"
+msgstr "miles"
+
+msgid "km"
+msgstr "km"
+
+msgid "of your show"
+msgstr "de votre spectacle"
+
+msgid ""
+"When a kid sends a name, the phone asks to share its location. It is only "
+"compared with your show’s address and never saved. You and your Show helpers"
+" can still send test names from anywhere."
+msgstr ""
+"Quand un enfant envoie un nom, le téléphone demande à partager sa position. "
+"Elle est seulement comparée à l’adresse de votre spectacle et n’est jamais "
+"enregistrée. Vous et vos Assistants du spectacle pouvez toujours envoyer des"
+" noms de test de n’importe où."
+
+msgid "1 km suits most shows; phones can be off by about 100 metres."
+msgstr ""
+"1 km convient à la plupart des spectacles ; les téléphones peuvent se "
+"tromper d’environ 100 mètres."
+
+msgid "0.5 mile suits most shows; phones can be off by a few hundred feet."
+msgstr ""
+"0,5 mile convient à la plupart des spectacles ; les téléphones peuvent se "
+"tromper de quelques centaines de pieds."
+
+msgid ""
+"Set your show’s address in the Location step first: without it, names can be"
+" sent from anywhere."
+msgstr ""
+"Indiquez d’abord l’adresse de votre spectacle à l’étape Emplacement : sans "
+"elle, les noms peuvent être envoyés de n’importe où."
+
+msgid "See it in action"
+msgstr "Voir en action"
+
+msgid "Your matrix or TV showing a kid’s name during the names break"
+msgstr ""
+"Votre matrice ou télé affichant le prénom d’un enfant pendant la pause des "
+"noms"
+
+msgid "Your show: names go up on your matrix and TV"
+msgstr ""
+"Votre spectacle : les noms s’affichent sur votre matrice et votre télé"
+
+msgid ""
+"The 🔊 line is what you hear on your radio station with “Say each name out "
+"loud” on."
+msgstr ""
+"La ligne 🔊 est ce que vous entendez sur votre station de radio avec « "
+"Prononcer chaque nom à voix haute » activé."
+
+msgid "Open Account Settings"
+msgstr "Ouvrez Account Settings"
+
+msgid "The Account tab"
+msgstr "L’onglet Account"
+
+msgid "Ask for API access"
+msgstr "Demandez l’accès à l’API"
+
+msgid "Copy both keys"
+msgstr "Copiez les deux clés"
+
+msgid "Paste them here"
+msgstr "Collez-les ici"
+
+msgid "Paste the token and the secret key into these two boxes."
+msgstr "Collez le jeton et la clé secrète dans ces deux champs."
+
+msgid "Test it, then Save"
+msgstr "Testez, puis enregistrez"
+
+msgid "Click Test connection. When it says it works, click Save settings."
+msgstr ""
+"Cliquez sur Tester la connexion. Quand elle fonctionne, cliquez sur "
+"Enregistrer les réglages."
+
+msgid "The plugin on your FPP"
+msgstr "Le plugin sur votre FPP"
+
+msgid ""
+"On your FPP: Content Setup → Plugin Manager. Install the Remote Falcon "
+"plugin. Without it, Now Playing stays empty."
+msgstr ""
+"Sur votre FPP : Content Setup → Plugin Manager. Installez le plugin Remote "
+"Falcon. Sans lui, En ce moment reste vide."
+
+msgid "Set up the plugin"
+msgstr "Configurez le plugin"
+
+msgid "Check it’s connected"
+msgstr "Vérifiez qu’il est connecté"
+
+msgid "Make an API key"
+msgstr "Créez une clé API"
+
+msgid "Only what Marquee needs"
+msgstr "Uniquement ce dont Marquee a besoin"
+
+msgid "Paste the key"
+msgstr "Collez la clé"
+
+msgid "Paste it here. It stays on your website’s server."
+msgstr "Collez-la ici. Elle reste sur le serveur de votre site web."
+
+msgid "Load your voices"
+msgstr "Chargez vos voix"
+
+msgid ""
+"Click Load my voices, then pick one in the list. Using a Santa voice? Tick "
+"“My voice is Santa” too."
+msgstr ""
+"Cliquez sur Charger mes voix, puis choisissez-en une dans la liste. Vous "
+"utilisez une voix du père Noël ? Cochez aussi « Ma voix est le père Noël »."
+
+msgid "Hear it"
+msgstr "Écoutez-la"
+
+msgid "Type a name and click Test voice. Too fast? Change the speaking speed."
+msgstr ""
+"Tapez un nom et cliquez sur Tester la voix. Trop rapide ? Changez la vitesse"
+" d’élocution."
+
+msgid "Turn it on and Save"
+msgstr "Activez et enregistrez"
+
+msgid ""
+"Switch on Speak the names and click Save settings. Your FPP plays each name "
+"over the radio as it goes up (names script 3.1 or newer)."
+msgstr ""
+"Activez Prononcer les noms et cliquez sur Enregistrer les réglages. Votre "
+"FPP diffuse chaque nom à la radio quand il s’affiche (script des noms 3.1 ou"
+" plus récent)."
+
+msgid ""
+"First pick one: between songs in a short names break (most shows), or during"
+" songs on a spare TV or projector your show doesn’t use. The steps below "
+"follow your choice."
+msgstr ""
+"Choisissez d’abord : entre les chansons dans une courte pause des noms (la "
+"plupart des spectacles), ou pendant les chansons sur une télé ou un "
+"projecteur libre que votre spectacle n’utilise pas. Les étapes ci-dessous "
+"suivent votre choix."
+
+msgid "Turn names on"
+msgstr "Activez les noms"
+
+msgid ""
+"Under Features, switch on Your Name in Lights. Kids can send names only "
+"while your show is on (your hours in Schedule)."
+msgstr ""
+"Dans Fonctionnalités, activez Votre nom en lumières. Les enfants ne peuvent "
+"envoyer des noms que pendant votre spectacle (vos horaires dans "
+"Planification)."
+
+msgid "Your names break playlist"
+msgstr "Votre liste de lecture de la pause des noms"
+
+msgid ""
+"The FPP playlist that plays your names break. It must exist on your FPP with"
+" your names break sequence in it. Don’t have one yet? Card 4 (Sequence "
+"maker) makes the sequence, and its Show me how covers making the playlist."
+msgstr ""
+"La liste de lecture FPP qui joue votre pause des noms. Elle doit exister sur"
+" votre FPP avec votre séquence de pause des noms. Vous n’en avez pas encore "
+"? La carte 4 (Créateur de séquences) crée la séquence, et son Montrez-moi "
+"comment explique comment créer la liste de lecture."
+
+msgid "When the names appear"
+msgstr "Quand les noms apparaissent"
+
+msgid ""
+"Usually nothing to do: the Sequence maker and the names break audio (card 3)"
+" fill these in. Change them only if you made your own break audio."
+msgstr ""
+"En général, rien à faire : le créateur de séquences et l’audio de la pause "
+"des noms (carte 3) les remplissent. Ne les changez que si vous avez fait "
+"votre propre audio de pause."
+
+msgid "How long each name stays up"
+msgstr "Durée d’affichage de chaque nom"
+
+msgid ""
+"Names go up on your spare screen one after another while your show plays. 6 "
+"seconds is a good start."
+msgstr ""
+"Les noms s’affichent l’un après l’autre sur votre écran libre pendant le "
+"spectacle. 6 secondes, c’est un bon début."
+
+msgid "Find your screen’s name"
+msgstr "Trouvez le nom de votre écran"
+
+msgid ""
+"On your FPP: Input/Output Setup → Pixel Overlay Models. Note the name of "
+"each screen that shows names: a matrix (like GARAGE_DOOR), or the HDMI model"
+" for a projector or TV."
+msgstr ""
+"Sur votre FPP : Input/Output Setup → Pixel Overlay Models. Notez le nom de "
+"chaque écran qui affiche des noms : une matrice (comme GARAGE_DOOR), ou le "
+"modèle HDMI pour un projecteur ou une télé."
+
+msgid ""
+"One row per screen: any name, the address of the FPP that drives it "
+"(127.0.0.1 = the FPP running the script), and the overlay model name exactly"
+" as FPP shows it."
+msgstr ""
+"Une ligne par écran : un nom au choix, l’adresse du FPP qui le pilote "
+"(127.0.0.1 = le FPP qui exécute le script) et le nom du modèle overlay "
+"exactement comme FPP l’affiche."
+
+msgid ""
+"Running a static or background playlist alongside your show? Tick your show "
+"playlist here and names wait for it. Leave it empty to put names up during "
+"any playlist. Your FPP’s playlists show up as checkboxes once it has checked"
+" in."
+msgstr ""
+"Vous faites tourner une liste de lecture statique ou de fond en plus de "
+"votre spectacle ? Cochez ici la liste de votre spectacle et les noms "
+"l’attendront. Laissez vide pour afficher les noms pendant n’importe quelle "
+"liste. Les listes de votre FPP apparaissent en cases à cocher dès qu’il "
+"s’est signalé."
+
+msgid "Save"
+msgstr "Enregistrer"
+
+msgid ""
+"Click Save settings. Your FPP picks up your screens and settings from here "
+"by itself."
+msgstr ""
+"Cliquez sur Enregistrer les réglages. Votre FPP récupère vos écrans et "
+"réglages d’ici tout seul."
+
+msgid "The Marquee plugin for FPP"
+msgstr "Le plugin Marquee pour FPP"
+
+msgid ""
+"Copy the plugin address. You’ll paste it into FPP’s Plugin Manager next."
+msgstr ""
+"Copiez l’adresse du plugin. Vous la collerez ensuite dans le Plugin Manager "
+"de FPP."
+
+msgid "Install it on your FPP"
+msgstr "Installez-le sur votre FPP"
+
+msgid ""
+"On the FPP that plays your show: Status/Control → Settings → UI → User "
+"Interface Level: Developer (FPP only takes a plugin address at that level). "
+"Then Content Setup → Plugin Manager, paste the address in Find a Plugin and "
+"click Install. It shows under Installed."
+msgstr ""
+"Sur le FPP qui joue votre spectacle : Status/Control → Settings → UI → User "
+"Interface Level: Developer (FPP n’accepte une adresse de plugin qu’à ce "
+"niveau). Puis Content Setup → Plugin Manager, collez l’adresse dans Find a "
+"Plugin et cliquez sur Install. Il apparaît sous Installed."
+
+msgid "Copy your connection code"
+msgstr "Copiez votre code de connexion"
+
+msgid ""
+"The second box is your connection code: your website’s address and private "
+"key in one line. Copy it and keep it private."
+msgstr ""
+"Le deuxième champ est votre code de connexion : l’adresse de votre site web "
+"et votre clé privée en une seule ligne. Copiez-le et gardez-le confidentiel."
+
+msgid "Connect it"
+msgstr "Connectez-le"
+
+msgid ""
+"On your FPP: Content Setup → Marquee. Paste the code and click Connect. It "
+"says RUNNING and Connected to your website. No files to upload and nothing "
+"to start by hand: it starts with FPP from now on."
+msgstr ""
+"Sur votre FPP : Content Setup → Marquee. Collez le code et cliquez sur "
+"Connect. Il affiche RUNNING et Connected to your website. Aucun fichier à "
+"envoyer et rien à lancer à la main : il démarre désormais avec FPP."
+
+msgid ""
+"Within a minute this says “FPP last checked in” with a setup check: a green "
+"tick for each part, or a red line that says what to fix. Fix it and restart "
+"FPPD again."
+msgstr ""
+"En moins d’une minute, ceci affiche « Dernier signal du FPP » avec une "
+"vérification de configuration : une coche verte pour chaque élément, ou une "
+"ligne rouge qui indique quoi corriger. Corrigez et redémarrez FPPD."
+
+msgid "Play your show as a playlist"
+msgstr "Lancez votre spectacle en liste de lecture"
+
+msgid ""
+"Start your own show playlist (whatever you named it; this one is “2026 "
+"Playlist”) from the Status page or your schedule. Names go up only while it "
+"plays on this FPP: after the current song, the names break slips in, then "
+"your playlist carries on. A single sequence or Play Media won’t bring the "
+"names break."
+msgstr ""
+"Lancez votre propre liste de lecture du spectacle (quel que soit son nom ; "
+"celle-ci s’appelle « 2026 Playlist ») depuis la page Status ou votre "
+"planification. Les noms ne s’affichent que pendant sa lecture sur ce FPP : "
+"après la chanson en cours, la pause des noms s’intercale, puis votre liste "
+"reprend. Une séquence seule ou Play Media ne déclenche pas la pause des "
+"noms."
+
+msgid ""
+"Start your own show playlist (whatever you named it) from the Status page or"
+" your schedule. Names go up on your spare screen only while it plays on this"
+" FPP, within about 20 seconds of being sent."
+msgstr ""
+"Lancez votre propre liste de lecture du spectacle (quel que soit son nom) "
+"depuis la page Status ou votre planification. Les noms s’affichent sur votre"
+" écran libre uniquement pendant sa lecture sur ce FPP, environ 20 secondes "
+"après l’envoi."
+
+msgid ""
+"During show hours, open your website’s Kids’ Corner and send your own first "
+"name. It goes up after the current song (or right away during songs). "
+"Nothing? FPP → File Manager → Logs → marquee_names.log says why. Using "
+"Remote Falcon jukebox or voting? It also picks what plays next, so test once"
+" with viewer control off."
+msgstr ""
+"Pendant les horaires du spectacle, ouvrez le Coin des enfants de votre site "
+"web et envoyez votre propre prénom. Il s’affiche après la chanson en cours "
+"(ou tout de suite pendant les chansons). Rien ? FPP → File Manager → Logs → "
+"marquee_names.log indique pourquoi. Vous utilisez le jukebox ou le vote "
+"Remote Falcon ? Il choisit aussi ce qui passe ensuite, alors testez une fois"
+" avec le contrôle des spectateurs désactivé."
+
+msgid "Choose your layout"
+msgstr "Choisissez votre disposition"
+
+msgid ""
+"Click this box (or drag the file onto it) and pick xlights_rgbeffects.xml "
+"from your xLights show folder. It stays on your computer: Marquee reads it "
+"right here."
+msgstr ""
+"Cliquez sur ce cadre (ou glissez-y le fichier) et choisissez "
+"xlights_rgbeffects.xml dans le dossier de votre spectacle xLights. Il reste "
+"sur votre ordinateur : Marquee le lit directement ici."
+
+msgid "Your names break (optional)"
+msgstr "Votre pause des noms (facultatif)"
+
+msgid ""
+"Already have a names break sequence? Drop its .xsq here and the themes are "
+"made from it, keeping its music, timing and singing faces. No names break "
+"yet? Leave it empty and Marquee makes one."
+msgstr ""
+"Vous avez déjà une séquence de pause des noms ? Déposez son .xsq ici et les "
+"thèmes seront créés à partir d’elle, en gardant sa musique, son minutage et "
+"ses visages chantants. Pas encore de pause des noms ? Laissez vide et "
+"Marquee en crée une."
+
+msgid "Pick what to make"
+msgstr "Choisissez quoi créer"
+
+msgid ""
+"Tick the themes you want. 3 or 4 is plenty: kids pick faster, and each one "
+"is a sequence to render."
+msgstr ""
+"Cochez les thèmes voulus. 3 ou 4 suffisent : les enfants choisissent plus "
+"vite, et chacun est une séquence à rendre."
+
+msgid "Or describe your own"
+msgstr "Ou décrivez le vôtre"
+
+msgid ""
+"Type an idea, like “purple and gold Mardi Gras”, and click Add it. The AI "
+"picks the colors and effects; add as many as you like, one at a time."
+msgstr ""
+"Tapez une idée, comme « Mardi Gras violet et or », et cliquez sur Ajouter. "
+"L’IA choisit les couleurs et les effets ; ajoutez-en autant que vous voulez,"
+" un à la fois."
+
+msgid "No timing to set"
+msgstr "Aucun minutage à régler"
+
+msgid ""
+"The tricky part is done for you: Marquee makes sure each name shows up right"
+" after the intro and then every few seconds, lined up with the music. “Use "
+"it” fills in the numbers later."
+msgstr ""
+"Le plus délicat est fait pour vous : Marquee veille à ce que chaque nom "
+"apparaisse juste après l’intro puis toutes les quelques secondes, calé sur "
+"la musique. « Utiliser » remplit les nombres ensuite."
+
+msgid "Make them"
+msgstr "Créez-les"
+
+msgid "Click Make my sequences. It takes a second."
+msgstr "Cliquez sur Créer mes séquences. Cela prend une seconde."
+
+msgid "Download each one"
+msgstr "Téléchargez chacune"
+
+msgid ""
+"Each sequence gets a Download .xsq button. Save them into your xLights show "
+"folder (the one with xlights_rgbeffects.xml in it). Download the music too, "
+"with the button at the bottom here."
+msgstr ""
+"Chaque séquence a un bouton Télécharger le .xsq. Enregistrez-les dans le "
+"dossier de votre spectacle xLights (celui qui contient "
+"xlights_rgbeffects.xml). Téléchargez aussi la musique, avec le bouton en "
+"bas."
+
+msgid "Open it in xLights"
+msgstr "Ouvrez-la dans xLights"
+
+msgid ""
+"In xLights: File → Open Sequence and pick the new .xsq. If it asks for the "
+"music, choose the music file you downloaded."
+msgstr ""
+"Dans xLights : File → Open Sequence et choisissez le nouveau .xsq. S’il "
+"demande la musique, choisissez le fichier musical téléchargé."
+
+msgid "Render it and Save"
+msgstr "Faites le rendu et enregistrez"
+
+msgid ""
+"Click Render All, play it in the house preview and change anything you like."
+" Then Save: that writes the .fseq file, which is what FPP plays. FPP can’t "
+"play the .xsq itself."
+msgstr ""
+"Cliquez sur Render All, lisez-la dans l’aperçu de la maison et modifiez ce "
+"que vous voulez. Puis enregistrez : cela écrit le fichier .fseq, que FPP "
+"joue. FPP ne peut pas jouer le .xsq lui-même."
+
+msgid "Send it to your FPP"
+msgstr "Envoyez-la à votre FPP"
+
+msgid ""
+"Easiest: Tools → FPP Connect, tick your FPP and the new sequences, and click"
+" Upload. It sends the .fseq and the music together. (Or upload them by hand "
+"in FPP → File Manager.)"
+msgstr ""
+"Le plus simple : Tools → FPP Connect, cochez votre FPP et les nouvelles "
+"séquences, puis cliquez sur Upload. Le .fseq et la musique sont envoyés "
+"ensemble. (Ou envoyez-les à la main dans FPP → File Manager.)"
+
+msgid "Check it arrived"
+msgstr "Vérifiez qu’elle est arrivée"
+
+msgid ""
+"On your FPP: Content Setup → File Manager → Sequences. The new .fseq is in "
+"the list."
+msgstr ""
+"Sur votre FPP : Content Setup → File Manager → Sequences. Le nouveau .fseq "
+"figure dans la liste."
+
+msgid "Make a playlist for each one"
+msgstr "Créez une liste de lecture pour chacune"
+
+msgid ""
+"Content Setup → Playlists → New Playlist, one per sequence. Your names break"
+" goes in a playlist named exactly “%s” (the name in card 1). Each theme gets"
+" its own, named the way Marquee shows it, for example “Names - Candy Cane "
+"Swirl”. Don’t add them to your show schedule: Marquee plays them between "
+"songs."
+msgstr ""
+"Content Setup → Playlists → New Playlist, une par séquence. Votre pause des "
+"noms va dans une liste nommée exactement « %s » (le nom de la carte 1). "
+"Chaque thème a la sienne, nommée comme Marquee l’affiche, par exemple « "
+"Names - Candy Cane Swirl ». Ne les ajoutez pas à la planification de votre "
+"spectacle : Marquee les joue entre les chansons."
+
+msgid "Add the sequence"
+msgstr "Ajoutez la séquence"
+
+msgid "In the new playlist, click Add a Sequence/Entry."
+msgstr "Dans la nouvelle liste, cliquez sur Add a Sequence/Entry."
+
+msgid "Sequence and its music"
+msgstr "La séquence et sa musique"
+
+msgid ""
+"Type: Sequence and Media. Pick the new sequence; its music is picked for "
+"you. Click Add, then Save Playlist."
+msgstr ""
+"Type : Sequence and Media. Choisissez la nouvelle séquence ; sa musique est "
+"choisie pour vous. Cliquez sur Add, puis Save Playlist."
+
+msgid "Back here: use it"
+msgstr "De retour ici : utilisez-la"
+
+msgid ""
+"For each theme, click “Use it” next to its Download button, then Save "
+"settings. Card 1’s setup check tells you within a minute if FPP can’t find a"
+" playlist."
+msgstr ""
+"Pour chaque thème, cliquez sur « Utiliser » à côté de son bouton "
+"Télécharger, puis sur Enregistrer les réglages. La vérification de "
+"configuration de la carte 1 vous signale en moins d’une minute si FPP ne "
+"trouve pas une liste de lecture."
+
+msgid ""
+"You need three things first: a voice set up in card 2, the names script "
+"running on your FPP (card 1, Connect your FPP), and a playlist on your FPP "
+"named “%s” with your names break sequence in it (card 4 makes the sequence)."
+" Marquee puts the new sound into that playlist."
+msgstr ""
+"Il vous faut d’abord trois choses : une voix configurée dans la carte 2, le "
+"script des noms en marche sur votre FPP (carte 1, Connectez votre FPP) et "
+"une liste de lecture sur votre FPP nommée « %s » contenant votre séquence de"
+" pause des noms (la carte 4 crée la séquence). Marquee place le nouveau son "
+"dans cette liste."
+
+msgid "What you’re making"
+msgstr "Ce que vous créez"
+
+msgid ""
+"The sound your radio plays during the names break: an intro, soft music "
+"while the names go up (your FPP says each name live over it), and an outro."
+msgstr ""
+"Le son que votre radio diffuse pendant la pause des noms : une intro, une "
+"musique douce pendant que les noms s’affichent (votre FPP prononce chaque "
+"nom en direct par-dessus), et une conclusion."
+
+msgid "Write the intro"
+msgstr "Écrivez l’intro"
+
+msgid ""
+"What the announcer says before the names. Click one of the ideas under it to"
+" start from one. Keep it short: about one breath."
+msgstr ""
+"Ce que dit l’annonceur avant les noms. Cliquez sur l’une des idées dessous "
+"pour partir de celle-ci. Faites court : environ une respiration."
+
+msgid "Write the outro"
+msgstr "Écrivez la conclusion"
+
+msgid ""
+"What comes after the names, like how to send a name. Write your website the "
+"way people say it: “lights on main street dot com”."
+msgstr ""
+"Ce qui vient après les noms, comme la façon d’envoyer un nom. Écrivez votre "
+"site web comme on le prononce : « lumières rue principale point com »."
+
+msgid "Your sequence length"
+msgstr "Durée de votre séquence"
+
+msgid ""
+"How long your names break sequence is, in seconds. Marquee fits the intro, 6"
+" names and the outro into it."
+msgstr ""
+"La durée de votre séquence de pause des noms, en secondes. Marquee y fait "
+"tenir l’intro, 6 noms et la conclusion."
+
+msgid "Music (optional)"
+msgstr "Musique (facultatif)"
+
+msgid ""
+"Your own soft instrumental: no singing or talking, or it covers the names. "
+"Leave it empty for the soft music box that comes with Marquee."
+msgstr ""
+"Votre propre musique instrumentale douce : sans chant ni paroles, sinon elle"
+" couvre les noms. Laissez vide pour la douce boîte à musique fournie avec "
+"Marquee."
+
+msgid "Build it"
+msgstr "Créez-le"
+
+msgid ""
+"Click Build. Your voice reads the lines, and Marquee mixes three versions at"
+" song loudness: the full break, and shorter ones for when only 1 or 2 names "
+"are waiting."
+msgstr ""
+"Cliquez sur Créer. Votre voix lit les textes et Marquee mixe trois versions "
+"au volume des chansons : la pause complète, et des versions plus courtes "
+"pour quand seuls 1 ou 2 noms attendent."
+
+msgid "Listen"
+msgstr "Écoutez"
+
+msgid ""
+"Three players appear. They sound alike on purpose: the names aren’t in them,"
+" because your FPP says each name live. The short ones just reach the outro "
+"sooner."
+msgstr ""
+"Trois lecteurs apparaissent. Ils se ressemblent exprès : les noms n’y sont "
+"pas, car votre FPP prononce chaque nom en direct. Les courts arrivent "
+"simplement plus tôt à la conclusion."
+
+msgid "Timing is set for you"
+msgstr "Le minutage est réglé pour vous"
+
+msgid ""
+"“When the first name appears” and “Time between names” in card 1 are filled "
+"in to match your intro. The timeline shows where each name lands."
+msgstr ""
+"« Quand le premier nom apparaît » et « Temps entre les noms » dans la carte "
+"1 sont remplis pour correspondre à votre intro. La frise montre où tombe "
+"chaque nom."
+
+msgid "Your FPP does the rest"
+msgstr "Votre FPP fait le reste"
+
+msgid ""
+"Within a minute your FPP downloads the three files and sets up the playlists"
+" by itself (“%1$s”, “%1$s 2” and “%1$s 1”). The setup check in card 1 shows "
+"a green tick when it’s done."
+msgstr ""
+"En moins d’une minute, votre FPP télécharge les trois fichiers et configure "
+"les listes de lecture tout seul (« %1$s », « %1$s 2 » et « %1$s 1 »). La "
+"vérification de configuration de la carte 1 affiche une coche verte une fois"
+" terminé."
+
+msgid "First, the sequences"
+msgstr "D’abord, les séquences"
+
+msgid ""
+"Each theme is its own short sequence on your FPP. Don’t have them yet? “Make"
+" them for me” makes them from your layout (card 4), with its own "
+"walkthrough."
+msgstr ""
+"Chaque thème est sa propre courte séquence sur votre FPP. Vous ne les avez "
+"pas encore ? « Créez-les pour moi » les crée à partir de votre disposition "
+"(carte 4), avec son propre guide pas à pas."
+
+msgid "Turn it on"
+msgstr "Activez-le"
+
+msgid ""
+"Switch on “Let kids pick a themed sequence”. Your regular names break stays "
+"as the “Classic” choice."
+msgstr ""
+"Activez « Laisser les enfants choisir une séquence à thème ». Votre pause "
+"des noms habituelle reste le choix « Classique »."
+
+msgid "The name kids see"
+msgstr "Le nom vu par les enfants"
+
+msgid "Short and fun: Candy Cane Swirl, Snowfall…"
+msgstr "Court et amusant : Candy Cane Swirl, Snowfall…"
+
+msgid "Its playlist on your FPP"
+msgstr "Sa liste de lecture sur votre FPP"
+
+msgid ""
+"Exactly the name of the playlist you made on your FPP, for example “Names - "
+"Candy Cane Swirl”. A typo means names for this theme go up in the Classic "
+"break instead."
+msgstr ""
+"Exactement le nom de la liste de lecture créée sur votre FPP, par exemple « "
+"Names - Candy Cane Swirl ». Une faute de frappe et les noms de ce thème "
+"passent dans la pause Classique."
+
+msgid ""
+"When the names appear in this sequence. If it was made by the Sequence "
+"maker, “Use it” already filled these in to match: leave them. The bar shows "
+"where each name lands."
+msgstr ""
+"Quand les noms apparaissent dans cette séquence. Si elle a été créée par le "
+"créateur de séquences, « Utiliser » les a déjà remplis : laissez-les. La "
+"barre montre où tombe chaque nom."
+
+msgid "A picture, or a look"
+msgstr "Une image, ou un style"
+
+msgid ""
+"A photo of your house during that sequence works great. No picture? Pick a "
+"look and kids see a little animated house in those colors."
+msgstr ""
+"Une photo de votre maison pendant cette séquence, c’est parfait. Pas d’image"
+" ? Choisissez un style et les enfants voient une petite maison animée dans "
+"ces couleurs."
+
+msgid "What kids see"
+msgstr "Ce que voient les enfants"
+
+msgid ""
+"This card is exactly what kids tap on your website. It updates as you type."
+msgstr ""
+"Cette carte est exactement ce que les enfants touchent sur votre site web. "
+"Elle se met à jour pendant que vous tapez."
+
+msgid "Click Save settings. The themes show up for kids right away."
+msgstr ""
+"Cliquez sur Enregistrer les réglages. Les thèmes s’affichent aussitôt pour "
+"les enfants."
+
+msgid "Check your FPP found them"
+msgstr "Vérifiez que votre FPP les a trouvés"
+
+msgid ""
+"Within a minute, the setup check in card 1 lists each theme’s playlist with "
+"a green tick, or tells you which one it can’t find."
+msgstr ""
+"En moins d’une minute, la vérification de configuration de la carte 1 liste "
+"la liste de lecture de chaque thème avec une coche verte, ou vous indique "
+"laquelle est introuvable."
+
+msgid "Show me how"
+msgstr "Montrez-moi comment"
+
+msgid "Song covers"
+msgstr "Pochettes des chansons"
+
+msgid "Show cover pictures"
+msgstr "Afficher les pochettes"
+
+msgid ""
+"A small cover next to each song in Tonight’s Playlist and Vote for Your "
+"Favorite Song. It uses the artwork you set in Remote Falcon, or your own "
+"picture below."
+msgstr ""
+"Une petite pochette à côté de chaque chanson dans Au programme ce soir et "
+"Votez pour votre chanson préférée. Elle utilise l’illustration définie dans "
+"Remote Falcon, ou votre propre image ci-dessous."
+
+msgid "Find album covers automatically"
+msgstr "Trouver les pochettes d’album automatiquement"
+
+msgid ""
+"For songs without artwork, Marquee looks up the album cover by song and "
+"artist (Apple’s free music search) and saves a copy on your site. It only "
+"uses a cover when the song matches; change any that are wrong below."
+msgstr ""
+"Pour les chansons sans illustration, Marquee cherche la pochette de l’album "
+"par chanson et artiste (la recherche musicale gratuite d’Apple) et en "
+"enregistre une copie sur votre site. Il n’utilise une pochette que si la "
+"chanson correspond ; changez ci-dessous celles qui sont fausses."
+
+msgid ""
+"Looking for covers again. It takes a minute or two; reload this page to see "
+"them."
+msgstr ""
+"Nouvelle recherche des pochettes. Cela prend une minute ou deux ; rechargez "
+"cette page pour les voir."
+
+msgid "Your picture"
+msgstr "Votre image"
+
+msgid "No cover"
+msgstr "Pas de pochette"
+
+msgid "From Remote Falcon"
+msgstr "Depuis Remote Falcon"
+
+msgid "Found automatically"
+msgstr "Trouvée automatiquement"
+
+msgid "No cover found"
+msgstr "Aucune pochette trouvée"
+
+msgid "Changes are kept when you click Save."
+msgstr "Les modifications sont conservées quand vous cliquez sur Enregistrer."
+
+msgid "Find covers again"
+msgstr "Rechercher les pochettes"
+
+msgid "Couldn’t reach Claude: "
+msgstr "Impossible de joindre Claude : "
+
+msgid ""
+"Claude didn’t accept the API key. Check it in the Anthropic Console "
+"(console.anthropic.com → API Keys)."
+msgstr ""
+"Claude n’a pas accepté la clé API. Vérifiez-la dans l’Anthropic Console "
+"(console.anthropic.com → API Keys)."
+
+msgid "Claude is busy right now. Try again in a minute."
+msgstr "Claude est occupé en ce moment. Réessayez dans une minute."
+
+msgid "The Claude account for this key is out of credit."
+msgstr "Le compte Claude de cette clé n’a plus de crédit."
+
+msgid "Claude answered %1$d. %2$s"
+msgstr "Claude a répondu %1$d. %2$s"
+
+msgid "Couldn’t reach ChatGPT: "
+msgstr "Impossible de joindre ChatGPT : "
+
+msgid "ChatGPT didn’t send an answer. Try asking again."
+msgstr "ChatGPT n’a pas envoyé de réponse. Essayez de reposer la question."
+
+msgid ""
+"ChatGPT didn’t accept the API key. Check it at platform.openai.com → API "
+"keys."
+msgstr ""
+"ChatGPT n’a pas accepté la clé API. Vérifiez-la sur platform.openai.com → "
+"API keys."
+
+msgid ""
+"The OpenAI account for this key is out of credit. Add credit at "
+"platform.openai.com → Billing."
+msgstr ""
+"Le compte OpenAI de cette clé n’a plus de crédit. Ajoutez du crédit sur "
+"platform.openai.com → Billing."
+
+msgid "ChatGPT is busy right now. Try again in a minute."
+msgstr "ChatGPT est occupé en ce moment. Réessayez dans une minute."
+
+msgid "ChatGPT answered %1$d. %2$s"
+msgstr "ChatGPT a répondu %1$d. %2$s"
+
+msgid "ChatGPT didn’t answer."
+msgstr "ChatGPT n’a pas répondu."
+
+msgid "Add a ChatGPT or Claude API key first."
+msgstr "Ajoutez d’abord une clé API ChatGPT ou Claude."
+
+msgid ""
+"That’s all the questions for today. Try again tomorrow, or use Send "
+"feedback."
+msgstr ""
+"C’est tout pour les questions aujourd’hui. Réessayez demain, ou utilisez "
+"Envoyer un commentaire."
+
+msgid "Add a key for that one first."
+msgstr "Ajoutez d’abord une clé pour celui-ci."
+
+msgid ""
+"That doesn’t look like an API key. A ChatGPT key starts with sk-, a Claude "
+"key starts with sk-ant-."
+msgstr ""
+"Cela ne ressemble pas à une clé API. Une clé ChatGPT commence par sk-, une "
+"clé Claude par sk-ant-."
+
+msgid "Need help?"
+msgstr "Besoin d’aide ?"
+
+msgid "Marquee help"
+msgstr "Aide Marquee"
+
+msgid ""
+"Ask anything about setting up your show. It already knows your setup, so you"
+" don’t have to explain it."
+msgstr ""
+"Posez n’importe quelle question sur la configuration de votre spectacle. Il "
+"connaît déjà votre configuration, inutile de l’expliquer."
+
+msgid "Answers by"
+msgstr "Réponses par"
+
+msgid "Close"
+msgstr "Fermer"
+
+msgid "Pick the AI that answers."
+msgstr "Choisissez l’IA qui répond."
+
+msgid ""
+"Both work the same way and both know your setup. Use whichever account you "
+"already have (pay as you go, a question costs about a cent or less)."
+msgstr ""
+"Les deux fonctionnent de la même façon et connaissent votre configuration. "
+"Utilisez le compte que vous avez déjà (paiement à l’usage, une question "
+"coûte environ un centime ou moins)."
+
+msgid "Get a key:"
+msgstr "Obtenir une clé :"
+
+msgid "Use %s (key saved)"
+msgstr "Utiliser %s (clé enregistrée)"
+
+msgid "Paste your ChatGPT or Claude API key"
+msgstr "Collez votre clé API ChatGPT ou Claude"
+
+msgid "Save key"
+msgstr "Enregistrer la clé"
+
+msgid "Marquee tells which one it is from the key."
+msgstr "Marquee devine de laquelle il s’agit grâce à la clé."
+
+msgid ""
+"Hi! I know how Marquee works and I can already see your setup and your FPP’s"
+" setup check, so just ask. What can I help with?"
+msgstr ""
+"Bonjour ! Je sais comment fonctionne Marquee et je vois déjà votre "
+"configuration et la vérification de configuration de votre FPP, alors posez "
+"votre question. Comment puis-je vous aider ?"
+
+msgid "Check my setup for problems"
+msgstr "Vérifier ma configuration"
+
+msgid "Why aren’t names showing on my screens?"
+msgstr "Pourquoi les noms ne s’affichent-ils pas sur mes écrans ?"
+
+msgid "How do I set up spoken names?"
+msgstr "Comment configurer les noms parlés ?"
+
+msgid "How do themed sequences work?"
+msgstr "Comment fonctionnent les séquences à thème ?"
+
+msgid "Type your question…"
+msgstr "Tapez votre question…"
+
+msgid "Ask"
+msgstr "Demander"
+
+msgid ""
+"Your question and your site’s setup (never passwords or keys) are sent to"
+msgstr ""
+"Votre question et la configuration de votre site (jamais de mots de passe ni"
+" de clés) sont envoyées à"
+
+msgid "the AI you pick"
+msgstr "l’IA que vous choisissez"
+
+msgid ""
+"to answer. Answers can be wrong; double-check before changing your show."
+msgstr ""
+"pour obtenir une réponse. Les réponses peuvent être fausses ; vérifiez avant"
+" de modifier votre spectacle."
+
+msgid "Remove this key"
+msgstr "Supprimer cette clé"
+
+msgid "Included with your hosting."
+msgstr "Inclus avec votre hébergement."
+
+msgid ""
+"Describing your own theme uses the Need help assistant: add a ChatGPT or "
+"Claude key there first (the ready-made themes work without one)."
+msgstr ""
+"Décrire votre propre thème utilise l’assistant Besoin d’aide ? : ajoutez-y "
+"d’abord une clé ChatGPT ou Claude (les thèmes prêts à l’emploi fonctionnent "
+"sans)."
+
+msgid ""
+"That’s all the AI questions for today. Try again tomorrow, or pick a ready-"
+"made theme."
+msgstr ""
+"C’est tout pour les questions à l’IA aujourd’hui. Réessayez demain, ou "
+"choisissez un thème prêt à l’emploi."
+
+msgid "Describe the theme first, like “purple and gold Mardi Gras”."
+msgstr "Décrivez d’abord le thème, comme « Mardi Gras violet et or »."
+
+msgid ""
+"The AI’s answer didn’t make sense. Try describing it a little differently."
+msgstr ""
+"La réponse de l’IA n’avait pas de sens. Essayez de le décrire un peu "
+"autrement."
+
+msgid "Looking it up…"
+msgstr "Recherche…"
+
+msgid "Couldn’t look that up."
+msgstr "Recherche impossible."
+
+msgid "Found it: %s. Check the fields below."
+msgstr "Trouvé : %s. Vérifiez les champs ci-dessous."
+
+msgid "radar %s"
+msgstr "radar %s"
+
+msgid "Couldn’t reach the website. Try again."
+msgstr "Impossible de joindre le site web. Réessayez."
+
+msgid "New logo picked. Click Save settings to use it."
+msgstr ""
+"Nouveau logo choisi. Cliquez sur Enregistrer les réglages pour l'utiliser."
+
+msgid "Testing…"
+msgstr "Test en cours…"
+
+msgid "Test failed."
+msgstr "Échec du test."
+
+msgid ""
+"That’s the key ID, not the key. The API key starts with sk_ and ElevenLabs "
+"shows it only once, when you create the key."
+msgstr ""
+"C'est l'identifiant de la clé, pas la clé. La clé API commence par sk_ et "
+"ElevenLabs ne l'affiche qu'une fois, quand vous créez la clé."
+
+msgid "Loading…"
+msgstr "Chargement…"
+
+msgid "Couldn’t load your voices."
+msgstr "Impossible de charger vos voix."
+
+msgid "My voices"
+msgstr "Mes voix"
+
+msgid "ElevenLabs voices"
+msgstr "Voix ElevenLabs"
+
+msgid "%s voices. Pick one, then Test voice."
+msgstr "%s voix. Choisissez-en une, puis Tester la voix."
+
+msgid "Making the clip…"
+msgstr "Création du clip…"
+
+msgid "Song"
+msgstr "Chanson"
+
+msgid "Use these songs"
+msgstr "Utiliser ces chansons"
+
+msgid "Use these pictures"
+msgstr "Utiliser ces images"
+
+msgid "Use this picture"
+msgstr "Utiliser cette image"
+
+msgid "Posting…"
+msgstr "Publication…"
+
+msgid "Nothing was posted."
+msgstr "Rien n'a été publié."
+
+msgid "Couldn’t reach your website."
+msgstr "Impossible de joindre votre site web."
+
+msgid "Checking…"
+msgstr "Vérification…"
+
+msgid "Something went wrong."
+msgstr "Une erreur s'est produite."
+
+msgid "Connecting…"
+msgstr "Connexion…"
+
+msgid "Connected to @%s!"
+msgstr "Connecté à @%s !"
+
+msgid "Which Page should Marquee post on?"
+msgstr "Sur quelle Page Marquee doit-il publier ?"
+
+msgid "Saving…"
+msgstr "Enregistrement…"
+
+msgid "Connected to %s!"
+msgstr "Connecté à %s !"
+
+msgid "Names go up at %1$s. Each one stays up about %2$s s."
+msgstr "Les noms s'affichent à %1$s. Chacun reste environ %2$s s."
+
+msgid ""
+"The 6th name ends at %1$s s, after your %2$s s break: lower one of the "
+"numbers."
+msgstr ""
+"Le 6e nom se termine à %1$s s, après votre pause de %2$s s : baissez l'un "
+"des nombres."
+
+msgid "The last name is done at %1$s s of your %2$s s break."
+msgstr "Le dernier nom se termine à %1$s s de votre pause de %2$s s."
+
+msgid "No NAME in it, so the name goes at the end."
+msgstr "Pas de NAME dedans, donc le nom va à la fin."
+
+msgid "Emoji are left out: the screens can’t show them."
+msgstr "Les emoji sont retirés : les écrans ne peuvent pas les afficher."
+
+msgid "Unblock %s"
+msgstr "Débloquer %s"
+
+msgid "%s blocked"
+msgstr "%s bloqué"
+
+msgid "Copied ✓"
+msgstr "Copié ✓"
+
+msgid "That didn’t work. Try again."
+msgstr "Ça n'a pas marché. Réessayez."
+
+msgid "No cover (save to keep)"
+msgstr "Pas de pochette (enregistrez pour conserver)"
+
+msgid "Automatic (save to see it)"
+msgstr "Automatique (enregistrez pour la voir)"
+
+msgid "Cover for this song"
+msgstr "Pochette de cette chanson"
+
+msgid "Your picture (save to keep)"
+msgstr "Votre image (enregistrez pour la conserver)"
+
+msgid "FPP hasn’t checked in yet"
+msgstr "FPP n'a pas encore pris contact"
+
+msgid "FPP checked in %s sec ago"
+msgstr "Dernier contact avec FPP il y a %s s"
+
+msgid "FPP checked in %s min ago"
+msgstr "Dernier contact avec FPP il y a %s min"
+
+msgid "FPP last checked in %s h ago"
+msgstr "Dernier contact avec FPP il y a %s h"
+
+msgid "Set it up"
+msgstr "Le configurer"
+
+msgid "Posting on social media…"
+msgstr "Publication sur les réseaux sociaux…"
+
+msgid "Copy the post for other sites (Nextdoor, groups…)"
+msgstr "Copiez la publication pour d’autres sites (Nextdoor, groupes…)"
+
+msgid "Copied!"
+msgstr "Copié !"
+
+msgid "Not checking in"
+msgstr "Ne se signale pas"
+
+msgid "Playing"
+msgstr "Lecture en cours"
+
+msgid "Idle"
+msgstr "Inactif"
+
+msgid "Paused"
+msgstr "En pause"
+
+msgid "Open"
+msgstr "Ouvert"
+
+msgid "Closed"
+msgstr "Fermé"
+
+msgid "%s in the Kids’ Corner"
+msgstr "%s dans le Coin des enfants"
+
+msgid ""
+"Names only from phones within %s of your show. You can still send test names"
+" from anywhere."
+msgstr ""
+"Noms acceptés uniquement depuis les téléphones à moins de %s de votre "
+"spectacle. Vous pouvez toujours envoyer des noms de test depuis n'importe "
+"où."
+
+msgid "Website visits"
+msgstr "Visites du site web"
+
+msgid "Names sent"
+msgstr "Noms envoyés"
+
+msgid "Names shown"
+msgstr "Noms affichés"
+
+msgid "Light Lab plays"
+msgstr "Lectures du Labo des lumières"
+
+msgid "Song votes"
+msgstr "Votes pour les chansons"
+
+msgid "Hearts"
+msgstr "Cœurs"
+
+msgid "No names waiting."
+msgstr "Aucun nom en attente."
+
+msgid "sent %s"
+msgstr "envoyé %s"
+
+msgid "Removed"
+msgstr "Supprimé"
+
+msgid "Block"
+msgstr "Bloquer"
+
+msgid "Removed and blocked"
+msgstr "Supprimé et bloqué"
+
+msgid "%s tonight"
+msgstr "%s ce soir"
+
+msgid "Nothing shown yet."
+msgstr "Rien d’affiché pour l’instant."
+
+msgid "All caught up."
+msgstr "Tout est à jour."
+
+msgid "The contest is off."
+msgstr "Le concours est désactivé."
+
+msgid "My Light Show"
+msgstr "Mon spectacle de lumières"
+
+msgid "%1$s, age %2$s"
+msgstr "%1$s, %2$s ans"
+
+msgid "Watch"
+msgstr "Regarder"
+
+msgid "Approved: now on the Show Wall"
+msgstr "Approuvé : maintenant sur le Mur des spectacles"
+
+msgid "Decline"
+msgstr "Refuser"
+
+msgid "Declined"
+msgstr "Refusé"
+
+msgid "No new messages."
+msgstr "Aucun nouveau message."
+
+msgid "Approved: now in the guestbook"
+msgstr "Approuvé : maintenant dans le livre d'or"
+
+msgid "Delete"
+msgstr "Supprimer"
+
+msgid "Deleted"
+msgstr "Supprimé"
+
+msgid "On your website until %1$s (%2$s left)"
+msgstr "Sur votre site web jusqu’à %1$s (encore %2$s)"
+
+msgid "Turn it off"
+msgstr "Le désactiver"
+
+msgid "Traffic alert off"
+msgstr "Alerte trafic désactivée"
+
+msgid "Show canceled"
+msgstr "Spectacle annulé"
+
+msgid "Sent by you"
+msgstr "Envoyée par vous"
+
+msgid "No alerts sent yet."
+msgstr "Aucune alerte envoyée pour l’instant."
+
+msgid "%s sent"
+msgstr "%s envoyées"
+
+msgid "Saved"
+msgstr "Enregistré"
+
+msgid "You’ve been signed out. Reloading…"
+msgstr "Vous avez été déconnecté. Rechargement…"
+
+msgid "Couldn’t save. Try again."
+msgstr "Enregistrement impossible. Réessayez."
+
+msgid "No connection. Check your phone’s signal."
+msgstr "Pas de connexion. Vérifiez le signal de votre téléphone."
+
+msgid "Turned on"
+msgstr "Activé"
+
+msgid "Turned off"
+msgstr "Désactivé"
+
+msgid "Traffic alert is on"
+msgstr "Alerte circulation activée"
+
+msgid "The show is back on"
+msgstr "Le spectacle reprend"
+
+msgid "Send “%1$s” to %2$s phone?"
+msgstr "Envoyer « %1$s » à %2$s téléphone ?"
+
+msgid "Send “%1$s” to %2$s phones?"
+msgstr "Envoyer « %1$s » à %2$s téléphones ?"
+
+msgid "Sending…"
+msgstr "Envoi…"
+
+msgid "(%s didn’t go through)"
+msgstr "(échecs : %s)"
+
+msgid "Couldn’t send. Try again."
+msgstr "Envoi impossible. Réessayez."
+
+msgid "%s name waiting"
+msgstr "%s nom en attente"
+
+msgid "%s names waiting"
+msgstr "%s noms en attente"
+
+msgid "%s person"
+msgstr "%s personne"
+
+msgid "%s people"
+msgstr "%s personnes"
+
+msgid "%s entry"
+msgstr "%s participation"
+
+msgid "%s entries"
+msgstr "%s participations"
+
+msgid "Goes to %s phone that chose “special news”."
+msgstr "Envoyé à %s téléphone ayant choisi « annonces spéciales »."
+
+msgid "Goes to %s phones that chose “special news”."
+msgstr "Envoyé à %s téléphones ayant choisi « annonces spéciales »."
+
+msgid "Also send a “No show tonight” alert to %s phone"
+msgstr "Envoyer aussi une alerte « Pas de spectacle ce soir » à %s téléphone"
+
+msgid "Also send a “No show tonight” alert to %s phones"
+msgstr "Envoyer aussi une alerte « Pas de spectacle ce soir » à %s téléphones"
+
+msgid "Also send a phone alert to %s phone"
+msgstr "Envoyer aussi une alerte à %s téléphone"
+
+msgid "Also send a phone alert to %s phones"
+msgstr "Envoyer aussi une alerte à %s téléphones"
+
+msgid "Done. Alert sent to %s phone"
+msgstr "Terminé. Alerte envoyée à %s téléphone"
+
+msgid "Done. Alert sent to %s phones"
+msgstr "Terminé. Alerte envoyée à %s téléphones"
+
+msgid "Sent to %s phone"
+msgstr "Envoyé à %s téléphone"
+
+msgid "Sent to %s phones"
+msgstr "Envoyé à %s téléphones"
+
+msgid "Render All, play it, then Save → <b>.fseq</b>"
+msgstr "Render All, lisez-la, puis Save → <b>.fseq</b>"
+
+msgid "Play"
+msgstr "Lire"
+
+msgid "Done"
+msgstr "Terminé"
+
+msgid "On remotefalcon.com"
+msgstr "Sur remotefalcon.com"
+
+msgid "On elevenlabs.io"
+msgstr "Sur elevenlabs.io"
+
+msgid "On your FPP"
+msgstr "Sur votre FPP"
+
+msgid "In xLights (picture)"
+msgstr "Dans xLights (image)"
+
+msgid "You"
+msgstr "Vous"
+
+msgid "Marquee Support"
+msgstr "Marquee Support"
+
+msgid "Status"
+msgstr "État"
+
+msgid "(names only go up while a playlist is playing)"
+msgstr "(les noms ne s'affichent que si une liste de lecture est en cours)"
+
+msgid "Playlist"
+msgstr "Liste de lecture"
+
+msgid "Sequence"
+msgstr "Séquence"
+
+msgid "during songs"
+msgstr "pendant les chansons"
+
+msgid "between songs"
+msgstr "entre les chansons"
+
+msgid "break playlist: %s"
+msgstr "liste de lecture de la pause : %s"
+
+msgid "Names script"
+msgstr "Script des noms"
+
+msgid "(Marquee plugin)"
+msgstr "(extension Marquee)"
+
+msgid "(by hand)"
+msgstr "(à la main)"
+
+msgid "Checked in"
+msgstr "Dernier contact"
+
+msgid "%s ago"
+msgstr "il y a %s"
+
+msgid "Sequences on the FPP (%s)"
+msgstr "Séquences sur le FPP (%s)"
+
+msgid "Playlists on the FPP (%s)"
+msgstr "Listes de lecture sur le FPP (%s)"
+
+msgid "Names script log"
+msgstr "Journal du script des noms"
+
+msgid "Something went wrong. Please try again."
+msgstr "Une erreur s’est produite. Veuillez réessayer."
+
+msgid "That didn’t send. Please try again."
+msgstr "L'envoi a échoué. Veuillez réessayer."
+
+msgid "Couldn’t read %s"
+msgstr "Impossible de lire %s"
+
+msgid "Not chosen yet."
+msgstr "Pas encore choisi."
+
+msgid "%1$s: %2$s props found (%3$s)"
+msgstr "%1$s : %2$s éléments trouvés (%3$s)"
+
+msgid ""
+"That doesn’t look like xlights_rgbeffects.xml. Pick the file with that name "
+"from your xLights show folder."
+msgstr ""
+"Ça ne ressemble pas à xlights_rgbeffects.xml. Choisissez le fichier portant "
+"ce nom dans votre dossier de spectacle xLights."
+
+msgid "%1$s: themes keep its look, timing and %2$s props with effects."
+msgstr ""
+"%1$s : les thèmes gardent son style, son rythme et %2$s éléments avec "
+"effets."
+
+msgid "The names will line up with your names break audio."
+msgstr "Les noms seront calés sur l'audio de votre pause des noms."
+
+msgid "In it, the first name is %1$s seconds in, then one every %2$s seconds."
+msgstr ""
+"Dans celle-ci, le premier nom arrive à %1$s secondes, puis un toutes les "
+"%2$s secondes."
+
+msgid "The names will use the same times as your names break."
+msgstr "Les noms utiliseront les mêmes temps que votre pause des noms."
+
+msgid "That isn’t an xLights sequence (.xsq)."
+msgstr "Ce n'est pas une séquence xLights (.xsq)."
+
+msgid ""
+"%1$s of %2$s themes picked. 3 or 4 is plenty: kids pick faster, and each one"
+" is a sequence to render."
+msgstr ""
+"%1$s thèmes sur %2$s choisis. 3 ou 4 suffisent : les enfants choisissent "
+"plus vite, et chacun est une séquence à générer."
+
+msgid ""
+"%1$s of %2$s themes picked, the most kids can choose from. Untick one to "
+"pick another."
+msgstr ""
+"%1$s thèmes sur %2$s choisis, le maximum proposé aux enfants. Décochez-en un"
+" pour en choisir un autre."
+
+msgid ""
+"You already have %1$s theme set up under Themes kids can pick, so “Use it” "
+"only has room for %2$s more."
+msgstr ""
+"Vous avez déjà %1$s thème configuré dans Thèmes que les enfants peuvent "
+"choisir, donc « L'utiliser » n'a de place que pour %2$s de plus."
+
+msgid ""
+"You already have %1$s themes set up under Themes kids can pick, so “Use it” "
+"only has room for %2$s more."
+msgstr ""
+"Vous avez déjà %1$s thèmes configurés dans Thèmes que les enfants peuvent "
+"choisir, donc « L'utiliser » n'a de place que pour %2$s de plus."
+
+msgid "You already have %s theme set up under Themes kids can pick."
+msgstr ""
+"Vous avez déjà %s thème configuré dans Thèmes que les enfants peuvent "
+"choisir."
+
+msgid "You already have %s themes set up under Themes kids can pick."
+msgstr ""
+"Vous avez déjà %s thèmes configurés dans Thèmes que les enfants peuvent "
+"choisir."
+
+msgid ""
+"Choose your xlights_rgbeffects.xml first (step 1), so the AI knows which "
+"props you have."
+msgstr ""
+"Choisissez d'abord votre xlights_rgbeffects.xml (étape 1), pour que l'IA "
+"sache quels éléments vous avez."
+
+msgid "Asking the AI…"
+msgstr "Consultation de l'IA…"
+
+msgid "Added “%s”. Add another, or make your sequences when you’re ready."
+msgstr ""
+"« %s » ajouté. Ajoutez-en un autre, ou créez vos séquences quand vous êtes "
+"prêt."
+
+msgid ""
+"Added “%s”, but not ticked: 6 themes are already picked. Untick one to use "
+"it."
+msgstr ""
+"« %s » ajouté, mais non coché : 6 thèmes sont déjà choisis. Décochez-en un "
+"pour l'utiliser."
+
+msgid "Choose your xlights_rgbeffects.xml first (step 1)."
+msgstr "Choisissez d'abord votre xlights_rgbeffects.xml (étape 1)."
+
+msgid "Tick at least one thing to make (step 3)."
+msgstr "Cochez au moins un élément à créer (étape 3)."
+
+msgid "Making your names break needs your layout file (step 1)."
+msgstr ""
+"Pour créer votre pause des noms, il faut votre fichier de disposition (étape"
+" 1)."
+
+msgid "lined up with your names break audio"
+msgstr "calé sur l'audio de votre pause des noms"
+
+msgid "taken from your sequence"
+msgstr "repris de votre séquence"
+
+msgid "the same as your names break"
+msgstr "identique à votre pause des noms"
+
+msgid "set by Marquee"
+msgstr "défini par Marquee"
+
+msgid "First name %1$s seconds in, then a new name every %2$s seconds (%3$s)"
+msgstr ""
+"Premier nom à %1$s secondes, puis un nouveau nom toutes les %2$s secondes "
+"(%3$s)"
+
+msgid "%1$s main effects changed, %2$s recolored"
+msgstr "%1$s effets principaux modifiés, %2$s recolorés"
+
+msgid "%1$s props, %2$s"
+msgstr "%1$s éléments, %2$s"
+
+msgid "left dark for the names: %s"
+msgstr "laissé éteint pour les noms : %s"
+
+msgid "%s: filled in for you."
+msgstr "%s : rempli pour vous."
+
+msgid "Download .xsq"
+msgstr "Télécharger le .xsq"
+
+msgid "Use it: add to the themes kids pick from"
+msgstr "L'utiliser : ajouter aux thèmes proposés aux enfants"
+
+msgid ""
+"No screens are filled in under card 1 yet, so nothing was left dark for the "
+"names. Add your screens, Save, and make them again."
+msgstr ""
+"Aucun écran n'est encore renseigné dans la carte 1, donc rien n'a été laissé"
+" éteint pour les noms. Ajoutez vos écrans, cliquez sur Enregistrer, puis "
+"recréez-les."
+
+msgid "Done. Download them, then follow the steps below."
+msgstr "Terminé. Téléchargez-les, puis suivez les étapes ci-dessous."
+
+msgid "All 6 theme spots are used"
+msgstr "Les 6 emplacements de thèmes sont pris"
+
+msgid "Added under Themes kids can pick. Save settings to keep it."
+msgstr ""
+"Ajouté dans Thèmes que les enfants peuvent choisir. Enregistrez les réglages"
+" pour le conserver."
+
+msgid "%s trees"
+msgstr "%s sapins"
+
+msgid "%s stars"
+msgstr "%s étoiles"
+
+msgid "%s arches"
+msgstr "%s arches"
+
+msgid "%s candy canes"
+msgstr "%s sucres d'orge"
+
+msgid "%s spinners"
+msgstr "%s roues tournantes"
+
+msgid "%s snowflakes"
+msgstr "%s flocons de neige"
+
+msgid "%s windows"
+msgstr "%s fenêtres"
+
+msgid "%s lines and outlines"
+msgstr "%s lignes et contours"
+
+msgid "%s floods"
+msgstr "%s projecteurs"
+
+msgid "%s presents"
+msgstr "%s cadeaux"
+
+msgid "%s matrices"
+msgstr "%s matrices"
+
+msgid "%s other props"
+msgstr "%s autres éléments"
+
+msgid "%s isn’t a valid file."
+msgstr "%s n'est pas un fichier valide."
+
+msgid "The layout file (xlights_rgbeffects.xml)"
+msgstr "Le fichier de disposition (xlights_rgbeffects.xml)"
+
+msgid "Unknown theme."
+msgstr "Thème inconnu."
+
+msgid "The theme needs at least one color."
+msgstr "Le thème doit avoir au moins une couleur."
+
+msgid "The sequence (.xsq)"
+msgstr "La séquence (.xsq)"
+
+msgid "That doesn’t look like an xLights sequence."
+msgstr "Ça ne ressemble pas à une séquence xLights."
+
+msgid "No props found in that layout file."
+msgstr "Aucun élément trouvé dans ce fichier de disposition."
+
+msgid "The new sequence"
+msgstr "La nouvelle séquence"
+
+msgid "Couldn’t load %s"
+msgstr "Impossible de charger %s"
+
+msgid "Making the intro and outro with your voice…"
+msgstr "Création de l'intro et de l'outro avec votre voix…"
+
+msgid "Couldn’t make the lines."
+msgstr "Impossible de créer les phrases."
+
+msgid "Mixing…"
+msgstr "Mixage…"
+
+msgid ""
+"The intro and outro are too long for a %s second sequence (each name needs "
+"about 3 seconds). Shorten the lines and build again."
+msgstr ""
+"L'intro et l'outro sont trop longues pour une séquence de %s secondes "
+"(chaque nom demande environ 3 secondes). Raccourcissez les phrases et "
+"recommencez."
+
+msgid "Mixing the full break…"
+msgstr "Mixage de la pause complète…"
+
+msgid "Mixing the short breaks…"
+msgstr "Mixage des pauses courtes…"
+
+msgid ""
+"Done! Names start at %1$s s, one every %2$s s. Your FPP picks it up within a"
+" minute."
+msgstr ""
+"Terminé ! Les noms commencent à %1$s s, un toutes les %2$s s. Votre FPP le "
+"récupère en moins d'une minute."
+
+msgid ""
+"Why do they sound alike? The names aren’t in these files: your FPP says each"
+" name live, over the soft music, the moment it goes up on your screens. The "
+"three only differ in how long the soft music lasts before the outro. Your "
+"FPP picks the right one by itself, depending on how many names are waiting."
+msgstr ""
+"Pourquoi se ressemblent-elles ? Les noms ne sont pas dans ces fichiers : "
+"votre FPP annonce chaque nom en direct, sur la musique douce, au moment où "
+"il s'affiche sur vos écrans. Les trois pauses ne diffèrent que par la durée "
+"de la musique douce avant l'outro. Votre FPP choisit tout seul la bonne, "
+"selon le nombre de noms en attente."
+
+msgid "Full break"
+msgstr "Pause complète"
+
+msgid "3 to 6 names waiting: room for 6 names"
+msgstr "3 à 6 noms en attente : place pour 6 noms"
+
+msgid "2 names waiting: each said twice"
+msgstr "2 noms en attente : chacun dit deux fois"
+
+msgid "1 name waiting: said twice"
+msgstr "1 nom en attente : dit deux fois"
+
+msgid "Couldn’t reach your website. Try again."
+msgstr "Impossible de joindre votre site web. Réessayez."
+
+msgid "OK, %s answers from now on."
+msgstr "D'accord, %s répond désormais."
+
+msgid "Got it, %s will answer. Ask away!"
+msgstr "C'est noté, %s répondra. Posez vos questions !"
+
+msgid "Couldn’t save the key."
+msgstr "Impossible d'enregistrer la clé."
+
+msgid "HO HO HO, %s!"
+msgstr "HO HO HO, %s !"
+
+msgid "MERRY CHRISTMAS, %s!"
+msgstr "JOYEUX NOËL, %s !"
+
+msgid "Your Name in Lights!"
+msgstr "Votre nom en lumières !"
+
+msgid "Sent!"
+msgstr "Envoyé !"
+
+msgid "Watch for your name after this song in %s"
+msgstr "Guettez votre nom après cette chanson dans %s"
+
+msgid "Watch for your name after this song"
+msgstr "Guettez votre nom après cette chanson"
+
+msgid "Your first name"
+msgstr "Votre prénom"
+
+msgid "Put My Name in Lights!"
+msgstr "Mon nom en lumières !"
+
+msgid "1. A kid types their name and picks a show"
+msgstr "1. Un enfant tape son nom et choisit un spectacle"
+
+msgid "1. A kid types their name on your website"
+msgstr "1. Un enfant tape son nom sur votre site web"
+
+msgid "2. After the current song, the names break plays…"
+msgstr "2. Après la chanson en cours, la pause des noms démarre…"
+
+msgid "3. …in the show they picked, with their name on your matrix or TV"
+msgstr ""
+"3. …dans le spectacle choisi, avec son nom sur votre matrice ou votre télé"
+
+msgid "3. …and their name goes up on your matrix or TV"
+msgstr "3. …et son nom s'affiche sur votre matrice ou votre télé"
+
+msgid "Ho ho ho, %s!"
+msgstr "Ho ho ho, %s !"
+
+msgid "Merry Christmas, %s!"
+msgstr "Joyeux Noël, %s !"
+
+msgid "A kid sends their name → it goes up on your matrix or TV between songs"
+msgstr ""
+"Un enfant envoie son nom → il s'affiche sur votre matrice ou votre télé "
+"entre les chansons"
+
+msgid "Ho ho ho! Hi %s, Santa loves you too!"
+msgstr "Ho ho ho ! Bonjour %s, le père Noël vous aime aussi !"
+
+msgid "Happy Holidays, %s!"
+msgstr "Joyeuses fêtes, %s !"
+
+msgid "HAPPY HOLIDAYS, %s!"
+msgstr "JOYEUSES FÊTES, %s !"
+
+msgid "Music"
+msgstr "Musique"
+
+msgid "light show"
+msgstr "spectacle de lumières"
+
+msgid "christmas"
+msgstr "noël"
