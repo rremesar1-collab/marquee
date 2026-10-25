@@ -4,7 +4,7 @@ Theme URI: https://alateka.com/
 Author: Alateka Corporation
 Author URI: https://alateka.com/
 Description: The festive Christmas look for the Marquee light show plugin: garlands, bows, a night-sky scene and glowing show cards for your status, Now Playing, weather, Kids’ Corner and more. Needs the free Marquee plugin (it holds all the show features and settings).
-Version: 2.11.9
+Version: 2.11.10
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -854,6 +854,8 @@ body.rr-scene .rr-scroll::-webkit-scrollbar-thumb { background: rgba(247, 201, 9
 }
 .rr-pl__num { flex: none; width: 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; background: rgba(247, 201, 90, .18); color: #fde866; font: 800 13px var(--f-body); }
 .rr-pl__name { flex: 1; min-width: 0; }
+.rr-pl__art { flex: none; width: 34px; height: 34px; border-radius: 6px; object-fit: cover; box-shadow: 0 1px 4px rgba(0, 0, 0, .5); }
+.rr-pl__item.is-now .rr-pl__art { box-shadow: 0 0 0 2px #fde866, 0 0 12px rgba(253, 232, 102, .6); }
 .rr-pl__eq, .rr-pl__tag { display: none; }
 .rr-pl__item.is-now { background: linear-gradient(180deg, #7a0606, #4a0101); border-color: rgba(255, 210, 120, .8); box-shadow: 0 0 14px rgba(255, 60, 40, .55); color: #fff; font-weight: 800; }
 .rr-pl__item.is-now .rr-pl__num { background: #fde866; color: #4a0101; }
@@ -1208,6 +1210,7 @@ img.emoji, img.wp-smiley { display: inline !important; width: 1em !important; he
 .rr-vlist__item { display: flex; align-items: center; gap: 10px; padding: 7px 8px 7px 10px; border-radius: 12px; background: rgba(0, 0, 0, .3); border: 1px solid rgba(255, 255, 255, .08); }
 .rr-vlist__num { flex: none; width: 24px; font: 800 13px var(--f-body); color: #f0bdbd; text-align: right; }
 .rr-vlist__name { flex: 1; min-width: 0; }
+.rr-vlist__art { flex: none; width: 40px; height: 40px; border-radius: 6px; object-fit: cover; box-shadow: 0 1px 4px rgba(0, 0, 0, .5); }
 .rr-vlist__name b { display: block; font-size: 15px; font-weight: 700; color: #fff; }
 .rr-vlist__name small { display: block; font-size: 12px; color: #f0caca; }
 .rr-vlist__new { flex: none; padding: 2px 7px; border-radius: 999px; background: #1fd15a; color: #002a0c; font: 800 10px var(--f-body); font-style: normal; text-transform: uppercase; letter-spacing: .05em; }

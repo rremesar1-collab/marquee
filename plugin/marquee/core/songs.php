@@ -42,7 +42,7 @@ function ridgeroad_song_list_all() {
 			$parts = preg_split( '/\s+[—–\-|]\s+/u', $line, 2 );
 			$title = trim( $parts[0] );
 			if ( '' !== $title ) {
-				$out[] = array( 'key' => sanitize_title( $title ), 'title' => $title, 'artist' => isset( $parts[1] ) ? trim( $parts[1] ) : '', 'new' => $new );
+				$out[] = array( 'key' => sanitize_title( $title ), 'title' => $title, 'artist' => isset( $parts[1] ) ? trim( $parts[1] ) : '', 'new' => $new, 'image' => '' );
 			}
 		}
 	} else {
@@ -57,7 +57,8 @@ function ridgeroad_song_list_all() {
 					continue;
 				}
 				$title = ! empty( $q['displayName'] ) ? $q['displayName'] : trim( str_replace( '_', ' ', preg_replace( '/\.(fseq|xsq|mp3)$/i', '', $q['name'] ) ) );
-				$out[] = array( 'key' => sanitize_title( $title ), 'title' => $title, 'artist' => isset( $q['artist'] ) ? (string) $q['artist'] : '', 'new' => false );
+				$img   = isset( $q['imageUrl'] ) && preg_match( '#^https?://#i', (string) $q['imageUrl'] ) ? esc_url_raw( (string) $q['imageUrl'] ) : ''; // artwork set in Remote Falcon
+				$out[] = array( 'key' => sanitize_title( $title ), 'title' => $title, 'artist' => isset( $q['artist'] ) ? (string) $q['artist'] : '', 'new' => false, 'image' => $img );
 			}
 			if ( $out ) {
 				update_option( 'ridgeroad_songs_cache', $out, false ); // keep the list for nights Remote Falcon is offline
@@ -80,6 +81,31 @@ function ridgeroad_song_list_all() {
 }
 
 /** Start of the current voting week (Saturday 00:00, show time zone). */
+/**
+ * A song's cover picture URL ('' = none). The artwork set in Remote Falcon; Marquee adds your own
+ * picture per song and covers it finds by itself (filter 'ridgeroad_song_cover').
+ */
+function ridgeroad_song_cover( $song ) {
+	if ( ! is_array( $song ) ) {
+		$song = ridgeroad_song_by_title( (string) $song );
+	}
+	if ( ! $song ) {
+		return '';
+	}
+	return (string) apply_filters( 'ridgeroad_song_cover', isset( $song['image'] ) ? (string) $song['image'] : '', $song );
+}
+
+/** A song from the list by its title (Now Playing and the playlist only know the title). */
+function ridgeroad_song_by_title( $title ) {
+	$k = sanitize_title( $title );
+	foreach ( ridgeroad_song_list_all() as $s ) {
+		if ( $s['key'] === $k ) {
+			return $s;
+		}
+	}
+	return null;
+}
+
 function ridgeroad_vote_week_start() {
 	$now  = new DateTime( 'now', ridgeroad_tz() );
 	$back = ( (int) $now->format( 'w' ) + 1 ) % 7; // days since Saturday

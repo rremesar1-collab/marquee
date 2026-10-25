@@ -631,3 +631,17 @@
 }
 .mq-flash { outline: 3px solid #f0c33c; outline-offset: 4px; border-radius: 4px; transition: outline-color .6s; }
 .mq__screens select[data-mq-model-pick] { max-width: 100%; }
+
+/* Song covers */
+.mq-covers { margin-top: 18px; padding-top: 14px; border-top: 1px solid #e0e0e0; }
+.mq-covers h3 { margin: 0 0 8px; }
+.mq-covers__list { margin: 10px 0; padding: 0; list-style: none; max-height: 420px; overflow: auto; border: 1px solid #dcdcde; border-radius: 6px; }
+.mq-covers__song { display: flex; align-items: center; gap: 10px; padding: 6px 10px; margin: 0; border-top: 1px solid #f0f0f1; }
+.mq-covers__song:first-child { border-top: 0; }
+.mq-covers__pic { flex: 0 0 44px; height: 44px; border-radius: 4px; background: #f0f0f1; overflow: hidden; }
+.mq-covers__pic img { width: 44px; height: 44px; object-fit: cover; display: block; }
+.mq-covers__t { flex: 1 1 auto; min-width: 0; }
+.mq-covers__t b, .mq-covers__t small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mq-covers__t small { color: #646970; }
+.mq-covers__btns { flex: 0 0 auto; display: flex; gap: 10px; }
+@media (max-width: 600px) { .mq-covers__song { flex-wrap: wrap; } .mq-covers__btns { width: 100%; padding-left: 54px; } }

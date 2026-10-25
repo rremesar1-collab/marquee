@@ -18,6 +18,8 @@ if ( ridgeroad_mod( 'show_playlist' ) && ! empty( $np['playlist'] ) ) : ?>
 			<?php foreach ( $np['playlist'] as $i => $song ) : ?>
 				<li class="rr-pl__item<?php echo ( $np['title'] && $song === $np['title'] ) ? ' is-now' : ''; ?>" data-song="<?php echo esc_attr( $song ); ?>">
 					<span class="rr-pl__num"><?php echo (int) $i + 1; ?></span>
+					<?php $art = function_exists( 'ridgeroad_song_cover' ) ? ridgeroad_song_cover( $song ) : ''; ?>
+					<?php if ( $art ) : ?><img class="rr-pl__art" src="<?php echo esc_url( $art ); ?>" alt="" width="40" height="40" loading="lazy" decoding="async"><?php endif; ?>
 					<span class="rr-pl__name"><?php echo esc_html( $song ); ?></span>
 					<span class="rr-pl__eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
 					<span class="rr-pl__tag"><?php esc_html_e( 'Now Playing', 'ridgeroad' ); ?></span>

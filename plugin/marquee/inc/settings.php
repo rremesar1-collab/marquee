@@ -31,6 +31,9 @@ function marquee_defaults() {
 		'art_doors'  => array(),  // Kids' Corner door pictures: names / show / coloring / games => attachment ID
 		'lab_songs'  => array(),  // Light Lab songs (audio attachment IDs)
 		'vote_hide'  => array(),  // song keys left out of voting (intros, announcements)
+		'covers_on'  => 1,        // cover pictures in Tonight's Playlist and song voting
+		'covers_auto' => 1,       // find album covers automatically for songs without artwork
+		'covers'     => array(),  // song key => attachment ID (your picture) or -1 (no cover)
 		'names_mode'   => 'break',           // 'break' = a short names break between songs; 'live' = during songs on a spare screen
 		'live_show_for' => 6,                // live mode: seconds each name stays up
 		'fpp_playlist' => 'Names in Lights', // FPP playlist holding the names break
@@ -147,6 +150,9 @@ function marquee_save( $in ) {
 		'names_per_break' => isset( $in['names_per_break'] ) ? max( 1, min( 6, (int) $in['names_per_break'] ) ) : $cur['names_per_break'],
 		'names_every'  => isset( $in['names_every'] ) ? max( 1, min( 6, (int) $in['names_every'] ) ) : $cur['names_every'],
 		'names_start'  => isset( $in['names_start'] ) && '' !== trim( (string) $in['names_start'] ) ? max( 0, min( 120, round( (float) $in['names_start'], 2 ) ) ) : $cur['names_start'],
+		'covers_on'  => isset( $in['covers_sent'] ) ? (int) ! empty( $in['covers_on'] ) : $cur['covers_on'],
+		'covers_auto' => isset( $in['covers_sent'] ) ? (int) ! empty( $in['covers_auto'] ) : $cur['covers_auto'],
+		'covers'     => isset( $in['covers_sent'] ) ? marquee_clean_covers( isset( $in['covers'] ) ? (array) wp_unslash( $in['covers'] ) : array() ) : $cur['covers'],
 		'vote_hide'  => isset( $in['vote_hide_sent'] ) ? array_values( array_slice( array_unique( array_filter( array_map( 'sanitize_title', isset( $in['vote_hide'] ) ? (array) wp_unslash( $in['vote_hide'] ) : array() ) ) ), 0, 200 ) ) : $cur['vote_hide'],
 	);
 	if ( isset( $in['art_sent'] ) ) {
@@ -451,6 +457,23 @@ function marquee_fpp_config() {
 		'per_break'      => max( 1, min( 6, (int) $s['names_per_break'] ) ), // script 3.11+: fewer names, each up longer
 		'every'          => max( 1, min( 6, (int) $s['names_every'] ) ),     // script 3.12+: a names break after every this many songs
 	);
+}
+
+/** Song covers from Settings: key => attachment ID (an image) or -1 (no cover); 0 = automatic, not stored. */
+function marquee_clean_covers( $in ) {
+	$out = array();
+	foreach ( array_slice( $in, 0, 300, true ) as $k => $v ) {
+		$k = sanitize_title( (string) $k );
+		$v = (int) $v;
+		if ( '' === $k || 0 === $v ) {
+			continue;
+		}
+		if ( $v > 0 && ! wp_attachment_is_image( $v ) ) {
+			continue;
+		}
+		$out[ $k ] = $v > 0 ? $v : -1;
+	}
+	return $out;
 }
 
 /** The connection code for the Marquee FPP plugin: your website address and private key in one line. */

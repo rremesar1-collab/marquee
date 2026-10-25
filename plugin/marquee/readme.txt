@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.9.5
+Stable tag: 0.9.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,9 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.9.6 =
+* Song covers in Tonight's Playlist and Vote for Your Favorite Song: the artwork you set in Remote Falcon, or an album cover Marquee finds by song and artist (saved on your site, only when the song matches). Change any cover, or pick No cover, in Settings → Remote Falcon → Song covers. Turn covers or the automatic finding off there too.
 
 = 0.9.5 =
 * Check for updates now: a link under Marquee on the Plugins page asks GitHub right away, so a new version shows up at once instead of within 6 hours.

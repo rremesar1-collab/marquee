@@ -51,6 +51,8 @@ $ff_txt = ridgeroad_mod( 'songs_friday_text' );
 				<?php foreach ( $songs as $i => $s ) : ?>
 					<li class="rr-vlist__item<?php echo ( $now && $now === $s['title'] ) ? ' is-now' : ''; ?>" data-key="<?php echo esc_attr( $s['key'] ); ?>" data-title="<?php echo esc_attr( $s['title'] ); ?>">
 						<span class="rr-vlist__num"><?php echo (int) $i + 1; ?></span>
+						<?php $art = function_exists( 'ridgeroad_song_cover' ) ? ridgeroad_song_cover( $s ) : ''; ?>
+						<?php if ( $art ) : ?><img class="rr-vlist__art" src="<?php echo esc_url( $art ); ?>" alt="" width="44" height="44" loading="lazy" decoding="async"><?php endif; ?>
 						<span class="rr-vlist__name"><b><?php echo esc_html( $s['title'] ); ?></b><?php if ( $s['artist'] ) : ?><small><?php echo esc_html( $s['artist'] ); ?></small><?php endif; ?></span>
 						<?php if ( $s['new'] ) : ?><em class="rr-vlist__new"><?php esc_html_e( 'New', 'ridgeroad' ); ?></em><?php endif; ?>
 						<span class="rr-vlist__now"><?php esc_html_e( 'Now Playing', 'ridgeroad' ); ?></span>

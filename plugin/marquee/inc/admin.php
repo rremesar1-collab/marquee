@@ -309,6 +309,7 @@ function marquee_admin_page() {
 				<?php else : ?>
 					<p class="mq__fine"><?php esc_html_e( 'Your songs show up here once Remote Falcon is connected (save this page after a successful test).', 'marquee' ); ?></p>
 				<?php endif; ?>
+				<?php if ( function_exists( 'marquee_covers_box' ) ) { marquee_covers_box( $s ); } ?>
 			</section>
 
 			<section class="mq__pane" data-pane="4" data-names-mode="<?php echo esc_attr( 'live' === $s['names_mode'] ? 'live' : 'break' ); ?>">

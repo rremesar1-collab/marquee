@@ -1350,3 +1350,8 @@ html.rr-sheet-open { overflow: hidden; }
 .mq-skin:not(#mq-0) .rr-rf__votes { flex: none; font-size: 12.5px; color: #ffd45c; }
 .mq-skin:not(#mq-0) .rr-rf__go { flex: none; padding: 5px 12px; border-radius: 999px; background: linear-gradient(180deg, #ff2b3d, #c70d1e); font-weight: 800; font-size: 13px; }
 .mq-skin:not(#mq-0) .rr-rf__empty { opacity: .8; }
+
+/* Song covers */
+.mq-skin:not(#mq-0) .rr-pl__art { flex: none; width: 34px; height: 34px; border-radius: 6px; object-fit: cover; box-shadow: 0 1px 4px rgba(0, 0, 0, .5); }
+.mq-skin:not(#mq-0) .rr-vlist__art { flex: none; width: 40px; height: 40px; border-radius: 6px; object-fit: cover; box-shadow: 0 1px 4px rgba(0, 0, 0, .5); }
+.mq-skin:not(#mq-0) .rr-pl__item.is-now .rr-pl__art { box-shadow: 0 0 0 2px #fde866, 0 0 12px rgba(253, 232, 102, .6); }

@@ -661,3 +661,26 @@ document.addEventListener('change', function (e) {
 		sync();
 	});
 })();
+
+/* Song covers: Change (your own picture), No cover, Automatic. Kept on Save. */
+document.addEventListener('click', function (e) {
+	var b = e.target.closest && e.target.closest('[data-mq-cover-pick], [data-mq-cover-set]');
+	if (!b) { return; }
+	var row = b.closest('[data-mq-cover]'), id = row.querySelector('[data-mq-cover-id]'), pic = row.querySelector('.mq-covers__pic'), from = row.querySelector('.mq-covers__t small');
+	var said = function (t) { if (from) { from.textContent = (from.textContent.split(' · ').length > 1 ? from.textContent.split(' · ')[0] + ' · ' : '') + t; } };
+	if (b.hasAttribute('data-mq-cover-set')) {
+		id.value = b.getAttribute('data-mq-cover-set');
+		if (id.value === '-1') { pic.innerHTML = ''; said('No cover (save to keep)'); } else { said('Automatic (save to see it)'); }
+		return;
+	}
+	if (!window.wp || !wp.media) { return; }
+	var frame = wp.media({ title: 'Cover for this song', multiple: false, library: { type: 'image' }, button: { text: 'Use this picture' } });
+	frame.on('select', function () {
+		var a = frame.state().get('selection').first().toJSON();
+		id.value = a.id;
+		var u = (a.sizes && a.sizes.thumbnail ? a.sizes.thumbnail.url : a.url);
+		pic.innerHTML = '<img src="' + u.replace(/"/g, '&quot;') + '" alt="" width="44" height="44">';
+		said('Your picture (save to keep)');
+	});
+	frame.open();
+});
