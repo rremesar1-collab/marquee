@@ -41,7 +41,7 @@ import socket
 import threading
 import urllib.request
 
-VERSION = "3.12.0"
+VERSION = "3.12.1"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -1052,9 +1052,19 @@ def text_plan(text, width, height, sc=None):
         finally:
             S["max_width"], S["max_height"] = keep
         return size, "Center", 0, "\\n".join(lines)
-    secs = max(2.0, float(S["show_for"]))
-    pps = (width + 0.62 * big * len(one)) / secs * SPEEDS.get(speed_k, 1.0)
+    secs = turn_secs(speed_k)
+    pps = (width + 0.62 * big * len(one)) / secs
     return big, "R2L", max(10, int(round(pps))), one
+
+
+def turn_secs(speed_k="normal"):
+    """How long a scrolling name takes to cross the screen. Slow uses more of the name's turn, Fast less,
+    but a name never runs into the next one: when it outlasts its turn, FPP clears the screen as it
+    finishes and wipes out the name that just went up (said but never seen)."""
+    base = max(2.0, float(S["show_for"]))
+    want = base / SPEEDS.get(speed_k, 1.0)
+    room = max(2.0, float(S["slot"]) - 0.4) if not live() else base + 0.8   # the whole turn, less a breath
+    return max(1.5, min(want, room))
 
 
 DEAD = {}      # FPP address -> until when it's skipped (it didn't answer: switched off, unplugged)
@@ -1073,7 +1083,8 @@ def show(text, color):
         try:
             w, h, font = screen_info(sc)
             size, pos, pps, txt = text_plan(text, w, h, sc)
-            args = [sc["model"], "Transparent", "Text", color, font, size, "true", pos, pps, S["show_for"], txt]
+            dur = turn_secs(sc.get("speed") or "normal") if pps else min(float(S["show_for"]), turn_secs())
+            args = [sc["model"], "Transparent", "Text", color, font, size, "true", pos, pps, round(dur, 2), txt]
             fpp_command(sc["fpp"], "Overlay Model Effect", args, timeout=2)
             results.append(sc["name"])
             DEAD.pop(sc["fpp"], None)

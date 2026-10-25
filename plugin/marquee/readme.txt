@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.9.3
+Stable tag: 0.9.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,9 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.9.4 =
+* Names script 3.12.1: a scrolling name always finishes within its turn. On Slow, a long message could outlast its turn; when it finished, FPP cleared the screen and wiped out the next name, so that name was said but never seen. Slow now uses the whole turn and never runs into the next name.
 
 = 0.9.3 =
 * Names break after every 1 to 6 songs (Settings → Names & FPP → card 1): names collect while your show plays and go up together after that many songs, so a busy night doesn't put a break between every song. If 6 names are waiting, the break comes sooner. Needs names script 3.12.
