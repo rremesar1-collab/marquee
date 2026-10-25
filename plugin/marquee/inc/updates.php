@@ -191,8 +191,53 @@ add_filter( 'plugin_row_meta', function ( $meta, $file ) {
 			! empty( $st['ok'] ) ? sprintf( __( 'OK, latest is %s', 'marquee' ), $st['version'] ) : __( 'failed', 'marquee' )
 		) );
 	}
+	$meta[] = '<a href="' . esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=marquee_check_updates' ), 'marquee_check_updates' ) ) . '">' . esc_html__( 'Check for updates now', 'marquee' ) . '</a>';
 	return $meta;
 }, 10, 2 );
+
+/* "Check for updates now": ask GitHub right away and refresh WordPress's own update list, so a new version
+   shows up at once instead of within 6 hours. */
+add_action( 'admin_post_marquee_check_updates', function () {
+	if ( ! current_user_can( 'update_plugins' ) ) {
+		wp_die( esc_html__( 'You can’t check for updates.', 'marquee' ) );
+	}
+	check_admin_referer( 'marquee_check_updates' );
+	delete_site_transient( 'marquee_release' );
+	$rel = marquee_latest_release( true );
+	delete_site_transient( 'update_plugins' );
+	delete_site_transient( 'update_themes' );
+	if ( function_exists( 'wp_clean_plugins_cache' ) ) {
+		wp_clean_plugins_cache( true );
+	}
+	require_once ABSPATH . 'wp-includes/update.php';
+	wp_update_plugins();
+	wp_update_themes();
+	$res = $rel ? ( version_compare( $rel['version'], MARQUEE_VERSION, '>' ) ? 'new' : 'latest' ) : 'failed';
+	wp_safe_redirect( add_query_arg( 'marquee_checked', $res, admin_url( 'plugins.php' ) ) );
+	exit;
+} );
+
+add_action( 'admin_notices', function () {
+	if ( empty( $_GET['marquee_checked'] ) || ! current_user_can( 'update_plugins' ) ) { // phpcs:ignore WordPress.Security.NonceVerification -- only picks a message
+		return;
+	}
+	$res = sanitize_key( $_GET['marquee_checked'] ); // phpcs:ignore WordPress.Security.NonceVerification
+	$rel = get_site_transient( 'marquee_release' );
+	$v   = is_array( $rel ) && ! empty( $rel['version'] ) ? $rel['version'] : '';
+	if ( 'new' === $res ) {
+		/* translators: 1: new version, 2: installed version */
+		$msg  = sprintf( __( 'Marquee %1$s is available (you have %2$s). Click “update now” under Marquee below, or go to Dashboard → Updates.', 'marquee' ), $v, MARQUEE_VERSION );
+		$type = 'notice-info';
+	} elseif ( 'latest' === $res ) {
+		/* translators: %s: version */
+		$msg  = sprintf( __( 'You have the latest Marquee (%s).', 'marquee' ), MARQUEE_VERSION );
+		$type = 'notice-success';
+	} else {
+		$msg  = __( 'Marquee couldn’t reach GitHub just now. Try again in a few minutes, or download the newest zip from the Releases page and upload it (Plugins → Add New → Upload Plugin).', 'marquee' );
+		$type = 'notice-warning';
+	}
+	printf( '<div class="notice %s is-dismissible"><p><strong>Marquee:</strong> %s</p></div>', esc_attr( $type ), esc_html( $msg ) );
+} );
 
 add_filter( 'pre_set_site_transient_update_plugins', function ( $t ) {
 	$rel = marquee_latest_release();

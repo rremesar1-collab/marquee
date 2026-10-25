@@ -264,7 +264,7 @@
 					var p = j.data.place;
 					nb.querySelector('[data-rr-names-place]').textContent = j.data.again ? 'Your name is already in line!' :
 						(j.data.live ? (p <= 1 ? 'You’re next! Watch our screens: your name goes up in a minute.' : 'You’re #' + p + ' in line. Watch our screens: your name goes up in a few minutes.') :
-						(p <= 6 ? (p <= 1 ? 'You’re next! Watch for your name after this song.' : 'You’re #' + p + ' in line. Watch for your name after this song.') : 'You’re #' + p + ' in line. Your name will show after a few songs.'));
+						(p <= 6 ? (p <= 1 ? 'You’re next! ' : 'You’re #' + p + ' in line. ') + (j.data.songs > 1 ? 'Watch for your name in about ' + j.data.songs + ' songs.' : 'Watch for your name after this song.') : 'You’re #' + p + ' in line. Your name will show after a few songs.'));
 					if (j.data.theme && !j.data.again) {
 						nb.querySelector('[data-rr-names-place]').textContent += ' It goes up in ' + j.data.theme + ' (if lots of kids picked other shows, it may be one song later).';
 					}

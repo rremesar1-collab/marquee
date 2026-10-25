@@ -215,7 +215,7 @@ function ridgeroad_name_send() {
 		'numberposts' => 1,
 	) );
 	if ( $dup && ! $admin ) {
-		wp_send_json_success( array( 'place' => ridgeroad_name_place( $dup[0] ), 'text' => get_post_meta( $dup[0], '_rr_text', true ), 'again' => true, 'live' => (bool) apply_filters( 'ridgeroad_names_live', false ) ) );
+		wp_send_json_success( array( 'place' => ridgeroad_name_place( $dup[0] ), 'text' => get_post_meta( $dup[0], '_rr_text', true ), 'again' => true, 'live' => (bool) apply_filters( 'ridgeroad_names_live', false ), 'songs' => ridgeroad_names_songs_left() ) );
 	}
 	if ( count( ridgeroad_name_queue( 40 ) ) >= 40 ) {
 		$fail( __( 'Lots of names right now! Please try again in a few minutes.', 'ridgeroad' ), 429 );
@@ -239,7 +239,7 @@ function ridgeroad_name_send() {
 	}
 	do_action( 'ridgeroad_name_added', $id, $text ); // Marquee: make the spoken version
 	$theme_name = ( $theme && function_exists( 'marquee_themes' ) && isset( marquee_themes()[ $theme ] ) ) ? marquee_themes()[ $theme ]['name'] : '';
-	wp_send_json_success( array( 'place' => ridgeroad_name_place( $id ), 'text' => $text, 'id' => $id, 'buzz' => ridgeroad_buzz_token( $id ), 'theme' => $theme_name, 'live' => (bool) apply_filters( 'ridgeroad_names_live', false ) ) );
+	wp_send_json_success( array( 'place' => ridgeroad_name_place( $id ), 'text' => $text, 'id' => $id, 'buzz' => ridgeroad_buzz_token( $id ), 'theme' => $theme_name, 'live' => (bool) apply_filters( 'ridgeroad_names_live', false ), 'songs' => ridgeroad_names_songs_left() ) );
 }
 
 /** Waiting names, oldest first (names older than 2 hours are skipped). */
@@ -290,6 +290,10 @@ function ridgeroad_names_pull() {
 				'playlist' => isset( $f['playlist'] ) ? sanitize_text_field( mb_substr( (string) $f['playlist'], 0, 80 ) ) : '',
 				'sequence' => isset( $f['sequence'] ) ? sanitize_text_field( mb_substr( preg_replace( '/\.fseq$/i', '', (string) $f['sequence'] ), 0, 80 ) ) : '',
 				// the FPP's playlists (script 3.9+), for "Only during these playlists" in Settings; kept when a ping leaves them out
+				// names script 3.13+: songs played since the last names break, the "every N songs" setting, a break lined up
+				'played'   => isset( $f['played'] ) ? max( 0, (int) $f['played'] ) : null,
+				'every'    => isset( $f['every'] ) ? max( 1, (int) $f['every'] ) : null,
+				'queued'   => ! empty( $f['queued'] ),
 				'playlists' => isset( $f['playlists'] ) && is_array( $f['playlists'] )
 					? array_slice( array_values( array_filter( array_map( function ( $p ) { return sanitize_text_field( mb_substr( (string) $p, 0, 80 ) ); }, $f['playlists'] ) ) ), 0, 60 )
 					: ( is_array( $prev = get_option( 'ridgeroad_fpp' ) ) && isset( $prev['playlists'] ) ? (array) $prev['playlists'] : array() ),
@@ -318,12 +322,27 @@ function ridgeroad_names_pull() {
 			// Marquee adds the spoken clip here ('audio', 'say_for') when spoken names are on
 			$out[] = apply_filters( 'ridgeroad_names_pull_item', array( 'id' => $p->ID, 'text' => get_post_meta( $p->ID, '_rr_text', true ) ), $p, $i );
 		}
-		// the first 6 go up at the next break: buzz the phones that asked
-		if ( $out && function_exists( 'ridgeroad_app_buzz_names' ) ) {
+		// the first 6 go up at the next break: buzz the phones that asked, once that break is coming up
+		if ( $out && function_exists( 'ridgeroad_app_buzz_names' ) && ridgeroad_names_songs_left() <= 1 ) {
 			ridgeroad_app_buzz_names( wp_list_pluck( array_slice( $out, 0, 6 ), 'id' ) );
 		}
 	}
 	wp_send_json_success( apply_filters( 'ridgeroad_names_pull_data', array( 'names' => $out, 'color' => ridgeroad_mod( 'names_color' ) ) ) );
+}
+
+/**
+ * Songs until the next names break: 1 = after the current song. Uses what the FPP reported (names script 3.13+)
+ * and "Names break after every N songs"; an older script or no report = after the current song.
+ */
+function ridgeroad_names_songs_left() {
+	$f = get_option( 'ridgeroad_fpp' );
+	if ( ! is_array( $f ) || empty( $f['every'] ) || ! isset( $f['played'] ) ) {
+		return 1;
+	}
+	if ( ! empty( $f['queued'] ) || (int) $f['every'] <= 1 ) {
+		return 1;
+	}
+	return max( 1, (int) $f['every'] - (int) $f['played'] );
 }
 
 add_action( 'wp_ajax_rr_names_nonce', 'ridgeroad_names_nonce' );

@@ -41,7 +41,7 @@ import socket
 import threading
 import urllib.request
 
-VERSION = "3.12.1"
+VERSION = "3.13.0"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -296,7 +296,9 @@ def pull(done_ids, st=None, report=None):
     url = str(S["site"]).rstrip("/") + "/wp-admin/admin-ajax.php?action=rr_names_pull&key=" + urllib.parse.quote(str(S["key"]))
     data = {"done": ",".join(str(i) for i in done_ids)} if done_ids else {"ping": "1"}
     if st is not None:
-        info = {"status": status_name(st), "playlist": playlist_name(st), "sequence": st.get("current_sequence", "")}
+        info = {"status": status_name(st), "playlist": playlist_name(st), "sequence": st.get("current_sequence", ""),
+                # 3.13+: where the show is in "names break after every N songs", for the website's messages and buzz
+                "played": SONGS["played"], "every": int(S.get("every") or 1), "queued": bool(QUEUED["on"])}
         if time.time() - PL_SENT["t"] > 600:          # the playlist list, for the website's "Only during these playlists"
             pls = fpp_playlists()
             if pls:
@@ -842,6 +844,7 @@ def current_theme(st):
 
 
 SONGS = {"key": None, "played": 0}       # songs finished since the last names break
+QUEUED = {"on": False}                   # a names break is lined up after the current song
 
 
 def count_songs(st):
@@ -1561,7 +1564,7 @@ def main():
         CHECK["want"] = ""
     simple_t = time.time()
     done = []
-    queued = False
+    queued = QUEUED['on'] = False
     last_check = 0.0
     color = "#FFFFFF"
     idle_said = 0.0
@@ -1619,7 +1622,7 @@ def main():
                 done += run_break(color)
                 BRK["end"] = time.time()
                 SONGS.update(key=None, played=0)          # start counting songs again
-                queued = False
+                queued = QUEUED['on'] = False
                 try:
                     pull(done)            # report what was shown (the next break must not show them again)
                     done = []
@@ -1632,7 +1635,7 @@ def main():
                 done = res["_failed"] + done
                 res = None
             if status_name(st) != "playing":
-                queued = False
+                queued = QUEUED['on'] = False
                 if res:
                     waiting = len(res.get("names") or [])
                     if waiting and time.time() - idle_said >= 600:   # say why names wait, every 10 minutes at most
@@ -1683,7 +1686,7 @@ def main():
                             % (waiting, int(S["every"]), SONGS["played"]))
                 elif waiting and not queued:
                     pl = queue_break(data.get("names") or [])
-                    queued = True
+                    queued = QUEUED['on'] = True
                     log("%d name(s) waiting - '%s' queued after the current song" % (waiting, pl))
             time.sleep(0.25 if queued else 1)   # a break is coming: catch its start within a quarter second
         except Exception as e:

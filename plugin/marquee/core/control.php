@@ -394,7 +394,7 @@ function ridgeroad_control_state() {
 			'playlist' => isset( $fpp['playlist'] ) ? $fpp['playlist'] : '',
 			'sequence' => isset( $fpp['sequence'] ) ? $fpp['sequence'] : '',
 		),
-		'names'    => array( 'open' => ridgeroad_names_open(), 'waiting' => $waiting, 'shown' => $shown, 'shown_tonight' => isset( $tn['name_shown'] ) ? (int) $tn['name_shown'] : 0 ),
+		'names'    => array( 'open' => ridgeroad_names_open(), 'songs' => ridgeroad_names_songs_left(), 'waiting' => $waiting, 'shown' => $shown, 'shown_tonight' => isset( $tn['name_shown'] ) ? (int) $tn['name_shown'] : 0 ),
 		'social'   => apply_filters( 'ridgeroad_social_state', array( 'ready' => false ) ),
 		'traffic'  => array(
 			'now'     => ( function () {

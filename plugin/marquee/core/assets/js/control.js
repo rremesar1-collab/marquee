@@ -38,7 +38,7 @@
 		var nb = $('[data-rrc="names"]'); nb.innerHTML = '';
 		nb.appendChild(el('span', 'rrc__pill is-' + ncls, !sw.names_on ? 'Off' : (sw.paused ? 'Paused' : (d.names.open ? 'Open' : 'Closed'))));
 		nb.appendChild(document.createTextNode(' · ' + d.names.waiting.length + ' waiting'));
-		set('names-sub', sw.paused ? 'Names wait until you un-pause' : (d.names.open ? 'Next break after the current song' : 'Opens when the show starts'));
+		set('names-sub', sw.paused ? 'Names wait until you un-pause' : (d.names.open ? (d.names.songs > 1 ? 'Next break in about ' + d.names.songs + ' songs' : 'Next break after the current song') : 'Opens when the show starts'));
 		stCls('names', ncls === 'off' ? '' : ncls);
 		set('people', d.people.now + (d.people.now === 1 ? ' person' : ' people'));
 		set('people-sub', d.people.kids + ' in the Kids’ Corner');
