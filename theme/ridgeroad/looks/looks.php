@@ -106,10 +106,6 @@ function ridgeroad_look_hero() {
 			<?php if ( ridgeroad_mod( 'subtitle' ) ) : ?>
 				<p class="rr-subtitle"><?php echo esc_html( ridgeroad_mod( 'subtitle' ) ); ?></p>
 			<?php endif; ?>
-		</div>
-	</div>
-	<?php if ( ridgeroad_mod( 'tagline' ) || ridgeroad_mod( 'intro' ) ) : ?>
-		<div class="rr-hero__text">
 			<?php if ( ridgeroad_mod( 'tagline' ) ) : ?>
 				<p class="rr-tagline"><?php echo esc_html( ridgeroad_mod( 'tagline' ) ); ?></p>
 			<?php endif; ?>
@@ -117,7 +113,7 @@ function ridgeroad_look_hero() {
 				<p class="rr-intro"><?php echo esc_html( ridgeroad_mod( 'intro' ) ); ?></p>
 			<?php endif; ?>
 		</div>
-	<?php endif; ?>
+	</div>
 	<?php
 }
 

@@ -23,6 +23,9 @@
 	<img class="rr-bow rr-bow--left" src="<?php echo esc_url( ridgeroad_img( 'bow-left-v137.webp' ) ); ?>" alt="">
 	<img class="rr-bow rr-bow--right" src="<?php echo esc_url( ridgeroad_img( 'bow-right-v137.webp' ) ); ?>" alt="">
 </div>
+<?php else : ?>
+<div class="rr-lside rr-lside--left" aria-hidden="true"></div>
+<div class="rr-lside rr-lside--right" aria-hidden="true"></div>
 <?php endif; ?>
 
 <canvas class="rr-snow" aria-hidden="true"></canvas>
