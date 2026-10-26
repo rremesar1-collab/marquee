@@ -22,6 +22,7 @@ body.rr-look--village {
 	--lk-head-size: 1.18;
 	--lk-title: "Great Vibes", "Playball", cursive;
 	--lk-accent: #f3dc9f;
+	--lk-back: url(village/hero.webp);
 	--lk-side-l: url(village/side-left.webp);
 	--lk-side-r: url(village/side-right.webp);
 	--lk-art-a: url(village/names-background-small.webp);
@@ -42,6 +43,7 @@ body.rr-look--northpole {
 	--lk-head-size: .82;
 	--lk-title: "Great Vibes", "Playball", cursive;
 	--lk-accent: #ffe08a;
+	--lk-back: url(northpole/names-background.webp);
 	--lk-side-l: url(northpole/side-left.webp);
 	--lk-side-r: url(northpole/side-right.webp);
 	--lk-art-a: url(northpole/names-background-small.webp);
@@ -305,7 +307,9 @@ body.rr-look--northpole .rr-donate__art { background-image: url(northpole/donati
    garland with lights down both sides, and the boxes in between. ---------- */
 @media (min-width: 861px) {
 	body.rr-looks { --lk-side: calc(max(70px, 140 / 1672 * 100vw) + 10px); }
-	body.rr-looks::before { background: #0a1434; }
+	/* behind the boxes: a picture that stays put while they scroll over it (no plain blue) */
+	body.rr-looks::before { background: var(--lk-back) center 45% / cover no-repeat, #0a1434; }
+	body.rr-looks::after { display: none; }
 	.rr-looks .rr-side { z-index: 3; }
 	.rr-looks .rr-header { z-index: 6; }
 	.rr-looks .rr-main { z-index: 7; }
