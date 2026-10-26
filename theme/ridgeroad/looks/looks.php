@@ -54,7 +54,6 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp ) {
 
 add_filter( 'body_class', function ( $classes ) {
 	if ( 'classic' !== ridgeroad_look() ) {
-		$classes[] = 'rr-look';  // the page scrolls normally (no pinned top) in these looks
 		$classes[] = 'rr-looks';
 		$classes[] = 'rr-look--' . ridgeroad_look();
 	}

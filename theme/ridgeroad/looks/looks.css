@@ -23,6 +23,7 @@ body.rr-look--village {
 	--lk-title: "Great Vibes", "Playball", cursive;
 	--lk-accent: #f3dc9f;
 	--lk-back: url(village/hero.webp);
+	--lk-scene: url(village/hero.webp);
 	--lk-side-l: url(village/side-left.webp);
 	--lk-side-r: url(village/side-right.webp);
 	--lk-art-a: url(village/names-background-small.webp);
@@ -44,6 +45,7 @@ body.rr-look--northpole {
 	--lk-title: "Great Vibes", "Playball", cursive;
 	--lk-accent: #ffe08a;
 	--lk-back: url(northpole/names-background.webp);
+	--lk-scene: url(northpole/hero.webp);
 	--lk-side-l: url(northpole/side-left.webp);
 	--lk-side-r: url(northpole/side-right.webp);
 	--lk-art-a: url(northpole/names-background-small.webp);
@@ -61,9 +63,6 @@ body.rr-looks::after {
 		radial-gradient(1.2px 1.2px at 190px 20px, rgba(255, 255, 255, .6) 50%, transparent 51%) 0 0 / 230px 190px;
 }
 .rr-looks .rr-header, .rr-looks .rr-main, .rr-looks .rr-footer, .rr-looks .site-footer, .rr-looks footer { position: relative; z-index: 4; }
-.rr-looks .rr-main { max-width: none; padding: 0 calc(var(--lk-side) - 10px) 40px; }
-.rr-looks .rr-main > * { max-width: 1180px; margin-left: auto; margin-right: auto; }
-.rr-looks .rr-main > .rr-grid { margin-left: auto; margin-right: auto; }
 
 /* ---------- Menu ---------- */
 .rr-looks .rr-header { padding: 0; }
@@ -89,7 +88,7 @@ body.rr-looks::after {
 }
 .rr-looks .rr-scene__title::before {
 	content: ""; position: absolute; inset: -14% -6%; z-index: -1; pointer-events: none;
-	background: radial-gradient(ellipse at 50% 50%, rgba(4, 10, 32, .55) 0%, rgba(4, 10, 32, .3) 45%, transparent 70%);
+	background: radial-gradient(ellipse at 50% 50%, rgba(0, 0, 0, .42) 0%, rgba(0, 0, 0, .2) 45%, transparent 70%);
 }
 .rr-looks .rr-scene .rr-logo { display: inline-block; text-decoration: none; }
 .rr-looks .rr-scene .rr-logo img { max-height: min(30vw, 300px); width: auto; filter: drop-shadow(0 4px 12px rgba(0, 0, 0, .7)); }
@@ -233,7 +232,7 @@ body.rr-look--northpole .rr-donate__art { background-image: url(northpole/donati
 
 /* ---------- "Your Name in Lights" on the home page ---------- */
 .rr-namesign {
-	position: relative; max-width: 1180px; margin: 34px auto 0; aspect-ratio: 16 / 7; border-radius: 16px; overflow: hidden;
+	position: relative; max-width: 1100px; margin: 34px auto 0; aspect-ratio: 16 / 7; border-radius: 16px; overflow: hidden;
 	border: 2px solid var(--lk-gold); background: #0b1d4a center 55% / cover no-repeat;
 	box-shadow: inset 0 0 0 5px rgba(0, 0, 0, .28), inset 0 0 0 6px var(--lk-gold-soft), 0 0 0 2px rgba(50, 30, 0, .55), 0 20px 44px rgba(0, 0, 0, .55);
 	display: grid; place-items: center;
@@ -315,9 +314,8 @@ body.rr-look--northpole .rr-donate__art { background-image: url(northpole/donati
 	.rr-looks .rr-main { z-index: 7; }
 	.rr-looks .rr-scene__art img { object-position: 50% 66%; }
 	.rr-looks .rr-scene__title { top: 23%; }
-	.rr-looks .rr-main { padding-left: calc(var(--lk-side) + 6px); padding-right: calc(var(--lk-side) + 6px); }
 	/* the sign spans the width, with a red bow on each top corner */
-	.rr-looks .rr-banner { max-width: 1180px; margin-top: -84px; padding: 24px 90px 22px; }
+	.rr-looks .rr-banner { max-width: none; margin-top: -84px; padding: 24px 90px 22px; }
 	.rr-looks .rr-banner__flake { left: 96px; } .rr-looks .rr-banner__flake--r { left: auto; right: 96px; }
 	.rr-looks .rr-banner__copy::before, .rr-looks .rr-banner__copy::after {
 		content: ""; position: absolute; top: -26px; width: 104px; height: 82px; pointer-events: none; z-index: 2;
@@ -326,4 +324,28 @@ body.rr-look--northpole .rr-donate__art { background-image: url(northpole/donati
 	.rr-looks .rr-banner__copy::before { left: -14px; }
 	.rr-looks .rr-banner__copy::after { right: -14px; background-image: url(../assets/img/bow-right-v137.webp); }
 	.rr-looks .rr-banner__copy { position: static; }
+}
+
+/* ---------- Computers with a tall enough window, like Classic: the top stays put (menu, show name and
+   the band of the picture with Santa / the village) and only the boxes scroll, over a picture that
+   also stays put. main.js turns this on with .rr-scene, the same as for Classic. ---------- */
+@media (min-width: 861px) {
+	body.rr-looks.rr-scene .rr-side { display: block; z-index: 5; }
+	body.rr-looks.rr-scene .rr-header {
+		min-height: 54vh; padding: 0 0 34px;
+		background:
+			url(../assets/img/garland-v137.webp) center bottom / auto 46px repeat-x,
+			linear-gradient(180deg, rgba(6, 12, 34, .92) 0%, rgba(6, 12, 34, .8) 24%, rgba(6, 12, 34, .35) 38%, rgba(6, 12, 34, 0) 50%),
+			var(--lk-scene) center 82% / cover no-repeat, #0a1434;
+	}
+	body.rr-looks.rr-scene .rr-scene__art { display: none; }
+	body.rr-looks.rr-scene .rr-hero--scene { margin-top: 0; }
+	body.rr-looks.rr-scene .rr-scene { height: auto; overflow: visible; }
+	body.rr-looks.rr-scene .rr-scene__title { position: relative; left: auto; top: auto; transform: none; width: auto; max-width: 1100px; margin: 0 auto; padding: 4px 0 0; }
+	body.rr-looks.rr-scene .rr-scene__title::before { display: none; }
+	body.rr-looks.rr-scene .rr-logo__text { font-size: clamp(48px, 5.4vw, 100px); }
+	body.rr-looks.rr-scene .rr-scene .rr-intro { display: none; } /* keeps the words on the dark sky, clear of Santa */
+	body.rr-looks.rr-scene .rr-scene .rr-tagline { font-size: clamp(24px, 2.1vw, 36px); }
+	body.rr-looks.rr-scene .rr-banner { margin-top: 10px; }
+	body.rr-looks.rr-scene .rr-main { padding-top: 14px; }
 }
