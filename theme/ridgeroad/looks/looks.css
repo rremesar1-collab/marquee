@@ -311,7 +311,7 @@ body.rr-look--northpole .rr-donate__art { background-image: url(northpole/donati
 	body.rr-look--village { --lk-full: url(village/hero.webp); --lk-full-pos: center top; --lk-full-size: cover; --lk-full-bg: #0a1434; }
 	body.rr-look--northpole { --lk-full: url(northpole/scene-hd.webp); --lk-full-size: 100% auto; --lk-full-bg: #07152b;
 		/* the bottom of Santa's sleigh (64% down the width of the picture) sits on the bottom of the header */
-		--lk-full-pos: center calc(var(--rr-head-h, 380px) - 63.6vw); }
+		--lk-full-pos: center calc(var(--rr-head-h, 380px) - 61.4vw); }
 	.rr-looks .rr-side, .rr-looks .rr-frame .rr-garland--top, .rr-looks .rr-frame .rr-bow { display: none !important; }
 	.rr-looks .rr-header::before { display: none; }
 	.rr-looks .rr-header {
