@@ -1,6 +1,6 @@
 <?php
 /**
- * This Year's Sequences: MP4 videos, played in a pop-up player.
+ * This Year's Sequences: MP4 or YouTube videos, played in a pop-up player.
  */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -18,7 +18,7 @@ if ( ! $vids ) {
 	<?php if ( ridgeroad_mod( 'seq_text' ) ) : ?><p class="rr-kids__intro"><?php echo esc_html( ridgeroad_mod( 'seq_text' ) ); ?></p><?php endif; ?>
 	<div class="rr-seq__grid">
 		<?php foreach ( $vids as $v ) : ?>
-			<button type="button" class="rr-seq__card" data-video="<?php echo esc_url( $v['video'] ); ?>" data-title="<?php echo esc_attr( $v['title'] . ( $v['artist'] ? ' — ' . $v['artist'] : '' ) ); ?>">
+			<button type="button" class="rr-seq__card" data-video="<?php echo esc_url( $v['video'] ); ?>"<?php if ( ! empty( $v['yt'] ) ) : ?> data-yt="<?php echo esc_attr( $v['yt'] ); ?>"<?php endif; ?> data-title="<?php echo esc_attr( $v['title'] . ( $v['artist'] ? ' — ' . $v['artist'] : '' ) ); ?>">
 				<span class="rr-seq__media">
 					<?php if ( $v['cover'] ) : ?>
 						<img src="<?php echo esc_url( $v['cover'] ); ?>" alt="" loading="lazy">
@@ -47,6 +47,7 @@ if ( ! $vids ) {
 		<div class="rr-vmodal__box">
 			<button type="button" class="rr-vmodal__x" data-rr-vclose aria-label="<?php esc_attr_e( 'Close', 'ridgeroad' ); ?>">&times;</button>
 			<video controls playsinline preload="auto" data-rr-vplayer></video>
+			<div class="rr-vmodal__yt" data-rr-vyt hidden></div>
 			<p class="rr-vmodal__title" data-rr-vtitle></p>
 		</div>
 	</dialog>

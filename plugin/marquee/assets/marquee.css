@@ -868,6 +868,9 @@
 .mq-skin:not(#mq-0) .rr-vmodal::backdrop { background: rgba(0, 0, 0, .85); }
 .mq-skin:not(#mq-0) .rr-vmodal__box { position: relative; padding: 10px; border-radius: 14px; background: #050a1a; border: 2px solid #ffd45c; }
 .mq-skin:not(#mq-0) .rr-vmodal video { display: block; width: 100%; max-height: 78vh; border-radius: 8px; background: #000; }
+.mq-skin:not(#mq-0) .rr-vmodal__yt { position: relative; width: 100%; aspect-ratio: 16 / 9; max-height: 78vh; border-radius: 8px; overflow: hidden; background: #000; }
+.mq-skin:not(#mq-0) .rr-vmodal__yt[hidden], .mq-skin:not(#mq-0) .rr-vmodal video[hidden] { display: none; }
+.mq-skin:not(#mq-0) .rr-vmodal__yt iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .mq-skin:not(#mq-0) .rr-vmodal__title { margin: 8px 4px 2px; font: 700 18px "Libre Baskerville", Georgia, serif; font-family: inherit; color: #fbf290; }
 .mq-skin:not(#mq-0) .rr-vmodal__x { position: absolute; right: -12px; top: -14px; z-index: 2; width: 40px; height: 40px; border-radius: 50%; border: 2px solid #ffd45c; background: #7a0606; color: #fff; font-size: 26px; line-height: 1; cursor: pointer; }
 .mq-skin:not(#mq-0) .rr-showmodal { width: min(1200px, 96vw); }

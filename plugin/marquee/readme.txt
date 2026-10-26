@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.9.5
+Stable tag: 0.9.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,9 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.9.6 =
+* Show videos can be a YouTube link: paste it in the video's Video box. The card shows the YouTube picture and the video plays in YouTube's player in the pop-up. Handy when your website limits upload size.
 
 = 0.9.5 =
 * Check for updates now: a link under Marquee on the Plugins page asks GitHub right away, so a new version shows up at once instead of within 6 hours.

@@ -535,20 +535,34 @@
 	function seqVideos() {
 		var dlg = $('[data-rr-vmodal]');
 		if (!dlg) { return; }
-		var player = dlg.querySelector('[data-rr-vplayer]'), ttl = dlg.querySelector('[data-rr-vtitle]');
-		function close() { player.pause(); player.removeAttribute('src'); player.load(); if (dlg.open) { dlg.close(); } }
+		var player = dlg.querySelector('[data-rr-vplayer]'), ttl = dlg.querySelector('[data-rr-vtitle]'), yt = dlg.querySelector('[data-rr-vyt]');
+		function stopYt() { if (yt) { yt.innerHTML = ''; yt.hidden = true; } }
+		function close() { player.pause(); player.removeAttribute('src'); player.load(); stopYt(); if (dlg.open) { dlg.close(); } }
 		document.querySelectorAll('.rr-seq__card').forEach(function (c) {
 			c.addEventListener('click', function () {
-				player.src = c.getAttribute('data-video');
+				var id = c.getAttribute('data-yt');
 				ttl.textContent = c.getAttribute('data-title');
+				if (id && yt) { /* YouTube link: YouTube's own player in the pop-up */
+					player.hidden = true;
+					var f = document.createElement('iframe');
+					f.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(id) + '?autoplay=1&rel=0&playsinline=1';
+					f.title = c.getAttribute('data-title') || 'YouTube';
+					f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+					f.allowFullscreen = true;
+					yt.innerHTML = ''; yt.appendChild(f); yt.hidden = false;
+					if (dlg.showModal) { dlg.showModal(); } else { dlg.setAttribute('open', ''); }
+					return;
+				}
+				stopYt(); player.hidden = false;
+				player.src = c.getAttribute('data-video');
 				if (dlg.showModal) { dlg.showModal(); } else { dlg.setAttribute('open', ''); }
 				var p = player.play(); if (p && p.catch) { p.catch(function () {}); }
 			});
 		});
 		dlg.querySelector('[data-rr-vclose]').addEventListener('click', close);
 		dlg.addEventListener('click', function (e) { if (e.target === dlg) { close(); } });
-		dlg.addEventListener('cancel', function () { player.pause(); });
-		dlg.addEventListener('close', function () { player.pause(); });
+		dlg.addEventListener('cancel', function () { player.pause(); stopYt(); });
+		dlg.addEventListener('close', function () { player.pause(); stopYt(); });
 
 		/* card previews (videos without a cover picture) load only when they come near the screen */
 		var lazy = [].slice.call(document.querySelectorAll('.rr-seq__media video[data-src]'));
