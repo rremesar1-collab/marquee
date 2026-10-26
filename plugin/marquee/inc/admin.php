@@ -632,6 +632,8 @@ function marquee_admin_page() {
 						</div>
 					</details>
 
+					<?php marquee_photos_box( $s ); ?>
+
 					<?php
 					$blk = array_values( array_filter( array_map( 'trim', preg_split( '/[,\n]+/', (string) marquee_theme_get( 'names_block' ) ) ) ) );
 					?>

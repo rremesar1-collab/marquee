@@ -41,7 +41,7 @@ import socket
 import threading
 import urllib.request
 
-VERSION = "3.13.0"
+VERSION = "3.14.0"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -913,6 +913,75 @@ def tidy_voice():
 def prefetch(names):
     for item in names[:int(S["max_names"])]:
         voice_file(item)
+        picture(item)
+
+
+# ------------------------------------------------------------ pictures ----
+PICS = {}        # name id -> the kid's picture (JPEG bytes), approved on the website (3.14+)
+NOPIC = {}       # FPP address -> True when that FPP can't take pictures (older than FPP 10)
+
+
+def picture(item):
+    """The kid's picture for a name, downloaded once; None when there isn't one."""
+    url = item.get("photo")
+    if not url or not str(url).startswith(("http://", "https://")):
+        return None
+    k = item.get("id")
+    if k in PICS:
+        return PICS[k]
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "image/jpeg,image/*"})
+        with urllib.request.urlopen(req, timeout=10) as r:
+            data = r.read(400_000)
+        if data[:2] != b"\xff\xd8":
+            raise RuntimeError("the website sent back a page instead of a picture")
+        PICS[k] = data
+        if len(PICS) > 40:
+            PICS.pop(next(iter(PICS)))
+        return data
+    except Exception as e:
+        log("could not download the picture for", item.get("text"), "-", e)
+        PICS[k] = None
+        return None
+
+
+def fpp_put_image(host, model, data, timeout=4):
+    """Put a picture on an overlay model (FPP 10+ scales it to fit). Raises on an error."""
+    q = urllib.parse.urlencode({"fmt": "image", "scale": "fit", "autoEnable": "Enabled", "stopEffect": "true"})
+    req = urllib.request.Request(host.rstrip("/") + "/api/overlays/model/" + urllib.parse.quote(model) + "/data?" + q,
+                                 data=data, method="PUT", headers={"Content-Type": "image/jpeg"})
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return r.read().decode("utf-8", "replace")
+
+
+def show_picture(item):
+    """Put a kid's picture up on every screen at the same time; returns how many screens took it."""
+    import threading
+    data = picture(item)
+    if not data:
+        return 0
+    results = []
+
+    def one(sc):
+        if DEAD.get(sc["fpp"], 0) > time.time() or NOPIC.get(sc["fpp"]):
+            return
+        try:
+            fpp_put_image(sc["fpp"], sc["model"], data)
+            results.append(sc["name"])
+        except urllib.error.HTTPError as e:
+            if e.code in (400, 404, 405, 501):
+                NOPIC[sc["fpp"]] = True
+                log("pictures can't go on", sc["name"], "(", sc["fpp"], "): it needs FPP 10 or newer - showing names only there")
+            else:
+                log("could not show the picture on", sc["name"], "-", e)
+        except Exception as e:
+            log("could not show the picture on", sc["name"], "-", e)
+    threads = [threading.Thread(target=one, args=(sc,), daemon=True) for sc in S["screens"]]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join(4)
+    return len(results)
 
 
 def say(item):
@@ -1208,9 +1277,23 @@ def _show_names(names, slots, color):
     talk_until = 0
     voice_until = 0.0                                  # when the name being said right now ends
     outro_at = float(S["names_start"]) + slots * float(S["slot"])    # the break audio's outro starts about here
-    # Fill every slot: with fewer names than slots, cycle through them.
-    for k in range(slots if names else 0):
-        item = names[k % len(names)]
+    # A kid with a picture gets two turns: the picture (while the name is said), then the name.
+    # Only whole kids that fit; the rest go up in the next break. Spare slots go round the names again.
+    turns = []
+    for item in names:
+        need = 2 if picture(item) else 1
+        if len(turns) + need > slots:
+            break
+        if need == 2:
+            turns.append(("pic", item))
+        turns.append(("name", item))
+    first = len(turns)
+    shown_items = [it for kind, it in turns if kind == "name"]
+    while turns and len(turns) < slots:
+        turns.append(("name", shown_items[(len(turns) - first) % len(shown_items)]))
+    said = set()
+    for k in range(len(turns)):
+        kind, item = turns[k]
         at = float(S["names_start"]) + k * float(S["slot"])
         while True:
             if talk_until and time.time() >= talk_until:
@@ -1229,10 +1312,26 @@ def _show_names(names, slots, color):
                 break
             time.sleep(0.1)
         late = el - at
-        if late > 0.5 * float(S["slot"]) and k + 1 < slots:
+        if late > 0.5 * float(S["slot"]) and k + 1 < len(turns):
             # running late (a slow website, a spoken name still downloading): skip this turn rather than
             # putting two names up at once and talking over the announcer; the name comes round again
             log("running %.1fs late - skipping turn %d" % (late, k + 1))
+            continue
+        if kind == "pic":
+            if show_picture(item):
+                log("showing the picture of:", item["text"])
+            elif show(item["text"], color):              # no screen took the picture (an older FPP): the name now instead
+                log("showing:", item["text"])
+            else:
+                continue
+            if talk_until:
+                stop_talking()
+            talk_until = say(item)                       # the name is said while the picture is up
+            try:
+                voice_until = time.time() + max(0.5, min(8.0, float(item.get("say_for") or 2.0)))
+            except (TypeError, ValueError):
+                voice_until = time.time() + 2.0
+            said.add(item["id"])
             continue
         if show(item["text"], color):
             log("showing:", item["text"])
@@ -1240,9 +1339,11 @@ def _show_names(names, slots, color):
                 say_for = max(0.5, min(8.0, float(item.get("say_for") or 2.0)))
             except (TypeError, ValueError):
                 say_for = 2.0
-            repeat = k >= len(names)
+            repeat = k >= first
             # a name going round again is only said when Santa has finished the last one and it ends before the outro
-            if repeat and (time.time() < voice_until or el + say_for > outro_at - 0.3):
+            if item["id"] in said and not repeat:
+                pass                                     # already said with the picture
+            elif repeat and (time.time() < voice_until or el + say_for > outro_at - 0.3):
                 pass
             elif S["say_every_time"] or not repeat:
                 if talk_until:
@@ -1274,6 +1375,9 @@ def show_live(names, color):
         for item in names[:int(S["max_names"])]:
             if status_name(master_status()) != "playing":
                 break                                  # show stopped: the rest wait for it to start again
+            if picture(item) and show_picture(item):
+                log("showing the picture of (during the song):", item["text"])
+                time.sleep(S["show_for"])
             if show(item["text"], color):
                 log("showing (during the song):", item["text"])
                 done.append(item["id"])

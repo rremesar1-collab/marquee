@@ -58,7 +58,15 @@
 		if (!d.names.waiting.length) { w.appendChild(el('li', 'empty', tr('No names waiting.'))); }
 		d.names.waiting.forEach(function (n, i) {
 			var li = el('li'); li.appendChild(el('span', 'n', i + 1));
-			var t = el('span', 't'); t.appendChild(el('b', '', n.text)); t.appendChild(el('small', '', tr('sent %s').replace('%s', function () { return n.time; }))); li.appendChild(t);
+			if (n.photo) { var im = el('img', 'rrc__pic'); im.src = n.photo; im.alt = ''; li.appendChild(im); }
+			var t = el('span', 't'); t.appendChild(el('b', '', n.text)); t.appendChild(el('small', '', tr('sent %s').replace('%s', function () { return n.time; })));
+			if (n.photo) { t.appendChild(el('small', 'rrc__picst' + (n.photo_state === 'ok' ? ' is-ok' : ''), n.photo_state === 'ok' ? tr('Picture approved') : tr('Picture waiting for you: the name waits too (up to 10 minutes)'))); }
+			li.appendChild(t);
+			if (n.photo && n.photo_state !== 'ok') {
+				var ap = el('button', 'rrc__btn pri', tr('Show picture')); ap.type = 'button'; ap.addEventListener('click', function () { act('rr_ctl_photo', { id: n.id, approve: 1 }, tr('Picture approved')); });
+				var np = el('button', 'rrc__btn', tr('No picture')); np.type = 'button'; np.addEventListener('click', function () { act('rr_ctl_photo', { id: n.id }, tr('Picture removed: the name goes up without it')); });
+				li.appendChild(ap); li.appendChild(np);
+			}
 			var rm = el('button', 'rrc__btn del', tr('Remove')); rm.type = 'button'; rm.addEventListener('click', function () { act('rr_ctl_name', { id: n.id }, tr('Removed')); });
 			var bl = el('button', 'rrc__btn', tr('Block word')); bl.type = 'button'; bl.addEventListener('click', function () { act('rr_ctl_name', { id: n.id, block: 1 }, tr('Removed and blocked')); });
 			li.appendChild(rm); li.appendChild(bl); w.appendChild(li);

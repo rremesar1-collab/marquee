@@ -220,6 +220,10 @@ function ridgeroad_name_send() {
 	if ( count( ridgeroad_name_queue( 40 ) ) >= 40 ) {
 		$fail( __( 'Lots of names right now! Please try again in a few minutes.', 'ridgeroad' ), 429 );
 	}
+	$err = (string) apply_filters( 'ridgeroad_name_send_error', '' ); // Marquee: a picture sent with the name is checked here
+	if ( '' !== $err ) {
+		$fail( $err );
+	}
 	$id = wp_insert_post( array( 'post_type' => 'rr_shoutout', 'post_status' => 'publish', 'post_title' => $name ), true );
 	if ( is_wp_error( $id ) ) {
 		$fail( __( 'Something went wrong. Please try again.', 'ridgeroad' ) );
@@ -278,6 +282,7 @@ function ridgeroad_names_pull() {
 			if ( $id && 'rr_shoutout' === get_post_type( $id ) && ! (int) get_post_meta( $id, '_rr_shown', true ) ) {
 				update_post_meta( $id, '_rr_shown', time() );
 				ridgeroad_stat_add( 'name_shown' );
+				do_action( 'ridgeroad_name_shown', $id ); // Marquee: delete the kid's picture once it's been shown
 			}
 		}
 	}
@@ -320,7 +325,11 @@ function ridgeroad_names_pull() {
 	if ( ridgeroad_mod( 'names_on' ) && ! ridgeroad_names_paused() ) {
 		foreach ( ridgeroad_name_queue( 12 ) as $i => $p ) {
 			// Marquee adds the spoken clip here ('audio', 'say_for') when spoken names are on
-			$out[] = apply_filters( 'ridgeroad_names_pull_item', array( 'id' => $p->ID, 'text' => get_post_meta( $p->ID, '_rr_text', true ) ), $p, $i );
+			// Marquee also adds the kid's picture ('photo'), or returns false to hold a name whose picture isn't approved yet
+			$item = apply_filters( 'ridgeroad_names_pull_item', array( 'id' => $p->ID, 'text' => get_post_meta( $p->ID, '_rr_text', true ) ), $p, $i );
+			if ( $item ) {
+				$out[] = $item;
+			}
 		}
 		// the first 6 go up at the next break: buzz the phones that asked, once that break is coming up
 		if ( $out && function_exists( 'ridgeroad_app_buzz_names' ) && ridgeroad_names_songs_left() <= 1 ) {

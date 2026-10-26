@@ -318,7 +318,8 @@ function ridgeroad_control_state() {
 
 	$waiting = array();
 	foreach ( ridgeroad_name_queue( 30 ) as $p ) {
-		$waiting[] = array( 'id' => $p->ID, 'text' => get_post_meta( $p->ID, '_rr_text', true ), 'time' => get_the_date( __( 'g:i A', 'ridgeroad' ), $p ) );
+		// Marquee adds the kid's picture to approve ('photo', 'photo_state')
+		$waiting[] = apply_filters( 'ridgeroad_ctl_waiting_item', array( 'id' => $p->ID, 'text' => get_post_meta( $p->ID, '_rr_text', true ), 'time' => get_the_date( __( 'g:i A', 'ridgeroad' ), $p ) ), $p );
 	}
 	$shown = array();
 	$q     = get_posts( array(

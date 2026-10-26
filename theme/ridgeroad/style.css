@@ -1431,6 +1431,20 @@ img.emoji, img.wp-smiley { display: inline !important; width: 1em !important; he
 .rr-kc .rr-kbox { max-width: 760px; width: 100%; margin: 0 auto; }
 .rr-kc .rr-kbox[hidden] { display: none; }
 .rr-kc .rr-names { max-width: 760px; width: 100%; margin: 0 auto; }
+/* Kids' pictures on the name form */
+.rr-names__pic { margin: 14px 0 6px; padding: 12px 14px; border: 1px dashed rgba(247, 201, 90, .55); border-radius: 12px; }
+.rr-names__pic legend { padding: 0 6px; font-weight: 800; color: #fbe9bf; }
+.rr-names__pic-file { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+.rr-names__pic-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.rr-names__pic-img { width: 112px; height: 112px; border-radius: 12px; border: 2px solid #ffd45c; box-shadow: 0 4px 12px rgba(0, 0, 0, .5); background: #000; }
+.rr-names__pic-img[hidden] { display: none; }
+.rr-names__pic-btns { display: flex; flex-direction: column; gap: 8px; }
+.rr-names__pic-btns .rr-btn { cursor: pointer; }
+.rr-names__pic-file:focus-visible + .rr-names__pic-row .rr-btn--gold { outline: 3px solid #fff; outline-offset: 2px; }
+.rr-names__pic-kind { display: flex; gap: 18px; margin: 10px 0 0; font-weight: 700; }
+.rr-names__pic-ok { display: flex; gap: 10px; align-items: flex-start; margin: 12px 0 4px; padding: 10px 12px; border-radius: 10px; background: rgba(255, 212, 92, .12); font-weight: 700; line-height: 1.35; }
+.rr-names__pic-ok input { width: 22px; height: 22px; flex: none; margin-top: 1px; }
+.rr-names__pic-ok[hidden], .rr-names__pic-kind[hidden] { display: none; }
 
 /* ---------- Light Lab v3 ---------- */
 .rr-ll { display: grid; gap: 14px; margin: 0; }

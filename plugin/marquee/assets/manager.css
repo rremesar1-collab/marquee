@@ -161,3 +161,7 @@ textarea { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid va
 .mm-tnow { display: flex; gap: 10px; align-items: center; justify-content: space-between; padding: 10px 12px; margin: 0 0 12px; border-radius: 12px; background: #ffcc33; color: #2a1f00; }
 .mm-tnow b { display: block; } .mm-tnow small { display: block; opacity: .8; }
 .mm-tnow .mm-btn { background: #2a1f00; border-color: #2a1f00; color: #ffcc33; flex: none; }
+/* kids' pictures waiting to be approved */
+.mm-pic { flex: none; width: 56px; height: 56px; border-radius: 8px; object-fit: cover; border: 2px solid var(--gold); }
+.mm-picst { display: block; color: #ffd27a; font-weight: 600; }
+.mm-picst.is-ok { color: #7ee2a0; }

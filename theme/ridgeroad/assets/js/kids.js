@@ -232,6 +232,7 @@
 			nmsg.textContent = raw.length > 14 ? t('That’s a long one! Names can have up to 14 letters.') : '';
 		};
 		nf.kid.addEventListener('input', preview);
+		var pic = picture(nf);
 		nf.addEventListener('submit', function (e) {
 			e.preventDefault();
 			nmsg.textContent = '';
@@ -239,6 +240,7 @@
 			if (!/^[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ'\-]{1,13}$/.test(nf.kid.value)) {
 				nmsg.textContent = nf.kid.value.length > 14 ? t('That’s a long one! Names can have up to 14 letters.') : t('Please type just your first name (letters only).'); nf.kid.focus(); return;
 			}
+			if (pic && !pic.ready()) { nmsg.textContent = t('A parent or guardian needs to tick the box to say your picture can go on our screens.'); return; }
 			var btn = nf.querySelector('button[type=submit]'); btn.disabled = true;
 			var geo = !!nb.querySelector('[data-rr-names-geo]'), pos = null;
 			nmsg.textContent = geo ? t('Checking you’re at the show…') : t('Sending to Santa’s elves…');
@@ -309,8 +311,107 @@
 			});
 		}
 		nb.querySelector('[data-rr-names-again]').addEventListener('click', function () {
-			ndone.hidden = true; nf.hidden = false; nf.reset(); preview(); nf.kid.focus();
+			ndone.hidden = true; nf.hidden = false; nf.reset(); preview(); if (pic) { pic.clear(); } nf.kid.focus();
 		});
+	}
+
+	/* ---------- Kids' pictures (when the show turned them on) ----------
+	   The picture never leaves the phone full size: it's cropped to a square and shrunk to 256 pixels
+	   here, and for a cartoon only the cartoon is sent. */
+	function picture(form) {
+		var box = form.querySelector('[data-rr-pic]');
+		if (!box) { return null; }
+		var file = box.querySelector('[data-rr-pic-file]'), cv = box.querySelector('[data-rr-pic-canvas]'), data = box.querySelector('[data-rr-pic-data]');
+		var clr = box.querySelector('[data-rr-pic-clear]'), okWrap = box.querySelector('[data-rr-pic-okwrap]'), ok = box.querySelector('[data-rr-pic-ok]');
+		var kinds = box.querySelector('[data-rr-pic-kinds]'), take = box.querySelector('[data-rr-pic-take] span');
+		var src = null;                                   // the square photo, kept only in this page
+		var kind = function () { var r = form.querySelector('input[name=photo_kind]:checked') || form.querySelector('input[name=photo_kind]'); return r ? r.value : 'cartoon'; };
+		var draw = function () {
+			if (!src) { return; }
+			var x = cv.getContext('2d');
+			x.putImageData(kind() === 'photo' ? src : cartoon(src), 0, 0);
+			data.value = cv.toDataURL('image/jpeg', 0.85);
+		};
+		var clear = function () {
+			src = null; data.value = ''; file.value = ''; cv.hidden = true; clr.hidden = true; okWrap.hidden = true; ok.checked = false;
+			if (kinds) { kinds.hidden = true; }
+			take.textContent = t('Take or pick a picture');
+		};
+		file.addEventListener('change', function () {
+			var f = file.files && file.files[0];
+			if (!f || !/^image\//.test(f.type)) { return; }
+			var img = new Image(), url = URL.createObjectURL(f);
+			img.onload = function () {
+				var s = Math.min(img.naturalWidth, img.naturalHeight), w = 256;
+				var tmp = document.createElement('canvas'); tmp.width = tmp.height = w;
+				var tx = tmp.getContext('2d');
+				tx.drawImage(img, (img.naturalWidth - s) / 2, (img.naturalHeight - s) / 2, s, s, 0, 0, w, w); // centre square: the face
+				src = tx.getImageData(0, 0, w, w);
+				URL.revokeObjectURL(url);
+				cv.hidden = false; clr.hidden = false; okWrap.hidden = false;
+				if (kinds) { kinds.hidden = false; }
+				take.textContent = t('Use a different picture');
+				draw();
+			};
+			img.onerror = function () { URL.revokeObjectURL(url); };
+			img.src = url;
+		});
+		form.querySelectorAll('input[name=photo_kind]').forEach(function (r) { r.addEventListener('change', draw); });
+		clr.addEventListener('click', clear);
+		return { ready: function () { return !src || ok.checked; }, clear: clear };
+	}
+
+	/* A cartoon from a photo, made on the phone: flat areas of colour (a Kuwahara filter, twice),
+	   fewer and brighter colours, and dark outlines where the picture changes (difference of two blurs). */
+	function cartoon(img) {
+		var w = img.width, h = img.height, n = w * h, s = img.data, i, x, y, c;
+		var rgb = new Float32Array(n * 3);
+		for (i = 0; i < n; i++) { rgb[i * 3] = s[i * 4]; rgb[i * 3 + 1] = s[i * 4 + 1]; rgb[i * 3 + 2] = s[i * 4 + 2]; }
+		var gray = function (a) { var g = new Float32Array(n); for (var j = 0; j < n; j++) { g[j] = 0.3 * a[j * 3] + 0.59 * a[j * 3 + 1] + 0.11 * a[j * 3 + 2]; } return g; };
+		var kuwahara = function (a, r) {
+			var W = w + 1, ia = new Float64Array(W * (h + 1) * 3), ig = new Float64Array(W * (h + 1)), ig2 = new Float64Array(W * (h + 1)), g = gray(a), out = new Float32Array(n * 3);
+			for (y = 0; y < h; y++) {
+				for (x = 0; x < w; x++) {
+					var p = (y + 1) * W + x + 1, q = y * w + x;
+					ig[p] = g[q] + ig[p - 1] + ig[p - W] - ig[p - W - 1];
+					ig2[p] = g[q] * g[q] + ig2[p - 1] + ig2[p - W] - ig2[p - W - 1];
+					for (c = 0; c < 3; c++) { ia[p * 3 + c] = a[q * 3 + c] + ia[(p - 1) * 3 + c] + ia[(p - W) * 3 + c] - ia[(p - W - 1) * 3 + c]; }
+				}
+			}
+			var sum = function (I, y0, x0, y1, x1, k, cc) { return I[(y1 * W + x1) * k + cc] - I[(y0 * W + x1) * k + cc] - I[(y1 * W + x0) * k + cc] + I[(y0 * W + x0) * k + cc]; };
+			var quads = [[-r, -r], [-r, 0], [0, -r], [0, 0]];
+			for (y = 0; y < h; y++) {
+				for (x = 0; x < w; x++) {
+					var best = -1, bv = Infinity;
+					for (var k = 0; k < 4; k++) {
+						var y0 = Math.max(0, y + quads[k][0]), x0 = Math.max(0, x + quads[k][1]), y1 = Math.min(h, y + quads[k][0] + r + 1), x1 = Math.min(w, x + quads[k][1] + r + 1);
+						var cnt = (y1 - y0) * (x1 - x0), mg = sum(ig, y0, x0, y1, x1, 1, 0) / cnt, v = sum(ig2, y0, x0, y1, x1, 1, 0) / cnt - mg * mg;
+						if (v < bv) { bv = v; best = [y0, x0, y1, x1, cnt]; }
+					}
+					for (c = 0; c < 3; c++) { out[(y * w + x) * 3 + c] = sum(ia, best[0], best[1], best[2], best[3], 3, c) / best[4]; }
+				}
+			}
+			return out;
+		};
+		var blur = function (g, sig) {
+			var r = Math.round(sig * 3), k = [], tot = 0, j, t = new Float32Array(n), o = new Float32Array(n);
+			for (j = -r; j <= r; j++) { k.push(Math.exp(-j * j / (2 * sig * sig))); tot += k[k.length - 1]; }
+			for (j = 0; j < k.length; j++) { k[j] /= tot; }
+			for (y = 0; y < h; y++) { for (x = 0; x < w; x++) { var v = 0; for (j = -r; j <= r; j++) { v += k[j + r] * g[y * w + Math.min(w - 1, Math.max(0, x + j))]; } t[y * w + x] = v; } }
+			for (y = 0; y < h; y++) { for (x = 0; x < w; x++) { var u = 0; for (j = -r; j <= r; j++) { u += k[j + r] * t[Math.min(h - 1, Math.max(0, y + j)) * w + x]; } o[y * w + x] = u; } }
+			return o;
+		};
+		var flat = kuwahara(kuwahara(rgb, 4), 4);
+		var g0 = gray(rgb), b1 = blur(g0, 1.4), b2 = blur(g0, 2.24);
+		var out = new ImageData(w, h), o = out.data, step = 255 / 7;
+		for (i = 0; i < n; i++) {
+			var edge = b1[i] - b2[i] < -6;
+			var r0 = flat[i * 3], g1 = flat[i * 3 + 1], bl = flat[i * 3 + 2], m = (r0 + g1 + bl) / 3;
+			var col = [m + (r0 - m) * 1.3, m + (g1 - m) * 1.3, m + (bl - m) * 1.3];
+			for (c = 0; c < 3; c++) { o[i * 4 + c] = edge ? [25, 20, 30][c] : Math.max(0, Math.min(255, Math.round(col[c] / step) * step)); }
+			o[i * 4 + 3] = 255;
+		}
+		return out;
 	}
 
 	/* ---------- ?rr_watch=ID link (site owner reviewing an entry) ---------- */

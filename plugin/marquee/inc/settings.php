@@ -61,6 +61,8 @@ function marquee_defaults() {
 		'classic_img'  => 0,                 // picture on the "Classic" card kids pick from (0 = the animated house)
 		'themes'       => array(),           // [ name, playlist, img (attachment ID), start, slot, look ] up to 6
 		'name_msgs'    => array(),           // your own messages kids pick from ('Merry Christmas, NAME!'), up to 6; empty = the standard ones
+		'photos'       => 'off',             // kids' pictures: off, cartoon, photo or both (inc/photos.php)
+		'photos_ack'   => 0,                 // the owner accepted the notice about kids' pictures
 	);
 }
 

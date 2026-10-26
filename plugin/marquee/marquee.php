@@ -41,6 +41,7 @@ require MARQUEE_DIR . 'inc/walk.php';
 require MARQUEE_DIR . 'inc/support.php';
 require MARQUEE_DIR . 'inc/names-setup.php';
 require MARQUEE_DIR . 'inc/covers.php';
+require MARQUEE_DIR . 'inc/photos.php';
 require MARQUEE_DIR . 'inc/i18n-js.php';
 
 /* -------------------------------------------------------------------------

@@ -55,6 +55,7 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 == Changelog ==
 
 = 0.10.0 =
+* Kids' pictures on your screens (off unless you turn it on): kids can add a cartoon of themselves, or a real photo, to their name. You approve every picture in Show Control or the Show Manager first; a parent has to tick a box; pictures are deleted right after they're shown. Needs FPP 10+ and names script 3.14.
 * Spanish and French: the website, Kids' Corner and Marquee's settings show in the language picked in Settings → General → Site Language. No language buttons for visitors; English sites are unchanged.
 * Two new looks for the Marquee Festive theme: Christmas Village and Santa's North Pole (Appearance → Customize → Show Website → Look). Classic stays the default.
 * Show videos can be a YouTube link: paste it in the video's Video box. The card shows the YouTube picture and the video plays in YouTube's player in the pop-up. Handy when your website limits upload size.

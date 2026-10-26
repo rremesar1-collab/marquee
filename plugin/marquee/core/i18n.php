@@ -11,6 +11,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 /** English => translation, only the ones that differ (empty on English sites). */
 function ridgeroad_js_strings() {
 	$all = array(
+		// kids' pictures
+		'Take or pick a picture' => __( 'Take or pick a picture', 'ridgeroad' ),
+		'Use a different picture' => __( 'Use a different picture', 'ridgeroad' ),
+		'A parent or guardian needs to tick the box to say your picture can go on our screens.' => __( 'A parent or guardian needs to tick the box to say your picture can go on our screens.', 'ridgeroad' ),
+		'Picture approved' => __( 'Picture approved', 'ridgeroad' ),
+		'Picture waiting for you: the name waits too (up to 10 minutes)' => __( 'Picture waiting for you: the name waits too (up to 10 minutes)', 'ridgeroad' ),
+		'Show picture' => __( 'Show picture', 'ridgeroad' ),
+		'No picture' => __( 'No picture', 'ridgeroad' ),
+		'Picture removed: the name goes up without it' => __( 'Picture removed: the name goes up without it', 'ridgeroad' ),
 		'Between songs — stay tuned!' => __( 'Between songs — stay tuned!', 'ridgeroad' ),
 		'No show tonight' => __( 'No show tonight', 'ridgeroad' ),
 		'Come see the Christmas lights!' => __( 'Come see the Christmas lights!', 'ridgeroad' ),

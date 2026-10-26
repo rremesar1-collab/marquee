@@ -49,6 +49,33 @@ $status = ridgeroad_status();
 				</div>
 			</fieldset>
 		<?php endif; ?>
+		<?php
+		$rr_pic = (string) apply_filters( 'ridgeroad_names_photo_mode', '' ); // Marquee: kids' pictures ('' = off)
+		if ( $rr_pic ) :
+			?>
+			<fieldset class="rr-names__pic" data-rr-pic data-mode="<?php echo esc_attr( $rr_pic ); ?>">
+				<legend><?php echo esc_html( 'photo' === $rr_pic ? __( 'Add your picture (optional)', 'ridgeroad' ) : __( 'Add a cartoon of you (optional)', 'ridgeroad' ) ); ?></legend>
+				<input type="file" accept="image/*" id="rr-n-pic" class="rr-names__pic-file" data-rr-pic-file>
+				<div class="rr-names__pic-row">
+					<canvas class="rr-names__pic-img" width="256" height="256" data-rr-pic-canvas hidden></canvas>
+					<span class="rr-names__pic-btns">
+						<label class="rr-btn rr-btn--gold" for="rr-n-pic" data-rr-pic-take><?php echo ridgeroad_cicon( 'camera' ); ?><span><?php esc_html_e( 'Take or pick a picture', 'ridgeroad' ); ?></span></label>
+						<button type="button" class="rr-btn rr-btn--ghost" data-rr-pic-clear hidden><?php esc_html_e( 'No picture', 'ridgeroad' ); ?></button>
+					</span>
+				</div>
+				<?php if ( 'both' === $rr_pic ) : ?>
+					<div class="rr-names__pic-kind" data-rr-pic-kinds hidden>
+						<label><input type="radio" name="photo_kind" value="cartoon" checked> <?php esc_html_e( 'Cartoon', 'ridgeroad' ); ?></label>
+						<label><input type="radio" name="photo_kind" value="photo"> <?php esc_html_e( 'Real photo', 'ridgeroad' ); ?></label>
+					</div>
+				<?php else : ?>
+					<input type="hidden" name="photo_kind" value="<?php echo esc_attr( $rr_pic ); ?>">
+				<?php endif; ?>
+				<label class="rr-names__pic-ok" data-rr-pic-okwrap hidden><input type="checkbox" name="photo_ok" value="1" data-rr-pic-ok> <span><?php esc_html_e( 'A parent or guardian says it’s OK to show this picture on our screens at the show.', 'ridgeroad' ); ?></span></label>
+				<input type="hidden" name="photo" value="" data-rr-pic-data>
+				<p class="rr-kid__fine"><?php echo esc_html( 'photo' === $rr_pic ? __( 'Your picture is only shown at the show. Our elves check every picture first, and it’s deleted right after.', 'ridgeroad' ) : __( 'Your phone turns the picture into a cartoon, and only the cartoon is sent. Our elves check it first, and it’s deleted right after the show uses it.', 'ridgeroad' ) ); ?></p>
+			</fieldset>
+		<?php endif; ?>
 		<p class="rr-hp" aria-hidden="true"><label>Website <input name="website" type="text" tabindex="-1" autocomplete="off"></label></p>
 		<button class="rr-btn rr-btn--red" type="submit"><?php echo ridgeroad_cicon( 'star' ); ?><?php esc_html_e( 'Put My Name in Lights!', 'ridgeroad' ); ?></button>
 		<p class="rr-contest__msg" data-rr-names-msg aria-live="polite"></p>

@@ -252,17 +252,17 @@ msgstr ""
 msgid "Christmas"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:195 plugin/marquee/core/i18n.php:24
+#: plugin/marquee/core/customizer.php:195 plugin/marquee/core/i18n.php:33
 #: theme/ridgeroad/inc/customizer.php:195
 msgid "%d days until Christmas"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:195 plugin/marquee/core/i18n.php:25
+#: plugin/marquee/core/customizer.php:195 plugin/marquee/core/i18n.php:34
 #: theme/ridgeroad/inc/customizer.php:195
 msgid "Christmas Eve is here!"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:195 plugin/marquee/core/i18n.php:26
+#: plugin/marquee/core/customizer.php:195 plugin/marquee/core/i18n.php:35
 #: theme/ridgeroad/looks/looks.php:130
 msgid "Merry Christmas!"
 msgstr ""
@@ -378,7 +378,7 @@ msgstr ""
 msgid "Falling snow"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:306 plugin/marquee/core/i18n.php:168
+#: plugin/marquee/core/customizer.php:306 plugin/marquee/core/i18n.php:177
 #: plugin/marquee/core/control.php:195
 msgid "Off"
 msgstr ""
@@ -1102,1359 +1102,1396 @@ msgstr ""
 msgid "Lots of names right now! Please try again in a few minutes."
 msgstr ""
 
-#: plugin/marquee/core/shoutouts.php:225 plugin/marquee/core/i18n.php:50
+#: plugin/marquee/core/shoutouts.php:229 plugin/marquee/core/i18n.php:59
 #: plugin/marquee/core/contest.php:123
 msgid "Something went wrong. Please try again."
 msgstr ""
 
-#: plugin/marquee/core/shoutouts.php:359 theme/ridgeroad/inc/shoutouts.php:359
+#: plugin/marquee/core/shoutouts.php:368 theme/ridgeroad/inc/shoutouts.php:368
 msgid "Name"
 msgstr ""
 
-#: plugin/marquee/core/shoutouts.php:359 theme/ridgeroad/inc/shoutouts.php:359
+#: plugin/marquee/core/shoutouts.php:368 theme/ridgeroad/inc/shoutouts.php:368
 msgid "Shows as"
 msgstr ""
 
-#: plugin/marquee/core/shoutouts.php:359 theme/ridgeroad/inc/shoutouts.php:359
+#: plugin/marquee/core/shoutouts.php:368 theme/ridgeroad/inc/shoutouts.php:368
 msgid "On the screens"
 msgstr ""
 
-#: plugin/marquee/core/shoutouts.php:359 plugin/marquee/core/contest.php:430
-#: theme/ridgeroad/inc/shoutouts.php:359
+#: plugin/marquee/core/shoutouts.php:368 plugin/marquee/core/contest.php:430
+#: theme/ridgeroad/inc/shoutouts.php:368
 msgid "Sent"
 msgstr ""
 
-#: plugin/marquee/core/shoutouts.php:366 theme/ridgeroad/inc/shoutouts.php:366
+#: plugin/marquee/core/shoutouts.php:375 theme/ridgeroad/inc/shoutouts.php:375
 msgid "Shown at %s"
 msgstr ""
 
-#: plugin/marquee/core/shoutouts.php:366 theme/ridgeroad/inc/shoutouts.php:366
+#: plugin/marquee/core/shoutouts.php:375 theme/ridgeroad/inc/shoutouts.php:375
 msgid "g:i a"
 msgstr ""
 
-#: plugin/marquee/core/shoutouts.php:366 theme/ridgeroad/inc/shoutouts.php:366
+#: plugin/marquee/core/shoutouts.php:375 theme/ridgeroad/inc/shoutouts.php:375
 msgid "Waiting"
 msgstr ""
 
-#: plugin/marquee/core/shoutouts.php:371 theme/ridgeroad/inc/shoutouts.php:371
+#: plugin/marquee/core/shoutouts.php:380 theme/ridgeroad/inc/shoutouts.php:380
 msgid "Block"
 msgstr ""
 
-#: plugin/marquee/core/shoutouts.php:384 theme/ridgeroad/inc/shoutouts.php:384
+#: plugin/marquee/core/shoutouts.php:393 theme/ridgeroad/inc/shoutouts.php:393
 msgid ""
 "Names go up in the show automatically if they pass the word filter. Click "
 "“Block” under any name to stop it."
 msgstr ""
 
-#: plugin/marquee/core/shoutouts.php:384 theme/ridgeroad/inc/shoutouts.php:384
+#: plugin/marquee/core/shoutouts.php:393 theme/ridgeroad/inc/shoutouts.php:393
 msgid ""
 "Names go on the garage door and TV automatically if they pass the word "
 "filter. Click “Block” under any name to stop it."
 msgstr ""
 
-#: plugin/marquee/core/shoutouts.php:385 theme/ridgeroad/inc/shoutouts.php:385
+#: plugin/marquee/core/shoutouts.php:394 theme/ridgeroad/inc/shoutouts.php:394
 msgid "FPP last checked in %s ago."
 msgstr ""
 
-#: plugin/marquee/core/shoutouts.php:385 theme/ridgeroad/inc/shoutouts.php:385
+#: plugin/marquee/core/shoutouts.php:394 theme/ridgeroad/inc/shoutouts.php:394
 msgid "FPP has not checked in yet."
 msgstr ""
 
-#: plugin/marquee/core/shoutouts.php:386 theme/ridgeroad/inc/shoutouts.php:386
+#: plugin/marquee/core/shoutouts.php:395 theme/ridgeroad/inc/shoutouts.php:395
 msgid ""
 "Add words to block in Appearance → Customize → Show Website → Kids’ Corner."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:14 plugin/marquee/core/helpers.php:54
-#: theme/ridgeroad/inc/i18n.php:14
-msgid "Between songs — stay tuned!"
-msgstr ""
-
-#: plugin/marquee/core/i18n.php:15 plugin/marquee/core/helpers.php:58
-#: theme/ridgeroad/inc/i18n.php:15
-msgid "No show tonight"
+#: plugin/marquee/core/i18n.php:15 plugin/marquee/core/parts/kids-names.php:62
+#: theme/ridgeroad/parts/kids-names.php:62
+msgid "Take or pick a picture"
 msgstr ""
 
 #: plugin/marquee/core/i18n.php:16 theme/ridgeroad/inc/i18n.php:16
-msgid "Come see the Christmas lights!"
+msgid "Use a different picture"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:17 theme/ridgeroad/inc/i18n.php:17
-msgid "Link copied!"
+#: plugin/marquee/core/i18n.php:17 plugin/marquee/inc/photos.php:131
+#: theme/ridgeroad/inc/i18n.php:17
+msgid ""
+"A parent or guardian needs to tick the box to say your picture can go on our"
+" screens."
 msgstr ""
 
 #: plugin/marquee/core/i18n.php:18 theme/ridgeroad/inc/i18n.php:18
-msgid "Live camera"
+msgid "Picture approved"
 msgstr ""
 
 #: plugin/marquee/core/i18n.php:19 theme/ridgeroad/inc/i18n.php:19
-msgid "Opening Night In"
+msgid "Picture waiting for you: the name waits too (up to 10 minutes)"
 msgstr ""
 
 #: plugin/marquee/core/i18n.php:20 theme/ridgeroad/inc/i18n.php:20
-msgid "Lights On In"
+msgid "Show picture"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:21 theme/ridgeroad/inc/i18n.php:21
-msgid "The Show Is On Right Now — Tune to %s!"
+#: plugin/marquee/core/i18n.php:21 plugin/marquee/core/parts/kids-names.php:63
+#: theme/ridgeroad/parts/kids-names.php:63
+msgid "No picture"
 msgstr ""
 
 #: plugin/marquee/core/i18n.php:22 theme/ridgeroad/inc/i18n.php:22
-msgid "The Show Is On Right Now!"
+msgid "Picture removed: the name goes up without it"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:23 theme/ridgeroad/inc/i18n.php:23
-msgid "Next Show In"
+#: plugin/marquee/core/i18n.php:23 plugin/marquee/core/helpers.php:54
+#: theme/ridgeroad/inc/i18n.php:23
+msgid "Between songs — stay tuned!"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:24 plugin/marquee/core/helpers.php:58
+#: theme/ridgeroad/inc/i18n.php:24
+msgid "No show tonight"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:25 theme/ridgeroad/inc/i18n.php:25
+msgid "Come see the Christmas lights!"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:26 theme/ridgeroad/inc/i18n.php:26
+msgid "Link copied!"
 msgstr ""
 
 #: plugin/marquee/core/i18n.php:27 theme/ridgeroad/inc/i18n.php:27
-msgid "Type your name first!"
+msgid "Live camera"
 msgstr ""
 
 #: plugin/marquee/core/i18n.php:28 theme/ridgeroad/inc/i18n.php:28
-msgid "Your elf name is"
+msgid "Opening Night In"
 msgstr ""
 
 #: plugin/marquee/core/i18n.php:29 theme/ridgeroad/inc/i18n.php:29
-msgid "All done!"
+msgid "Lights On In"
 msgstr ""
 
 #: plugin/marquee/core/i18n.php:30 theme/ridgeroad/inc/i18n.php:30
-msgid "Perfect! You got 5 out of 5 — you’re on the Nice List!"
+msgid "The Show Is On Right Now — Tune to %s!"
 msgstr ""
 
 #: plugin/marquee/core/i18n.php:31 theme/ridgeroad/inc/i18n.php:31
-msgid "You got %s out of 5! Great job!"
+msgid "The Show Is On Right Now!"
 msgstr ""
 
 #: plugin/marquee/core/i18n.php:32 theme/ridgeroad/inc/i18n.php:32
-msgid "Play Again"
-msgstr ""
-
-#: plugin/marquee/core/i18n.php:33 theme/ridgeroad/inc/i18n.php:33
-msgid "Question %s of 5"
-msgstr ""
-
-#: plugin/marquee/core/i18n.php:34 theme/ridgeroad/inc/i18n.php:34
-msgid "That’s right!"
-msgstr ""
-
-#: plugin/marquee/core/i18n.php:35 theme/ridgeroad/inc/i18n.php:35
-msgid "Nice try! It’s “%s”."
+msgid "Next Show In"
 msgstr ""
 
 #: plugin/marquee/core/i18n.php:36 theme/ridgeroad/inc/i18n.php:36
-msgid "%s vote this week"
+msgid "Type your name first!"
 msgstr ""
 
 #: plugin/marquee/core/i18n.php:37 theme/ridgeroad/inc/i18n.php:37
-msgid "%s votes this week"
+msgid "Your elf name is"
 msgstr ""
 
 #: plugin/marquee/core/i18n.php:38 theme/ridgeroad/inc/i18n.php:38
-msgid "%s vote this season"
+msgid "All done!"
 msgstr ""
 
 #: plugin/marquee/core/i18n.php:39 theme/ridgeroad/inc/i18n.php:39
-msgid "%s votes this season"
+msgid "Perfect! You got 5 out of 5 — you’re on the Nice List!"
 msgstr ""
 
 #: plugin/marquee/core/i18n.php:40 theme/ridgeroad/inc/i18n.php:40
+msgid "You got %s out of 5! Great job!"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:41 theme/ridgeroad/inc/i18n.php:41
+msgid "Play Again"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:42 theme/ridgeroad/inc/i18n.php:42
+msgid "Question %s of 5"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:43 theme/ridgeroad/inc/i18n.php:43
+msgid "That’s right!"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:44 theme/ridgeroad/inc/i18n.php:44
+msgid "Nice try! It’s “%s”."
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:45 theme/ridgeroad/inc/i18n.php:45
+msgid "%s vote this week"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:46 theme/ridgeroad/inc/i18n.php:46
+msgid "%s votes this week"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:47 theme/ridgeroad/inc/i18n.php:47
+msgid "%s vote this season"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:48 theme/ridgeroad/inc/i18n.php:48
+msgid "%s votes this season"
+msgstr ""
+
+#: plugin/marquee/core/i18n.php:49 theme/ridgeroad/inc/i18n.php:49
 msgid "Your vote: <b>%s</b>. Tap another song to change it."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:41 plugin/marquee/core/parts/vote.php:31
+#: plugin/marquee/core/i18n.php:50 plugin/marquee/core/parts/vote.php:31
 #: plugin/marquee/core/parts/vote.php:34
 msgid "It’s Fan Favorite Friday!"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:42 theme/ridgeroad/inc/i18n.php:42
+#: plugin/marquee/core/i18n.php:51 theme/ridgeroad/inc/i18n.php:51
 msgid "This week’s winner is <strong>%s</strong>."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:43 plugin/marquee/core/parts/vote.php:35
+#: plugin/marquee/core/i18n.php:52 plugin/marquee/core/parts/vote.php:35
 #: theme/ridgeroad/parts/vote.php:35
 msgid "No votes yet this week. Vote now to pick next Friday’s favorite!"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:44 plugin/marquee/core/parts/vote.php:39
+#: plugin/marquee/core/i18n.php:53 plugin/marquee/core/parts/vote.php:39
 #: theme/ridgeroad/parts/vote.php:39
 msgid "Fan Favorite Friday is tomorrow!"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:45 theme/ridgeroad/inc/i18n.php:45
+#: plugin/marquee/core/i18n.php:54 theme/ridgeroad/inc/i18n.php:54
 msgid "Fan Favorite Friday is in %s days"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:46 theme/ridgeroad/inc/i18n.php:46
+#: plugin/marquee/core/i18n.php:55 theme/ridgeroad/inc/i18n.php:55
 msgid "Leading this week: <strong>%s</strong>."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:47 plugin/marquee/core/parts/vote.php:41
+#: plugin/marquee/core/i18n.php:56 plugin/marquee/core/parts/vote.php:41
 #: theme/ridgeroad/parts/vote.php:41
 msgid "The song with the most votes this week gets featured on Friday!"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:48 theme/ridgeroad/inc/i18n.php:48
+#: plugin/marquee/core/i18n.php:57 theme/ridgeroad/inc/i18n.php:57
 msgid "That’s already your favorite!"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:49 theme/ridgeroad/inc/i18n.php:49
+#: plugin/marquee/core/i18n.php:58 theme/ridgeroad/inc/i18n.php:58
 msgid "Thanks for voting!"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:51 theme/ridgeroad/inc/i18n.php:51
+#: plugin/marquee/core/i18n.php:60 theme/ridgeroad/inc/i18n.php:60
 msgid "We couldn’t reach the website. Please try again."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:52 theme/ridgeroad/inc/i18n.php:52
+#: plugin/marquee/core/i18n.php:61 theme/ridgeroad/inc/i18n.php:61
 msgid "“%s”"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:53 plugin/marquee/core/parts/kids-wall.php:18
+#: plugin/marquee/core/i18n.php:62 plugin/marquee/core/parts/kids-wall.php:18
 #: plugin/marquee/core/parts/kids-wall.php:24
 msgid "My Light Show"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:54 theme/ridgeroad/inc/i18n.php:54
+#: plugin/marquee/core/i18n.php:63 theme/ridgeroad/inc/i18n.php:63
 msgid "Song: %s"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:55 theme/ridgeroad/inc/i18n.php:55
+#: plugin/marquee/core/i18n.php:64 theme/ridgeroad/inc/i18n.php:64
 msgid "First make your light show in step 1."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:56 plugin/marquee/core/contest.php:133
-#: theme/ridgeroad/inc/i18n.php:56
+#: plugin/marquee/core/i18n.php:65 plugin/marquee/core/contest.php:133
+#: theme/ridgeroad/inc/i18n.php:65
 msgid "Please type your child’s first name."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:57 theme/ridgeroad/inc/i18n.php:57
+#: plugin/marquee/core/i18n.php:66 theme/ridgeroad/inc/i18n.php:66
 msgid "Please pick an age."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:58 theme/ridgeroad/inc/i18n.php:58
+#: plugin/marquee/core/i18n.php:67 theme/ridgeroad/inc/i18n.php:67
 msgid "Please enter a parent email so we can send your claim code."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:59 plugin/marquee/core/contest.php:142
-#: theme/ridgeroad/inc/i18n.php:59
+#: plugin/marquee/core/i18n.php:68 plugin/marquee/core/contest.php:142
+#: theme/ridgeroad/inc/i18n.php:68
 msgid "A parent or guardian needs to check the permission box."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:60 theme/ridgeroad/inc/i18n.php:60
+#: plugin/marquee/core/i18n.php:69 theme/ridgeroad/inc/i18n.php:69
 msgid "Sending your show…"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:61 theme/ridgeroad/inc/i18n.php:61
+#: plugin/marquee/core/i18n.php:70 theme/ridgeroad/inc/i18n.php:70
 msgid "Stop"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:62 plugin/marquee/core/parts/kids-wall.php:45
+#: plugin/marquee/core/i18n.php:71 plugin/marquee/core/parts/kids-wall.php:45
 #: theme/ridgeroad/parts/kids-wall.php:45
 msgid "Play"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:63 theme/ridgeroad/inc/i18n.php:63
+#: plugin/marquee/core/i18n.php:72 theme/ridgeroad/inc/i18n.php:72
 msgid "Light Show"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:64 theme/ridgeroad/inc/i18n.php:64
+#: plugin/marquee/core/i18n.php:73 theme/ridgeroad/inc/i18n.php:73
 msgid "by %s"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:65 theme/ridgeroad/inc/i18n.php:65
+#: plugin/marquee/core/i18n.php:74 theme/ridgeroad/inc/i18n.php:74
 msgid "NAME"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:66 theme/ridgeroad/inc/i18n.php:66
+#: plugin/marquee/core/i18n.php:75 theme/ridgeroad/inc/i18n.php:75
 msgid "That’s a long one! Names can have up to 14 letters."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:67 theme/ridgeroad/inc/i18n.php:67
+#: plugin/marquee/core/i18n.php:76 theme/ridgeroad/inc/i18n.php:76
 msgid "Please type just your first name (letters only)."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:68 theme/ridgeroad/inc/i18n.php:68
+#: plugin/marquee/core/i18n.php:77 theme/ridgeroad/inc/i18n.php:77
 msgid "Checking you’re at the show…"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:69 theme/ridgeroad/inc/i18n.php:69
+#: plugin/marquee/core/i18n.php:78 theme/ridgeroad/inc/i18n.php:78
 msgid "Sending to Santa’s elves…"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:70 theme/ridgeroad/inc/i18n.php:70
+#: plugin/marquee/core/i18n.php:79 theme/ridgeroad/inc/i18n.php:79
 msgid "Your name is already in line!"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:71 theme/ridgeroad/inc/i18n.php:71
+#: plugin/marquee/core/i18n.php:80 theme/ridgeroad/inc/i18n.php:80
 msgid "You’re next! Watch our screens: your name goes up in a minute."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:72 theme/ridgeroad/inc/i18n.php:72
+#: plugin/marquee/core/i18n.php:81 theme/ridgeroad/inc/i18n.php:81
 msgid ""
 "You’re #%s in line. Watch our screens: your name goes up in a few minutes."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:73 theme/ridgeroad/inc/i18n.php:73
+#: plugin/marquee/core/i18n.php:82 theme/ridgeroad/inc/i18n.php:82
 msgid "You’re next! Watch for your name in about %s songs."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:74 theme/ridgeroad/inc/i18n.php:74
+#: plugin/marquee/core/i18n.php:83 theme/ridgeroad/inc/i18n.php:83
 msgid "You’re #%1$s in line. Watch for your name in about %2$s songs."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:75 theme/ridgeroad/inc/i18n.php:75
+#: plugin/marquee/core/i18n.php:84 theme/ridgeroad/inc/i18n.php:84
 msgid "You’re next! Watch for your name after this song."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:76 theme/ridgeroad/inc/i18n.php:76
+#: plugin/marquee/core/i18n.php:85 theme/ridgeroad/inc/i18n.php:85
 msgid "You’re #%s in line. Watch for your name after this song."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:77 theme/ridgeroad/inc/i18n.php:77
+#: plugin/marquee/core/i18n.php:86 theme/ridgeroad/inc/i18n.php:86
 msgid "You’re #%s in line. Your name will show after a few songs."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:78 theme/ridgeroad/inc/i18n.php:78
+#: plugin/marquee/core/i18n.php:87 theme/ridgeroad/inc/i18n.php:87
 msgid ""
 "It goes up in %s (if lots of kids picked other shows, it may be one song "
 "later)."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:79 theme/ridgeroad/inc/i18n.php:79
+#: plugin/marquee/core/i18n.php:88 theme/ridgeroad/inc/i18n.php:88
 msgid ""
 "Names can only be sent from the show, so we need to see where your phone is."
 " Allow location for this website in your phone’s settings, then try again."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:80 theme/ridgeroad/inc/i18n.php:80
+#: plugin/marquee/core/i18n.php:89 theme/ridgeroad/inc/i18n.php:89
 msgid ""
 "We couldn’t find your location. Make sure Location is turned on, then try "
 "again."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:81 plugin/marquee/core/parts/kids-names.php:66
-#: theme/ridgeroad/parts/kids-names.php:66
+#: plugin/marquee/core/i18n.php:90 plugin/marquee/core/parts/kids-names.php:93
+#: theme/ridgeroad/parts/kids-names.php:93
 msgid "Want a buzz on this phone right before your name shows?"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:82 theme/ridgeroad/inc/i18n.php:82
+#: plugin/marquee/core/i18n.php:91 theme/ridgeroad/inc/i18n.php:91
 msgid "Okay! This phone will buzz when your name is up next."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:83 theme/ridgeroad/inc/i18n.php:83
+#: plugin/marquee/core/i18n.php:92 theme/ridgeroad/inc/i18n.php:92
 msgid ""
 "Alerts are turned off for this app. Turn them on in Settings > Notifications"
 " > %s."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:84 theme/ridgeroad/inc/i18n.php:84
+#: plugin/marquee/core/i18n.php:93 theme/ridgeroad/inc/i18n.php:93
 msgid "this app"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:85 theme/ridgeroad/inc/i18n.php:85
+#: plugin/marquee/core/i18n.php:94 theme/ridgeroad/inc/i18n.php:94
 msgid ""
 "Alerts are blocked for this website. Allow notifications in your browser’s "
 "site settings, then try again."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:86 theme/ridgeroad/inc/i18n.php:86
+#: plugin/marquee/core/i18n.php:95 theme/ridgeroad/inc/i18n.php:95
 msgid ""
 "On iPhone, add the app to your home screen first, then turn on alerts there."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:87 theme/ridgeroad/inc/i18n.php:87
+#: plugin/marquee/core/i18n.php:96 theme/ridgeroad/inc/i18n.php:96
 msgid "This browser can’t get alerts."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:88 theme/ridgeroad/inc/i18n.php:88
+#: plugin/marquee/core/i18n.php:97 theme/ridgeroad/inc/i18n.php:97
 msgid "Add"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:89 theme/ridgeroad/inc/i18n.php:89
+#: plugin/marquee/core/i18n.php:98 theme/ridgeroad/inc/i18n.php:98
 msgid "Add it to your iPhone"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:90 theme/ridgeroad/inc/i18n.php:90
+#: plugin/marquee/core/i18n.php:99 theme/ridgeroad/inc/i18n.php:99
 msgid "Tap the <b>Share</b> button at the top right, next to the address"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:91 theme/ridgeroad/inc/i18n.php:91
+#: plugin/marquee/core/i18n.php:100 theme/ridgeroad/inc/i18n.php:100
 msgid "Tap your browser’s <b>Share</b> button (it may be in the menu)"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:92 theme/ridgeroad/inc/i18n.php:92
+#: plugin/marquee/core/i18n.php:101 theme/ridgeroad/inc/i18n.php:101
 msgid ""
 "Tap the <b>Share</b> button in Safari (or tap <b>•••</b> first, then Share)"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:93 theme/ridgeroad/inc/i18n.php:93
+#: plugin/marquee/core/i18n.php:102 theme/ridgeroad/inc/i18n.php:102
 msgid "Scroll down and tap <b>Add to Home Screen</b>"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:94 theme/ridgeroad/inc/i18n.php:94
+#: plugin/marquee/core/i18n.php:103 theme/ridgeroad/inc/i18n.php:103
 msgid "Tap <b>Add</b> in the top corner"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:95 plugin/marquee/core/parts/app-sheet.php:12
+#: plugin/marquee/core/i18n.php:104 plugin/marquee/core/parts/app-sheet.php:12
 #: theme/ridgeroad/parts/app-sheet.php:12
 msgid "Add it to your phone"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:96 theme/ridgeroad/inc/i18n.php:96
+#: plugin/marquee/core/i18n.php:105 theme/ridgeroad/inc/i18n.php:105
 msgid "Install it on this computer"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:97 theme/ridgeroad/inc/i18n.php:97
+#: plugin/marquee/core/i18n.php:106 theme/ridgeroad/inc/i18n.php:106
 msgid ""
 "Tap your browser’s <b>menu</b> button (usually <b>⋮</b> at the top right)"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:98 theme/ridgeroad/inc/i18n.php:98
+#: plugin/marquee/core/i18n.php:107 theme/ridgeroad/inc/i18n.php:107
 msgid "Tap <b>Add to Home screen</b> or <b>Install app</b>"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:99 theme/ridgeroad/inc/i18n.php:99
+#: plugin/marquee/core/i18n.php:108 theme/ridgeroad/inc/i18n.php:108
 msgid "Tap <b>Install</b> or <b>Add</b>"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:100 theme/ridgeroad/inc/i18n.php:100
+#: plugin/marquee/core/i18n.php:109 theme/ridgeroad/inc/i18n.php:109
 msgid "Your alerts are on. Change what you get any time:"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:101 plugin/marquee/core/parts/app-card.php:31
+#: plugin/marquee/core/i18n.php:110 plugin/marquee/core/parts/app-card.php:31
 #: theme/ridgeroad/parts/app-card.php:31
 msgid ""
 "Pick what you want. You can change it any time from the link at the bottom "
 "of the page."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:102 theme/ridgeroad/inc/i18n.php:102
+#: plugin/marquee/core/i18n.php:111 theme/ridgeroad/inc/i18n.php:111
 msgid "Show alerts"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:103 theme/ridgeroad/inc/i18n.php:103
+#: plugin/marquee/core/i18n.php:112 theme/ridgeroad/inc/i18n.php:112
 msgid ""
 "Both are off, so this phone won’t get show alerts. Tap Turn off all alerts "
 "to remove it."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:104 theme/ridgeroad/inc/i18n.php:104
+#: plugin/marquee/core/i18n.php:113 theme/ridgeroad/inc/i18n.php:113
 msgid "Saved."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:105 theme/ridgeroad/inc/i18n.php:105
+#: plugin/marquee/core/i18n.php:114 theme/ridgeroad/inc/i18n.php:114
 msgid "Could not save. Please try again."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:106 theme/ridgeroad/inc/i18n.php:106
+#: plugin/marquee/core/i18n.php:115 theme/ridgeroad/inc/i18n.php:115
 msgid "Pick at least one."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:107 theme/ridgeroad/inc/i18n.php:107
+#: plugin/marquee/core/i18n.php:116 theme/ridgeroad/inc/i18n.php:116
 msgid "Alerts are on! We’ll only buzz you for what you picked."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:108 theme/ridgeroad/inc/i18n.php:108
+#: plugin/marquee/core/i18n.php:117 theme/ridgeroad/inc/i18n.php:117
 msgid "Alerts are off. This phone won’t get any more."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:109 theme/ridgeroad/inc/i18n.php:109
+#: plugin/marquee/core/i18n.php:118 theme/ridgeroad/inc/i18n.php:118
 msgid "Could not turn them off. Please try again."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:110 theme/ridgeroad/inc/i18n.php:110
+#: plugin/marquee/core/i18n.php:119 theme/ridgeroad/inc/i18n.php:119
 msgid "You already voted. Votes start over after the winning song plays."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:111 theme/ridgeroad/inc/i18n.php:111
+#: plugin/marquee/core/i18n.php:120 theme/ridgeroad/inc/i18n.php:120
 msgid "You already picked a song. You can pick another after yours plays."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:112 theme/ridgeroad/inc/i18n.php:112
+#: plugin/marquee/core/i18n.php:121 theme/ridgeroad/inc/i18n.php:121
 msgid "The line is full right now. Try again in a few minutes."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:113 theme/ridgeroad/inc/i18n.php:113
+#: plugin/marquee/core/i18n.php:122 theme/ridgeroad/inc/i18n.php:122
 msgid "You need to be at the show to pick songs."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:114 theme/ridgeroad/inc/i18n.php:114
+#: plugin/marquee/core/i18n.php:123 theme/ridgeroad/inc/i18n.php:123
 msgid "That song is playing or already in line. Pick another one!"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:115 theme/ridgeroad/inc/i18n.php:115
+#: plugin/marquee/core/i18n.php:124 theme/ridgeroad/inc/i18n.php:124
 msgid "Song picking isn’t available from this device."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:116 theme/ridgeroad/inc/i18n.php:116
+#: plugin/marquee/core/i18n.php:125 theme/ridgeroad/inc/i18n.php:125
 msgid "<b>Now playing:</b> %s"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:117 theme/ridgeroad/inc/i18n.php:117
+#: plugin/marquee/core/i18n.php:126 theme/ridgeroad/inc/i18n.php:126
 msgid "<b>In line:</b> %s"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:118 theme/ridgeroad/inc/i18n.php:118
+#: plugin/marquee/core/i18n.php:127 theme/ridgeroad/inc/i18n.php:127
 msgid "<b>Up next:</b> %s"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:119 theme/ridgeroad/inc/i18n.php:119
+#: plugin/marquee/core/i18n.php:128 theme/ridgeroad/inc/i18n.php:128
 msgid ""
 "Vote for the song you want next. The one with the most votes plays after "
 "this song."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:120 theme/ridgeroad/inc/i18n.php:120
+#: plugin/marquee/core/i18n.php:129 theme/ridgeroad/inc/i18n.php:129
 msgid "Pick a song and it gets in line to play."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:121 theme/ridgeroad/inc/i18n.php:121
+#: plugin/marquee/core/i18n.php:130 theme/ridgeroad/inc/i18n.php:130
 msgid "Song picking is off right now. Check back during the show!"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:122 theme/ridgeroad/inc/i18n.php:122
+#: plugin/marquee/core/i18n.php:131 theme/ridgeroad/inc/i18n.php:131
 msgid "%s vote"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:123 theme/ridgeroad/inc/i18n.php:123
+#: plugin/marquee/core/i18n.php:132 theme/ridgeroad/inc/i18n.php:132
 msgid "%s votes"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:124 theme/ridgeroad/functions.php:160
-#: theme/ridgeroad/inc/i18n.php:124
+#: plugin/marquee/core/i18n.php:133 theme/ridgeroad/functions.php:160
+#: theme/ridgeroad/inc/i18n.php:133
 msgid "Vote"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:125 theme/ridgeroad/inc/i18n.php:125
+#: plugin/marquee/core/i18n.php:134 theme/ridgeroad/inc/i18n.php:134
 msgid "Pick"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:126 theme/ridgeroad/inc/i18n.php:126
+#: plugin/marquee/core/i18n.php:135 theme/ridgeroad/inc/i18n.php:135
 msgid "No songs to pick yet."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:127 theme/ridgeroad/inc/i18n.php:127
+#: plugin/marquee/core/i18n.php:136 theme/ridgeroad/inc/i18n.php:136
 msgid "We couldn’t reach Remote Falcon. Try again in a minute."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:128 theme/ridgeroad/inc/i18n.php:128
+#: plugin/marquee/core/i18n.php:137 theme/ridgeroad/inc/i18n.php:137
 msgid "Checking that you’re at the show…"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:129 theme/ridgeroad/inc/i18n.php:129
+#: plugin/marquee/core/i18n.php:138 theme/ridgeroad/inc/i18n.php:138
 msgid "Thanks! Your vote is in."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:130 theme/ridgeroad/inc/i18n.php:130
+#: plugin/marquee/core/i18n.php:139 theme/ridgeroad/inc/i18n.php:139
 msgid "Got it! Your song is in line."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:131 theme/ridgeroad/inc/i18n.php:131
+#: plugin/marquee/core/i18n.php:140 theme/ridgeroad/inc/i18n.php:140
 msgid "Something went wrong. Try again."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:132 theme/ridgeroad/inc/i18n.php:132
+#: plugin/marquee/core/i18n.php:141 theme/ridgeroad/inc/i18n.php:141
 msgid "Loading the songs…"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:133 theme/ridgeroad/inc/i18n.php:133
+#: plugin/marquee/core/i18n.php:142 theme/ridgeroad/inc/i18n.php:142
 msgid "The Light Lab could not load. Please refresh the page."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:134 theme/ridgeroad/inc/i18n.php:134
+#: plugin/marquee/core/i18n.php:143 theme/ridgeroad/inc/i18n.php:143
 msgid "TUNE TO"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:135 theme/ridgeroad/inc/i18n.php:135
+#: plugin/marquee/core/i18n.php:144 theme/ridgeroad/inc/i18n.php:144
 msgid "Tap Play again to start the music."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:136 plugin/marquee/core/parts/kids-lab.php:22
+#: plugin/marquee/core/i18n.php:145 plugin/marquee/core/parts/kids-lab.php:22
 #: plugin/marquee/core/parts/kids-lab.php:50
 msgid "Play my show"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:137 theme/ridgeroad/inc/i18n.php:137
+#: plugin/marquee/core/i18n.php:146 theme/ridgeroad/inc/i18n.php:146
 msgid "whole house"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:138 theme/ridgeroad/inc/i18n.php:138
+#: plugin/marquee/core/i18n.php:147 theme/ridgeroad/inc/i18n.php:147
 msgid "Saved on this device!"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:139 theme/ridgeroad/inc/i18n.php:139
+#: plugin/marquee/core/i18n.php:148 theme/ridgeroad/inc/i18n.php:148
 msgid "Could not save on this device."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:140 theme/ridgeroad/inc/i18n.php:140
+#: plugin/marquee/core/i18n.php:149 theme/ridgeroad/inc/i18n.php:149
 msgid ""
 "What should we light up? Tap a decoration on the house, or pick one here!"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:141 theme/ridgeroad/inc/i18n.php:141
+#: plugin/marquee/core/i18n.php:150 theme/ridgeroad/inc/i18n.php:150
 msgid "How should the whole house light up in the %s of the song?"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:142 theme/ridgeroad/inc/i18n.php:142
+#: plugin/marquee/core/i18n.php:151 theme/ridgeroad/inc/i18n.php:151
 msgid "How should the %1$s light up in the %2$s of the song?"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:143 theme/ridgeroad/inc/i18n.php:143
+#: plugin/marquee/core/i18n.php:152 theme/ridgeroad/inc/i18n.php:152
 msgid "How should the whole house light up?"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:144 theme/ridgeroad/inc/i18n.php:144
+#: plugin/marquee/core/i18n.php:153 theme/ridgeroad/inc/i18n.php:153
 msgid "How should the %s light up?"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:145 theme/ridgeroad/inc/i18n.php:145
+#: plugin/marquee/core/i18n.php:154 theme/ridgeroad/inc/i18n.php:154
 msgid "What color should the whole house be?"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:146 theme/ridgeroad/inc/i18n.php:146
+#: plugin/marquee/core/i18n.php:155 theme/ridgeroad/inc/i18n.php:155
 msgid "What color should the %s be?"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:147 theme/ridgeroad/inc/i18n.php:147
+#: plugin/marquee/core/i18n.php:156 theme/ridgeroad/inc/i18n.php:156
 msgid "The whole house looks great!"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:148 theme/ridgeroad/inc/i18n.php:148
+#: plugin/marquee/core/i18n.php:157 theme/ridgeroad/inc/i18n.php:157
 msgid "Your %s looks great!"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:149 theme/ridgeroad/inc/i18n.php:149
+#: plugin/marquee/core/i18n.php:158 theme/ridgeroad/inc/i18n.php:158
 msgid "Light up something else, or play your show!"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:150 theme/ridgeroad/inc/i18n.php:150
+#: plugin/marquee/core/i18n.php:159 theme/ridgeroad/inc/i18n.php:159
 msgid "Tap it on the house"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:151 theme/ridgeroad/inc/i18n.php:151
+#: plugin/marquee/core/i18n.php:160 theme/ridgeroad/inc/i18n.php:160
 msgid "Twinkle, chase and more"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:152 theme/ridgeroad/inc/i18n.php:152
+#: plugin/marquee/core/i18n.php:161 theme/ridgeroad/inc/i18n.php:161
 msgid "Not needed"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:153 theme/ridgeroad/inc/i18n.php:153
+#: plugin/marquee/core/i18n.php:162 theme/ridgeroad/inc/i18n.php:162
 msgid "Red, green, blue…"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:154 theme/ridgeroad/inc/i18n.php:154
+#: plugin/marquee/core/i18n.php:163 theme/ridgeroad/inc/i18n.php:163
 msgid "Changing: %s"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:155 theme/ridgeroad/inc/i18n.php:155
+#: plugin/marquee/core/i18n.php:164 theme/ridgeroad/inc/i18n.php:164
 msgid "a young light designer"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:156 theme/ridgeroad/inc/i18n.php:156
+#: plugin/marquee/core/i18n.php:165 theme/ridgeroad/inc/i18n.php:165
 msgid "has not checked in yet"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:157 theme/ridgeroad/inc/i18n.php:157
+#: plugin/marquee/core/i18n.php:166 theme/ridgeroad/inc/i18n.php:166
 msgid "checked in %s sec ago"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:158 theme/ridgeroad/inc/i18n.php:158
+#: plugin/marquee/core/i18n.php:167 theme/ridgeroad/inc/i18n.php:167
 msgid "checked in %s min ago"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:159 theme/ridgeroad/inc/i18n.php:159
+#: plugin/marquee/core/i18n.php:168 theme/ridgeroad/inc/i18n.php:168
 msgid "last checked in %s h ago"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:160 theme/ridgeroad/inc/i18n.php:160
+#: plugin/marquee/core/i18n.php:169 theme/ridgeroad/inc/i18n.php:169
 msgid "Undo: the show is on"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:161 plugin/marquee/core/control.php:142
-#: theme/ridgeroad/inc/i18n.php:161
+#: plugin/marquee/core/i18n.php:170 plugin/marquee/core/control.php:142
+#: theme/ridgeroad/inc/i18n.php:170
 msgid "Cancel tonight"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:162 theme/ridgeroad/inc/i18n.php:162
+#: plugin/marquee/core/i18n.php:171 theme/ridgeroad/inc/i18n.php:171
 msgid "Resume names"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:163 plugin/marquee/core/control.php:145
-#: theme/ridgeroad/inc/i18n.php:163
+#: plugin/marquee/core/i18n.php:172 plugin/marquee/core/control.php:145
+#: theme/ridgeroad/inc/i18n.php:172
 msgid "Pause names"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:164 theme/ridgeroad/inc/i18n.php:164
+#: plugin/marquee/core/i18n.php:173 theme/ridgeroad/inc/i18n.php:173
 msgid "Not connected"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:165 theme/ridgeroad/inc/i18n.php:165
+#: plugin/marquee/core/i18n.php:174 theme/ridgeroad/inc/i18n.php:174
 msgid "Not checking in"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:166 theme/ridgeroad/inc/i18n.php:166
+#: plugin/marquee/core/i18n.php:175 theme/ridgeroad/inc/i18n.php:175
 msgid "Playing"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:167 theme/ridgeroad/inc/i18n.php:167
+#: plugin/marquee/core/i18n.php:176 theme/ridgeroad/inc/i18n.php:176
 msgid "Idle"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:169 theme/ridgeroad/inc/i18n.php:169
+#: plugin/marquee/core/i18n.php:178 theme/ridgeroad/inc/i18n.php:178
 msgid "Paused"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:170 theme/ridgeroad/inc/i18n.php:170
+#: plugin/marquee/core/i18n.php:179 theme/ridgeroad/inc/i18n.php:179
 msgid "Open"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:171 theme/ridgeroad/inc/i18n.php:171
+#: plugin/marquee/core/i18n.php:180 theme/ridgeroad/inc/i18n.php:180
 msgid "Closed"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:172 theme/ridgeroad/inc/i18n.php:172
+#: plugin/marquee/core/i18n.php:181 theme/ridgeroad/inc/i18n.php:181
 msgid "%s waiting"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:173 theme/ridgeroad/inc/i18n.php:173
+#: plugin/marquee/core/i18n.php:182 theme/ridgeroad/inc/i18n.php:182
 msgid "Names wait until you un-pause"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:174 theme/ridgeroad/inc/i18n.php:174
+#: plugin/marquee/core/i18n.php:183 theme/ridgeroad/inc/i18n.php:183
 msgid "Next break in about %s songs"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:175 theme/ridgeroad/inc/i18n.php:175
+#: plugin/marquee/core/i18n.php:184 theme/ridgeroad/inc/i18n.php:184
 msgid "Next break after the current song"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:176 theme/ridgeroad/inc/i18n.php:176
+#: plugin/marquee/core/i18n.php:185 theme/ridgeroad/inc/i18n.php:185
 msgid "Opens when the show starts"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:177 theme/ridgeroad/inc/i18n.php:177
+#: plugin/marquee/core/i18n.php:186 theme/ridgeroad/inc/i18n.php:186
 msgid "%s person"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:178 theme/ridgeroad/inc/i18n.php:178
+#: plugin/marquee/core/i18n.php:187 theme/ridgeroad/inc/i18n.php:187
 msgid "%s people"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:179 theme/ridgeroad/inc/i18n.php:179
+#: plugin/marquee/core/i18n.php:188 theme/ridgeroad/inc/i18n.php:188
 msgid "%s in the Kids’ Corner"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:180 theme/ridgeroad/inc/i18n.php:180
+#: plugin/marquee/core/i18n.php:189 theme/ridgeroad/inc/i18n.php:189
 msgid "No names waiting."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:181 theme/ridgeroad/inc/i18n.php:181
+#: plugin/marquee/core/i18n.php:190 theme/ridgeroad/inc/i18n.php:190
 msgid "sent %s"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:182 plugin/marquee/core/sequences.php:60
-#: theme/ridgeroad/inc/i18n.php:182
+#: plugin/marquee/core/i18n.php:191 plugin/marquee/core/sequences.php:60
+#: theme/ridgeroad/inc/i18n.php:191
 msgid "Remove"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:183 theme/ridgeroad/inc/i18n.php:183
+#: plugin/marquee/core/i18n.php:192 theme/ridgeroad/inc/i18n.php:192
 msgid "Removed"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:184 theme/ridgeroad/inc/i18n.php:184
+#: plugin/marquee/core/i18n.php:193 theme/ridgeroad/inc/i18n.php:193
 msgid "Block word"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:185 theme/ridgeroad/inc/i18n.php:185
+#: plugin/marquee/core/i18n.php:194 theme/ridgeroad/inc/i18n.php:194
 msgid "Removed and blocked"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:186 theme/ridgeroad/inc/i18n.php:186
+#: plugin/marquee/core/i18n.php:195 theme/ridgeroad/inc/i18n.php:195
 msgid "Nothing shown yet."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:187 theme/ridgeroad/inc/i18n.php:187
+#: plugin/marquee/core/i18n.php:196 theme/ridgeroad/inc/i18n.php:196
 msgid "Closes %s"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:188 theme/ridgeroad/inc/i18n.php:188
+#: plugin/marquee/core/i18n.php:197 theme/ridgeroad/inc/i18n.php:197
 msgid "%s entry"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:189 theme/ridgeroad/inc/i18n.php:189
+#: plugin/marquee/core/i18n.php:198 theme/ridgeroad/inc/i18n.php:198
 msgid "%s entries"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:190 theme/ridgeroad/inc/i18n.php:190
+#: plugin/marquee/core/i18n.php:199 theme/ridgeroad/inc/i18n.php:199
 msgid "All caught up."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:191 theme/ridgeroad/inc/i18n.php:191
+#: plugin/marquee/core/i18n.php:200 theme/ridgeroad/inc/i18n.php:200
 msgid "%1$s, age %2$s"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:192 plugin/marquee/core/parts/explore.php:19
+#: plugin/marquee/core/i18n.php:201 plugin/marquee/core/parts/explore.php:19
 #: theme/ridgeroad/parts/explore.php:19
 msgid "Watch"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:193 theme/ridgeroad/inc/i18n.php:193
+#: plugin/marquee/core/i18n.php:202 theme/ridgeroad/inc/i18n.php:202
 msgid "Approve"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:194 theme/ridgeroad/inc/i18n.php:194
+#: plugin/marquee/core/i18n.php:203 theme/ridgeroad/inc/i18n.php:203
 msgid "Approved: now on the Show Wall"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:195 theme/ridgeroad/inc/i18n.php:195
+#: plugin/marquee/core/i18n.php:204 theme/ridgeroad/inc/i18n.php:204
 msgid "Decline"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:196 theme/ridgeroad/inc/i18n.php:196
+#: plugin/marquee/core/i18n.php:205 theme/ridgeroad/inc/i18n.php:205
 msgid "Declined"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:197 theme/ridgeroad/inc/i18n.php:197
+#: plugin/marquee/core/i18n.php:206 theme/ridgeroad/inc/i18n.php:206
 msgid "No shows on the Show Wall yet."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:198 theme/ridgeroad/inc/i18n.php:198
+#: plugin/marquee/core/i18n.php:207 theme/ridgeroad/inc/i18n.php:207
 msgid "Up to %s% chance of rain during the show"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:199 theme/ridgeroad/inc/i18n.php:199
+#: plugin/marquee/core/i18n.php:208 theme/ridgeroad/inc/i18n.php:208
 msgid "No rain expected during the show"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:200 theme/ridgeroad/inc/i18n.php:200
+#: plugin/marquee/core/i18n.php:209 theme/ridgeroad/inc/i18n.php:209
 msgid "Weather isn’t available"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:201 theme/ridgeroad/inc/i18n.php:201
+#: plugin/marquee/core/i18n.php:210 theme/ridgeroad/inc/i18n.php:210
 msgid "Connected"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:202 theme/ridgeroad/inc/i18n.php:202
+#: plugin/marquee/core/i18n.php:211 theme/ridgeroad/inc/i18n.php:211
 msgid "%s posted this season"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:203 theme/ridgeroad/inc/i18n.php:203
+#: plugin/marquee/core/i18n.php:212 theme/ridgeroad/inc/i18n.php:212
 msgid "Not set up"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:204 theme/ridgeroad/inc/i18n.php:204
+#: plugin/marquee/core/i18n.php:213 theme/ridgeroad/inc/i18n.php:213
 msgid "Post cancellations for you"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:205 theme/ridgeroad/inc/i18n.php:205
+#: plugin/marquee/core/i18n.php:214 theme/ridgeroad/inc/i18n.php:214
 msgid "%1$s get news · %2$s get “lights on”"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:206 theme/ridgeroad/inc/i18n.php:206
+#: plugin/marquee/core/i18n.php:215 theme/ridgeroad/inc/i18n.php:215
 msgid "Posting to %s"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:207 theme/ridgeroad/inc/i18n.php:207
+#: plugin/marquee/core/i18n.php:216 theme/ridgeroad/inc/i18n.php:216
 msgid "Not set up yet"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:208 theme/ridgeroad/inc/i18n.php:208
+#: plugin/marquee/core/i18n.php:217 theme/ridgeroad/inc/i18n.php:217
 msgid "Posts this season"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:209 theme/ridgeroad/inc/i18n.php:209
+#: plugin/marquee/core/i18n.php:218 theme/ridgeroad/inc/i18n.php:218
 msgid "Posted tonight"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:210 theme/ridgeroad/inc/i18n.php:210
+#: plugin/marquee/core/i18n.php:219 theme/ridgeroad/inc/i18n.php:219
 msgid "none yet"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:211 theme/ridgeroad/inc/i18n.php:211
+#: plugin/marquee/core/i18n.php:220 theme/ridgeroad/inc/i18n.php:220
 msgid "Nothing posted yet. Posts go out when you cancel the show."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:212 theme/ridgeroad/inc/i18n.php:212
+#: plugin/marquee/core/i18n.php:221 theme/ridgeroad/inc/i18n.php:221
 msgid "Nothing posted yet."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:213 theme/ridgeroad/inc/i18n.php:213
+#: plugin/marquee/core/i18n.php:222 theme/ridgeroad/inc/i18n.php:222
 msgid "Back on"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:214 plugin/marquee/core/control.php:304
-#: theme/ridgeroad/inc/i18n.php:214
+#: plugin/marquee/core/i18n.php:223 plugin/marquee/core/control.php:304
+#: theme/ridgeroad/inc/i18n.php:223
 msgid "Canceled"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:215 theme/ridgeroad/inc/i18n.php:215
+#: plugin/marquee/core/i18n.php:224 theme/ridgeroad/inc/i18n.php:224
 msgid "View"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:216 theme/ridgeroad/inc/i18n.php:216
+#: plugin/marquee/core/i18n.php:225 theme/ridgeroad/inc/i18n.php:225
 msgid ""
 "When you cancel, Marquee can post it on Facebook, Instagram and Threads."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:217 theme/ridgeroad/inc/i18n.php:217
+#: plugin/marquee/core/i18n.php:226 theme/ridgeroad/inc/i18n.php:226
 msgid "Set it up"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:218 theme/ridgeroad/inc/i18n.php:218
+#: plugin/marquee/core/i18n.php:227 theme/ridgeroad/inc/i18n.php:227
 msgid "On your website until %1$s (%2$s left)"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:219 theme/ridgeroad/inc/i18n.php:219
+#: plugin/marquee/core/i18n.php:228 theme/ridgeroad/inc/i18n.php:228
 msgid "on your screens too"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:220 theme/ridgeroad/inc/i18n.php:220
+#: plugin/marquee/core/i18n.php:229 theme/ridgeroad/inc/i18n.php:229
 msgid "Turn it off"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:221 theme/ridgeroad/inc/i18n.php:221
+#: plugin/marquee/core/i18n.php:230 theme/ridgeroad/inc/i18n.php:230
 msgid "Traffic alert off"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:222 theme/ridgeroad/inc/i18n.php:222
+#: plugin/marquee/core/i18n.php:231 theme/ridgeroad/inc/i18n.php:231
 msgid "On now: %s"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:223 theme/ridgeroad/inc/i18n.php:223
+#: plugin/marquee/core/i18n.php:232 theme/ridgeroad/inc/i18n.php:232
 msgid "Nothing posted"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:224 theme/ridgeroad/inc/i18n.php:224
+#: plugin/marquee/core/i18n.php:233 theme/ridgeroad/inc/i18n.php:233
 msgid "Also send a phone alert to %s phone"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:225 theme/ridgeroad/inc/i18n.php:225
+#: plugin/marquee/core/i18n.php:234 theme/ridgeroad/inc/i18n.php:234
 msgid "Also send a phone alert to %s phones"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:226 theme/ridgeroad/inc/i18n.php:226
+#: plugin/marquee/core/i18n.php:235 theme/ridgeroad/inc/i18n.php:235
 msgid "Updated just now"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:227 theme/ridgeroad/inc/i18n.php:227
+#: plugin/marquee/core/i18n.php:236 theme/ridgeroad/inc/i18n.php:236
 msgid "Updated %s sec ago"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:228 theme/ridgeroad/inc/i18n.php:228
+#: plugin/marquee/core/i18n.php:237 theme/ridgeroad/inc/i18n.php:237
 msgid "Posting on social media…"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:229 theme/ridgeroad/inc/i18n.php:229
+#: plugin/marquee/core/i18n.php:238 theme/ridgeroad/inc/i18n.php:238
 msgid "Copy the post for other sites (Nextdoor, groups…)"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:230 theme/ridgeroad/inc/i18n.php:230
+#: plugin/marquee/core/i18n.php:239 theme/ridgeroad/inc/i18n.php:239
 msgid "Copied!"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:231 theme/ridgeroad/inc/i18n.php:231
+#: plugin/marquee/core/i18n.php:240 theme/ridgeroad/inc/i18n.php:240
 msgid "App installs"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:232 theme/ridgeroad/inc/i18n.php:232
+#: plugin/marquee/core/i18n.php:241 theme/ridgeroad/inc/i18n.php:241
 msgid "this season"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:233 theme/ridgeroad/inc/i18n.php:233
+#: plugin/marquee/core/i18n.php:242 theme/ridgeroad/inc/i18n.php:242
 msgid "Getting alerts"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:234 theme/ridgeroad/inc/i18n.php:234
+#: plugin/marquee/core/i18n.php:243 theme/ridgeroad/inc/i18n.php:243
 msgid "%1$s lights-on · %2$s news"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:235 theme/ridgeroad/inc/i18n.php:235
+#: plugin/marquee/core/i18n.php:244 theme/ridgeroad/inc/i18n.php:244
 msgid "Name buzzes"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:236 theme/ridgeroad/inc/i18n.php:236
+#: plugin/marquee/core/i18n.php:245 theme/ridgeroad/inc/i18n.php:245
 msgid "tonight"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:237 theme/ridgeroad/inc/i18n.php:237
+#: plugin/marquee/core/i18n.php:246 theme/ridgeroad/inc/i18n.php:246
 msgid "%s app open tonight"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:238 theme/ridgeroad/inc/i18n.php:238
+#: plugin/marquee/core/i18n.php:247 theme/ridgeroad/inc/i18n.php:247
 msgid "%s app opens tonight"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:239 theme/ridgeroad/inc/i18n.php:239
+#: plugin/marquee/core/i18n.php:248 theme/ridgeroad/inc/i18n.php:248
 msgid "Alerts can’t be sent: this server’s PHP is missing OpenSSL features"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:240 theme/ridgeroad/inc/i18n.php:240
+#: plugin/marquee/core/i18n.php:249 theme/ridgeroad/inc/i18n.php:249
 msgid "Sent tonight when the show started"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:241 theme/ridgeroad/inc/i18n.php:241
+#: plugin/marquee/core/i18n.php:250 theme/ridgeroad/inc/i18n.php:250
 msgid "Sent automatically once a night when FPP starts the show playlist"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:242 theme/ridgeroad/inc/i18n.php:242
+#: plugin/marquee/core/i18n.php:251 theme/ridgeroad/inc/i18n.php:251
 msgid "Goes to 1 phone that chose “special news”."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:243 theme/ridgeroad/inc/i18n.php:243
+#: plugin/marquee/core/i18n.php:252 theme/ridgeroad/inc/i18n.php:252
 msgid "Goes to the %s phones that chose “special news”."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:244 theme/ridgeroad/inc/i18n.php:244
+#: plugin/marquee/core/i18n.php:253 theme/ridgeroad/inc/i18n.php:253
 msgid "Also send a “No show tonight” alert to %s phone"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:245 theme/ridgeroad/inc/i18n.php:245
+#: plugin/marquee/core/i18n.php:254 theme/ridgeroad/inc/i18n.php:254
 msgid "Also send a “No show tonight” alert to %s phones"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:246 theme/ridgeroad/inc/i18n.php:246
+#: plugin/marquee/core/i18n.php:255 theme/ridgeroad/inc/i18n.php:255
 msgid "Automatic"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:247 theme/ridgeroad/inc/i18n.php:247
+#: plugin/marquee/core/i18n.php:256 theme/ridgeroad/inc/i18n.php:256
 msgid "From “Cancel tonight’s show”"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:248 theme/ridgeroad/inc/i18n.php:248
+#: plugin/marquee/core/i18n.php:257 theme/ridgeroad/inc/i18n.php:257
 msgid "Sent by you"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:249 plugin/marquee/core/control.php:143
-#: theme/ridgeroad/inc/i18n.php:249
+#: plugin/marquee/core/i18n.php:258 plugin/marquee/core/control.php:143
+#: theme/ridgeroad/inc/i18n.php:258
 msgid "Traffic alert"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:250 theme/ridgeroad/inc/i18n.php:250
+#: plugin/marquee/core/i18n.php:259 theme/ridgeroad/inc/i18n.php:259
 msgid "No alerts sent yet."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:251 theme/ridgeroad/inc/i18n.php:251
+#: plugin/marquee/core/i18n.php:260 theme/ridgeroad/inc/i18n.php:260
 msgid "%s sent"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:252 theme/ridgeroad/inc/i18n.php:252
+#: plugin/marquee/core/i18n.php:261 theme/ridgeroad/inc/i18n.php:261
 msgid "%s failed"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:253 theme/ridgeroad/inc/i18n.php:253
+#: plugin/marquee/core/i18n.php:262 theme/ridgeroad/inc/i18n.php:262
 msgid "avg %s of 5 right"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:254 theme/ridgeroad/inc/i18n.php:254
+#: plugin/marquee/core/i18n.php:263 theme/ridgeroad/inc/i18n.php:263
 msgid "Names sent"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:255 theme/ridgeroad/inc/i18n.php:255
+#: plugin/marquee/core/i18n.php:264 theme/ridgeroad/inc/i18n.php:264
 msgid "%s shown"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:256 theme/ridgeroad/inc/i18n.php:256
+#: plugin/marquee/core/i18n.php:265 theme/ridgeroad/inc/i18n.php:265
 msgid "Light shows played"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:257 theme/ridgeroad/inc/i18n.php:257
+#: plugin/marquee/core/i18n.php:266 theme/ridgeroad/inc/i18n.php:266
 msgid "Play pressed in the Light Lab"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:258 theme/ridgeroad/inc/i18n.php:258
+#: plugin/marquee/core/i18n.php:267 theme/ridgeroad/inc/i18n.php:267
 msgid "Contest entries"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:259 theme/ridgeroad/inc/i18n.php:259
+#: plugin/marquee/core/i18n.php:268 theme/ridgeroad/inc/i18n.php:268
 msgid "Hearts given"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:260 theme/ridgeroad/inc/i18n.php:260
+#: plugin/marquee/core/i18n.php:269 theme/ridgeroad/inc/i18n.php:269
 msgid "Song votes"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:261 theme/ridgeroad/inc/i18n.php:261
+#: plugin/marquee/core/i18n.php:270 theme/ridgeroad/inc/i18n.php:270
 msgid "Top: %s"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:262 theme/ridgeroad/inc/i18n.php:262
+#: plugin/marquee/core/i18n.php:271 theme/ridgeroad/inc/i18n.php:271
 msgid "Elf names"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:263 theme/ridgeroad/inc/i18n.php:263
+#: plugin/marquee/core/i18n.php:272 theme/ridgeroad/inc/i18n.php:272
 msgid "Trivia games"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:264 theme/ridgeroad/inc/i18n.php:264
+#: plugin/marquee/core/i18n.php:273 theme/ridgeroad/inc/i18n.php:273
 msgid "Coloring pages"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:265 theme/ridgeroad/inc/i18n.php:265
+#: plugin/marquee/core/i18n.php:274 theme/ridgeroad/inc/i18n.php:274
 msgid "opened to print"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:266 theme/ridgeroad/inc/i18n.php:266
+#: plugin/marquee/core/i18n.php:275 theme/ridgeroad/inc/i18n.php:275
 msgid "Kids’ Corner visits"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:267 theme/ridgeroad/inc/i18n.php:267
+#: plugin/marquee/core/i18n.php:276 theme/ridgeroad/inc/i18n.php:276
 msgid "Website visits"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:268 theme/ridgeroad/inc/i18n.php:268
+#: plugin/marquee/core/i18n.php:277 theme/ridgeroad/inc/i18n.php:277
 msgid "Names said out loud"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:269 theme/ridgeroad/inc/i18n.php:269
+#: plugin/marquee/core/i18n.php:278 theme/ridgeroad/inc/i18n.php:278
 msgid "new voice clips"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:270 theme/ridgeroad/inc/i18n.php:270
+#: plugin/marquee/core/i18n.php:279 theme/ridgeroad/inc/i18n.php:279
 msgid "Themed picks"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:271 theme/ridgeroad/inc/i18n.php:271
+#: plugin/marquee/core/i18n.php:280 theme/ridgeroad/inc/i18n.php:280
 msgid "names sent with a theme"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:272 plugin/marquee/core/control.php:158
+#: plugin/marquee/core/i18n.php:281 plugin/marquee/core/control.php:158
 #: plugin/marquee/core/control.php:232
 msgid "Social posts"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:273 theme/ridgeroad/inc/i18n.php:273
+#: plugin/marquee/core/i18n.php:282 theme/ridgeroad/inc/i18n.php:282
 msgid "Traffic alerts"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:274 theme/ridgeroad/inc/i18n.php:274
+#: plugin/marquee/core/i18n.php:283 theme/ridgeroad/inc/i18n.php:283
 msgid "Phone alerts on"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:275 theme/ridgeroad/inc/i18n.php:275
+#: plugin/marquee/core/i18n.php:284 theme/ridgeroad/inc/i18n.php:284
 msgid "people who turned alerts on"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:276 theme/ridgeroad/inc/i18n.php:276
+#: plugin/marquee/core/i18n.php:285 theme/ridgeroad/inc/i18n.php:285
 msgid "No show nights yet"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:277 plugin/marquee/core/control.php:288
-#: theme/ridgeroad/inc/i18n.php:277
+#: plugin/marquee/core/i18n.php:286 plugin/marquee/core/control.php:288
+#: theme/ridgeroad/inc/i18n.php:286
 msgid "Names sent each night"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:278 theme/ridgeroad/inc/i18n.php:278
+#: plugin/marquee/core/i18n.php:287 theme/ridgeroad/inc/i18n.php:287
 msgid "%1$s: %2$s names"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:279 theme/ridgeroad/inc/i18n.php:279
+#: plugin/marquee/core/i18n.php:288 theme/ridgeroad/inc/i18n.php:288
 msgid "Canceled. Alert sent to %s phone"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:280 theme/ridgeroad/inc/i18n.php:280
+#: plugin/marquee/core/i18n.php:289 theme/ridgeroad/inc/i18n.php:289
 msgid "Canceled. Alert sent to %s phones"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:281 theme/ridgeroad/inc/i18n.php:281
+#: plugin/marquee/core/i18n.php:290 theme/ridgeroad/inc/i18n.php:290
 msgid "Saved"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:282 theme/ridgeroad/inc/i18n.php:282
+#: plugin/marquee/core/i18n.php:291 theme/ridgeroad/inc/i18n.php:291
 msgid "Could not save. Please reload the page."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:283 theme/ridgeroad/inc/i18n.php:283
+#: plugin/marquee/core/i18n.php:292 theme/ridgeroad/inc/i18n.php:292
 msgid "Could not reach the website."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:284 theme/ridgeroad/inc/i18n.php:284
+#: plugin/marquee/core/i18n.php:293 theme/ridgeroad/inc/i18n.php:293
 msgid "Canceled for tonight"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:285 theme/ridgeroad/inc/i18n.php:285
+#: plugin/marquee/core/i18n.php:294 theme/ridgeroad/inc/i18n.php:294
 msgid "Traffic alert is on"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:286 theme/ridgeroad/inc/i18n.php:286
+#: plugin/marquee/core/i18n.php:295 theme/ridgeroad/inc/i18n.php:295
 msgid "Type a message first."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:287 theme/ridgeroad/inc/i18n.php:287
+#: plugin/marquee/core/i18n.php:296 theme/ridgeroad/inc/i18n.php:296
 msgid "Send “%1$s” to %2$s phone?"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:288 theme/ridgeroad/inc/i18n.php:288
+#: plugin/marquee/core/i18n.php:297 theme/ridgeroad/inc/i18n.php:297
 msgid "Send “%1$s” to %2$s phones?"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:289 theme/ridgeroad/inc/i18n.php:289
+#: plugin/marquee/core/i18n.php:298 theme/ridgeroad/inc/i18n.php:298
 msgid "Sending…"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:290 theme/ridgeroad/inc/i18n.php:290
+#: plugin/marquee/core/i18n.php:299 theme/ridgeroad/inc/i18n.php:299
 msgid "Sent to %s phone"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:291 theme/ridgeroad/inc/i18n.php:291
+#: plugin/marquee/core/i18n.php:300 theme/ridgeroad/inc/i18n.php:300
 msgid "Sent to %s phones"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:292 theme/ridgeroad/inc/i18n.php:292
+#: plugin/marquee/core/i18n.php:301 theme/ridgeroad/inc/i18n.php:301
 msgid "(%s did not go through)"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:293 theme/ridgeroad/inc/i18n.php:293
+#: plugin/marquee/core/i18n.php:302 theme/ridgeroad/inc/i18n.php:302
 msgid "Could not send. Please reload the page."
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:294 theme/ridgeroad/inc/i18n.php:294
+#: plugin/marquee/core/i18n.php:303 theme/ridgeroad/inc/i18n.php:303
 msgid "Mega Tree"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:295 theme/ridgeroad/inc/i18n.php:295
+#: plugin/marquee/core/i18n.php:304 theme/ridgeroad/inc/i18n.php:304
 msgid "Rooflines"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:296 theme/ridgeroad/inc/i18n.php:296
+#: plugin/marquee/core/i18n.php:305 theme/ridgeroad/inc/i18n.php:305
 msgid "Windows"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:297 theme/ridgeroad/inc/i18n.php:297
+#: plugin/marquee/core/i18n.php:306 theme/ridgeroad/inc/i18n.php:306
 msgid "Snowflakes"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:298 theme/ridgeroad/inc/i18n.php:298
+#: plugin/marquee/core/i18n.php:307 theme/ridgeroad/inc/i18n.php:307
 msgid "Spinners"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:299 theme/ridgeroad/inc/i18n.php:299
+#: plugin/marquee/core/i18n.php:308 theme/ridgeroad/inc/i18n.php:308
 msgid "Singing Faces"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:300 theme/ridgeroad/inc/i18n.php:300
+#: plugin/marquee/core/i18n.php:309 theme/ridgeroad/inc/i18n.php:309
 msgid "Arches"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:301 theme/ridgeroad/inc/i18n.php:301
+#: plugin/marquee/core/i18n.php:310 theme/ridgeroad/inc/i18n.php:310
 msgid "Mini Trees"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:302 theme/ridgeroad/inc/i18n.php:302
+#: plugin/marquee/core/i18n.php:311 theme/ridgeroad/inc/i18n.php:311
 msgid "Gifts"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:303 theme/ridgeroad/inc/i18n.php:303
+#: plugin/marquee/core/i18n.php:312 theme/ridgeroad/inc/i18n.php:312
 msgid "Garage Matrix"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:304 theme/ridgeroad/inc/i18n.php:304
+#: plugin/marquee/core/i18n.php:313 theme/ridgeroad/inc/i18n.php:313
 msgid "Steady"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:305 theme/ridgeroad/inc/i18n.php:305
+#: plugin/marquee/core/i18n.php:314 theme/ridgeroad/inc/i18n.php:314
 msgid "Always on"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:306 theme/ridgeroad/inc/i18n.php:306
+#: plugin/marquee/core/i18n.php:315 theme/ridgeroad/inc/i18n.php:315
 msgid "Twinkle"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:307 theme/ridgeroad/inc/i18n.php:307
+#: plugin/marquee/core/i18n.php:316 theme/ridgeroad/inc/i18n.php:316
 msgid "Sparkles"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:308 theme/ridgeroad/inc/i18n.php:308
+#: plugin/marquee/core/i18n.php:317 theme/ridgeroad/inc/i18n.php:317
 msgid "Chase"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:309 theme/ridgeroad/inc/i18n.php:309
+#: plugin/marquee/core/i18n.php:318 theme/ridgeroad/inc/i18n.php:318
 msgid "Lights run"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:310 theme/ridgeroad/inc/i18n.php:310
+#: plugin/marquee/core/i18n.php:319 theme/ridgeroad/inc/i18n.php:319
 msgid "Pulse"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:311 theme/ridgeroad/inc/i18n.php:311
+#: plugin/marquee/core/i18n.php:320 theme/ridgeroad/inc/i18n.php:320
 msgid "Blinks to the beat"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:312 theme/ridgeroad/inc/i18n.php:312
+#: plugin/marquee/core/i18n.php:321 theme/ridgeroad/inc/i18n.php:321
 msgid "Rainbow"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:313 theme/ridgeroad/inc/i18n.php:313
+#: plugin/marquee/core/i18n.php:322 theme/ridgeroad/inc/i18n.php:322
 msgid "All the colors"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:314 theme/ridgeroad/inc/i18n.php:314
+#: plugin/marquee/core/i18n.php:323 theme/ridgeroad/inc/i18n.php:323
 msgid "Candy Cane"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:315 theme/ridgeroad/inc/i18n.php:315
+#: plugin/marquee/core/i18n.php:324 theme/ridgeroad/inc/i18n.php:324
 msgid "Red and white"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:316 theme/ridgeroad/inc/i18n.php:316
+#: plugin/marquee/core/i18n.php:325 theme/ridgeroad/inc/i18n.php:325
 msgid "Lights off"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:317 theme/ridgeroad/inc/i18n.php:317
+#: plugin/marquee/core/i18n.php:326 theme/ridgeroad/inc/i18n.php:326
 msgid "Red"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:318 theme/ridgeroad/inc/i18n.php:318
+#: plugin/marquee/core/i18n.php:327 theme/ridgeroad/inc/i18n.php:327
 msgid "Green"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:319 theme/ridgeroad/inc/i18n.php:319
+#: plugin/marquee/core/i18n.php:328 theme/ridgeroad/inc/i18n.php:328
 msgid "Blue"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:320 theme/ridgeroad/inc/i18n.php:320
+#: plugin/marquee/core/i18n.php:329 theme/ridgeroad/inc/i18n.php:329
 msgid "Gold"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:321 theme/ridgeroad/inc/i18n.php:321
+#: plugin/marquee/core/i18n.php:330 theme/ridgeroad/inc/i18n.php:330
 msgid "Purple"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:322 theme/ridgeroad/inc/i18n.php:322
+#: plugin/marquee/core/i18n.php:331 theme/ridgeroad/inc/i18n.php:331
 msgid "Icy Blue"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:323 theme/ridgeroad/inc/i18n.php:323
+#: plugin/marquee/core/i18n.php:332 theme/ridgeroad/inc/i18n.php:332
 msgid "Warm White"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:324 theme/ridgeroad/inc/i18n.php:324
+#: plugin/marquee/core/i18n.php:333 theme/ridgeroad/inc/i18n.php:333
 msgid "Orange"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:325 theme/ridgeroad/inc/i18n.php:325
+#: plugin/marquee/core/i18n.php:334 theme/ridgeroad/inc/i18n.php:334
 msgid "Pink"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:326 theme/ridgeroad/inc/i18n.php:326
+#: plugin/marquee/core/i18n.php:335 theme/ridgeroad/inc/i18n.php:335
 msgid "Mixed Colors"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:327 theme/ridgeroad/inc/i18n.php:327
+#: plugin/marquee/core/i18n.php:336 theme/ridgeroad/inc/i18n.php:336
 msgid "Whole House"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:328 theme/ridgeroad/inc/i18n.php:328
+#: plugin/marquee/core/i18n.php:337 theme/ridgeroad/inc/i18n.php:337
 msgid "Start"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:329 theme/ridgeroad/inc/i18n.php:329
+#: plugin/marquee/core/i18n.php:338 theme/ridgeroad/inc/i18n.php:338
 msgid "Middle"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:330 theme/ridgeroad/inc/i18n.php:330
+#: plugin/marquee/core/i18n.php:339 theme/ridgeroad/inc/i18n.php:339
 msgid "Big Finish"
 msgstr ""
 
@@ -3126,96 +3163,96 @@ msgstr ""
 msgid "The website shows the canceled banner"
 msgstr ""
 
-#: plugin/marquee/core/control.php:321 plugin/marquee/core/control.php:334
-#: plugin/marquee/core/control.php:402
+#: plugin/marquee/core/control.php:322 plugin/marquee/core/control.php:335
+#: plugin/marquee/core/control.php:403
 msgid "g:i A"
 msgstr ""
 
-#: plugin/marquee/core/control.php:350 plugin/marquee/core/control.php:456
-#: theme/ridgeroad/inc/control.php:350
+#: plugin/marquee/core/control.php:351 plugin/marquee/core/control.php:457
+#: theme/ridgeroad/inc/control.php:351
 msgid "M j, g:i A"
 msgstr ""
 
-#: plugin/marquee/core/control.php:379 plugin/marquee/core/seo.php:54
+#: plugin/marquee/core/control.php:380 plugin/marquee/core/seo.php:54
 #: plugin/marquee/core/seo.php:54
 msgid "M j"
 msgstr ""
 
-#: plugin/marquee/core/control.php:430 theme/ridgeroad/inc/control.php:430
+#: plugin/marquee/core/control.php:431 theme/ridgeroad/inc/control.php:431
 msgid "Judges’ Pick: %1$s · People’s Choice: %2$s · Pick-up by %3$s"
 msgstr ""
 
-#: plugin/marquee/core/control.php:584 theme/ridgeroad/inc/control.php:584
+#: plugin/marquee/core/control.php:585 theme/ridgeroad/inc/control.php:585
 msgid "Type a message of up to 180 characters."
 msgstr ""
 
-#: plugin/marquee/core/control.php:622 theme/ridgeroad/inc/control.php:622
+#: plugin/marquee/core/control.php:623 theme/ridgeroad/inc/control.php:623
 msgid "Heavy traffic"
 msgstr ""
 
-#: plugin/marquee/core/control.php:622 theme/ridgeroad/inc/control.php:622
+#: plugin/marquee/core/control.php:623 theme/ridgeroad/inc/control.php:623
 msgid "Heavy traffic tonight"
 msgstr ""
 
-#: plugin/marquee/core/control.php:622 theme/ridgeroad/inc/control.php:622
+#: plugin/marquee/core/control.php:623 theme/ridgeroad/inc/control.php:623
 msgid ""
 "Please keep moving and don’t stop in the road. Thanks for your patience!"
 msgstr ""
 
-#: plugin/marquee/core/control.php:622 plugin/marquee/core/control.php:624
-#: theme/ridgeroad/inc/control.php:622
+#: plugin/marquee/core/control.php:623 plugin/marquee/core/control.php:625
+#: theme/ridgeroad/inc/control.php:623
 msgid "PLEASE KEEP MOVING"
 msgstr ""
 
-#: plugin/marquee/core/control.php:623 theme/ridgeroad/inc/control.php:623
+#: plugin/marquee/core/control.php:624 theme/ridgeroad/inc/control.php:624
 msgid "Driveway blocked"
 msgstr ""
 
-#: plugin/marquee/core/control.php:623 theme/ridgeroad/inc/control.php:623
+#: plugin/marquee/core/control.php:624 theme/ridgeroad/inc/control.php:624
 msgid "Please don’t block driveways"
 msgstr ""
 
-#: plugin/marquee/core/control.php:623 theme/ridgeroad/inc/control.php:623
+#: plugin/marquee/core/control.php:624 theme/ridgeroad/inc/control.php:624
 msgid ""
 "Our neighbors need to get in and out. Please only park where it’s allowed."
 msgstr ""
 
-#: plugin/marquee/core/control.php:623 theme/ridgeroad/inc/control.php:623
+#: plugin/marquee/core/control.php:624 theme/ridgeroad/inc/control.php:624
 msgid "PLEASE DON’T BLOCK DRIVEWAYS"
 msgstr ""
 
-#: plugin/marquee/core/control.php:624 plugin/marquee/core/control.php:624
-#: theme/ridgeroad/inc/control.php:624
+#: plugin/marquee/core/control.php:625 plugin/marquee/core/control.php:625
+#: theme/ridgeroad/inc/control.php:625
 msgid "Please keep moving"
 msgstr ""
 
-#: plugin/marquee/core/control.php:624 theme/ridgeroad/inc/control.php:624
+#: plugin/marquee/core/control.php:625 theme/ridgeroad/inc/control.php:625
 msgid ""
 "Enjoy the show from your car and keep traffic flowing so everyone gets a "
 "turn."
 msgstr ""
 
-#: plugin/marquee/core/control.php:625 theme/ridgeroad/inc/control.php:625
+#: plugin/marquee/core/control.php:626 theme/ridgeroad/inc/control.php:626
 msgid "Parking full"
 msgstr ""
 
-#: plugin/marquee/core/control.php:625 theme/ridgeroad/inc/control.php:625
+#: plugin/marquee/core/control.php:626 theme/ridgeroad/inc/control.php:626
 msgid "Parking is full"
 msgstr ""
 
-#: plugin/marquee/core/control.php:625 theme/ridgeroad/inc/control.php:625
+#: plugin/marquee/core/control.php:626 theme/ridgeroad/inc/control.php:626
 msgid "Please drive by slowly and enjoy the show from your car."
 msgstr ""
 
-#: plugin/marquee/core/control.php:625 theme/ridgeroad/inc/control.php:625
+#: plugin/marquee/core/control.php:626 theme/ridgeroad/inc/control.php:626
 msgid "PARKING FULL - PLEASE DRIVE THRU"
 msgstr ""
 
-#: plugin/marquee/core/control.php:659 theme/ridgeroad/inc/control.php:659
+#: plugin/marquee/core/control.php:660 theme/ridgeroad/inc/control.php:660
 msgid "Message"
 msgstr ""
 
-#: plugin/marquee/core/control.php:663 theme/ridgeroad/inc/control.php:663
+#: plugin/marquee/core/control.php:664 theme/ridgeroad/inc/control.php:664
 msgid "Type the message first."
 msgstr ""
 
@@ -3503,58 +3540,99 @@ msgstr ""
 msgid "Classic"
 msgstr ""
 
-#: plugin/marquee/core/parts/kids-names.php:53
-#: theme/ridgeroad/parts/kids-names.php:53
-msgid "Put My Name in Lights!"
-msgstr ""
-
-#: plugin/marquee/core/parts/kids-names.php:55
-#: theme/ridgeroad/parts/kids-names.php:55
-msgid ""
-"First names only. Our elves check every name before it goes on the screens."
-msgstr ""
-
-#: plugin/marquee/core/parts/kids-names.php:56
-#: theme/ridgeroad/parts/kids-names.php:56
-msgid "Turn up your radio: we’ll say your name out loud too!"
+#: plugin/marquee/core/parts/kids-names.php:57
+#: theme/ridgeroad/parts/kids-names.php:57
+msgid "Add your picture (optional)"
 msgstr ""
 
 #: plugin/marquee/core/parts/kids-names.php:57
 #: theme/ridgeroad/parts/kids-names.php:57
+msgid "Add a cartoon of you (optional)"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-names.php:68
+#: theme/ridgeroad/parts/kids-names.php:68
+msgid "Cartoon"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-names.php:69
+#: theme/ridgeroad/parts/kids-names.php:69
+msgid "Real photo"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-names.php:74
+#: theme/ridgeroad/parts/kids-names.php:74
+msgid ""
+"A parent or guardian says it’s OK to show this picture on our screens at the"
+" show."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-names.php:76
+#: theme/ridgeroad/parts/kids-names.php:76
+msgid ""
+"Your picture is only shown at the show. Our elves check every picture first,"
+" and it’s deleted right after."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-names.php:76
+#: theme/ridgeroad/parts/kids-names.php:76
+msgid ""
+"Your phone turns the picture into a cartoon, and only the cartoon is sent. "
+"Our elves check it first, and it’s deleted right after the show uses it."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-names.php:80
+#: theme/ridgeroad/parts/kids-names.php:80
+msgid "Put My Name in Lights!"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-names.php:82
+#: theme/ridgeroad/parts/kids-names.php:82
+msgid ""
+"First names only. Our elves check every name before it goes on the screens."
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-names.php:83
+#: theme/ridgeroad/parts/kids-names.php:83
+msgid "Turn up your radio: we’ll say your name out loud too!"
+msgstr ""
+
+#: plugin/marquee/core/parts/kids-names.php:84
+#: theme/ridgeroad/parts/kids-names.php:84
 msgid ""
 "Names can only be sent from the show. Your phone will ask to share its "
 "location: it’s only used to check you’re here, and it isn’t saved."
 msgstr ""
 
-#: plugin/marquee/core/parts/kids-names.php:63
-#: theme/ridgeroad/parts/kids-names.php:63
+#: plugin/marquee/core/parts/kids-names.php:90
+#: theme/ridgeroad/parts/kids-names.php:90
 msgid "Watch for your name on our screens in a minute!"
 msgstr ""
 
-#: plugin/marquee/core/parts/kids-names.php:63
-#: theme/ridgeroad/parts/kids-names.php:63
+#: plugin/marquee/core/parts/kids-names.php:90
+#: theme/ridgeroad/parts/kids-names.php:90
 msgid "Watch for your name in the show after the next song!"
 msgstr ""
 
-#: plugin/marquee/core/parts/kids-names.php:63
-#: theme/ridgeroad/parts/kids-names.php:63
+#: plugin/marquee/core/parts/kids-names.php:90
+#: theme/ridgeroad/parts/kids-names.php:90
 msgid ""
 "Watch for your name after the next song on the garage door and the TV by the"
 " front door!"
 msgstr ""
 
-#: plugin/marquee/core/parts/kids-names.php:67
-#: theme/ridgeroad/parts/kids-names.php:67
+#: plugin/marquee/core/parts/kids-names.php:94
+#: theme/ridgeroad/parts/kids-names.php:94
 msgid "Buzz me!"
 msgstr ""
 
-#: plugin/marquee/core/parts/kids-names.php:69
-#: theme/ridgeroad/parts/kids-names.php:69
+#: plugin/marquee/core/parts/kids-names.php:96
+#: theme/ridgeroad/parts/kids-names.php:96
 msgid "Send another name"
 msgstr ""
 
-#: plugin/marquee/core/parts/kids-names.php:73
-#: theme/ridgeroad/parts/kids-names.php:73
+#: plugin/marquee/core/parts/kids-names.php:100
+#: theme/ridgeroad/parts/kids-names.php:100
 msgid "Names go up in lights while the show is on."
 msgstr ""
 
@@ -4494,6 +4572,10 @@ msgstr ""
 
 #: plugin/marquee/core/seo.php:79 theme/ridgeroad/inc/seo.php:79
 msgid "free drive-by Christmas light show"
+msgstr ""
+
+#: plugin/marquee/inc/photos.php:116 plugin/marquee/inc/photos.php:121
+msgid "That picture didn’t work. Please try another one."
 msgstr ""
 
 #: theme/ridgeroad/looks/looks.php:17

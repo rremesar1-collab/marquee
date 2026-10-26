@@ -875,6 +875,35 @@ msgstr ""
 "Agrega palabras para bloquear en Apariencia → Personalizar → Sitio web del "
 "espectáculo → Rincón de los niños."
 
+msgid "Take or pick a picture"
+msgstr "Toma o elige una foto"
+
+msgid "Use a different picture"
+msgstr "Usar otra foto"
+
+msgid ""
+"A parent or guardian needs to tick the box to say your picture can go on our"
+" screens."
+msgstr ""
+"Un papá, una mamá o un tutor tiene que marcar la casilla para decir que tu "
+"foto puede salir en nuestras pantallas."
+
+msgid "Picture approved"
+msgstr "Foto aprobada"
+
+msgid "Picture waiting for you: the name waits too (up to 10 minutes)"
+msgstr ""
+"Foto esperando tu aprobación: el nombre también espera (hasta 10 minutos)"
+
+msgid "Show picture"
+msgstr "Mostrar foto"
+
+msgid "No picture"
+msgstr "Sin foto"
+
+msgid "Picture removed: the name goes up without it"
+msgstr "Foto quitada: el nombre sale sin ella"
+
 msgid "Between songs — stay tuned!"
 msgstr "Entre canciones — ¡no te vayas!"
 
@@ -2705,6 +2734,40 @@ msgstr "Elige tu espectáculo"
 msgid "Classic"
 msgstr "Clásico"
 
+msgid "Add your picture (optional)"
+msgstr "Agrega tu foto (opcional)"
+
+msgid "Add a cartoon of you (optional)"
+msgstr "Agrega una caricatura tuya (opcional)"
+
+msgid "Cartoon"
+msgstr "Caricatura"
+
+msgid "Real photo"
+msgstr "Foto real"
+
+msgid ""
+"A parent or guardian says it’s OK to show this picture on our screens at the"
+" show."
+msgstr ""
+"Un papá, una mamá o un tutor dice que está bien mostrar esta foto en "
+"nuestras pantallas durante el espectáculo."
+
+msgid ""
+"Your picture is only shown at the show. Our elves check every picture first,"
+" and it’s deleted right after."
+msgstr ""
+"Tu foto solo se muestra en el espectáculo. Nuestros duendes revisan cada "
+"foto antes, y se borra justo después."
+
+msgid ""
+"Your phone turns the picture into a cartoon, and only the cartoon is sent. "
+"Our elves check it first, and it’s deleted right after the show uses it."
+msgstr ""
+"Tu teléfono convierte la foto en una caricatura, y solo se envía la "
+"caricatura. Nuestros duendes la revisan antes, y se borra justo después de "
+"usarse en el espectáculo."
+
 msgid "Put My Name in Lights!"
 msgstr "¡Pon mi nombre en luces!"
 
@@ -3426,6 +3489,9 @@ msgstr "Sintoniza el %s."
 
 msgid "free drive-by Christmas light show"
 msgstr "espectáculo de luces de Navidad gratis para ver desde el carro"
+
+msgid "That picture didn’t work. Please try another one."
+msgstr "Esa foto no funcionó. Prueba con otra."
 
 msgid "Christmas Village"
 msgstr "Pueblo navideño"

@@ -1008,6 +1008,20 @@
 .mq-skin:not(#mq-0) .rr-kc .rr-kbox { max-width: 760px; width: 100%; margin: 0 auto; }
 .mq-skin:not(#mq-0) .rr-kc .rr-kbox[hidden] { display: none; }
 .mq-skin:not(#mq-0) .rr-kc .rr-names { max-width: 760px; width: 100%; margin: 0 auto; }
+/* Kids' pictures on the name form */
+.mq-skin:not(#mq-0) .rr-names__pic { margin: 14px 0 6px; padding: 12px 14px; border: 1px dashed rgba(247, 201, 90, .55); border-radius: 12px; }
+.mq-skin:not(#mq-0) .rr-names__pic legend { padding: 0 6px; font-weight: 800; color: #fbe9bf; }
+.mq-skin:not(#mq-0) .rr-names__pic-file { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+.mq-skin:not(#mq-0) .rr-names__pic-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.mq-skin:not(#mq-0) .rr-names__pic-img { width: 112px; height: 112px; border-radius: 12px; border: 2px solid #ffd45c; box-shadow: 0 4px 12px rgba(0, 0, 0, .5); background: #000; }
+.mq-skin:not(#mq-0) .rr-names__pic-img[hidden] { display: none; }
+.mq-skin:not(#mq-0) .rr-names__pic-btns { display: flex; flex-direction: column; gap: 8px; }
+.mq-skin:not(#mq-0) .rr-names__pic-btns .rr-btn { cursor: pointer; }
+.mq-skin:not(#mq-0) .rr-names__pic-file:focus-visible + .rr-names__pic-row .rr-btn--gold { outline: 3px solid #fff; outline-offset: 2px; }
+.mq-skin:not(#mq-0) .rr-names__pic-kind { display: flex; gap: 18px; margin: 10px 0 0; font-weight: 700; }
+.mq-skin:not(#mq-0) .rr-names__pic-ok { display: flex; gap: 10px; align-items: flex-start; margin: 12px 0 4px; padding: 10px 12px; border-radius: 10px; background: rgba(255, 212, 92, .12); font-weight: 700; line-height: 1.35; }
+.mq-skin:not(#mq-0) .rr-names__pic-ok input { width: 22px; height: 22px; flex: none; margin-top: 1px; }
+.mq-skin:not(#mq-0) .rr-names__pic-ok[hidden], .mq-skin:not(#mq-0) .rr-names__pic-kind[hidden] { display: none; }
 .mq-skin:not(#mq-0) .rr-ll { display: grid; gap: 14px; margin: 0; }
 .mq-skin:not(#mq-0) .rr-ll__bar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
 .mq-skin:not(#mq-0) .rr-ll__bar label { font: 600 18px var(--f-kid); color: #fff4dc; }

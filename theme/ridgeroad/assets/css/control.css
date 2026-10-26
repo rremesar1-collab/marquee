@@ -140,3 +140,7 @@
 @media (max-width: 1280px) { .rrc__status { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 960px) { .rrc__grid { grid-template-columns: 1fr; } .rrc__status { grid-template-columns: repeat(2, minmax(0, 1fr)); } .rrc__clock { text-align: left; } }
 @media (max-width: 600px) { .rrc__status { grid-template-columns: 1fr; } .rrc__tbtns { grid-template-columns: 1fr; } .rrc__tiles.rrc__tiles--3 { grid-template-columns: 1fr; } .rrc__hero { padding: 18px 16px; } .rrc__headline { font-size: 21px; } }
+/* kids' pictures waiting to be approved */
+.rrc__pic { flex: none; width: 56px; height: 56px; border-radius: 8px; object-fit: cover; border: 2px solid #f0b429; }
+.rrc__picst { display: block; color: #b26b00; font-weight: 600; }
+.rrc__picst.is-ok { color: #1f7a3a; }
