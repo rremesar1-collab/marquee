@@ -41,7 +41,7 @@ import socket
 import threading
 import urllib.request
 
-VERSION = "3.14.0"
+VERSION = "3.14.1"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -954,8 +954,19 @@ def fpp_put_image(host, model, data, timeout=4):
         return r.read().decode("utf-8", "replace")
 
 
+def fpp_put(host, path, body=None, timeout=3):
+    req = urllib.request.Request(host.rstrip("/") + path, data=json.dumps(body or {}).encode(), method="PUT",
+                                 headers={"Content-Type": "application/json"})
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return r.read().decode("utf-8", "replace")
+
+
+PIC_ON = set()   # screens (fpp|model) showing a kid's picture right now
+
+
 def show_picture(item):
-    """Put a kid's picture up on every screen at the same time; returns how many screens took it."""
+    """Put a kid's picture up on every screen at the same time; returns how many screens took it.
+    Like the names: a screen that doesn't answer is skipped for a minute, and nobody waits on a slow one."""
     import threading
     data = picture(item)
     if not data:
@@ -968,6 +979,8 @@ def show_picture(item):
         try:
             fpp_put_image(sc["fpp"], sc["model"], data)
             results.append(sc["name"])
+            PIC_ON.add((sc["fpp"], sc["model"]))
+            DEAD.pop(sc["fpp"], None)
         except urllib.error.HTTPError as e:
             if e.code in (400, 404, 405, 501):
                 NOPIC[sc["fpp"]] = True
@@ -975,13 +988,34 @@ def show_picture(item):
             else:
                 log("could not show the picture on", sc["name"], "-", e)
         except Exception as e:
-            log("could not show the picture on", sc["name"], "-", e)
+            if DEAD.get(sc["fpp"], 0) <= time.time():
+                log("could not reach", sc["name"], "(", sc["fpp"], ") - skipping it for a minute")
+            DEAD[sc["fpp"]] = time.time() + 60
     threads = [threading.Thread(target=one, args=(sc,), daemon=True) for sc in S["screens"]]
     for t in threads:
         t.start()
-    for t in threads:
-        t.join(4)
+    t0, first = time.time(), 0.0
+    while any(t.is_alive() for t in threads) and time.time() - t0 < 4:
+        if results and not first:
+            first = time.time()
+        if first and time.time() - first > 0.3:     # a screen has it: don't hold the break for a silent one
+            break
+        time.sleep(0.02)
     return len(results)
+
+
+def clear_pictures():
+    """Take the pictures down and hand the screens back to normal. A picture switches the overlay on,
+    and FPP only switches it off after a name if the name switched it on - without this the last
+    name would stay up over the show."""
+    for host, model in list(PIC_ON):
+        try:
+            m = "/api/overlays/model/" + urllib.parse.quote(model)
+            fpp_put(host, m + "/clear")
+            fpp_put(host, m + "/state", {"State": 0})
+        except Exception as e:
+            log("could not clear the picture on", model, "-", e)
+        PIC_ON.discard((host, model))
 
 
 def say(item):
@@ -1304,6 +1338,8 @@ def _show_names(names, slots, color):
                 log("break ended early")
                 if talk_until:
                     stop_talking()
+                if PIC_ON:
+                    clear_pictures()
                 return done
             el = elapsed(st)
             if el <= 0.05 and time.time() - BRK["t0"] > 0.5:
@@ -1333,6 +1369,8 @@ def _show_names(names, slots, color):
                 voice_until = time.time() + 2.0
             said.add(item["id"])
             continue
+        if PIC_ON:
+            clear_pictures()                             # the picture's turn is over: screens back to normal first
         if show(item["text"], color):
             log("showing:", item["text"])
             try:
@@ -1354,6 +1392,8 @@ def _show_names(names, slots, color):
                 done.append(item["id"])
         else:
             log("no screen took", item["text"], "- it will wait for the next break")
+    if PIC_ON:
+        clear_pictures()
     while in_break(master_status()):       # let the break finish
         if talk_until and time.time() >= talk_until:
             stop_talking()
@@ -1378,6 +1418,7 @@ def show_live(names, color):
             if picture(item) and show_picture(item):
                 log("showing the picture of (during the song):", item["text"])
                 time.sleep(S["show_for"])
+                clear_pictures()
             if show(item["text"], color):
                 log("showing (during the song):", item["text"])
                 done.append(item["id"])
