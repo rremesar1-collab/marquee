@@ -5,7 +5,8 @@
  * A kid adds a picture with their name: a real photo, or a cartoon made from it on their own
  * phone (the owner picks which are allowed). The phone shrinks it to a small square first, so
  * no full-size photo ever leaves it. A parent has to say it's OK, and every picture waits for
- * the owner or a Show helper to approve it in Show Control or the Show Manager. The name waits
+ * the owner or a Show helper to approve it in Show Control or the Show Manager (or the optional
+ * automatic check with the owner's Google Cloud Vision key passes it). The name waits
  * with it for up to 10 minutes, then goes up without the picture.
  * Pictures are kept in a private folder with unguessable names, never in the Media Library,
  * and deleted as soon as they've been shown, removed or turned down, and always within 2 hours.
@@ -44,12 +45,19 @@ add_filter( 'marquee_settings_saved', function ( $new, $in ) {
 		$m                  = isset( $in['photos'] ) ? sanitize_key( $in['photos'] ) : 'off';
 		$new['photos']      = in_array( $m, array( 'off', 'cartoon', 'photo', 'both' ), true ) ? $m : 'off';
 		$new['photos_ack']  = (int) ! empty( $in['photos_ack'] );
+		$new['photos_auto'] = (int) ! empty( $in['photos_auto'] );
+		$key                = isset( $in['vision_key'] ) ? trim( sanitize_text_field( wp_unslash( $in['vision_key'] ) ) ) : '';
+		$new['vision_key']  = ( '' === $key || '••••••••' === $key ) ? (string) marquee_get( 'vision_key' ) : mb_substr( $key, 0, 200 );
+		if ( ! empty( $in['vision_clear'] ) ) {
+			$new['vision_key']  = '';
+			$new['photos_auto'] = 0;
+		}
 		if ( ! $new['photos_ack'] ) {
 			$new['photos'] = 'off';                   // can't be on without the notice accepted
 		}
 	} else {
 		$cur = marquee_get();                         // another part of Settings was saved: keep these as they are
-		foreach ( array( 'photos', 'photos_ack' ) as $k ) {
+		foreach ( array( 'photos', 'photos_ack', 'photos_auto', 'vision_key' ) as $k ) {
 			$new[ $k ] = $cur[ $k ];
 		}
 	}
@@ -74,7 +82,7 @@ function marquee_photos_box( $s ) {
 				<ul>
 					<li><?php esc_html_e( 'These are pictures of children, shown in public at your show. You are responsible for what goes up on your screens and for following the laws where you live.', 'marquee' ); ?></li>
 					<li><?php esc_html_e( 'In the United States, collecting a picture from a child under 13 online is covered by COPPA, which requires a parent’s permission. Marquee asks a parent or guardian to tick a box before any picture is sent, but it can’t check who ticked it. Other countries have their own rules (in Europe, the GDPR).', 'marquee' ); ?></li>
-					<li><?php esc_html_e( 'Every picture waits for you or a Show helper to approve it in Show Control or the Show Manager. Nothing goes up on its own. On a busy night that means someone keeping an eye on it; a name whose picture isn’t approved within 10 minutes goes up without the picture.', 'marquee' ); ?></li>
+					<li><?php esc_html_e( 'Every picture waits for you or a Show helper to approve it in Show Control or the Show Manager, unless you turn on the automatic check below: then only the pictures it isn’t sure about wait for you. A name whose picture isn’t approved within 10 minutes goes up without the picture.', 'marquee' ); ?></li>
 					<li><?php esc_html_e( 'The phone shrinks the picture to a small square before sending it. Marquee keeps it in a private folder (never in your Media Library, never on a page) and deletes it as soon as it’s been shown, removed or turned down, and always within 2 hours.', 'marquee' ); ?></li>
 					<li><?php esc_html_e( 'The cartoon version is made on the kid’s own phone: only the cartoon is sent, never the photo. It’s the safer choice and looks better on pixel screens.', 'marquee' ); ?></li>
 					<li><?php esc_html_e( 'Pictures need FPP 10 or newer on the FPP that runs each screen, and the Marquee names script 3.14 or newer. On a small pixel matrix a face is only a few dozen pixels tall; it looks best on a TV or projector.', 'marquee' ); ?></li>
@@ -90,6 +98,25 @@ function marquee_photos_box( $s ) {
 					<option value="both" <?php selected( $mode, 'both' ); ?>><?php esc_html_e( 'Let the kid pick: cartoon or real photo', 'marquee' ); ?></option>
 				</select></p>
 			<p class="mq__fine"><?php esc_html_e( 'A kid with a picture gets two turns in the names break: first their picture (while the voice says their name), then their name. In “During songs” mode the picture shows first, then the name.', 'marquee' ); ?></p>
+			<?php $vk = (string) ( $s['vision_key'] ?? '' ); $vn = marquee_vision_count(); ?>
+			<div class="mq-vision">
+				<label class="mq__feat"><span><b><?php esc_html_e( 'Check pictures automatically', 'marquee' ); ?></b><small><?php esc_html_e( 'Google Cloud Vision looks at each picture first. One that’s clean, shows exactly one face and has no words in it goes up without waiting for you. Anything else still waits for you in Show Control, with the reason. You can still remove any name and its picture at any time.', 'marquee' ); ?></small></span><input type="checkbox" name="photos_auto" value="1" <?php checked( ! empty( $s['photos_auto'] ) ); ?>></label>
+				<p><label for="mq-vision-key"><b><?php esc_html_e( 'Google Cloud Vision API key', 'marquee' ); ?></b></label>
+					<input id="mq-vision-key" name="vision_key" type="password" autocomplete="new-password" value="<?php echo $vk ? '••••••••' : ''; ?>">
+					<button type="button" class="button" data-mq-vision-test><?php esc_html_e( 'Test the key', 'marquee' ); ?></button>
+					<span class="mq__msg" data-mq-vision-msg aria-live="polite"></span>
+					<?php if ( $vk ) : ?><br><label><input type="checkbox" name="vision_clear" value="1"> <?php esc_html_e( 'Remove my Google key', 'marquee' ); ?></label><?php endif; ?></p>
+				<details class="mq-vision__how"><summary><?php esc_html_e( 'How to get a free key (about 5 minutes)', 'marquee' ); ?></summary>
+					<ol>
+						<li><?php echo wp_kses( __( 'Go to <a href="https://console.cloud.google.com/" target="_blank" rel="noopener">console.cloud.google.com</a> and sign in with a Google account. Make a new project (any name, like “My light show”).', 'marquee' ), array( 'a' => array( 'href' => array(), 'target' => array(), 'rel' => array() ) ) ); ?></li>
+						<li><?php esc_html_e( 'Search for “Cloud Vision API” at the top, open it and click Enable. Google asks you to set up billing (a card on file) even for the free checks.', 'marquee' ); ?></li>
+						<li><?php esc_html_e( 'Go to APIs & Services → Credentials → Create credentials → API key. Copy the key and paste it above, then click Test the key and Save.', 'marquee' ); ?></li>
+						<li><?php esc_html_e( 'Recommended: on the key, choose Restrict key → Cloud Vision API only.', 'marquee' ); ?></li>
+					</ol>
+					<p class="mq__fine"><?php esc_html_e( 'Each picture uses 3 checks (safe, faces, words). Google gives 1,000 checks a month free, about 330 pictures; after that it’s about $1.50 per 1,000 checks (Google’s price, it may change). The picture is sent to Google only to be checked.', 'marquee' ); ?></p>
+				</details>
+				<?php if ( $vn ) : ?><p class="mq__fine"><?php echo esc_html( sprintf( /* translators: %s: number */ __( 'Checks used this month: %s (1,000 free each month).', 'marquee' ), number_format_i18n( $vn ) ) ); ?></p><?php endif; ?>
+			</div>
 		</div>
 	</details>
 	<?php
@@ -168,6 +195,15 @@ add_action( 'ridgeroad_name_added', function ( $id ) {
 	update_post_meta( $id, '_mq_pic_kind', $p[1] );
 	update_post_meta( $id, '_mq_pic_ok', 0 );                  // 0 waiting, 1 approved, -1 turned down
 	marquee_photo_cleanup_soon();
+	if ( marquee_vision_on() ) {
+		$r = marquee_vision_check( file_get_contents( $dir . $file ) ); // phpcs:ignore WordPress.WP.AlternativeFunctions
+		if ( true === $r ) {
+			update_post_meta( $id, '_mq_pic_ok', 1 );          // passed: no need to wait for the owner
+			update_post_meta( $id, '_mq_pic_why', 'auto' );
+		} else {
+			update_post_meta( $id, '_mq_pic_why', (string) $r ); // why it waits for the owner
+		}
+	}
 } );
 
 /** Delete a name's picture (shown, removed, turned down or too old). */
@@ -258,6 +294,8 @@ add_filter( 'ridgeroad_ctl_waiting_item', function ( $row, $p ) {
 		$row['photo']       = $url;
 		$row['photo_state'] = $state;
 		$row['photo_kind']  = (string) get_post_meta( $p->ID, '_mq_pic_kind', true );
+		$why                = (string) get_post_meta( $p->ID, '_mq_pic_why', true );
+		$row['photo_why']   = 'auto' === $why ? __( 'Approved by the automatic check', 'marquee' ) : $why;
 	}
 	return $row;
 }, 10, 2 );
@@ -278,4 +316,106 @@ add_action( 'wp_ajax_rr_ctl_photo', function () {
 		marquee_photo_delete( $id );
 	}
 	wp_send_json_success( function_exists( 'ridgeroad_control_state' ) ? ridgeroad_control_state() : null );
+} );
+
+/* ------------------------------------------------- automatic check (Google) ---- */
+function marquee_vision_on() {
+	$s = marquee_get();
+	return ! empty( $s['photos_auto'] ) && '' !== (string) $s['vision_key'];
+}
+
+/** Checks used this month (each picture is 3). */
+function marquee_vision_count( $add = 0 ) {
+	$m = wp_date( 'Y-m' );
+	$c = get_option( 'marquee_vision_count' );
+	$n = ( is_array( $c ) && ( $c['m'] ?? '' ) === $m ) ? (int) $c['n'] : 0;
+	if ( $add ) {
+		$n += $add;
+		update_option( 'marquee_vision_count', array( 'm' => $m, 'n' => $n ), false );
+	}
+	return $n;
+}
+
+/** Ask Google Cloud Vision about one picture. Returns the raw answer, or a WP_Error with Google's reason. */
+function marquee_vision_ask( $jpeg, $key ) {
+	$r = wp_remote_post( 'https://vision.googleapis.com/v1/images:annotate?key=' . rawurlencode( $key ), array(
+		'timeout' => 8,
+		'headers' => array( 'Content-Type' => 'application/json' ),
+		'body'    => wp_json_encode( array( 'requests' => array( array(
+			'image'    => array( 'content' => base64_encode( $jpeg ) ),
+			'features' => array(
+				array( 'type' => 'SAFE_SEARCH_DETECTION' ),
+				array( 'type' => 'FACE_DETECTION', 'maxResults' => 5 ),
+				array( 'type' => 'TEXT_DETECTION', 'maxResults' => 1 ),
+			),
+		) ) ) ),
+	) );
+	if ( is_wp_error( $r ) ) {
+		return $r;
+	}
+	$j = json_decode( wp_remote_retrieve_body( $r ), true );
+	if ( 200 !== (int) wp_remote_retrieve_response_code( $r ) ) {
+		return new WP_Error( 'vision', isset( $j['error']['message'] ) ? (string) $j['error']['message'] : 'HTTP ' . wp_remote_retrieve_response_code( $r ) );
+	}
+	marquee_vision_count( 3 );
+	$a = isset( $j['responses'][0] ) ? $j['responses'][0] : array();
+	if ( isset( $a['error']['message'] ) ) {
+		return new WP_Error( 'vision', (string) $a['error']['message'] );
+	}
+	return $a;
+}
+
+/** true = fine to show without the owner; otherwise the reason it waits (shown in Show Control). */
+function marquee_vision_check( $jpeg ) {
+	$a = marquee_vision_ask( $jpeg, (string) marquee_get( 'vision_key' ) );
+	if ( is_wp_error( $a ) ) {
+		return __( 'The automatic check couldn’t run, so it waits for you', 'marquee' );
+	}
+	$bad   = array( 'POSSIBLE', 'LIKELY', 'VERY_LIKELY' );
+	$safe  = isset( $a['safeSearchAnnotation'] ) ? $a['safeSearchAnnotation'] : array();
+	foreach ( array( 'adult', 'violence', 'racy' ) as $k ) {
+		if ( ! isset( $safe[ $k ] ) || in_array( $safe[ $k ], $bad, true ) ) {
+			return __( 'The automatic check wasn’t sure this picture is OK', 'marquee' );
+		}
+	}
+	$faces = isset( $a['faceAnnotations'] ) ? count( $a['faceAnnotations'] ) : 0;
+	if ( 0 === $faces ) {
+		return __( 'The automatic check didn’t find a face', 'marquee' );
+	}
+	if ( $faces > 1 ) {
+		return __( 'The automatic check found more than one face', 'marquee' );
+	}
+	$words = isset( $a['textAnnotations'][0]['description'] ) ? preg_replace( '/[^\p{L}]+/u', '', (string) $a['textAnnotations'][0]['description'] ) : '';
+	if ( mb_strlen( $words ) >= 3 ) {
+		return __( 'The automatic check found words in the picture', 'marquee' );
+	}
+	return true;
+}
+
+/* Settings: "Test the key" */
+add_action( 'wp_ajax_marquee_vision_test', function () {
+	check_ajax_referer( 'marquee_admin', 'nonce' );
+	if ( ! current_user_can( 'manage_options' ) ) {
+		wp_send_json_error( null, 403 );
+	}
+	$key = isset( $_POST['key'] ) ? trim( sanitize_text_field( wp_unslash( $_POST['key'] ) ) ) : '';
+	if ( '' === $key || '••••••••' === $key ) {
+		$key = (string) marquee_get( 'vision_key' );
+	}
+	if ( '' === $key ) {
+		wp_send_json_error( array( 'message' => __( 'Paste your Google Cloud Vision API key first.', 'marquee' ) ) );
+	}
+	// a small plain test picture made right here
+	$im = imagecreatetruecolor( 64, 64 );
+	imagefill( $im, 0, 0, imagecolorallocate( $im, 30, 60, 140 ) );
+	ob_start();
+	imagejpeg( $im, null, 80 );
+	$jpeg = ob_get_clean();
+	imagedestroy( $im );
+	$a = marquee_vision_ask( $jpeg, $key );
+	if ( is_wp_error( $a ) ) {
+		/* translators: %s: Google's own message */
+		wp_send_json_error( array( 'message' => sprintf( __( 'Google said: %s', 'marquee' ), $a->get_error_message() ) ) );
+	}
+	wp_send_json_success( array( 'message' => __( 'Your key works. Click Save to keep it.', 'marquee' ) ) );
 } );

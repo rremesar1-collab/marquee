@@ -11,6 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /** English => translation, only the ones that differ (empty on English sites). */
 function marquee_js_strings() {
 	$all = array(
+		'Asking Google…' => __( 'Asking Google…', 'marquee' ),
 		// admin.js
 		'Looking it up…' => __( 'Looking it up…', 'marquee' ),
 		'Couldn’t look that up.' => __( 'Couldn’t look that up.', 'marquee' ),

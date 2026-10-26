@@ -63,6 +63,8 @@ function marquee_defaults() {
 		'name_msgs'    => array(),           // your own messages kids pick from ('Merry Christmas, NAME!'), up to 6; empty = the standard ones
 		'photos'       => 'off',             // kids' pictures: off, cartoon, photo or both (inc/photos.php)
 		'photos_ack'   => 0,                 // the owner accepted the notice about kids' pictures
+		'photos_auto'  => 0,                 // check pictures automatically (Google Cloud Vision) and skip approving the clean ones
+		'vision_key'   => '',                // the owner's own Google Cloud Vision API key
 	);
 }
 

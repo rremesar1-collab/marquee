@@ -651,3 +651,8 @@
 .mq-notice--warn { border-color: #dba617; background: #fcf9e8; }
 .mq-notice ul { margin: 6px 0 8px 18px; list-style: disc; }
 .mq-notice li { margin: 0 0 6px; }
+.mq-vision { margin-top: 14px; padding-top: 12px; border-top: 1px solid #e0e0e0; }
+.mq-vision__how { margin: 6px 0 10px; }
+.mq-vision__how ol { margin: 8px 0 6px 20px; }
+.mq-vision__how li { margin: 0 0 6px; }
+#mq-vision-key { width: min(360px, 100%); }

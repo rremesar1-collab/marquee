@@ -60,7 +60,7 @@
 			var li = el('li'); li.appendChild(el('span', 'n', i + 1));
 			if (n.photo) { var im = el('img', 'rrc__pic'); im.src = n.photo; im.alt = ''; li.appendChild(im); }
 			var t = el('span', 't'); t.appendChild(el('b', '', n.text)); t.appendChild(el('small', '', tr('sent %s').replace('%s', function () { return n.time; })));
-			if (n.photo) { t.appendChild(el('small', 'rrc__picst' + (n.photo_state === 'ok' ? ' is-ok' : ''), n.photo_state === 'ok' ? tr('Picture approved') : tr('Picture waiting for you: the name waits too (up to 10 minutes)'))); }
+			if (n.photo) { t.appendChild(el('small', 'rrc__picst' + (n.photo_state === 'ok' ? ' is-ok' : ''), n.photo_state === 'ok' ? (n.photo_why || tr('Picture approved')) : (n.photo_why ? n.photo_why + ' · ' : '') + tr('Picture waiting for you: the name waits too (up to 10 minutes)'))); }
 			li.appendChild(t);
 			if (n.photo && n.photo_state !== 'ok') {
 				var ap = el('button', 'rrc__btn pri', tr('Show picture')); ap.type = 'button'; ap.addEventListener('click', function () { act('rr_ctl_photo', { id: n.id, approve: 1 }, tr('Picture approved')); });

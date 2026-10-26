@@ -334,7 +334,7 @@ msgstr ""
 msgid "Choose or drop your names break .xsq (optional)"
 msgstr ""
 
-#: plugin/marquee/inc/seqmaker.php:61 plugin/marquee/inc/i18n-js.php:191
+#: plugin/marquee/inc/seqmaker.php:61 plugin/marquee/inc/i18n-js.php:192
 msgid "Not chosen: everything is made from scratch."
 msgstr ""
 
@@ -531,7 +531,7 @@ msgid "Now playing"
 msgstr ""
 
 #: plugin/marquee/inc/manager.php:246 plugin/marquee/inc/admin.php:932
-#: plugin/marquee/inc/i18n-js.php:279
+#: plugin/marquee/inc/i18n-js.php:280
 msgid "Names in Lights"
 msgstr ""
 
@@ -563,7 +563,7 @@ msgstr ""
 msgid "Keep it on"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:266 plugin/marquee/inc/i18n-js.php:125
+#: plugin/marquee/inc/manager.php:266 plugin/marquee/inc/i18n-js.php:126
 msgid "Tonight’s show is canceled"
 msgstr ""
 
@@ -665,7 +665,7 @@ msgstr ""
 msgid "On every page"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:295 plugin/marquee/inc/photos.php:68
+#: plugin/marquee/inc/manager.php:295 plugin/marquee/inc/photos.php:76
 #: plugin/marquee/inc/social.php:677
 msgid "Off"
 msgstr ""
@@ -791,11 +791,11 @@ msgstr ""
 msgid "Tonight"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:369 plugin/marquee/inc/i18n-js.php:170
+#: plugin/marquee/inc/manager.php:369 plugin/marquee/inc/i18n-js.php:171
 msgid "Names"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:370 plugin/marquee/inc/i18n-js.php:102
+#: plugin/marquee/inc/manager.php:370 plugin/marquee/inc/i18n-js.php:103
 msgid "Approve"
 msgstr ""
 
@@ -803,7 +803,7 @@ msgstr ""
 msgid "Alerts"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:397 plugin/marquee/inc/i18n-js.php:164
+#: plugin/marquee/inc/manager.php:397 plugin/marquee/inc/i18n-js.php:165
 msgid "Show owner"
 msgstr ""
 
@@ -843,7 +843,7 @@ msgid "Couldn’t make the uploads/marquee-voice/break folder."
 msgstr ""
 
 #: plugin/marquee/inc/break.php:118 plugin/marquee/inc/break.php:125
-#: plugin/marquee/inc/i18n-js.php:254
+#: plugin/marquee/inc/i18n-js.php:255
 msgid "Couldn’t save the break audio."
 msgstr ""
 
@@ -868,7 +868,7 @@ msgstr ""
 msgid "What the names break sounds like"
 msgstr ""
 
-#: plugin/marquee/inc/break.php:200 plugin/marquee/inc/i18n-js.php:49
+#: plugin/marquee/inc/break.php:200 plugin/marquee/inc/i18n-js.php:50
 msgid "Intro"
 msgstr ""
 
@@ -884,7 +884,7 @@ msgstr ""
 msgid "up to 6 names, each read out as it goes up on your screens"
 msgstr ""
 
-#: plugin/marquee/inc/break.php:202 plugin/marquee/inc/i18n-js.php:50
+#: plugin/marquee/inc/break.php:202 plugin/marquee/inc/i18n-js.php:51
 msgid "Outro"
 msgstr ""
 
@@ -1028,12 +1028,12 @@ msgid "full break"
 msgstr ""
 
 #: plugin/marquee/inc/break.php:252 plugin/marquee/inc/break.php:288
-#: plugin/marquee/inc/i18n-js.php:259
+#: plugin/marquee/inc/i18n-js.php:260
 msgid "2 names"
 msgstr ""
 
 #: plugin/marquee/inc/break.php:253 plugin/marquee/inc/break.php:289
-#: plugin/marquee/inc/i18n-js.php:261
+#: plugin/marquee/inc/i18n-js.php:262
 msgid "1 name"
 msgstr ""
 
@@ -1164,33 +1164,33 @@ msgid ""
 "outro. Everything is at the loudness of your songs."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:67
+#: plugin/marquee/inc/photos.php:75
 msgid "Kids’ pictures on your screens"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:67
+#: plugin/marquee/inc/photos.php:75
 msgid ""
 "Kids can add a picture of themselves (or a cartoon of it) to their name. You"
 " approve every picture before it goes up."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:68 plugin/marquee/inc/social.php:677
+#: plugin/marquee/inc/photos.php:76 plugin/marquee/inc/social.php:677
 #: plugin/marquee/inc/support.php:370
 msgid "On"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:73
+#: plugin/marquee/inc/photos.php:81
 msgid "Please read before turning this on"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:75
+#: plugin/marquee/inc/photos.php:83
 msgid ""
 "These are pictures of children, shown in public at your show. You are "
 "responsible for what goes up on your screens and for following the laws "
 "where you live."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:76
+#: plugin/marquee/inc/photos.php:84
 msgid ""
 "In the United States, collecting a picture from a child under 13 online is "
 "covered by COPPA, which requires a parent’s permission. Marquee asks a "
@@ -1199,15 +1199,15 @@ msgid ""
 "GDPR)."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:77
+#: plugin/marquee/inc/photos.php:85
 msgid ""
 "Every picture waits for you or a Show helper to approve it in Show Control "
-"or the Show Manager. Nothing goes up on its own. On a busy night that means "
-"someone keeping an eye on it; a name whose picture isn’t approved within 10 "
-"minutes goes up without the picture."
+"or the Show Manager, unless you turn on the automatic check below: then only"
+" the pictures it isn’t sure about wait for you. A name whose picture isn’t "
+"approved within 10 minutes goes up without the picture."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:78
+#: plugin/marquee/inc/photos.php:86
 msgid ""
 "The phone shrinks the picture to a small square before sending it. Marquee "
 "keeps it in a private folder (never in your Media Library, never on a page) "
@@ -1215,59 +1215,158 @@ msgid ""
 "always within 2 hours."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:79
+#: plugin/marquee/inc/photos.php:87
 msgid ""
 "The cartoon version is made on the kid’s own phone: only the cartoon is "
 "sent, never the photo. It’s the safer choice and looks better on pixel "
 "screens."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:80
+#: plugin/marquee/inc/photos.php:88
 msgid ""
 "Pictures need FPP 10 or newer on the FPP that runs each screen, and the "
 "Marquee names script 3.14 or newer. On a small pixel matrix a face is only a"
 " few dozen pixels tall; it looks best on a TV or projector."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:82
+#: plugin/marquee/inc/photos.php:90
 msgid ""
 "This isn’t legal advice. If you’re unsure, ask someone who knows the rules "
 "where you live, or leave this off."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:84
+#: plugin/marquee/inc/photos.php:92
 msgid "I’ve read this and I’m responsible for the pictures shown at my show"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:84
+#: plugin/marquee/inc/photos.php:92
 msgid "Needed before pictures can be turned on."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:85
+#: plugin/marquee/inc/photos.php:93
 msgid "Pictures kids can add"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:87
+#: plugin/marquee/inc/photos.php:95
 msgid "Off (no pictures)"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:88
+#: plugin/marquee/inc/photos.php:96
 msgid "Cartoon only (recommended)"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:89
+#: plugin/marquee/inc/photos.php:97
 msgid "Real photo only"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:90
+#: plugin/marquee/inc/photos.php:98
 msgid "Let the kid pick: cartoon or real photo"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:92
+#: plugin/marquee/inc/photos.php:100
 msgid ""
 "A kid with a picture gets two turns in the names break: first their picture "
 "(while the voice says their name), then their name. In “During songs” mode "
 "the picture shows first, then the name."
+msgstr ""
+
+#: plugin/marquee/inc/photos.php:103
+msgid "Check pictures automatically"
+msgstr ""
+
+#: plugin/marquee/inc/photos.php:103
+msgid ""
+"Google Cloud Vision looks at each picture first. One that’s clean, shows "
+"exactly one face and has no words in it goes up without waiting for you. "
+"Anything else still waits for you in Show Control, with the reason. You can "
+"still remove any name and its picture at any time."
+msgstr ""
+
+#: plugin/marquee/inc/photos.php:104
+msgid "Google Cloud Vision API key"
+msgstr ""
+
+#: plugin/marquee/inc/photos.php:106
+msgid "Test the key"
+msgstr ""
+
+#: plugin/marquee/inc/photos.php:108
+msgid "Remove my Google key"
+msgstr ""
+
+#: plugin/marquee/inc/photos.php:109
+msgid "How to get a free key (about 5 minutes)"
+msgstr ""
+
+#: plugin/marquee/inc/photos.php:111
+msgid ""
+"Go to <a href=\"https://console.cloud.google.com/\" target=\"_blank\" "
+"rel=\"noopener\">console.cloud.google.com</a> and sign in with a Google "
+"account. Make a new project (any name, like “My light show”)."
+msgstr ""
+
+#: plugin/marquee/inc/photos.php:112
+msgid ""
+"Search for “Cloud Vision API” at the top, open it and click Enable. Google "
+"asks you to set up billing (a card on file) even for the free checks."
+msgstr ""
+
+#: plugin/marquee/inc/photos.php:113
+msgid ""
+"Go to APIs & Services → Credentials → Create credentials → API key. Copy the"
+" key and paste it above, then click Test the key and Save."
+msgstr ""
+
+#: plugin/marquee/inc/photos.php:114
+msgid "Recommended: on the key, choose Restrict key → Cloud Vision API only."
+msgstr ""
+
+#: plugin/marquee/inc/photos.php:116
+msgid ""
+"Each picture uses 3 checks (safe, faces, words). Google gives 1,000 checks a"
+" month free, about 330 pictures; after that it’s about $1.50 per 1,000 "
+"checks (Google’s price, it may change). The picture is sent to Google only "
+"to be checked."
+msgstr ""
+
+#: plugin/marquee/inc/photos.php:118
+msgid "Checks used this month: %s (1,000 free each month)."
+msgstr ""
+
+#: plugin/marquee/inc/photos.php:298
+msgid "Approved by the automatic check"
+msgstr ""
+
+#: plugin/marquee/inc/photos.php:372
+msgid "The automatic check couldn’t run, so it waits for you"
+msgstr ""
+
+#: plugin/marquee/inc/photos.php:378
+msgid "The automatic check wasn’t sure this picture is OK"
+msgstr ""
+
+#: plugin/marquee/inc/photos.php:383
+msgid "The automatic check didn’t find a face"
+msgstr ""
+
+#: plugin/marquee/inc/photos.php:386
+msgid "The automatic check found more than one face"
+msgstr ""
+
+#: plugin/marquee/inc/photos.php:390
+msgid "The automatic check found words in the picture"
+msgstr ""
+
+#: plugin/marquee/inc/photos.php:406
+msgid "Paste your Google Cloud Vision API key first."
+msgstr ""
+
+#: plugin/marquee/inc/photos.php:418
+msgid "Google said: %s"
+msgstr ""
+
+#: plugin/marquee/inc/photos.php:420
+msgid "Your key works. Click Save to keep it."
 msgstr ""
 
 #: plugin/marquee/inc/themes.php:42
@@ -1694,7 +1793,7 @@ msgid "And the Instagram account linked to it, if you have one"
 msgstr ""
 
 #: plugin/marquee/inc/social.php:625 plugin/marquee/inc/social.php:653
-#: plugin/marquee/inc/i18n-js.php:74
+#: plugin/marquee/inc/i18n-js.php:75
 msgid "Not connected"
 msgstr ""
 
@@ -1963,7 +2062,7 @@ msgstr ""
 msgid "All"
 msgstr ""
 
-#: plugin/marquee/inc/social.php:719 plugin/marquee/inc/i18n-js.php:71
+#: plugin/marquee/inc/social.php:719 plugin/marquee/inc/i18n-js.php:72
 msgid "View"
 msgstr ""
 
@@ -2115,7 +2214,7 @@ msgstr ""
 msgid "Next step"
 msgstr ""
 
-#: plugin/marquee/inc/walk.php:88 plugin/marquee/inc/i18n-js.php:153
+#: plugin/marquee/inc/walk.php:88 plugin/marquee/inc/i18n-js.php:154
 msgid "Pause"
 msgstr ""
 
@@ -2505,7 +2604,7 @@ msgstr ""
 msgid "A support session is already open."
 msgstr ""
 
-#: plugin/marquee/inc/support.php:617 plugin/marquee/inc/i18n-js.php:183
+#: plugin/marquee/inc/support.php:617 plugin/marquee/inc/i18n-js.php:184
 msgid "Please tell Marquee Support what’s wrong."
 msgstr ""
 
@@ -2521,7 +2620,7 @@ msgstr ""
 msgid "Support picture"
 msgstr ""
 
-#: plugin/marquee/inc/support.php:648 plugin/marquee/inc/i18n-js.php:127
+#: plugin/marquee/inc/support.php:648 plugin/marquee/inc/i18n-js.php:128
 msgid "Type a message first."
 msgstr ""
 
@@ -3635,7 +3734,7 @@ msgid "— Pick a screen —"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:435 plugin/marquee/inc/admin.php:438
-#: plugin/marquee/inc/i18n-js.php:179
+#: plugin/marquee/inc/i18n-js.php:180
 msgid "Screens"
 msgstr ""
 
@@ -3959,7 +4058,7 @@ msgid "Your own"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:619 plugin/marquee/inc/admin.php:786
-#: plugin/marquee/inc/i18n-js.php:33
+#: plugin/marquee/inc/i18n-js.php:34
 msgid "Standard"
 msgstr ""
 
@@ -4089,7 +4188,7 @@ msgid ""
 "door is hidden."
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:702 plugin/marquee/inc/i18n-js.php:24
+#: plugin/marquee/inc/admin.php:702 plugin/marquee/inc/i18n-js.php:25
 msgid "Restore"
 msgstr ""
 
@@ -4152,11 +4251,11 @@ msgid ""
 "with your picture. Once per night, so it never posts twice."
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:763 plugin/marquee/inc/i18n-js.php:152
+#: plugin/marquee/inc/admin.php:763 plugin/marquee/inc/i18n-js.php:153
 msgid "Back"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:764 plugin/marquee/inc/i18n-js.php:154
+#: plugin/marquee/inc/admin.php:764 plugin/marquee/inc/i18n-js.php:155
 msgid "Next"
 msgstr ""
 
@@ -4185,7 +4284,7 @@ msgstr ""
 msgid "Choose MP3"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:790 plugin/marquee/inc/i18n-js.php:34
+#: plugin/marquee/inc/admin.php:790 plugin/marquee/inc/i18n-js.php:35
 msgid "Choose picture"
 msgstr ""
 
@@ -5142,7 +5241,7 @@ msgstr ""
 msgid "Answers by"
 msgstr ""
 
-#: plugin/marquee/inc/ai.php:371 plugin/marquee/inc/i18n-js.php:151
+#: plugin/marquee/inc/ai.php:371 plugin/marquee/inc/i18n-js.php:152
 msgid "Close"
 msgstr ""
 
@@ -5211,7 +5310,7 @@ msgid ""
 "Your question and your site’s setup (never passwords or keys) are sent to"
 msgstr ""
 
-#: plugin/marquee/inc/ai.php:401 plugin/marquee/inc/i18n-js.php:265
+#: plugin/marquee/inc/ai.php:401 plugin/marquee/inc/i18n-js.php:266
 msgid "the AI you pick"
 msgstr ""
 
@@ -5249,873 +5348,877 @@ msgid ""
 "The AI’s answer didn’t make sense. Try describing it a little differently."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:15
-msgid "Looking it up…"
+#: plugin/marquee/inc/i18n-js.php:14
+msgid "Asking Google…"
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:16
-msgid "Couldn’t look that up."
+msgid "Looking it up…"
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:17
-msgid "Found it: %s. Check the fields below."
+msgid "Couldn’t look that up."
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:18
-msgid "radar %s"
+msgid "Found it: %s. Check the fields below."
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:19
-msgid "Couldn’t reach the website. Try again."
+msgid "radar %s"
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:20
-msgid "New logo picked. Click Save settings to use it."
+msgid "Couldn’t reach the website. Try again."
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:21
-msgid "Testing…"
+msgid "New logo picked. Click Save settings to use it."
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:22
+msgid "Testing…"
+msgstr ""
+
+#: plugin/marquee/inc/i18n-js.php:23
 msgid "Test failed."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:25
+#: plugin/marquee/inc/i18n-js.php:26
 msgid ""
 "That’s the key ID, not the key. The API key starts with sk_ and ElevenLabs "
 "shows it only once, when you create the key."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:26
+#: plugin/marquee/inc/i18n-js.php:27
 msgid "Loading…"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:27
+#: plugin/marquee/inc/i18n-js.php:28
 msgid "Couldn’t load your voices."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:28
+#: plugin/marquee/inc/i18n-js.php:29
 msgid "My voices"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:29
+#: plugin/marquee/inc/i18n-js.php:30
 msgid "ElevenLabs voices"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:30
+#: plugin/marquee/inc/i18n-js.php:31
 msgid "%s voices. Pick one, then Test voice."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:31
+#: plugin/marquee/inc/i18n-js.php:32
 msgid "Making the clip…"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:32
+#: plugin/marquee/inc/i18n-js.php:33
 msgid "Song"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:35
+#: plugin/marquee/inc/i18n-js.php:36
 msgid "Use these songs"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:36
+#: plugin/marquee/inc/i18n-js.php:37
 msgid "Use these pictures"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:37
+#: plugin/marquee/inc/i18n-js.php:38
 msgid "Use this picture"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:39
+#: plugin/marquee/inc/i18n-js.php:40
 msgid "Posting…"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:40
+#: plugin/marquee/inc/i18n-js.php:41
 msgid "Nothing was posted."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:41
+#: plugin/marquee/inc/i18n-js.php:42
 msgid "Couldn’t reach your website."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:42
+#: plugin/marquee/inc/i18n-js.php:43
 msgid "Checking…"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:43
+#: plugin/marquee/inc/i18n-js.php:44
 msgid "Something went wrong."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:44
+#: plugin/marquee/inc/i18n-js.php:45
 msgid "Connecting…"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:45
+#: plugin/marquee/inc/i18n-js.php:46
 msgid "Connected to @%s!"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:46
+#: plugin/marquee/inc/i18n-js.php:47
 msgid "Which Page should Marquee post on?"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:47
+#: plugin/marquee/inc/i18n-js.php:48
 msgid "Saving…"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:48
+#: plugin/marquee/inc/i18n-js.php:49
 msgid "Connected to %s!"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:51
+#: plugin/marquee/inc/i18n-js.php:52
 msgid "Names go up at %1$s. Each one stays up about %2$s s."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:52
+#: plugin/marquee/inc/i18n-js.php:53
 msgid ""
 "The 6th name ends at %1$s s, after your %2$s s break: lower one of the "
 "numbers."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:53
+#: plugin/marquee/inc/i18n-js.php:54
 msgid "The last name is done at %1$s s of your %2$s s break."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:54
+#: plugin/marquee/inc/i18n-js.php:55
 msgid "No NAME in it, so the name goes at the end."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:55
+#: plugin/marquee/inc/i18n-js.php:56
 msgid "Emoji are left out: the screens can’t show them."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:56
+#: plugin/marquee/inc/i18n-js.php:57
 msgid "Unblock %s"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:57
+#: plugin/marquee/inc/i18n-js.php:58
 msgid "%s blocked"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:58
+#: plugin/marquee/inc/i18n-js.php:59
 msgid "Copied ✓"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:59
+#: plugin/marquee/inc/i18n-js.php:60
 msgid "That didn’t work. Try again."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:60
+#: plugin/marquee/inc/i18n-js.php:61
 msgid "No cover (save to keep)"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:61
+#: plugin/marquee/inc/i18n-js.php:62
 msgid "Automatic (save to see it)"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:62
+#: plugin/marquee/inc/i18n-js.php:63
 msgid "Cover for this song"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:63
+#: plugin/marquee/inc/i18n-js.php:64
 msgid "Your picture (save to keep)"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:65
+#: plugin/marquee/inc/i18n-js.php:66
 msgid "FPP hasn’t checked in yet"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:66
+#: plugin/marquee/inc/i18n-js.php:67
 msgid "FPP checked in %s sec ago"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:67
+#: plugin/marquee/inc/i18n-js.php:68
 msgid "FPP checked in %s min ago"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:68
+#: plugin/marquee/inc/i18n-js.php:69
 msgid "FPP last checked in %s h ago"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:69
+#: plugin/marquee/inc/i18n-js.php:70
 msgid "Set it up"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:70
+#: plugin/marquee/inc/i18n-js.php:71
 msgid "Posting on social media…"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:72
+#: plugin/marquee/inc/i18n-js.php:73
 msgid "Copy the post for other sites (Nextdoor, groups…)"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:73
+#: plugin/marquee/inc/i18n-js.php:74
 msgid "Copied!"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:75
+#: plugin/marquee/inc/i18n-js.php:76
 msgid "Not checking in"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:76
+#: plugin/marquee/inc/i18n-js.php:77
 msgid "Playing"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:77
+#: plugin/marquee/inc/i18n-js.php:78
 msgid "Idle"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:79
+#: plugin/marquee/inc/i18n-js.php:80
 msgid "Paused"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:80
+#: plugin/marquee/inc/i18n-js.php:81
 msgid "Open"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:81
+#: plugin/marquee/inc/i18n-js.php:82
 msgid "Closed"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:82
+#: plugin/marquee/inc/i18n-js.php:83
 msgid "%s in the Kids’ Corner"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:83
+#: plugin/marquee/inc/i18n-js.php:84
 msgid ""
 "Names only from phones within %s of your show. You can still send test names"
 " from anywhere."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:84
+#: plugin/marquee/inc/i18n-js.php:85
 msgid "Website visits"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:85
+#: plugin/marquee/inc/i18n-js.php:86
 msgid "Names sent"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:86
+#: plugin/marquee/inc/i18n-js.php:87
 msgid "Names shown"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:87
+#: plugin/marquee/inc/i18n-js.php:88
 msgid "Light Lab plays"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:88
+#: plugin/marquee/inc/i18n-js.php:89
 msgid "Song votes"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:89
+#: plugin/marquee/inc/i18n-js.php:90
 msgid "Hearts"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:90
+#: plugin/marquee/inc/i18n-js.php:91
 msgid "No names waiting."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:91
+#: plugin/marquee/inc/i18n-js.php:92
 msgid "sent %s"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:92
+#: plugin/marquee/inc/i18n-js.php:93
 msgid "Removed"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:93
+#: plugin/marquee/inc/i18n-js.php:94
 msgid "Block"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:94
+#: plugin/marquee/inc/i18n-js.php:95
 msgid "Removed and blocked"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:95
+#: plugin/marquee/inc/i18n-js.php:96
 msgid "%s tonight"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:96
+#: plugin/marquee/inc/i18n-js.php:97
 msgid "Nothing shown yet."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:97
+#: plugin/marquee/inc/i18n-js.php:98
 msgid "All caught up."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:98
+#: plugin/marquee/inc/i18n-js.php:99
 msgid "The contest is off."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:99
+#: plugin/marquee/inc/i18n-js.php:100
 msgid "My Light Show"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:100
+#: plugin/marquee/inc/i18n-js.php:101
 msgid "%1$s, age %2$s"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:101
+#: plugin/marquee/inc/i18n-js.php:102
 msgid "Watch"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:103
+#: plugin/marquee/inc/i18n-js.php:104
 msgid "Approved: now on the Show Wall"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:104
+#: plugin/marquee/inc/i18n-js.php:105
 msgid "Decline"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:105
+#: plugin/marquee/inc/i18n-js.php:106
 msgid "Declined"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:106
+#: plugin/marquee/inc/i18n-js.php:107
 msgid "No new messages."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:107
+#: plugin/marquee/inc/i18n-js.php:108
 msgid "Approved: now in the guestbook"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:108
+#: plugin/marquee/inc/i18n-js.php:109
 msgid "Delete"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:109
+#: plugin/marquee/inc/i18n-js.php:110
 msgid "Deleted"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:110
+#: plugin/marquee/inc/i18n-js.php:111
 msgid "On your website until %1$s (%2$s left)"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:111
+#: plugin/marquee/inc/i18n-js.php:112
 msgid "Turn it off"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:112
+#: plugin/marquee/inc/i18n-js.php:113
 msgid "Traffic alert off"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:114
+#: plugin/marquee/inc/i18n-js.php:115
 msgid "Show canceled"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:115
+#: plugin/marquee/inc/i18n-js.php:116
 msgid "Sent by you"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:116
+#: plugin/marquee/inc/i18n-js.php:117
 msgid "No alerts sent yet."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:117
+#: plugin/marquee/inc/i18n-js.php:118
 msgid "%s sent"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:118
+#: plugin/marquee/inc/i18n-js.php:119
 msgid "Saved"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:119
+#: plugin/marquee/inc/i18n-js.php:120
 msgid "You’ve been signed out. Reloading…"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:120
+#: plugin/marquee/inc/i18n-js.php:121
 msgid "Couldn’t save. Try again."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:121
+#: plugin/marquee/inc/i18n-js.php:122
 msgid "No connection. Check your phone’s signal."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:122
+#: plugin/marquee/inc/i18n-js.php:123
 msgid "Turned on"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:123
+#: plugin/marquee/inc/i18n-js.php:124
 msgid "Turned off"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:124
+#: plugin/marquee/inc/i18n-js.php:125
 msgid "Traffic alert is on"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:126
+#: plugin/marquee/inc/i18n-js.php:127
 msgid "The show is back on"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:128
+#: plugin/marquee/inc/i18n-js.php:129
 msgid "Send “%1$s” to %2$s phone?"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:129
+#: plugin/marquee/inc/i18n-js.php:130
 msgid "Send “%1$s” to %2$s phones?"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:130
+#: plugin/marquee/inc/i18n-js.php:131
 msgid "Sending…"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:131
+#: plugin/marquee/inc/i18n-js.php:132
 msgid "(%s didn’t go through)"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:132
+#: plugin/marquee/inc/i18n-js.php:133
 msgid "Couldn’t send. Try again."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:133
+#: plugin/marquee/inc/i18n-js.php:134
 msgid "%s name waiting"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:134
+#: plugin/marquee/inc/i18n-js.php:135
 msgid "%s names waiting"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:135
+#: plugin/marquee/inc/i18n-js.php:136
 msgid "%s person"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:136
+#: plugin/marquee/inc/i18n-js.php:137
 msgid "%s people"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:137
+#: plugin/marquee/inc/i18n-js.php:138
 msgid "%s entry"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:138
+#: plugin/marquee/inc/i18n-js.php:139
 msgid "%s entries"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:139
+#: plugin/marquee/inc/i18n-js.php:140
 msgid "Goes to %s phone that chose “special news”."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:140
+#: plugin/marquee/inc/i18n-js.php:141
 msgid "Goes to %s phones that chose “special news”."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:141
+#: plugin/marquee/inc/i18n-js.php:142
 msgid "Also send a “No show tonight” alert to %s phone"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:142
+#: plugin/marquee/inc/i18n-js.php:143
 msgid "Also send a “No show tonight” alert to %s phones"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:143
+#: plugin/marquee/inc/i18n-js.php:144
 msgid "Also send a phone alert to %s phone"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:144
+#: plugin/marquee/inc/i18n-js.php:145
 msgid "Also send a phone alert to %s phones"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:145
+#: plugin/marquee/inc/i18n-js.php:146
 msgid "Done. Alert sent to %s phone"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:146
+#: plugin/marquee/inc/i18n-js.php:147
 msgid "Done. Alert sent to %s phones"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:147
+#: plugin/marquee/inc/i18n-js.php:148
 msgid "Sent to %s phone"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:148
+#: plugin/marquee/inc/i18n-js.php:149
 msgid "Sent to %s phones"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:150
+#: plugin/marquee/inc/i18n-js.php:151
 msgid "Render All, play it, then Save → <b>.fseq</b>"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:155
+#: plugin/marquee/inc/i18n-js.php:156
 msgid "Play"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:156
+#: plugin/marquee/inc/i18n-js.php:157
 msgid "Done"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:157
+#: plugin/marquee/inc/i18n-js.php:158
 msgid "On remotefalcon.com"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:158
+#: plugin/marquee/inc/i18n-js.php:159
 msgid "On elevenlabs.io"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:159
+#: plugin/marquee/inc/i18n-js.php:160
 msgid "On your FPP"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:160
+#: plugin/marquee/inc/i18n-js.php:161
 msgid "In xLights (picture)"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:162
+#: plugin/marquee/inc/i18n-js.php:163
 msgid "You"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:163
+#: plugin/marquee/inc/i18n-js.php:164
 msgid "Marquee Support"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:166
+#: plugin/marquee/inc/i18n-js.php:167
 msgid "Status"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:167
+#: plugin/marquee/inc/i18n-js.php:168
 msgid "(names only go up while a playlist is playing)"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:168
+#: plugin/marquee/inc/i18n-js.php:169
 msgid "Playlist"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:169
+#: plugin/marquee/inc/i18n-js.php:170
 msgid "Sequence"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:171
+#: plugin/marquee/inc/i18n-js.php:172
 msgid "during songs"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:172
+#: plugin/marquee/inc/i18n-js.php:173
 msgid "between songs"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:173
+#: plugin/marquee/inc/i18n-js.php:174
 msgid "break playlist: %s"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:174
+#: plugin/marquee/inc/i18n-js.php:175
 msgid "Names script"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:175
+#: plugin/marquee/inc/i18n-js.php:176
 msgid "(Marquee plugin)"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:176
+#: plugin/marquee/inc/i18n-js.php:177
 msgid "(by hand)"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:177
+#: plugin/marquee/inc/i18n-js.php:178
 msgid "Checked in"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:178
+#: plugin/marquee/inc/i18n-js.php:179
 msgid "%s ago"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:180
+#: plugin/marquee/inc/i18n-js.php:181
 msgid "Sequences on the FPP (%s)"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:181
+#: plugin/marquee/inc/i18n-js.php:182
 msgid "Playlists on the FPP (%s)"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:182
+#: plugin/marquee/inc/i18n-js.php:183
 msgid "Names script log"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:184
+#: plugin/marquee/inc/i18n-js.php:185
 msgid "Something went wrong. Please try again."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:185
+#: plugin/marquee/inc/i18n-js.php:186
 msgid "That didn’t send. Please try again."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:187
+#: plugin/marquee/inc/i18n-js.php:188
 msgid "Couldn’t read %s"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:188
+#: plugin/marquee/inc/i18n-js.php:189
 msgid "Not chosen yet."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:189
+#: plugin/marquee/inc/i18n-js.php:190
 msgid "%1$s: %2$s props found (%3$s)"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:190
+#: plugin/marquee/inc/i18n-js.php:191
 msgid ""
 "That doesn’t look like xlights_rgbeffects.xml. Pick the file with that name "
 "from your xLights show folder."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:192
+#: plugin/marquee/inc/i18n-js.php:193
 msgid "%1$s: themes keep its look, timing and %2$s props with effects."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:193
+#: plugin/marquee/inc/i18n-js.php:194
 msgid "The names will line up with your names break audio."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:194
+#: plugin/marquee/inc/i18n-js.php:195
 msgid "In it, the first name is %1$s seconds in, then one every %2$s seconds."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:195
+#: plugin/marquee/inc/i18n-js.php:196
 msgid "The names will use the same times as your names break."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:196
+#: plugin/marquee/inc/i18n-js.php:197
 msgid "That isn’t an xLights sequence (.xsq)."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:197
+#: plugin/marquee/inc/i18n-js.php:198
 msgid ""
 "%1$s of %2$s themes picked. 3 or 4 is plenty: kids pick faster, and each one"
 " is a sequence to render."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:198
+#: plugin/marquee/inc/i18n-js.php:199
 msgid ""
 "%1$s of %2$s themes picked, the most kids can choose from. Untick one to "
 "pick another."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:199
+#: plugin/marquee/inc/i18n-js.php:200
 msgid ""
 "You already have %1$s theme set up under Themes kids can pick, so “Use it” "
 "only has room for %2$s more."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:200
+#: plugin/marquee/inc/i18n-js.php:201
 msgid ""
 "You already have %1$s themes set up under Themes kids can pick, so “Use it” "
 "only has room for %2$s more."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:201
+#: plugin/marquee/inc/i18n-js.php:202
 msgid "You already have %s theme set up under Themes kids can pick."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:202
+#: plugin/marquee/inc/i18n-js.php:203
 msgid "You already have %s themes set up under Themes kids can pick."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:203
+#: plugin/marquee/inc/i18n-js.php:204
 msgid ""
 "Choose your xlights_rgbeffects.xml first (step 1), so the AI knows which "
 "props you have."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:204
+#: plugin/marquee/inc/i18n-js.php:205
 msgid "Asking the AI…"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:205
+#: plugin/marquee/inc/i18n-js.php:206
 msgid "Added “%s”. Add another, or make your sequences when you’re ready."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:206
+#: plugin/marquee/inc/i18n-js.php:207
 msgid ""
 "Added “%s”, but not ticked: 6 themes are already picked. Untick one to use "
 "it."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:207
+#: plugin/marquee/inc/i18n-js.php:208
 msgid "Choose your xlights_rgbeffects.xml first (step 1)."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:208
+#: plugin/marquee/inc/i18n-js.php:209
 msgid "Tick at least one thing to make (step 3)."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:209
+#: plugin/marquee/inc/i18n-js.php:210
 msgid "Making your names break needs your layout file (step 1)."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:210
+#: plugin/marquee/inc/i18n-js.php:211
 msgid "lined up with your names break audio"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:211
+#: plugin/marquee/inc/i18n-js.php:212
 msgid "taken from your sequence"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:212
+#: plugin/marquee/inc/i18n-js.php:213
 msgid "the same as your names break"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:213
+#: plugin/marquee/inc/i18n-js.php:214
 msgid "set by Marquee"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:214
+#: plugin/marquee/inc/i18n-js.php:215
 msgid "First name %1$s seconds in, then a new name every %2$s seconds (%3$s)"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:215
+#: plugin/marquee/inc/i18n-js.php:216
 msgid "%1$s main effects changed, %2$s recolored"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:216
+#: plugin/marquee/inc/i18n-js.php:217
 msgid "%1$s props, %2$s"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:217
+#: plugin/marquee/inc/i18n-js.php:218
 msgid "left dark for the names: %s"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:218
+#: plugin/marquee/inc/i18n-js.php:219
 msgid "%s: filled in for you."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:219
+#: plugin/marquee/inc/i18n-js.php:220
 msgid "Download .xsq"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:220
+#: plugin/marquee/inc/i18n-js.php:221
 msgid "Use it: add to the themes kids pick from"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:221
+#: plugin/marquee/inc/i18n-js.php:222
 msgid ""
 "No screens are filled in under card 1 yet, so nothing was left dark for the "
 "names. Add your screens, Save, and make them again."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:222
+#: plugin/marquee/inc/i18n-js.php:223
 msgid "Done. Download them, then follow the steps below."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:223
+#: plugin/marquee/inc/i18n-js.php:224
 msgid "All 6 theme spots are used"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:224
+#: plugin/marquee/inc/i18n-js.php:225
 msgid "Added under Themes kids can pick. Save settings to keep it."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:225
+#: plugin/marquee/inc/i18n-js.php:226
 msgid "%s trees"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:226
+#: plugin/marquee/inc/i18n-js.php:227
 msgid "%s stars"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:227
+#: plugin/marquee/inc/i18n-js.php:228
 msgid "%s arches"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:228
+#: plugin/marquee/inc/i18n-js.php:229
 msgid "%s candy canes"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:229
+#: plugin/marquee/inc/i18n-js.php:230
 msgid "%s spinners"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:230
+#: plugin/marquee/inc/i18n-js.php:231
 msgid "%s snowflakes"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:231
+#: plugin/marquee/inc/i18n-js.php:232
 msgid "%s windows"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:232
+#: plugin/marquee/inc/i18n-js.php:233
 msgid "%s lines and outlines"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:233
+#: plugin/marquee/inc/i18n-js.php:234
 msgid "%s floods"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:234
+#: plugin/marquee/inc/i18n-js.php:235
 msgid "%s presents"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:235
+#: plugin/marquee/inc/i18n-js.php:236
 msgid "%s matrices"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:236
+#: plugin/marquee/inc/i18n-js.php:237
 msgid "%s other props"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:238
+#: plugin/marquee/inc/i18n-js.php:239
 msgid "%s isn’t a valid file."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:239
+#: plugin/marquee/inc/i18n-js.php:240
 msgid "The layout file (xlights_rgbeffects.xml)"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:240
+#: plugin/marquee/inc/i18n-js.php:241
 msgid "Unknown theme."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:241
+#: plugin/marquee/inc/i18n-js.php:242
 msgid "The theme needs at least one color."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:242
+#: plugin/marquee/inc/i18n-js.php:243
 msgid "The sequence (.xsq)"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:243
+#: plugin/marquee/inc/i18n-js.php:244
 msgid "That doesn’t look like an xLights sequence."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:244
+#: plugin/marquee/inc/i18n-js.php:245
 msgid "No props found in that layout file."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:245
+#: plugin/marquee/inc/i18n-js.php:246
 msgid "The new sequence"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:247
+#: plugin/marquee/inc/i18n-js.php:248
 msgid "Couldn’t load %s"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:248
+#: plugin/marquee/inc/i18n-js.php:249
 msgid "Making the intro and outro with your voice…"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:249
+#: plugin/marquee/inc/i18n-js.php:250
 msgid "Couldn’t make the lines."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:250
+#: plugin/marquee/inc/i18n-js.php:251
 msgid "Mixing…"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:251
+#: plugin/marquee/inc/i18n-js.php:252
 msgid ""
 "The intro and outro are too long for a %s second sequence (each name needs "
 "about 3 seconds). Shorten the lines and build again."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:252
+#: plugin/marquee/inc/i18n-js.php:253
 msgid "Mixing the full break…"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:253
+#: plugin/marquee/inc/i18n-js.php:254
 msgid "Mixing the short breaks…"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:255
+#: plugin/marquee/inc/i18n-js.php:256
 msgid ""
 "Done! Names start at %1$s s, one every %2$s s. Your FPP picks it up within a"
 " minute."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:256
+#: plugin/marquee/inc/i18n-js.php:257
 msgid ""
 "Why do they sound alike? The names aren’t in these files: your FPP says each"
 " name live, over the soft music, the moment it goes up on your screens. The "
@@ -6123,122 +6226,122 @@ msgid ""
 "FPP picks the right one by itself, depending on how many names are waiting."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:257
+#: plugin/marquee/inc/i18n-js.php:258
 msgid "Full break"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:258
+#: plugin/marquee/inc/i18n-js.php:259
 msgid "3 to 6 names waiting: room for 6 names"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:260
+#: plugin/marquee/inc/i18n-js.php:261
 msgid "2 names waiting: each said twice"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:262
+#: plugin/marquee/inc/i18n-js.php:263
 msgid "1 name waiting: said twice"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:264
+#: plugin/marquee/inc/i18n-js.php:265
 msgid "Couldn’t reach your website. Try again."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:266
+#: plugin/marquee/inc/i18n-js.php:267
 msgid "OK, %s answers from now on."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:267
+#: plugin/marquee/inc/i18n-js.php:268
 msgid "Got it, %s will answer. Ask away!"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:268
+#: plugin/marquee/inc/i18n-js.php:269
 msgid "Couldn’t save the key."
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:270
+#: plugin/marquee/inc/i18n-js.php:271
 msgid "HO HO HO, %s!"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:271
+#: plugin/marquee/inc/i18n-js.php:272
 msgid "MERRY CHRISTMAS, %s!"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:273
+#: plugin/marquee/inc/i18n-js.php:274
 msgid "Your Name in Lights!"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:274
+#: plugin/marquee/inc/i18n-js.php:275
 msgid "Sent!"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:275
+#: plugin/marquee/inc/i18n-js.php:276
 msgid "Watch for your name after this song in %s"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:276
+#: plugin/marquee/inc/i18n-js.php:277
 msgid "Watch for your name after this song"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:277
+#: plugin/marquee/inc/i18n-js.php:278
 msgid "Your first name"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:278
+#: plugin/marquee/inc/i18n-js.php:279
 msgid "Put My Name in Lights!"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:280
+#: plugin/marquee/inc/i18n-js.php:281
 msgid "1. A kid types their name and picks a show"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:281
+#: plugin/marquee/inc/i18n-js.php:282
 msgid "1. A kid types their name on your website"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:282
+#: plugin/marquee/inc/i18n-js.php:283
 msgid "2. After the current song, the names break plays…"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:283
+#: plugin/marquee/inc/i18n-js.php:284
 msgid "3. …in the show they picked, with their name on your matrix or TV"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:284
+#: plugin/marquee/inc/i18n-js.php:285
 msgid "3. …and their name goes up on your matrix or TV"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:285
+#: plugin/marquee/inc/i18n-js.php:286
 msgid "Ho ho ho, %s!"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:286
+#: plugin/marquee/inc/i18n-js.php:287
 msgid "Merry Christmas, %s!"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:287
+#: plugin/marquee/inc/i18n-js.php:288
 msgid "A kid sends their name → it goes up on your matrix or TV between songs"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:288
+#: plugin/marquee/inc/i18n-js.php:289
 msgid "Ho ho ho! Hi %s, Santa loves you too!"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:289
+#: plugin/marquee/inc/i18n-js.php:290
 msgid "Happy Holidays, %s!"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:290
+#: plugin/marquee/inc/i18n-js.php:291
 msgid "HAPPY HOLIDAYS, %s!"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:292
+#: plugin/marquee/inc/i18n-js.php:293
 msgid "Music"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:294
+#: plugin/marquee/inc/i18n-js.php:295
 msgid "light show"
 msgstr ""
 
-#: plugin/marquee/inc/i18n-js.php:295
+#: plugin/marquee/inc/i18n-js.php:296
 msgid "christmas"
 msgstr ""

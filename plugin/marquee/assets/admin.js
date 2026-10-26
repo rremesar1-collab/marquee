@@ -189,6 +189,19 @@ var tr = function (s) { var d = window.rrI18n; return (d && d[s]) || s; };
 		});
 	}
 
+	/* Kids' pictures: test the Google Cloud Vision key */
+	var vtBtn = $('[data-mq-vision-test]');
+	if (vtBtn) {
+		vtBtn.addEventListener('click', function () {
+			var m = $('[data-mq-vision-msg]');
+			vtBtn.disabled = true; say(m, tr('Asking Google…'), true);
+			post('marquee_vision_test', { key: $('#mq-vision-key').value }).then(function (j) {
+				vtBtn.disabled = false;
+				say(m, (j && j.data && j.data.message) || tr('Test failed.'), !!(j && j.success));
+			}).catch(function () { vtBtn.disabled = false; say(m, tr('Couldn’t reach the website. Try again.'), false); });
+		});
+	}
+
 	/* picture pickers (Media Library) */
 	root.querySelectorAll('[data-mq-media]').forEach(function (box) {
 		var multi = box.getAttribute('data-multi') === '1', input = box.querySelector('[data-mq-ids]');

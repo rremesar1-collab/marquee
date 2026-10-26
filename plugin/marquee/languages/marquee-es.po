@@ -1136,14 +1136,15 @@ msgstr ""
 
 msgid ""
 "Every picture waits for you or a Show helper to approve it in Show Control "
-"or the Show Manager. Nothing goes up on its own. On a busy night that means "
-"someone keeping an eye on it; a name whose picture isn’t approved within 10 "
-"minutes goes up without the picture."
+"or the Show Manager, unless you turn on the automatic check below: then only"
+" the pictures it isn’t sure about wait for you. A name whose picture isn’t "
+"approved within 10 minutes goes up without the picture."
 msgstr ""
 "Cada foto espera a que tú o un Ayudante del espectáculo la aprueben en "
-"Control del espectáculo o en el Administrador del espectáculo. Nada sale por"
-" sí solo. En una noche con mucha gente, alguien tiene que estar pendiente; "
-"si una foto no se aprueba en 10 minutos, el nombre sale sin la foto."
+"Control del espectáculo o en el Administrador del espectáculo, a menos que "
+"actives la revisión automática de abajo: así solo esperan las fotos de las "
+"que no esté segura. Si una foto no se aprueba en 10 minutos, el nombre sale "
+"sin la foto."
 
 msgid ""
 "The phone shrinks the picture to a small square before sending it. Marquee "
@@ -1212,6 +1213,100 @@ msgstr ""
 "Un niño con foto tiene dos turnos en la pausa de nombres: primero su foto "
 "(mientras la voz dice su nombre) y luego su nombre. En el modo “Durante las "
 "canciones” sale primero la foto y luego el nombre."
+
+msgid "Check pictures automatically"
+msgstr "Revisar las fotos automáticamente"
+
+msgid ""
+"Google Cloud Vision looks at each picture first. One that’s clean, shows "
+"exactly one face and has no words in it goes up without waiting for you. "
+"Anything else still waits for you in Show Control, with the reason. You can "
+"still remove any name and its picture at any time."
+msgstr ""
+"Google Cloud Vision revisa cada foto primero. Si está limpia, muestra "
+"exactamente una cara y no tiene palabras, sale sin esperarte. Todo lo demás "
+"te sigue esperando en Control del espectáculo, con el motivo. Igual puedes "
+"quitar cualquier nombre y su foto cuando quieras."
+
+msgid "Google Cloud Vision API key"
+msgstr "Clave API de Google Cloud Vision"
+
+msgid "Test the key"
+msgstr "Probar la clave"
+
+msgid "Remove my Google key"
+msgstr "Quitar mi clave de Google"
+
+msgid "How to get a free key (about 5 minutes)"
+msgstr "Cómo conseguir una clave gratis (unos 5 minutos)"
+
+msgid ""
+"Go to <a href=\"https://console.cloud.google.com/\" target=\"_blank\" "
+"rel=\"noopener\">console.cloud.google.com</a> and sign in with a Google "
+"account. Make a new project (any name, like “My light show”)."
+msgstr ""
+"Entra a <a href=\"https://console.cloud.google.com/\" target=\"_blank\" "
+"rel=\"noopener\">console.cloud.google.com</a> con una cuenta de Google. Crea"
+" un proyecto nuevo (cualquier nombre, como “Mi espectáculo de luces”)."
+
+msgid ""
+"Search for “Cloud Vision API” at the top, open it and click Enable. Google "
+"asks you to set up billing (a card on file) even for the free checks."
+msgstr ""
+"Busca “Cloud Vision API” arriba, ábrela y haz clic en Habilitar. Google te "
+"pide configurar la facturación (una tarjeta registrada) aunque uses solo las"
+" revisiones gratis."
+
+msgid ""
+"Go to APIs & Services → Credentials → Create credentials → API key. Copy the"
+" key and paste it above, then click Test the key and Save."
+msgstr ""
+"Ve a APIs & Services → Credentials → Create credentials → API key. Copia la "
+"clave y pégala arriba, luego haz clic en Probar la clave y en Guardar."
+
+msgid "Recommended: on the key, choose Restrict key → Cloud Vision API only."
+msgstr "Recomendado: en la clave, elige Restrict key → solo Cloud Vision API."
+
+msgid ""
+"Each picture uses 3 checks (safe, faces, words). Google gives 1,000 checks a"
+" month free, about 330 pictures; after that it’s about $1.50 per 1,000 "
+"checks (Google’s price, it may change). The picture is sent to Google only "
+"to be checked."
+msgstr ""
+"Cada foto usa 3 revisiones (seguridad, caras, palabras). Google da 1,000 "
+"revisiones gratis al mes, unas 330 fotos; después cuesta unos $1.50 por cada"
+" 1,000 revisiones (precio de Google, puede cambiar). La foto se envía a "
+"Google solo para revisarla."
+
+msgid "Checks used this month: %s (1,000 free each month)."
+msgstr "Revisiones usadas este mes: %s (1,000 gratis cada mes)."
+
+msgid "Approved by the automatic check"
+msgstr "Aprobada por la revisión automática"
+
+msgid "The automatic check couldn’t run, so it waits for you"
+msgstr "La revisión automática no pudo hacerse, así que te espera a ti"
+
+msgid "The automatic check wasn’t sure this picture is OK"
+msgstr "La revisión automática no está segura de que esta foto esté bien"
+
+msgid "The automatic check didn’t find a face"
+msgstr "La revisión automática no encontró una cara"
+
+msgid "The automatic check found more than one face"
+msgstr "La revisión automática encontró más de una cara"
+
+msgid "The automatic check found words in the picture"
+msgstr "La revisión automática encontró palabras en la foto"
+
+msgid "Paste your Google Cloud Vision API key first."
+msgstr "Primero pega tu clave API de Google Cloud Vision."
+
+msgid "Google said: %s"
+msgstr "Google respondió: %s"
+
+msgid "Your key works. Click Save to keep it."
+msgstr "Tu clave funciona. Haz clic en Guardar para conservarla."
 
 msgid "Classic: warm multicolor twinkle"
 msgstr "Clásico: destellos multicolor cálidos"
@@ -4955,6 +5050,9 @@ msgid ""
 "The AI’s answer didn’t make sense. Try describing it a little differently."
 msgstr ""
 "La respuesta de la IA no tuvo sentido. Intenta describirlo de otra forma."
+
+msgid "Asking Google…"
+msgstr "Preguntando a Google…"
 
 msgid "Looking it up…"
 msgstr "Buscando…"
