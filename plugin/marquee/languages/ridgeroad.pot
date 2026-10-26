@@ -263,7 +263,7 @@ msgid "Christmas Eve is here!"
 msgstr ""
 
 #: plugin/marquee/core/customizer.php:197 plugin/marquee/core/i18n.php:35
-#: theme/ridgeroad/looks/looks.php:130
+#: theme/ridgeroad/looks/looks.php:133
 msgid "Merry Christmas!"
 msgstr ""
 
@@ -3524,7 +3524,7 @@ msgid "Your Name in Lights!"
 msgstr ""
 
 #: plugin/marquee/core/parts/kids-names.php:13
-#: theme/ridgeroad/looks/looks.php:131 theme/ridgeroad/parts/kids-names.php:13
+#: theme/ridgeroad/looks/looks.php:134 theme/ridgeroad/parts/kids-names.php:13
 msgid "Type your first name and watch for it in our light show between songs!"
 msgstr ""
 
@@ -4631,16 +4631,16 @@ msgid ""
 "sections and settings stay the same."
 msgstr ""
 
-#: theme/ridgeroad/looks/looks.php:131
+#: theme/ridgeroad/looks/looks.php:134
 msgid ""
 "Send your name to the show during show hours and watch for it between songs!"
 msgstr ""
 
-#: theme/ridgeroad/looks/looks.php:132
+#: theme/ridgeroad/looks/looks.php:135
 msgid "Put my name in lights"
 msgstr ""
 
-#: theme/ridgeroad/looks/looks.php:132
+#: theme/ridgeroad/looks/looks.php:135
 msgid "See how it works"
 msgstr ""
 

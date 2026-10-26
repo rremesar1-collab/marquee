@@ -317,6 +317,7 @@ function marquee_admin_page() {
 					<p data-mq-cto-custom <?php echo 'custom' === $cto ? '' : 'hidden'; ?>><label for="mq-cdt"><?php esc_html_e( 'The date', 'marquee' ); ?></label><input id="mq-cdt" name="count_date" type="date" value="<?php echo esc_attr( marquee_theme_get( 'count_date' ) ); ?>"><small><?php esc_html_e( 'It repeats every year, so the year doesn’t matter.', 'marquee' ); ?></small></p>
 				</div>
 				</div>
+				<?php marquee_langs_box( $s ); ?>
 			</section>
 
 			<section class="mq__pane" data-pane="5">

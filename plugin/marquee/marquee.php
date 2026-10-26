@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Marquee – Show Website for xLights & FPP
  * Description: Show status, Remote Falcon, Your Name in Lights, Kids' Corner, app and alerts for Christmas light shows. Start with Marquee → Setup.
- * Version: 0.10.0
+ * Version: 0.11.0
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Alateka Corporation
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MARQUEE_VERSION', '0.10.0' );
+define( 'MARQUEE_VERSION', '0.11.0' );
 defined( 'MARQUEE_FPP_PLUGIN_INFO' ) || define( 'MARQUEE_FPP_PLUGIN_INFO', 'https://raw.githubusercontent.com/rremesar1-collab/fpp-marquee/main/pluginInfo.json' );
 define( 'MARQUEE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'MARQUEE_URL', plugin_dir_url( __FILE__ ) );
@@ -24,6 +24,7 @@ defined( 'MARQUEE_GITHUB_REPO' ) || define( 'MARQUEE_GITHUB_REPO', 'rremesar1-co
 defined( 'MARQUEE_COFFEE_URL' ) || define( 'MARQUEE_COFFEE_URL', 'https://www.buymeacoffee.com/marqueeforxlights' );
 
 require MARQUEE_DIR . 'inc/settings.php';
+require MARQUEE_DIR . 'inc/langs.php';
 require MARQUEE_DIR . 'inc/remote-falcon.php';
 require MARQUEE_DIR . 'inc/lookup.php';
 require MARQUEE_DIR . 'inc/admin.php';

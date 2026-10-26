@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.10.0
+Stable tag: 0.11.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,10 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.11.0 =
+* Language button for visitors: tick English, Español and/or Français in Settings → Website basics → Languages and a small button on your website lets each visitor switch. Their pick is remembered. The status sign, Kids' Corner, names form, dates and live updates all switch; words you typed yourself stay as you wrote them.
+* Standard texts you saved unchanged in Customize now follow the site's language too (before, they stayed in English).
 
 = 0.10.0 =
 * Settings reorganized: Setup home (your next step, what's done, your show's connections), Website basics, Features & pages, Names in Lights in six steps, Remote Falcon, Artwork & Kids' Corner, Sharing & donations, Help. Same settings, same values.

@@ -10,9 +10,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 function ridgeroad_feature_assets() {
 	wp_enqueue_script( 'ridgeroad', RR_FEAT_URL . 'assets/js/main.js', array(), RIDGEROAD_VERSION . '.' . (int) @filemtime( RR_FEAT_DIR . 'assets/js/main.js' ), true );
 	wp_localize_script( 'ridgeroad', 'RidgeRoad', array(
-		'endpoint' => esc_url_raw( admin_url( 'admin-ajax.php?action=ridgeroad_live' ) ),
+		'endpoint' => esc_url_raw( apply_filters( 'ridgeroad_live_url', admin_url( 'admin-ajax.php?action=ridgeroad_live' ) ) ),
 		'ajax'     => esc_url_raw( admin_url( 'admin-ajax.php' ) ),
-		'fallback' => esc_url_raw( rest_url( 'ridgeroad/v1/live' ) ),
+		'fallback' => esc_url_raw( apply_filters( 'ridgeroad_live_url', rest_url( 'ridgeroad/v1/live' ) ) ),
 		'interval' => 5,
 		'snow'     => ridgeroad_mod( 'snow_amount' ),
 		'snowSize' => ridgeroad_mod( 'snow_size' ),

@@ -31,6 +31,7 @@ function marquee_defaults() {
 		'art_doors'  => array(),  // Kids' Corner door pictures: names / show / coloring / games => attachment ID
 		'lab_songs'  => array(),  // Light Lab songs (audio attachment IDs)
 		'vote_hide'  => array(),  // song keys left out of voting (intros, announcements)
+		'langs'      => array(),  // languages visitors can switch between (2+ = a language button on the website)
 		'covers_on'  => 1,        // cover pictures in Tonight's Playlist and song voting
 		'covers_auto' => 1,       // find album covers automatically for songs without artwork
 		'covers'     => array(),  // song key => attachment ID (your picture) or -1 (no cover)
@@ -157,6 +158,7 @@ function marquee_save( $in ) {
 		'covers_on'  => isset( $in['covers_sent'] ) ? (int) ! empty( $in['covers_on'] ) : $cur['covers_on'],
 		'covers_auto' => isset( $in['covers_sent'] ) ? (int) ! empty( $in['covers_auto'] ) : $cur['covers_auto'],
 		'covers'     => isset( $in['covers_sent'] ) ? marquee_clean_covers( isset( $in['covers'] ) ? (array) wp_unslash( $in['covers'] ) : array() ) : $cur['covers'],
+		'langs'      => isset( $in['langs_sent'] ) ? array_values( array_intersect( array_keys( marquee_langs_all() ), array_map( 'sanitize_key', isset( $in['langs'] ) ? (array) wp_unslash( $in['langs'] ) : array() ) ) ) : $cur['langs'],
 		'vote_hide'  => isset( $in['vote_hide_sent'] ) ? array_values( array_slice( array_unique( array_filter( array_map( 'sanitize_title', isset( $in['vote_hide'] ) ? (array) wp_unslash( $in['vote_hide'] ) : array() ) ) ), 0, 200 ) ) : $cur['vote_hide'],
 	);
 	if ( isset( $in['art_sent'] ) ) {

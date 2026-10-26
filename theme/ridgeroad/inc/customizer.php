@@ -6,10 +6,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-function ridgeroad_defaults() {
-	static $memo = null;
-	if ( null !== $memo && ! is_customize_preview() ) {
-		return $memo;
+function ridgeroad_defaults( $fresh = false ) {
+	static $memo = array();
+	// One set per language: the first call can come before the translations are loaded, and a
+	// visitor can switch the language (the standard texts then follow it).
+	$lk = determine_locale() . ( is_textdomain_loaded( 'ridgeroad' ) ? '+' : '' );
+	if ( ! $fresh && isset( $memo[ $lk ] ) && ! is_customize_preview() ) {
+		return $memo[ $lk ];
 	}
 	$d = array(
 		// Header.
@@ -169,7 +172,9 @@ function ridgeroad_defaults() {
 			'stat1_num'      => '', 'stat2_num' => '', 'stat4_num' => '', 'stat5_num' => '', 'stat6_num' => '',
 		) );
 	}
-	$memo = $d;
+	if ( ! $fresh ) {
+		$memo[ $lk ] = $d;
+	}
 	return $d;
 }
 
@@ -206,7 +211,38 @@ function ridgeroad_count_target() {
 
 function ridgeroad_mod( $key ) {
 	$d = ridgeroad_defaults();
-	return get_theme_mod( $key, isset( $d[ $key ] ) ? $d[ $key ] : '' );
+	$v = get_theme_mod( $key, null );
+	if ( null === $v ) {
+		return isset( $d[ $key ] ) ? $d[ $key ] : '';
+	}
+	// A text that is still the standard English wording (saved as-is in Customize) shows in the
+	// site's or the visitor's language, like the unsaved ones. Words the show typed itself stay.
+	if ( is_string( $v ) && isset( $d[ $key ] ) && $v !== $d[ $key ] && 0 !== strpos( determine_locale(), 'en' ) ) {
+		$en = ridgeroad_defaults_en();
+		if ( isset( $en[ $key ] ) && $v === $en[ $key ] ) {
+			return $d[ $key ];
+		}
+	}
+	return $v;
+}
+
+/** The standard texts in English (as written in the code), to recognise ones saved unchanged. */
+function ridgeroad_defaults_en() {
+	static $en = null;
+	if ( null === $en ) {
+		$raw = function ( $tr, $text ) {
+			return $text;
+		};
+		$raw_ctx = function ( $tr, $text ) {
+			return $text;
+		};
+		add_filter( 'gettext_ridgeroad', $raw, 999, 2 );
+		add_filter( 'gettext_with_context_ridgeroad', $raw_ctx, 999, 2 );
+		$en = ridgeroad_defaults( true );
+		remove_filter( 'gettext_ridgeroad', $raw, 999 );
+		remove_filter( 'gettext_with_context_ridgeroad', $raw_ctx, 999 );
+	}
+	return $en;
 }
 
 function ridgeroad_sanitize_time( $v, $setting = null ) {

@@ -738,6 +738,37 @@ msgstr "Alertas"
 msgid "Show owner"
 msgstr "Dueño del espectáculo"
 
+msgid "Languages"
+msgstr "Idiomas"
+
+msgid ""
+"Your website starts in the language picked in Settings → General → Site "
+"Language. Tick two or more to show a small language button on your website, "
+"so visitors can switch. Their pick is remembered on their phone."
+msgstr ""
+"Tu sitio empieza en el idioma elegido en Ajustes → Generales → Idioma del "
+"sitio. Marca dos o más para mostrar un pequeño botón de idioma en tu sitio, "
+"así los visitantes pueden cambiarlo. Su elección se recuerda en su celular."
+
+msgid "your Site Language"
+msgstr "tu idioma del sitio"
+
+msgid ""
+"Words you typed yourself (your banner messages, tips and button words in "
+"Customize) stay the way you wrote them."
+msgstr ""
+"Las palabras que escribiste tú (tus mensajes del anuncio, consejos y textos "
+"de botones en Personalizar) se quedan como las escribiste."
+
+msgid ""
+"Using a page cache plugin (WP Rocket, LiteSpeed Cache, W3 Total Cache…)? Add"
+" the cookie mq_lang to its list of cookies that skip the cache, so each "
+"visitor gets their own language."
+msgstr ""
+"¿Usas un plugin de caché de páginas (WP Rocket, LiteSpeed Cache, W3 Total "
+"Cache…)? Agrega la cookie mq_lang a su lista de cookies que no usan la "
+"caché, para que cada visitante vea su propio idioma."
+
 msgid "Add your Remote Falcon access token and secret key."
 msgstr "Agrega tu token de acceso y tu clave secreta de Remote Falcon."
 
