@@ -89,7 +89,7 @@ body.rr-looks::after {
 .rr-looks .rr-scene .rr-logo { display: inline-block; text-decoration: none; }
 .rr-looks .rr-scene .rr-logo img { max-height: min(30vw, 300px); width: auto; filter: drop-shadow(0 4px 12px rgba(0, 0, 0, .7)); }
 .rr-looks .rr-logo__text {
-	max-width: none; padding: 0 .3em .08em; font: 400 clamp(50px, 7vw, 120px)/1.05 var(--lk-title);
+	max-width: none; padding: .32em .4em .16em; margin: -.3em 0 -.12em; font: 400 clamp(50px, 7vw, 120px)/1.05 var(--lk-title); /* room inside for the tall script letters: the gold fill only paints inside the box */
 	background: linear-gradient(180deg, #fffbe8 10%, var(--lk-accent) 45%, #d9a43a 92%); -webkit-background-clip: text; background-clip: text; color: transparent;
 	filter: drop-shadow(0 0 1px rgba(60, 35, 0, .9)) drop-shadow(0 3px 4px rgba(0, 0, 0, .85)) drop-shadow(0 0 24px rgba(255, 200, 90, .5));
 	text-shadow: none;
@@ -309,7 +309,7 @@ body.rr-look--northpole .rr-donate__art { background-image: url(northpole/donati
 	body.rr-looks::before { background: var(--lk-full) var(--lk-full-pos) / var(--lk-full-size) no-repeat, var(--lk-full-bg); }
 	body.rr-looks::after { display: none; }
 	body.rr-look--village { --lk-full: url(village/hero.webp); --lk-full-pos: center top; --lk-full-size: cover; --lk-full-bg: #0a1434; }
-	body.rr-look--northpole { --lk-full: url(northpole/scene.webp); --lk-full-size: 100% auto; --lk-full-bg: #07152b;
+	body.rr-look--northpole { --lk-full: url(northpole/scene-2048.webp); --lk-full-size: 100% auto; --lk-full-bg: #07152b;
 		/* the bottom of Santa's sleigh (64% down the width of the picture) sits on the bottom of the header */
 		--lk-full-pos: center calc(var(--rr-head-h, 380px) - 63.6vw); }
 	.rr-looks .rr-side, .rr-looks .rr-frame .rr-garland--top, .rr-looks .rr-frame .rr-bow { display: none !important; }

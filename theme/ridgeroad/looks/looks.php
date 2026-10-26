@@ -74,7 +74,7 @@ add_action( 'wp_head', function () {
 		return;
 	}
 	// computers: the one picture behind the page; phones: the picture above the show name
-	$full = file_exists( get_template_directory() . '/looks/' . ridgeroad_look() . '/scene.webp' ) ? 'scene.webp' : 'hero.webp';
+	$full = file_exists( get_template_directory() . '/looks/' . ridgeroad_look() . '/scene-2048.webp' ) ? 'scene-2048.webp' : 'hero.webp';
 	printf( '<link rel="preload" as="image" href="%s" media="(min-width: 861px)" fetchpriority="high">' . "\n", esc_url( ridgeroad_look_img( $full ) ) );
 	printf( '<link rel="preload" as="image" href="%s" media="(max-width: 860px)" fetchpriority="high">' . "\n", esc_url( ridgeroad_look_img( 'hero-small.webp' ) ) );
 	foreach ( array( 'cinzel-latin-700-normal.woff2', 'great-vibes-latin-400-normal.woff2' ) as $font ) {
