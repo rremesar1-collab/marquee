@@ -47,10 +47,12 @@
 		step.el.split(',').some(function (s) { var e = document.querySelector(s.trim()); if (e) { el = e; return true; } return false; });
 		if (!el) { return null; }
 		for (var u = 0; u < (step.up || 0) && el.parentElement; u++) { el = el.parentElement; }
-		var pane = el.closest('[data-pane]');
-		if (pane && pane.hidden !== undefined) {
-			var n = pane.getAttribute('data-pane'), b = document.querySelector('[data-step="' + n + '"]');
-			if (b && !pane.classList.contains('is-on') && getComputedStyle(pane).display === 'none') { b.click(); }
+		if (window.mqReveal) { window.mqReveal(el); } else {
+			var pane = el.closest('[data-pane]');
+			if (pane && pane.hidden !== undefined) {
+				var n = pane.getAttribute('data-pane'), b = document.querySelector('[data-step="' + n + '"]');
+				if (b && !pane.classList.contains('is-on') && getComputedStyle(pane).display === 'none') { b.click(); }
+			}
 		}
 		var d = el.closest('details'); while (d) { d.open = true; d = d.parentElement && d.parentElement.closest('details'); }
 		if (!el.getClientRects().length) { return null; }

@@ -37,7 +37,7 @@ Your website never connects into your house. Remote Falcon is reached with your 
 3. Optional: install the Marquee Festive theme (Appearance → Themes → Add New → Upload Theme).
 4. Follow the setup checklist at the top of Marquee → Settings.
 
-For Your Name in Lights, see Marquee → Settings → Names & FPP → "Setup guide".
+For Your Name in Lights, see Marquee → Settings → Names in Lights → Connect your FPP.
 
 == Frequently Asked Questions ==
 
@@ -55,7 +55,8 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 == Changelog ==
 
 = 0.10.0 =
-* Kids' Corner: each part has its own switch (Your Name in Lights, Make a Light Show, the contest, Coloring Pages, Games), grouped under Kids' Corner in Settings → Features.
+* Settings reorganized: Setup home (your next step, what's done, your show's connections), Website basics, Features & pages, Names in Lights in six steps, Remote Falcon, Artwork & Kids' Corner, Sharing & donations, Help. Same settings, same values.
+* Kids' Corner: each part has its own switch (Your Name in Lights, Make a Light Show, the contest, Coloring Pages, Games), grouped under Kids' Corner in Settings → Features & pages.
 * Kids' pictures on your screens (off unless you turn it on): kids can add a cartoon of themselves, or a real photo, to their name. You approve every picture in Show Control or the Show Manager first; a parent has to tick a box; pictures are deleted right after they're shown. Needs FPP 10+ and names script 3.14.
 * Optional automatic check for kids' pictures with your own Google Cloud Vision key: a clean picture with one face and no words goes up without waiting for you; anything else waits, with the reason.
 * Spanish and French: the website, Kids' Corner and Marquee's settings show in the language picked in Settings → General → Site Language. No language buttons for visitors; English sites are unchanged.

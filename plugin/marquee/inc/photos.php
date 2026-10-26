@@ -111,7 +111,7 @@ function marquee_photos_box( $s ) {
 				$warn[] = sprintf( __( 'Your FPP is version %s. Pictures need FPP 10 or newer; names still go up without them.', 'marquee' ), $fx['fpp_version'] );
 			}
 			if ( 'live' === ( $s['names_mode'] ?? '' ) ) {
-				$warn[] = __( 'Names go up during songs (Names & FPP, How it works), so they aren’t spoken: the voice would talk over your music. The picture shows first, then the name. Pick “Between songs: a names break” to have names said out loud.', 'marquee' );
+				$warn[] = __( 'Names go up during songs (Names in Lights, How names go up), so they aren’t spoken: the voice would talk over your music. The picture shows first, then the name. Pick “Between songs: a names break” to have names said out loud.', 'marquee' );
 			}
 			if ( $fx['script'] || $warn ) :
 				?>

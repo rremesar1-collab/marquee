@@ -219,7 +219,7 @@ function marquee_js_strings() {
 		'%s: filled in for you.' => __( '%s: filled in for you.', 'marquee' ),
 		'Download .xsq' => __( 'Download .xsq', 'marquee' ),
 		'Use it: add to the themes kids pick from' => __( 'Use it: add to the themes kids pick from', 'marquee' ),
-		'No screens are filled in under card 1 yet, so nothing was left dark for the names. Add your screens, Save, and make them again.' => __( 'No screens are filled in under card 1 yet, so nothing was left dark for the names. Add your screens, Save, and make them again.', 'marquee' ),
+		'No screens are filled in under Screens yet, so nothing was left dark for the names. Add your screens, Save, and make them again.' => __( 'No screens are filled in under Screens yet, so nothing was left dark for the names. Add your screens, Save, and make them again.', 'marquee' ),
 		'Done. Download them, then follow the steps below.' => __( 'Done. Download them, then follow the steps below.', 'marquee' ),
 		'All 6 theme spots are used' => __( 'All 6 theme spots are used', 'marquee' ),
 		'Added under Themes kids can pick. Save settings to keep it.' => __( 'Added under Themes kids can pick. Save settings to keep it.', 'marquee' ),

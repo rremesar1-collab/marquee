@@ -8,42 +8,96 @@ var tr = function (s) { var d = window.rrI18n; return (d && d[s]) || s; };
 	if (!root) { return; }
 	var C = window.MarqueeAdmin || {};
 	var $ = function (s) { return root.querySelector(s); };
-	var panes = root.querySelectorAll('[data-pane]'), steps = root.querySelectorAll('[data-step]');
-	var wizard = root.classList.contains('mq--wizard'), cur = 0;
+	var panes = [].slice.call(root.querySelectorAll('[data-pane]')), steps = [].slice.call(root.querySelectorAll('[data-step]'));
+	var order = panes.map(function (p) { return p.getAttribute('data-pane'); });   // page order (the wizard goes through it)
+	var wizard = root.classList.contains('mq--wizard'), cur = order[0];
+	var tabIn = root.querySelector('[data-mq-tab]'), subIn = root.querySelector('[data-mq-subin]');
+	var subBtns = [].slice.call(root.querySelectorAll('[data-mq-sub]')), subs = [].slice.call(root.querySelectorAll('[data-sub]'));
+	var curSub = subBtns.length ? subBtns[0].getAttribute('data-mq-sub') : '';
 	root.classList.add('is-js');
 
-	function go(i) {
-		cur = Math.max(0, Math.min(panes.length - 1, i));
-		panes.forEach(function (p, k) { p.classList.toggle('is-on', k === cur); });
-		steps.forEach(function (b, k) {
-			if (k === cur) { b.setAttribute('aria-current', 'step'); } else { b.removeAttribute('aria-current'); }
-			b.classList.toggle('is-done', wizard && k < cur);
-		});
-		root.classList.toggle('is-first', cur === 0);
-		root.classList.toggle('is-last', cur === panes.length - 1);
-		if (steps[cur] && window.innerWidth <= 900 && steps[cur].parentNode.parentNode.scrollWidth > steps[cur].parentNode.parentNode.clientWidth) {
-			var bar = steps[cur].parentNode.parentNode; bar.scrollLeft = steps[cur].offsetLeft - bar.clientWidth / 2 + steps[cur].offsetWidth / 2;
-		}
+	function setHash() {
+		if (wizard) { return; }
+		try { history.replaceState(null, '', '#mq-step-' + cur + (cur === '4' && curSub ? '-' + curSub : '')); } catch (e) {}
 	}
-	var tabIn = root.querySelector('[data-mq-tab]');
-	steps.forEach(function (b) {
-		b.addEventListener('click', function () {
-			var i = +b.getAttribute('data-step');
-			go(i);
-			if (!wizard) {
-				if (tabIn) { tabIn.value = i; }
-				try { history.replaceState(null, '', '#mq-step-' + i); } catch (e) {}
-			}
-			var top = root.querySelector('.mq__wiz').getBoundingClientRect().top + window.pageYOffset - 40;
-			if (window.pageYOffset > top) { window.scrollTo({ top: top, behavior: 'smooth' }); }
+	function go(n) {
+		n = String(n);
+		if (order.indexOf(n) < 0) { n = order[0]; }
+		cur = n;
+		var idx = order.indexOf(cur);
+		panes.forEach(function (p) { p.classList.toggle('is-on', p.getAttribute('data-pane') === cur); });
+		steps.forEach(function (b) {
+			var k = b.getAttribute('data-step');
+			if (k === cur) { b.setAttribute('aria-current', 'step'); } else { b.removeAttribute('aria-current'); }
+			b.classList.toggle('is-done', wizard && order.indexOf(k) < idx);
 		});
+		root.setAttribute('data-view', cur);
+		root.classList.toggle('is-first', idx === 0);
+		root.classList.toggle('is-last', idx === order.length - 1);
+		if (tabIn) { tabIn.value = cur; }
+		var on = steps.filter(function (b) { return b.getAttribute('data-step') === cur; })[0];
+		var bar = root.querySelector('.mq-side');
+		if (on && bar && bar.scrollWidth > bar.clientWidth + 4) { bar.scrollLeft = on.offsetLeft - bar.clientWidth / 2 + on.offsetWidth / 2; }
+	}
+	/* Names in Lights: one step at a time */
+	function goSub(k) {
+		if (!subBtns.some(function (b) { return b.getAttribute('data-mq-sub') === k; })) { return; }
+		curSub = k;
+		subBtns.forEach(function (b) {
+			var on = b.getAttribute('data-mq-sub') === k;
+			b.setAttribute('aria-selected', on ? 'true' : 'false');
+			b.classList.toggle('is-on', on);
+		});
+		subs.forEach(function (s) { s.classList.toggle('is-on', s.getAttribute('data-sub') === k); });
+		if (subIn) { subIn.value = k; }
+		var nav = root.querySelector('.mq-subnav'), on = subBtns.filter(function (b) { return b.getAttribute('data-mq-sub') === k; })[0];
+		if (nav && on && nav.scrollWidth > nav.clientWidth + 4) { nav.scrollLeft = on.parentNode.offsetLeft - nav.clientWidth / 2 + on.offsetWidth / 2; }
+	}
+	function top() {
+		var t = root.querySelector('.mq__panes').getBoundingClientRect().top + window.pageYOffset - 50;
+		if (window.pageYOffset > t) { window.scrollTo({ top: t, behavior: 'smooth' }); }
+	}
+	steps.forEach(function (b) {
+		b.addEventListener('click', function () { go(b.getAttribute('data-step')); setHash(); top(); });
 	});
-	$('[data-mq-back]').addEventListener('click', function () { go(cur - 1); window.scrollTo(0, 0); });
-	$('[data-mq-next]').addEventListener('click', function () { go(cur + 1); window.scrollTo(0, 0); });
-	go(0);
-	/* links like #mq-step-3 (from the setup checklist) open that step */
-	var hm = /^#mq-step-(\d)$/.exec(location.hash);
-	if (hm && panes[+hm[1]]) { go(+hm[1]); if (tabIn) { tabIn.value = +hm[1]; } }
+	subBtns.forEach(function (b) {
+		b.addEventListener('click', function () { goSub(b.getAttribute('data-mq-sub')); setHash(); });
+	});
+	root.addEventListener('click', function (e) {
+		var b = e.target.closest('[data-mq-sub-go]');
+		if (b) { goSub(b.getAttribute('data-mq-sub-go')); setHash(); top(); }
+	});
+	var bk = $('[data-mq-back]'), nx = $('[data-mq-next]');
+	if (bk) { bk.addEventListener('click', function () { go(order[order.indexOf(cur) - 1]); window.scrollTo(0, 0); }); }
+	if (nx) { nx.addEventListener('click', function () { go(order[order.indexOf(cur) + 1]); window.scrollTo(0, 0); }); }
+
+	/* #mq-step-N links (Setup home, the checklist, older links): 1 and 2 are now parts of Website basics */
+	function fromHash() {
+		var m = /^#mq-step-(\d)(?:-([a-z]+))?$/.exec(location.hash);
+		if (!m) { return false; }
+		var n = m[1], sec = { 1: 'mq-sec-location', 2: 'mq-sec-schedule' }[n];
+		go(sec ? '0' : n);
+		if (m[2]) { goSub(m[2]); }
+		if (sec) {
+			var el = document.getElementById(sec);
+			if (el) { setTimeout(function () { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60); }
+		} else { top(); }
+		return true;
+	}
+	go(order[0]);
+	goSub(curSub);
+	fromHash();
+	window.addEventListener('hashchange', fromHash);
+
+	/* Show a control wherever it is (its section, its Names step, its closed card); used by the guided tours */
+	window.mqReveal = function (el) {
+		if (!el) { return; }
+		var p = el.closest('[data-pane]');
+		if (p && p.getAttribute('data-pane') !== cur) { go(p.getAttribute('data-pane')); }
+		var s = el.closest('[data-sub]');
+		if (s && s.getAttribute('data-sub') !== curSub) { goSub(s.getAttribute('data-sub')); }
+		var d = el.closest('details'); while (d) { d.open = true; d = d.parentElement && d.parentElement.closest('details'); }
+	};
 
 	function post(action, data) {
 		var fd = new FormData(); fd.append('action', action); fd.append('nonce', C.nonce);
@@ -599,10 +653,11 @@ document.addEventListener('change', function (e) {
 			.catch(function () { if (btn) { btn.disabled = false; } });
 	}
 	function openCard(which) {
-		var card = document.querySelector('[data-mq-card="' + (which === 'screens' || which === 'only' ? 'fpp' : which) + '"]');
-		if (card) { card.open = true; }
 		var target = which === 'screens' ? document.getElementById('mq-screens')
-			: which === 'only' ? document.querySelector('[data-mq-only]') : card;
+			: which === 'only' ? document.querySelector('[data-mq-only]')
+			: document.querySelector('[data-mq-card="' + which + '"]');
+		if (target && window.mqReveal) { window.mqReveal(target); }
+		if (target && target.tagName === 'DETAILS') { target.open = true; }
 		if (target) {
 			target.scrollIntoView({ behavior: 'smooth', block: 'center' });
 			target.classList.add('mq-flash');

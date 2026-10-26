@@ -205,7 +205,7 @@ function marquee_break_box( $s ) {
 		<p class="mq__fine"><?php esc_html_e( 'Only 1 or 2 names waiting? A shorter break plays instead and says each name twice, so nobody sits through 30 seconds of music for one name. Everything is set to the same loudness as your songs, so nobody has to touch the radio volume.', 'marquee' ); ?></p>
 
 		<input type="hidden" name="break_own_sent" value="1">
-		<label class="mq__feat"><span><b><?php esc_html_e( 'Use my own names break audio', 'marquee' ); ?></b><small><?php esc_html_e( 'Your names break playlists already play audio you made. Marquee leaves it alone and puts the names up at “When the first name appears” and “Time between names” in card 1, so set those to the gaps in your audio. Turn this off to use the audio built here.', 'marquee' ); ?></small></span><input type="checkbox" name="break_own" value="1" <?php checked( ! empty( $s['break_own'] ) ); ?>></label>
+		<label class="mq__feat"><span><b><?php esc_html_e( 'Use my own names break audio', 'marquee' ); ?></b><small><?php esc_html_e( 'Your names break playlists already play audio you made. Marquee leaves it alone and puts the names up at “When the first name appears” and “Time between names”, so set those to the gaps in your audio. Turn this off to use the audio built here.', 'marquee' ); ?></small></span><input type="checkbox" name="break_own" value="1" <?php checked( ! empty( $s['break_own'] ) ); ?>></label>
 		<h4><?php esc_html_e( 'Before you start', 'marquee' ); ?></h4>
 		<ul class="mq__check">
 			<?php

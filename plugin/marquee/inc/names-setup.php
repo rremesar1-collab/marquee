@@ -330,7 +330,7 @@ function marquee_names_setup_steps() {
 	} elseif ( $seen ) {
 		$steps[] = array( 'bad', __( 'Your FPP hasn’t checked in lately', 'marquee' ), sprintf( /* translators: %s: time ago */ __( 'Last time was %s ago. Is the FPP on, and is the Marquee plugin running on it?', 'marquee' ), human_time_diff( $seen ) ), 'fpp' );
 	} else {
-		$steps[] = array( 'bad', __( 'Connect your FPP', 'marquee' ), __( 'Install the Marquee plugin on the FPP that plays your show and paste your connection code. The steps are in card 1 below.', 'marquee' ), 'fpp' );
+		$steps[] = array( 'bad', __( 'Connect your FPP', 'marquee' ), __( 'Install the Marquee plugin on the FPP that plays your show and paste your connection code. The steps are in step 2 below (Connect your FPP).', 'marquee' ), 'fpp' );
 	}
 
 	// 2. the screens
@@ -341,7 +341,7 @@ function marquee_names_setup_steps() {
 		return 'screen' === $c['what'] && $c['ok'];
 	} ) );
 	if ( empty( $s['fpp_screens'] ) ) {
-		$steps[] = array( $on ? 'bad' : 'wait', __( 'Pick your screen', 'marquee' ), marquee_fpp_models() ? __( 'Pick the matrix, TV or projector the names go on from the list in card 1, then Save.', 'marquee' ) : __( 'Type the overlay model name of your matrix, TV or projector in card 1, then Save.', 'marquee' ), 'screens' );
+		$steps[] = array( $on ? 'bad' : 'wait', __( 'Pick your screen', 'marquee' ), marquee_fpp_models() ? __( 'Pick the matrix, TV or projector the names go on from the list in step 3 below (Screens), then Save.', 'marquee' ) : __( 'Type the overlay model name of your matrix, TV or projector in step 3 below (Screens), then Save.', 'marquee' ), 'screens' );
 	} elseif ( $scr_bad ) {
 		$who  = trim( preg_replace( '/\s*[(:].*$/s', '', $scr_bad[0]['msg'] ) );
 		$off  = false !== stripos( $scr_bad[0]['msg'], 'could not reach' );
@@ -355,7 +355,7 @@ function marquee_names_setup_steps() {
 		$fast = marquee_fast_scroll_screen();
 		if ( $fast ) {
 			/* translators: %s: screen name */
-			$steps[] = array( 'tip', sprintf( __( 'Names may scroll too fast on %s', 'marquee' ), $fast ), __( 'Each name is up for only a couple of seconds, so a scrolling message has to fly across. Show it still (Text: Still in card 1), or give each name more time with fewer Names per break.', 'marquee' ), 'screens' );
+			$steps[] = array( 'tip', sprintf( __( 'Names may scroll too fast on %s', 'marquee' ), $fast ), __( 'Each name is up for only a couple of seconds, so a scrolling message has to fly across. Show it still (Text: Still, in the Screens step), or give each name more time with fewer Names per break.', 'marquee' ), 'screens' );
 		}
 	} else {
 		$steps[] = array( 'wait', __( 'Your screen', 'marquee' ), __( 'Saved. The FPP checks it at its next setup check.', 'marquee' ), 'screens' );
@@ -376,16 +376,16 @@ function marquee_names_setup_steps() {
 		}
 		if ( $pl_ok ) {
 			$simple  = false !== strpos( $pl_ok['msg'], 'simple names break' );
-			$steps[] = array( 'ok', __( 'Names break is ready', 'marquee' ), $simple ? __( 'Marquee made a simple names break on your FPP: the show pauses and the names go up on your screens. Want music, a voice or a light show with it? Cards 2 to 4 add them.', 'marquee' ) : sprintf( /* translators: %s: playlist */ __( 'Your FPP has the “%s” playlist.', 'marquee' ), $bp ), 'break' );
+			$steps[] = array( 'ok', __( 'Names break is ready', 'marquee' ), $simple ? __( 'Marquee made a simple names break on your FPP: the show pauses and the names go up on your screens. Want music, a voice or a light show with it? The Names break and Voice steps add them.', 'marquee' ) : sprintf( /* translators: %s: playlist */ __( 'Your FPP has the “%s” playlist.', 'marquee' ), $bp ), 'break' );
 		} elseif ( $pl_bad ) {
 			if ( ! empty( $s['names_simple'] ) && $new && marquee_theme_get( 'names_on' ) ) {
 				$steps[] = array( 'wait', __( 'Names break', 'marquee' ), __( 'Marquee makes a simple names break on your FPP for you. Click Check again.', 'marquee' ), 'break' );
 			} elseif ( ! empty( $s['names_simple'] ) && $new ) {
-				$steps[] = array( 'bad', __( 'Names break', 'marquee' ), __( 'Turn on Your Name in Lights (Features) and Marquee makes a simple names break on your FPP for you.', 'marquee' ), 'break' );
+				$steps[] = array( 'bad', __( 'Names break', 'marquee' ), __( 'Turn on Your Name in Lights (Features & pages) and Marquee makes a simple names break on your FPP for you.', 'marquee' ), 'break' );
 			} elseif ( ! empty( $s['names_simple'] ) && $x['script'] ) {
-				$steps[] = array( 'bad', __( 'Names break', 'marquee' ), sprintf( /* translators: %s: playlist */ __( 'Your FPP has no “%s” playlist. Update the Marquee plugin on your FPP and it makes a simple one for you, or make one with your names sequence (card 4 can make the sequence).', 'marquee' ), $bp ), 'break' );
+				$steps[] = array( 'bad', __( 'Names break', 'marquee' ), sprintf( /* translators: %s: playlist */ __( 'Your FPP has no “%s” playlist. Update the Marquee plugin on your FPP and it makes a simple one for you, or make one with your names sequence (the Sequence maker can make it).', 'marquee' ), $bp ), 'break' );
 			} else {
-				$steps[] = array( 'bad', __( 'Names break', 'marquee' ), sprintf( /* translators: %s: playlist */ __( 'Your FPP has no “%s” playlist. Make one with your names sequence in it (card 4 can make the sequence).', 'marquee' ), $bp ), 'break' );
+				$steps[] = array( 'bad', __( 'Names break', 'marquee' ), sprintf( /* translators: %s: playlist */ __( 'Your FPP has no “%s” playlist. Make one with your names sequence in it (the Sequence maker can make it).', 'marquee' ), $bp ), 'break' );
 			}
 		} else {
 			$steps[] = array( 'wait', __( 'Names break', 'marquee' ), __( 'Shows here after the FPP’s next setup check.', 'marquee' ), 'break' );
@@ -399,7 +399,7 @@ function marquee_names_setup_steps() {
 	} elseif ( $sug ) {
 		$steps[] = array( 'tip', __( 'Names wait for your show?', 'marquee' ), sprintf( /* translators: %s: playlist */ __( 'Your FPP runs more than one playlist. “%s” looks like your show: names can wait for it, so they don’t go up during the others.', 'marquee' ), $sug ), 'only', $sug );
 	} else {
-		$steps[] = array( 'ok', __( 'Names go up during any playlist', 'marquee' ), __( 'Running something like a static display too? Pick your show playlist under “Only during these playlists” in card 1.', 'marquee' ), 'only' );
+		$steps[] = array( 'ok', __( 'Names go up during any playlist', 'marquee' ), __( 'Running something like a static display too? Pick your show playlist under “Only during these playlists” in step 1.', 'marquee' ), 'only' );
 	}
 
 	// 5. a test name

@@ -156,7 +156,7 @@
 					return '<li class="is-bad"><b>' + esc(j.base ? j.name : (j.theme.name || j.theme)) + '</b><small>' + esc(e.message) + '</small></li>';
 				}
 			});
-			if (!screens.length) { rows.unshift('<li class="is-warn"><small>' + tr('No screens are filled in under card 1 yet, so nothing was left dark for the names. Add your screens, Save, and make them again.') + '</small></li>'); }
+			if (!screens.length) { rows.unshift('<li class="is-warn"><small>' + tr('No screens are filled in under Screens yet, so nothing was left dark for the names. Add your screens, Save, and make them again.') + '</small></li>'); }
 			out.innerHTML = '<ul>' + rows.join('') + '</ul>'; out.hidden = false;
 			render.classList.add('is-next'); render.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 			msg.textContent = tr('Done. Download them, then follow the steps below.');
