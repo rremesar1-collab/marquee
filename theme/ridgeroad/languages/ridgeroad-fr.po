@@ -549,8 +549,17 @@ msgstr ""
 msgid "Fan Favorite Friday message"
 msgstr "Message du Vendredi du favori"
 
-msgid "Show the Kids’ Corner (elf names, coloring page, trivia)"
-msgstr "Afficher le Coin des enfants (noms de lutin, coloriage, quiz)"
+msgid "Show the Kids’ Corner"
+msgstr "Afficher le Coin des enfants"
+
+msgid "Turn each part on or off below."
+msgstr "Activez ou désactivez chaque partie ci-dessous."
+
+msgid "Coloring Pages"
+msgstr "Coloriages"
+
+msgid "Games (elf names and Christmas trivia)"
+msgstr "Jeux (noms de lutin et quiz de Noël)"
 
 msgid "Make a Light Show (the Light Lab) in the Kids’ Corner"
 msgstr ""
@@ -2977,6 +2986,9 @@ msgstr "Toutes les activités"
 msgid "What do you want to do?"
 msgstr "Que voulez-vous faire ?"
 
+msgid "Nothing here right now. Check back soon!"
+msgstr "Rien pour l’instant. Revenez bientôt !"
+
 msgid "Your Name in Lights. See your name in our light show."
 msgstr ""
 "Votre nom en lumières. Voyez votre prénom dans notre spectacle de lumières."
@@ -3022,9 +3034,6 @@ msgstr "Illuminez notre maison à votre façon"
 
 msgid "Coloring Pages. Pick a picture to print and color."
 msgstr "Coloriages. Choisissez un dessin à imprimer et à colorier."
-
-msgid "Coloring Pages"
-msgstr "Coloriages"
 
 msgid "Pick a picture to print and color it!"
 msgstr "Choisissez un dessin à imprimer et à colorier !"
@@ -3252,21 +3261,30 @@ msgstr ""
 msgid "Watch the videos of this year’s songs!"
 msgstr "Regardez les vidéos des chansons de cette année !"
 
+msgid "your name in lights"
+msgstr "votre nom en lumières"
+
+msgid "coloring pages"
+msgstr "coloriages"
+
+msgid "elf names & Christmas trivia"
+msgstr "noms de lutin et quiz de Noël"
+
 msgid ""
 "Make your own light show to win a prize, and vote for your favorite kids’ "
-"shows on the Show Wall! Plus coloring, elf names & trivia."
+"shows on the Show Wall!"
 msgstr ""
 "Créez votre propre spectacle de lumières pour gagner un prix, et votez pour "
-"vos spectacles d’enfants préférés sur le Mur des spectacles ! Et aussi du "
-"coloriage, des noms de lutin et des quiz."
+"vos spectacles d’enfants préférés sur le Mur des spectacles !"
 
-msgid "Design your own light show, plus coloring, elf names & trivia!"
-msgstr ""
-"Créez votre propre spectacle de lumières, et aussi du coloriage, des noms de"
-" lutin et des quiz !"
+msgid "Design your own light show!"
+msgstr "Créez votre propre spectacle de lumières !"
 
-msgid "Coloring pages, elf names & Christmas trivia!"
-msgstr "Coloriages, noms de lutin et quiz de Noël !"
+msgid "Plus %s!"
+msgstr "Et aussi : %s !"
+
+msgid "Come play: %s!"
+msgstr "Venez jouer : %s !"
 
 msgid "Let’s Play"
 msgstr "C’est parti !"

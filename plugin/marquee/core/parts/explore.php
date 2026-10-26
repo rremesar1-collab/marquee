@@ -24,9 +24,29 @@ if ( $rr_kids || $rr_songs ) : ?>
 		<span class="rr-kids-teaser__art" aria-hidden="true"></span>
 		<span class="rr-kids-teaser__icon"><?php echo ridgeroad_cicon( 'gift' ); ?></span>
 		<span class="rr-kids-teaser__text"><b><?php echo esc_html( ridgeroad_mod( 'kids_title' ) ); ?></b> <?php
-			$rr_lab  = ridgeroad_mod( 'lab_on' );
-			$rr_vote = $rr_lab && ridgeroad_mod( 'contest_on' ) && ridgeroad_contest_open();
-			echo esc_html( $rr_vote ? __( 'Make your own light show to win a prize, and vote for your favorite kids’ shows on the Show Wall! Plus coloring, elf names & trivia.', 'ridgeroad' ) : ( $rr_lab ? __( 'Design your own light show, plus coloring, elf names & trivia!', 'ridgeroad' ) : __( 'Coloring pages, elf names & Christmas trivia!', 'ridgeroad' ) ) );
+			// what's on in the Kids' Corner (each part can be switched off)
+			$rr_lab   = ridgeroad_mod( 'lab_on' );
+			$rr_vote  = $rr_lab && ridgeroad_mod( 'contest_on' ) && ridgeroad_contest_open();
+			$rr_parts = array();
+			if ( ridgeroad_mod( 'names_on' ) ) {
+				$rr_parts[] = __( 'your name in lights', 'ridgeroad' );
+			}
+			if ( ridgeroad_mod( 'coloring_on' ) && ridgeroad_coloring_pages() ) {
+				$rr_parts[] = __( 'coloring pages', 'ridgeroad' );
+			}
+			if ( ridgeroad_mod( 'games_on' ) ) {
+				$rr_parts[] = __( 'elf names & Christmas trivia', 'ridgeroad' );
+			}
+			$rr_lead = $rr_vote ? __( 'Make your own light show to win a prize, and vote for your favorite kids’ shows on the Show Wall!', 'ridgeroad' ) : ( $rr_lab ? __( 'Design your own light show!', 'ridgeroad' ) : '' );
+			$rr_more = $rr_parts ? wp_sprintf( '%l', $rr_parts ) : '';
+			if ( $rr_lead && $rr_more ) {
+				/* translators: %s: a list like "coloring pages and elf names & Christmas trivia" */
+				$rr_lead .= ' ' . sprintf( __( 'Plus %s!', 'ridgeroad' ), $rr_more );
+			} elseif ( $rr_more ) {
+				/* translators: %s: a list like "your name in lights, coloring pages and elf names & Christmas trivia" */
+				$rr_lead = sprintf( __( 'Come play: %s!', 'ridgeroad' ), $rr_more );
+			}
+			echo esc_html( $rr_lead );
 		?></span>
 		<span class="rr-kids-teaser__go"><?php esc_html_e( 'Let’s Play', 'ridgeroad' ); ?> &rarr;</span>
 	</a>

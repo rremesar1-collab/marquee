@@ -103,10 +103,12 @@ function marquee_admin_page() {
 	$theme = 'ridgeroad' === get_template();
 	$feat  = array(
 		'gb_show'     => array( __( 'Guestbook', 'marquee' ), __( 'Visitors leave messages; each one waits for your OK in WordPress → Comments', 'marquee' ) ),
-		'names_on'    => array( __( 'Your Name in Lights', 'marquee' ), __( 'Kids send a name to your matrix, projector or TV (needs the FPP script)', 'marquee' ) ),
-		'kids_show'   => array( __( 'Kids’ Corner', 'marquee' ), __( 'Light Lab and contest, coloring pages, games', 'marquee' ) ),
-		'lab_on'      => array( __( 'Make a Light Show', 'marquee' ), __( 'The Light Lab in the Kids’ Corner: kids light up a house to a song', 'marquee' ) ),
-		'contest_on'  => array( __( 'Light show contest', 'marquee' ), __( 'Entries, Show Wall and hearts in the Kids’ Corner', 'marquee' ) ),
+		'kids_show'   => array( __( 'Kids’ Corner', 'marquee' ), __( 'The Kids’ Corner page. Turn each part on or off below.', 'marquee' ) ),
+		'names_on'    => array( __( 'Your Name in Lights', 'marquee' ), __( 'Kids send a name to your matrix, projector or TV (needs the FPP script)', 'marquee' ), 'kid' ),
+		'lab_on'      => array( __( 'Make a Light Show', 'marquee' ), __( 'The Light Lab: kids light up a house to a song', 'marquee' ), 'kid' ),
+		'contest_on'  => array( __( 'Light show contest', 'marquee' ), __( 'Entries, Show Wall and hearts (needs Make a Light Show)', 'marquee' ), 'kid2' ),
+		'coloring_on' => array( __( 'Coloring Pages', 'marquee' ), __( 'Pages to print and color (pick which ones under Artwork)', 'marquee' ), 'kid' ),
+		'games_on'    => array( __( 'Games', 'marquee' ), __( 'Elf names and Christmas trivia', 'marquee' ), 'kid' ),
 		'songs_show'  => array( __( 'Favorite song voting', 'marquee' ), __( 'Uses your Remote Falcon song list', 'marquee' ) ),
 		'app_auto_on' => array( __( '“The lights are on!” alert', 'marquee' ), __( 'Sent to app users when FPP starts your show (needs https)', 'marquee' ) ),
 		'snow'        => array( __( 'Falling snow', 'marquee' ), __( 'Snowflakes on every page (size and amount in Show Control)', 'marquee' ) ),
@@ -662,8 +664,8 @@ function marquee_admin_page() {
 				foreach ( $feat as $k => $f ) {
 					$on = 'snow' === $k ? 'off' !== $tm( 'snow_amount' ) : (bool) $tm( $k );
 					printf(
-						'<label class="mq__feat"><span><b>%s</b><small>%s</small></span><input type="checkbox" name="feat[]" value="%s" %s></label>',
-						esc_html( $f[0] ), esc_html( $f[1] ), esc_attr( $k ), checked( $on, true, false )
+						'<label class="mq__feat%s"><span><b>%s</b><small>%s</small></span><input type="checkbox" name="feat[]" value="%s" %s></label>',
+						isset( $f[2] ) ? ' mq__feat--' . esc_attr( $f[2] ) : '', esc_html( $f[0] ), esc_html( $f[1] ), esc_attr( $k ), checked( $on, true, false )
 					);
 					if ( 'names_on' === $k ) {
 						marquee_geo_row( $s );

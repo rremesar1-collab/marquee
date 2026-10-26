@@ -25,6 +25,8 @@ $open       = $contest && ridgeroad_contest_open();
 $names_on   = (bool) ridgeroad_mod( 'names_on' );
 $names_open = $names_on && ridgeroad_names_open();
 $color_pgs  = ridgeroad_coloring_pages();
+$coloring   = ridgeroad_mod( 'coloring_on' ) && $color_pgs; // each Kids' Corner part can be switched off on its own
+$games      = (bool) ridgeroad_mod( 'games_on' );
 $mq         = ridgeroad_is_marquee();
 $back       = '<button type="button" class="rr-kc__back" data-kc-home-btn><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#f7c95a"/><path d="M14 6l-6 6 6 6" fill="none" stroke="#2a1600" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>' . esc_html__( 'All activities', 'ridgeroad' ) . '</button>';
 $entries    = $contest ? ridgeroad_art_entries() : array();
@@ -37,8 +39,9 @@ $winners    = array_filter( $entries, function ( $e ) {
 
 	<div class="rr-kc__home" data-kc-home>
 		<p class="rr-kc__ask"><?php esc_html_e( 'What do you want to do?', 'ridgeroad' ); ?></p>
-		<?php $door_n = 2 + ( $names_on ? 1 : 0 ) + ( $lab ? 1 : 0 ); ?>
-		<div class="rr-kc__doors<?php echo 4 === $door_n ? '' : ( 3 === $door_n ? ' is-three' : ' is-two' ); ?>" data-kc-doors>
+		<?php $door_n = ( $names_on ? 1 : 0 ) + ( $lab ? 1 : 0 ) + ( $coloring ? 1 : 0 ) + ( $games ? 1 : 0 ); ?>
+		<?php if ( ! $door_n ) : ?><p class="rr-kc__none"><?php esc_html_e( 'Nothing here right now. Check back soon!', 'ridgeroad' ); ?></p><?php endif; ?>
+		<div class="rr-kc__doors<?php echo array( 0 => ' is-one', 1 => ' is-one', 2 => ' is-two', 3 => ' is-three', 4 => '' )[ $door_n ]; ?>" data-kc-doors>
 			<?php if ( $names_on ) : ?>
 				<a class="rr-kc__door" href="#names" data-kc-door="names" data-first="<?php echo $names_open ? '1' : '0'; ?>">
 					<img src="<?php echo esc_url( ridgeroad_door_url( 'names', 'door-1.jpg' ) ); ?>" width="490" height="685" alt="<?php echo esc_attr( $mq ? __( 'Your Name in Lights. See your name in our light show.', 'ridgeroad' ) : __( 'Your Name in Lights. See your name on our garage door.', 'ridgeroad' ) ); ?>">
@@ -61,7 +64,7 @@ $winners    = array_filter( $entries, function ( $e ) {
 				<?php endif; ?>
 			</a>
 			<?php endif; ?>
-			<?php if ( $color_pgs ) : ?>
+			<?php if ( $coloring ) : ?>
 			<a class="rr-kc__door" href="#coloring" data-kc-door="coloring">
 				<img src="<?php echo esc_url( ridgeroad_door_url( 'coloring', 'door-coloring.jpg' ) ); ?>" width="490" height="685" alt="<?php esc_attr_e( 'Coloring Pages. Pick a picture to print and color.', 'ridgeroad' ); ?>">
 				<?php if ( ridgeroad_door_words( 'coloring' ) ) : ?>
@@ -70,6 +73,7 @@ $winners    = array_filter( $entries, function ( $e ) {
 				<?php endif; ?>
 			</a>
 			<?php endif; ?>
+			<?php if ( $games ) : ?>
 			<a class="rr-kc__door" href="#games" data-kc-door="games">
 				<img src="<?php echo esc_url( ridgeroad_door_url( 'games', 'door-4.jpg' ) ); ?>" width="490" height="685" alt="<?php esc_attr_e( 'Games. Elf names and Christmas trivia.', 'ridgeroad' ); ?>">
 				<?php if ( ridgeroad_door_words( 'games' ) ) : ?>
@@ -77,6 +81,7 @@ $winners    = array_filter( $entries, function ( $e ) {
 					<span class="rr-kc__go" aria-hidden="true"><?php esc_html_e( 'Let’s go!', 'ridgeroad' ); ?></span>
 				<?php endif; ?>
 			</a>
+			<?php endif; ?>
 		</div>
 		<?php if ( $contest && ( $entries || $open ) ) : ?>
 			<div class="rr-panel rr-panel--red rr-kc__wallbox">
@@ -135,6 +140,7 @@ $winners    = array_filter( $entries, function ( $e ) {
 		</section>
 	<?php endif; ?>
 
+	<?php if ( $coloring ) : ?>
 	<section class="rr-kc__act" id="coloring" data-kc-act="coloring" hidden>
 		<div class="rr-kc__top"><?php echo $back; // phpcs:ignore ?><h2><?php echo ridgeroad_cicon( 'tree' ); ?><span><?php esc_html_e( 'Coloring Pages', 'ridgeroad' ); ?></span></h2></div>
 		<div class="rr-panel rr-panel--green rr-kc__color">
@@ -153,6 +159,9 @@ $winners    = array_filter( $entries, function ( $e ) {
 		</div>
 	</section>
 
+	<?php endif; ?>
+
+	<?php if ( $games ) : ?>
 	<section class="rr-kc__act" id="games" data-kc-act="games" hidden>
 		<div class="rr-kc__top"><?php echo $back; // phpcs:ignore ?><h2><?php echo ridgeroad_cicon( 'gift' ); ?><span><?php esc_html_e( 'Games', 'ridgeroad' ); ?></span></h2></div>
 		<div class="rr-kc__picker" role="group" aria-label="<?php esc_attr_e( 'Pick a game', 'ridgeroad' ); ?>">
@@ -176,4 +185,5 @@ $winners    = array_filter( $entries, function ( $e ) {
 			<p class="rr-quiz__msg" data-rr="quiz-msg" aria-live="polite"></p>
 		</div>
 	</section>
+	<?php endif; ?>
 </section>

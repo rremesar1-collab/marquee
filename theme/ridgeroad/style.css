@@ -1364,6 +1364,8 @@ img.emoji, img.wp-smiley { display: inline !important; width: 1em !important; he
 .rr-kc__doors { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; max-width: 1180px; width: 100%; margin: 0 auto; }
 .rr-kc__doors.is-three { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 900px; }
 .rr-kc__doors.is-two { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 620px; }
+.rr-kc__doors.is-one { grid-template-columns: minmax(0, 1fr); max-width: 300px; }
+.rr-kc__none { text-align: center; font-weight: 700; color: #fff6dc; }
 .rr-kc__door { position: relative; display: block; border-radius: 18px; overflow: hidden; box-shadow: 0 12px 28px rgba(0, 0, 0, .55); transition: transform .18s, box-shadow .18s; }
 .rr-kc__door img { display: block; width: 100%; height: auto; aspect-ratio: 490 / 685; object-fit: cover; }
 .rr-kc__door:hover, .rr-kc__door:focus-visible { transform: translateY(-5px) rotate(-.6deg); box-shadow: 0 0 26px rgba(255, 210, 90, .55), 0 18px 34px rgba(0, 0, 0, .6); }

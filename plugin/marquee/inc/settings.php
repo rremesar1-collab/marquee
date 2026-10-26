@@ -81,7 +81,7 @@ function marquee_get( $key = null ) {
 function marquee_theme_keys() {
 	return array(
 		'radio', 'season_start', 'season_end', 'use_sunset', 'weeknight_start', 'weekend_start', 'weeknight_close', 'weekend_close',
-		'radar_station', 'cashapp_url', 'gb_show', 'names_on', 'names_geo', 'names_geo_miles', 'kids_show', 'lab_on', 'songs_show', 'contest_on', 'app_auto_on', 'snow_amount',
+		'radar_station', 'cashapp_url', 'gb_show', 'names_on', 'names_geo', 'names_geo_miles', 'kids_show', 'lab_on', 'coloring_on', 'games_on', 'songs_show', 'contest_on', 'app_auto_on', 'snow_amount',
 		'names_geo_unit', 'count_to', 'count_name', 'count_date', 'rf_viewer_url', 'facebook_url', 'instagram_url', 'youtube_url', 'tiktok_url', 'facebook_show', 'instagram_show', 'youtube_show', 'tiktok_show',
 	);
 }
@@ -269,7 +269,7 @@ function marquee_save( $in ) {
 	}
 	if ( isset( $in['features_sent'] ) ) {
 		$f = isset( $in['feat'] ) ? (array) $in['feat'] : array();
-		foreach ( array( 'gb_show', 'names_on', 'names_geo', 'kids_show', 'lab_on', 'songs_show', 'contest_on', 'app_auto_on' ) as $k ) {
+		foreach ( array( 'gb_show', 'names_on', 'names_geo', 'kids_show', 'lab_on', 'coloring_on', 'games_on', 'songs_show', 'contest_on', 'app_auto_on' ) as $k ) {
 			set_theme_mod( $k, in_array( $k, $f, true ) ? 1 : 0 );
 		}
 		if ( isset( $in['names_geo_miles'] ) ) {

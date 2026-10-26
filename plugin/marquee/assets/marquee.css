@@ -943,6 +943,8 @@
 .mq-skin:not(#mq-0) .rr-kc__doors { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; max-width: 1180px; width: 100%; margin: 0 auto; }
 .mq-skin:not(#mq-0) .rr-kc__doors.is-three { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 900px; }
 .mq-skin:not(#mq-0) .rr-kc__doors.is-two { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 620px; }
+.mq-skin:not(#mq-0) .rr-kc__doors.is-one { grid-template-columns: minmax(0, 1fr); max-width: 300px; }
+.mq-skin:not(#mq-0) .rr-kc__none { text-align: center; font-weight: 700; }
 .mq-skin:not(#mq-0) .rr-kc__door { position: relative; display: block; border-radius: 18px; overflow: hidden; transition: transform .18s, box-shadow .18s; }
 .mq-skin:not(#mq-0) .rr-kc__door img { display: block; width: 100%; height: auto; aspect-ratio: 490 / 685; object-fit: cover; }
 .mq-skin:not(#mq-0) .rr-kc__door:hover, .mq-skin:not(#mq-0) .rr-kc__door:focus-visible { transform: translateY(-5px) rotate(-.6deg); }

@@ -55,6 +55,7 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 == Changelog ==
 
 = 0.10.0 =
+* Kids' Corner: each part has its own switch (Your Name in Lights, Make a Light Show, the contest, Coloring Pages, Games), grouped under Kids' Corner in Settings → Features.
 * Kids' pictures on your screens (off unless you turn it on): kids can add a cartoon of themselves, or a real photo, to their name. You approve every picture in Show Control or the Show Manager first; a parent has to tick a box; pictures are deleted right after they're shown. Needs FPP 10+ and names script 3.14.
 * Optional automatic check for kids' pictures with your own Google Cloud Vision key: a clean picture with one face and no words goes up without waiting for you; anything else waits, with the reason.
 * Spanish and French: the website, Kids' Corner and Marquee's settings show in the language picked in Settings → General → Site Language. No language buttons for visitors; English sites are unchanged.

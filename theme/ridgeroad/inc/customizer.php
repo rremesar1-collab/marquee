@@ -63,6 +63,8 @@ function ridgeroad_defaults() {
 		// Kids' corner.
 		'kids_show'         => 1,
 		'lab_on'            => 1,
+		'coloring_on'       => 1,
+		'games_on'          => 1,
 		'kids_title'        => __( 'Kids’ Corner', 'ridgeroad' ),
 		// Sequence videos.
 		'seq_show'          => 1,
@@ -368,7 +370,9 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp ) {
 	$add( 'songs_friday_text', 'rr_songs', __( 'Fan Favorite Friday message', 'ridgeroad' ) );
 
 	// Kids.
-	$add( 'kids_show', 'rr_kids', __( 'Show the Kids’ Corner (elf names, coloring page, trivia)', 'ridgeroad' ), 'checkbox' );
+	$add( 'kids_show', 'rr_kids', __( 'Show the Kids’ Corner', 'ridgeroad' ), 'checkbox', array( 'description' => __( 'Turn each part on or off below.', 'ridgeroad' ) ) );
+	$add( 'coloring_on', 'rr_kids', __( 'Coloring Pages', 'ridgeroad' ), 'checkbox' );
+	$add( 'games_on', 'rr_kids', __( 'Games (elf names and Christmas trivia)', 'ridgeroad' ), 'checkbox' );
 	$add( 'lab_on', 'rr_kids', __( 'Make a Light Show (the Light Lab) in the Kids’ Corner', 'ridgeroad' ), 'checkbox', array( 'description' => __( 'Off hides it and the light show contest; the rest of the Kids’ Corner stays.', 'ridgeroad' ) ) );
 	$add( 'kids_title', 'rr_kids', __( 'Section title', 'ridgeroad' ) );
 	$add( 'names_on', 'rr_kids', __( '“Your Name in Lights”: kids send their name to your show’s screens (needs the FPP script)', 'ridgeroad' ), 'checkbox', array(

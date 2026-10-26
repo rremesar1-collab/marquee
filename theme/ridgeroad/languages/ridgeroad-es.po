@@ -547,10 +547,17 @@ msgstr ""
 msgid "Fan Favorite Friday message"
 msgstr "Mensaje del Viernes del favorito"
 
-msgid "Show the Kids’ Corner (elf names, coloring page, trivia)"
-msgstr ""
-"Mostrar el Rincón de los niños (nombres de duende, página para colorear, "
-"trivia)"
+msgid "Show the Kids’ Corner"
+msgstr "Mostrar el Rincón de los niños"
+
+msgid "Turn each part on or off below."
+msgstr "Activa o desactiva cada parte abajo."
+
+msgid "Coloring Pages"
+msgstr "Páginas para colorear"
+
+msgid "Games (elf names and Christmas trivia)"
+msgstr "Juegos (nombres de duende y trivia navideña)"
 
 msgid "Make a Light Show (the Light Lab) in the Kids’ Corner"
 msgstr ""
@@ -2946,6 +2953,9 @@ msgstr "Todas las actividades"
 msgid "What do you want to do?"
 msgstr "¿Qué quieres hacer?"
 
+msgid "Nothing here right now. Check back soon!"
+msgstr "No hay nada por ahora. ¡Vuelve pronto!"
+
 msgid "Your Name in Lights. See your name in our light show."
 msgstr "Tu nombre en luces. Mira tu nombre en nuestro espectáculo de luces."
 
@@ -2990,9 +3000,6 @@ msgstr "Ilumina nuestra casa a tu manera"
 
 msgid "Coloring Pages. Pick a picture to print and color."
 msgstr "Páginas para colorear. Elige un dibujo para imprimir y colorear."
-
-msgid "Coloring Pages"
-msgstr "Páginas para colorear"
 
 msgid "Pick a picture to print and color it!"
 msgstr "¡Elige un dibujo para imprimir y colorear!"
@@ -3214,21 +3221,30 @@ msgstr ""
 msgid "Watch the videos of this year’s songs!"
 msgstr "¡Mira los videos de las canciones de este año!"
 
+msgid "your name in lights"
+msgstr "tu nombre en luces"
+
+msgid "coloring pages"
+msgstr "dibujos para colorear"
+
+msgid "elf names & Christmas trivia"
+msgstr "nombres de duende y trivia navideña"
+
 msgid ""
 "Make your own light show to win a prize, and vote for your favorite kids’ "
-"shows on the Show Wall! Plus coloring, elf names & trivia."
+"shows on the Show Wall!"
 msgstr ""
-"¡Crea tu propio espectáculo de luces para ganar un premio y vota por tus "
-"espectáculos favoritos de los niños en el Muro del espectáculo! Además, "
-"dibujos para colorear, nombres de duende y trivia."
+"¡Crea tu propio espectáculo de luces para ganar un premio, y vota por tus "
+"espectáculos favoritos de los niños en el Muro del espectáculo!"
 
-msgid "Design your own light show, plus coloring, elf names & trivia!"
-msgstr ""
-"¡Diseña tu propio espectáculo de luces, además dibujos para colorear, "
-"nombres de duende y trivia!"
+msgid "Design your own light show!"
+msgstr "¡Diseña tu propio espectáculo de luces!"
 
-msgid "Coloring pages, elf names & Christmas trivia!"
-msgstr "¡Dibujos para colorear, nombres de duende y trivia navideña!"
+msgid "Plus %s!"
+msgstr "¡Además, %s!"
+
+msgid "Come play: %s!"
+msgstr "¡Ven a jugar: %s!"
 
 msgid "Let’s Play"
 msgstr "¡A jugar!"

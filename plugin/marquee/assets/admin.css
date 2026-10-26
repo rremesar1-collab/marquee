@@ -656,3 +656,9 @@
 .mq-vision__how ol { margin: 8px 0 6px 20px; }
 .mq-vision__how li { margin: 0 0 6px; }
 #mq-vision-key { width: min(360px, 100%); }
+
+/* Features: Kids' Corner parts sit under the Kids' Corner switch */
+.mq__feat--kid { margin-left: 28px; }
+.mq__feat--kid2 { margin-left: 56px; }
+.mq__feat--kid b::before, .mq__feat--kid2 b::before { content: "↳ "; color: #8c8f94; font-weight: 400; }
+.mq__feat--kid + .mq__feat--sub { margin-left: 56px; }

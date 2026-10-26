@@ -2841,23 +2841,36 @@ msgstr ""
 "Los visitantes dejan mensajes; cada uno espera tu aprobación en WordPress → "
 "Comentarios"
 
+msgid "The Kids’ Corner page. Turn each part on or off below."
+msgstr ""
+"La página del Rincón de los niños. Activa o desactiva cada parte abajo."
+
 msgid ""
 "Kids send a name to your matrix, projector or TV (needs the FPP script)"
 msgstr ""
 "Los niños envían un nombre a tu matriz, proyector o TV (requiere el script "
 "de FPP)"
 
-msgid "Light Lab and contest, coloring pages, games"
-msgstr "Laboratorio de luces y concurso, páginas para colorear, juegos"
-
-msgid "The Light Lab in the Kids’ Corner: kids light up a house to a song"
+msgid "The Light Lab: kids light up a house to a song"
 msgstr ""
-"El Laboratorio de luces en el Rincón de los niños: los niños iluminan una "
-"casa al ritmo de una canción"
+"El Laboratorio de luces: los niños iluminan una casa al ritmo de una canción"
 
-msgid "Entries, Show Wall and hearts in the Kids’ Corner"
+msgid "Entries, Show Wall and hearts (needs Make a Light Show)"
 msgstr ""
-"Participaciones, Muro del espectáculo y corazones en el Rincón de los niños"
+"Participaciones, Muro del espectáculo y corazones (necesita Haz un "
+"espectáculo de luces)"
+
+msgid "Coloring Pages"
+msgstr "Páginas para colorear"
+
+msgid "Pages to print and color (pick which ones under Artwork)"
+msgstr "Dibujos para imprimir y colorear (elige cuáles en Imágenes)"
+
+msgid "Games"
+msgstr "Juegos"
+
+msgid "Elf names and Christmas trivia"
+msgstr "Nombres de duende y trivia navideña"
 
 msgid "Uses your Remote Falcon song list"
 msgstr "Usa tu lista de canciones de Remote Falcon"
@@ -3948,12 +3961,6 @@ msgid ""
 msgstr ""
 "Reemplaza cualquiera de las cuatro imágenes grandes que tocan los niños. Las"
 " imágenes verticales funcionan mejor (490 × 685 o más grandes, misma forma)."
-
-msgid "Coloring Pages"
-msgstr "Páginas para colorear"
-
-msgid "Games"
-msgstr "Juegos"
 
 msgid ""
 "When you cancel tonight’s show (in Show Control or on your phone in the Show"
