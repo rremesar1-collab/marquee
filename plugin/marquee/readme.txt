@@ -57,12 +57,15 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 = 0.10.0 =
 * Settings reorganized: Setup home (your next step, what's done, your show's connections), Website basics, Features & pages, Names in Lights in six steps, Remote Falcon, Artwork & Kids' Corner, Sharing & donations, Help. Same settings, same values.
 * Kids' Corner: each part has its own switch (Your Name in Lights, Make a Light Show, the contest, Coloring Pages, Games), grouped under Kids' Corner in Settings → Features & pages.
-* Kids' pictures on your screens (off unless you turn it on): kids can add a cartoon of themselves, or a real photo, to their name. You approve every picture in Show Control or the Show Manager first; a parent has to tick a box; pictures are deleted right after they're shown. Needs FPP 10+ and names script 3.14.
+* Kids' pictures on your screens (off unless you turn it on): kids can add a cartoon of themselves, or a real photo, to their name. You approve every picture in Show Control or the Show Manager first; a parent has to tick a box; pictures are deleted right after they're shown. Needs FPP 10+ and names script 3.15.
 * Optional automatic check for kids' pictures with your own Google Cloud Vision key: a clean picture with one face and no words goes up without waiting for you; anything else waits, with the reason.
+* Your own names break audio: set when the intro ends and the closing starts on your FPP (Content Setup → Marquee) and names are only said in between, never over your announcer. Names script 3.15.
 * Spanish and French: the website, Kids' Corner and Marquee's settings show in the language picked in Settings → General → Site Language. No language buttons for visitors; English sites are unchanged.
 * Two new looks for the Marquee Festive theme: Christmas Village and Santa's North Pole (Appearance → Customize → Show Website → Look). Classic stays the default.
-* Show videos can be a YouTube link: paste it in the video's Video box. The card shows the YouTube picture and the video plays in YouTube's player in the pop-up. Handy when your website limits upload size.
 * Song covers in Tonight's Playlist and Vote for Your Favorite Song: the artwork you set in Remote Falcon, or an album cover Marquee finds by song and artist (saved on your site, only when the song matches). Change any cover, or pick No cover, in Settings → Remote Falcon → Song covers. Turn covers or the automatic finding off there too.
+
+= 0.9.6 =
+* Show videos can be a YouTube link: paste it in the video's Video box. The card shows the YouTube picture and the video plays in YouTube's player in the pop-up. Handy when your website limits upload size.
 
 = 0.9.5 =
 * Check for updates now: a link under Marquee on the Plugins page asks GitHub right away, so a new version shows up at once instead of within 6 hours.
