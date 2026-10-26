@@ -41,7 +41,7 @@ import socket
 import threading
 import urllib.request
 
-VERSION = "3.14.7"
+VERSION = "3.15.0"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -95,8 +95,9 @@ DEFAULTS = {
     "only_playlists": [],             # names go up only while one of these playlists plays ([] = any playlist)
     "simple_break": False,            # no names break playlist on this FPP: make a simple one (no sequence needed)
     "break_own": False,               # the show's own names break audio: don't put the website's in the playlists, use the website's timing
-    "say_spots": 0,                   # spots where a name may be SAID (the rest show names already said): 0 = auto,
-                                      #   4 with your own break sequence (its announcer talks after spot 4), all with Marquee's
+    "own_start": 0,                   # your own break audio: seconds in when the intro ends (first name goes up); 0 = not set
+    "own_end": 0,                     # ... and when the closing lines start. Names are said only in between;
+                                      #   after that the screens show names already said, with no voice
     "per_break": 6,                   # names in one break: fewer = each is up longer (spread over the same part of the break)
     "every": 1,                       # a names break after every this many songs (names collect in between)
 }
@@ -189,7 +190,7 @@ def break_timing():
         S["show_for"] = max(2.0, float(st["slot"]) - 0.6)
 
 
-SITE_KEYS = ("break_playlist", "names_start", "slot", "show_for", "talk_effect", "scroll")
+SITE_KEYS = ("break_playlist", "names_start", "slot", "show_for", "talk_effect", "scroll", "own_start", "own_end")
 
 
 def site_config(cfg):
@@ -816,25 +817,34 @@ def slots_for(st):
     for n, name in short_playlists().items():
         if playlist_name(st) == name:
             want = n * 2
+    a, b = own_window()
+    if b:
+        # your own break audio: the names go in the quiet part between its intro and its closing,
+        # as many as fit (about 3.3 seconds each), evenly spread
+        n = max(1, int((b - a + 0.3) / 3.3))
+        S["names_start"], S["slot"] = a, (b - a) / n
+        S["show_for"] = max(2.0, S["slot"] - 0.6)
+        want = n
     slots = want
     length = break_length(st)
     if length:
         fit = int((length - float(S["names_start"]) - 1.0) / float(S["slot"]))   # a second or so left for the outro
         if fit >= 1:
             slots = min(int(S["max_names"]), fit)
-    # Where names may be said: a show's own break sequence has its announcer talking again after
-    # the 4th spot (Santa's outro), so later spots only show names already said.
-    try:
-        say = int(S.get("say_spots") or 0)
-    except (TypeError, ValueError):
-        say = 0
-    if not say:
-        try:
-            say = 0 if is_simple(fpp_playlist(playlist_name(st))) else 4
-        except Exception:
-            say = 4
-    QUIET["until"] = float(S["names_start"]) + min(slots, say or slots) * float(S["slot"])
+    # names are said only up to the closing; any spots after it show names already said, no voice
+    QUIET["until"] = b if b else float(S["names_start"]) + slots * float(S["slot"])
     return slots
+
+
+def own_window():
+    """(first name at, closing starts at) for a show's own break audio, or (0, 0) when not set."""
+    try:
+        a, b = float(S.get("own_start") or 0), float(S.get("own_end") or 0)
+    except (TypeError, ValueError):
+        return 0.0, 0.0
+    if a <= 0 or b < a + 2.5:
+        return 0.0, 0.0
+    return a, b
 
 
 # ------------------------------------------------------ themed sequences ----
@@ -1344,7 +1354,7 @@ def _run_break(color):
         else:
             slots = slots_for(st)
         per = int(S.get("per_break") or 6)
-        if per < 6:
+        if per < 6 and not own_window()[1]:
             # fewer names per break: the same stretch of the break, shared by fewer names, so each is up longer
             turns = max(1, int(round(slots * per / 6.0)))
             S["slot"] = float(S["slot"]) * slots / turns
