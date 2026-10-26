@@ -167,7 +167,7 @@
 		var head = $('.rr-header');
 		scroller = $('.rr-scroll');
 		if (!head || !scroller) { return; }
-		var on = !document.body.classList.contains('rr-look') && window.innerWidth >= 861 && window.innerHeight >= 700;
+		var on = window.innerWidth >= 861 && window.innerHeight >= 700;
 		document.body.classList.toggle('rr-scene', on);
 		if (on) {
 			document.documentElement.style.setProperty('--rr-head-h', head.offsetHeight + 'px');
