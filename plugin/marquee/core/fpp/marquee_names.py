@@ -41,7 +41,7 @@ import socket
 import threading
 import urllib.request
 
-VERSION = "3.14.1"
+VERSION = "3.14.2"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -1009,12 +1009,15 @@ def clear_pictures():
     and FPP only switches it off after a name if the name switched it on - without this the last
     name would stay up over the show."""
     for host, model in list(PIC_ON):
+        m = "/api/overlays/model/" + urllib.parse.quote(model)
         try:
-            m = "/api/overlays/model/" + urllib.parse.quote(model)
-            fpp_put(host, m + "/clear")
-            fpp_put(host, m + "/state", {"State": 0})
+            fpp_put(host, m + "/state", {"State": 0})      # switch the overlay off: this is what matters
         except Exception as e:
-            log("could not clear the picture on", model, "-", e)
+            log("could not switch off the picture on", model, "-", e)
+        try:
+            fpp_get(host, m + "/clear", timeout=3)         # and empty it (FPP 10.3 takes this as a GET)
+        except Exception:
+            pass                                           # not needed once it's switched off
         PIC_ON.discard((host, model))
 
 
