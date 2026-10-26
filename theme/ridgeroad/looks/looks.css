@@ -24,8 +24,6 @@ body.rr-look--village {
 	--lk-accent: #f3dc9f;
 	--lk-back: url(village/hero.webp);
 	--lk-scene: url(village/hero.webp);
-	--lk-side-l: url(village/side-left.webp);
-	--lk-side-r: url(village/side-right.webp);
 	--lk-art-a: url(village/names-background-small.webp);
 	--lk-art-b: url(village/hero-small.webp);
 }
@@ -46,8 +44,6 @@ body.rr-look--northpole {
 	--lk-accent: #ffe08a;
 	--lk-back: url(northpole/names-background.webp);
 	--lk-scene: url(northpole/hero.webp);
-	--lk-side-l: url(northpole/side-left.webp);
-	--lk-side-r: url(northpole/side-right.webp);
 	--lk-art-a: url(northpole/names-background-small.webp);
 	--lk-art-b: url(northpole/names-background-small.webp);
 }
@@ -302,20 +298,40 @@ body.rr-look--northpole .rr-donate__art { background-image: url(northpole/donati
 @media (prefers-reduced-motion: reduce) {
 }
 
-/* ---------- Computers, like the mockups: the big picture (Santa, the village) across the top,
-   garland with lights down both sides, and the boxes in between. ---------- */
+/* ---------- Computers: ONE picture behind the whole page, like Classic ----------
+   The look's picture fills the window and stays put; the menu and show name sit on its top,
+   and the boxes scroll over it, so the sides are the same picture as the top (no separate
+   side strips). Santa's North Pole uses a tall picture made for this (the workshop, Santa and
+   the sleigh at the top, lanterns and fences down the sides); it's lined up so Santa stands
+   just above the first box. Christmas Village uses its picture with the sky behind the name. */
 @media (min-width: 861px) {
-	body.rr-looks { --lk-side: calc(max(70px, 140 / 1672 * 100vw) + 10px); }
-	/* behind the boxes: a picture that stays put while they scroll over it (no plain blue) */
-	body.rr-looks::before { background: var(--lk-back) center 45% / cover no-repeat, #0a1434; }
+	body.rr-looks { --lk-side: var(--side); }
+	body.rr-looks::before { background: var(--lk-full) var(--lk-full-pos) / var(--lk-full-size) no-repeat, var(--lk-full-bg); }
 	body.rr-looks::after { display: none; }
-	.rr-looks .rr-side { z-index: 3; }
-	.rr-looks .rr-header { z-index: 6; }
+	body.rr-look--village { --lk-full: url(village/hero.webp); --lk-full-pos: center top; --lk-full-size: cover; --lk-full-bg: #0a1434; }
+	body.rr-look--northpole { --lk-full: url(northpole/scene.webp); --lk-full-size: 100% auto; --lk-full-bg: #07152b;
+		/* the bottom of Santa's sleigh (64% down the width of the picture) sits on the bottom of the header */
+		--lk-full-pos: center calc(var(--rr-head-h, 380px) - 63.6vw); }
+	.rr-looks .rr-side, .rr-looks .rr-frame .rr-garland--top, .rr-looks .rr-frame .rr-bow { display: none !important; }
+	.rr-looks .rr-header::before { display: none; }
+	.rr-looks .rr-header {
+		z-index: 6; padding: 0 0 18px;
+		background: linear-gradient(180deg, rgba(5, 10, 30, .72) 0%, rgba(5, 10, 30, .42) 52%, rgba(5, 10, 30, 0) 100%);
+	}
+	.rr-look--village .rr-header { background: linear-gradient(180deg, rgba(5, 10, 30, .45) 0%, rgba(5, 10, 30, 0) 100%); }
+	.rr-look--northpole .rr-header { min-height: clamp(330px, 23vw, 470px); }
 	.rr-looks .rr-main { z-index: 7; }
-	.rr-looks .rr-scene__art img { object-position: 50% 66%; }
-	.rr-looks .rr-scene__title { top: 23%; }
+	.rr-looks .rr-scene__art { display: none; }
+	.rr-looks .rr-hero--scene { margin-top: 0; }
+	.rr-looks .rr-scene { height: auto; overflow: visible; }
+	.rr-looks .rr-scene__title { position: relative; left: auto; top: auto; transform: none; width: auto; max-width: 1000px; margin: 0 auto; padding: 2px 0 0; }
+	.rr-looks .rr-scene__title::before { inset: -6% 4% -10%; background: radial-gradient(ellipse at 50% 50%, rgba(3, 8, 26, .62) 0%, rgba(3, 8, 26, .3) 50%, transparent 72%); }
+	.rr-looks .rr-logo__text { font-size: clamp(48px, 5.2vw, 96px); }
+	.rr-looks .rr-scene .rr-logo img { max-height: min(17vw, 210px); }
+	.rr-looks .rr-scene .rr-intro { display: none; } /* keeps the top short; the intro shows on phones */
+	.rr-looks .rr-scene .rr-tagline { font-size: clamp(22px, 2vw, 34px); }
 	/* the sign spans the width, with a red bow on each top corner */
-	.rr-looks .rr-banner { max-width: none; margin-top: -84px; padding: 24px 90px 22px; }
+	.rr-looks .rr-banner { max-width: none; margin-top: 8px; padding: 24px 90px 22px; }
 	.rr-looks .rr-banner__flake { left: 96px; } .rr-looks .rr-banner__flake--r { left: auto; right: 96px; }
 	.rr-looks .rr-banner__copy::before, .rr-looks .rr-banner__copy::after {
 		content: ""; position: absolute; top: -26px; width: 104px; height: 82px; pointer-events: none; z-index: 2;
@@ -324,28 +340,18 @@ body.rr-look--northpole .rr-donate__art { background-image: url(northpole/donati
 	.rr-looks .rr-banner__copy::before { left: -14px; }
 	.rr-looks .rr-banner__copy::after { right: -14px; background-image: url(../assets/img/bow-right-v137.webp); }
 	.rr-looks .rr-banner__copy { position: static; }
+	.rr-looks .rr-main { padding-top: 14px; }
+}
+/* very tall, narrow windows: the North Pole picture fills the height instead */
+@media (min-width: 861px) and (max-aspect-ratio: 1/1) {
+	body.rr-look--northpole { --lk-full-size: cover; --lk-full-pos: center top; }
 }
 
-/* ---------- Computers with a tall enough window, like Classic: the top stays put (menu, show name and
-   the band of the picture with Santa / the village) and only the boxes scroll, over a picture that
-   also stays put. main.js turns this on with .rr-scene, the same as for Classic. ---------- */
-@media (min-width: 861px) {
-	body.rr-looks.rr-scene .rr-side { display: block; z-index: 5; }
-	body.rr-looks.rr-scene .rr-header {
-		min-height: 54vh; padding: 0 0 34px;
-		background:
-			url(../assets/img/garland-v137.webp) center bottom / auto 46px repeat-x,
-			linear-gradient(180deg, rgba(6, 12, 34, .92) 0%, rgba(6, 12, 34, .8) 24%, rgba(6, 12, 34, .35) 38%, rgba(6, 12, 34, 0) 50%),
-			var(--lk-scene) center 82% / cover no-repeat, #0a1434;
-	}
-	body.rr-looks.rr-scene .rr-scene__art { display: none; }
-	body.rr-looks.rr-scene .rr-hero--scene { margin-top: 0; }
-	body.rr-looks.rr-scene .rr-scene { height: auto; overflow: visible; }
-	body.rr-looks.rr-scene .rr-scene__title { position: relative; left: auto; top: auto; transform: none; width: auto; max-width: 1100px; margin: 0 auto; padding: 4px 0 0; }
-	body.rr-looks.rr-scene .rr-scene__title::before { display: none; }
-	body.rr-looks.rr-scene .rr-logo__text { font-size: clamp(48px, 5.4vw, 100px); }
-	body.rr-looks.rr-scene .rr-scene .rr-intro { display: none; } /* keeps the words on the dark sky, clear of Santa */
-	body.rr-looks.rr-scene .rr-scene .rr-tagline { font-size: clamp(24px, 2.1vw, 36px); }
-	body.rr-looks.rr-scene .rr-banner { margin-top: 10px; }
-	body.rr-looks.rr-scene .rr-main { padding-top: 14px; }
+/* ---------- Phones: the top of the picture, the show name under it, and the rest of the
+   picture behind the boxes ---------- */
+@media (max-width: 860px) {
+	body.rr-look--northpole::before { background: url(northpole/scene-small.webp) center calc(-66.4vw + 4px) / 100% auto no-repeat, #07152b; }
+	body.rr-look--village::before { background: url(village/hero-small.webp) center bottom / cover no-repeat, #0a1434; }
+	.rr-look--northpole .rr-scene__art img { object-position: 50% 0; -webkit-mask-image: none; mask-image: none; }
+	.rr-look--northpole .rr-scene__art, .rr-look--northpole .rr-scene__art img { aspect-ratio: 1024 / 680; }
 }

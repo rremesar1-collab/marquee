@@ -73,7 +73,10 @@ add_action( 'wp_head', function () {
 	if ( 'classic' === ridgeroad_look() || ! is_front_page() ) {
 		return;
 	}
-	printf( '<link rel="preload" as="image" href="%1$s" imagesrcset="%2$s 768w, %1$s 1536w" imagesizes="(max-width: 860px) 100vw, 1280px" fetchpriority="high">' . "\n", esc_url( ridgeroad_look_img( 'hero.webp' ) ), esc_url( ridgeroad_look_img( 'hero-small.webp' ) ) );
+	// computers: the one picture behind the page; phones: the picture above the show name
+	$full = file_exists( get_template_directory() . '/looks/' . ridgeroad_look() . '/scene.webp' ) ? 'scene.webp' : 'hero.webp';
+	printf( '<link rel="preload" as="image" href="%s" media="(min-width: 861px)" fetchpriority="high">' . "\n", esc_url( ridgeroad_look_img( $full ) ) );
+	printf( '<link rel="preload" as="image" href="%s" media="(max-width: 860px)" fetchpriority="high">' . "\n", esc_url( ridgeroad_look_img( 'hero-small.webp' ) ) );
 	foreach ( array( 'cinzel-latin-700-normal.woff2', 'great-vibes-latin-400-normal.woff2' ) as $font ) {
 		printf( '<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin>' . "\n", esc_url( get_template_directory_uri() . '/assets/fonts/' . $font ) );
 	}
@@ -89,7 +92,7 @@ function ridgeroad_look_hero() {
 	<div class="rr-scene">
 		<picture class="rr-scene__art">
 			<source media="(max-width: 860px)" srcset="<?php echo esc_url( ridgeroad_look_img( 'hero-small.webp' ) ); ?>">
-			<img src="<?php echo esc_url( ridgeroad_look_img( 'hero.webp' ) ); ?>" width="1536" height="1024" alt="" fetchpriority="high">
+			<img src="<?php echo esc_url( ridgeroad_look_img( 'hero.webp' ) ); ?>" width="1536" height="1024" alt="" loading="lazy">
 		</picture>
 		<div class="rr-scene__title">
 			<h1 class="rr-logo-h">
