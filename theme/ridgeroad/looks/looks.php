@@ -54,7 +54,7 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp ) {
 
 add_filter( 'body_class', function ( $classes ) {
 	if ( 'classic' !== ridgeroad_look() ) {
-		$classes[] = 'rr-look';
+		$classes[] = 'rr-looks'; // not "rr-look": older Marquee scripts treat that name differently
 		$classes[] = 'rr-look--' . ridgeroad_look();
 	}
 	return $classes;
