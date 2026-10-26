@@ -168,7 +168,10 @@ body.rr-looks::after {
 	box-shadow: inset 0 0 0 3px rgba(0, 0, 0, .25), inset 0 0 0 4px var(--lk-gold-soft), 0 6px 14px rgba(0, 0, 0, .5);
 }
 .rr-looks .rr-tip { background: linear-gradient(180deg, rgba(12, 31, 79, .96), rgba(8, 20, 54, .98)); }
-.rr-look--northpole .rr-tip { background: linear-gradient(180deg, #17703f, #083a20); }
+.rr-look--northpole .rr-tip, .rr-look--northpole .rr-panel--green.rr-gb-form { background: linear-gradient(180deg, #8f121d, #5e0912); }
+.rr-look--northpole .rr-panel--green.rr-playlist__panel { background: var(--lk-panel); }
+.rr-look--northpole .rr-ribbon span { background: linear-gradient(180deg, #b3141f, #6c0910); }
+.rr-look--village .rr-panel--green.rr-playlist__panel, .rr-look--village .rr-panel--green.rr-gb-form { background: var(--lk-panel); }
 .rr-looks .rr-tip h3 { font-family: var(--lk-head); font-weight: 400; color: var(--lk-accent); font-size: calc(22px * var(--lk-head-size)); }
 .rr-look--northpole .rr-tip h3 { font-weight: 700; font-size: 19px; }
 
@@ -179,33 +182,15 @@ body.rr-looks::after {
 }
 .rr-look--northpole .rr-btn--blue { background: linear-gradient(180deg, #1c3f8f, #102a66); border: 1px solid var(--lk-gold); border-radius: 999px; }
 
-/* ---------- Home cards: picture on the left blending into the card, words on the right ---------- */
+/* ---------- Home cards (Show Videos, Kids' Corner): Classic's layout, in the look's colors ---------- */
 .rr-looks .rr-kids-teaser {
-	position: relative; overflow: hidden; min-height: 170px; padding: 18px 22px 18px 0; gap: 0; align-items: center;
 	background: var(--lk-panel); border: 2px solid var(--lk-gold); border-radius: 16px;
 	box-shadow: inset 0 0 0 5px rgba(0, 0, 0, .25), inset 0 0 0 6px var(--lk-gold-soft), 0 12px 28px rgba(0, 0, 0, .45);
 }
-.rr-look--northpole .rr-kids-teaser { background: #7d0f19; }
-.rr-looks .rr-kids-teaser--songs { background: var(--lk-panel); }
-body.rr-looks .rr-kids-teaser__art, .rr-looks .rr-kids-teaser--songs::before {
-	content: ""; display: block; flex: none; align-self: stretch; width: 42%; margin: -18px 18px -18px 0; border: 0; border-radius: 0; box-shadow: none;
-	background: center / cover no-repeat;
-	-webkit-mask-image: linear-gradient(90deg, #000 62%, transparent); mask-image: linear-gradient(90deg, #000 62%, transparent);
-}
-body.rr-look--village .rr-kids-teaser__art { background-image: url(village/kids.webp); }
-body.rr-look--northpole .rr-kids-teaser__art { background-image: url(northpole/kids.webp); }
-.rr-looks .rr-kids-teaser--songs::before { background-image: var(--lk-art-b); background-position: 30% 60%; }
-.rr-looks .rr-kids-teaser__icon { display: none; }
-.rr-looks .rr-kids-teaser__text { text-align: center; }
-.rr-looks .rr-kids-teaser__text b { margin-bottom: 4px; font: 400 calc(clamp(24px, 2.2vw, 32px) * var(--lk-head-size))/1.15 var(--lk-head); color: var(--lk-accent); text-shadow: 0 2px 4px rgba(0, 0, 0, .7); }
-.rr-look--northpole .rr-kids-teaser__text b { font-weight: 700; }
-.rr-looks .rr-kids-teaser__go, .rr-looks .rr-explore--two .rr-kids-teaser__go {
-	display: grid; place-items: center; flex: none; width: 42px; height: 42px; padding: 0; margin-left: 12px; border-radius: 50%; font-size: 0;
-	background: radial-gradient(circle at 35% 30%, #fff3c4, var(--lk-gold) 55%, var(--lk-gold-2)); border: 2px solid #6b4510; box-shadow: 0 3px 8px rgba(0, 0, 0, .5);
-}
-.rr-looks .rr-kids-teaser__go::after { content: "\203A"; font: 800 26px/1 var(--f-body); color: #3a1d00; margin-top: -3px; }
-.rr-looks .rr-explore--two .rr-kids-teaser { flex-wrap: nowrap; }
-.rr-looks .rr-explore--two .rr-kids-teaser__text { flex: 1; font-size: 15px; }
+.rr-look--northpole .rr-kids-teaser:not(.rr-kids-teaser--songs) { background: linear-gradient(180deg, #8f121d, #5e0912); }
+.rr-looks .rr-kids-teaser__art { display: none; }
+.rr-looks .rr-kids-teaser__text b { color: var(--lk-accent); font-family: var(--lk-head); text-shadow: 0 2px 4px rgba(0, 0, 0, .7); }
+.rr-looks .rr-kids-teaser__go { background: radial-gradient(circle at 35% 30%, #fff3c4, var(--lk-gold) 55%, var(--lk-gold-2)); color: #3a1d00; border: 1px solid #6b4510; }
 
 /* ---------- Donation box with the gift picture ---------- */
 .rr-looks .rr-donate {
@@ -226,36 +211,13 @@ body.rr-look--northpole .rr-donate__art { background-image: url(northpole/donati
 .rr-looks .rr-grid--support { grid-template-columns: 1.35fr 1fr; }
 .rr-looks .rr-h__heart { display: none; }
 
-/* ---------- "Your Name in Lights" on the home page ---------- */
-.rr-namesign {
-	position: relative; max-width: 1100px; margin: 34px auto 0; aspect-ratio: 16 / 7; border-radius: 16px; overflow: hidden;
-	border: 2px solid var(--lk-gold); background: #0b1d4a center 55% / cover no-repeat;
-	box-shadow: inset 0 0 0 5px rgba(0, 0, 0, .28), inset 0 0 0 6px var(--lk-gold-soft), 0 0 0 2px rgba(50, 30, 0, .55), 0 20px 44px rgba(0, 0, 0, .55);
-	display: grid; place-items: center;
-}
-.rr-look--village .rr-namesign { background-image: url(village/names-background.webp); }
-.rr-look--northpole .rr-namesign { background-image: url(northpole/names-background.webp); }
-.rr-namesign__board { width: 46%; text-align: center; display: grid; justify-items: center; gap: 10px; }
-.rr-look--northpole .rr-namesign__board { width: 64%; }
-.rr-namesign__title { font: 400 clamp(30px, 3.6vw, 52px)/1.1 var(--lk-title); color: var(--lk-accent); text-shadow: 0 2px 4px rgba(0, 0, 0, .9), 0 0 16px rgba(255, 200, 90, .5); -webkit-text-stroke: 0; }
-.rr-namesign__led { /* LED name board */
-	position: relative; margin: 0; width: 100%; padding: 14px 10px; border-radius: 10px; overflow: hidden;
-	background: #050505; border: 4px solid #d9a43a; box-shadow: 0 0 0 2px #5a3a08, 0 0 18px rgba(255, 200, 90, .45), inset 0 0 18px #000;
-	font: 800 clamp(20px, 2.5vw, 38px)/1 var(--f-body); letter-spacing: .1em; text-transform: uppercase; white-space: nowrap;
-	color: #ffd27a; text-shadow: 0 0 4px #ffb02e, 0 0 12px #ff9a1f, 0 0 22px rgba(255, 140, 20, .8);
-}
-.rr-look--village .rr-namesign__led { /* marquee bulbs around the board */
-	border: 0; padding: 18px 14px;
-	background: radial-gradient(circle, #fff1b8 0 2.6px, #e2a63a 3.2px, transparent 4px) 0 0 / 15px 15px repeat-x, radial-gradient(circle, #fff1b8 0 2.6px, #e2a63a 3.2px, transparent 4px) 0 100% / 15px 15px repeat-x, #050505;
-}
-.rr-look--northpole .rr-namesign__led { color: #ff5252; text-shadow: 0 0 4px #ff2b2b, 0 0 14px rgba(255, 30, 30, .85); border-color: #2a6a3a; box-shadow: 0 0 0 2px #0c3a1a, 0 0 18px rgba(80, 255, 120, .35), inset 0 0 18px #000; }
-.rr-namesign__led::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle, transparent 1.5px, rgba(5, 5, 5, .85) 2.1px) 0 0 / 4px 4px; }
-.rr-namesign__text { margin: 0; font-size: clamp(14px, 1.3vw, 17px); font-weight: 700; color: #fff; text-shadow: 0 1px 3px #000, 0 0 10px #000; }
-
 /* ---------- Kids' Corner: name form on the picture ---------- */
 .rr-looks .rr-kc__act#names { border-radius: 20px; padding: 20px; background: center / cover no-repeat; }
 .rr-look--village .rr-kc__act#names { background-image: linear-gradient(rgba(5, 12, 36, .35), rgba(5, 12, 36, .35)), url(village/names-background.webp); }
 .rr-look--northpole .rr-kc__act#names { background-image: linear-gradient(rgba(5, 12, 36, .3), rgba(5, 12, 36, .3)), url(northpole/names-background.webp); }
+
+.rr-looks .rr-gb-intro { display: table; margin-left: auto; margin-right: auto; max-width: 900px; padding: 10px 26px 12px; border-radius: 14px; background: rgba(5, 10, 30, .72); box-shadow: 0 6px 18px rgba(0, 0, 0, .35); }
+.rr-looks .rr-gb-intro p { text-shadow: 0 1px 2px rgba(0, 0, 0, .8); }
 
 @keyframes rr-lk-twinkle { from { opacity: .7; } to { opacity: 1; } }
 
@@ -284,10 +246,6 @@ body.rr-look--northpole .rr-donate__art { background-image: url(northpole/donati
 	body.rr-looks .rr-donate__art { width: 100%; min-height: 0; aspect-ratio: 16 / 9; -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent); mask-image: linear-gradient(180deg, #000 70%, transparent); }
 	.rr-looks .rr-donate__copy { padding: 0 16px; }
 	.rr-looks .rr-donate .rr-qr { grid-column: auto; margin: 0; }
-	.rr-looks .rr-kids-teaser { min-height: 130px; padding-right: 14px; }
-	body.rr-looks .rr-kids-teaser__art, .rr-looks .rr-kids-teaser--songs::before { width: 36%; }
-	.rr-namesign { aspect-ratio: auto; display: block; background-size: 100% auto; background-position: top center; padding-top: 66.6%; background-color: var(--lk-panel); }
-	.rr-namesign__board, .rr-look--northpole .rr-namesign__board { width: auto; margin: 0; padding: 18px 16px 20px; background: var(--lk-panel); border-top: 2px solid var(--lk-gold); }
 	.rr-looks .rr-kc__act#names { padding: 12px; }
 }
 @media (max-width: 480px) {
