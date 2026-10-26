@@ -41,7 +41,7 @@ import socket
 import threading
 import urllib.request
 
-VERSION = "3.14.4"
+VERSION = "3.14.5"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -794,12 +794,29 @@ def short_playlists():
     return out
 
 
+def break_length(st):
+    """How long the break that is playing runs, in seconds (0 when FPP doesn't say)."""
+    try:
+        rem = float(st.get("seconds_remaining") or 0)
+    except (TypeError, ValueError):
+        rem = 0.0
+    return elapsed(st) + rem if rem > 0 else 0.0
+
+
 def slots_for(st):
-    """Name slots in the break that is playing: a short break says each of its 1 or 2 names twice."""
+    """Name spots in the break that is playing. Counted from the break's own length, so a sequence
+    made with room for 3, 5 or 6 names gets every spot filled; a short break without a length that
+    FPP reports says each of its 1 or 2 names twice."""
+    want = int(S["max_names"])
     for n, name in short_playlists().items():
         if playlist_name(st) == name:
-            return n * 2
-    return int(S["max_names"])
+            want = n * 2
+    length = break_length(st)
+    if length:
+        fit = int((length - float(S["names_start"]) - 1.0) / float(S["slot"]))   # a second or so left for the outro
+        if fit >= 1:
+            return min(int(S["max_names"]), fit)
+    return want
 
 
 # ------------------------------------------------------ themed sequences ----
