@@ -15,9 +15,9 @@
 <a class="screen-reader-text skip-link" href="#main"><?php esc_html_e( 'Skip to content', 'ridgeroad' ); ?></a>
 
 <?php $rr_look = function_exists( 'ridgeroad_look' ) ? ridgeroad_look() : 'classic'; ?>
-<?php if ( 'classic' === $rr_look ) : ?>
 <div class="rr-side rr-side--left" aria-hidden="true"></div>
 <div class="rr-side rr-side--right" aria-hidden="true"></div>
+<?php if ( 'classic' === $rr_look ) : ?>
 <div class="rr-frame" aria-hidden="true">
 	<div class="rr-garland rr-garland--top"></div>
 	<img class="rr-bow rr-bow--left" src="<?php echo esc_url( ridgeroad_img( 'bow-left-v137.webp' ) ); ?>" alt="">

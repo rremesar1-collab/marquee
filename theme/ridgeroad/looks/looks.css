@@ -47,7 +47,7 @@ body.rr-look--northpole {
 	--lk-art-a: url(northpole/names-background-small.webp);
 	--lk-art-b: url(northpole/names-background-small.webp);
 }
-body.rr-looks { --lk-side: clamp(120px, 14vw, 290px); --lk-hero-h: clamp(440px, 52vw, 800px); }
+body.rr-looks { --lk-side: 12px; --lk-hero-h: clamp(420px, 50vw, 760px); }
 
 /* ---------- Page: night sky, and decorated sides down both edges ---------- */
 body.rr-looks { background: #070f2a; }
@@ -75,7 +75,7 @@ body.rr-looks::after {
 
 /* ---------- Header picture: edge to edge between the sides, show name on the sky ---------- */
 .rr-looks .rr-hero--scene { margin: -58px 0 0; padding: 0; max-width: none; }
-.rr-looks .rr-hero--scene .rr-hero__text { padding: 0 var(--lk-side); }
+
 .rr-looks .rr-scene { position: relative; overflow: hidden; height: var(--lk-hero-h); }
 .rr-looks .rr-scene__art, .rr-looks .rr-scene__art img { display: block; width: 100%; height: 100%; }
 .rr-looks .rr-scene__art img {
@@ -301,22 +301,25 @@ body.rr-look--northpole .rr-donate__art { background-image: url(northpole/donati
 @media (prefers-reduced-motion: reduce) {
 }
 
-/* ---------- Computers, like Classic: one picture fills the window and stays put. The menu and the
-   show name sit on its sky and the boxes scroll over it (main.js also pins the top, as in Classic). ---------- */
-body.rr-look--village { --lk-scene: url(village/hero.webp); }
-body.rr-look--northpole { --lk-scene: url(northpole/hero.webp); }
+/* ---------- Computers, like the mockups: the big picture (Santa, the village) across the top,
+   garland with lights down both sides, and the boxes in between. ---------- */
 @media (min-width: 861px) {
-	body.rr-looks::before, body.rr-looks.rr-scene::before { background: var(--lk-scene) center 45% / cover no-repeat, #0b1c47; }
-	body.rr-looks::after { display: none; }
-	.rr-looks .rr-scene__art { display: none; }
-	.rr-looks .rr-hero--scene { margin-top: 0; }
-	.rr-looks .rr-scene { height: auto; overflow: visible; }
-	.rr-looks .rr-scene__title { position: relative; left: auto; top: auto; transform: none; width: auto; max-width: 1100px; margin: 0 auto; padding: 6px 0 10px; }
-	.rr-looks .rr-scene__title::before { display: none; }
-	.rr-looks .rr-logo__text { font-size: clamp(50px, 5.6vw, 104px); }
-	.rr-looks .rr-banner { margin-top: 0; }
-	/* Like the mockups: the whole picture (village, Santa and his sleigh) shows first, with the
-	   status sign peeking up from the bottom of the window; the boxes follow below it. */
-	.rr-looks .rr-main { padding-top: max(20px, calc(86vh - 330px)); }
-	.rr-looks.rr-scene .rr-main { padding-top: max(20px, calc(86vh - var(--rr-head-h, 330px))); }
+	body.rr-looks { --lk-side: calc(max(70px, 140 / 1672 * 100vw) + 10px); }
+	body.rr-looks::before { background: #0a1434; }
+	.rr-looks .rr-side { z-index: 3; }
+	.rr-looks .rr-header { z-index: 6; }
+	.rr-looks .rr-main { z-index: 7; }
+	.rr-looks .rr-scene__art img { object-position: 50% 66%; }
+	.rr-looks .rr-scene__title { top: 23%; }
+	.rr-looks .rr-main { padding-left: calc(var(--lk-side) + 6px); padding-right: calc(var(--lk-side) + 6px); }
+	/* the sign spans the width, with a red bow on each top corner */
+	.rr-looks .rr-banner { max-width: 1180px; margin-top: -84px; padding: 24px 90px 22px; }
+	.rr-looks .rr-banner__flake { left: 96px; } .rr-looks .rr-banner__flake--r { left: auto; right: 96px; }
+	.rr-looks .rr-banner__copy::before, .rr-looks .rr-banner__copy::after {
+		content: ""; position: absolute; top: -26px; width: 104px; height: 82px; pointer-events: none; z-index: 2;
+		background: url(../assets/img/bow-left-v137.webp) center / contain no-repeat; filter: drop-shadow(0 4px 6px rgba(0, 0, 0, .5));
+	}
+	.rr-looks .rr-banner__copy::before { left: -14px; }
+	.rr-looks .rr-banner__copy::after { right: -14px; background-image: url(../assets/img/bow-right-v137.webp); }
+	.rr-looks .rr-banner__copy { position: static; }
 }
