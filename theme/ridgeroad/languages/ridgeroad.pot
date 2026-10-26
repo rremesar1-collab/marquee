@@ -263,7 +263,7 @@ msgid "Christmas Eve is here!"
 msgstr ""
 
 #: plugin/marquee/core/customizer.php:195 plugin/marquee/core/i18n.php:26
-#: theme/ridgeroad/looks/looks.php:134
+#: theme/ridgeroad/looks/looks.php:130
 msgid "Merry Christmas!"
 msgstr ""
 
@@ -2623,7 +2623,7 @@ msgstr ""
 msgid "People’s Choice hearts"
 msgstr ""
 
-#: plugin/marquee/core/contest.php:497 plugin/marquee/core/sequences.php:104
+#: plugin/marquee/core/contest.php:497 plugin/marquee/core/sequences.php:108
 #: plugin/marquee/core/parts/kids-lab.php:19
 msgid "Song"
 msgstr ""
@@ -2717,18 +2717,14 @@ msgstr ""
 msgid "Cover picture (optional)"
 msgstr ""
 
-#: plugin/marquee/core/sequences.php:50 plugin/marquee/core/sequences.php:103
-#: theme/ridgeroad/inc/sequences.php:50
+#: plugin/marquee/core/sequences.php:50 plugin/marquee/core/sequences.php:56
+#: plugin/marquee/core/sequences.php:107
 msgid "Video"
 msgstr ""
 
-#: plugin/marquee/core/sequences.php:55 plugin/marquee/core/sequences.php:105
+#: plugin/marquee/core/sequences.php:55 plugin/marquee/core/sequences.php:109
 #: theme/ridgeroad/inc/sequences.php:55
 msgid "Artist"
-msgstr ""
-
-#: plugin/marquee/core/sequences.php:56 theme/ridgeroad/inc/sequences.php:56
-msgid "MP4 video"
 msgstr ""
 
 #: plugin/marquee/core/sequences.php:59 theme/ridgeroad/inc/sequences.php:59
@@ -2737,33 +2733,38 @@ msgstr ""
 
 #: plugin/marquee/core/sequences.php:61 theme/ridgeroad/inc/sequences.php:61
 msgid ""
-"Upload the MP4 to your Media Library (or paste a link to an MP4). Tip: "
-"export at 1080p, H.264, and keep it under about 150 MB so it loads fast on "
-"phones."
+"Paste a YouTube link, or upload the MP4 to your Media Library (or paste a "
+"link to an MP4). YouTube is easiest when your website limits upload size. "
+"For an MP4: export at 1080p, H.264, and keep it under about 150 MB so it "
+"loads fast on phones."
 msgstr ""
 
 #: plugin/marquee/core/sequences.php:64 theme/ridgeroad/inc/sequences.php:64
+msgid "YouTube video: it plays in a pop-up player on your website."
+msgstr ""
+
+#: plugin/marquee/core/sequences.php:68 theme/ridgeroad/inc/sequences.php:68
 msgid "Badge"
 msgstr ""
 
-#: plugin/marquee/core/sequences.php:64
+#: plugin/marquee/core/sequences.php:68
 #: plugin/marquee/core/parts/sequences.php:29
 #: theme/ridgeroad/parts/sequences.php:29
 msgid "New this year"
 msgstr ""
 
-#: plugin/marquee/core/sequences.php:66 theme/ridgeroad/inc/sequences.php:66
+#: plugin/marquee/core/sequences.php:70 theme/ridgeroad/inc/sequences.php:70
 msgid ""
 "Use “Order” in the box on the right to arrange the videos (lower numbers "
 "first). Add a cover picture on the right, or the first frame of the video is"
 " used."
 msgstr ""
 
-#: plugin/marquee/core/sequences.php:106 theme/ridgeroad/inc/sequences.php:106
+#: plugin/marquee/core/sequences.php:110 theme/ridgeroad/inc/sequences.php:110
 msgid "Order"
 msgstr ""
 
-#: plugin/marquee/core/sequences.php:118 theme/ridgeroad/inc/sequences.php:118
+#: plugin/marquee/core/sequences.php:124 theme/ridgeroad/inc/sequences.php:124
 msgid "No video yet"
 msgstr ""
 
@@ -3276,32 +3277,32 @@ msgstr ""
 msgid "g A"
 msgstr ""
 
-#: plugin/marquee/core/helpers.php:160 plugin/marquee/core/helpers.php:289
+#: plugin/marquee/core/helpers.php:160 plugin/marquee/core/helpers.php:297
 #: theme/ridgeroad/inc/helpers.php:160
 msgid "Our light show"
 msgstr ""
 
-#: plugin/marquee/core/helpers.php:290 theme/ridgeroad/inc/helpers.php:290
+#: plugin/marquee/core/helpers.php:298 theme/ridgeroad/inc/helpers.php:298
 msgid "Snowman"
 msgstr ""
 
-#: plugin/marquee/core/helpers.php:291 theme/ridgeroad/inc/helpers.php:291
+#: plugin/marquee/core/helpers.php:299 theme/ridgeroad/inc/helpers.php:299
 msgid "Reindeer"
 msgstr ""
 
-#: plugin/marquee/core/helpers.php:292 theme/ridgeroad/inc/helpers.php:292
+#: plugin/marquee/core/helpers.php:300 theme/ridgeroad/inc/helpers.php:300
 msgid "Gingerbread"
 msgstr ""
 
-#: plugin/marquee/core/helpers.php:293 theme/ridgeroad/inc/helpers.php:293
+#: plugin/marquee/core/helpers.php:301 theme/ridgeroad/inc/helpers.php:301
 msgid "Snowman friends"
 msgstr ""
 
-#: plugin/marquee/core/helpers.php:294 theme/ridgeroad/inc/helpers.php:294
+#: plugin/marquee/core/helpers.php:302 theme/ridgeroad/inc/helpers.php:302
 msgid "Santa’s tree"
 msgstr ""
 
-#: plugin/marquee/core/helpers.php:295 theme/ridgeroad/inc/helpers.php:295
+#: plugin/marquee/core/helpers.php:303 theme/ridgeroad/inc/helpers.php:303
 msgid "Santa’s cookies"
 msgstr ""
 
@@ -3470,7 +3471,7 @@ msgid "Your Name in Lights!"
 msgstr ""
 
 #: plugin/marquee/core/parts/kids-names.php:13
-#: theme/ridgeroad/looks/looks.php:135 theme/ridgeroad/parts/kids-names.php:13
+#: theme/ridgeroad/looks/looks.php:131 theme/ridgeroad/parts/kids-names.php:13
 msgid "Type your first name and watch for it in our light show between songs!"
 msgstr ""
 
@@ -4513,16 +4514,16 @@ msgid ""
 "sections and settings stay the same."
 msgstr ""
 
-#: theme/ridgeroad/looks/looks.php:135
+#: theme/ridgeroad/looks/looks.php:131
 msgid ""
 "Send your name to the show during show hours and watch for it between songs!"
 msgstr ""
 
-#: theme/ridgeroad/looks/looks.php:136
+#: theme/ridgeroad/looks/looks.php:132
 msgid "Put my name in lights"
 msgstr ""
 
-#: theme/ridgeroad/looks/looks.php:136
+#: theme/ridgeroad/looks/looks.php:132
 msgid "See how it works"
 msgstr ""
 

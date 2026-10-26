@@ -53,13 +53,17 @@ add_action( 'add_meta_boxes_rr_sequence', function () {
 		$url = $vid ? wp_get_attachment_url( $vid ) : get_post_meta( $post->ID, '_rr_video_url', true );
 		echo '<table class="form-table" role="presentation"><tbody>';
 		printf( '<tr><th><label for="rr_artist">%s</label></th><td><input class="regular-text" id="rr_artist" name="rr_artist" value="%s" placeholder="Trans-Siberian Orchestra"></td></tr>', esc_html__( 'Artist', 'ridgeroad' ), esc_attr( get_post_meta( $post->ID, '_rr_artist', true ) ) );
-		echo '<tr><th>' . esc_html__( 'MP4 video', 'ridgeroad' ) . '</th><td>';
+		echo '<tr><th>' . esc_html__( 'Video', 'ridgeroad' ) . '</th><td>';
 		printf( '<input type="hidden" id="rr_video" name="rr_video" value="%d">', $vid );
-		printf( '<input class="large-text" id="rr_video_url" name="rr_video_url" value="%s" placeholder="https://…/my-sequence.mp4" style="margin-bottom:8px">', esc_attr( $url ) );
+		printf( '<input class="large-text" id="rr_video_url" name="rr_video_url" value="%s" placeholder="https://youtu.be/…  or  https://…/my-sequence.mp4" style="margin-bottom:8px">', esc_attr( $url ) );
 		echo '<button type="button" class="button button-primary" id="rr_pick">' . esc_html__( 'Upload or choose MP4', 'ridgeroad' ) . '</button> ';
 		echo '<button type="button" class="button" id="rr_clear">' . esc_html__( 'Remove', 'ridgeroad' ) . '</button>';
-		echo '<p class="description">' . esc_html__( 'Upload the MP4 to your Media Library (or paste a link to an MP4). Tip: export at 1080p, H.264, and keep it under about 150 MB so it loads fast on phones.', 'ridgeroad' ) . '</p>';
-		printf( '<video id="rr_prev" src="%s" controls preload="metadata" style="max-width:420px;margin-top:10px;border-radius:8px;%s"></video>', esc_url( $url ), $url ? '' : 'display:none' );
+		echo '<p class="description">' . esc_html__( 'Paste a YouTube link, or upload the MP4 to your Media Library (or paste a link to an MP4). YouTube is easiest when your website limits upload size. For an MP4: export at 1080p, H.264, and keep it under about 150 MB so it loads fast on phones.', 'ridgeroad' ) . '</p>';
+		$yt = ridgeroad_youtube_id( $url );
+		if ( $yt ) {
+			printf( '<p style="margin-top:10px"><img src="%s" alt="" style="max-width:420px;border-radius:8px"><br><span class="description">%s</span></p>', esc_url( 'https://i.ytimg.com/vi/' . $yt . '/hqdefault.jpg' ), esc_html__( 'YouTube video: it plays in a pop-up player on your website.', 'ridgeroad' ) );
+		}
+		printf( '<video id="rr_prev" src="%s" controls preload="metadata" style="max-width:420px;margin-top:10px;border-radius:8px;%s"></video>', esc_url( $yt ? '' : $url ), ( $url && ! $yt ) ? '' : 'display:none' );
 		echo '</td></tr>';
 		printf( '<tr><th>%s</th><td><label><input type="checkbox" name="rr_new" value="1" %s> %s</label></td></tr>', esc_html__( 'Badge', 'ridgeroad' ), checked( (bool) get_post_meta( $post->ID, '_rr_new', true ), true, false ), esc_html__( 'New this year', 'ridgeroad' ) );
 		echo '</tbody></table>';
@@ -112,6 +116,8 @@ add_action( 'manage_rr_sequence_posts_custom_column', function ( $col, $id ) {
 		$c = get_the_post_thumbnail_url( $id, 'medium' );
 		if ( $c ) {
 			echo '<img src="' . esc_url( $c ) . '" style="width:130px;border-radius:6px" alt="">';
+		} elseif ( $v && ridgeroad_youtube_id( $v ) ) {
+			echo '<img src="' . esc_url( 'https://i.ytimg.com/vi/' . ridgeroad_youtube_id( $v ) . '/mqdefault.jpg' ) . '" style="width:130px;border-radius:6px" alt="">';
 		} elseif ( $v ) {
 			echo '<video src="' . esc_url( $v ) . '#t=0.5" preload="metadata" muted style="width:130px;border-radius:6px"></video>';
 		} else {
@@ -123,6 +129,14 @@ add_action( 'manage_rr_sequence_posts_custom_column', function ( $col, $id ) {
 		echo (int) get_post_field( 'menu_order', $id );
 	}
 }, 10, 2 );
+
+/** The YouTube video ID in a link (youtu.be/…, youtube.com/watch?v=…, /shorts/…, /live/…, /embed/…), or ''. */
+function ridgeroad_youtube_id( $url ) {
+	if ( preg_match( '~(?:youtu\.be/|youtube(?:-nocookie)?\.com/(?:watch\?(?:.*&)?v=|shorts/|live/|embed/|v/))([A-Za-z0-9_-]{11})~', (string) $url, $m ) ) {
+		return $m[1];
+	}
+	return '';
+}
 
 function ridgeroad_sequence_video_url( $id ) {
 	$vid = (int) get_post_meta( $id, '_rr_video', true );
@@ -153,8 +167,12 @@ function ridgeroad_sequence_videos() {
 			'artist' => get_post_meta( $p->ID, '_rr_artist', true ),
 			'new'    => (bool) get_post_meta( $p->ID, '_rr_new', true ),
 			'video'  => $url,
+			'yt'     => ridgeroad_youtube_id( $url ),
 			'cover'  => get_the_post_thumbnail_url( $p, 'large' ),
 		);
+		if ( ! $memo[ count( $memo ) - 1 ]['cover'] && $memo[ count( $memo ) - 1 ]['yt'] ) {
+			$memo[ count( $memo ) - 1 ]['cover'] = 'https://i.ytimg.com/vi/' . $memo[ count( $memo ) - 1 ]['yt'] . '/hqdefault.jpg';
+		}
 	}
 	return $memo;
 }

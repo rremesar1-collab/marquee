@@ -57,6 +57,7 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 = 0.10.0 =
 * Spanish and French: the website, Kids' Corner and Marquee's settings show in the language picked in Settings → General → Site Language. No language buttons for visitors; English sites are unchanged.
 * Two new looks for the Marquee Festive theme: Christmas Village and Santa's North Pole (Appearance → Customize → Show Website → Look). Classic stays the default.
+* Show videos can be a YouTube link: paste it in the video's Video box. The card shows the YouTube picture and the video plays in YouTube's player in the pop-up. Handy when your website limits upload size.
 * Song covers in Tonight's Playlist and Vote for Your Favorite Song: the artwork you set in Remote Falcon, or an album cover Marquee finds by song and artist (saved on your site, only when the song matches). Change any cover, or pick No cover, in Settings → Remote Falcon → Song covers. Turn covers or the automatic finding off there too.
 
 = 0.9.5 =
