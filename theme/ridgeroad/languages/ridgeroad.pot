@@ -1190,7 +1190,7 @@ msgstr ""
 msgid "Use a different picture"
 msgstr ""
 
-#: plugin/marquee/core/i18n.php:17 plugin/marquee/inc/photos.php:158
+#: plugin/marquee/core/i18n.php:17 plugin/marquee/inc/photos.php:180
 #: theme/ridgeroad/inc/i18n.php:17
 msgid ""
 "A parent or guardian needs to tick the box to say your picture can go on our"
@@ -4609,7 +4609,7 @@ msgstr ""
 msgid "free drive-by Christmas light show"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:143 plugin/marquee/inc/photos.php:148
+#: plugin/marquee/inc/photos.php:165 plugin/marquee/inc/photos.php:170
 msgid "That picture didn’t work. Please try another one."
 msgstr ""
 

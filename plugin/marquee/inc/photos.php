@@ -98,6 +98,28 @@ function marquee_photos_box( $s ) {
 					<option value="both" <?php selected( $mode, 'both' ); ?>><?php esc_html_e( 'Let the kid pick: cartoon or real photo', 'marquee' ); ?></option>
 				</select></p>
 			<p class="mq__fine"><?php esc_html_e( 'A kid with a picture gets two turns in the names break: first their picture (while the voice says their name), then their name. In “During songs” mode the picture shows first, then the name.', 'marquee' ); ?></p>
+			<?php
+			// what the FPP reported: pictures need names script 3.14+ and FPP 10+
+			$fx   = function_exists( 'marquee_fpp_extra' ) ? marquee_fpp_extra() : array( 'script' => '', 'fpp_version' => '' );
+			$warn = array();
+			if ( $fx['script'] && version_compare( $fx['script'], '3.14', '<' ) ) {
+				/* translators: %s: version number */
+				$warn[] = sprintf( __( 'Your FPP is running names script %s. Pictures need 3.14 or newer: update the Marquee plugin on your FPP (Content Setup → Plugin Manager), or upload the new marquee_names.py, then restart FPP. Until then names go up without their pictures.', 'marquee' ), $fx['script'] );
+			}
+			if ( $fx['fpp_version'] && preg_match( '/^(\d+)/', $fx['fpp_version'], $fm ) && (int) $fm[1] < 10 ) {
+				/* translators: %s: FPP version */
+				$warn[] = sprintf( __( 'Your FPP is version %s. Pictures need FPP 10 or newer; names still go up without them.', 'marquee' ), $fx['fpp_version'] );
+			}
+			if ( 'live' === ( $s['names_mode'] ?? '' ) ) {
+				$warn[] = __( 'Names go up during songs (Names & FPP, How it works), so they aren’t spoken: the voice would talk over your music. The picture shows first, then the name. Pick “Between songs: a names break” to have names said out loud.', 'marquee' );
+			}
+			if ( $fx['script'] || $warn ) :
+				?>
+				<div class="mq-notice<?php echo $warn ? ' mq-notice--warn' : ''; ?>">
+					<?php if ( $fx['script'] ) : ?><p class="mq__fine"><?php echo esc_html( sprintf( /* translators: 1: script version, 2: FPP version */ __( 'Your FPP reported: names script %1$s, FPP %2$s.', 'marquee' ), $fx['script'], $fx['fpp_version'] ? $fx['fpp_version'] : '?' ) ); ?></p><?php endif; ?>
+					<?php foreach ( $warn as $w ) : ?><p><?php echo esc_html( $w ); ?></p><?php endforeach; ?>
+				</div>
+			<?php endif; ?>
 			<?php $vk = (string) ( $s['vision_key'] ?? '' ); $vn = marquee_vision_count(); ?>
 			<div class="mq-vision">
 				<label class="mq__feat"><span><b><?php esc_html_e( 'Check pictures automatically', 'marquee' ); ?></b><small><?php esc_html_e( 'Google Cloud Vision looks at each picture first. One that’s clean, shows exactly one face and has no words in it goes up without waiting for you. Anything else still waits for you in Show Control, with the reason. You can still remove any name and its picture at any time.', 'marquee' ); ?></small></span><input type="checkbox" name="photos_auto" value="1" <?php checked( ! empty( $s['photos_auto'] ) ); ?>></label>

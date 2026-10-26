@@ -1270,11 +1270,36 @@ msgid ""
 "the picture shows first, then the name."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:103
+#: plugin/marquee/inc/photos.php:107
+msgid ""
+"Your FPP is running names script %s. Pictures need 3.14 or newer: update the"
+" Marquee plugin on your FPP (Content Setup → Plugin Manager), or upload the "
+"new marquee_names.py, then restart FPP. Until then names go up without their"
+" pictures."
+msgstr ""
+
+#: plugin/marquee/inc/photos.php:111
+msgid ""
+"Your FPP is version %s. Pictures need FPP 10 or newer; names still go up "
+"without them."
+msgstr ""
+
+#: plugin/marquee/inc/photos.php:114
+msgid ""
+"Names go up during songs (Names & FPP, How it works), so they aren’t spoken:"
+" the voice would talk over your music. The picture shows first, then the "
+"name. Pick “Between songs: a names break” to have names said out loud."
+msgstr ""
+
+#: plugin/marquee/inc/photos.php:119
+msgid "Your FPP reported: names script %1$s, FPP %2$s."
+msgstr ""
+
+#: plugin/marquee/inc/photos.php:125
 msgid "Check pictures automatically"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:103
+#: plugin/marquee/inc/photos.php:125
 msgid ""
 "Google Cloud Vision looks at each picture first. One that’s clean, shows "
 "exactly one face and has no words in it goes up without waiting for you. "
@@ -1282,46 +1307,46 @@ msgid ""
 "still remove any name and its picture at any time."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:104
+#: plugin/marquee/inc/photos.php:126
 msgid "Google Cloud Vision API key"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:106
+#: plugin/marquee/inc/photos.php:128
 msgid "Test the key"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:108
+#: plugin/marquee/inc/photos.php:130
 msgid "Remove my Google key"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:109
+#: plugin/marquee/inc/photos.php:131
 msgid "How to get a free key (about 5 minutes)"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:111
+#: plugin/marquee/inc/photos.php:133
 msgid ""
 "Go to <a href=\"https://console.cloud.google.com/\" target=\"_blank\" "
 "rel=\"noopener\">console.cloud.google.com</a> and sign in with a Google "
 "account. Make a new project (any name, like “My light show”)."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:112
+#: plugin/marquee/inc/photos.php:134
 msgid ""
 "Search for “Cloud Vision API” at the top, open it and click Enable. Google "
 "asks you to set up billing (a card on file) even for the free checks."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:113
+#: plugin/marquee/inc/photos.php:135
 msgid ""
 "Go to APIs & Services → Credentials → Create credentials → API key. Copy the"
 " key and paste it above, then click Test the key and Save."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:114
+#: plugin/marquee/inc/photos.php:136
 msgid "Recommended: on the key, choose Restrict key → Cloud Vision API only."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:116
+#: plugin/marquee/inc/photos.php:138
 msgid ""
 "Each picture uses 3 checks (safe, faces, words). Google gives 1,000 checks a"
 " month free, about 330 pictures; after that it’s about $1.50 per 1,000 "
@@ -1329,43 +1354,43 @@ msgid ""
 "to be checked."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:118
+#: plugin/marquee/inc/photos.php:140
 msgid "Checks used this month: %s (1,000 free each month)."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:298
+#: plugin/marquee/inc/photos.php:320
 msgid "Approved by the automatic check"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:372
+#: plugin/marquee/inc/photos.php:394
 msgid "The automatic check couldn’t run, so it waits for you"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:378
+#: plugin/marquee/inc/photos.php:400
 msgid "The automatic check wasn’t sure this picture is OK"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:383
+#: plugin/marquee/inc/photos.php:405
 msgid "The automatic check didn’t find a face"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:386
+#: plugin/marquee/inc/photos.php:408
 msgid "The automatic check found more than one face"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:390
+#: plugin/marquee/inc/photos.php:412
 msgid "The automatic check found words in the picture"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:406
+#: plugin/marquee/inc/photos.php:428
 msgid "Paste your Google Cloud Vision API key first."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:418
+#: plugin/marquee/inc/photos.php:440
 msgid "Google said: %s"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:420
+#: plugin/marquee/inc/photos.php:442
 msgid "Your key works. Click Save to keep it."
 msgstr ""
 
