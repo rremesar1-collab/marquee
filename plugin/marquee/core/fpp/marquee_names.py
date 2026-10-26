@@ -41,7 +41,7 @@ import socket
 import threading
 import urllib.request
 
-VERSION = "3.14.3"
+VERSION = "3.14.4"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -832,7 +832,10 @@ def plan_break(names):
     theme = name_theme(names[0]) if names else ""
     if theme:
         return theme_playlists()[theme]
-    return short_playlists().get(len(eligible(names, "")), S["break_playlist"])
+    # a kid with a picture needs two turns (picture, then name), so counts as two:
+    # one picture kid gets "Names in Lights 2" and goes up twice, like a name on its own
+    need = sum(2 if (n.get("photo") and not NOPIC_ALL()) else 1 for n in eligible(names, ""))
+    return short_playlists().get(need, S["break_playlist"])
 
 
 def current_theme(st):
@@ -962,6 +965,12 @@ def fpp_put(host, path, body=None, timeout=3):
 
 
 PIC_ON = set()   # screens (fpp|model) showing a kid's picture right now
+HELD = set()     # screens where we keep the overlay on for a name that went up over a picture
+
+
+def NOPIC_ALL():
+    """True when no screen can take pictures (all older than FPP 10)."""
+    return bool(S["screens"]) and all(NOPIC.get(sc["fpp"]) for sc in S["screens"])
 
 
 def show_picture(item):
@@ -1004,20 +1013,26 @@ def show_picture(item):
     return len(results)
 
 
-def clear_pictures():
-    """Hand the screens back to normal after a picture. A picture switches the overlay on, and FPP
-    only switches it off after a name if the name switched it on - without this the last name
-    would stay up over the show. The name's own effect draws over whatever the picture left."""
-    for host, model in list(PIC_ON):
+def clear_pictures(names_only=False):
+    """Hand the screens back to normal after a picture or a name that went up over one: blank the
+    overlay, then switch it off. Blank first, so the next name never flashes the old picture while
+    FPP draws it. A short wait after, because FPP drops any effect a moment after a blank."""
+    hit = False
+    for host, model in list(HELD if names_only else (PIC_ON | HELD)):
         m = "/api/overlays/model/" + urllib.parse.quote(model)
         try:
-            fpp_put(host, m + "/state", {"State": 0})      # switch the overlay off; the name's effect switches it on again
+            fpp_put(host, m + "/fill", {"RGB": [0, 0, 0]})
+        except Exception as e:
+            log("could not blank the picture on", model, "-", e)
+        try:
+            fpp_put(host, m + "/state", {"State": 0})
         except Exception as e:
             log("could not switch off the picture on", model, "-", e)
-        # No "clear" here: FPP drops the running effect a moment after a clear, and that would
-        # take out the name that goes up right after it (the screen stays on but empty).
         PIC_ON.discard((host, model))
-    time.sleep(0.15)
+        HELD.discard((host, model))
+        hit = True
+    if hit:
+        time.sleep(0.15)
 
 
 def say(item):
@@ -1193,7 +1208,18 @@ def show(text, color):
             size, pos, pps, txt = text_plan(text, w, h, sc)
             dur = turn_secs(sc.get("speed") or "normal") if pps else min(float(S["show_for"]), turn_secs())
             args = [sc["model"], "Transparent", "Text", color, font, size, "true", pos, pps, round(dur, 2), txt]
+            key = (sc["fpp"], sc["model"])
             fpp_command(sc["fpp"], "Overlay Model Effect", args, timeout=2)
+            if key in PIC_ON:
+                # The picture is still up and the overlay stays on: the name replaces it straight away,
+                # with no off-and-on in between (that was the flicker). Then see-through like any name.
+                # FPP won't switch it off by itself this time, so clear_pictures() does after the turn.
+                try:
+                    fpp_put(sc["fpp"], "/api/overlays/model/" + urllib.parse.quote(sc["model"]) + "/state", {"State": 2})
+                except Exception as e:
+                    log("could not make the name see-through on", sc["name"], "-", e)
+                PIC_ON.discard(key)
+                HELD.add(key)
             results.append(sc["name"])
             DEAD.pop(sc["fpp"], None)
         except Exception as e:
@@ -1324,10 +1350,15 @@ def _show_names(names, slots, color):
             turns.append(("pic", item))
         turns.append(("name", item))
     first = len(turns)
-    shown_items = [it for kind, it in turns if kind == "name"]
-    while turns and len(turns) < slots:
-        turns.append(("name", shown_items[(len(turns) - first) % len(shown_items)]))
-    said = set()
+    base = list(turns)
+    i = 0
+    while turns and len(turns) < slots:              # go round again, pictures too
+        kind, item = base[i % len(base)]
+        if kind == "pic" and len(turns) + 2 > slots:
+            kind = "name"                            # no room left for its name after it: just the name
+        turns.append((kind, item))
+        i += 1
+    said = set()                                     # (turn, kid) where the name was said with the picture
     for k in range(len(turns)):
         kind, item = turns[k]
         at = float(S["names_start"]) + k * float(S["slot"])
@@ -1340,7 +1371,7 @@ def _show_names(names, slots, color):
                 log("break ended early")
                 if talk_until:
                     stop_talking()
-                if PIC_ON:
+                if PIC_ON or HELD:
                     clear_pictures()
                 return done
             el = elapsed(st)
@@ -1355,34 +1386,42 @@ def _show_names(names, slots, color):
             # putting two names up at once and talking over the announcer; the name comes round again
             log("running %.1fs late - skipping turn %d" % (late, k + 1))
             continue
+        repeat = k >= first
         if kind == "pic":
+            if PIC_ON or HELD:
+                clear_pictures()                         # the last name or picture comes down first
             if show_picture(item):
                 log("showing the picture of:", item["text"])
             elif show(item["text"], color):              # no screen took the picture (an older FPP): the name now instead
                 log("showing:", item["text"])
             else:
                 continue
-            if talk_until:
-                stop_talking()
-            talk_until = say(item)                       # the name is said while the picture is up
             try:
-                voice_until = time.time() + max(0.5, min(8.0, float(item.get("say_for") or 2.0)))
+                say_for = max(0.5, min(8.0, float(item.get("say_for") or 2.0)))
             except (TypeError, ValueError):
-                voice_until = time.time() + 2.0
-            said.add(item["id"])
+                say_for = 2.0
+            # the name is said while the picture is up; going round again, only when Santa has finished
+            # the last one and it ends before the outro (same as a name on its own)
+            if not repeat or (S["say_every_time"] and time.time() >= voice_until and el + say_for <= outro_at - 0.3):
+                if talk_until:
+                    stop_talking()
+                talk_until = say(item)
+                voice_until = time.time() + say_for
+            said.add((k, item["id"]))
+            if item["id"] not in done:
+                done.append(item["id"])
             continue
-        if PIC_ON:
-            clear_pictures()                             # the picture's turn is over: screens back to normal first
+        if HELD:
+            clear_pictures(names_only=True)              # a name we kept on over a picture comes down first
         if show(item["text"], color):
             log("showing:", item["text"])
             try:
                 say_for = max(0.5, min(8.0, float(item.get("say_for") or 2.0)))
             except (TypeError, ValueError):
                 say_for = 2.0
-            repeat = k >= first
             # a name going round again is only said when Santa has finished the last one and it ends before the outro
-            if item["id"] in said and not repeat:
-                pass                                     # already said with the picture
+            if (k - 1, item["id"]) in said:
+                pass                                     # just said with its picture
             elif repeat and (time.time() < voice_until or el + say_for > outro_at - 0.3):
                 pass
             elif S["say_every_time"] or not repeat:
@@ -1394,7 +1433,20 @@ def _show_names(names, slots, color):
                 done.append(item["id"])
         else:
             log("no screen took", item["text"], "- it will wait for the next break")
-    if PIC_ON:
+    if PIC_ON or HELD:
+        # the last one stays up for its whole turn, then comes down (FPP won't switch it off by itself)
+        end_at = float(S["names_start"]) + len(turns) * float(S["slot"]) - 0.4
+        t0 = time.time()
+        while time.time() - t0 < float(S["slot"]) + 1:
+            st = master_status()
+            if not in_break(st):
+                break
+            el = elapsed(st)
+            if el <= 0.05:
+                el = time.time() - BRK["t0"] + 0.5
+            if el >= end_at:
+                break
+            time.sleep(0.1)
         clear_pictures()
     while in_break(master_status()):       # let the break finish
         if talk_until and time.time() >= talk_until:
@@ -1420,16 +1472,19 @@ def show_live(names, color):
             if picture(item) and show_picture(item):
                 log("showing the picture of (during the song):", item["text"])
                 time.sleep(S["show_for"])
-                clear_pictures()
-            if show(item["text"], color):
+            if show(item["text"], color):              # straight over the picture, no flicker
                 log("showing (during the song):", item["text"])
                 done.append(item["id"])
                 time.sleep(S["show_for"] + 1.0)
+                clear_pictures()                       # a name kept on over a picture comes down now
             else:
+                clear_pictures()
                 log("no screen took", item["text"], "- trying again shortly")
                 break
     finally:
         S["show_for"] = keep
+        if PIC_ON or HELD:
+            clear_pictures()
     return done
 
 
