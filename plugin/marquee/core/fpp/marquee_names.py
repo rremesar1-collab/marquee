@@ -41,7 +41,7 @@ import socket
 import threading
 import urllib.request
 
-VERSION = "3.14.6"
+VERSION = "3.14.7"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -1395,8 +1395,11 @@ def _show_names(names, slots, color):
     i = 0
     while turns and len(turns) < slots:              # go round again, pictures too
         kind, item = base[i % len(base)]
-        if kind == "pic" and len(turns) + 2 > slots:
-            kind = "name"                            # no room left for its name after it: just the name
+        if kind == "pic" and (len(turns) + 2 > slots or
+                              float(S["names_start"]) + len(turns) * float(S["slot"]) + 1.0 > outro_at):
+            turns.append(("name", item))   # no room for its name after it, or Santa is talking: just the name
+            i += 2                         # (and not the same name again right after)
+            continue
         turns.append((kind, item))
         i += 1
     said = set()                                     # (turn, kid) where the name was said with the picture
