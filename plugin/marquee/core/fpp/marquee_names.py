@@ -41,7 +41,7 @@ import socket
 import threading
 import urllib.request
 
-VERSION = "3.14.5"
+VERSION = "3.14.6"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -95,6 +95,8 @@ DEFAULTS = {
     "only_playlists": [],             # names go up only while one of these playlists plays ([] = any playlist)
     "simple_break": False,            # no names break playlist on this FPP: make a simple one (no sequence needed)
     "break_own": False,               # the show's own names break audio: don't put the website's in the playlists, use the website's timing
+    "say_spots": 0,                   # spots where a name may be SAID (the rest show names already said): 0 = auto,
+                                      #   4 with your own break sequence (its announcer talks after spot 4), all with Marquee's
     "per_break": 6,                   # names in one break: fewer = each is up longer (spread over the same part of the break)
     "every": 1,                       # a names break after every this many songs (names collect in between)
 }
@@ -803,6 +805,9 @@ def break_length(st):
     return elapsed(st) + rem if rem > 0 else 0.0
 
 
+QUIET = {"until": 0.0}   # seconds into the break when the break's own voice (Santa's outro) starts
+
+
 def slots_for(st):
     """Name spots in the break that is playing. Counted from the break's own length, so a sequence
     made with room for 3, 5 or 6 names gets every spot filled; a short break without a length that
@@ -811,12 +816,25 @@ def slots_for(st):
     for n, name in short_playlists().items():
         if playlist_name(st) == name:
             want = n * 2
+    slots = want
     length = break_length(st)
     if length:
         fit = int((length - float(S["names_start"]) - 1.0) / float(S["slot"]))   # a second or so left for the outro
         if fit >= 1:
-            return min(int(S["max_names"]), fit)
-    return want
+            slots = min(int(S["max_names"]), fit)
+    # Where names may be said: a show's own break sequence has its announcer talking again after
+    # the 4th spot (Santa's outro), so later spots only show names already said.
+    try:
+        say = int(S.get("say_spots") or 0)
+    except (TypeError, ValueError):
+        say = 0
+    if not say:
+        try:
+            say = 0 if is_simple(fpp_playlist(playlist_name(st))) else 4
+        except Exception:
+            say = 4
+    QUIET["until"] = float(S["names_start"]) + min(slots, say or slots) * float(S["slot"])
+    return slots
 
 
 # ------------------------------------------------------ themed sequences ----
@@ -1356,6 +1374,10 @@ def _show_names(names, slots, color):
     talk_until = 0
     voice_until = 0.0                                  # when the name being said right now ends
     outro_at = float(S["names_start"]) + slots * float(S["slot"])    # the break audio's outro starts about here
+    if QUIET["until"]:
+        # extra spots the break has room for are shown, but not said: Santa's own outro is talking by then
+        outro_at = min(outro_at, QUIET["until"])
+    QUIET["until"] = 0.0
     # A kid with a picture gets two turns: the picture (while the name is said), then the name.
     # Only whole kids that fit; the rest go up in the next break. Spare slots go round the names again.
     turns = []
@@ -1363,6 +1385,8 @@ def _show_names(names, slots, color):
         need = 2 if picture(item) else 1
         if len(turns) + need > slots:
             break
+        if turns and float(S["names_start"]) + len(turns) * float(S["slot"]) + 2.0 > outro_at:
+            break                                    # a new kid isn't said over Santa: next break
         if need == 2:
             turns.append(("pic", item))
         turns.append(("name", item))
