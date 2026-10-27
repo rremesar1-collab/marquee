@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.11.2
+Stable tag: 0.11.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,9 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.11.3 =
+* Marquee Festive: on phones, Christmas Village and Santa's North Pole no longer show a second copy of the picture behind the page while scrolling (seen on iPhones).
 
 = 0.11.2 =
 * Behind the Scenes and Before You Visit: a musical note is now one of the icons you can pick (Customize → Show Website).

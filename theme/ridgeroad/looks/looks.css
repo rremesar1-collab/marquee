@@ -308,8 +308,10 @@ body.rr-look--northpole .rr-donate__art { background-image: url(northpole/donati
 /* ---------- Phones: the top of the picture, the show name under it, and the rest of the
    picture behind the boxes ---------- */
 @media (max-width: 860px) {
-	body.rr-look--northpole::before { background: url(northpole/scene-small.webp) center calc(-66.4vw + 4px) / 100% auto no-repeat, #07152b; }
-	body.rr-look--village::before { background: url(village/hero-small.webp) center bottom / cover no-repeat, #0a1434; }
+	/* phones: the picture is at the top only; behind the boxes a plain night sky (a second, fixed copy
+	   of the picture behind them didn't line up with the top one and looked doubled on iPhones) */
+	body.rr-look--northpole::before { background: linear-gradient(180deg, #0b1a3f 0%, #07152b 60%, #050f22 100%); }
+	body.rr-look--village::before { background: linear-gradient(180deg, #0c1d4d 0%, #0a1434 60%, #070e26 100%); }
 	.rr-look--northpole .rr-scene__art img { object-position: 50% 0; -webkit-mask-image: none; mask-image: none; }
 	.rr-look--northpole .rr-scene__art, .rr-look--northpole .rr-scene__art img { aspect-ratio: 1024 / 680; }
 }
