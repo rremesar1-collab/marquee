@@ -53,27 +53,50 @@ $status = ridgeroad_status();
 		$rr_pic = (string) apply_filters( 'ridgeroad_names_photo_mode', '' ); // Marquee: kids' pictures ('' = off)
 		if ( $rr_pic ) :
 			?>
-			<fieldset class="rr-names__pic" data-rr-pic data-mode="<?php echo esc_attr( $rr_pic ); ?>">
+			<fieldset class="rr-names__pic" data-rr-pic data-mode="<?php echo esc_attr( $rr_pic ); ?>" data-screen="<?php echo esc_attr( (string) apply_filters( 'ridgeroad_names_photo_screen', '' ) ); ?>">
 				<legend><?php echo esc_html( 'photo' === $rr_pic ? __( 'Add your picture (optional)', 'ridgeroad' ) : __( 'Add a cartoon of you (optional)', 'ridgeroad' ) ); ?></legend>
 				<input type="file" accept="image/*" id="rr-n-pic" class="rr-names__pic-file" data-rr-pic-file>
-				<div class="rr-names__pic-row">
-					<canvas class="rr-names__pic-img" width="256" height="256" data-rr-pic-canvas hidden></canvas>
-					<span class="rr-names__pic-btns">
-						<label class="rr-btn rr-btn--gold" for="rr-n-pic" data-rr-pic-take><?php echo ridgeroad_cicon( 'camera' ); ?><span><?php esc_html_e( 'Take or pick a picture', 'ridgeroad' ); ?></span></label>
-						<button type="button" class="rr-btn rr-btn--ghost" data-rr-pic-clear hidden><?php esc_html_e( 'No picture', 'ridgeroad' ); ?></button>
-					</span>
-				</div>
-				<?php if ( 'both' === $rr_pic ) : ?>
-					<div class="rr-names__pic-kind" data-rr-pic-kinds hidden>
-						<label><input type="radio" name="photo_kind" value="cartoon" checked> <?php esc_html_e( 'Cartoon', 'ridgeroad' ); ?></label>
-						<label><input type="radio" name="photo_kind" value="photo"> <?php esc_html_e( 'Real photo', 'ridgeroad' ); ?></label>
+				<span class="rr-names__pic-btns">
+					<label class="rr-btn rr-btn--gold" for="rr-n-pic" data-rr-pic-take><?php echo ridgeroad_cicon( 'camera' ); ?><span><?php esc_html_e( 'Take or pick a picture', 'ridgeroad' ); ?></span></label>
+					<button type="button" class="rr-btn rr-btn--ghost" data-rr-pic-clear hidden><?php esc_html_e( 'No picture', 'ridgeroad' ); ?></button>
+				</span>
+				<div class="rr-pic" data-rr-pic-edit hidden>
+					<div class="rr-pic__frame">
+						<p class="rr-pic__help"><?php esc_html_e( 'Move and zoom so your face fills the circle.', 'ridgeroad' ); ?></p>
+						<canvas class="rr-pic__stage" width="600" height="600" data-rr-pic-stage aria-label="<?php esc_attr_e( 'Your picture: drag to move it, pinch to zoom', 'ridgeroad' ); ?>"></canvas>
+						<label class="rr-pic__zoom"><span><?php esc_html_e( 'Zoom', 'ridgeroad' ); ?></span><input type="range" min="1" max="4" step="0.01" value="1" data-rr-pic-zoom></label>
 					</div>
-				<?php else : ?>
-					<input type="hidden" name="photo_kind" value="<?php echo esc_attr( $rr_pic ); ?>">
-				<?php endif; ?>
+					<?php if ( 'photo' !== $rr_pic ) : ?>
+						<div class="rr-pic__styles" role="radiogroup" aria-label="<?php esc_attr_e( 'Pick your look', 'ridgeroad' ); ?>">
+							<?php
+							$rr_styles = array(
+								'cartoon' => array( __( 'Cartoon Me', 'ridgeroad' ), '🎨' ),
+								'elf'     => array( __( 'Make Me an Elf', 'ridgeroad' ), '🧝' ),
+								'snowman' => array( __( 'Snowman', 'ridgeroad' ), '⛄' ),
+								'helper'  => array( __( 'Santa’s Helper', 'ridgeroad' ), '🎅' ),
+							);
+							if ( 'both' === $rr_pic ) {
+								$rr_styles['photo'] = array( __( 'Real photo', 'ridgeroad' ), '📷' );
+							}
+							$rr_first = true;
+							foreach ( $rr_styles as $rr_k => $rr_s ) :
+								?>
+								<label class="rr-pic__style"><input type="radio" name="photo_style" value="<?php echo esc_attr( $rr_k ); ?>" <?php checked( $rr_first ); ?>><span><i aria-hidden="true"><?php echo esc_html( $rr_s[1] ); ?></i><?php echo esc_html( $rr_s[0] ); ?></span></label>
+								<?php
+								$rr_first = false;
+							endforeach;
+							?>
+						</div>
+					<?php endif; ?>
+					<div class="rr-pic__result">
+						<figure class="rr-pic__out"><canvas width="320" height="320" data-rr-pic-out></canvas><figcaption><?php esc_html_e( 'Your picture', 'ridgeroad' ); ?></figcaption><span class="rr-pic__wait" data-rr-pic-wait hidden><?php esc_html_e( 'Making your picture…', 'ridgeroad' ); ?></span></figure>
+						<figure class="rr-pic__screen" data-rr-pic-screenbox hidden><canvas width="64" height="64" data-rr-pic-screen></canvas><figcaption><?php esc_html_e( 'On our screen', 'ridgeroad' ); ?></figcaption></figure>
+					</div>
+				</div>
+				<input type="hidden" name="photo_kind" value="<?php echo esc_attr( 'photo' === $rr_pic ? 'photo' : 'cartoon' ); ?>" data-rr-pic-kind>
 				<label class="rr-names__pic-ok" data-rr-pic-okwrap hidden><input type="checkbox" name="photo_ok" value="1" data-rr-pic-ok> <span><?php esc_html_e( 'A parent or guardian says it’s OK to show this picture on our screens at the show.', 'ridgeroad' ); ?></span></label>
 				<input type="hidden" name="photo" value="" data-rr-pic-data>
-				<p class="rr-kid__fine"><?php echo esc_html( 'photo' === $rr_pic ? __( 'Your picture is only shown at the show. Our elves check every picture first, and it’s deleted right after.', 'ridgeroad' ) : __( 'Your phone turns the picture into a cartoon, and only the cartoon is sent. Our elves check it first, and it’s deleted right after the show uses it.', 'ridgeroad' ) ); ?></p>
+				<p class="rr-kid__fine"><?php echo esc_html( 'photo' === $rr_pic ? __( 'Your picture is only shown at the show. Our elves check every picture first, and it’s deleted right after.', 'ridgeroad' ) : __( 'Your phone makes the cartoon, and only the finished picture is sent, never your photo. Our elves check it first, and it’s deleted right after the show uses it.', 'ridgeroad' ) ); ?></p>
 			</fieldset>
 		<?php endif; ?>
 		<p class="rr-hp" aria-hidden="true"><label>Website <input name="website" type="text" tabindex="-1" autocomplete="off"></label></p>

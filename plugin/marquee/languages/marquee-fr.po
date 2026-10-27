@@ -609,11 +609,47 @@ msgstr "Votre nom en lumières"
 msgid "Kids can send names to your screens"
 msgstr "Les enfants peuvent envoyer des noms sur vos écrans"
 
+msgid "Kids’ pictures"
+msgstr "Photos des enfants"
+
+msgid "Kids can add a cartoon or picture with their name"
+msgstr "Les enfants peuvent ajouter un dessin ou une photo avec leur nom"
+
+msgid "“Show on” banner"
+msgstr "Bannière « spectacle confirmé »"
+
+msgid "Off: the banner only shows when you cancel a night"
+msgstr "Désactivé : la bannière n’apparaît que si vous annulez une soirée"
+
+msgid "Kids’ Corner"
+msgstr "Coin des enfants"
+
+msgid "The whole kids’ page"
+msgstr "Toute la page des enfants"
+
+msgid "Make a Light Show"
+msgstr "Créez un spectacle de lumières"
+
+msgid "The Light Lab in the Kids’ Corner"
+msgstr "Le Labo des lumières dans le Coin des enfants"
+
 msgid "Light show contest"
 msgstr "Concours de spectacles de lumières"
 
 msgid "Entries, Show Wall and hearts"
 msgstr "Participations, Mur des spectacles et cœurs"
+
+msgid "Coloring pages"
+msgstr "Coloriages"
+
+msgid "In the Kids’ Corner"
+msgstr "Dans le Coin des enfants"
+
+msgid "Games"
+msgstr "Jeux"
+
+msgid "Elf names and Christmas trivia"
+msgstr "Noms de lutin et quiz de Noël"
 
 msgid "Favorite song voting"
 msgstr "Vote pour la chanson préférée"
@@ -621,11 +657,11 @@ msgstr "Vote pour la chanson préférée"
 msgid "On the Songs & Videos page"
 msgstr "Sur la page Chansons et vidéos"
 
-msgid "Kids’ Corner"
-msgstr "Coin des enfants"
+msgid "Guestbook"
+msgstr "Livre d’or"
 
-msgid "The whole kids’ page"
-msgstr "Toute la page des enfants"
+msgid "Visitors can leave a message"
+msgstr "Les visiteurs peuvent laisser un message"
 
 msgid "Falling snow"
 msgstr "Chute de neige"
@@ -1207,13 +1243,28 @@ msgstr ""
 "toujours dans les 2 heures."
 
 msgid ""
-"The cartoon version is made on the kid’s own phone: only the cartoon is "
-"sent, never the photo. It’s the safer choice and looks better on pixel "
-"screens."
+"The cartoon version is made on the kid’s own phone: they frame their face, "
+"pick Cartoon Me, an elf, a snowman or one of Santa’s helpers, and see how it"
+" will look on your screen. Only the finished picture is sent, never the "
+"photo. It’s the safer choice and looks better on pixel screens."
 msgstr ""
-"Le dessin est fait sur le téléphone de l’enfant : seul le dessin est envoyé,"
-" jamais la photo. C’est le choix le plus sûr, et il rend mieux sur les "
-"écrans à pixels."
+"La version dessin animé est faite sur le téléphone de l’enfant : il cadre "
+"son visage, choisit Mon dessin, un lutin, un bonhomme de neige ou un "
+"assistant du père Noël, et voit à quoi cela ressemblera sur votre écran. "
+"Seule l’image finie est envoyée, jamais la photo. C’est le choix le plus "
+"sûr, et il rend mieux sur les écrans à pixels."
+
+msgid ""
+"To cut the kid out of the background, the phone downloads a free tool "
+"(Google’s MediaPipe) from the jsDelivr code library the first time. Only the"
+" tool is downloaded; the picture stays on the phone. If it can’t load, a "
+"soft oval around the face is used instead."
+msgstr ""
+"Pour détourer l’enfant de l’arrière-plan, le téléphone télécharge la "
+"première fois un outil gratuit (MediaPipe de Google) depuis la bibliothèque "
+"de code jsDelivr. Seul l’outil est téléchargé ; l’image reste sur le "
+"téléphone. S’il ne se charge pas, un ovale doux autour du visage est utilisé"
+" à la place."
 
 msgid ""
 "Pictures need FPP 10 or newer on the FPP that runs each screen, and the "
@@ -1253,6 +1304,13 @@ msgstr "Vraie photo uniquement"
 
 msgid "Let the kid pick: cartoon or real photo"
 msgstr "L’enfant choisit : dessin ou vraie photo"
+
+msgid ""
+"Switched off for now in Show Control (Kids’ pictures). Turn it back on there"
+" or in the Show Manager."
+msgstr ""
+"Désactivé pour l’instant dans Contrôle du spectacle (Photos des enfants). "
+"Réactivez-le là ou dans le Gestionnaire du spectacle."
 
 msgid ""
 "A kid with a picture gets two turns in the names break: first their picture "
@@ -2388,12 +2446,6 @@ msgstr "Noms et mots bloqués"
 msgid "Distance for names"
 msgstr "Distance pour les noms"
 
-msgid "Guestbook"
-msgstr "Livre d’or"
-
-msgid "Make a Light Show"
-msgstr "Créez un spectacle de lumières"
-
 msgid "Song voting"
 msgstr "Vote des chansons"
 
@@ -2432,9 +2484,6 @@ msgstr "Exclues du vote des chansons"
 
 msgid "Light Lab songs"
 msgstr "Chansons du Labo des lumières"
-
-msgid "Coloring pages"
-msgstr "Coloriages"
 
 msgid "During songs"
 msgstr "Pendant les chansons"
@@ -2973,12 +3022,6 @@ msgid ""
 msgstr ""
 "Pages à imprimer et colorier (choisissez lesquelles dans Illustrations et "
 "Coin des enfants)"
-
-msgid "Games"
-msgstr "Jeux"
-
-msgid "Elf names and Christmas trivia"
-msgstr "Noms de lutin et quiz de Noël"
 
 msgid "Uses your Remote Falcon song list"
 msgstr "Utilise votre liste de chansons Remote Falcon"
@@ -4316,6 +4359,55 @@ msgstr "%1$d sur %2$d terminés"
 msgid "Done"
 msgstr "Terminé"
 
+msgid "Your website’s look and words"
+msgstr "Le style et les textes de votre site"
+
+msgid ""
+"Each one opens the live preview of your website, right at that spot, so you "
+"see every change as you make it."
+msgstr ""
+"Chacun ouvre l’aperçu en direct de votre site, à cet endroit précis, pour "
+"que vous voyiez chaque modification au moment où vous la faites."
+
+msgid "Look"
+msgstr "Style"
+
+msgid "Classic, Christmas Village or Santa’s North Pole."
+msgstr "Classique, Village de Noël ou le pôle Nord du père Noël."
+
+msgid "Top of the page"
+msgstr "Haut de la page"
+
+msgid "The lines under your logo, falling snow and your own background photo."
+msgstr ""
+"Les lignes sous votre logo, la neige qui tombe et votre propre photo de "
+"fond."
+
+msgid "Banner messages"
+msgstr "Messages de la bannière"
+
+msgid "What the banner says when the show is on, canceled or off season."
+msgstr ""
+"Ce que dit la bannière quand le spectacle a lieu, est annulé ou hors saison."
+
+msgid "Before You Visit tips"
+msgstr "Conseils Avant votre visite"
+
+msgid "Parking, headlights and your other tips for visitors."
+msgstr "Stationnement, phares et vos autres conseils pour les visiteurs."
+
+msgid "Which parts show, the contest and its prizes."
+msgstr "Les parties affichées, le concours et ses prix."
+
+msgid "Donations & social"
+msgstr "Dons et réseaux sociaux"
+
+msgid "Your donation link and words, and your social buttons."
+msgstr "Votre lien et texte de dons, et vos boutons de réseaux sociaux."
+
+msgid "Open"
+msgstr "Ouvert"
+
 msgid "Your show’s connections"
 msgstr "Les connexions de votre spectacle"
 
@@ -5549,9 +5641,6 @@ msgstr "Inactif"
 
 msgid "Paused"
 msgstr "En pause"
-
-msgid "Open"
-msgstr "Ouvert"
 
 msgid "Closed"
 msgstr "Fermé"

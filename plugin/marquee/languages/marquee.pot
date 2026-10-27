@@ -629,180 +629,232 @@ msgstr ""
 msgid "Kids can send names to your screens"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:290 plugin/marquee/inc/manager.php:325
-#: plugin/marquee/inc/support.php:357
-msgid "Light show contest"
-msgstr ""
-
-#: plugin/marquee/inc/manager.php:290
-msgid "Entries, Show Wall and hearts"
-msgstr ""
-
-#: plugin/marquee/inc/manager.php:291 plugin/marquee/inc/admin.php:113
-msgid "Favorite song voting"
+#: plugin/marquee/inc/manager.php:291
+msgid "Kids’ pictures"
 msgstr ""
 
 #: plugin/marquee/inc/manager.php:291
-msgid "On the Songs & Videos page"
+msgid "Kids can add a cartoon or picture with their name"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:292 plugin/marquee/inc/support.php:357
+#: plugin/marquee/inc/manager.php:293
+msgid "“Show on” banner"
+msgstr ""
+
+#: plugin/marquee/inc/manager.php:293
+msgid "Off: the banner only shows when you cancel a night"
+msgstr ""
+
+#: plugin/marquee/inc/manager.php:294 plugin/marquee/inc/support.php:357
 #: plugin/marquee/inc/blocks.php:34
 msgid "Kids’ Corner"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:292
+#: plugin/marquee/inc/manager.php:294
 msgid "The whole kids’ page"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:294 plugin/marquee/inc/manager.php:295
+#: plugin/marquee/inc/manager.php:295 plugin/marquee/inc/support.php:357
+#: plugin/marquee/inc/admin.php:109
+msgid "Make a Light Show"
+msgstr ""
+
+#: plugin/marquee/inc/manager.php:295
+msgid "The Light Lab in the Kids’ Corner"
+msgstr ""
+
+#: plugin/marquee/inc/manager.php:296 plugin/marquee/inc/manager.php:333
+#: plugin/marquee/inc/support.php:357
+msgid "Light show contest"
+msgstr ""
+
+#: plugin/marquee/inc/manager.php:296
+msgid "Entries, Show Wall and hearts"
+msgstr ""
+
+#: plugin/marquee/inc/manager.php:297 plugin/marquee/inc/support.php:361
+#: plugin/marquee/inc/admin.php:772
+msgid "Coloring pages"
+msgstr ""
+
+#: plugin/marquee/inc/manager.php:297
+msgid "In the Kids’ Corner"
+msgstr ""
+
+#: plugin/marquee/inc/manager.php:298 plugin/marquee/inc/admin.php:112
+#: plugin/marquee/inc/admin.php:834
+msgid "Games"
+msgstr ""
+
+#: plugin/marquee/inc/manager.php:298 plugin/marquee/inc/admin.php:112
+msgid "Elf names and Christmas trivia"
+msgstr ""
+
+#: plugin/marquee/inc/manager.php:299 plugin/marquee/inc/admin.php:113
+msgid "Favorite song voting"
+msgstr ""
+
+#: plugin/marquee/inc/manager.php:299
+msgid "On the Songs & Videos page"
+msgstr ""
+
+#: plugin/marquee/inc/manager.php:300 plugin/marquee/inc/support.php:357
+#: plugin/marquee/inc/blocks.php:30
+msgid "Guestbook"
+msgstr ""
+
+#: plugin/marquee/inc/manager.php:300
+msgid "Visitors can leave a message"
+msgstr ""
+
+#: plugin/marquee/inc/manager.php:302 plugin/marquee/inc/manager.php:303
 #: plugin/marquee/inc/support.php:358
 msgid "Falling snow"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:294
+#: plugin/marquee/inc/manager.php:302
 msgid "On every page"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:295 plugin/marquee/inc/photos.php:76
+#: plugin/marquee/inc/manager.php:303 plugin/marquee/inc/photos.php:120
 #: plugin/marquee/inc/social.php:677
 msgid "Off"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:295
+#: plugin/marquee/inc/manager.php:303
 msgid "Light"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:295 plugin/marquee/inc/admin.php:539
+#: plugin/marquee/inc/manager.php:303 plugin/marquee/inc/admin.php:539
 msgid "Medium"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:295
+#: plugin/marquee/inc/manager.php:303
 msgid "Heavy"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:299
+#: plugin/marquee/inc/manager.php:307
 msgid "Tonight so far"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:307
+#: plugin/marquee/inc/manager.php:315
 msgid "Pause the name queue"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:307
+#: plugin/marquee/inc/manager.php:315
 msgid "Names still come in, but wait until you turn this off"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:308
+#: plugin/marquee/inc/manager.php:316
 msgid "Accept names any time"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:308
+#: plugin/marquee/inc/manager.php:316
 msgid "For testing outside show hours"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:309 plugin/marquee/inc/support.php:356
-#: plugin/marquee/inc/admin.php:1244
+#: plugin/marquee/inc/manager.php:317 plugin/marquee/inc/support.php:356
+#: plugin/marquee/inc/admin.php:1272
 msgid "Only at the show"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:309
+#: plugin/marquee/inc/manager.php:317
 msgid "Names only from phones near your show"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:313
+#: plugin/marquee/inc/manager.php:321
 msgid "Waiting for the next break"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:315
+#: plugin/marquee/inc/manager.php:323
 msgid ""
 "“Block” removes the name and adds it to your block list, so it can’t be sent"
 " again."
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:318
+#: plugin/marquee/inc/manager.php:326
 msgid "Just shown"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:329
+#: plugin/marquee/inc/manager.php:337
 msgid "Guestbook messages"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:336
+#: plugin/marquee/inc/manager.php:344
 msgid "Send an alert"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:338
+#: plugin/marquee/inc/manager.php:346
 msgid "Santa is visiting Saturday from 6 to 8 PM!"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:339
+#: plugin/marquee/inc/manager.php:347
 msgid "Phones show about two lines."
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:340
+#: plugin/marquee/inc/manager.php:348
 msgid "Send alert"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:343
+#: plugin/marquee/inc/manager.php:351
 msgid "Yes, send it"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:343
+#: plugin/marquee/inc/manager.php:351
 msgid "Not yet"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:346
+#: plugin/marquee/inc/manager.php:354
 msgid ""
 "Alerts need your website on https with a recent PHP. Ask your web host if "
 "alerts don’t work."
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:349 plugin/marquee/inc/admin.php:114
+#: plugin/marquee/inc/manager.php:357 plugin/marquee/inc/admin.php:114
 msgid "“The lights are on!” alert"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:349
+#: plugin/marquee/inc/manager.php:357
 msgid "Sent once a night when the show starts"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:350
+#: plugin/marquee/inc/manager.php:358
 msgid "“Your name is up next” buzz"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:350
+#: plugin/marquee/inc/manager.php:358
 msgid "Kids can ask for a buzz when they send a name"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:354
+#: plugin/marquee/inc/manager.php:362
 msgid "Recent alerts"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:361
+#: plugin/marquee/inc/manager.php:369
 msgid "Setup, artwork and connections:"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:361
+#: plugin/marquee/inc/manager.php:369
 msgid "Marquee settings in WP Admin"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:368
+#: plugin/marquee/inc/manager.php:376
 msgid "Tonight"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:369 plugin/marquee/inc/i18n-js.php:171
+#: plugin/marquee/inc/manager.php:377 plugin/marquee/inc/i18n-js.php:171
 msgid "Names"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:370 plugin/marquee/inc/i18n-js.php:103
+#: plugin/marquee/inc/manager.php:378 plugin/marquee/inc/i18n-js.php:103
 msgid "Approve"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:371
+#: plugin/marquee/inc/manager.php:379
 msgid "Alerts"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:397 plugin/marquee/inc/i18n-js.php:165
+#: plugin/marquee/inc/manager.php:405 plugin/marquee/inc/i18n-js.php:165
 msgid "Show owner"
 msgstr ""
 
@@ -1193,33 +1245,33 @@ msgid ""
 "outro. Everything is at the loudness of your songs."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:75
+#: plugin/marquee/inc/photos.php:119
 msgid "Kids’ pictures on your screens"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:75
+#: plugin/marquee/inc/photos.php:119
 msgid ""
 "Kids can add a picture of themselves (or a cartoon of it) to their name. You"
 " approve every picture before it goes up."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:76 plugin/marquee/inc/social.php:677
+#: plugin/marquee/inc/photos.php:120 plugin/marquee/inc/social.php:677
 #: plugin/marquee/inc/support.php:370
 msgid "On"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:81
+#: plugin/marquee/inc/photos.php:125
 msgid "Please read before turning this on"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:83
+#: plugin/marquee/inc/photos.php:127
 msgid ""
 "These are pictures of children, shown in public at your show. You are "
 "responsible for what goes up on your screens and for following the laws "
 "where you live."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:84
+#: plugin/marquee/inc/photos.php:128
 msgid ""
 "In the United States, collecting a picture from a child under 13 online is "
 "covered by COPPA, which requires a parent’s permission. Marquee asks a "
@@ -1228,7 +1280,7 @@ msgid ""
 "GDPR)."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:85
+#: plugin/marquee/inc/photos.php:129
 msgid ""
 "Every picture waits for you or a Show helper to approve it in Show Control "
 "or the Show Manager, unless you turn on the automatic check below: then only"
@@ -1236,7 +1288,7 @@ msgid ""
 "approved within 10 minutes goes up without the picture."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:86
+#: plugin/marquee/inc/photos.php:130
 msgid ""
 "The phone shrinks the picture to a small square before sending it. Marquee "
 "keeps it in a private folder (never in your Media Library, never on a page) "
@@ -1244,62 +1296,77 @@ msgid ""
 "always within 2 hours."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:87
+#: plugin/marquee/inc/photos.php:131
 msgid ""
-"The cartoon version is made on the kid’s own phone: only the cartoon is "
-"sent, never the photo. It’s the safer choice and looks better on pixel "
-"screens."
+"The cartoon version is made on the kid’s own phone: they frame their face, "
+"pick Cartoon Me, an elf, a snowman or one of Santa’s helpers, and see how it"
+" will look on your screen. Only the finished picture is sent, never the "
+"photo. It’s the safer choice and looks better on pixel screens."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:88
+#: plugin/marquee/inc/photos.php:132
+msgid ""
+"To cut the kid out of the background, the phone downloads a free tool "
+"(Google’s MediaPipe) from the jsDelivr code library the first time. Only the"
+" tool is downloaded; the picture stays on the phone. If it can’t load, a "
+"soft oval around the face is used instead."
+msgstr ""
+
+#: plugin/marquee/inc/photos.php:133
 msgid ""
 "Pictures need FPP 10 or newer on the FPP that runs each screen, and the "
 "Marquee names script 3.14 or newer. On a small pixel matrix a face is only a"
 " few dozen pixels tall; it looks best on a TV or projector."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:90
+#: plugin/marquee/inc/photos.php:135
 msgid ""
 "This isn’t legal advice. If you’re unsure, ask someone who knows the rules "
 "where you live, or leave this off."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:92
+#: plugin/marquee/inc/photos.php:137
 msgid "I’ve read this and I’m responsible for the pictures shown at my show"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:92
+#: plugin/marquee/inc/photos.php:137
 msgid "Needed before pictures can be turned on."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:93
+#: plugin/marquee/inc/photos.php:138
 msgid "Pictures kids can add"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:95
+#: plugin/marquee/inc/photos.php:140
 msgid "Off (no pictures)"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:96
+#: plugin/marquee/inc/photos.php:141
 msgid "Cartoon only (recommended)"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:97
+#: plugin/marquee/inc/photos.php:142
 msgid "Real photo only"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:98
+#: plugin/marquee/inc/photos.php:143
 msgid "Let the kid pick: cartoon or real photo"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:100
+#: plugin/marquee/inc/photos.php:146
+msgid ""
+"Switched off for now in Show Control (Kids’ pictures). Turn it back on there"
+" or in the Show Manager."
+msgstr ""
+
+#: plugin/marquee/inc/photos.php:148
 msgid ""
 "A kid with a picture gets two turns in the names break: first their picture "
 "(while the voice says their name), then their name. In “During songs” mode "
 "the picture shows first, then the name."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:107
+#: plugin/marquee/inc/photos.php:155
 msgid ""
 "Your FPP is running names script %s. Pictures need 3.14 or newer: update the"
 " Marquee plugin on your FPP (Content Setup → Plugin Manager), or upload the "
@@ -1307,28 +1374,28 @@ msgid ""
 " pictures."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:111
+#: plugin/marquee/inc/photos.php:159
 msgid ""
 "Your FPP is version %s. Pictures need FPP 10 or newer; names still go up "
 "without them."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:114
+#: plugin/marquee/inc/photos.php:162
 msgid ""
 "Names go up during songs (Names in Lights, How names go up), so they aren’t "
 "spoken: the voice would talk over your music. The picture shows first, then "
 "the name. Pick “Between songs: a names break” to have names said out loud."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:119
+#: plugin/marquee/inc/photos.php:167
 msgid "Your FPP reported: names script %1$s, FPP %2$s."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:125
+#: plugin/marquee/inc/photos.php:173
 msgid "Check pictures automatically"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:125
+#: plugin/marquee/inc/photos.php:173
 msgid ""
 "Google Cloud Vision looks at each picture first. One that’s clean, shows "
 "exactly one face and has no words in it goes up without waiting for you. "
@@ -1336,46 +1403,46 @@ msgid ""
 "still remove any name and its picture at any time."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:126
+#: plugin/marquee/inc/photos.php:174
 msgid "Google Cloud Vision API key"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:128
+#: plugin/marquee/inc/photos.php:176
 msgid "Test the key"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:130
+#: plugin/marquee/inc/photos.php:178
 msgid "Remove my Google key"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:131
+#: plugin/marquee/inc/photos.php:179
 msgid "How to get a free key (about 5 minutes)"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:133
+#: plugin/marquee/inc/photos.php:181
 msgid ""
 "Go to <a href=\"https://console.cloud.google.com/\" target=\"_blank\" "
 "rel=\"noopener\">console.cloud.google.com</a> and sign in with a Google "
 "account. Make a new project (any name, like “My light show”)."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:134
+#: plugin/marquee/inc/photos.php:182
 msgid ""
 "Search for “Cloud Vision API” at the top, open it and click Enable. Google "
 "asks you to set up billing (a card on file) even for the free checks."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:135
+#: plugin/marquee/inc/photos.php:183
 msgid ""
 "Go to APIs & Services → Credentials → Create credentials → API key. Copy the"
 " key and paste it above, then click Test the key and Save."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:136
+#: plugin/marquee/inc/photos.php:184
 msgid "Recommended: on the key, choose Restrict key → Cloud Vision API only."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:138
+#: plugin/marquee/inc/photos.php:186
 msgid ""
 "Each picture uses 3 checks (safe, faces, words). Google gives 1,000 checks a"
 " month free, about 330 pictures; after that it’s about $1.50 per 1,000 "
@@ -1383,43 +1450,43 @@ msgid ""
 "to be checked."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:140
+#: plugin/marquee/inc/photos.php:188
 msgid "Checks used this month: %s (1,000 free each month)."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:320
+#: plugin/marquee/inc/photos.php:368
 msgid "Approved by the automatic check"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:394
+#: plugin/marquee/inc/photos.php:442
 msgid "The automatic check couldn’t run, so it waits for you"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:400
+#: plugin/marquee/inc/photos.php:448
 msgid "The automatic check wasn’t sure this picture is OK"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:405
+#: plugin/marquee/inc/photos.php:453
 msgid "The automatic check didn’t find a face"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:408
+#: plugin/marquee/inc/photos.php:456
 msgid "The automatic check found more than one face"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:412
+#: plugin/marquee/inc/photos.php:460
 msgid "The automatic check found words in the picture"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:428
+#: plugin/marquee/inc/photos.php:476
 msgid "Paste your Google Cloud Vision API key first."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:440
+#: plugin/marquee/inc/photos.php:488
 msgid "Google said: %s"
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:442
+#: plugin/marquee/inc/photos.php:490
 msgid "Your key works. Click Save to keep it."
 msgstr ""
 
@@ -1847,7 +1914,7 @@ msgid "And the Instagram account linked to it, if you have one"
 msgstr ""
 
 #: plugin/marquee/inc/social.php:625 plugin/marquee/inc/social.php:653
-#: plugin/marquee/inc/admin.php:1094
+#: plugin/marquee/inc/admin.php:1122
 msgid "Not connected"
 msgstr ""
 
@@ -2490,16 +2557,6 @@ msgstr ""
 msgid "Distance for names"
 msgstr ""
 
-#: plugin/marquee/inc/support.php:357 plugin/marquee/inc/blocks.php:30
-#: plugin/marquee/inc/admin.php:106
-msgid "Guestbook"
-msgstr ""
-
-#: plugin/marquee/inc/support.php:357 plugin/marquee/inc/admin.php:109
-#: plugin/marquee/inc/admin.php:832
-msgid "Make a Light Show"
-msgstr ""
-
 #: plugin/marquee/inc/support.php:358
 msgid "Song voting"
 msgstr ""
@@ -2550,10 +2607,6 @@ msgstr ""
 
 #: plugin/marquee/inc/support.php:361 plugin/marquee/inc/admin.php:822
 msgid "Light Lab songs"
-msgstr ""
-
-#: plugin/marquee/inc/support.php:361 plugin/marquee/inc/admin.php:772
-msgid "Coloring pages"
 msgstr ""
 
 #: plugin/marquee/inc/support.php:373
@@ -2751,7 +2804,7 @@ msgstr ""
 msgid "Support session: %s"
 msgstr ""
 
-#: plugin/marquee/inc/support.php:764 plugin/marquee/inc/admin.php:1120
+#: plugin/marquee/inc/support.php:764 plugin/marquee/inc/admin.php:1148
 msgid "Get help from Marquee Support"
 msgstr ""
 
@@ -3124,7 +3177,7 @@ msgstr ""
 msgid "Marquee Settings"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:12 plugin/marquee/inc/admin.php:1207
+#: plugin/marquee/inc/admin.php:12 plugin/marquee/inc/admin.php:1235
 msgid "Settings"
 msgstr ""
 
@@ -3171,14 +3224,6 @@ msgstr ""
 #: plugin/marquee/inc/admin.php:111
 msgid ""
 "Pages to print and color (pick which ones under Artwork & Kids’ Corner)"
-msgstr ""
-
-#: plugin/marquee/inc/admin.php:112 plugin/marquee/inc/admin.php:834
-msgid "Games"
-msgstr ""
-
-#: plugin/marquee/inc/admin.php:112
-msgid "Elf names and Christmas trivia"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:113
@@ -3260,7 +3305,7 @@ msgstr ""
 msgid "Donations, social links and posts"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:131 plugin/marquee/inc/admin.php:1113
+#: plugin/marquee/inc/admin.php:131 plugin/marquee/inc/admin.php:1141
 msgid "Help"
 msgstr ""
 
@@ -4382,7 +4427,7 @@ msgstr ""
 msgid "Show"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:872 plugin/marquee/inc/admin.php:1095
+#: plugin/marquee/inc/admin.php:872 plugin/marquee/inc/admin.php:1123
 msgid "Social posts"
 msgstr ""
 
@@ -4589,191 +4634,249 @@ msgid "Done"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:1076
-msgid "Your show’s connections"
+msgid "Your website’s look and words"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1080
-msgid "Turned off under Features & pages. Kids can’t send names yet."
+#: plugin/marquee/inc/admin.php:1077
+msgid ""
+"Each one opens the live preview of your website, right at that spot, so you "
+"see every change as you make it."
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1083 plugin/marquee/inc/admin.php:1094
-#: plugin/marquee/inc/admin.php:1095
-msgid "Connected"
+#: plugin/marquee/inc/admin.php:1085
+msgid "Look"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1083
-msgid "Your FPP checked in %s ago."
-msgstr ""
-
-#: plugin/marquee/inc/admin.php:1086
-msgid "Last seen %s ago"
-msgstr ""
-
-#: plugin/marquee/inc/admin.php:1086
-msgid "Is the FPP on, with the Marquee plugin running?"
-msgstr ""
-
-#: plugin/marquee/inc/admin.php:1088 plugin/marquee/inc/admin.php:1095
-msgid "Not set up"
+#: plugin/marquee/inc/admin.php:1085
+msgid "Classic, Christmas Village or Santa’s North Pole."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:1088
-msgid "Put kids’ names on your matrix, TV or projector."
+msgid "Top of the page"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1094
-msgid "Now Playing, your playlist and song picks are on your website."
+#: plugin/marquee/inc/admin.php:1088
+msgid "The lines under your logo, falling snow and your own background photo."
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1094
-msgid "Show what’s playing and let visitors pick songs."
+#: plugin/marquee/inc/admin.php:1089
+msgid "Banner messages"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1095
-msgid "A cancelled night is posted for you."
+#: plugin/marquee/inc/admin.php:1089
+msgid "What the banner says when the show is on, canceled or off season."
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1095
-msgid "Post on Facebook and Instagram when you cancel a night."
+#: plugin/marquee/inc/admin.php:1090
+msgid "Before You Visit tips"
+msgstr ""
+
+#: plugin/marquee/inc/admin.php:1090
+msgid "Parking, headlights and your other tips for visitors."
+msgstr ""
+
+#: plugin/marquee/inc/admin.php:1091
+msgid "Which parts show, the contest and its prizes."
+msgstr ""
+
+#: plugin/marquee/inc/admin.php:1092
+msgid "Donations & social"
+msgstr ""
+
+#: plugin/marquee/inc/admin.php:1092
+msgid "Your donation link and words, and your social buttons."
+msgstr ""
+
+#: plugin/marquee/inc/admin.php:1097 plugin/marquee/inc/i18n-js.php:81
+msgid "Open"
+msgstr ""
+
+#: plugin/marquee/inc/admin.php:1104
+msgid "Your show’s connections"
+msgstr ""
+
+#: plugin/marquee/inc/admin.php:1108
+msgid "Turned off under Features & pages. Kids can’t send names yet."
+msgstr ""
+
+#: plugin/marquee/inc/admin.php:1111 plugin/marquee/inc/admin.php:1122
+#: plugin/marquee/inc/admin.php:1123
+msgid "Connected"
+msgstr ""
+
+#: plugin/marquee/inc/admin.php:1111
+msgid "Your FPP checked in %s ago."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:1114
+msgid "Last seen %s ago"
+msgstr ""
+
+#: plugin/marquee/inc/admin.php:1114
+msgid "Is the FPP on, with the Marquee plugin running?"
+msgstr ""
+
+#: plugin/marquee/inc/admin.php:1116 plugin/marquee/inc/admin.php:1123
+msgid "Not set up"
+msgstr ""
+
+#: plugin/marquee/inc/admin.php:1116
+msgid "Put kids’ names on your matrix, TV or projector."
+msgstr ""
+
+#: plugin/marquee/inc/admin.php:1122
+msgid "Now Playing, your playlist and song picks are on your website."
+msgstr ""
+
+#: plugin/marquee/inc/admin.php:1122
+msgid "Show what’s playing and let visitors pick songs."
+msgstr ""
+
+#: plugin/marquee/inc/admin.php:1123
+msgid "A cancelled night is posted for you."
+msgstr ""
+
+#: plugin/marquee/inc/admin.php:1123
+msgid "Post on Facebook and Instagram when you cancel a night."
+msgstr ""
+
+#: plugin/marquee/inc/admin.php:1142
 msgid "Help and your phone"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1115
+#: plugin/marquee/inc/admin.php:1143
 msgid ""
 "Stuck on something? Marquee Support can look at your setup with you. And on "
 "show nights, run everything from your phone."
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1121
+#: plugin/marquee/inc/admin.php:1149
 msgid "Ask a question, or let support see your setup for a while."
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1125
+#: plugin/marquee/inc/admin.php:1153
 msgid "Website text and tips"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1126
+#: plugin/marquee/inc/admin.php:1154
 msgid "Before You Visit, guestbook and Kids’ Corner wording, in Customize."
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1130 plugin/marquee/inc/admin.php:1208
+#: plugin/marquee/inc/admin.php:1158 plugin/marquee/inc/admin.php:1236
 msgid "Send feedback"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1131
+#: plugin/marquee/inc/admin.php:1159
 msgid "An idea, or something that didn’t work? Tell us."
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1136 plugin/marquee/inc/admin.php:1210
+#: plugin/marquee/inc/admin.php:1164 plugin/marquee/inc/admin.php:1238
 msgid "Buy me a coffee"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1137
+#: plugin/marquee/inc/admin.php:1165
 msgid "Marquee is free. A coffee keeps it going."
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1144
+#: plugin/marquee/inc/admin.php:1172
 msgid "Marquee %s"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1157
+#: plugin/marquee/inc/admin.php:1185
 msgid "Setup checklist: %1$d of %2$d done"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1181
+#: plugin/marquee/inc/admin.php:1209
 msgid "Contest entries"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1182
+#: plugin/marquee/inc/admin.php:1210
 msgid "Show videos"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1220
+#: plugin/marquee/inc/admin.php:1248
 msgid "Run show nights from your phone: the Show Manager"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1222
+#: plugin/marquee/inc/admin.php:1250
 msgid "QR code for the Show Manager"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1224
+#: plugin/marquee/inc/admin.php:1252
 msgid ""
 "Cancel the show, approve names, contest entries and guestbook messages, and "
 "send alerts, all from a page on your own website. Scan the code with your "
 "phone, sign in, then add it to your home screen."
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1226
+#: plugin/marquee/inc/admin.php:1254
 msgid "Helpers:"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1226
+#: plugin/marquee/inc/admin.php:1254
 msgid ""
 "give a family member or friend their own account with the role “Show "
 "helper”. They can use the Show Manager, and nothing else in WordPress."
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1226
+#: plugin/marquee/inc/admin.php:1254
 msgid "Add a helper"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1245
+#: plugin/marquee/inc/admin.php:1273
 msgid "within"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1245
+#: plugin/marquee/inc/admin.php:1273
 msgid "Distance unit"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1245
+#: plugin/marquee/inc/admin.php:1273
 msgid "miles"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1245
+#: plugin/marquee/inc/admin.php:1273
 msgid "km"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1245
+#: plugin/marquee/inc/admin.php:1273
 msgid "of your show"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1246
+#: plugin/marquee/inc/admin.php:1274
 msgid ""
 "When a kid sends a name, the phone asks to share its location. It is only "
 "compared with your show’s address and never saved. You and your Show helpers"
 " can still send test names from anywhere."
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1246
+#: plugin/marquee/inc/admin.php:1274
 msgid "1 km suits most shows; phones can be off by about 100 metres."
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1246
+#: plugin/marquee/inc/admin.php:1274
 msgid "0.5 mile suits most shows; phones can be off by a few hundred feet."
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1247
+#: plugin/marquee/inc/admin.php:1275
 msgid ""
 "Set your show’s address in Website basics first: without it, names can be "
 "sent from anywhere."
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1268
+#: plugin/marquee/inc/admin.php:1296
 msgid "See it in action"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1273
+#: plugin/marquee/inc/admin.php:1301
 msgid "Your matrix or TV showing a kid’s name during the names break"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1275
+#: plugin/marquee/inc/admin.php:1303
 msgid "Your show: names go up on your matrix and TV"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1279
+#: plugin/marquee/inc/admin.php:1307
 msgid ""
 "The 🔊 line is what you hear on your radio station with “Say each name out "
 "loud” on."
@@ -5857,10 +5960,6 @@ msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:80
 msgid "Paused"
-msgstr ""
-
-#: plugin/marquee/inc/i18n-js.php:81
-msgid "Open"
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:82

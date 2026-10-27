@@ -44,13 +44,49 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp ) {
 			return isset( ridgeroad_looks()[ $v ] ) ? $v : 'classic';
 		},
 	) );
-	$wp->add_control( 'look', array(
+	$wp->add_control( new Ridgeroad_Look_Control( $wp, 'look', array(
 		'label'   => __( 'Look', 'ridgeroad' ),
 		'section' => 'rr_look',
-		'type'    => 'radio',
 		'choices' => ridgeroad_looks(),
-	) );
+	) ) );
 }, 20 );
+
+/* The Look choices as picture cards: a small picture of each look, tap one to pick it. */
+add_action( 'customize_register', function () {
+	if ( class_exists( 'Ridgeroad_Look_Control' ) ) {
+		return;
+	}
+	class Ridgeroad_Look_Control extends WP_Customize_Control {
+		public $type = 'rr_look';
+		public function render_content() {
+			$name = '_customize-radio-' . $this->id;
+			?>
+			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+			<div class="rr-lookcards" role="radiogroup" aria-label="<?php echo esc_attr( $this->label ); ?>">
+				<?php foreach ( $this->choices as $value => $label ) : ?>
+					<label class="rr-lookcard">
+						<input type="radio" name="<?php echo esc_attr( $name ); ?>" value="<?php echo esc_attr( $value ); ?>" <?php $this->link(); ?> <?php checked( $this->value(), $value ); ?>>
+						<img src="<?php echo esc_url( get_template_directory_uri() . '/looks/thumb-' . $value . '.webp' ); ?>" width="560" height="350" alt="" loading="lazy">
+						<span><?php echo esc_html( $label ); ?></span>
+					</label>
+				<?php endforeach; ?>
+			</div>
+			<?php
+		}
+	}
+}, 1 );
+add_action( 'customize_controls_print_styles', function () {
+	echo '<style id="rr-lookcards">'
+		. '.rr-lookcards{display:grid;gap:12px;margin-top:6px}'
+		. '.rr-lookcard{position:relative;display:block;border-radius:10px;overflow:hidden;cursor:pointer;border:3px solid transparent;box-shadow:0 1px 4px rgba(0,0,0,.25);background:#08122b}'
+		. '.rr-lookcard input{position:absolute;opacity:0;pointer-events:none}'
+		. '.rr-lookcard img{display:block;width:100%;height:auto}'
+		. '.rr-lookcard span{display:block;padding:8px 10px;font-weight:600;color:#fff;background:#14213d}'
+		. '.rr-lookcard:has(input:checked){border-color:#2271b1;box-shadow:0 0 0 2px #fff,0 0 0 4px #2271b1}'
+		. '.rr-lookcard:has(input:checked) span::after{content:" \2713";color:#7fd1ff}'
+		. '.rr-lookcard:has(input:focus-visible){outline:2px solid #2271b1;outline-offset:2px}'
+		. '</style>';
+} );
 
 add_filter( 'body_class', function ( $classes ) {
 	if ( 'classic' !== ridgeroad_look() ) {

@@ -1073,6 +1073,34 @@ function marquee_home_view( $s ) {
 		</ol>
 	</div>
 
+	<h3 class="mq-home__h"><?php esc_html_e( 'Your website’s look and words', 'marquee' ); ?></h3>
+	<p class="mq__fine mq-home__sub"><?php esc_html_e( 'Each one opens the live preview of your website, right at that spot, so you see every change as you make it.', 'marquee' ); ?></p>
+	<div class="mq-conns mq-site">
+		<?php
+		$cz = function ( $section ) {
+			return add_query_arg( array( 'autofocus[section]' => $section, 'return' => rawurlencode( admin_url( 'admin.php?page=marquee' ) ) ), admin_url( 'customize.php' ) );
+		};
+		$site = array();
+		if ( function_exists( 'marquee_festive' ) && marquee_festive() ) {
+			$site[] = array( 'rr_look', 'art', __( 'Look', 'marquee' ), __( 'Classic, Christmas Village or Santa’s North Pole.', 'marquee' ) );
+		}
+		$site = array_merge( $site, array(
+			array( 'rr_header', 'format-image', __( 'Top of the page', 'marquee' ), __( 'The lines under your logo, falling snow and your own background photo.', 'marquee' ) ),
+			array( 'rr_show', 'megaphone', __( 'Banner messages', 'marquee' ), __( 'What the banner says when the show is on, canceled or off season.', 'marquee' ) ),
+			array( 'rr_tips', 'car', __( 'Before You Visit tips', 'marquee' ), __( 'Parking, headlights and your other tips for visitors.', 'marquee' ) ),
+			array( 'rr_kids', 'smiley', __( 'Kids’ Corner', 'marquee' ), __( 'Which parts show, the contest and its prizes.', 'marquee' ) ),
+			array( 'rr_support', 'heart', __( 'Donations & social', 'marquee' ), __( 'Your donation link and words, and your social buttons.', 'marquee' ) ),
+		) );
+		foreach ( $site as $c ) :
+			?>
+			<a class="mq-conn" href="<?php echo esc_url( $cz( $c[0] ) ); ?>">
+				<span class="mq-conn__top"><span class="dashicons dashicons-<?php echo esc_attr( $c[1] ); ?>" aria-hidden="true"></span><span class="mq__pill"><?php esc_html_e( 'Open', 'marquee' ); ?> &rarr;</span></span>
+				<b><?php echo esc_html( $c[2] ); ?></b>
+				<small><?php echo esc_html( $c[3] ); ?></small>
+			</a>
+		<?php endforeach; ?>
+	</div>
+
 	<h3 class="mq-home__h"><?php esc_html_e( 'Your show’s connections', 'marquee' ); ?></h3>
 	<div class="mq-conns">
 		<?php

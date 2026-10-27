@@ -122,7 +122,6 @@ body.rr-looks.rr-scene::before { background-size: cover; }
 .rr-looks .rr-radio { color: var(--lk-accent); text-shadow: 0 0 16px rgba(255, 210, 110, .45); }
 
 /* ---------- Ribbon headings become little hanging signs ---------- */
-.rr-looks .rr-ribbon::before, .rr-looks .rr-ribbon::after { opacity: .9; }
 .rr-looks .rr-ribbon span {
 	background: linear-gradient(180deg, var(--lk-sign-1), var(--lk-sign-2)); border: 2px solid var(--lk-gold); border-radius: 10px; color: var(--lk-accent);
 	font-family: "Cinzel", Georgia, serif; letter-spacing: .04em;

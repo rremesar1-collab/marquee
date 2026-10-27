@@ -2254,11 +2254,41 @@ msgstr "Aceptar nombres a cualquier hora"
 msgid "For testing outside show hours"
 msgstr "Para pruebas fuera del horario del espectáculo"
 
+msgid "Kids’ pictures"
+msgstr "Fotos de los niños"
+
+msgid "Kids can add a cartoon or picture with their name"
+msgstr "Los niños pueden añadir una caricatura o una foto con su nombre"
+
+msgid "“Show on” banner"
+msgstr "Aviso de “show confirmado”"
+
+msgid "Off: the banner only shows when you cancel a night"
+msgstr "Apagado: el aviso solo aparece cuando cancelas una noche"
+
+msgid "The whole kids’ page"
+msgstr "Toda la página de los niños"
+
+msgid "Make a Light Show"
+msgstr "Crea un espectáculo de luces"
+
+msgid "The Light Lab in the Kids’ Corner"
+msgstr "El Laboratorio de Luces en el Rincón de los Niños"
+
 msgid "Light show contest"
 msgstr "Concurso de espectáculos de luces"
 
 msgid "Entries, Show Wall and hearts"
 msgstr "Participaciones, Muro del espectáculo y corazones"
+
+msgid "In the Kids’ Corner"
+msgstr "En el Rincón de los Niños"
+
+msgid "Games"
+msgstr "Juegos"
+
+msgid "Elf names and Christmas trivia"
+msgstr "Nombres de duende y trivia navideña"
 
 msgid "Favorite song voting"
 msgstr "Votación de canción favorita"
@@ -2266,8 +2296,8 @@ msgstr "Votación de canción favorita"
 msgid "On the Songs & Videos page"
 msgstr "En la página de Canciones y videos"
 
-msgid "The whole kids’ page"
-msgstr "Toda la página de los niños"
+msgid "Visitors can leave a message"
+msgstr "Los visitantes pueden dejar un mensaje"
 
 msgid "Cancel tonight’s show?"
 msgstr "¿Cancelar el espectáculo de esta noche?"
@@ -2759,11 +2789,38 @@ msgstr "Agrega tu foto (opcional)"
 msgid "Add a cartoon of you (optional)"
 msgstr "Agrega una caricatura tuya (opcional)"
 
-msgid "Cartoon"
+msgid "Move and zoom so your face fills the circle."
+msgstr "Mueve y acerca la foto para que tu cara llene el círculo."
+
+msgid "Your picture: drag to move it, pinch to zoom"
+msgstr "Tu foto: arrástrala para moverla, pellizca para acercar"
+
+msgid "Zoom"
+msgstr "Zoom"
+
+msgid "Pick your look"
+msgstr "Elige tu estilo"
+
+msgid "Cartoon Me"
 msgstr "Caricatura"
+
+msgid "Make Me an Elf"
+msgstr "Hazme duende"
+
+msgid "Santa’s Helper"
+msgstr "Ayudante de Santa"
 
 msgid "Real photo"
 msgstr "Foto real"
+
+msgid "Your picture"
+msgstr "Tu imagen"
+
+msgid "Making your picture…"
+msgstr "Creando tu imagen…"
+
+msgid "On our screen"
+msgstr "En nuestra pantalla"
 
 msgid ""
 "A parent or guardian says it’s OK to show this picture on our screens at the"
@@ -2780,12 +2837,13 @@ msgstr ""
 "foto antes, y se borra justo después."
 
 msgid ""
-"Your phone turns the picture into a cartoon, and only the cartoon is sent. "
-"Our elves check it first, and it’s deleted right after the show uses it."
+"Your phone makes the cartoon, and only the finished picture is sent, never "
+"your photo. Our elves check it first, and it’s deleted right after the show "
+"uses it."
 msgstr ""
-"Tu teléfono convierte la foto en una caricatura, y solo se envía la "
-"caricatura. Nuestros duendes la revisan antes, y se borra justo después de "
-"usarse en el espectáculo."
+"Tu teléfono hace la caricatura y solo se envía la imagen terminada, nunca tu"
+" foto. Nuestros duendes la revisan primero y se borra justo después de que "
+"el show la use."
 
 msgid "Put My Name in Lights!"
 msgstr "¡Pon mi nombre en luces!"
@@ -3001,9 +3059,6 @@ msgstr "Crea un espectáculo de luces. Ilumina nuestra casa a tu manera."
 msgid "Just for fun"
 msgstr "Solo por diversión"
 
-msgid "Make a Light Show"
-msgstr "Crea un espectáculo de luces"
-
 msgid "Light up a house your way"
 msgstr "Ilumina una casa a tu manera"
 
@@ -3018,12 +3073,6 @@ msgstr "¡Elige un dibujo para imprimir y colorear!"
 
 msgid "Games. Elf names and Christmas trivia."
 msgstr "Juegos. Nombres de duende y trivia navideña."
-
-msgid "Games"
-msgstr "Juegos"
-
-msgid "Elf names and Christmas trivia"
-msgstr "Nombres de duende y trivia navideña"
 
 msgid "& Win a Prize!"
 msgstr "¡y gana un premio!"

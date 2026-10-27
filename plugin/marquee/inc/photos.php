@@ -21,6 +21,11 @@ const MARQUEE_PHOTO_KEEP = 2 * HOUR_IN_SECONDS;
 
 /** '' (off), 'cartoon', 'photo' or 'both' (the kid picks). Off until the notice is accepted. */
 function marquee_photos_mode() {
+	return marquee_photos_paused() ? '' : marquee_photos_setup();
+}
+
+/** The kind of pictures set up in Settings, even while they're switched off for now ('' = not set up). */
+function marquee_photos_setup() {
 	$s = marquee_get();
 	$m = isset( $s['photos'] ) ? (string) $s['photos'] : 'off';
 	if ( empty( $s['photos_ack'] ) || ! in_array( $m, array( 'cartoon', 'photo', 'both' ), true ) ) {
@@ -29,10 +34,49 @@ function marquee_photos_mode() {
 	return $m;
 }
 
+/** Kids' pictures switched off for now (the Kids' pictures switch in Show Control and the Show Manager). */
+function marquee_photos_paused() {
+	return (bool) get_option( 'marquee_photos_paused' );
+}
+
+/* The switch: on in Show Control means kids can add a picture (when pictures are set up in Settings). */
+add_filter( 'ridgeroad_ctl_switches', function ( $sw ) {
+	if ( '' !== marquee_photos_setup() ) {
+		$sw['photos_on'] = ! marquee_photos_paused();
+	}
+	return $sw;
+} );
+add_filter( 'ridgeroad_ctl_set', function ( $done, $k, $on ) {
+	if ( 'photos_on' !== $k ) {
+		return $done;
+	}
+	update_option( 'marquee_photos_paused', $on ? 0 : 1, false );
+	return true;
+}, 10, 3 );
+
 function marquee_photo_dir( $url = false ) {
 	$u = wp_upload_dir( null, false );
 	return trailingslashit( $url ? $u['baseurl'] : $u['basedir'] ) . 'marquee/kid-pictures/';
 }
+
+/** The size of the show's first screen (like 64x32), so kids see how their picture looks on it; '' = not known. */
+add_filter( 'ridgeroad_names_photo_screen', function () {
+	if ( ! function_exists( 'marquee_fpp_models' ) ) {
+		return '';
+	}
+	$size = array();
+	foreach ( (array) marquee_fpp_models() as $m ) {
+		if ( ! empty( $m['name'] ) && (int) $m['w'] > 0 && (int) $m['h'] > 0 ) {
+			$size[ $m['name'] ] = (int) $m['w'] . 'x' . (int) $m['h'];
+		}
+	}
+	foreach ( (array) marquee_get( 'fpp_screens' ) as $r ) {
+		if ( ! empty( $r['model'] ) && isset( $size[ $r['model'] ] ) ) {
+			return $size[ $r['model'] ];
+		}
+	}
+	return '';
+} );
 
 /* The name form asks for a picture only when this is on. */
 add_filter( 'ridgeroad_names_photo_mode', function () {
@@ -67,7 +111,7 @@ add_filter( 'marquee_settings_saved', function ( $new, $in ) {
 /** Settings card: Kids' pictures, with the notice the owner has to accept. */
 function marquee_photos_box( $s ) {
 	$mode = isset( $s['photos'] ) ? $s['photos'] : 'off';
-	$on   = '' !== marquee_photos_mode();
+	$on   = '' !== marquee_photos_setup();
 	?>
 	<details class="mq__card" data-mq-photos <?php echo isset( $_GET['photos'] ) ? 'open' : ''; // phpcs:ignore WordPress.Security.NonceVerification ?>>
 		<summary>
@@ -84,7 +128,8 @@ function marquee_photos_box( $s ) {
 					<li><?php esc_html_e( 'In the United States, collecting a picture from a child under 13 online is covered by COPPA, which requires a parent’s permission. Marquee asks a parent or guardian to tick a box before any picture is sent, but it can’t check who ticked it. Other countries have their own rules (in Europe, the GDPR).', 'marquee' ); ?></li>
 					<li><?php esc_html_e( 'Every picture waits for you or a Show helper to approve it in Show Control or the Show Manager, unless you turn on the automatic check below: then only the pictures it isn’t sure about wait for you. A name whose picture isn’t approved within 10 minutes goes up without the picture.', 'marquee' ); ?></li>
 					<li><?php esc_html_e( 'The phone shrinks the picture to a small square before sending it. Marquee keeps it in a private folder (never in your Media Library, never on a page) and deletes it as soon as it’s been shown, removed or turned down, and always within 2 hours.', 'marquee' ); ?></li>
-					<li><?php esc_html_e( 'The cartoon version is made on the kid’s own phone: only the cartoon is sent, never the photo. It’s the safer choice and looks better on pixel screens.', 'marquee' ); ?></li>
+					<li><?php esc_html_e( 'The cartoon version is made on the kid’s own phone: they frame their face, pick Cartoon Me, an elf, a snowman or one of Santa’s helpers, and see how it will look on your screen. Only the finished picture is sent, never the photo. It’s the safer choice and looks better on pixel screens.', 'marquee' ); ?></li>
+					<li><?php esc_html_e( 'To cut the kid out of the background, the phone downloads a free tool (Google’s MediaPipe) from the jsDelivr code library the first time. Only the tool is downloaded; the picture stays on the phone. If it can’t load, a soft oval around the face is used instead.', 'marquee' ); ?></li>
 					<li><?php esc_html_e( 'Pictures need FPP 10 or newer on the FPP that runs each screen, and the Marquee names script 3.14 or newer. On a small pixel matrix a face is only a few dozen pixels tall; it looks best on a TV or projector.', 'marquee' ); ?></li>
 				</ul>
 				<p class="mq__fine"><?php esc_html_e( 'This isn’t legal advice. If you’re unsure, ask someone who knows the rules where you live, or leave this off.', 'marquee' ); ?></p>
@@ -97,6 +142,9 @@ function marquee_photos_box( $s ) {
 					<option value="photo" <?php selected( $mode, 'photo' ); ?>><?php esc_html_e( 'Real photo only', 'marquee' ); ?></option>
 					<option value="both" <?php selected( $mode, 'both' ); ?>><?php esc_html_e( 'Let the kid pick: cartoon or real photo', 'marquee' ); ?></option>
 				</select></p>
+			<?php if ( marquee_photos_paused() && $on ) : ?>
+				<p class="mq__fine"><b><?php esc_html_e( 'Switched off for now in Show Control (Kids’ pictures). Turn it back on there or in the Show Manager.', 'marquee' ); ?></b></p>
+			<?php endif; ?>
 			<p class="mq__fine"><?php esc_html_e( 'A kid with a picture gets two turns in the names break: first their picture (while the voice says their name), then their name. In “During songs” mode the picture shows first, then the name.', 'marquee' ); ?></p>
 			<?php
 			// what the FPP reported: pictures need names script 3.14+ and FPP 10+

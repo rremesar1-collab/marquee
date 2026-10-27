@@ -23,7 +23,7 @@ Your website never connects into your house. Remote Falcon is reached from the s
 - **Your Name in Lights:** kids send a first name and it goes up on your matrix, projector or TV between songs, never during one. Or on a spare screen during songs.
 - Names said out loud over your radio in an ElevenLabs voice (Santa works great), or with your own names break audio
 - Kids pick a themed show for their name (Candy Cane Swirl, Snowfall, Rainbow Party or your own) and pick their message
-- Kids' pictures on your screens (off unless you turn it on): a cartoon made on the kid's own phone, or a real photo, with a parent's OK. You approve each one, or let an optional Google Cloud Vision check approve the clean ones; pictures are deleted right after they're shown
+- Kids' pictures on your screens (off unless you turn it on), made on the kid's own phone: they frame their face, the background is cut away, and they pick Cartoon Me, Make Me an Elf, Snowman or Santa's Helper (or a real photo), with a preview of how it looks on your screen and a parent's OK. You approve each one, or let an optional Google Cloud Vision check approve the clean ones; pictures are deleted right after they're shown
 - Light Lab: kids design a light show on a house, with an optional contest and a Show Wall where people vote
 - Coloring pages with your show's name, and games
 - Each Kids' Corner part has its own switch: turn on just the ones you want
@@ -35,7 +35,7 @@ Your website never connects into your house. Remote Falcon is reached from the s
 - Cancel a night and it posts to your Facebook Page, Instagram and Threads
 - One-tap traffic and parking alerts on your website, phones and screens
 - Settings that start with a Setup home (your next step, what's done, how your connections are doing), Names in Lights in six simple steps, and "Show me how" walkthroughs on the real Settings page
-- Marquee Festive theme looks: Classic, Christmas Village and Santa's North Pole, each one picture behind the whole page
+- Marquee Festive theme looks: Classic, Christmas Village and Santa's North Pole, picked from picture cards, each one picture behind the whole page (or your own background photo)
 - Built-in help assistant, and an optional Marquee Support session where support can sign in for 24 hours with every change shown to you
 
 ## What's here

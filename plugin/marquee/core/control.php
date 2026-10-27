@@ -169,9 +169,19 @@ function ridgeroad_control_page() {
 						'names_on'    => array( __( 'Name in Lights', 'ridgeroad' ), ( function_exists( 'marquee_get' ) ? __( 'Kids can send names to your show’s screens', 'ridgeroad' ) : __( 'Kids can send names to the garage door and TV', 'ridgeroad' ) ), '' ),
 						'paused'      => array( __( 'Pause the name queue', 'ridgeroad' ), __( 'Names still come in, but wait until you turn this off', 'ridgeroad' ), '' ),
 						'names_always' => array( __( 'Accept names any time', 'ridgeroad' ), __( 'For testing outside show hours', 'ridgeroad' ), '' ),
-						'contest_on'  => array( __( 'Light show contest', 'ridgeroad' ), __( 'Entries, Show Wall and hearts', 'ridgeroad' ), '' ),
-						'songs_show'  => array( __( 'Favorite song voting', 'ridgeroad' ), __( 'On the Songs & Videos page', 'ridgeroad' ), '' ),
+					);
+					if ( function_exists( 'marquee_photos_setup' ) && '' !== marquee_photos_setup() ) {
+						$sw['photos_on'] = array( __( 'Kids’ pictures', 'ridgeroad' ), __( 'Kids can add a cartoon or picture with their name', 'ridgeroad' ), '' );
+					}
+					$sw += array(
+						'ok_banner'   => array( __( '“Show on” banner', 'ridgeroad' ), __( 'Off: the banner only shows when you cancel a night', 'ridgeroad' ), '' ),
 						'kids_show'   => array( __( 'Kids’ Corner', 'ridgeroad' ), __( 'The whole kids’ page', 'ridgeroad' ), '' ),
+						'lab_on'      => array( __( 'Make a Light Show', 'ridgeroad' ), __( 'The Light Lab in the Kids’ Corner', 'ridgeroad' ), '' ),
+						'contest_on'  => array( __( 'Light show contest', 'ridgeroad' ), __( 'Entries, Show Wall and hearts', 'ridgeroad' ), '' ),
+						'coloring_on' => array( __( 'Coloring pages', 'ridgeroad' ), __( 'In the Kids’ Corner', 'ridgeroad' ), '' ),
+						'games_on'    => array( __( 'Games', 'ridgeroad' ), __( 'Elf names and Christmas trivia', 'ridgeroad' ), '' ),
+						'songs_show'  => array( __( 'Favorite song voting', 'ridgeroad' ), __( 'On the Songs & Videos page', 'ridgeroad' ), '' ),
+						'gb_show'     => array( __( 'Guestbook', 'ridgeroad' ), __( 'Visitors can leave a message', 'ridgeroad' ), '' ),
 					);
 					foreach ( $sw as $k => $s ) {
 						printf(
@@ -406,8 +416,13 @@ function ridgeroad_control_state() {
 				return array( 'icon' => $p['icon'], 'label' => $p['label'] );
 			}, ridgeroad_advisory_presets() ),
 		),
-		'switches' => array(
+		'switches' => apply_filters( 'ridgeroad_ctl_switches', array(
 			'cancel'       => ridgeroad_cancel_tonight_on(),
+			'ok_banner'    => ! ridgeroad_mod( 'ok_hide' ),
+			'lab_on'       => (bool) ridgeroad_mod( 'lab_on' ),
+			'coloring_on'  => (bool) ridgeroad_mod( 'coloring_on' ),
+			'games_on'     => (bool) ridgeroad_mod( 'games_on' ),
+			'gb_show'      => (bool) ridgeroad_mod( 'gb_show' ),
 			'names_on'     => (bool) ridgeroad_mod( 'names_on' ),
 			'paused'       => ridgeroad_names_paused(),
 			'names_always' => (bool) ridgeroad_mod( 'names_always' ),
@@ -422,7 +437,7 @@ function ridgeroad_control_state() {
 			'names_color'  => ridgeroad_mod( 'names_color' ),
 			'app_auto_on'  => (bool) ridgeroad_mod( 'app_auto_on' ),
 			'app_buzz_on'  => (bool) ridgeroad_mod( 'app_buzz_on' ),
-		),
+		) ),
 		'contest'  => array(
 			'pending' => $pending,
 			'top'     => $top,
@@ -507,7 +522,14 @@ add_action( 'wp_ajax_rr_ctl_set', function () {
 		case 'kids_show':
 		case 'app_auto_on':
 		case 'app_buzz_on':
+		case 'lab_on':
+		case 'coloring_on':
+		case 'games_on':
+		case 'gb_show':
 			set_theme_mod( $k, $on ? 1 : 0 );
+			break;
+		case 'ok_banner':
+			set_theme_mod( 'ok_hide', $on ? 0 : 1 );
 			break;
 		case 'snow_amount':
 			if ( in_array( $v, array( 'off', 'light', 'medium', 'heavy' ), true ) ) {
@@ -526,7 +548,9 @@ add_action( 'wp_ajax_rr_ctl_set', function () {
 			}
 			break;
 		default:
-			wp_send_json_error( null, 400 );
+			if ( ! apply_filters( 'ridgeroad_ctl_set', false, $k, $on, $v ) ) { // Marquee's own switches (kids' pictures)
+				wp_send_json_error( null, 400 );
+			}
 	}
 	if ( function_exists( 'ridgeroad_flush_cache' ) ) {
 		ridgeroad_flush_cache();

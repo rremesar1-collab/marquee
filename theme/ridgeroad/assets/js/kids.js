@@ -316,53 +316,372 @@
 	}
 
 	/* ---------- Kids' pictures (when the show turned them on) ----------
-	   The picture never leaves the phone full size: it's cropped to a square and shrunk to 256 pixels
-	   here, and for a cartoon only the cartoon is sent. */
+	   Everything happens on the phone: the kid moves and zooms the picture so their face fills the
+	   circle, the background is cut away (a small free tool the phone downloads; the picture itself
+	   is never sent anywhere), and it becomes a cartoon, an elf, a snowman or one of Santa's helpers.
+	   Only the finished 320-pixel picture is sent with the name. */
+	var PIC_OUT = 320, PIC_CROP = 512;
+	var RING = { x: 0.5, y: 0.46, r: 0.31 };                 // the circle the face goes in (parts of the square)
+
 	function picture(form) {
 		var box = form.querySelector('[data-rr-pic]');
 		if (!box) { return null; }
-		var file = box.querySelector('[data-rr-pic-file]'), cv = box.querySelector('[data-rr-pic-canvas]'), data = box.querySelector('[data-rr-pic-data]');
-		var clr = box.querySelector('[data-rr-pic-clear]'), okWrap = box.querySelector('[data-rr-pic-okwrap]'), ok = box.querySelector('[data-rr-pic-ok]');
-		var kinds = box.querySelector('[data-rr-pic-kinds]'), take = box.querySelector('[data-rr-pic-take] span');
-		var src = null;                                   // the square photo, kept only in this page
-		var kind = function () { var r = form.querySelector('input[name=photo_kind]:checked') || form.querySelector('input[name=photo_kind]'); return r ? r.value : 'cartoon'; };
-		var draw = function () {
-			if (!src) { return; }
-			var x = cv.getContext('2d');
-			x.putImageData(kind() === 'photo' ? src : cartoon(src), 0, 0);
-			data.value = cv.toDataURL('image/jpeg', 0.85);
+		var $p = function (s) { return box.querySelector(s); };
+		var file = $p('[data-rr-pic-file]'), data = $p('[data-rr-pic-data]'), kindIn = $p('[data-rr-pic-kind]');
+		var clr = $p('[data-rr-pic-clear]'), okWrap = $p('[data-rr-pic-okwrap]'), ok = $p('[data-rr-pic-ok]'), take = $p('[data-rr-pic-take] span');
+		var edit = $p('[data-rr-pic-edit]'), stage = $p('[data-rr-pic-stage]'), zoom = $p('[data-rr-pic-zoom]');
+		var out = $p('[data-rr-pic-out]'), scr = $p('[data-rr-pic-screen]'), wait = $p('[data-rr-pic-wait]'), scrBox = $p('[data-rr-pic-screenbox]');
+		var mode = box.getAttribute('data-mode') || 'cartoon';
+		var img = null, view = { s: 1, x: 0, y: 0 }, busy = 0, timer = 0, cut = null, cutKey = '';
+
+		var style = function () { var r = box.querySelector('input[name=photo_style]:checked'); return r ? r.value : (mode === 'photo' ? 'photo' : 'cartoon'); };
+
+		/* the stage: the photo under a dark cover with a hole for the face */
+		var S = stage.width;
+		var cover = function () { return Math.max(S / img.naturalWidth, S / img.naturalHeight); };
+		var clamp = function () {
+			var w = img.naturalWidth * view.s, h = img.naturalHeight * view.s;
+			view.x = Math.min(0, Math.max(S - w, view.x)); view.y = Math.min(0, Math.max(S - h, view.y));
 		};
+		var paint = function () {
+			var x = stage.getContext('2d');
+			x.clearRect(0, 0, S, S);
+			x.drawImage(img, view.x, view.y, img.naturalWidth * view.s, img.naturalHeight * view.s);
+			x.save(); x.beginPath(); x.rect(0, 0, S, S); x.arc(RING.x * S, RING.y * S, RING.r * S, 0, Math.PI * 2, true);
+			x.fillStyle = 'rgba(5,10,30,.55)'; x.fill('evenodd'); x.restore();
+			x.beginPath(); x.arc(RING.x * S, RING.y * S, RING.r * S, 0, Math.PI * 2);
+			x.setLineDash([S / 40, S / 60]); x.lineWidth = S / 120; x.strokeStyle = '#fff'; x.stroke(); x.setLineDash([]);
+		};
+		var zoomTo = function (s, cx, cy) {
+			var base = cover(), ns = Math.max(base, Math.min(base * 4, s));
+			cx = cx === undefined ? RING.x * S : cx; cy = cy === undefined ? RING.y * S : cy;
+			view.x = cx - (cx - view.x) * ns / view.s; view.y = cy - (cy - view.y) * ns / view.s; view.s = ns;
+			clamp(); zoom.value = String(view.s / base); paint();
+		};
+		var later = function () { clearTimeout(timer); timer = setTimeout(render, 380); };
+
+		/* drag to move, pinch (or the slider, or the mouse wheel) to zoom */
+		var pts = {}, pinch = null;
+		var pos = function (e) { var r = stage.getBoundingClientRect(); return { x: (e.clientX - r.left) * S / r.width, y: (e.clientY - r.top) * S / r.height }; };
+		stage.addEventListener('pointerdown', function (e) { if (!img) { return; } stage.setPointerCapture(e.pointerId); pts[e.pointerId] = pos(e); pinch = null; });
+		stage.addEventListener('pointermove', function (e) {
+			if (!img || !pts[e.pointerId]) { return; }
+			var p = pos(e), ids = Object.keys(pts);
+			if (ids.length === 1) {
+				view.x += p.x - pts[e.pointerId].x; view.y += p.y - pts[e.pointerId].y; pts[e.pointerId] = p; clamp(); paint();
+			} else if (ids.length === 2) {
+				pts[e.pointerId] = p;
+				var a = pts[ids[0]], b = pts[ids[1]], d = Math.hypot(a.x - b.x, a.y - b.y);
+				if (pinch) { zoomTo(view.s * d / pinch, (a.x + b.x) / 2, (a.y + b.y) / 2); }
+				pinch = d;
+			}
+			e.preventDefault();
+		});
+		var up = function (e) { if (pts[e.pointerId]) { delete pts[e.pointerId]; pinch = null; later(); } };
+		stage.addEventListener('pointerup', up); stage.addEventListener('pointercancel', up);
+		stage.addEventListener('wheel', function (e) { if (!img) { return; } e.preventDefault(); var p = pos(e); zoomTo(view.s * (e.deltaY < 0 ? 1.08 : 1 / 1.08), p.x, p.y); later(); }, { passive: false });
+		zoom.addEventListener('input', function () { if (img) { zoomTo(cover() * parseFloat(zoom.value)); later(); } });
+		box.querySelectorAll('input[name=photo_style]').forEach(function (r) { r.addEventListener('change', render); });
+
+		/* the square the kid framed, 512 pixels */
+		var crop = function () {
+			var c = document.createElement('canvas'); c.width = c.height = PIC_CROP;
+			var k = PIC_CROP / S, x = c.getContext('2d');
+			x.drawImage(img, view.x * k, view.y * k, img.naturalWidth * view.s * k, img.naturalHeight * view.s * k);
+			return c;
+		};
+
+		/* make the picture: cut out the kid, cartoon, then the festive scene */
+		function render() {
+			if (!img) { return; }
+			var job = ++busy, st = style(), c = crop();
+			kindIn.value = st === 'photo' ? 'photo' : 'cartoon';
+			var key = [view.s.toFixed(3), Math.round(view.x), Math.round(view.y)].join(',');
+			var finish = function (mask) {
+				if (job !== busy) { return; }
+				if (st !== 'photo') { cut = mask; cutKey = key; }
+				var o = compose(c, mask, st);
+				out.getContext('2d').drawImage(o, 0, 0, out.width, out.height);
+				data.value = o.toDataURL('image/jpeg', 0.88);
+				screenPreview(o);
+				wait.hidden = true; out.parentNode.classList.remove('is-busy');
+			};
+			if (st === 'photo') { finish(null); return; }
+			if (cut && cutKey === key) { finish(cut); return; }
+			wait.hidden = false; out.parentNode.classList.add('is-busy');
+			cutout(c).then(finish, function () { finish(ovalMask()); });
+		}
+
+		/* how the picture looks on the show's screen (its real number of pixels) */
+		function screenPreview(o) {
+			if (!scr) { return; }
+			var m = (box.getAttribute('data-screen') || '').split('x'), W = parseInt(m[0], 10) || 0, H = parseInt(m[1], 10) || 0;
+			if (!W || !H) { scrBox.hidden = true; return; }
+			var f = Math.min(1, 240 / Math.max(W, H));            // TVs and projectors: drawn smaller, same shape
+			var w = Math.max(1, Math.round(W * f)), h = Math.max(1, Math.round(H * f));
+			scr.width = w; scr.height = h;
+			var x = scr.getContext('2d'); x.fillStyle = '#000'; x.fillRect(0, 0, w, h);
+			var k = Math.min(w / o.width, h / o.height), dw = o.width * k, dh = o.height * k;
+			x.imageSmoothingEnabled = true; x.imageSmoothingQuality = 'high';
+			x.drawImage(o, (w - dw) / 2, (h - dh) / 2, dw, dh);
+			scr.style.aspectRatio = W + ' / ' + H;
+			scrBox.hidden = false;
+		}
+
 		var clear = function () {
-			src = null; data.value = ''; file.value = ''; cv.hidden = true; clr.hidden = true; okWrap.hidden = true; ok.checked = false;
-			if (kinds) { kinds.hidden = true; }
+			img = null; cut = null; data.value = ''; file.value = ''; edit.hidden = true; clr.hidden = true; okWrap.hidden = true; ok.checked = false;
 			take.textContent = t('Take or pick a picture');
 		};
 		file.addEventListener('change', function () {
 			var f = file.files && file.files[0];
 			if (!f || !/^image\//.test(f.type)) { return; }
-			var img = new Image(), url = URL.createObjectURL(f);
-			img.onload = function () {
-				var s = Math.min(img.naturalWidth, img.naturalHeight), w = 256;
-				var tmp = document.createElement('canvas'); tmp.width = tmp.height = w;
-				var tx = tmp.getContext('2d');
-				tx.drawImage(img, (img.naturalWidth - s) / 2, (img.naturalHeight - s) / 2, s, s, 0, 0, w, w); // centre square: the face
-				src = tx.getImageData(0, 0, w, w);
-				URL.revokeObjectURL(url);
-				cv.hidden = false; clr.hidden = false; okWrap.hidden = false;
-				if (kinds) { kinds.hidden = false; }
+			var im = new Image(), url = URL.createObjectURL(f);
+			im.onload = function () {
+				img = im; cut = null;
+				view.s = cover(); view.x = (S - im.naturalWidth * view.s) / 2; view.y = (S - im.naturalHeight * view.s) / 2;
+				zoom.value = '1'; paint();
+				edit.hidden = false; clr.hidden = false; okWrap.hidden = false;
 				take.textContent = t('Use a different picture');
-				draw();
+				render();
+				if (mode !== 'photo') { cutout.load(); }       // start fetching the cut-out tool right away
 			};
-			img.onerror = function () { URL.revokeObjectURL(url); };
-			img.src = url;
+			im.onerror = function () { URL.revokeObjectURL(url); };
+			im.src = url;
 		});
-		form.querySelectorAll('input[name=photo_kind]').forEach(function (r) { r.addEventListener('change', draw); });
 		clr.addEventListener('click', clear);
-		return { ready: function () { return !src || ok.checked; }, clear: clear };
+		return { ready: function () { return !img || ok.checked; }, clear: clear };
+	}
+
+	/* ---- cutting the kid out of the background, on the phone ----
+	   MediaPipe Selfie Segmentation (Google, free): its code is downloaded from the jsDelivr library the
+	   first time; the picture is only ever handed to it inside the phone. If it can't load, an oval around
+	   the face is used instead. */
+	var SEG = 'https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation@0.1.1675465747/';
+	var segP = null;
+	function cutout(c) {
+		return cutout.load().then(function (seg) {
+			return new Promise(function (ok, no) {
+				var tm = setTimeout(no, 15000);
+				seg.onResults(function (r) {
+					clearTimeout(tm);
+					var m = document.createElement('canvas'); m.width = m.height = PIC_CROP;
+					var x = m.getContext('2d'); x.drawImage(r.segmentationMask, 0, 0, PIC_CROP, PIC_CROP);
+					var d = x.getImageData(0, 0, PIC_CROP, PIC_CROP).data, a = new Float32Array(PIC_CROP * PIC_CROP);
+					for (var i = 0; i < a.length; i++) {
+						var v = Math.max(d[i * 4], d[i * 4 + 3] < 255 ? d[i * 4 + 3] : 0) / 255;
+						a[i] = v < 0.3 ? 0 : v > 0.7 ? 1 : (v - 0.3) / 0.4;
+					}
+					ok(soften(a, PIC_CROP, 2));
+				});
+				seg.send({ image: c }).catch(no);
+			});
+		});
+	}
+	cutout.load = function () {
+		if (segP) { return segP; }
+		segP = new Promise(function (ok, no) {
+			var go = function () {
+				try {
+					var seg = new window.SelfieSegmentation({ locateFile: function (f) { return SEG + f; } });
+					seg.setOptions({ modelSelection: 0 });
+					seg.initialize().then(function () { ok(seg); }, no);
+				} catch (e) { no(e); }
+			};
+			if (window.SelfieSegmentation) { go(); return; }
+			var s = document.createElement('script'); s.src = SEG + 'selfie_segmentation.js'; s.crossOrigin = 'anonymous';
+			s.onload = go; s.onerror = no; document.head.appendChild(s);
+			setTimeout(no, 20000);
+		});
+		segP.catch(function () { segP = null; });
+		return segP;
+	};
+	/* no cut-out tool: a soft oval around the face circle */
+	function ovalMask() {
+		var n = PIC_CROP, a = new Float32Array(n * n), cx = RING.x * n, cy = RING.y * n + RING.r * n * 0.25, rx = RING.r * n * 1.25, ry = RING.r * n * 1.6;
+		for (var y = 0; y < n; y++) { for (var x = 0; x < n; x++) { var d = Math.hypot((x - cx) / rx, (y - cy) / ry); a[y * n + x] = d < 0.92 ? 1 : d > 1 ? 0 : (1 - d) / 0.08; } }
+		return a;
+	}
+	function soften(a, n, r) {
+		var t = new Float32Array(n * n), o = new Float32Array(n * n), x, y, j, s;
+		for (y = 0; y < n; y++) { for (x = 0; x < n; x++) { s = 0; for (j = -r; j <= r; j++) { s += a[y * n + Math.min(n - 1, Math.max(0, x + j))]; } t[y * n + x] = s / (2 * r + 1); } }
+		for (y = 0; y < n; y++) { for (x = 0; x < n; x++) { s = 0; for (j = -r; j <= r; j++) { s += t[Math.min(n - 1, Math.max(0, y + j)) * n + x]; } o[y * n + x] = s / (2 * r + 1); } }
+		return o;
+	}
+
+	/* ---- the finished picture ---- */
+	function compose(c, mask, st) {
+		var N = PIC_OUT, o = document.createElement('canvas'); o.width = o.height = N;
+		var x = o.getContext('2d');
+		if (st === 'photo') { x.drawImage(c, 0, 0, N, N); return o; }
+		// the cartoon of the framed square, at the finished size
+		var sm = document.createElement('canvas'); sm.width = sm.height = N;
+		var sx = sm.getContext('2d'); sx.drawImage(c, 0, 0, N, N);
+		var toon = cartoon(sx.getImageData(0, 0, N, N));
+		var head = st !== 'cartoon';
+		// the kid's layer: the cartoon where the mask says "kid" (just the head for the costumes)
+		var al = new Float32Array(N * N), k = PIC_CROP / N, i, px, py;
+		for (py = 0; py < N; py++) {
+			for (px = 0; px < N; px++) {
+				var m = mask[Math.min(PIC_CROP - 1, Math.round(py * k)) * PIC_CROP + Math.min(PIC_CROP - 1, Math.round(px * k))];
+				if (head) {                                 // head and a bit of neck: the costume covers the rest
+					var dx = (px / N - RING.x) / (RING.r * 1.3), dy = (py / N - RING.y) / (RING.r * (py / N < RING.y ? 1.6 : 1.02));
+					var d = Math.hypot(dx, dy); m *= d < 0.9 ? 1 : d > 1 ? 0 : (1 - d) / 0.1;
+				}
+				al[py * N + px] = m;
+			}
+		}
+		var kid = document.createElement('canvas'); kid.width = kid.height = N;
+		var kd = toon.data;
+		for (i = 0; i < N * N; i++) { kd[i * 4 + 3] = Math.round(al[i] * 255); }
+		kid.getContext('2d').putImageData(toon, 0, 0);
+		var skin = skinTone(toon, al, N);
+		background(x, N, st);
+		if (st === 'cartoon') {
+			x.drawImage(sticker(al, N, 7), 0, 0);            // white sticker edge round the kid
+			x.drawImage(kid, 0, 0);
+			return o;
+		}
+		// costumes: the head goes in a set place, smaller, with the body drawn under it
+		var R = 0.26, T = { x: 0.5, y: 0.5 }, f = R / RING.r;
+		var place = function (img) { x.drawImage(img, (T.x - RING.x * f) * N, (T.y - RING.y * f) * N, N * f, N * f); };
+		var g = { x: T.x * N, y: T.y * N, r: R * N, N: N, skin: skin };
+		if (st === 'elf') { elfEars(x, g); }
+		place(sticker(al, N, 5));
+		place(kid);
+		body(x, g, st);                                  // the collar goes over the neck
+		hat(x, g, st);
+		return o;
+	}
+
+	/* the average colour of the middle of the face (for the elf's ears) */
+	function skinTone(img, al, N) {
+		var r = 0, g = 0, b = 0, n = 0, d = img.data;
+		for (var y = Math.round((RING.y - RING.r * 0.15) * N); y < (RING.y + RING.r * 0.35) * N; y++) {
+			for (var x = Math.round((RING.x - RING.r * 0.35) * N); x < (RING.x + RING.r * 0.35) * N; x++) {
+				var i = y * N + x; if (al[i] < 0.8) { continue; }
+				r += d[i * 4]; g += d[i * 4 + 1]; b += d[i * 4 + 2]; n++;
+			}
+		}
+		return n ? 'rgb(' + Math.round(r / n) + ',' + Math.round(g / n) + ',' + Math.round(b / n) + ')' : '#f1c7a5';
+	}
+
+	/* a white edge round the cut-out, like a sticker */
+	function sticker(al, N, r) {
+		var c = document.createElement('canvas'); c.width = c.height = N;
+		var x = c.getContext('2d'), im = x.createImageData(N, N), d = im.data, i;
+		var grow = new Float32Array(N * N), xx, yy, j;
+		var tmp = new Float32Array(N * N);
+		for (yy = 0; yy < N; yy++) { for (xx = 0; xx < N; xx++) { var m = 0; for (j = -r; j <= r; j++) { var v = al[yy * N + Math.min(N - 1, Math.max(0, xx + j))]; if (v > m) { m = v; } } tmp[yy * N + xx] = m; } }
+		for (yy = 0; yy < N; yy++) { for (xx = 0; xx < N; xx++) { var m2 = 0; for (j = -r; j <= r; j++) { var v2 = tmp[Math.min(N - 1, Math.max(0, yy + j)) * N + xx]; if (v2 > m2) { m2 = v2; } } grow[yy * N + xx] = m2; } }
+		for (i = 0; i < N * N; i++) { d[i * 4] = d[i * 4 + 1] = d[i * 4 + 2] = 255; d[i * 4 + 3] = Math.round(Math.min(1, grow[i] * 1.4) * 255); }
+		x.putImageData(im, 0, 0);
+		return c;
+	}
+
+	/* the festive scene behind the kid */
+	function background(x, N, st) {
+		var col = { cartoon: ['#d1203d', '#5a0718'], elf: ['#2e9a52', '#0a3a1c'], snowman: ['#3d74c9', '#0d2150'], helper: ['#c8102e', '#4a0510'] }[st];
+		var g = x.createRadialGradient(N / 2, N * 0.42, N * 0.05, N / 2, N / 2, N * 0.75);
+		g.addColorStop(0, col[0]); g.addColorStop(1, col[1]);
+		x.fillStyle = g; x.fillRect(0, 0, N, N);
+		var seed = 7, rnd = function () { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; };
+		// soft lights
+		for (var i = 0; i < 14; i++) {
+			var bx = rnd() * N, by = rnd() * N * 0.8, br = N * (0.02 + rnd() * 0.04);
+			var lg = x.createRadialGradient(bx, by, 0, bx, by, br);
+			lg.addColorStop(0, st === 'snowman' ? 'rgba(255,255,255,.55)' : 'rgba(255,220,130,.6)'); lg.addColorStop(1, 'rgba(255,220,130,0)');
+			x.fillStyle = lg; x.beginPath(); x.arc(bx, by, br, 0, Math.PI * 2); x.fill();
+		}
+		// snowflakes / sparkles
+		x.strokeStyle = 'rgba(255,255,255,.85)'; x.lineWidth = N / 220;
+		for (i = 0; i < 18; i++) {
+			var sx = rnd() * N, sy = rnd() * N, ss = N * (0.008 + rnd() * 0.014);
+			for (var a = 0; a < 3; a++) { var an = a * Math.PI / 3; x.beginPath(); x.moveTo(sx - Math.cos(an) * ss, sy - Math.sin(an) * ss); x.lineTo(sx + Math.cos(an) * ss, sy + Math.sin(an) * ss); x.stroke(); }
+		}
+		if (st === 'snowman') { // snowy ground
+			x.fillStyle = '#eef6ff'; x.beginPath(); x.moveTo(0, N * 0.86); x.quadraticCurveTo(N * 0.3, N * 0.8, N * 0.6, N * 0.86); x.quadraticCurveTo(N * 0.85, N * 0.9, N, N * 0.84); x.lineTo(N, N); x.lineTo(0, N); x.fill();
+		}
+	}
+
+	/* ---- costumes, drawn in code: g = head centre x, y and radius ---- */
+	function line(x, w, c) { x.lineWidth = w; x.strokeStyle = c || '#1b1020'; x.lineJoin = 'round'; x.stroke(); }
+	function elfEars(x, g) {
+		[-1, 1].forEach(function (s) {
+			x.beginPath();
+			x.moveTo(g.x + s * g.r * 0.62, g.y - g.r * 0.1);
+			x.quadraticCurveTo(g.x + s * g.r * 1.1, g.y - g.r * 0.28, g.x + s * g.r * 1.38, g.y - g.r * 0.6);
+			x.quadraticCurveTo(g.x + s * g.r * 1.18, g.y + g.r * 0.1, g.x + s * g.r * 0.66, g.y + g.r * 0.26);
+			x.closePath(); x.fillStyle = g.skin; x.fill(); line(x, g.N / 110);
+		});
+	}
+	function body(x, g, st) {
+		var N = g.N, top = g.y + g.r * 0.9;
+		if (st === 'snowman') {
+			x.beginPath(); x.arc(g.x, N * 1.2, N * 0.46, 0, Math.PI * 2); x.fillStyle = '#fbfdff'; x.fill(); line(x, N / 110, '#9fb5d6');
+			[0.86, 0.95].forEach(function (yy) { x.beginPath(); x.arc(g.x, N * yy, N * 0.022, 0, Math.PI * 2); x.fillStyle = '#1b1b24'; x.fill(); });
+			// scarf
+			x.fillStyle = '#d4202f'; x.beginPath(); x.ellipse(g.x, top + g.r * 0.12, g.r * 0.82, g.r * 0.2, 0, 0, Math.PI * 2); x.fill(); line(x, N / 140);
+			x.beginPath(); x.moveTo(g.x + g.r * 0.35, top + g.r * 0.1); x.lineTo(g.x + g.r * 0.7, top + g.r * 0.12); x.lineTo(g.x + g.r * 0.62, top + g.r * 1.15); x.lineTo(g.x + g.r * 0.3, top + g.r * 1.1); x.closePath(); x.fill(); line(x, N / 140);
+			x.fillStyle = '#2f9a4f'; [0.35, 0.7].forEach(function (k) { x.fillRect(g.x + g.r * 0.32, top + g.r * (0.1 + k), g.r * 0.36, g.r * 0.12); });
+			return;
+		}
+		var main = st === 'elf' ? '#2a9a46' : '#d1162d', dark = st === 'elf' ? '#1b6b30' : '#8f0d1e';
+		// shoulders and tunic
+		x.beginPath(); x.moveTo(g.x - g.r * 0.45, top - g.r * 0.1);
+		x.quadraticCurveTo(g.x - g.r * 1.9, top + g.r * 0.05, g.x - g.r * 2.15, N + 2); x.lineTo(g.x + g.r * 2.15, N + 2);
+		x.quadraticCurveTo(g.x + g.r * 1.9, top + g.r * 0.05, g.x + g.r * 0.45, top - g.r * 0.1); x.closePath();
+		var bg = x.createLinearGradient(0, top, 0, N); bg.addColorStop(0, main); bg.addColorStop(1, dark); x.fillStyle = bg; x.fill(); line(x, N / 110);
+		if (st === 'elf') {
+			// pointed collar, red and white
+			for (var i = -3; i <= 3; i++) {
+				var cx = g.x + i * g.r * 0.36;
+				x.beginPath(); x.moveTo(cx - g.r * 0.2, top - g.r * 0.05); x.lineTo(cx + g.r * 0.2, top - g.r * 0.05); x.lineTo(cx, top + g.r * (0.55 - Math.abs(i) * 0.05)); x.closePath();
+				x.fillStyle = i % 2 ? '#fff' : '#d4202f'; x.fill(); line(x, N / 160);
+			}
+			// belt
+			x.fillStyle = '#2a1408'; x.fillRect(0, N * 0.93, N, N * 0.07);
+			x.strokeStyle = '#f4c542'; x.lineWidth = N / 70; x.strokeRect(g.x - N * 0.05, N * 0.925, N * 0.1, N * 0.08);
+		} else {
+			// white fur collar and front, black belt with a gold buckle
+			x.fillStyle = '#fff';
+			x.beginPath(); x.ellipse(g.x, top + g.r * 0.2, g.r * 1.0, g.r * 0.22, 0, 0, Math.PI * 2); x.fill(); line(x, N / 160, '#c9ced8');
+			x.fillRect(g.x - g.r * 0.16, top + g.r * 0.38, g.r * 0.32, N);
+			x.fillStyle = '#16141a'; x.fillRect(0, N * 0.93, N, N * 0.07);
+			x.strokeStyle = '#f4c542'; x.lineWidth = N / 70; x.strokeRect(g.x - N * 0.055, N * 0.925, N * 0.11, N * 0.08);
+			x.fillStyle = '#16141a'; [0.84].forEach(function (yy) { x.beginPath(); x.arc(g.x, N * yy, N * 0.014, 0, Math.PI * 2); x.fill(); });
+		}
+	}
+	function hat(x, g, st) {
+		var N = g.N, top = g.y - g.r * 0.82;
+		if (st === 'snowman') { // black top hat with a red band
+			x.fillStyle = '#18161d';
+			x.beginPath(); x.ellipse(g.x, top + g.r * 0.08, g.r * 1.15, g.r * 0.2, -0.08, 0, Math.PI * 2); x.fill(); line(x, N / 160, '#000');
+			x.beginPath(); x.moveTo(g.x - g.r * 0.72, top + g.r * 0.05); x.lineTo(g.x - g.r * 0.62, top - g.r * 1.05); x.lineTo(g.x + g.r * 0.62, top - g.r * 1.12); x.lineTo(g.x + g.r * 0.72, top + g.r * 0.0); x.closePath(); x.fill();
+			x.fillStyle = '#d4202f'; x.beginPath(); x.moveTo(g.x - g.r * 0.71, top - g.r * 0.12); x.lineTo(g.x + g.r * 0.71, top - g.r * 0.17); x.lineTo(g.x + g.r * 0.7, top - g.r * 0.36); x.lineTo(g.x - g.r * 0.69, top - g.r * 0.31); x.closePath(); x.fill();
+			x.fillStyle = '#2f9a4f'; x.beginPath(); x.arc(g.x + g.r * 0.45, top - g.r * 0.26, g.r * 0.12, 0, Math.PI * 2); x.fill();
+			return;
+		}
+		var main = st === 'elf' ? '#2a9a46' : '#d1162d', dark = st === 'elf' ? '#1b6b30' : '#8f0d1e';
+		// the floppy cone, flopping to the right
+		x.beginPath(); x.moveTo(g.x - g.r * 1.02, top + g.r * 0.05);
+		x.quadraticCurveTo(g.x - g.r * 0.6, top - g.r * 1.55, g.x + g.r * 0.55, top - g.r * 1.45);
+		x.quadraticCurveTo(g.x + g.r * 1.35, top - g.r * 1.3, g.x + g.r * 1.6, top - g.r * 0.35);
+		x.quadraticCurveTo(g.x + g.r * 1.1, top - g.r * 0.9, g.x + g.r * 1.02, top + g.r * 0.05); x.closePath();
+		var hg = x.createLinearGradient(g.x - g.r, top - g.r * 1.5, g.x + g.r, top); hg.addColorStop(0, main); hg.addColorStop(1, dark); x.fillStyle = hg; x.fill(); line(x, N / 110);
+		// pompom
+		x.beginPath(); x.arc(g.x + g.r * 1.6, top - g.r * 0.28, g.r * 0.24, 0, Math.PI * 2); x.fillStyle = '#fff'; x.fill(); line(x, N / 160, '#c9ced8');
+		// brim: white fur for the helper, red and white stripes for the elf
+		x.beginPath(); x.moveTo(g.x - g.r * 1.12, top + g.r * 0.22); x.quadraticCurveTo(g.x, top - g.r * 0.2, g.x + g.r * 1.12, top + g.r * 0.22);
+		x.lineTo(g.x + g.r * 1.08, top - g.r * 0.12); x.quadraticCurveTo(g.x, top - g.r * 0.55, g.x - g.r * 1.08, top - g.r * 0.12); x.closePath();
+		if (st === 'elf') {
+			x.save(); x.clip(); for (var i = -6; i < 7; i++) { x.fillStyle = i % 2 ? '#fff' : '#d4202f'; x.beginPath(); x.moveTo(g.x + i * g.r * 0.25, top - g.r); x.lineTo(g.x + (i + 1) * g.r * 0.25, top - g.r); x.lineTo(g.x + (i + 0.4) * g.r * 0.25, top + g.r); x.lineTo(g.x + (i - 0.6) * g.r * 0.25, top + g.r); x.closePath(); x.fill(); } x.restore();
+		} else { x.fillStyle = '#fff'; x.fill(); }
+		x.beginPath(); x.moveTo(g.x - g.r * 1.12, top + g.r * 0.22); x.quadraticCurveTo(g.x, top - g.r * 0.2, g.x + g.r * 1.12, top + g.r * 0.22);
+		x.lineTo(g.x + g.r * 1.08, top - g.r * 0.12); x.quadraticCurveTo(g.x, top - g.r * 0.55, g.x - g.r * 1.08, top - g.r * 0.12); x.closePath(); line(x, N / 140);
 	}
 
 	/* A cartoon from a photo, made on the phone: flat areas of colour (a Kuwahara filter, twice),
-	   fewer and brighter colours, and dark outlines where the picture changes (difference of two blurs). */
+	   fewer, brighter colours, and bold dark outlines where the picture changes (difference of two blurs). */
 	function cartoon(img) {
 		var w = img.width, h = img.height, n = w * h, s = img.data, i, x, y, c;
 		var rgb = new Float32Array(n * 3);
@@ -401,14 +720,18 @@
 			for (y = 0; y < h; y++) { for (x = 0; x < w; x++) { var u = 0; for (j = -r; j <= r; j++) { u += k[j + r] * t[Math.min(h - 1, Math.max(0, y + j)) * w + x]; } o[y * w + x] = u; } }
 			return o;
 		};
-		var flat = kuwahara(kuwahara(rgb, 4), 4);
-		var g0 = gray(rgb), b1 = blur(g0, 1.4), b2 = blur(g0, 2.24);
-		var out = new ImageData(w, h), o = out.data, step = 255 / 7;
+		var sc = w / 256;                                     // the same look at any size
+		var flat = kuwahara(kuwahara(rgb, Math.round(4 * sc)), Math.round(3 * sc));
+		var g0 = gray(rgb), b1 = blur(g0, 1.1 * sc), b2 = blur(g0, 2 * sc);
+		var e = new Uint8Array(n), out = new ImageData(w, h), o = out.data, step = 255 / 7;
+		for (i = 0; i < n; i++) { e[i] = b1[i] - b2[i] < -6 ? 1 : 0; }
+		for (y = 1; y < h - 1; y++) { for (x = 1; x < w - 1; x++) { i = y * w + x; if (e[i] && e[i - 1] + e[i + 1] + e[i - w] + e[i + w] + e[i - w - 1] + e[i - w + 1] + e[i + w - 1] + e[i + w + 1] < 2) { e[i] = 0; } } } // no specks
 		for (i = 0; i < n; i++) {
-			var edge = b1[i] - b2[i] < -6;
+			x = i % w; y = (i - x) / w;
+			var edge = e[i] || (x > 0 && e[i - 1]) || (y > 0 && e[i - w]);   // a little thicker
 			var r0 = flat[i * 3], g1 = flat[i * 3 + 1], bl = flat[i * 3 + 2], m = (r0 + g1 + bl) / 3;
-			var col = [m + (r0 - m) * 1.3, m + (g1 - m) * 1.3, m + (bl - m) * 1.3];
-			for (c = 0; c < 3; c++) { o[i * 4 + c] = edge ? [25, 20, 30][c] : Math.max(0, Math.min(255, Math.round(col[c] / step) * step)); }
+			var col = [m + (r0 - m) * 1.35 + 12, m + (g1 - m) * 1.35 + 12, m + (bl - m) * 1.35 + 12];
+			for (c = 0; c < 3; c++) { o[i * 4 + c] = edge ? [30, 18, 28][c] : Math.max(0, Math.min(255, Math.round(col[c] / step) * step)); }
 			o[i * 4 + 3] = 255;
 		}
 		return out;

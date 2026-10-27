@@ -4,7 +4,7 @@ Theme URI: https://alateka.com/
 Author: Alateka Corporation
 Author URI: https://alateka.com/
 Description: The festive Christmas look for the Marquee light show plugin: garlands, bows, a night-sky scene and glowing show cards for your status, Now Playing, weather, Kids’ Corner and more. Needs the free Marquee plugin (it holds all the show features and settings).
-Version: 2.14.5
+Version: 2.15.0
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -369,10 +369,7 @@ body.rr-scene .rr-scroll::-webkit-scrollbar-thumb { background: rgba(247, 201, 9
 /* ---------- Before you visit ---------- */
 .rr-visit { margin-top: 40px; }
 .rr-ribbon { display: flex; align-items: center; justify-content: center; gap: 0; margin: 0 0 22px; text-align: center; }
-.rr-ribbon::before, .rr-ribbon::after {
-	content: ""; flex: 1; height: 26px; max-width: 520px;
-	background: url(assets/img/garland-v137.webp) center / auto 40px repeat-x;
-}
+.rr-ribbon::before, .rr-ribbon::after { content: none; } /* no garland beside section titles: it looked odd scrolling over the page picture */
 .rr-ribbon span {
 	position: relative; padding: 8px 40px; font-size: clamp(22px, 2.4vw, 30px); color: var(--gold);
 	background: linear-gradient(180deg, #8a1219, #4d070c); border: 2px solid var(--gold-line); border-radius: 8px;
@@ -1452,6 +1449,31 @@ img.emoji, img.wp-smiley { display: inline !important; width: 1em !important; he
 .rr-names__pic-kind { display: flex; gap: 18px; margin: 10px 0 0; font-weight: 700; }
 .rr-names__pic-ok { display: flex; gap: 10px; align-items: flex-start; margin: 12px 0 4px; padding: 10px 12px; border-radius: 10px; background: rgba(255, 212, 92, .12); font-weight: 700; line-height: 1.35; }
 .rr-names__pic-ok input { width: 22px; height: 22px; flex: none; margin-top: 1px; }
+.rr-names__pic-btns { flex-direction: row; flex-wrap: wrap; }
+.rr-names__pic-file:focus-visible + .rr-names__pic-btns .rr-btn--gold { outline: 3px solid #fff; outline-offset: 2px; }
+.rr-pic { display: grid; gap: 14px; margin-top: 12px; }
+.rr-pic[hidden] { display: none; }
+.rr-pic__frame { display: grid; gap: 8px; justify-items: center; }
+.rr-pic__help { margin: 0; font-weight: 700; text-align: center; }
+.rr-pic__stage { width: min(100%, 300px); aspect-ratio: 1; border-radius: 14px; border: 2px solid #ffd45c; background: #000; touch-action: none; cursor: grab; box-shadow: 0 6px 16px rgba(0, 0, 0, .5); }
+.rr-pic__stage:active { cursor: grabbing; }
+.rr-pic__zoom { display: flex; align-items: center; gap: 10px; width: min(100%, 300px); font-weight: 700; }
+.rr-pic__zoom input { flex: 1; accent-color: #ffd45c; }
+.rr-pic__styles { display: grid; grid-template-columns: repeat(auto-fit, minmax(118px, 1fr)); gap: 8px; }
+.rr-pic__style { position: relative; cursor: pointer; }
+.rr-pic__style input { position: absolute; opacity: 0; pointer-events: none; }
+.rr-pic__style span { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 10px 6px; border-radius: 12px; border: 2px solid rgba(255, 255, 255, .25); background: rgba(0, 0, 0, .3); font-weight: 800; font-size: 14px; line-height: 1.2; text-align: center; }
+.rr-pic__style i { font-style: normal; font-size: 26px; line-height: 1.1; }
+.rr-pic__style input:checked + span { border-color: #ffd45c; background: rgba(255, 212, 92, .2); box-shadow: 0 0 12px rgba(255, 212, 92, .45); }
+.rr-pic__style input:focus-visible + span { outline: 3px solid #fff; outline-offset: 2px; }
+.rr-pic__result { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; align-items: flex-start; }
+.rr-pic__result figure { position: relative; margin: 0; display: grid; gap: 6px; justify-items: center; font-weight: 700; font-size: 13px; }
+.rr-pic__out canvas { width: 160px; height: 160px; border-radius: 12px; border: 2px solid #ffd45c; box-shadow: 0 4px 12px rgba(0, 0, 0, .5); background: #000; }
+.rr-pic__out.is-busy canvas { opacity: .45; }
+.rr-pic__wait { position: absolute; top: 62px; left: 0; right: 0; text-align: center; font-weight: 800; text-shadow: 0 1px 3px #000; }
+.rr-pic__wait[hidden] { display: none; }
+.rr-pic__screen[hidden] { display: none; }
+.rr-pic__screen canvas { width: auto; height: 160px; max-width: 260px; image-rendering: pixelated; border: 6px solid #222; border-radius: 6px; background: #000; box-shadow: 0 4px 12px rgba(0, 0, 0, .5); }
 .rr-names__pic-ok[hidden], .rr-names__pic-kind[hidden] { display: none; }
 
 /* ---------- Light Lab v3 ---------- */

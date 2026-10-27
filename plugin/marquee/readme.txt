@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.12.9
+Stable tag: 0.13.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,13 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.13.0 =
+* New kids' picture maker, all on the kid's phone: move and zoom so the face fills the circle, the background is cut away, and they pick Cartoon Me, Make Me an Elf, Snowman or Santa's Helper. They see how it will look on your screen before sending.
+* Marquee Festive 2.15.0: the Look choices in Customize are picture cards.
+* Setup home has a new "Your website's look and words" group that opens Customize right at the look, banner messages, tips and more.
+* Marquee Festive: no more garland strands beside the section titles.
+* New switches in Show Control and the Show Manager: Kids' pictures, the "Show on" banner, Make a Light Show, Coloring pages, Games and Guestbook.
 
 = 0.12.9 =
 * Coloring pages: the print page now has a “Back to Coloring Pages” button, opens in the same tab, and waits for the Print button instead of opening the print window right away. Its words follow the visitor's language.
