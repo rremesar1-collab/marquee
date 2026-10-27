@@ -199,6 +199,11 @@ function marquee_save( $in ) {
 	}
 	$new = apply_filters( 'marquee_settings_saved', $new, $in );
 	update_option( 'marquee', $new, false );
+	// Turning the language button on or off changes every page: clear the page cache so cached
+	// pages don't keep showing (or keep missing) the button.
+	if ( $new['langs'] !== $cur['langs'] && function_exists( 'ridgeroad_purge_page_cache' ) ) {
+		ridgeroad_purge_page_cache();
+	}
 	if ( $new['show_name'] && $new['show_name'] !== get_bloginfo( 'name' ) ) {
 		update_option( 'blogname', $new['show_name'] );
 	}
