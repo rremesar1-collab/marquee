@@ -171,10 +171,6 @@ body.rr-look--northpole .rr-donate__art { background-image: url(northpole/donati
 .rr-looks .rr-grid--support { grid-template-columns: 1.35fr 1fr; }
 .rr-looks .rr-h__heart { display: none; }
 
-/* ---------- Kids' Corner: name form on the picture ---------- */
-.rr-looks .rr-kc__act#names { border-radius: 20px; padding: 20px; background: center / cover no-repeat; }
-.rr-look--village .rr-kc__act#names { background-image: linear-gradient(rgba(5, 12, 36, .35), rgba(5, 12, 36, .35)), url(village/names-background.webp); }
-.rr-look--northpole .rr-kc__act#names { background-image: linear-gradient(rgba(5, 12, 36, .3), rgba(5, 12, 36, .3)), url(northpole/names-background.webp); }
 
 .rr-looks .rr-gb-intro { display: table; margin-left: auto; margin-right: auto; max-width: 900px; padding: 10px 26px 12px; border-radius: 14px; background: rgba(5, 10, 30, .72); box-shadow: 0 6px 18px rgba(0, 0, 0, .35); }
 .rr-looks .rr-gb-intro p { text-shadow: 0 1px 2px rgba(0, 0, 0, .8); }
@@ -200,7 +196,6 @@ body.rr-look--northpole .rr-donate__art { background-image: url(northpole/donati
 	body.rr-looks .rr-donate__art { min-height: 0; aspect-ratio: 16 / 7; -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent); mask-image: linear-gradient(180deg, #000 70%, transparent); }
 	.rr-looks .rr-donate__copy { padding: 4px 18px 6px; }
 	.rr-looks .rr-donate .rr-qr { grid-column: 1; justify-self: center; margin-bottom: 22px; }
-	.rr-looks .rr-kc__act#names { padding: 12px; }
 }
 @media (max-width: 480px) {
 	.rr-looks .rr-menu { border-radius: 18px; }
