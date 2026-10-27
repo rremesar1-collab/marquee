@@ -17,7 +17,7 @@ Your website never connects into your house. Remote Falcon is reached from the s
 - Sequence videos (upload an MP4 or paste a YouTube link) and a YouTube live cam
 - Add it to the home screen like an app and get a buzz when the lights come on
 - Guestbook, donation link with QR code, Before You Visit tips and social links
-- In English, Spanish or French, with an optional language button so each visitor picks their own (great for bilingual areas)
+- In English, Spanish or French, with an optional language button so each visitor picks their own (great for bilingual areas), and a box for each language under your own texts (banner messages, tips, titles) so those switch too
 
 **Kids' Corner**
 - **Your Name in Lights:** kids send a first name and it goes up on your matrix, projector or TV between songs, never during one. Or on a spare screen during songs.

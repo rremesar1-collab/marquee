@@ -268,6 +268,9 @@ msgstr "Donaciones y redes sociales"
 msgid "Guestbook"
 msgstr "Libro de visitas"
 
+msgid "For visitors who pick %s. Leave it empty to use the box above."
+msgstr "Para quienes elijan %s. Déjala vacía para usar la casilla de arriba."
+
 msgid "Line under the logo"
 msgstr "Línea debajo del logo"
 

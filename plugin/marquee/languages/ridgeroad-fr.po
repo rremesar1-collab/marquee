@@ -270,6 +270,11 @@ msgstr "Dons et réseaux sociaux"
 msgid "Guestbook"
 msgstr "Livre d’or"
 
+msgid "For visitors who pick %s. Leave it empty to use the box above."
+msgstr ""
+"Pour les visiteurs qui choisissent %s. Laissez-la vide pour utiliser la case"
+" du dessus."
+
 msgid "Line under the logo"
 msgstr "Ligne sous le logo"
 

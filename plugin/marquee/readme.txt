@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.11.3
+Stable tag: 0.12.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,9 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.12.0 =
+* Your own words in every language: with the language button on, Customize has an extra box under each of your texts (banner messages, Before You Visit tips, titles, button words) for each other language. Visitors who pick that language see those words; leave a box empty to use your main wording.
 
 = 0.11.3 =
 * Marquee Festive: on phones, Christmas Village and Santa's North Pole no longer show a second copy of the picture behind the page while scrolling (seen on iPhones).

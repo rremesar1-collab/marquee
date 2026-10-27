@@ -210,6 +210,15 @@ function ridgeroad_count_target() {
 }
 
 function ridgeroad_mod( $key ) {
+	// The visitor picked another language with the language button, and the show typed this
+	// text for that language too (its own box in Customize): use that.
+	$lang = ridgeroad_lang_now();
+	if ( $lang ) {
+		$alt = get_theme_mod( $key . '__' . $lang, '' );
+		if ( is_string( $alt ) && '' !== trim( $alt ) ) {
+			return $alt;
+		}
+	}
 	$d = ridgeroad_defaults();
 	$v = get_theme_mod( $key, null );
 	if ( null === $v ) {
@@ -224,6 +233,29 @@ function ridgeroad_mod( $key ) {
 		}
 	}
 	return $v;
+}
+
+/** The languages a show can type its own words in besides its Site Language ([] = language button off). */
+function ridgeroad_lang_extra() {
+	if ( ! function_exists( 'marquee_langs_on' ) || ! function_exists( 'marquee_lang_site' ) ) {
+		return array();
+	}
+	return array_values( array_diff( marquee_langs_on(), array( marquee_lang_site() ) ) );
+}
+
+/** The language a visitor picked, when it isn't the Site Language ('' otherwise, and always in WP Admin). */
+function ridgeroad_lang_now() {
+	if ( ! function_exists( 'marquee_lang_pick' ) ) {
+		return '';
+	}
+	$p = marquee_lang_pick();
+	return ( $p && in_array( $p, ridgeroad_lang_extra(), true ) ) ? $p : '';
+}
+
+/** Texts that are the same in every language (numbers, links, names), so they get no language boxes. */
+function ridgeroad_lang_same( $key ) {
+	return in_array( $key, array( 'radio', 'city', 'zip', 'radar_station', 'live_url', 'address', 'names_color', 'names_block', 'gb_site_key', 'social_hashtag', 'songs_manual', 'rf_viewer_url' ), true )
+		|| preg_match( '/^stat\d_num$/', $key );
 }
 
 /** The standard texts in English (as written in the code), to recognise ones saved unchanged. */
@@ -327,6 +359,24 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp ) {
 			'section' => $section,
 			'type'    => $type,
 		), $extra ) );
+		// The language button is on: a box for each other language, right under this one.
+		if ( ( 'text' === $type || 'textarea' === $type ) && ! ridgeroad_lang_same( $key ) ) {
+			$all = function_exists( 'marquee_langs_all' ) ? marquee_langs_all() : array();
+			foreach ( ridgeroad_lang_extra() as $code ) {
+				$wp->add_setting( $key . '__' . $code, array(
+					'default'           => '',
+					'sanitize_callback' => 'textarea' === $type ? 'sanitize_textarea_field' : 'sanitize_text_field',
+					'transport'         => 'refresh',
+				) );
+				$wp->add_control( $key . '__' . $code, array(
+					'label'       => $label . ' · ' . $all[ $code ][0],
+					/* translators: %s: a language, like Français */
+					'description' => sprintf( __( 'For visitors who pick %s. Leave it empty to use the box above.', 'ridgeroad' ), $all[ $code ][0] ),
+					'section'     => $section,
+					'type'        => $type,
+				) );
+			}
+		}
 	};
 
 	$image = function ( $key, $section, $label, $desc = '' ) use ( $wp ) {

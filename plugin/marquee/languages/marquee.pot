@@ -806,28 +806,30 @@ msgstr ""
 msgid "Show owner"
 msgstr ""
 
-#: plugin/marquee/inc/langs.php:169
+#: plugin/marquee/inc/langs.php:177
 msgid "Languages"
 msgstr ""
 
-#: plugin/marquee/inc/langs.php:171
+#: plugin/marquee/inc/langs.php:179
 msgid ""
 "Your website starts in the language picked in Settings → General → Site "
 "Language. Tick two or more to show a small language button on your website, "
 "so visitors can switch. Their pick is remembered on their phone."
 msgstr ""
 
-#: plugin/marquee/inc/langs.php:174
+#: plugin/marquee/inc/langs.php:182
 msgid "your Site Language"
 msgstr ""
 
-#: plugin/marquee/inc/langs.php:177
+#: plugin/marquee/inc/langs.php:185
 msgid ""
 "Words you typed yourself (your banner messages, tips and button words in "
-"Customize) stay the way you wrote them."
+"Customize) show the way you wrote them. With two or more languages ticked, "
+"Customize has an extra box under each of them for every other language: fill"
+" it in and visitors who pick that language see those words instead."
 msgstr ""
 
-#: plugin/marquee/inc/langs.php:178
+#: plugin/marquee/inc/langs.php:186
 msgid ""
 "Using a page cache plugin (WP Rocket, LiteSpeed Cache, W3 Total Cache…)? Add"
 " the cookie mq_lang to its list of cookies that skip the cache, so each "

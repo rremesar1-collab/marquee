@@ -182,7 +182,7 @@ function marquee_langs_box( $s ) {
 				<label><input type="checkbox" name="langs[]" value="<?php echo esc_attr( $code ); ?>" <?php checked( in_array( $code, $on, true ) || ( $code === $site && count( $on ) > 1 ) ); ?>> <?php echo esc_html( $l[0] ); ?><?php echo $code === $site ? ' <small>(' . esc_html__( 'your Site Language', 'marquee' ) . ')</small>' : ''; ?></label>
 			<?php endforeach; ?>
 		</div>
-		<p class="mq__fine"><?php esc_html_e( 'Words you typed yourself (your banner messages, tips and button words in Customize) stay the way you wrote them.', 'marquee' ); ?></p>
+		<p class="mq__fine"><?php esc_html_e( 'Words you typed yourself (your banner messages, tips and button words in Customize) show the way you wrote them. With two or more languages ticked, Customize has an extra box under each of them for every other language: fill it in and visitors who pick that language see those words instead.', 'marquee' ); ?></p>
 		<p class="mq__fine"><?php esc_html_e( 'Using a page cache plugin (WP Rocket, LiteSpeed Cache, W3 Total Cache…)? Add the cookie mq_lang to its list of cookies that skip the cache, so each visitor gets their own language.', 'marquee' ); ?></p>
 	</div>
 	<?php

@@ -5,1056 +5,1061 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "X-Domain: ridgeroad\n"
 
-#: plugin/marquee/core/customizer.php:17 theme/ridgeroad/inc/customizer.php:17
+#: plugin/marquee/core/customizer.php:20 theme/ridgeroad/inc/customizer.php:20
 msgid "A Little Christmas Magic"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:18 theme/ridgeroad/inc/customizer.php:18
+#: plugin/marquee/core/customizer.php:21 theme/ridgeroad/inc/customizer.php:21
 msgid ""
 "Thousands of lights dancing to holiday music. Tune your car radio, sit back,"
 " and enjoy the show!"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:27 theme/ridgeroad/inc/customizer.php:27
+#: plugin/marquee/core/customizer.php:30 theme/ridgeroad/inc/customizer.php:30
 msgid "Sun – Thu"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:29 theme/ridgeroad/inc/customizer.php:29
+#: plugin/marquee/core/customizer.php:32 theme/ridgeroad/inc/customizer.php:32
 msgid "Fri – Sat"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:35 theme/ridgeroad/inc/customizer.php:35
+#: plugin/marquee/core/customizer.php:38 theme/ridgeroad/inc/customizer.php:38
 msgid "Show Planned as Scheduled"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:36 theme/ridgeroad/inc/customizer.php:36
+#: plugin/marquee/core/customizer.php:39 theme/ridgeroad/inc/customizer.php:39
 msgid ""
 "No weather cancellation announced. Please check back before traveling during"
 " severe weather."
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:37 theme/ridgeroad/inc/customizer.php:37
+#: plugin/marquee/core/customizer.php:40 theme/ridgeroad/inc/customizer.php:40
 msgid "Tonight’s Show Is Canceled"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:38 theme/ridgeroad/inc/customizer.php:38
+#: plugin/marquee/core/customizer.php:41 theme/ridgeroad/inc/customizer.php:41
 msgid ""
 "Due to weather, the light show will not run tonight. Thank you for "
 "understanding — please check back tomorrow!"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:39 theme/ridgeroad/inc/customizer.php:39
+#: plugin/marquee/core/customizer.php:42 theme/ridgeroad/inc/customizer.php:42
 msgid "See You This Christmas Season"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:40 theme/ridgeroad/inc/customizer.php:40
+#: plugin/marquee/core/customizer.php:43 theme/ridgeroad/inc/customizer.php:43
 msgid "The show is resting for now. Check back for opening night!"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:49 theme/ridgeroad/inc/customizer.php:49
+#: plugin/marquee/core/customizer.php:52 theme/ridgeroad/inc/customizer.php:52
 msgid "Tonight’s Playlist"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:51 theme/ridgeroad/inc/customizer.php:51
+#: plugin/marquee/core/customizer.php:54 theme/ridgeroad/inc/customizer.php:54
 msgid "Please park on the shoulder and keep the road clear."
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:55 theme/ridgeroad/inc/customizer.php:55
+#: plugin/marquee/core/customizer.php:58 theme/ridgeroad/inc/customizer.php:58
 msgid "Behind the Lights"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:56 theme/ridgeroad/inc/customizer.php:56
+#: plugin/marquee/core/customizer.php:59 theme/ridgeroad/inc/customizer.php:59
 msgid "Every song is programmed by hand, one light at a time."
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:57 theme/ridgeroad/inc/customizer.php:57
+#: plugin/marquee/core/customizer.php:60 theme/ridgeroad/inc/customizer.php:60
 msgid "LED Pixels"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:58 theme/ridgeroad/inc/customizer.php:58
+#: plugin/marquee/core/customizer.php:61 theme/ridgeroad/inc/customizer.php:61
 msgid "Light-Up Props"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:59 theme/ridgeroad/inc/customizer.php:59
+#: plugin/marquee/core/customizer.php:62 theme/ridgeroad/inc/customizer.php:62
 msgid "Songs in the Show"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:60 theme/ridgeroad/inc/customizer.php:60
+#: plugin/marquee/core/customizer.php:63 theme/ridgeroad/inc/customizer.php:63
 msgid "Light Channels"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:61 theme/ridgeroad/inc/customizer.php:61
+#: plugin/marquee/core/customizer.php:64 theme/ridgeroad/inc/customizer.php:64
 msgid "Video Panels"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:62 theme/ridgeroad/inc/customizer.php:62
+#: plugin/marquee/core/customizer.php:65 theme/ridgeroad/inc/customizer.php:65
 msgid "FM — Tune In!"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:68
-#: plugin/marquee/core/customizer.php:255 plugin/marquee/core/control.php:174
+#: plugin/marquee/core/customizer.php:71
+#: plugin/marquee/core/customizer.php:324 plugin/marquee/core/control.php:174
 msgid "Kids’ Corner"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:71 theme/ridgeroad/inc/customizer.php:71
+#: plugin/marquee/core/customizer.php:74 theme/ridgeroad/inc/customizer.php:74
 msgid "This Year’s Show Videos"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:72 theme/ridgeroad/inc/customizer.php:72
+#: plugin/marquee/core/customizer.php:75 theme/ridgeroad/inc/customizer.php:75
 msgid "Watch every song from this year’s show, then come see it in person!"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:75 theme/ridgeroad/inc/customizer.php:75
+#: plugin/marquee/core/customizer.php:78 theme/ridgeroad/inc/customizer.php:78
 msgid "Vote for Your Favorite Song"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:76 theme/ridgeroad/inc/customizer.php:76
+#: plugin/marquee/core/customizer.php:79 theme/ridgeroad/inc/customizer.php:79
 msgid ""
 "Tap the heart on your favorite song in this year’s show. You can change your"
 " vote anytime!"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:80 theme/ridgeroad/inc/customizer.php:80
+#: plugin/marquee/core/customizer.php:83 theme/ridgeroad/inc/customizer.php:83
 msgid "We’ll play it to open the show tonight!"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:91 theme/ridgeroad/inc/customizer.php:91
+#: plugin/marquee/core/customizer.php:94 theme/ridgeroad/inc/customizer.php:94
 msgid "$25 gift card"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:92 theme/ridgeroad/inc/customizer.php:92
+#: plugin/marquee/core/customizer.php:95 theme/ridgeroad/inc/customizer.php:95
 msgid "Holiday treat bag"
-msgstr ""
-
-#: plugin/marquee/core/customizer.php:102
-#: theme/ridgeroad/inc/customizer.php:102
-msgid "Watch the Show Live"
-msgstr ""
-
-#: plugin/marquee/core/customizer.php:103
-#: theme/ridgeroad/inc/customizer.php:103
-msgid ""
-"Can’t make it out tonight? Watch the lights from home — turn up the volume!"
 msgstr ""
 
 #: plugin/marquee/core/customizer.php:105
 #: theme/ridgeroad/inc/customizer.php:105
-msgid "Before You Visit"
+msgid "Watch the Show Live"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:107
-#: theme/ridgeroad/inc/customizer.php:107
-msgid "Park Safely"
+#: plugin/marquee/core/customizer.php:106
+#: theme/ridgeroad/inc/customizer.php:106
+msgid ""
+"Can’t make it out tonight? Watch the lights from home — turn up the volume!"
 msgstr ""
 
 #: plugin/marquee/core/customizer.php:108
 #: theme/ridgeroad/inc/customizer.php:108
-msgid "Use a legal parking spot and keep the road open for passing traffic."
+msgid "Before You Visit"
 msgstr ""
 
 #: plugin/marquee/core/customizer.php:110
 #: theme/ridgeroad/inc/customizer.php:110
-msgid "Headlights Off"
+msgid "Park Safely"
 msgstr ""
 
 #: plugin/marquee/core/customizer.php:111
 #: theme/ridgeroad/inc/customizer.php:111
+msgid "Use a legal parking spot and keep the road open for passing traffic."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:113
+#: theme/ridgeroad/inc/customizer.php:113
+msgid "Headlights Off"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:114
+#: theme/ridgeroad/inc/customizer.php:114
 msgid ""
 "Once parked, turn off your headlights and leave parking or running lights "
 "on."
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:113
-#: theme/ridgeroad/inc/customizer.php:113
-msgid "Respect Our Neighbors"
-msgstr ""
-
-#: plugin/marquee/core/customizer.php:114
-#: theme/ridgeroad/inc/customizer.php:114
-msgid "Please don’t block driveways or entrances. Keep noise considerate."
-msgstr ""
-
 #: plugin/marquee/core/customizer.php:116
 #: theme/ridgeroad/inc/customizer.php:116
-msgid "Enjoy the Memories"
+msgid "Respect Our Neighbors"
 msgstr ""
 
 #: plugin/marquee/core/customizer.php:117
 #: theme/ridgeroad/inc/customizer.php:117
-msgid ""
-"Photos and videos are welcome. Stay in a safe spot while watching the show."
+msgid "Please don’t block driveways or entrances. Keep noise considerate."
 msgstr ""
 
 #: plugin/marquee/core/customizer.php:119
 #: theme/ridgeroad/inc/customizer.php:119
-msgid "Keep the Magic Glowing"
+msgid "Enjoy the Memories"
 msgstr ""
 
 #: plugin/marquee/core/customizer.php:120
 #: theme/ridgeroad/inc/customizer.php:120
 msgid ""
-"Donations help maintain our synchronized Christmas display and add new "
-"surprises. They’re never required to enjoy the show."
+"Photos and videos are welcome. Stay in a safe spot while watching the show."
 msgstr ""
 
 #: plugin/marquee/core/customizer.php:122
 #: theme/ridgeroad/inc/customizer.php:122
-msgid "Support via Cash App"
+msgid "Keep the Magic Glowing"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:123
+#: theme/ridgeroad/inc/customizer.php:123
+msgid ""
+"Donations help maintain our synchronized Christmas display and add new "
+"surprises. They’re never required to enjoy the show."
 msgstr ""
 
 #: plugin/marquee/core/customizer.php:125
 #: theme/ridgeroad/inc/customizer.php:125
+msgid "Support via Cash App"
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:128
+#: theme/ridgeroad/inc/customizer.php:128
 msgid "Stay Connected"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:126
-#: theme/ridgeroad/inc/customizer.php:126
+#: plugin/marquee/core/customizer.php:129
+#: theme/ridgeroad/inc/customizer.php:129
 msgid "Follow us for weather updates, new songs, and show announcements."
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:142
-#: theme/ridgeroad/inc/customizer.php:142
+#: plugin/marquee/core/customizer.php:145
+#: theme/ridgeroad/inc/customizer.php:145
 msgid "A message from your family to ours"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:143
-#: theme/ridgeroad/inc/customizer.php:143
+#: plugin/marquee/core/customizer.php:146
+#: theme/ridgeroad/inc/customizer.php:146
 msgid "Leave a Little Christmas Cheer"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:144
-#: theme/ridgeroad/inc/customizer.php:144
+#: plugin/marquee/core/customizer.php:147
+#: theme/ridgeroad/inc/customizer.php:147
 msgid ""
 "Enjoyed the lights? We’d love to hear from you! Sign our guestbook and share"
 " a holiday message with our family."
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:154
-#: theme/ridgeroad/inc/customizer.php:154
+#: plugin/marquee/core/customizer.php:157
+#: theme/ridgeroad/inc/customizer.php:157
 msgid "Christmas %s"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:160
-#: theme/ridgeroad/inc/customizer.php:160
+#: plugin/marquee/core/customizer.php:163
+#: theme/ridgeroad/inc/customizer.php:163
 msgid "Donate"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:161
-#: theme/ridgeroad/inc/customizer.php:161
+#: plugin/marquee/core/customizer.php:164
+#: theme/ridgeroad/inc/customizer.php:164
 msgid ""
 "Donations help keep the lights on and add new surprises each year. They’re "
 "never required to enjoy the show."
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:197
-#: plugin/marquee/core/customizer.php:334
-#: theme/ridgeroad/inc/customizer.php:197
+#: plugin/marquee/core/customizer.php:202
+#: plugin/marquee/core/customizer.php:421
+#: theme/ridgeroad/inc/customizer.php:202
 msgid "Christmas"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:197 plugin/marquee/core/i18n.php:33
-#: theme/ridgeroad/inc/customizer.php:197
+#: plugin/marquee/core/customizer.php:202 plugin/marquee/core/i18n.php:33
+#: theme/ridgeroad/inc/customizer.php:202
 msgid "%d days until Christmas"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:197 plugin/marquee/core/i18n.php:34
-#: theme/ridgeroad/inc/customizer.php:197
+#: plugin/marquee/core/customizer.php:202 plugin/marquee/core/i18n.php:34
+#: theme/ridgeroad/inc/customizer.php:202
 msgid "Christmas Eve is here!"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:197 plugin/marquee/core/i18n.php:35
+#: plugin/marquee/core/customizer.php:202 plugin/marquee/core/i18n.php:35
 #: theme/ridgeroad/looks/looks.php:133
 msgid "Merry Christmas!"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:200
-#: plugin/marquee/core/customizer.php:334
-#: theme/ridgeroad/inc/customizer.php:200
+#: plugin/marquee/core/customizer.php:205
+#: plugin/marquee/core/customizer.php:421
+#: theme/ridgeroad/inc/customizer.php:205
 msgid "Halloween"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:200
-#: theme/ridgeroad/inc/customizer.php:200
+#: plugin/marquee/core/customizer.php:205
+#: theme/ridgeroad/inc/customizer.php:205
 msgid "%d days until Halloween"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:200
-#: theme/ridgeroad/inc/customizer.php:200
+#: plugin/marquee/core/customizer.php:205
+#: theme/ridgeroad/inc/customizer.php:205
 msgid "Halloween is tomorrow!"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:200
-#: theme/ridgeroad/inc/customizer.php:200
+#: plugin/marquee/core/customizer.php:205
+#: theme/ridgeroad/inc/customizer.php:205
 msgid "Happy Halloween!"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:204
-#: theme/ridgeroad/inc/customizer.php:204
+#: plugin/marquee/core/customizer.php:209
+#: theme/ridgeroad/inc/customizer.php:209
 msgid "%%d days until %s"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:204
-#: theme/ridgeroad/inc/customizer.php:204
+#: plugin/marquee/core/customizer.php:209
+#: theme/ridgeroad/inc/customizer.php:209
 msgid "%s is tomorrow!"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:204
-#: theme/ridgeroad/inc/customizer.php:204
+#: plugin/marquee/core/customizer.php:209
+#: theme/ridgeroad/inc/customizer.php:209
 msgid "It’s %s!"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:243
-#: theme/ridgeroad/inc/customizer.php:243
+#: plugin/marquee/core/customizer.php:312
+#: theme/ridgeroad/inc/customizer.php:312
 msgid "Show Website"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:248
-#: theme/ridgeroad/inc/customizer.php:248
+#: plugin/marquee/core/customizer.php:317
+#: theme/ridgeroad/inc/customizer.php:317
 msgid "Header & Intro"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:249
-#: theme/ridgeroad/inc/customizer.php:249
+#: plugin/marquee/core/customizer.php:318
+#: theme/ridgeroad/inc/customizer.php:318
 msgid "Show Hours & Status"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:250 plugin/marquee/core/control.php:157
-#: theme/ridgeroad/inc/customizer.php:250
+#: plugin/marquee/core/customizer.php:319 plugin/marquee/core/control.php:157
+#: theme/ridgeroad/inc/customizer.php:319
 msgid "Weather"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:251
-#: theme/ridgeroad/inc/customizer.php:251
+#: plugin/marquee/core/customizer.php:320
+#: theme/ridgeroad/inc/customizer.php:320
 msgid "Live Camera (YouTube)"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:252
-#: theme/ridgeroad/inc/customizer.php:252
+#: plugin/marquee/core/customizer.php:321
+#: theme/ridgeroad/inc/customizer.php:321
 msgid "Visitor Tips"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:253
-#: theme/ridgeroad/inc/customizer.php:253
+#: plugin/marquee/core/customizer.php:322
+#: theme/ridgeroad/inc/customizer.php:322
 msgid "Songs Page: Show Videos"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:254
-#: theme/ridgeroad/inc/customizer.php:254
+#: plugin/marquee/core/customizer.php:323
+#: theme/ridgeroad/inc/customizer.php:323
 msgid "Songs Page: Favorite Song Voting"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:256
-#: theme/ridgeroad/inc/customizer.php:256
+#: plugin/marquee/core/customizer.php:325
+#: theme/ridgeroad/inc/customizer.php:325
 msgid "Behind the Lights (Stats)"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:257
-#: theme/ridgeroad/inc/customizer.php:257
+#: plugin/marquee/core/customizer.php:326
+#: theme/ridgeroad/inc/customizer.php:326
 msgid "Donations & Social"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:258
-#: theme/ridgeroad/inc/customizer.php:258
+#: plugin/marquee/core/customizer.php:327
+#: theme/ridgeroad/inc/customizer.php:327
 msgid "Guestbook"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:305
-#: theme/ridgeroad/inc/customizer.php:305
+#: plugin/marquee/core/customizer.php:374
+#: theme/ridgeroad/inc/customizer.php:374
+msgid "For visitors who pick %s. Leave it empty to use the box above."
+msgstr ""
+
+#: plugin/marquee/core/customizer.php:392
+#: theme/ridgeroad/inc/customizer.php:392
 msgid "Line under the logo"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:306
-#: theme/ridgeroad/inc/customizer.php:306
+#: plugin/marquee/core/customizer.php:393
+#: theme/ridgeroad/inc/customizer.php:393
 msgid "Script tagline"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:307
-#: theme/ridgeroad/inc/customizer.php:307
+#: plugin/marquee/core/customizer.php:394
+#: theme/ridgeroad/inc/customizer.php:394
 msgid "Intro sentence"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:308 plugin/marquee/core/control.php:194
+#: plugin/marquee/core/customizer.php:395 plugin/marquee/core/control.php:194
 #: plugin/marquee/core/control.php:195
 msgid "Falling snow"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:308 plugin/marquee/core/i18n.php:177
+#: plugin/marquee/core/customizer.php:395 plugin/marquee/core/i18n.php:177
 #: plugin/marquee/core/control.php:195
 msgid "Off"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:308
-#: theme/ridgeroad/inc/customizer.php:308
+#: plugin/marquee/core/customizer.php:395
+#: theme/ridgeroad/inc/customizer.php:395
 msgid "Light flurries"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:308
-#: theme/ridgeroad/inc/customizer.php:308
+#: plugin/marquee/core/customizer.php:395
+#: theme/ridgeroad/inc/customizer.php:395
 msgid "Gentle snowfall"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:308
-#: theme/ridgeroad/inc/customizer.php:308
+#: plugin/marquee/core/customizer.php:395
+#: theme/ridgeroad/inc/customizer.php:395
 msgid "Snowstorm"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:309 plugin/marquee/core/control.php:196
+#: plugin/marquee/core/customizer.php:396 plugin/marquee/core/control.php:196
 #: plugin/marquee/core/control.php:197
 msgid "Snowflake size"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:309 plugin/marquee/core/control.php:197
-#: theme/ridgeroad/inc/customizer.php:309
+#: plugin/marquee/core/customizer.php:396 plugin/marquee/core/control.php:197
+#: theme/ridgeroad/inc/customizer.php:396
 msgid "Small"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:309 plugin/marquee/core/control.php:195
+#: plugin/marquee/core/customizer.php:396 plugin/marquee/core/control.php:195
 #: plugin/marquee/core/control.php:197
 msgid "Medium"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:309 plugin/marquee/core/control.php:197
-#: theme/ridgeroad/inc/customizer.php:309
+#: plugin/marquee/core/customizer.php:396 plugin/marquee/core/control.php:197
+#: theme/ridgeroad/inc/customizer.php:396
 msgid "Large"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:310
-#: theme/ridgeroad/inc/customizer.php:310
+#: plugin/marquee/core/customizer.php:397
+#: theme/ridgeroad/inc/customizer.php:397
 msgid "Snow harder when it is really snowing at the show"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:311
-#: theme/ridgeroad/inc/customizer.php:311
+#: plugin/marquee/core/customizer.php:398
+#: theme/ridgeroad/inc/customizer.php:398
 msgid "Background photo (optional)"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:311
-#: theme/ridgeroad/inc/customizer.php:311
+#: plugin/marquee/core/customizer.php:398
+#: theme/ridgeroad/inc/customizer.php:398
 msgid ""
 "Replaces the built-in night forest. A wide night photo works best (2400px+)."
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:314
-#: theme/ridgeroad/inc/customizer.php:314
+#: plugin/marquee/core/customizer.php:401
+#: theme/ridgeroad/inc/customizer.php:401
 msgid "Radio frequency"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:315
-#: theme/ridgeroad/inc/customizer.php:315
+#: plugin/marquee/core/customizer.php:402
+#: theme/ridgeroad/inc/customizer.php:402
 msgid "Share picture (optional)"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:315
-#: theme/ridgeroad/inc/customizer.php:315
+#: plugin/marquee/core/customizer.php:402
+#: theme/ridgeroad/inc/customizer.php:402
 msgid ""
 "Shown when someone shares the website on Facebook or in a text. Best size "
 "1200 × 630. Leave empty to use the built-in picture."
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:316
-#: theme/ridgeroad/inc/customizer.php:316
+#: plugin/marquee/core/customizer.php:403
+#: theme/ridgeroad/inc/customizer.php:403
 msgid "Season opening night"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:317
-#: theme/ridgeroad/inc/customizer.php:317
+#: plugin/marquee/core/customizer.php:404
+#: theme/ridgeroad/inc/customizer.php:404
 msgid "Season last night"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:318
-#: theme/ridgeroad/inc/customizer.php:318
+#: plugin/marquee/core/customizer.php:405
+#: theme/ridgeroad/inc/customizer.php:405
 msgid "Weeknight label"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:319
-#: theme/ridgeroad/inc/customizer.php:319
+#: plugin/marquee/core/customizer.php:406
+#: theme/ridgeroad/inc/customizer.php:406
 msgid "Sun–Thu end time"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:320
-#: theme/ridgeroad/inc/customizer.php:320
+#: plugin/marquee/core/customizer.php:407
+#: theme/ridgeroad/inc/customizer.php:407
 msgid "Weekend label"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:321
-#: theme/ridgeroad/inc/customizer.php:321
+#: plugin/marquee/core/customizer.php:408
+#: theme/ridgeroad/inc/customizer.php:408
 msgid "Fri–Sat end time"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:322
-#: theme/ridgeroad/inc/customizer.php:322
+#: plugin/marquee/core/customizer.php:409
+#: theme/ridgeroad/inc/customizer.php:409
 msgid "Sun–Thu start time"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:323
-#: theme/ridgeroad/inc/customizer.php:323
+#: plugin/marquee/core/customizer.php:410
+#: theme/ridgeroad/inc/customizer.php:410
 msgid "Fri–Sat start time"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:324
-#: theme/ridgeroad/inc/customizer.php:324
+#: plugin/marquee/core/customizer.php:411
+#: theme/ridgeroad/inc/customizer.php:411
 msgid "Start at sunset instead of the times above"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:325
-#: theme/ridgeroad/inc/customizer.php:325
+#: plugin/marquee/core/customizer.php:412
+#: theme/ridgeroad/inc/customizer.php:412
 msgid "Minutes after sunset the show starts (only when starting at sunset)"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:326
-#: theme/ridgeroad/inc/customizer.php:326
+#: plugin/marquee/core/customizer.php:413
+#: theme/ridgeroad/inc/customizer.php:413
 msgid "Banner title — show on"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:327
-#: theme/ridgeroad/inc/customizer.php:327
+#: plugin/marquee/core/customizer.php:414
+#: theme/ridgeroad/inc/customizer.php:414
 msgid "Banner text — show on"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:328
-#: theme/ridgeroad/inc/customizer.php:328
+#: plugin/marquee/core/customizer.php:415
+#: theme/ridgeroad/inc/customizer.php:415
 msgid "Banner title — canceled"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:328
-#: theme/ridgeroad/inc/customizer.php:328
+#: plugin/marquee/core/customizer.php:415
+#: theme/ridgeroad/inc/customizer.php:415
 msgid ""
 "Cancel the show from Show Control (Cancel tonight’s show). Its message "
 "replaces the text below when filled in."
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:329
-#: theme/ridgeroad/inc/customizer.php:329
+#: plugin/marquee/core/customizer.php:416
+#: theme/ridgeroad/inc/customizer.php:416
 msgid "Banner text — canceled"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:330
-#: theme/ridgeroad/inc/customizer.php:330
+#: plugin/marquee/core/customizer.php:417
+#: theme/ridgeroad/inc/customizer.php:417
 msgid "Banner title — off season"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:331
-#: theme/ridgeroad/inc/customizer.php:331
+#: plugin/marquee/core/customizer.php:418
+#: theme/ridgeroad/inc/customizer.php:418
 msgid "Banner text — off season"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:333
-#: theme/ridgeroad/inc/customizer.php:333
+#: plugin/marquee/core/customizer.php:420
+#: theme/ridgeroad/inc/customizer.php:420
 msgid "Show the countdown clocks"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:334
-#: theme/ridgeroad/inc/customizer.php:334
+#: plugin/marquee/core/customizer.php:421
+#: theme/ridgeroad/inc/customizer.php:421
 msgid "Count down to"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:334
-#: theme/ridgeroad/inc/customizer.php:334
+#: plugin/marquee/core/customizer.php:421
+#: theme/ridgeroad/inc/customizer.php:421
 msgid ""
 "Automatic (Halloween if your last night is in August to October, otherwise "
 "Christmas)"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:334
-#: theme/ridgeroad/inc/customizer.php:334
+#: plugin/marquee/core/customizer.php:421
+#: theme/ridgeroad/inc/customizer.php:421
 msgid "A date I pick"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:335
-#: theme/ridgeroad/inc/customizer.php:335
+#: plugin/marquee/core/customizer.php:422
+#: theme/ridgeroad/inc/customizer.php:422
 msgid "Your date’s name (like New Year’s Eve)"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:335
-#: plugin/marquee/core/customizer.php:336
-#: theme/ridgeroad/inc/customizer.php:335
+#: plugin/marquee/core/customizer.php:422
+#: plugin/marquee/core/customizer.php:423
+#: theme/ridgeroad/inc/customizer.php:422
 msgid "For “A date I pick”."
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:336
-#: theme/ridgeroad/inc/customizer.php:336
+#: plugin/marquee/core/customizer.php:423
+#: theme/ridgeroad/inc/customizer.php:423
 msgid "Your date (the year doesn’t matter; it repeats every year)"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:337
-#: theme/ridgeroad/inc/customizer.php:337
+#: plugin/marquee/core/customizer.php:424
+#: theme/ridgeroad/inc/customizer.php:424
 msgid ""
 "Remote Falcon viewer page (adds “Pick the next song” to Tonight’s Show)"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:337
-#: theme/ridgeroad/inc/customizer.php:337
+#: plugin/marquee/core/customizer.php:424
+#: theme/ridgeroad/inc/customizer.php:424
 msgid ""
 "Like https://yourshow.remotefalcon.com. Visitors pick songs right on your "
 "website while the show is running (your Remote Falcon rules still apply). "
 "Leave empty to hide it."
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:338
-#: theme/ridgeroad/inc/customizer.php:338
+#: plugin/marquee/core/customizer.php:425
+#: theme/ridgeroad/inc/customizer.php:425
 msgid "Show the playlist section"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:339
-#: theme/ridgeroad/inc/customizer.php:339
+#: plugin/marquee/core/customizer.php:426
+#: theme/ridgeroad/inc/customizer.php:426
 msgid "When to show the playlist"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:339
-#: theme/ridgeroad/inc/customizer.php:339
+#: plugin/marquee/core/customizer.php:426
+#: theme/ridgeroad/inc/customizer.php:426
 msgid "Only while the show is running"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:339
-#: theme/ridgeroad/inc/customizer.php:339
+#: plugin/marquee/core/customizer.php:426
+#: theme/ridgeroad/inc/customizer.php:426
 msgid "All season (hide off-season and canceled nights)"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:339
-#: theme/ridgeroad/inc/customizer.php:339
+#: plugin/marquee/core/customizer.php:426
+#: theme/ridgeroad/inc/customizer.php:426
 msgid "Always"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:340
-#: theme/ridgeroad/inc/customizer.php:340
+#: plugin/marquee/core/customizer.php:427
+#: theme/ridgeroad/inc/customizer.php:427
 msgid "Playlist title"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:341
-#: theme/ridgeroad/inc/customizer.php:341
+#: plugin/marquee/core/customizer.php:428
+#: theme/ridgeroad/inc/customizer.php:428
 msgid "Show address (for the Get Directions button)"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:341
-#: theme/ridgeroad/inc/customizer.php:341
+#: plugin/marquee/core/customizer.php:428
+#: theme/ridgeroad/inc/customizer.php:428
 msgid ""
 "A street address (123 Main St, Springfield, IL 62701), map coordinates "
 "(39.7817, -89.6501) or a Google Maps link. Coordinates take visitors to the "
 "exact spot. Leave empty to hide the button."
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:342
-#: theme/ridgeroad/inc/customizer.php:342
+#: plugin/marquee/core/customizer.php:429
+#: theme/ridgeroad/inc/customizer.php:429
 msgid "Parking note next to the button"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:345
-#: theme/ridgeroad/inc/customizer.php:345
+#: plugin/marquee/core/customizer.php:432
+#: theme/ridgeroad/inc/customizer.php:432
 msgid "City name"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:346
-#: theme/ridgeroad/inc/customizer.php:346
+#: plugin/marquee/core/customizer.php:433
+#: theme/ridgeroad/inc/customizer.php:433
 msgid "ZIP code"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:347
-#: theme/ridgeroad/inc/customizer.php:347
+#: plugin/marquee/core/customizer.php:434
+#: theme/ridgeroad/inc/customizer.php:434
 msgid "Show live radar loop"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:348
-#: theme/ridgeroad/inc/customizer.php:348
+#: plugin/marquee/core/customizer.php:435
+#: theme/ridgeroad/inc/customizer.php:435
 msgid "NWS radar station"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:348
-#: theme/ridgeroad/inc/customizer.php:348
+#: plugin/marquee/core/customizer.php:435
+#: theme/ridgeroad/inc/customizer.php:435
 msgid "KHTX = Huntsville. Use KBMX for Birmingham."
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:351
-#: theme/ridgeroad/inc/customizer.php:351
+#: plugin/marquee/core/customizer.php:438
+#: theme/ridgeroad/inc/customizer.php:438
 msgid "YouTube channel or live video link"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:351
-#: theme/ridgeroad/inc/customizer.php:351
+#: plugin/marquee/core/customizer.php:438
+#: theme/ridgeroad/inc/customizer.php:438
 msgid ""
 "Paste your channel link (youtube.com/channel/UC…) or channel ID — the "
 "section then always shows whatever you are streaming. A single live video "
 "link also works. Leave empty to hide the section."
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:352
-#: plugin/marquee/core/customizer.php:357
-#: plugin/marquee/core/customizer.php:362
+#: plugin/marquee/core/customizer.php:439
+#: plugin/marquee/core/customizer.php:444
+#: plugin/marquee/core/customizer.php:449
 msgid "Section title"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:353
-#: theme/ridgeroad/inc/customizer.php:353
+#: plugin/marquee/core/customizer.php:440
+#: theme/ridgeroad/inc/customizer.php:440
 msgid "Text under the title"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:356
-#: theme/ridgeroad/inc/customizer.php:356
+#: plugin/marquee/core/customizer.php:443
+#: theme/ridgeroad/inc/customizer.php:443
 msgid "Show the show videos (on the Songs & Videos page)"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:356
-#: theme/ridgeroad/inc/customizer.php:356
+#: plugin/marquee/core/customizer.php:443
+#: theme/ridgeroad/inc/customizer.php:443
 msgid ""
 "Add your MP4 videos in WP Admin → My Sequences. They appear on the Songs & "
 "Videos page (yoursite.com/songs/), not the home page."
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:358
-#: plugin/marquee/core/customizer.php:363
-#: plugin/marquee/core/customizer.php:402
+#: plugin/marquee/core/customizer.php:445
+#: plugin/marquee/core/customizer.php:450
+#: plugin/marquee/core/customizer.php:489
 msgid "Line under the title"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:361
-#: theme/ridgeroad/inc/customizer.php:361
+#: plugin/marquee/core/customizer.php:448
+#: theme/ridgeroad/inc/customizer.php:448
 msgid "Show favorite song voting (on the Songs & Videos page)"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:361
-#: theme/ridgeroad/inc/customizer.php:361
+#: plugin/marquee/core/customizer.php:448
+#: theme/ridgeroad/inc/customizer.php:448
 msgid ""
 "See the votes on your WordPress Dashboard. You can clear all votes there to "
 "start a new season."
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:364
-#: theme/ridgeroad/inc/customizer.php:364
+#: plugin/marquee/core/customizer.php:451
+#: theme/ridgeroad/inc/customizer.php:451
 msgid "Where the song list comes from"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:365
-#: theme/ridgeroad/inc/customizer.php:365
+#: plugin/marquee/core/customizer.php:452
+#: theme/ridgeroad/inc/customizer.php:452
 msgid "Remote Falcon (automatic, uses your sequence display names)"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:366
-#: theme/ridgeroad/inc/customizer.php:366
+#: plugin/marquee/core/customizer.php:453
+#: theme/ridgeroad/inc/customizer.php:453
 msgid "My own list (below)"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:368
-#: theme/ridgeroad/inc/customizer.php:368
+#: plugin/marquee/core/customizer.php:455
+#: theme/ridgeroad/inc/customizer.php:455
 msgid "My song list"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:368
-#: theme/ridgeroad/inc/customizer.php:368
+#: plugin/marquee/core/customizer.php:455
+#: theme/ridgeroad/inc/customizer.php:455
 msgid ""
 "One song per line, like: Wizards in Winter — Trans-Siberian Orchestra. Start"
 " a line with * to mark it NEW this year."
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:369
-#: theme/ridgeroad/inc/customizer.php:369
+#: plugin/marquee/core/customizer.php:456
+#: theme/ridgeroad/inc/customizer.php:456
 msgid "Fan Favorite Friday (this week’s top song is featured every Friday)"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:370
-#: theme/ridgeroad/inc/customizer.php:370
+#: plugin/marquee/core/customizer.php:457
+#: theme/ridgeroad/inc/customizer.php:457
 msgid "Fan Favorite Friday message"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:373
-#: theme/ridgeroad/inc/customizer.php:373
+#: plugin/marquee/core/customizer.php:460
+#: theme/ridgeroad/inc/customizer.php:460
 msgid "Show the Kids’ Corner"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:373
-#: theme/ridgeroad/inc/customizer.php:373
+#: plugin/marquee/core/customizer.php:460
+#: theme/ridgeroad/inc/customizer.php:460
 msgid "Turn each part on or off below."
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:374
+#: plugin/marquee/core/customizer.php:461
 #: plugin/marquee/core/parts/kids.php:71
 #: plugin/marquee/core/parts/kids.php:145
 msgid "Coloring Pages"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:375
-#: theme/ridgeroad/inc/customizer.php:375
+#: plugin/marquee/core/customizer.php:462
+#: theme/ridgeroad/inc/customizer.php:462
 msgid "Games (elf names and Christmas trivia)"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:376
-#: theme/ridgeroad/inc/customizer.php:376
+#: plugin/marquee/core/customizer.php:463
+#: theme/ridgeroad/inc/customizer.php:463
 msgid "Make a Light Show (the Light Lab) in the Kids’ Corner"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:376
-#: theme/ridgeroad/inc/customizer.php:376
+#: plugin/marquee/core/customizer.php:463
+#: theme/ridgeroad/inc/customizer.php:463
 msgid ""
 "Off hides it and the light show contest; the rest of the Kids’ Corner stays."
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:378
-#: theme/ridgeroad/inc/customizer.php:378
+#: plugin/marquee/core/customizer.php:465
+#: theme/ridgeroad/inc/customizer.php:465
 msgid ""
 "“Your Name in Lights”: kids send their name to your show’s screens (needs "
 "the FPP script)"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:381
-#: theme/ridgeroad/inc/customizer.php:381
+#: plugin/marquee/core/customizer.php:468
+#: theme/ridgeroad/inc/customizer.php:468
 msgid ""
 "Put these two lines at the top of the FPP script: SITE = “%1$s” and KEY = "
 "“%2$s”. Keep the key private."
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:386
-#: theme/ridgeroad/inc/customizer.php:386
+#: plugin/marquee/core/customizer.php:473
+#: theme/ridgeroad/inc/customizer.php:473
 msgid ""
 "Accept names any time (for testing). Normally names are only accepted while "
 "the show is running."
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:387
-#: theme/ridgeroad/inc/customizer.php:387
+#: plugin/marquee/core/customizer.php:474
+#: theme/ridgeroad/inc/customizer.php:474
 msgid ""
 "Only at the show: names can only be sent from phones near your show (the "
 "phone shares its location; it is never saved)"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:388
-#: theme/ridgeroad/inc/customizer.php:388
+#: plugin/marquee/core/customizer.php:475
+#: theme/ridgeroad/inc/customizer.php:475
 msgid "How close they must be (miles from the show)"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:388
-#: theme/ridgeroad/inc/customizer.php:388
+#: plugin/marquee/core/customizer.php:475
+#: theme/ridgeroad/inc/customizer.php:475
 msgid ""
 "0.5 works for most shows. Phones can be off by a few hundred feet, so don’t "
 "go much smaller."
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:389
-#: theme/ridgeroad/inc/customizer.php:389
+#: plugin/marquee/core/customizer.php:476
+#: theme/ridgeroad/inc/customizer.php:476
 msgid "Name text color on the screens (like #FFD45C)"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:390
-#: theme/ridgeroad/inc/customizer.php:390
+#: plugin/marquee/core/customizer.php:477
+#: theme/ridgeroad/inc/customizer.php:477
 msgid "Extra names or words to block (comma separated)"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:391
-#: theme/ridgeroad/inc/customizer.php:391
+#: plugin/marquee/core/customizer.php:478
+#: theme/ridgeroad/inc/customizer.php:478
 msgid "Run the light show contest (entries, Show Wall and hearts)"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:391
-#: theme/ridgeroad/inc/customizer.php:391
+#: plugin/marquee/core/customizer.php:478
+#: theme/ridgeroad/inc/customizer.php:478
 msgid ""
 "Review entries under Kids’ Light Shows in the WordPress menu. Nothing shows "
 "on the Show Wall until you publish it."
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:392
-#: theme/ridgeroad/inc/customizer.php:392
+#: plugin/marquee/core/customizer.php:479
+#: theme/ridgeroad/inc/customizer.php:479
 msgid "Show the newest kids’ shows on the home page (when the contest is on)"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:393
-#: theme/ridgeroad/inc/customizer.php:393
+#: plugin/marquee/core/customizer.php:480
+#: theme/ridgeroad/inc/customizer.php:480
 msgid "Last day to enter and vote"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:394
-#: theme/ridgeroad/inc/customizer.php:394
+#: plugin/marquee/core/customizer.php:481
+#: theme/ridgeroad/inc/customizer.php:481
 msgid "Judges’ Pick prize"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:395
-#: theme/ridgeroad/inc/customizer.php:395
+#: plugin/marquee/core/customizer.php:482
+#: theme/ridgeroad/inc/customizer.php:482
 msgid "People’s Choice prize"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:396
-#: theme/ridgeroad/inc/customizer.php:396
+#: plugin/marquee/core/customizer.php:483
+#: theme/ridgeroad/inc/customizer.php:483
 msgid "Winners pick up their prize by"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:397
-#: theme/ridgeroad/inc/customizer.php:397
+#: plugin/marquee/core/customizer.php:484
+#: theme/ridgeroad/inc/customizer.php:484
 msgid "Email new entries to (empty = site admin email)"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:400
-#: theme/ridgeroad/inc/customizer.php:400
+#: plugin/marquee/core/customizer.php:487
+#: theme/ridgeroad/inc/customizer.php:487
 msgid "Show the Behind the Lights section"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:405
-#: theme/ridgeroad/inc/customizer.php:405
+#: plugin/marquee/core/customizer.php:492
+#: theme/ridgeroad/inc/customizer.php:492
 msgid "Stat %d number"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:405
-#: theme/ridgeroad/inc/customizer.php:405
+#: plugin/marquee/core/customizer.php:492
+#: theme/ridgeroad/inc/customizer.php:492
 msgid "Leave empty to count the songs from Remote Falcon automatically."
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:407
-#: theme/ridgeroad/inc/customizer.php:407
+#: plugin/marquee/core/customizer.php:494
+#: theme/ridgeroad/inc/customizer.php:494
 msgid "Stat %d label (empty hides it)"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:409
-#: theme/ridgeroad/inc/customizer.php:409
+#: plugin/marquee/core/customizer.php:496
+#: theme/ridgeroad/inc/customizer.php:496
 msgid "Stat %d icon"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:416
-#: theme/ridgeroad/inc/customizer.php:416
+#: plugin/marquee/core/customizer.php:503
+#: theme/ridgeroad/inc/customizer.php:503
 msgid "Tip %d icon"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:418
-#: theme/ridgeroad/inc/customizer.php:418
+#: plugin/marquee/core/customizer.php:505
+#: theme/ridgeroad/inc/customizer.php:505
 msgid "Tip %d title"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:420
-#: theme/ridgeroad/inc/customizer.php:420
+#: plugin/marquee/core/customizer.php:507
+#: theme/ridgeroad/inc/customizer.php:507
 msgid "Tip %d text"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:424
-#: theme/ridgeroad/inc/customizer.php:424
+#: plugin/marquee/core/customizer.php:511
+#: theme/ridgeroad/inc/customizer.php:511
 msgid "Donation title"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:425
-#: theme/ridgeroad/inc/customizer.php:425
+#: plugin/marquee/core/customizer.php:512
+#: theme/ridgeroad/inc/customizer.php:512
 msgid "Donation text"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:426
-#: theme/ridgeroad/inc/customizer.php:426
+#: plugin/marquee/core/customizer.php:513
+#: theme/ridgeroad/inc/customizer.php:513
 msgid "Cash App link"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:426
-#: theme/ridgeroad/inc/customizer.php:426
+#: plugin/marquee/core/customizer.php:513
+#: theme/ridgeroad/inc/customizer.php:513
 msgid ""
 "e.g. https://cash.app/$YourCashtag — leave empty to hide the donation box."
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:427
-#: theme/ridgeroad/inc/customizer.php:427
+#: plugin/marquee/core/customizer.php:514
+#: theme/ridgeroad/inc/customizer.php:514
 msgid "Button text"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:428
-#: theme/ridgeroad/inc/customizer.php:428
+#: plugin/marquee/core/customizer.php:515
+#: theme/ridgeroad/inc/customizer.php:515
 msgid "Cash App QR image (optional)"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:428
-#: theme/ridgeroad/inc/customizer.php:428
+#: plugin/marquee/core/customizer.php:515
+#: theme/ridgeroad/inc/customizer.php:515
 msgid "If empty, a QR code is generated from the link automatically."
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:429
-#: theme/ridgeroad/inc/customizer.php:429
+#: plugin/marquee/core/customizer.php:516
+#: theme/ridgeroad/inc/customizer.php:516
 msgid "Social title"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:430
-#: theme/ridgeroad/inc/customizer.php:430
+#: plugin/marquee/core/customizer.php:517
+#: theme/ridgeroad/inc/customizer.php:517
 msgid "Social text"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:431
-#: theme/ridgeroad/inc/customizer.php:431
+#: plugin/marquee/core/customizer.php:518
+#: theme/ridgeroad/inc/customizer.php:518
 msgid "Hashtag for visitor photos (leave empty to hide)"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:432
-#: theme/ridgeroad/inc/customizer.php:432
+#: plugin/marquee/core/customizer.php:519
+#: theme/ridgeroad/inc/customizer.php:519
 msgid "Show a “Share the Show” button"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:434
-#: theme/ridgeroad/inc/customizer.php:434
+#: plugin/marquee/core/customizer.php:521
+#: theme/ridgeroad/inc/customizer.php:521
 msgid "Show the %s button"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:435
-#: theme/ridgeroad/inc/customizer.php:435
+#: plugin/marquee/core/customizer.php:522
+#: theme/ridgeroad/inc/customizer.php:522
 msgid "%s link"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:437
-#: theme/ridgeroad/inc/customizer.php:437
+#: plugin/marquee/core/customizer.php:524
+#: theme/ridgeroad/inc/customizer.php:524
 msgid "Guestbook link (menu)"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:437
-#: theme/ridgeroad/inc/customizer.php:437
+#: plugin/marquee/core/customizer.php:524
+#: theme/ridgeroad/inc/customizer.php:524
 msgid "Leave empty to jump to the guestbook section on the home page."
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:438
-#: theme/ridgeroad/inc/customizer.php:438
+#: plugin/marquee/core/customizer.php:525
+#: theme/ridgeroad/inc/customizer.php:525
 msgid "Show the guestbook section"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:439
-#: theme/ridgeroad/inc/customizer.php:439
+#: plugin/marquee/core/customizer.php:526
+#: theme/ridgeroad/inc/customizer.php:526
 msgid "Where messages are kept"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:440
-#: theme/ridgeroad/inc/customizer.php:440
+#: plugin/marquee/core/customizer.php:527
+#: theme/ridgeroad/inc/customizer.php:527
 msgid "WordPress (I approve every message first)"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:440
-#: theme/ridgeroad/inc/customizer.php:440
+#: plugin/marquee/core/customizer.php:527
+#: theme/ridgeroad/inc/customizer.php:527
 msgid "RF Page Builder (posts right away)"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:441
-#: theme/ridgeroad/inc/customizer.php:441
+#: plugin/marquee/core/customizer.php:528
+#: theme/ridgeroad/inc/customizer.php:528
 msgid ""
 "With WordPress, new messages wait in Comments → Pending until you approve "
 "them."
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:443
-#: theme/ridgeroad/inc/customizer.php:443
+#: plugin/marquee/core/customizer.php:530
+#: theme/ridgeroad/inc/customizer.php:530
 msgid "Small line above the title"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:444
-#: theme/ridgeroad/inc/customizer.php:444
+#: plugin/marquee/core/customizer.php:531
+#: theme/ridgeroad/inc/customizer.php:531
 msgid "Title"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:445
-#: theme/ridgeroad/inc/customizer.php:445
+#: plugin/marquee/core/customizer.php:532
+#: theme/ridgeroad/inc/customizer.php:532
 msgid "Intro text"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:446
-#: theme/ridgeroad/inc/customizer.php:446
+#: plugin/marquee/core/customizer.php:533
+#: theme/ridgeroad/inc/customizer.php:533
 msgid "Messages to show"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:447
-#: theme/ridgeroad/inc/customizer.php:447
+#: plugin/marquee/core/customizer.php:534
+#: theme/ridgeroad/inc/customizer.php:534
 msgid "RF Page Builder site key"
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:447
-#: theme/ridgeroad/inc/customizer.php:447
+#: plugin/marquee/core/customizer.php:534
+#: theme/ridgeroad/inc/customizer.php:534
 msgid ""
 "From RF Page Builder: a key with dashes, like 1a2b3c4d-…. Leave empty to "
 "turn the guestbook off."
 msgstr ""
 
-#: plugin/marquee/core/customizer.php:448
-#: theme/ridgeroad/inc/customizer.php:448
+#: plugin/marquee/core/customizer.php:535
+#: theme/ridgeroad/inc/customizer.php:535
 msgid "Footer text (optional)"
 msgstr ""
 
