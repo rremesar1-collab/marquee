@@ -48,6 +48,7 @@
 		if (!busy) {
 			$$('[data-rrc-tog]').forEach(function (b) { b.setAttribute('aria-checked', String(!!sw[b.getAttribute('data-rrc-tog')])); });
 			var sn = $('[data-rrc-set="snow_amount"]'); if (document.activeElement !== sn) { sn.value = sw.snow_amount; }
+			var ne = $('[data-rrc-set="names_every"]'); if (ne && sw.names_every && document.activeElement !== ne) { ne.value = sw.names_every; }
 			var sz = $('[data-rrc-set="snow_size"]'); if (document.activeElement !== sz) { sz.value = sw.snow_size || 'medium'; }
 			var nc = $('[data-rrc-set="names_color"]'); if (document.activeElement !== nc && /^#[0-9a-f]{6}$/i.test(sw.names_color || '')) { nc.value = sw.names_color.toLowerCase(); }
 		}

@@ -580,6 +580,11 @@ function marquee_admin_page() {
 						<?php endforeach; ?>
 					</select><small><?php esc_html_e( 'Names collect while your show plays and go up together after that many songs, so a busy night doesn’t put a break between every song. If 6 names are waiting, the break comes sooner.', 'marquee' ); ?></small></p>
 					</div>
+					<p><label for="mq-npp"><?php esc_html_e( 'Names each phone can send', 'marquee' ); ?></label><select id="mq-npp" name="names_per_phone">
+						<?php foreach ( array( 1, 2, 3, 4, 5 ) as $mq_n ) : ?>
+							<option value="<?php echo (int) $mq_n; ?>" <?php selected( (int) ( $s['names_per_phone'] ?? 3 ), $mq_n ); ?>><?php echo esc_html( sprintf( /* translators: %d: names */ _n( '%d an hour', '%d an hour', $mq_n, 'marquee' ), $mq_n ) . ( 3 === $mq_n ? ' ' . __( '(standard)', 'marquee' ) : '' ) ); ?></option>
+						<?php endforeach; ?>
+					</select><small><?php esc_html_e( 'So one family can’t fill a whole names break. You skip this limit while you’re logged in, for testing.', 'marquee' ); ?></small></p>
 					<label class="mq__feat mq-only-break"><span><b><?php esc_html_e( 'Make a simple names break for me', 'marquee' ); ?></b><small><?php esc_html_e( 'If your FPP has no names break playlist yet, Marquee makes one: the show pauses, the names go up on your screens (with the names break audio below, if you build it), then your show carries on. No sequence needed. A names break playlist you already have is never touched.', 'marquee' ); ?></small></span><input type="checkbox" name="names_simple" value="1" <?php checked( ! empty( $s['names_simple'] ) ); ?>></label>
 					<div class="mq-only-break"><?php marquee_name_timeline( '#mq-nst', '#mq-nsl', (float) $s['break_seq'] ); ?>
 					<p class="mq__fine"><?php esc_html_e( 'You don’t normally need to touch these: building the names break audio (below) sets both to match your intro and outro. Change them only if you made your own break audio; then match them to where your audio goes quiet.', 'marquee' ); ?></p></div>

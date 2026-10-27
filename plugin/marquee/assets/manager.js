@@ -91,6 +91,7 @@
 			var gt = $('[data-mm-tog="names_geo"]'), gs = gt && gt.parentNode.querySelector('small');
 			if (gs) { var gm = parseFloat(sw.names_geo_mi || '0.5'); gs.textContent = tr('Names only from phones within %s of your show. You can still send test names from anywhere.').replace('%s', function () { return sw.names_geo_km ? (Math.round(gm * 16.09344) / 10) + ' km' : gm + ' mi'; }); }
 			var sn = $('[data-mm-set="snow_amount"]'); if (document.activeElement !== sn) { sn.value = sw.snow_amount || 'off'; }
+			var ne = $('[data-mm-set="names_every"]'); if (ne && sw.names_every && document.activeElement !== ne) { ne.value = sw.names_every; }
 		}
 
 		/* tonight tiles */

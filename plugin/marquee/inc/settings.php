@@ -54,6 +54,7 @@ function marquee_defaults() {
 		'names_slot'   => 3.75,              // seconds from one name to the next
 		'names_per_break' => 6,              // names in one break (fewer = each is up longer, so scrolling can be slower)
 		'names_every'  => 1,                 // a names break after every this many songs (names collect in between)
+		'names_per_phone' => 3,              // names one phone can send in an hour
 		'break_intro'  => '',                // names break builder: announcer lines (empty = example)
 		'break_outro'  => '',
 		'break_seq'    => 29.6,              // length of the names sequence (seconds)
@@ -154,6 +155,7 @@ function marquee_save( $in ) {
 		'names_slot'   => isset( $in['names_slot'] ) && '' !== trim( (string) $in['names_slot'] ) ? max( 2.5, min( 10, round( (float) $in['names_slot'], 2 ) ) ) : $cur['names_slot'],
 		'names_per_break' => isset( $in['names_per_break'] ) ? max( 1, min( 6, (int) $in['names_per_break'] ) ) : $cur['names_per_break'],
 		'names_every'  => isset( $in['names_every'] ) ? max( 1, min( 6, (int) $in['names_every'] ) ) : $cur['names_every'],
+		'names_per_phone' => isset( $in['names_per_phone'] ) ? max( 1, min( 5, (int) $in['names_per_phone'] ) ) : (int) ( $cur['names_per_phone'] ?? 3 ),
 		'names_start'  => isset( $in['names_start'] ) && '' !== trim( (string) $in['names_start'] ) ? max( 0, min( 120, round( (float) $in['names_start'], 2 ) ) ) : $cur['names_start'],
 		'covers_on'  => isset( $in['covers_sent'] ) ? (int) ! empty( $in['covers_on'] ) : $cur['covers_on'],
 		'covers_auto' => isset( $in['covers_sent'] ) ? (int) ! empty( $in['covers_auto'] ) : $cur['covers_auto'],
@@ -537,3 +539,23 @@ add_filter( 'ridgeroad_name_greetings', function ( $std ) {
 	}
 	return $out;
 } );
+
+/* Names one phone can send in an hour (Names in Lights → Names break). */
+add_filter( 'ridgeroad_names_per_phone', function () {
+	return max( 1, min( 5, (int) ( marquee_get()['names_per_phone'] ?? 3 ) ) );
+} );
+
+/* "Names break after every" in Show Control and the Show Manager, so it can change during a busy night. */
+add_filter( 'ridgeroad_ctl_switches', function ( $sw ) {
+	$sw['names_every'] = (string) max( 1, min( 6, (int) ( marquee_get()['names_every'] ?? 1 ) ) );
+	return $sw;
+} );
+add_filter( 'ridgeroad_ctl_set', function ( $done, $k, $on, $v = '' ) {
+	if ( 'names_every' !== $k ) {
+		return $done;
+	}
+	$s                = get_option( 'marquee', array() );
+	$s['names_every'] = max( 1, min( 6, (int) $v ) );
+	update_option( 'marquee', $s, false );
+	return true;
+}, 10, 4 );

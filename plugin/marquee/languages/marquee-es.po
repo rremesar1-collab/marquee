@@ -697,6 +697,18 @@ msgstr "Solo en el espectáculo"
 msgid "Names only from phones near your show"
 msgstr "Nombres solo desde celulares cerca de tu espectáculo"
 
+msgid "Names break after every"
+msgstr "Pausa de nombres después de cada"
+
+msgid "Busy night? Names collect and go up together"
+msgstr "¿Noche llena? Los nombres se juntan y salen juntos"
+
+msgid "song"
+msgstr "canción"
+
+msgid "%d songs"
+msgstr "%d canciones"
+
 msgid "Waiting for the next break"
 msgstr "Esperando la próxima pausa"
 
@@ -3677,14 +3689,8 @@ msgstr ""
 "y se lee mejor. Los nombres siguen cabiendo en la misma parte del audio de "
 "tu pausa. Los nombres extra aparecen en la siguiente pausa."
 
-msgid "Names break after every"
-msgstr "Pausa de nombres después de cada"
-
 msgid "song (standard)"
 msgstr "canción (estándar)"
-
-msgid "%d songs"
-msgstr "%d canciones"
 
 msgid ""
 "Names collect while your show plays and go up together after that many "
@@ -3695,6 +3701,24 @@ msgstr ""
 "después de esa cantidad de canciones, para que una noche con mucha gente no "
 "ponga una pausa entre cada canción. Si hay 6 nombres en espera, la pausa "
 "llega antes."
+
+msgid "Names each phone can send"
+msgstr "Nombres que puede enviar cada teléfono"
+
+msgid "%d an hour"
+msgid_plural "%d an hour"
+msgstr[0] "%d por hora"
+msgstr[1] "%d por hora"
+
+msgid "(standard)"
+msgstr "(estándar)"
+
+msgid ""
+"So one family can’t fill a whole names break. You skip this limit while "
+"you’re logged in, for testing."
+msgstr ""
+"Así una sola familia no llena toda una pausa de nombres. Mientras tienes la "
+"sesión iniciada no tienes este límite, para hacer pruebas."
 
 msgid "Make a simple names break for me"
 msgstr "Crear una pausa de nombres sencilla"

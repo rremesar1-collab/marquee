@@ -201,6 +201,10 @@ function ridgeroad_control_page() {
 						endif;
 					}
 					?>
+					<?php if ( function_exists( 'marquee_get' ) ) : ?>
+					<div class="rrc__sw"><div><b><?php esc_html_e( 'Names break after every', 'ridgeroad' ); ?></b><small><?php esc_html_e( 'Busy night? Names collect and go up together', 'ridgeroad' ); ?></small></div>
+						<select data-rrc-set="names_every" aria-label="<?php esc_attr_e( 'Names break after every', 'ridgeroad' ); ?>"><?php for ( $rr_i = 1; $rr_i <= 6; $rr_i++ ) : ?><option value="<?php echo (int) $rr_i; ?>"><?php echo esc_html( 1 === $rr_i ? __( 'song', 'ridgeroad' ) : sprintf( /* translators: %d: songs */ __( '%d songs', 'ridgeroad' ), $rr_i ) ); ?></option><?php endfor; ?></select></div>
+					<?php endif; ?>
 					<div class="rrc__sw"><div><b><?php esc_html_e( 'Falling snow', 'ridgeroad' ); ?></b><small><?php esc_html_e( 'On every page', 'ridgeroad' ); ?></small></div>
 						<select data-rrc-set="snow_amount" aria-label="<?php esc_attr_e( 'Falling snow', 'ridgeroad' ); ?>"><option value="off"><?php esc_html_e( 'Off', 'ridgeroad' ); ?></option><option value="light"><?php esc_html_e( 'Light', 'ridgeroad' ); ?></option><option value="medium"><?php esc_html_e( 'Medium', 'ridgeroad' ); ?></option><option value="heavy"><?php esc_html_e( 'Heavy', 'ridgeroad' ); ?></option></select></div>
 					<div class="rrc__sw"><div><b><?php esc_html_e( 'Snowflake size', 'ridgeroad' ); ?></b><small><?php esc_html_e( 'How big the falling flakes are', 'ridgeroad' ); ?></small></div>

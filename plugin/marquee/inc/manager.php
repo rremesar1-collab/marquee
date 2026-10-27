@@ -316,6 +316,8 @@ function marquee_manager_app() {
 				$toggle( 'names_always', __( 'Accept names any time', 'marquee' ), __( 'For testing outside show hours', 'marquee' ) );
 				$toggle( 'names_geo', __( 'Only at the show', 'marquee' ), __( 'Names only from phones near your show', 'marquee' ) );
 				?>
+				<div class="mm-sw"><div><b><?php esc_html_e( 'Names break after every', 'marquee' ); ?></b><small><?php esc_html_e( 'Busy night? Names collect and go up together', 'marquee' ); ?></small></div>
+					<select data-mm-set="names_every" aria-label="<?php esc_attr_e( 'Names break after every', 'marquee' ); ?>"><?php for ( $mq_i = 1; $mq_i <= 6; $mq_i++ ) : ?><option value="<?php echo (int) $mq_i; ?>"><?php echo esc_html( 1 === $mq_i ? __( 'song', 'marquee' ) : sprintf( /* translators: %d: songs */ __( '%d songs', 'marquee' ), $mq_i ) ); ?></option><?php endfor; ?></select></div>
 			</div>
 			<div class="mm-card">
 				<h2><?php esc_html_e( 'Waiting for the next break', 'marquee' ); ?></h2>

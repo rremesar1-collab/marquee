@@ -4,7 +4,7 @@ Theme URI: https://alateka.com/
 Author: Alateka Corporation
 Author URI: https://alateka.com/
 Description: The festive Christmas look for the Marquee light show plugin: garlands, bows, a night-sky scene and glowing show cards for your status, Now Playing, weather, Kids’ Corner and more. Needs the free Marquee plugin (it holds all the show features and settings).
-Version: 2.15.3
+Version: 2.16.0
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -1359,9 +1359,9 @@ img.emoji, img.wp-smiley { display: inline !important; width: 1em !important; he
 	filter: drop-shadow(0 3px 3px rgba(0, 0, 0, .45));
 }
 
-/* Snow on top of the home cards and the Fan Favorite box too, like every other box */
-.rr-kids-teaser, .rr-ff { position: relative; padding-top: 34px; }
-.rr-kids-teaser::before, .rr-ff::before {
+/* Snow on top of the home cards, the Fan Favorite box and the contest prize box too, like every other box */
+.rr-kids-teaser, .rr-ff, .rr-kc__prize { position: relative; padding-top: 34px; }
+.rr-kids-teaser::before, .rr-ff::before, .rr-kc__prize::before {
 	content: ""; position: absolute; left: -8px; right: -8px; top: -26px; height: 64px; pointer-events: none;
 	border-style: solid; border-width: 0 38px 0 46px; border-image: url(assets/img/snowcap.webp) 0 98 0 120 fill / 0 38px 0 46px round;
 	filter: drop-shadow(0 3px 3px rgba(0, 0, 0, .45));
@@ -1414,7 +1414,7 @@ img.emoji, img.wp-smiley { display: inline !important; width: 1em !important; he
 .rr-kc__btn--ghost { background: rgba(255, 255, 255, .08); font-size: 16px; padding: 9px 16px; }
 .rr-kc__btn:hover { color: #fff; filter: brightness(1.1); }
 .rr-kc__btn--gold:hover { color: #3a1d00; }
-.rr-kc__prize { display: grid; gap: 14px; padding: 16px 18px; border-radius: 16px; border: 2px solid #ffd45c; background: radial-gradient(ellipse at 15% 0%, rgba(255, 210, 100, .25), transparent 60%), linear-gradient(160deg, rgba(130, 76, 0, .95), rgba(60, 28, 0, .95)); box-shadow: 0 0 22px rgba(255, 190, 60, .4); }
+.rr-kc__prize { display: grid; gap: 14px; padding: 34px 18px 16px; position: relative; border-radius: 16px; border: 2px solid #ffd45c; background: radial-gradient(ellipse at 15% 0%, rgba(255, 210, 100, .25), transparent 60%), linear-gradient(160deg, rgba(130, 76, 0, .95), rgba(60, 28, 0, .95)); box-shadow: 0 0 22px rgba(255, 190, 60, .4); }
 .rr-kc__prize-head { display: flex; align-items: center; gap: 14px; }
 .rr-kc__prize-head .rr-cicon { width: 58px; height: 58px; flex: none; filter: drop-shadow(0 0 10px rgba(255, 200, 80, .6)); }
 .rr-kc__prize-head b { display: block; font: 700 clamp(26px, 3.4vw, 34px)/1.1 var(--f-kid); color: #ffd45c; text-shadow: 0 0 12px rgba(255, 190, 70, .5), 0 2px 2px #000; }

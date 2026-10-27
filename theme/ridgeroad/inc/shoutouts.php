@@ -197,14 +197,18 @@ function ridgeroad_name_send() {
 	$g    = isset( $_POST['greet'] ) ? sanitize_key( $_POST['greet'] ) : '';
 	$g    = isset( $msgs[ $g ] ) ? $g : array_keys( $msgs )[0];
 
-	// limits: 3 an hour from one phone/network, and no repeats of the same name for 20 minutes.
-	// A logged-in site admin (you, testing) skips both limits.
+	// limits: a few an hour from one phone/network (3 unless the show picked another number), and
+	// no repeats of the same name for 20 minutes. A logged-in site admin (you, testing) skips both limits.
 	$admin = current_user_can( 'manage_options' );
 	$ip    = ridgeroad_ip_hash();
 	$k     = 'rr_nm_' . $ip;
 	$n     = (int) get_transient( $k );
-	if ( ! $admin && $n >= 3 ) {
-		$fail( ( function_exists( 'marquee_get' ) ? __( 'You already sent 3 names! Watch for them in the show. You can send more in a little while.', 'ridgeroad' ) : __( 'You already sent 3 names! Watch for them on the garage door. You can send more in a little while.', 'ridgeroad' ) ), 429 );
+	$most  = max( 1, min( 10, (int) apply_filters( 'ridgeroad_names_per_phone', 3 ) ) );
+	if ( ! $admin && $n >= $most ) {
+		$fail( 1 === $most
+			? __( 'You already sent your name! Watch for it in the show. You can send another in a little while.', 'ridgeroad' )
+			/* translators: %d: how many names one phone can send in an hour */
+			: sprintf( _n( 'You already sent %d name! Watch for it in the show. You can send more in a little while.', 'You already sent %d names! Watch for them in the show. You can send more in a little while.', $most, 'ridgeroad' ), $most ), 429 );
 	}
 	$dup = get_posts( array(
 		'post_type'   => 'rr_shoutout',
