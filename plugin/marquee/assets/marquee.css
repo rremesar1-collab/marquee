@@ -817,6 +817,8 @@
 .mq-skin:not(#mq-0) .rr-ff__body strong { color: #fff; }
 .mq-skin:not(#mq-0) .rr-grid--vote { grid-template-columns: 1.35fr 1fr; align-items: stretch; }
 .mq-skin:not(#mq-0) .rr-grid--vote > .rr-panel { display: flex; flex-direction: column; }
+.mq-skin:not(#mq-0) .rr-grid > * { min-width: 0; }
+.mq-skin:not(#mq-0) .rr-vlist__name b, .mq-skin:not(#mq-0) .rr-vlist__name small { overflow-wrap: anywhere; }
 .mq-skin:not(#mq-0) .rr-vlist { list-style: none; margin: 4px 0 0; padding: 0 4px 0 0; display: flex; flex-direction: column; gap: 6px; max-height: 520px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: rgba(247, 201, 90, .6) transparent; }
 .mq-skin:not(#mq-0) .rr-vlist__item { display: flex; align-items: center; gap: 10px; padding: 7px 8px 7px 10px; border-radius: 12px; background: rgba(0, 0, 0, .3); border: 1px solid rgba(255, 255, 255, .08); }
 .mq-skin:not(#mq-0) .rr-vlist__num { flex: none; width: 24px; font: 800 13px var(--f-body); font-family: inherit; color: #f0bdbd; text-align: right; }
