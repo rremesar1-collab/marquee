@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 extract( ridgeroad_home_ctx(), EXTR_SKIP ); // $status, $np, $wx, $opts, $b_title, $b_text, $b_mod, $np_text, $station, $forecast
 ?>
-<section id="status" class="rr-panel rr-panel--green rr-banner rr-banner--<?php echo esc_attr( $b_mod ); ?>" data-rr-banner data-mod="<?php echo esc_attr( $b_mod ); ?>">
+<section id="status" class="rr-panel rr-panel--green rr-banner rr-banner--<?php echo esc_attr( $b_mod ); ?>" data-rr-banner data-mod="<?php echo esc_attr( $b_mod ); ?>"<?php echo ridgeroad_mod( 'ok_hide' ) ? ' data-ok-hide' . ( 'ok' === $b_mod ? ' hidden' : '' ) : ''; ?>>
 	<span class="rr-banner__flake"><?php echo ridgeroad_cicon( 'snow' ); ?></span>
 	<span class="rr-banner__icon"><?php echo ridgeroad_cicon( 'cloud', 'rr-bi-cloud' ) . ridgeroad_cicon( 'star', 'rr-bi-star' ); ?></span>
 	<div class="rr-banner__copy">

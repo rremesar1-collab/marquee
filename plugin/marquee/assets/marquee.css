@@ -68,6 +68,7 @@
 	content: ""; position: absolute; left: 14px; right: 14px; top: -6px; height: 30px; pointer-events: none; opacity: .9;
 }
 .mq-skin:not(#mq-0) .rr-show, .mq-skin:not(#mq-0) .rr-weather, .mq-skin:not(#mq-0) .rr-donate, .mq-skin:not(#mq-0) .rr-social { padding-top: 32px; }
+.mq-skin:not(#mq-0) .rr-banner[hidden] { display: none !important; }
 .mq-skin:not(#mq-0) .rr-banner { display: flex; align-items: center; gap: 22px; padding: 22px 34px; margin-top: 12px; }
 .mq-skin:not(#mq-0) .rr-banner::after {
 	content: ""; position: absolute; left: 0; right: 0; top: -30px; height: 52px; pointer-events: none; opacity: .95;

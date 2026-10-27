@@ -43,6 +43,7 @@ function ridgeroad_defaults( $fresh = false ) {
 		'off_text'          => __( 'The show is resting for now. Check back for opening night!', 'ridgeroad' ),
 		// Countdown, playlist, directions.
 		'show_countdown'    => 1,
+		'ok_hide'           => 0,
 		'count_to'          => 'auto',          // countdown holiday: auto, christmas, halloween, custom
 		'count_name'        => '',
 		'count_date'        => '',
@@ -412,6 +413,7 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp ) {
 	$add( 'start_offset', 'rr_show', __( 'Minutes after sunset the show starts (only when starting at sunset)', 'ridgeroad' ), 'number', array( 'input_attrs' => array( 'min' => -30, 'max' => 120 ) ) );
 	$add( 'ok_title', 'rr_show', __( 'Banner title — show on', 'ridgeroad' ) );
 	$add( 'ok_text', 'rr_show', __( 'Banner text — show on', 'ridgeroad' ), 'textarea' );
+	$add( 'ok_hide', 'rr_show', __( 'Hide the “show on” banner', 'ridgeroad' ), 'checkbox', array( 'description' => __( 'The banner then only shows when you cancel a night (and in the off season).', 'ridgeroad' ) ) );
 	$add( 'cancel_title', 'rr_show', __( 'Banner title — canceled', 'ridgeroad' ), 'text', array( 'description' => __( 'Cancel the show from Show Control (Cancel tonight’s show). Its message replaces the text below when filled in.', 'ridgeroad' ) ) );
 	$add( 'cancel_text', 'rr_show', __( 'Banner text — canceled', 'ridgeroad' ), 'textarea' );
 	$add( 'off_title', 'rr_show', __( 'Banner title — off season', 'ridgeroad' ) );

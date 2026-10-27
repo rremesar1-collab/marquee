@@ -374,6 +374,15 @@ msgstr "Titre de la bannière — spectacle en cours"
 msgid "Banner text — show on"
 msgstr "Texte de la bannière — spectacle en cours"
 
+msgid "Hide the “show on” banner"
+msgstr "Masquer la bannière « spectacle confirmé »"
+
+msgid ""
+"The banner then only shows when you cancel a night (and in the off season)."
+msgstr ""
+"La bannière n’apparaît alors que lorsque vous annulez une soirée (et hors "
+"saison)."
+
 msgid "Banner title — canceled"
 msgstr "Titre de la bannière — annulé"
 

@@ -371,6 +371,14 @@ msgstr "Título del aviso — espectáculo encendido"
 msgid "Banner text — show on"
 msgstr "Texto del aviso — espectáculo encendido"
 
+msgid "Hide the “show on” banner"
+msgstr "Ocultar el aviso de “show confirmado”"
+
+msgid ""
+"The banner then only shows when you cancel a night (and in the off season)."
+msgstr ""
+"Así el aviso solo aparece cuando cancelas una noche (y fuera de temporada)."
+
 msgid "Banner title — canceled"
 msgstr "Título del aviso — cancelado"
 

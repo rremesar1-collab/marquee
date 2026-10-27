@@ -80,6 +80,7 @@
 				bn.classList.add('rr-banner--' + d.banner.mod);
 				bn.setAttribute('data-mod', d.banner.mod);
 			}
+			if (bn && bn.hasAttribute('data-ok-hide')) bn.hidden = d.banner.mod === 'ok'; // only when canceled or off season
 			set('banner-title', d.banner.title);
 			set('banner-text', d.banner.text);
 		}
