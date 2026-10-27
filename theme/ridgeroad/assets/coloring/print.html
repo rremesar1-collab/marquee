@@ -5,7 +5,10 @@
 <style>
 html, body { margin: 0; background: #fff; }
 .bar { font: 16px Arial, sans-serif; text-align: center; padding: 12px; background: #8a1219; color: #fff; }
-.bar button { font: bold 16px Arial, sans-serif; padding: 8px 18px; margin-left: 10px; border: 0; border-radius: 8px; background: #ffd45c; color: #3a1a00; cursor: pointer; }
+.bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px; }
+.bar span { flex-basis: 100%; }
+.bar button, .bar a { font: bold 16px Arial, sans-serif; padding: 10px 20px; border: 0; border-radius: 8px; background: #ffd45c; color: #3a1a00; cursor: pointer; text-decoration: none; }
+.bar a { background: #fff; color: #8a1219; }
 .sheet { position: relative; margin: 0 auto; container-type: inline-size; }
 .land .sheet { max-width: 10.5in; }
 .port .sheet { max-width: 7.6in; }
@@ -23,7 +26,7 @@ html, body { margin: 0; background: #fff; }
 }
 </style></head>
 <body>
-<div class="bar">Print this page and grab your crayons! <button type="button" onclick="window.print()">Print</button></div>
+<div class="bar"><span id="msg">Print this page and grab your crayons!</span> <a id="back" href="javascript:history.back()">&larr; <b id="backtxt">Back to Coloring Pages</b></a> <button type="button" id="print" onclick="window.print()">Print</button></div>
 <div class="sheet"><img id="pic" alt=""><div class="tag" id="tag"></div></div>
 <script>
 (function () {
@@ -38,6 +41,22 @@ html, body { margin: 0; background: #fff; }
 	var q = new URLSearchParams(location.search);
 	// only pictures from this website
 	var same = function (u) { try { return new URL(u, location.href).origin === location.origin; } catch (e) { return false; } };
+	// the visitor's language
+	var T = {
+		es: ['¡Imprime esta página y saca tus crayones!', 'Imprimir', 'Volver a los dibujos para colorear'],
+		fr: ['Imprimez cette page et sortez vos crayons !', 'Imprimer', 'Retour aux coloriages']
+	}[(q.get('hl') || '').slice(0, 2)];
+	if (T) {
+		document.documentElement.lang = q.get('hl').slice(0, 2);
+		document.getElementById('msg').textContent = T[0]; document.getElementById('print').textContent = T[1]; document.getElementById('backtxt').textContent = T[2];
+	}
+	// back to the coloring pages (the page it came from, or the address the website gave)
+	var back = document.getElementById('back'), b = q.get('b') || '';
+	back.addEventListener('click', function (e) {
+		e.preventDefault();
+		if (document.referrer && same(document.referrer) && history.length > 1) { history.back(); return; }
+		location.href = (b && same(b)) ? b : '/';
+	});
 	var name = (q.get('n') || '').slice(0, 60), logo = q.get('l') || '', custom = q.get('img') || '';
 	var key = PAGES[q.get('p')] ? q.get('p') : 'snowman', title, orient, src;
 	if (custom && same(custom)) {
@@ -57,8 +76,7 @@ html, body { margin: 0; background: #fff; }
 	}
 	var img = document.getElementById('pic');
 	img.alt = 'Coloring page: ' + title;
-	img.onload = function () { setTimeout(function () { window.print(); }, 400); };
-	img.src = src;
+	img.src = src; // printing starts when the visitor taps Print (they can go back instead)
 })();
 </script>
 </body></html>

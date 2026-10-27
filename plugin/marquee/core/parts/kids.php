@@ -148,7 +148,7 @@ $winners    = array_filter( $entries, function ( $e ) {
 			<ul class="rr-kc__cgrid">
 				<?php foreach ( $color_pgs as $pg ) : ?>
 					<li>
-						<a class="rr-kc__cpage" href="<?php echo esc_url( $pg['print'] ); ?>" target="_blank" rel="noopener" data-kc-stat="coloring">
+						<a class="rr-kc__cpage" href="<?php echo esc_url( $pg['print'] ); ?>" data-kc-stat="coloring">
 							<span class="rr-kc__cpic<?php echo $pg['port'] ? ' rr-kc__cpic--port' : ''; ?>"><img src="<?php echo esc_url( $pg['thumb'] ); ?>" alt="" loading="lazy" width="640" height="427"></span>
 							<span class="rr-kc__cname"><?php echo esc_html( $pg['title'] ); ?></span>
 							<span class="rr-kc__cprint"><?php echo ridgeroad_cicon( 'star' ); ?><?php esc_html_e( 'Print', 'ridgeroad' ); ?></span>

@@ -139,6 +139,11 @@ if ( ! function_exists( 'ridgeroad_coloring_pages' ) ) {
 			$logo  = get_theme_mod( 'custom_logo' ) ? wp_get_attachment_image_url( (int) get_theme_mod( 'custom_logo' ), 'medium_large' ) : '';
 			$extra = '&n=' . rawurlencode( get_bloginfo( 'name' ) ) . ( $logo ? '&l=' . rawurlencode( $logo ) : '' );
 		}
+		// the page's words in the visitor's language, and the way back to the coloring pages
+		$extra .= '&hl=' . rawurlencode( substr( determine_locale(), 0, 2 ) );
+		if ( function_exists( 'ridgeroad_kids_url' ) && ridgeroad_kids_url() ) {
+			$extra .= '&b=' . rawurlencode( ridgeroad_kids_url() . '#coloring' );
+		}
 		$out    = array();
 		$upload = function ( $id, $title ) use ( &$out, $dir, $extra ) {
 			$full = wp_get_attachment_image_url( $id, 'full' );

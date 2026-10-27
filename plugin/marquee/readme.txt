@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.12.8
+Stable tag: 0.12.9
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,9 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.12.9 =
+* Coloring pages: the print page now has a “Back to Coloring Pages” button, opens in the same tab, and waits for the Print button instead of opening the print window right away. Its words follow the visitor's language.
 
 = 0.12.8 =
 * Song voting on phones: a long song name at the top of the Leaderboard no longer pushes Pick Your Favorite and the Leaderboard past the right edge of the screen.
