@@ -4,7 +4,7 @@
  *   Classic             the original garland frame and night forest
  *   Christmas Village   sapphire and champagne gold, a lit village by the river
  *   Santa's North Pole  red and gold, Santa's workshop and sleigh
- * A look only changes pictures and colors; every section, setting and feature stays the same.
+ * A look only changes the picture behind the page; everything else is Classic.
  */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -33,7 +33,7 @@ function ridgeroad_look_img( $file ) {
 add_action( 'customize_register', function ( WP_Customize_Manager $wp ) {
 	$wp->add_section( 'rr_look', array(
 		'title'       => __( 'Look', 'ridgeroad' ),
-		'description' => __( 'Pick the style of your website. Only the pictures and colors change; your sections and settings stay the same.', 'ridgeroad' ),
+		'description' => __( 'Pick the picture behind your website. Everything else stays the same in every look: your sections, colors and settings.', 'ridgeroad' ),
 		'panel'       => $wp->get_panel( 'ridgeroad' ) ? 'ridgeroad' : '',
 		'priority'    => 1,
 	) );
@@ -102,14 +102,8 @@ add_action( 'wp_enqueue_scripts', function () {
 	}
 	$f = get_template_directory() . '/looks/looks.css';
 	wp_enqueue_style( 'ridgeroad-look', get_template_directory_uri() . '/looks/looks.css', array( 'ridgeroad' ), wp_get_theme( get_template() )->get( 'Version' ) . '.' . (int) @filemtime( $f ) );
-	// The look's picture behind the page, like Classic's forest (phones get a tall version when there is one).
-	$phone = file_exists( get_template_directory() . '/looks/' . ridgeroad_look() . '/scene-small.webp' ) ? 'scene-small.webp' : 'hero.webp';
-	wp_add_inline_style( 'ridgeroad-look', sprintf(
-		'body.rr-look--%1$s{--rr-scene:url(%2$s);}@media (max-width:860px){body.rr-look--%1$s{--rr-scene:url(%3$s);}}',
-		ridgeroad_look(),
-		esc_url( ridgeroad_look_img( 'hero.webp' ) ),
-		esc_url( ridgeroad_look_img( $phone ) )
-	) );
+	// The look's picture behind the page, in place of Classic's (your own Background photo replaces it too).
+	wp_add_inline_style( 'ridgeroad-look', sprintf( 'body.rr-look--%1$s{--rr-scene:url(%2$s);}', ridgeroad_look(), esc_url( ridgeroad_look_img( 'hero.webp' ) ) ) );
 }, 20 );
 
 /** The look's picture loads first (it's behind every page). */
@@ -117,7 +111,5 @@ add_action( 'wp_head', function () {
 	if ( 'classic' === ridgeroad_look() || ridgeroad_mod( 'bg_image' ) ) {
 		return;
 	}
-	$phone = file_exists( get_template_directory() . '/looks/' . ridgeroad_look() . '/scene-small.webp' ) ? 'scene-small.webp' : 'hero.webp';
-	printf( '<link rel="preload" as="image" href="%s" media="(min-width: 861px)" fetchpriority="high">' . "\n", esc_url( ridgeroad_look_img( 'hero.webp' ) ) );
-	printf( '<link rel="preload" as="image" href="%s" media="(max-width: 860px)" fetchpriority="high">' . "\n", esc_url( ridgeroad_look_img( $phone ) ) );
+	printf( '<link rel="preload" as="image" href="%s" fetchpriority="high">' . "\n", esc_url( ridgeroad_look_img( 'hero.webp' ) ) );
 }, 3 );

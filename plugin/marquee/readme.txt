@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.14.0
+Stable tag: 0.14.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,9 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.14.1 =
+* Marquee Festive 2.16.1: Christmas Village and Santa's North Pole are now exactly Classic with a different picture behind the page. Every box on every page has the same colored-bulb edge and snow on top, in all three looks, with no light strand covering the snow.
 
 = 0.14.0 =
 * New setting: Names each phone can send (1 to 5 an hour, 3 as before).

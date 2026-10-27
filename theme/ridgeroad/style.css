@@ -4,7 +4,7 @@ Theme URI: https://alateka.com/
 Author: Alateka Corporation
 Author URI: https://alateka.com/
 Description: The festive Christmas look for the Marquee light show plugin: garlands, bows, a night-sky scene and glowing show cards for your status, Now Playing, weather, Kids’ Corner and more. Needs the free Marquee plugin (it holds all the show features and settings).
-Version: 2.16.0
+Version: 2.16.1
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -1756,3 +1756,42 @@ html.rr-sheet-open { overflow: hidden; }
 .rr-rf__votes { flex: none; font-size: 12.5px; color: #ffd45c; }
 .rr-rf__go { flex: none; padding: 5px 12px; border-radius: 999px; background: linear-gradient(180deg, #ff2b3d, #c70d1e); font-weight: 800; font-size: 13px; }
 .rr-rf__empty { opacity: .8; }
+
+/* ---------- Every box looks the same, in all three looks: colored bulbs round the edge, the
+   garland along the top and snow on top (the home cards, the Fan Favorite box and the contest
+   prize box used to have a thin gold edge and no garland) ---------- */
+.rr-kids-teaser, .rr-ff, .rr-kc__prize { --bulbs-h: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2288%22%20height%3D%2212%22%3E%3Ccircle%20cx%3D%2211%22%20cy%3D%226%22%20r%3D%223.2%22%20fill%3D%22%23ff3b30%22/%3E%3Ccircle%20cx%3D%2211%22%20cy%3D%226%22%20r%3D%225.5%22%20fill%3D%22%23ff3b30%22%20opacity%3D%22.35%22/%3E%3Ccircle%20cx%3D%2233%22%20cy%3D%226%22%20r%3D%223.2%22%20fill%3D%22%23ffd23c%22/%3E%3Ccircle%20cx%3D%2233%22%20cy%3D%226%22%20r%3D%225.5%22%20fill%3D%22%23ffd23c%22%20opacity%3D%22.35%22/%3E%3Ccircle%20cx%3D%2255%22%20cy%3D%226%22%20r%3D%223.2%22%20fill%3D%22%233cff6a%22/%3E%3Ccircle%20cx%3D%2255%22%20cy%3D%226%22%20r%3D%225.5%22%20fill%3D%22%233cff6a%22%20opacity%3D%22.35%22/%3E%3Ccircle%20cx%3D%2277%22%20cy%3D%226%22%20r%3D%223.2%22%20fill%3D%22%234aa8ff%22/%3E%3Ccircle%20cx%3D%2277%22%20cy%3D%226%22%20r%3D%225.5%22%20fill%3D%22%234aa8ff%22%20opacity%3D%22.35%22/%3E%3C/svg%3E"); --bulbs-v: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2212%22%20height%3D%2288%22%3E%3Ccircle%20cx%3D%226%22%20cy%3D%2211%22%20r%3D%223.2%22%20fill%3D%22%23ff3b30%22/%3E%3Ccircle%20cx%3D%226%22%20cy%3D%2211%22%20r%3D%225.5%22%20fill%3D%22%23ff3b30%22%20opacity%3D%22.35%22/%3E%3Ccircle%20cx%3D%226%22%20cy%3D%2233%22%20r%3D%223.2%22%20fill%3D%22%23ffd23c%22/%3E%3Ccircle%20cx%3D%226%22%20cy%3D%2233%22%20r%3D%225.5%22%20fill%3D%22%23ffd23c%22%20opacity%3D%22.35%22/%3E%3Ccircle%20cx%3D%226%22%20cy%3D%2255%22%20r%3D%223.2%22%20fill%3D%22%233cff6a%22/%3E%3Ccircle%20cx%3D%226%22%20cy%3D%2255%22%20r%3D%225.5%22%20fill%3D%22%233cff6a%22%20opacity%3D%22.35%22/%3E%3Ccircle%20cx%3D%226%22%20cy%3D%2277%22%20r%3D%223.2%22%20fill%3D%22%234aa8ff%22/%3E%3Ccircle%20cx%3D%226%22%20cy%3D%2277%22%20r%3D%225.5%22%20fill%3D%22%234aa8ff%22%20opacity%3D%22.35%22/%3E%3C/svg%3E"); }
+.rr-kids-teaser, .rr-ff, .rr-kc__prize {
+	border: 7px solid transparent; border-radius: var(--radius); background-clip: padding-box;
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, .6), 0 0 22px rgba(255, 186, 72, .22), 0 14px 34px rgba(0, 0, 0, .55), inset 0 0 0 1px rgba(255, 230, 160, .14), inset 0 0 40px rgba(0, 0, 0, .35);
+	background:
+		radial-gradient(ellipse at 50% 0%, rgba(160, 10, 10, .45), transparent 65%) padding-box,
+		linear-gradient(180deg, #5a0303, #3a0101) padding-box,
+		var(--bulbs-h) 0 0 / 88px 7px repeat-x border-box, var(--bulbs-h) 0 100% / 88px 7px repeat-x border-box,
+		var(--bulbs-v) 0 0 / 7px 88px repeat-y border-box, var(--bulbs-v) 100% 0 / 7px 88px repeat-y border-box,
+		linear-gradient(#5c0505, #5c0505) border-box;
+}
+.rr-kids-teaser--songs {
+	background:
+		radial-gradient(ellipse at 30% 0%, rgba(40, 110, 220, .35), transparent 65%) padding-box,
+		linear-gradient(180deg, #02214d, #00122e) padding-box,
+		var(--bulbs-h) 0 0 / 88px 7px repeat-x border-box, var(--bulbs-h) 0 100% / 88px 7px repeat-x border-box,
+		var(--bulbs-v) 0 0 / 7px 88px repeat-y border-box, var(--bulbs-v) 100% 0 / 7px 88px repeat-y border-box,
+		linear-gradient(#0a1d44, #0a1d44) border-box;
+}
+.rr-ff.is-today {
+	background:
+		linear-gradient(90deg, #8a6000, #c88a00 50%, #8a6000) padding-box,
+		var(--bulbs-h) 0 0 / 88px 7px repeat-x border-box, var(--bulbs-h) 0 100% / 88px 7px repeat-x border-box,
+		var(--bulbs-v) 0 0 / 7px 88px repeat-y border-box, var(--bulbs-v) 100% 0 / 7px 88px repeat-y border-box,
+		linear-gradient(#5c3a00, #5c3a00) border-box;
+}
+.rr-kids-teaser:hover { box-shadow: 0 0 0 1px rgba(0, 0, 0, .6), 0 0 26px rgba(255, 200, 60, .5), 0 14px 34px rgba(0, 0, 0, .55); }
+.rr-panel:not(.rr-banner)::after, .rr-kids-teaser::after, .rr-ff::after, .rr-kc__prize::after {
+	content: ""; position: absolute; left: 14px; right: 14px; top: -6px; height: 30px; pointer-events: none; display: block;
+	background: url(assets/img/garland-v137.webp) center / auto 30px repeat-x; opacity: .9;
+}
+
+/* No garland strand across the top of the boxes: it covered the snow. Each box keeps its colored-bulb
+   edge and the snow on top. */
+.rr-panel::after, .rr-kids-teaser::after, .rr-ff::after, .rr-kc__prize::after, .rr-banner::after { content: none !important; display: none !important; }
