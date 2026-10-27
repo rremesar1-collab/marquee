@@ -264,6 +264,7 @@ function ridgeroad_icon_choices() {
 		'home'   => 'House',
 		'camera' => 'Camera',
 		'radio'  => 'Radio',
+		'music'  => 'Musical note',
 		'tree'   => 'Christmas tree',
 		'star'   => 'Star',
 		'heart'  => 'Heart',

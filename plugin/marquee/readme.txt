@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.11.1
+Stable tag: 0.11.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,9 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.11.2 =
+* Behind the Scenes and Before You Visit: a musical note is now one of the icons you can pick (Customize → Show Website).
 
 = 0.11.1 =
 * With a theme other than Marquee Festive, the Pick the Next Song, show video and Kids' Show Wall pop-ups could show black text with no background (when the theme or a page builder moves them out of the page). They now keep their own look wherever they end up.
