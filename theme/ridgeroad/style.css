@@ -4,7 +4,7 @@ Theme URI: https://alateka.com/
 Author: Alateka Corporation
 Author URI: https://alateka.com/
 Description: The festive Christmas look for the Marquee light show plugin: garlands, bows, a night-sky scene and glowing show cards for your status, Now Playing, weather, Kids’ Corner and more. Needs the free Marquee plugin (it holds all the show features and settings).
-Version: 2.14.1
+Version: 2.14.2
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -147,7 +147,6 @@ p:last-child { margin-bottom: 0; }
 .rr-logo-h { margin: 0; font: inherit; line-height: 0; }
 .rr-logo { display: inline-block; line-height: 0; }
 .rr-logo img { width: min(400px, 80vw); filter: drop-shadow(0 0 22px rgba(255, 170, 60, .3)) drop-shadow(0 6px 14px rgba(0, 0, 0, .55)); }
-.rr-hero--small .rr-logo img { width: min(300px, 70vw); }
 .rr-subtitle {
 	margin: -6px 0 0; font-family: var(--f-body); font-weight: 800; font-size: clamp(12px, 1.2vw, 15px);
 	letter-spacing: .06em; text-transform: uppercase; color: #fbe9bf; text-shadow: 0 1px 2px #000, 0 0 8px rgba(0, 0, 0, .9);
@@ -806,7 +805,6 @@ body.rr-scene .rr-scroll::-webkit-scrollbar-thumb { background: rgba(247, 201, 9
    down; wide logos never reach that and keep their size. */
 .rr-logo img { --rr-logo-w: min(470px, 86vw); width: var(--rr-logo-w); height: auto; max-height: calc(var(--rr-logo-w) * .55); object-fit: contain; }
 @media (min-width: 861px) { .rr-logo img { --rr-logo-w: clamp(300px, 24vw, 520px); } }
-.rr-hero--small .rr-logo img { --rr-logo-w: min(300px, 70vw); }
 
 /* ---------- Watch Live (YouTube) ---------- */
 .rr-live { margin-top: 30px; }
@@ -1653,7 +1651,6 @@ html.rr-sheet-open { overflow: hidden; }
 
 /* 2.8.1: text logo (Marquee, no logo uploaded) */
 .rr-logo__text { display: inline-block; max-width: min(760px, 90vw); padding: 10px 0 4px; font: 400 clamp(44px, 7vw, 92px)/1.05 var(--f-script); color: var(--gold); line-height: 1.05; text-shadow: 0 0 18px rgba(255, 190, 80, .55), 0 3px 10px rgba(0, 0, 0, .8); text-wrap: balance; }
-.rr-hero--small .rr-logo__text { font-size: clamp(36px, 5vw, 64px); }
 
 /* Home page: Kids' Show Wall */
 .rr-homewall { margin: 30px auto 0; max-width: 1100px; }

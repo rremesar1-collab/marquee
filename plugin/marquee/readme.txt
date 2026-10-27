@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.12.5
+Stable tag: 0.12.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,9 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.12.6 =
+* Marquee Festive 2.14.2: your logo (or show name) is the same size on every page, not smaller on the inner pages.
 
 = 0.12.5 =
 * Marquee Festive 2.14.1: square or tall logos no longer take up so much of the top of the page (they're kept to about half as tall as they are wide). Wide logos don't change.
