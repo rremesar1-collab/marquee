@@ -65,7 +65,7 @@ extract( ridgeroad_home_ctx(), EXTR_SKIP ); // $status, $np, $wx, $opts, $b_titl
 				<?php if ( $rf_prev ) : ?><em class="rr-rfpick__preview"><?php esc_html_e( 'Only you can see this right now (you’re logged in). Visitors see it while the show is running.', 'ridgeroad' ); ?></em><?php endif; ?>
 			</div>
 			<?php if ( $rf_sub ) : ?>
-			<dialog class="rr-vmodal rr-rf" data-rr-rfdlg aria-labelledby="rr-rf-h">
+			<dialog class="rr-vmodal rr-rf<?php echo ( function_exists( 'marquee_festive' ) && ! marquee_festive() ) ? ' mq-skin' : ''; /* styled even if moved out of the page */ ?>" data-rr-rfdlg aria-labelledby="rr-rf-h">
 				<div class="rr-vmodal__box rr-rf__box">
 					<button type="button" class="rr-vmodal__x" data-rf-close aria-label="<?php esc_attr_e( 'Close', 'ridgeroad' ); ?>">&times;</button>
 					<h3 id="rr-rf-h" class="rr-rf__h"><?php echo ridgeroad_cicon( 'music' ); ?><?php esc_html_e( 'Pick the Next Song', 'ridgeroad' ); ?></h3>

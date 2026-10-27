@@ -865,25 +865,25 @@
 .mq-skin:not(#mq-0) .rr-seq__info { display: block; padding: 10px 14px 12px; }
 .mq-skin:not(#mq-0) .rr-seq__info b { display: block; font: 700 17px "Libre Baskerville", Georgia, serif; font-family: inherit; color: #fbf290; }
 .mq-skin:not(#mq-0) .rr-seq__info small { display: block; margin-top: 2px; font-size: 13px; color: #cfdcf5; }
-.mq-skin:not(#mq-0) .rr-vmodal { width: min(1100px, 94vw); padding: 0; border: 0; background: transparent; }
-.mq-skin:not(#mq-0) .rr-vmodal::backdrop { background: rgba(0, 0, 0, .85); }
+.mq-skin:not(#mq-0) .rr-vmodal, .rr-vmodal.mq-skin:not(#mq-0) { width: min(1100px, 94vw); padding: 0; border: 0; background: transparent; }
+.mq-skin:not(#mq-0) .rr-vmodal::backdrop, .rr-vmodal.mq-skin:not(#mq-0)::backdrop { background: rgba(0, 0, 0, .85); }
 .mq-skin:not(#mq-0) .rr-vmodal__box { position: relative; padding: 10px; border-radius: 14px; background: #050a1a; border: 2px solid #ffd45c; }
-.mq-skin:not(#mq-0) .rr-vmodal video { display: block; width: 100%; max-height: 78vh; border-radius: 8px; background: #000; }
+.mq-skin:not(#mq-0) .rr-vmodal video, .rr-vmodal.mq-skin:not(#mq-0) video { display: block; width: 100%; max-height: 78vh; border-radius: 8px; background: #000; }
 .mq-skin:not(#mq-0) .rr-vmodal__yt { position: relative; width: 100%; aspect-ratio: 16 / 9; max-height: 78vh; border-radius: 8px; overflow: hidden; background: #000; }
-.mq-skin:not(#mq-0) .rr-vmodal__yt[hidden], .mq-skin:not(#mq-0) .rr-vmodal video[hidden] { display: none; }
+.mq-skin:not(#mq-0) .rr-vmodal__yt[hidden], .mq-skin:not(#mq-0) .rr-vmodal video[hidden], .rr-vmodal.mq-skin:not(#mq-0) video[hidden] { display: none; }
 .mq-skin:not(#mq-0) .rr-vmodal__yt iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .mq-skin:not(#mq-0) .rr-vmodal__title { margin: 8px 4px 2px; font: 700 18px "Libre Baskerville", Georgia, serif; font-family: inherit; color: #fbf290; }
 .mq-skin:not(#mq-0) .rr-vmodal__x { position: absolute; right: -12px; top: -14px; z-index: 2; width: 40px; height: 40px; border-radius: 50%; border: 2px solid #ffd45c; background: #7a0606; color: #fff; font-size: 26px; line-height: 1; cursor: pointer; }
-.mq-skin:not(#mq-0) .rr-showmodal { width: min(1200px, 96vw); }
+.mq-skin:not(#mq-0) .rr-showmodal, .rr-showmodal.mq-skin:not(#mq-0) { width: min(1200px, 96vw); }
 .mq-skin:not(#mq-0) .rr-showmodal__head { margin: 2px 40px 10px 4px; font-size: 15px; color: #cfdcf5; }
 .mq-skin:not(#mq-0) .rr-showmodal__head strong { font: 700 20px "Libre Baskerville", Georgia, serif; font-family: inherit; color: #fbf290; margin-right: 6px; }
-.mq-skin:not(#mq-0) .rr-showmodal .rr-lab__stage { border-radius: 10px; }
+.mq-skin:not(#mq-0) .rr-showmodal .rr-lab__stage, .rr-showmodal.mq-skin:not(#mq-0) .rr-lab__stage { border-radius: 10px; }
 .mq-skin:not(#mq-0) .rr-showmodal__btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 12px; }
 .mq-skin:not(#mq-0) .rr-showmodal__btns .rr-btn { cursor: pointer; min-width: 130px; font-family: inherit; }
 .mq-skin:not(#mq-0) .rr-lab.is-watching .rr-lab__how { display: none; }
 .mq-skin:not(#mq-0) .rr-lab__stage.is-ready .rr-lab__loading { display: none; }
-.mq-skin:not(#mq-0) .rr-showmodal .rr-vmodal__x { right: 8px; top: 6px; width: 34px; height: 34px; font-size: 22px; }
-.mq-skin:not(#mq-0) .rr-showmodal .rr-lab__full { display: none; }
+.mq-skin:not(#mq-0) .rr-showmodal .rr-vmodal__x, .rr-showmodal.mq-skin:not(#mq-0) .rr-vmodal__x { right: 8px; top: 6px; width: 34px; height: 34px; font-size: 22px; }
+.mq-skin:not(#mq-0) .rr-showmodal .rr-lab__full, .rr-showmodal.mq-skin:not(#mq-0) .rr-lab__full { display: none; }
 .mq-skin:not(#mq-0) .rr-vmodal__x { right: 8px; top: 6px; width: 34px; height: 34px; font-size: 22px; }
 .mq-skin:not(#mq-0) .rr-vmodal__box { padding-top: 46px; }
 .mq-skin:not(#mq-0) .rr-explore { max-width: 1100px; margin: 30px auto 0; display: grid; gap: 14px; }
@@ -1115,8 +1115,8 @@
 .mq-skin:not(#mq-0) .rr-ll__watching .rr-btn { cursor: pointer; padding: 7px 14px; }
 .mq-skin:not(#mq-0) .rr-ll.is-watching .rr-ll__watching { display: flex; }
 .mq-skin:not(#mq-0) .rr-ll.is-watching .rr-ll__wiz, .mq-skin:not(#mq-0) .rr-ll.is-watching .rr-ll__bk, .mq-skin:not(#mq-0) .rr-ll.is-watching .rr-ll__acts, .mq-skin:not(#mq-0) .rr-ll.is-watching .rr-ll__hint, .mq-skin:not(#mq-0) .rr-ll.is-watching .rr-ll__picked { display: none !important; }
-.mq-skin:not(#mq-0) .rr-showmodal .rr-ll__stage { border-radius: 10px; }
-.mq-skin:not(#mq-0) .rr-showmodal .rr-ll__scroll canvas { min-width: 0; }
+.mq-skin:not(#mq-0) .rr-showmodal .rr-ll__stage, .rr-showmodal.mq-skin:not(#mq-0) .rr-ll__stage { border-radius: 10px; }
+.mq-skin:not(#mq-0) .rr-showmodal .rr-ll__scroll canvas, .rr-showmodal.mq-skin:not(#mq-0) .rr-ll__scroll canvas { min-width: 0; }
 
 @container mq (max-width: 900px) {
 	.mq-skin:not(#mq-0) .rr-kc__doors { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
@@ -1221,6 +1221,8 @@ html.rr-sheet-open { overflow: hidden; }
 	text-align: left;
 	container: mq / inline-size;
 }
+/* pop-up windows carry .mq-skin themselves (so they're styled even if a theme moves them out of the page): keep them windows */
+dialog.mq-skin:not(#mq-0) { display: revert; container: none; }
 .mq-skin:not(#mq-0) .rr-grid > * { min-width: 0; }
 .mq-skin:not(#mq-0).mq-block { margin-block: 28px; }
 .mq-skin:not(#mq-0).mq-block:first-child { margin-top: 0; }
@@ -1357,7 +1359,7 @@ html.rr-sheet-open { overflow: hidden; }
 .mq-skin:not(#mq-0) .rr-rfpick__preview { flex-basis: 100%; font-size: 12.5px; font-style: normal; color: #ffd45c; }
 
 /* Pick the Next Song (Remote Falcon) pop-up */
-.mq-skin:not(#mq-0) .rr-rf { width: min(560px, 94vw); }
+.mq-skin:not(#mq-0) .rr-rf, .rr-rf.mq-skin:not(#mq-0) { width: min(560px, 94vw); }
 .mq-skin:not(#mq-0) .rr-rf__box { padding: 18px 16px 14px; color: #fff; max-height: 86vh; overflow-y: auto; }
 .mq-skin:not(#mq-0) .rr-rf__h { display: flex; align-items: center; gap: 8px; margin: 0 30px 8px 0; font-size: 22px; color: #fde866; }
 .mq-skin:not(#mq-0) .rr-rf__h .rr-cicon { width: 28px; height: 28px; }

@@ -36,7 +36,7 @@ $open    = ! empty( $args['open'] );
 	<?php endif; ?>
 </section>
 
-<dialog class="rr-vmodal rr-showmodal" data-rr-showmodal aria-label="<?php esc_attr_e( 'Light show player', 'ridgeroad' ); ?>">
+<dialog class="rr-vmodal rr-showmodal<?php echo ( function_exists( 'marquee_festive' ) && ! marquee_festive() ) ? ' mq-skin' : ''; /* styled even if moved out of the page */ ?>" data-rr-showmodal aria-label="<?php esc_attr_e( 'Light show player', 'ridgeroad' ); ?>">
 	<div class="rr-vmodal__box">
 		<button type="button" class="rr-vmodal__x" data-rr-sm-close aria-label="<?php esc_attr_e( 'Close', 'ridgeroad' ); ?>">&times;</button>
 		<p class="rr-showmodal__head"><strong data-rr-sm-title></strong> <span data-rr-sm-by></span></p>

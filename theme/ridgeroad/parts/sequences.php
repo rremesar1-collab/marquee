@@ -43,7 +43,7 @@ if ( ! $vids ) {
 			?>
 		</button></p>
 	<?php endif; ?>
-	<dialog class="rr-vmodal" data-rr-vmodal aria-label="<?php esc_attr_e( 'Sequence video', 'ridgeroad' ); ?>">
+	<dialog class="rr-vmodal<?php echo ( function_exists( 'marquee_festive' ) && ! marquee_festive() ) ? ' mq-skin' : ''; /* styled even if moved out of the page */ ?>" data-rr-vmodal aria-label="<?php esc_attr_e( 'Sequence video', 'ridgeroad' ); ?>">
 		<div class="rr-vmodal__box">
 			<button type="button" class="rr-vmodal__x" data-rr-vclose aria-label="<?php esc_attr_e( 'Close', 'ridgeroad' ); ?>">&times;</button>
 			<video controls playsinline preload="auto" data-rr-vplayer></video>
