@@ -4,7 +4,7 @@ Theme URI: https://alateka.com/
 Author: Alateka Corporation
 Author URI: https://alateka.com/
 Description: The festive Christmas look for the Marquee light show plugin: garlands, bows, a night-sky scene and glowing show cards for your status, Now Playing, weather, Kids’ Corner and more. Needs the free Marquee plugin (it holds all the show features and settings).
-Version: 2.15.2
+Version: 2.15.3
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -1358,6 +1358,17 @@ img.emoji, img.wp-smiley { display: inline !important; width: 1em !important; he
 	border-style: solid; border-width: 0 38px 0 46px; border-image: url(assets/img/snowcap.webp) 0 98 0 120 fill / 0 38px 0 46px round;
 	filter: drop-shadow(0 3px 3px rgba(0, 0, 0, .45));
 }
+
+/* Snow on top of the home cards and the Fan Favorite box too, like every other box */
+.rr-kids-teaser, .rr-ff { position: relative; padding-top: 34px; }
+.rr-kids-teaser::before, .rr-ff::before {
+	content: ""; position: absolute; left: -8px; right: -8px; top: -26px; height: 64px; pointer-events: none;
+	border-style: solid; border-width: 0 38px 0 46px; border-image: url(assets/img/snowcap.webp) 0 98 0 120 fill / 0 38px 0 46px round;
+	filter: drop-shadow(0 3px 3px rgba(0, 0, 0, .45));
+}
+.rr-ff { margin-top: 30px; }
+.rr-explore--two .rr-kids-teaser { padding: 34px 18px 16px; }
+.rr-explore { gap: 34px 22px; } /* room for the snow on each card */
 
 /* ---------- Kids' Corner: doors ---------- */
 .rr-kc { margin-top: 30px; display: grid; gap: 26px; }

@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.13.2
+Stable tag: 0.13.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,9 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.13.3 =
+* Marquee Festive 2.15.3: every box now has snow on top, including the Show Videos & Voting and Kids' Corner cards, the Fan Favorite Friday box and the donation box in Christmas Village and Santa's North Pole.
 
 = 0.13.2 =
 * Kids' picture maker: the picture can now be moved sideways and zoomed out, so a face near the edge of a photo can be centered in the circle.
