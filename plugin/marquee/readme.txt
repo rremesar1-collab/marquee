@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.13.1
+Stable tag: 0.13.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,9 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.13.2 =
+* Kids' picture maker: the picture can now be moved sideways and zoomed out, so a face near the edge of a photo can be centered in the circle.
 
 = 0.13.1 =
 * Marquee Festive 2.15.1: in Christmas Village and Santa's North Pole, Your Name in Lights no longer has a second picture (a dark box with another moon and lights down the sides) behind it.

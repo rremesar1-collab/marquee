@@ -339,13 +339,21 @@
 		/* the stage: the photo under a dark cover with a hole for the face */
 		var S = stage.width;
 		var cover = function () { return Math.max(S / img.naturalWidth, S / img.naturalHeight); };
-		var clamp = function () {
+		// smallest zoom: the picture still fills the circle (so a face near the edge can still be centred)
+		var least = function () { return 2 * RING.r * S / Math.min(img.naturalWidth, img.naturalHeight); };
+		var clamp = function () {                         // the picture always covers the circle, and can go past the frame
 			var w = img.naturalWidth * view.s, h = img.naturalHeight * view.s;
-			view.x = Math.min(0, Math.max(S - w, view.x)); view.y = Math.min(0, Math.max(S - h, view.y));
+			var l = (RING.x - RING.r) * S, r = (RING.x + RING.r) * S, tp = (RING.y - RING.r) * S, b = (RING.y + RING.r) * S;
+			view.x = Math.min(l, Math.max(r - w, view.x)); view.y = Math.min(tp, Math.max(b - h, view.y));
+		};
+		var fill = function (x, k) {                      // what shows past the edge of the picture: a soft, blurred copy of it
+			var c = cover() * k, w = img.naturalWidth * c, h = img.naturalHeight * c;
+			x.save(); x.filter = 'blur(' + Math.round(12 * k) + 'px) brightness(.8)';
+			x.drawImage(img, (S * k - w) / 2, (S * k - h) / 2, w, h); x.restore();
 		};
 		var paint = function () {
 			var x = stage.getContext('2d');
-			x.clearRect(0, 0, S, S);
+			x.fillStyle = '#000'; x.fillRect(0, 0, S, S); fill(x, 1);
 			x.drawImage(img, view.x, view.y, img.naturalWidth * view.s, img.naturalHeight * view.s);
 			x.save(); x.beginPath(); x.rect(0, 0, S, S); x.arc(RING.x * S, RING.y * S, RING.r * S, 0, Math.PI * 2, true);
 			x.fillStyle = 'rgba(5,10,30,.55)'; x.fill('evenodd'); x.restore();
@@ -353,7 +361,7 @@
 			x.setLineDash([S / 40, S / 60]); x.lineWidth = S / 120; x.strokeStyle = '#fff'; x.stroke(); x.setLineDash([]);
 		};
 		var zoomTo = function (s, cx, cy) {
-			var base = cover(), ns = Math.max(base, Math.min(base * 4, s));
+			var base = cover(), ns = Math.max(least(), Math.min(base * 4, s));
 			cx = cx === undefined ? RING.x * S : cx; cy = cy === undefined ? RING.y * S : cy;
 			view.x = cx - (cx - view.x) * ns / view.s; view.y = cy - (cy - view.y) * ns / view.s; view.s = ns;
 			clamp(); zoom.value = String(view.s / base); paint();
@@ -384,9 +392,10 @@
 		box.querySelectorAll('input[name=photo_style]').forEach(function (r) { r.addEventListener('change', render); });
 
 		/* the square the kid framed, 512 pixels */
-		var crop = function () {
+		var crop = function (soft) {
 			var c = document.createElement('canvas'); c.width = c.height = PIC_CROP;
 			var k = PIC_CROP / S, x = c.getContext('2d');
+			x.fillStyle = '#000'; x.fillRect(0, 0, PIC_CROP, PIC_CROP); if (soft) { fill(x, k); }
 			x.drawImage(img, view.x * k, view.y * k, img.naturalWidth * view.s * k, img.naturalHeight * view.s * k);
 			return c;
 		};
@@ -394,11 +403,15 @@
 		/* make the picture: cut out the kid, cartoon, then the festive scene */
 		function render() {
 			if (!img) { return; }
-			var job = ++busy, st = style(), c = crop();
+			var job = ++busy, st = style(), c = crop(st === 'photo');
 			kindIn.value = st === 'photo' ? 'photo' : 'cartoon';
 			var key = [view.s.toFixed(3), Math.round(view.x), Math.round(view.y)].join(',');
 			var finish = function (mask) {
 				if (job !== busy) { return; }
+				if (mask) {                                    // nothing from past the edge of the photo
+					var k2 = PIC_CROP / S, x0 = view.x * k2, y0 = view.y * k2, x1 = x0 + img.naturalWidth * view.s * k2, y1 = y0 + img.naturalHeight * view.s * k2;
+					for (var my = 0; my < PIC_CROP; my++) { for (var mx = 0; mx < PIC_CROP; mx++) { if (mx < x0 || mx >= x1 || my < y0 || my >= y1) { mask[my * PIC_CROP + mx] = 0; } } }
+				}
 				if (st !== 'photo') { cut = mask; cutKey = key; }
 				var o = compose(c, mask, st);
 				out.getContext('2d').drawImage(o, 0, 0, out.width, out.height);
@@ -439,7 +452,7 @@
 			im.onload = function () {
 				img = im; cut = null;
 				view.s = cover(); view.x = (S - im.naturalWidth * view.s) / 2; view.y = (S - im.naturalHeight * view.s) / 2;
-				zoom.value = '1'; paint();
+				zoom.min = String(Math.min(1, least() / cover()).toFixed(2)); zoom.value = '1'; paint();
 				edit.hidden = false; clr.hidden = false; okWrap.hidden = false;
 				take.textContent = t('Use a different picture');
 				render();
