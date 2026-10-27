@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'RIDGEROAD_VERSION' ) ) {
-	define( 'RIDGEROAD_VERSION', '2.13.2' );
+	define( 'RIDGEROAD_VERSION', '2.14.0' );
 }
 // Show location: from Marquee → Settings (0,0 until the Marquee plugin is set up).
 $rr_mq = function_exists( 'marquee_get' ) ? marquee_get() : array();
@@ -108,7 +108,7 @@ add_action( 'wp_enqueue_scripts', function () {
 
 	$bg = ridgeroad_mod( 'bg_image' );
 	if ( $bg ) {
-		wp_add_inline_style( 'ridgeroad', 'body.rr{--rr-bg:url(' . esc_url_raw( $bg ) . ');}' );
+		wp_add_inline_style( 'ridgeroad', 'body.rr{--rr-bg:url(' . esc_url_raw( $bg ) . ');}body.rr.rr-scene::before{background-size:cover;}' ); // your own photo, on every look and screen size, never stretched
 	}
 
 	if ( ! defined( 'MARQUEE_CORE' ) ) {

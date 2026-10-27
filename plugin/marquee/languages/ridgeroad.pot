@@ -263,7 +263,7 @@ msgid "Christmas Eve is here!"
 msgstr ""
 
 #: plugin/marquee/core/customizer.php:203 plugin/marquee/core/i18n.php:35
-#: theme/ridgeroad/looks/looks.php:133
+#: theme/ridgeroad/inc/customizer.php:203
 msgid "Merry Christmas!"
 msgstr ""
 
@@ -436,7 +436,8 @@ msgstr ""
 #: plugin/marquee/core/customizer.php:399
 #: theme/ridgeroad/inc/customizer.php:399
 msgid ""
-"Replaces the built-in night forest. A wide night photo works best (2400px+)."
+"Replaces the picture behind your website, with any look. A wide night photo "
+"works best (2400px+)."
 msgstr ""
 
 #: plugin/marquee/core/customizer.php:402
@@ -3540,7 +3541,7 @@ msgid "Your Name in Lights!"
 msgstr ""
 
 #: plugin/marquee/core/parts/kids-names.php:13
-#: theme/ridgeroad/looks/looks.php:134 theme/ridgeroad/parts/kids-names.php:13
+#: theme/ridgeroad/parts/kids-names.php:13
 msgid "Type your first name and watch for it in our light show between songs!"
 msgstr ""
 
@@ -4645,19 +4646,6 @@ msgstr ""
 msgid ""
 "Pick the style of your website. Only the pictures and colors change; your "
 "sections and settings stay the same."
-msgstr ""
-
-#: theme/ridgeroad/looks/looks.php:134
-msgid ""
-"Send your name to the show during show hours and watch for it between songs!"
-msgstr ""
-
-#: theme/ridgeroad/looks/looks.php:135
-msgid "Put my name in lights"
-msgstr ""
-
-#: theme/ridgeroad/looks/looks.php:135
-msgid "See how it works"
 msgstr ""
 
 #: theme/ridgeroad/index.php:13

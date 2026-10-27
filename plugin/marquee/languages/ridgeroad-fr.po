@@ -318,10 +318,11 @@ msgid "Background photo (optional)"
 msgstr "Photo d’arrière-plan (facultatif)"
 
 msgid ""
-"Replaces the built-in night forest. A wide night photo works best (2400px+)."
+"Replaces the picture behind your website, with any look. A wide night photo "
+"works best (2400px+)."
 msgstr ""
-"Remplace la forêt nocturne intégrée. Une photo de nuit large fonctionne le "
-"mieux (2400px+)."
+"Remplace l’image derrière votre site, avec n’importe quel style. Une photo "
+"de nuit large fonctionne le mieux (2400 px ou plus)."
 
 msgid "Radio frequency"
 msgstr "Fréquence radio"
@@ -3577,18 +3578,6 @@ msgid ""
 msgstr ""
 "Choisissez le style de votre site web. Seules les images et les couleurs "
 "changent ; vos sections et réglages restent les mêmes."
-
-msgid ""
-"Send your name to the show during show hours and watch for it between songs!"
-msgstr ""
-"Envoyez votre nom au spectacle pendant les horaires du spectacle et guettez-"
-"le entre les chansons !"
-
-msgid "Put my name in lights"
-msgstr "Mettre mon nom en lumières"
-
-msgid "See how it works"
-msgstr "Voir comment ça marche"
 
 msgid "Search: %s"
 msgstr "Recherche : %s"

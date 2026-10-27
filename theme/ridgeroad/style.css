@@ -4,7 +4,7 @@ Theme URI: https://alateka.com/
 Author: Alateka Corporation
 Author URI: https://alateka.com/
 Description: The festive Christmas look for the Marquee light show plugin: garlands, bows, a night-sky scene and glowing show cards for your status, Now Playing, weather, Kids’ Corner and more. Needs the free Marquee plugin (it holds all the show features and settings).
-Version: 2.13.2
+Version: 2.14.0
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -185,7 +185,7 @@ p:last-child { margin-bottom: 0; }
 /* Desktop: ONE fixed picture (garland frame + forest) fills the window. The menu, logo and
    tagline sit on it and never move; only the boxes scroll, inside the area below the tagline.
    Turned on by main.js (it measures the header height). */
-body.rr-scene::before { background: var(--rr-scene) center top / cover no-repeat, #0e1a3e; }
+body.rr-scene::before { background: var(--rr-bg, var(--rr-scene)) center top / cover no-repeat, #0e1a3e; }
 /* Windows taller than the picture's shape: stretch slightly instead of cutting off the side garlands */
 @media (max-aspect-ratio: 8/5) { body.rr-scene::before { background-size: 100% 100%; } }
 body.rr-scene::after, body.rr-scene .rr-side, body.rr-scene .rr-frame .rr-garland--top, body.rr-scene .rr-frame .rr-bow { display: none; }
@@ -531,7 +531,7 @@ body.rr-scene .rr-scroll::-webkit-scrollbar-thumb { background: rgba(247, 201, 9
 	.rr-radar { min-height: 0; aspect-ratio: 600 / 420; flex: none; }
 }
 @media (max-width: 860px) {
-	body.rr::before { background: var(--rr-scene) center top / cover no-repeat, #0e1a3e; }
+	body.rr::before { background: var(--rr-bg, var(--rr-scene)) center top / cover no-repeat, #0e1a3e; }
 	body.rr::after { display: none; }
 	.rr-frame .rr-garland--top, .rr-frame .rr-bow { display: none; }
 	.rr-header { background: none; }

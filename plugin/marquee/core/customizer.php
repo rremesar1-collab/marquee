@@ -396,7 +396,7 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp ) {
 	$add( 'snow_amount', 'rr_header', __( 'Falling snow', 'ridgeroad' ), 'select', array( 'choices' => array( 'off' => __( 'Off', 'ridgeroad' ), 'light' => __( 'Light flurries', 'ridgeroad' ), 'medium' => __( 'Gentle snowfall', 'ridgeroad' ), 'heavy' => __( 'Snowstorm', 'ridgeroad' ) ) ) );
 	$add( 'snow_size', 'rr_header', __( 'Snowflake size', 'ridgeroad' ), 'select', array( 'choices' => array( 'small' => __( 'Small', 'ridgeroad' ), 'medium' => __( 'Medium', 'ridgeroad' ), 'large' => __( 'Large', 'ridgeroad' ) ) ) );
 	$add( 'snow_real', 'rr_header', __( 'Snow harder when it is really snowing at the show', 'ridgeroad' ), 'checkbox' );
-	$image( 'bg_image', 'rr_header', __( 'Background photo (optional)', 'ridgeroad' ), __( 'Replaces the built-in night forest. A wide night photo works best (2400px+).', 'ridgeroad' ) );
+	$image( 'bg_image', 'rr_header', __( 'Background photo (optional)', 'ridgeroad' ), __( 'Replaces the picture behind your website, with any look. A wide night photo works best (2400px+).', 'ridgeroad' ) );
 
 	// Show.
 	$add( 'radio', 'rr_show', __( 'Radio frequency', 'ridgeroad' ) );

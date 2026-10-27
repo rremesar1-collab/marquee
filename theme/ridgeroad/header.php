@@ -43,11 +43,6 @@
 		?>
 	</nav>
 
-	<?php if ( 'classic' !== $rr_look && is_front_page() ) : ?>
-	<div class="rr-hero rr-hero--scene">
-		<?php ridgeroad_look_hero(); ?>
-	</div>
-	<?php else : ?>
 	<div class="rr-hero<?php echo is_front_page() ? '' : ' rr-hero--small'; ?>">
 		<?php if ( is_front_page() ) : ?><h1 class="rr-logo-h"><?php endif; // the logo (its alt text, the show name) is the home page's main heading for Google ?>
 		<a class="rr-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
@@ -82,7 +77,6 @@
 		<?php endif; ?>
 		</div>
 	</div>
-	<?php endif; ?>
 </header>
 <div class="rr-scroll">
 <main id="main" class="rr-main">

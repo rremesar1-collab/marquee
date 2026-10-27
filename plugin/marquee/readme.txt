@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.12.3
+Stable tag: 0.12.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,9 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.12.4 =
+* Marquee Festive 2.14.0: Christmas Village and Santa's North Pole now work exactly like Classic (one picture behind the whole page, the same header) on computers and phones. Your own Background photo (Customize → Header) now works with every look.
 
 = 0.12.3 =
 * Turning the language button on or off now clears your page cache (WP Rocket, LiteSpeed, W3 Total Cache, WP Super Cache, SiteGround), so cached pages don't keep showing the old button.
