@@ -4,7 +4,7 @@ Theme URI: https://alateka.com/
 Author: Alateka Corporation
 Author URI: https://alateka.com/
 Description: The festive Christmas look for the Marquee light show plugin: garlands, bows, a night-sky scene and glowing show cards for your status, Now Playing, weather, Kids’ Corner and more. Needs the free Marquee plugin (it holds all the show features and settings).
-Version: 2.16.1
+Version: 2.16.3
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -1795,3 +1795,20 @@ html.rr-sheet-open { overflow: hidden; }
 /* No garland strand across the top of the boxes: it covered the snow. Each box keeps its colored-bulb
    edge and the snow on top. */
 .rr-panel::after, .rr-kids-teaser::after, .rr-ff::after, .rr-kc__prize::after, .rr-banner::after { content: none !important; display: none !important; }
+
+/* ---------- Even spacing between boxes, on every page and screen size ----------
+   Each box leaves room above it for its snow (26px), and every gap between boxes, or between a
+   section title and its box, is the same 12px of clear space. */
+.rr-panel, .rr-kids-teaser, .rr-ff, .rr-kc__prize { margin-top: 26px; }
+.rr-grid, .rr-explore, .rr-statgrid { row-gap: 12px; }
+.rr-explore, #support, .rr-grid--support { margin-top: 12px; }
+.rr-explore .rr-kids-teaser { margin-top: 26px; }
+.rr-ff { margin-bottom: 0; }
+.rr-ribbon { margin-bottom: 12px; }
+.rr-ff { margin-bottom: 12px; }
+.rr-content + .rr-content { margin-top: 38px; }
+/* every section title sits the same distance below the box above it */
+.rr-visit, .rr-stats-sec, .rr-guestbook { margin-top: 28px; }
+.rr-gb-intro { margin-top: 0; margin-bottom: 12px; }
+.rr-stats-sec__text { margin-top: 0; margin-bottom: 12px; }
+.rr-kc, .rr-kc__home, .rr-kc__act { gap: 12px; }
