@@ -44,6 +44,21 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp ) {
 			return isset( ridgeroad_looks()[ $v ] ) ? $v : 'classic';
 		},
 	) );
+	$wp->add_setting( 'box_colors', array(
+		'default'           => 'classic',
+		'transport'         => 'refresh',
+		'sanitize_callback' => function ( $v ) {
+			return isset( ridgeroad_box_colors()[ $v ] ) ? $v : 'classic';
+		},
+	) );
+	$wp->add_control( 'box_colors', array(
+		'label'       => __( 'Box colors', 'ridgeroad' ),
+		'description' => __( 'The color of the boxes on every page, with any look. Only the colors change.', 'ridgeroad' ),
+		'section'     => 'rr_look',
+		'type'        => 'radio',
+		'choices'     => ridgeroad_box_colors(),
+		'priority'    => 20,
+	) );
 	$wp->add_control( new Ridgeroad_Look_Control( $wp, 'look', array(
 		'label'   => __( 'Look', 'ridgeroad' ),
 		'section' => 'rr_look',
@@ -92,7 +107,21 @@ add_action( 'customize_controls_print_styles', function () {
 		. '</style>';
 } );
 
+/** Box colors: Classic's mix, or every box in one color. */
+function ridgeroad_box_colors() {
+	return array(
+		'classic' => __( 'Classic mix (red, green and blue)', 'ridgeroad' ),
+		'red'     => __( 'All red', 'ridgeroad' ),
+		'green'   => __( 'All green', 'ridgeroad' ),
+		'blue'    => __( 'All blue', 'ridgeroad' ),
+	);
+}
+
 add_filter( 'body_class', function ( $classes ) {
+	$bc = (string) get_theme_mod( 'box_colors', 'classic' );
+	if ( 'classic' !== $bc && isset( ridgeroad_box_colors()[ $bc ] ) ) {
+		$classes[] = 'rr-boxes--' . $bc;
+	}
 	if ( 'classic' !== ridgeroad_look() ) {
 		$classes[] = 'rr-looks';
 		$classes[] = 'rr-look--' . ridgeroad_look();

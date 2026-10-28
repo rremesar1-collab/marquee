@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.14.4
+Stable tag: 0.14.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,10 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.14.5 =
+* Marquee Festive 2.17.0: new Box colors setting in Customize → Look: Classic mix, all red, all green or all blue, with any look.
+* Names script 3.15.1: right after switching to a names break between songs, 1 or 2 names get the short break instead of the full one (they were repeated to fill it); a line that repeats in the log (like an FPP busy message) is written once with a count.
 
 = 0.14.4 =
 * New switch in Customize → Songs Page: Favorite Song Voting: show or hide just the Show Videos & Voting card on the home page; the songs page and voting keep working.

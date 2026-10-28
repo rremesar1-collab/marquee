@@ -4,7 +4,7 @@ Theme URI: https://alateka.com/
 Author: Alateka Corporation
 Author URI: https://alateka.com/
 Description: The festive Christmas look for the Marquee light show plugin: garlands, bows, a night-sky scene and glowing show cards for your status, Now Playing, weather, Kids’ Corner and more. Needs the free Marquee plugin (it holds all the show features and settings).
-Version: 2.16.4
+Version: 2.17.0
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -1812,3 +1812,34 @@ html.rr-sheet-open { overflow: hidden; }
 .rr-gb-intro { margin-top: 0; margin-bottom: 12px; }
 .rr-stats-sec__text { margin-top: 0; margin-bottom: 12px; }
 .rr-kc, .rr-kc__home, .rr-kc__act { gap: 12px; }
+
+/* ---------- Box colors (Customize → Look → Box colors): Classic's mix, or every box in one color.
+   Only the colors change; the snow, bulbs, spacing and layout are the same. The status banner keeps
+   its own colors (on, canceled, off season), since they tell visitors something. ---------- */
+body.rr-boxes--red .rr-panel--red, body.rr-boxes--red .rr-panel--green, body.rr-boxes--red .rr-panel--blue, body.rr-boxes--red .rr-panel--night, body.rr-boxes--red .rr-kids-teaser, body.rr-boxes--red .rr-kids-teaser--songs, body.rr-boxes--red .rr-ff:not(.is-today), body.rr-boxes--red .rr-kc__prize {
+	background:
+		radial-gradient(ellipse at 50% 0%, rgba(160, 10, 10, .45), transparent 65%) padding-box,
+		linear-gradient(180deg, #5a0303, #3a0101) padding-box,
+		var(--bulbs-h) 0 0 / 88px 7px repeat-x border-box, var(--bulbs-h) 0 100% / 88px 7px repeat-x border-box,
+		var(--bulbs-v) 0 0 / 7px 88px repeat-y border-box, var(--bulbs-v) 100% 0 / 7px 88px repeat-y border-box,
+		linear-gradient(#5c0505, #5c0505) border-box;
+}
+body.rr-boxes--red .rr-stat, body.rr-boxes--red .rr-stat:nth-child(even) { background: radial-gradient(ellipse at 50% 0%, rgba(160, 10, 10, .45), transparent 70%), linear-gradient(180deg, #5a0303, #2e0101); box-shadow: 0 0 16px rgba(255, 40, 30, .4), inset 0 0 18px rgba(0, 0, 0, .4); }
+body.rr-boxes--green .rr-panel--red, body.rr-boxes--green .rr-panel--green, body.rr-boxes--green .rr-panel--blue, body.rr-boxes--green .rr-panel--night, body.rr-boxes--green .rr-kids-teaser, body.rr-boxes--green .rr-kids-teaser--songs, body.rr-boxes--green .rr-ff:not(.is-today), body.rr-boxes--green .rr-kc__prize {
+	background:
+		radial-gradient(ellipse at 50% 0%, rgba(30, 160, 60, .35), transparent 65%) padding-box,
+		linear-gradient(180deg, #054a15, #022a0b) padding-box,
+		var(--bulbs-h) 0 0 / 88px 7px repeat-x border-box, var(--bulbs-h) 0 100% / 88px 7px repeat-x border-box,
+		var(--bulbs-v) 0 0 / 7px 88px repeat-y border-box, var(--bulbs-v) 100% 0 / 7px 88px repeat-y border-box,
+		linear-gradient(#0d3a12, #0d3a12) border-box;
+}
+body.rr-boxes--green .rr-stat, body.rr-boxes--green .rr-stat:nth-child(even) { background: radial-gradient(ellipse at 50% 0%, rgba(30, 160, 60, .35), transparent 70%), linear-gradient(180deg, #054a15, #022a0b); box-shadow: 0 0 16px rgba(40, 220, 90, .35), inset 0 0 18px rgba(0, 0, 0, .4); }
+body.rr-boxes--blue .rr-panel--red, body.rr-boxes--blue .rr-panel--green, body.rr-boxes--blue .rr-panel--blue, body.rr-boxes--blue .rr-panel--night, body.rr-boxes--blue .rr-kids-teaser, body.rr-boxes--blue .rr-kids-teaser--songs, body.rr-boxes--blue .rr-ff:not(.is-today), body.rr-boxes--blue .rr-kc__prize {
+	background:
+		radial-gradient(ellipse at 30% 0%, rgba(40, 110, 220, .35), transparent 65%) padding-box,
+		linear-gradient(180deg, #02214d, #00122e) padding-box,
+		var(--bulbs-h) 0 0 / 88px 7px repeat-x border-box, var(--bulbs-h) 0 100% / 88px 7px repeat-x border-box,
+		var(--bulbs-v) 0 0 / 7px 88px repeat-y border-box, var(--bulbs-v) 100% 0 / 7px 88px repeat-y border-box,
+		linear-gradient(#0a1d44, #0a1d44) border-box;
+}
+body.rr-boxes--blue .rr-stat, body.rr-boxes--blue .rr-stat:nth-child(even) { background: radial-gradient(ellipse at 50% 0%, rgba(40, 110, 220, .35), transparent 70%), linear-gradient(180deg, #02214d, #00122e); box-shadow: 0 0 16px rgba(70, 150, 255, .35), inset 0 0 18px rgba(0, 0, 0, .4); }

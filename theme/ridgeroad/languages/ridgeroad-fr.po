@@ -3665,6 +3665,15 @@ msgstr ""
 "Choisissez l’image derrière votre site. Tout le reste est identique dans "
 "chaque style : vos sections, couleurs et réglages."
 
+msgid "Box colors"
+msgstr "Couleurs des encadrés"
+
+msgid ""
+"The color of the boxes on every page, with any look. Only the colors change."
+msgstr ""
+"La couleur des encadrés sur chaque page, avec n’importe quel style. Seules "
+"les couleurs changent."
+
 msgid ""
 "You’re using your own Background photo, so it shows behind your website with"
 " every look. To see a look’s picture, remove your photo in Header & Intro → "
@@ -3673,6 +3682,18 @@ msgstr ""
 "Vous utilisez votre propre photo de fond : elle s’affiche derrière votre "
 "site avec tous les styles. Pour voir l’image d’un style, retirez votre photo"
 " dans En-tête et introduction → Photo de fond."
+
+msgid "Classic mix (red, green and blue)"
+msgstr "Mélange classique (rouge, vert et bleu)"
+
+msgid "All red"
+msgstr "Toutes rouges"
+
+msgid "All green"
+msgstr "Toutes vertes"
+
+msgid "All blue"
+msgstr "Toutes bleues"
 
 msgid "Search: %s"
 msgstr "Recherche : %s"

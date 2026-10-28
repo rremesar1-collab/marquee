@@ -41,7 +41,7 @@ import socket
 import threading
 import urllib.request
 
-VERSION = "3.15.0"
+VERSION = "3.15.1"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -114,8 +114,25 @@ S = dict(DEFAULTS)
 LOGBUF = []          # the last log lines, for a Marquee Support session
 
 
+_LAST_LOG = {"msg": "", "t": 0.0, "n": 0}
+
+
 def log(*a):
-    line = time.strftime("%Y-%m-%d %H:%M:%S ") + " ".join(str(x) for x in a)
+    msg = " ".join(str(x) for x in a)
+    now = time.time()
+    if msg == _LAST_LOG["msg"] and now - _LAST_LOG["t"] < 60:   # the same line over and over (FPP busy): once a minute
+        _LAST_LOG["n"] += 1
+        return
+    if _LAST_LOG["n"]:
+        msg_n = _LAST_LOG["n"]
+        _LAST_LOG["n"] = 0
+        _write_log("(the line above repeated %d more time%s)" % (msg_n, "" if msg_n == 1 else "s"))
+    _LAST_LOG.update({"msg": msg, "t": now})
+    _write_log(msg)
+
+
+def _write_log(msg):
+    line = time.strftime("%Y-%m-%d %H:%M:%S ") + msg
     print(line, flush=True)
     LOGBUF.append(line)
     del LOGBUF[:-80]
@@ -913,6 +930,12 @@ def break_due(waiting):
 
 
 def queue_break(names=None):
+    # the short breaks for 1 or 2 names have to exist before picking one (just after switching to a
+    # names break between songs they may not yet, and the full break would repeat 2 names to fill it)
+    try:
+        ensure_simple_break()
+    except Exception as e:
+        log("could not make the simple names break:", e)
     # "ifNotRunning" = true so a second request never stacks a second break
     pl = plan_break(names or [])
     fpp_command(MASTER, "Insert Playlist After Current", [pl, -1, -1, "true"])

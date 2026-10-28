@@ -4762,7 +4762,7 @@ msgstr ""
 msgid "Santa’s North Pole"
 msgstr ""
 
-#: theme/ridgeroad/looks/looks.php:35 theme/ridgeroad/looks/looks.php:48
+#: theme/ridgeroad/looks/looks.php:35 theme/ridgeroad/looks/looks.php:63
 msgid "Look"
 msgstr ""
 
@@ -4772,11 +4772,36 @@ msgid ""
 "every look: your sections, colors and settings."
 msgstr ""
 
-#: theme/ridgeroad/looks/looks.php:66
+#: theme/ridgeroad/looks/looks.php:55
+msgid "Box colors"
+msgstr ""
+
+#: theme/ridgeroad/looks/looks.php:56
+msgid ""
+"The color of the boxes on every page, with any look. Only the colors change."
+msgstr ""
+
+#: theme/ridgeroad/looks/looks.php:81
 msgid ""
 "You’re using your own Background photo, so it shows behind your website with"
 " every look. To see a look’s picture, remove your photo in Header & Intro → "
 "Background photo."
+msgstr ""
+
+#: theme/ridgeroad/looks/looks.php:113
+msgid "Classic mix (red, green and blue)"
+msgstr ""
+
+#: theme/ridgeroad/looks/looks.php:114
+msgid "All red"
+msgstr ""
+
+#: theme/ridgeroad/looks/looks.php:115
+msgid "All green"
+msgstr ""
+
+#: theme/ridgeroad/looks/looks.php:116
+msgid "All blue"
 msgstr ""
 
 #: theme/ridgeroad/index.php:13

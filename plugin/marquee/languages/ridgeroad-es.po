@@ -3621,6 +3621,15 @@ msgstr ""
 "Elige la imagen de fondo de tu sitio web. Todo lo demás queda igual en cada "
 "estilo: tus secciones, colores y ajustes."
 
+msgid "Box colors"
+msgstr "Colores de las cajas"
+
+msgid ""
+"The color of the boxes on every page, with any look. Only the colors change."
+msgstr ""
+"El color de las cajas en cada página, con cualquier estilo. Solo cambian los"
+" colores."
+
 msgid ""
 "You’re using your own Background photo, so it shows behind your website with"
 " every look. To see a look’s picture, remove your photo in Header & Intro → "
@@ -3629,6 +3638,18 @@ msgstr ""
 "Estás usando tu propia foto de fondo, así que aparece detrás de tu sitio web"
 " con cualquier estilo. Para ver la imagen de un estilo, quita tu foto en "
 "Encabezado e introducción → Foto de fondo."
+
+msgid "Classic mix (red, green and blue)"
+msgstr "Mezcla clásica (rojo, verde y azul)"
+
+msgid "All red"
+msgstr "Todas rojas"
+
+msgid "All green"
+msgstr "Todas verdes"
+
+msgid "All blue"
+msgstr "Todas azules"
 
 msgid "Search: %s"
 msgstr "Búsqueda: %s"
