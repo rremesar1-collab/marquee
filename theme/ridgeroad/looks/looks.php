@@ -62,6 +62,9 @@ add_action( 'customize_register', function () {
 			$name = '_customize-radio-' . $this->id;
 			?>
 			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+			<?php if ( ridgeroad_mod( 'bg_image' ) ) : ?>
+				<p class="rr-looknote"><?php esc_html_e( 'You’re using your own Background photo, so it shows behind your website with every look. To see a look’s picture, remove your photo in Header & Intro → Background photo.', 'ridgeroad' ); ?></p>
+			<?php endif; ?>
 			<div class="rr-lookcards" role="radiogroup" aria-label="<?php echo esc_attr( $this->label ); ?>">
 				<?php foreach ( $this->choices as $value => $label ) : ?>
 					<label class="rr-lookcard">
@@ -77,6 +80,7 @@ add_action( 'customize_register', function () {
 }, 1 );
 add_action( 'customize_controls_print_styles', function () {
 	echo '<style id="rr-lookcards">'
+		. '.rr-looknote{margin:4px 0 8px;padding:8px 10px;border-left:4px solid #dba617;background:#fcf9e8;font-size:12.5px;line-height:1.45}'
 		. '.rr-lookcards{display:grid;gap:12px;margin-top:6px}'
 		. '.rr-lookcard{position:relative;display:block;border-radius:10px;overflow:hidden;cursor:pointer;border:3px solid transparent;box-shadow:0 1px 4px rgba(0,0,0,.25);background:#08122b}'
 		. '.rr-lookcard input{position:absolute;opacity:0;pointer-events:none}'

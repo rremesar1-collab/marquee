@@ -76,6 +76,7 @@ function ridgeroad_defaults( $fresh = false ) {
 		'seq_text'          => __( 'Watch every song from this year’s show, then come see it in person!', 'ridgeroad' ),
 		// Favorite song voting.
 		'songs_show'        => 1,
+		'songs_card'        => 1,
 		'songs_title'       => __( 'Vote for Your Favorite Song', 'ridgeroad' ),
 		'songs_text'        => __( 'Tap the heart on your favorite song in this year’s show. You can change your vote anytime!', 'ridgeroad' ),
 		'songs_source'      => 'rf',
@@ -447,6 +448,7 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp ) {
 	$add( 'seq_text', 'rr_seq', __( 'Line under the title', 'ridgeroad' ), 'textarea' );
 
 	// Favorite song voting.
+	$add( 'songs_card', 'rr_songs', __( 'Show the Show Videos & Voting card on the home page', 'ridgeroad' ), 'checkbox', array( 'description' => __( 'Off hides only the card on the home page. The Songs & Videos page, its videos and the voting still work (from the Vote button in your menu).', 'ridgeroad' ) ) );
 	$add( 'songs_show', 'rr_songs', __( 'Show favorite song voting (on the Songs & Videos page)', 'ridgeroad' ), 'checkbox', array( 'description' => __( 'See the votes on your WordPress Dashboard. You can clear all votes there to start a new season.', 'ridgeroad' ) ) );
 	$add( 'songs_title', 'rr_songs', __( 'Section title', 'ridgeroad' ) );
 	$add( 'songs_text', 'rr_songs', __( 'Line under the title', 'ridgeroad' ), 'textarea' );

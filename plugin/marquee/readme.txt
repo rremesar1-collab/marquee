@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.14.3
+Stable tag: 0.14.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,11 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.14.4 =
+* New switch in Customize → Songs Page: Favorite Song Voting: show or hide just the Show Videos & Voting card on the home page; the songs page and voting keep working.
+* The card's words now match what's on: videos, voting or both.
+* Marquee Festive 2.16.4: Customize → Look tells you when your own Background photo is covering the look's picture.
 
 = 0.14.3 =
 * Marquee Festive 2.16.3: even, tighter spacing between all boxes and sections, on phones and computers, in all three looks.

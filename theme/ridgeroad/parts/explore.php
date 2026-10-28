@@ -9,14 +9,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 extract( ridgeroad_home_ctx(), EXTR_SKIP ); // $status, $np, $wx, $opts, $b_title, $b_text, $b_mod, $np_text, $station, $forecast
 
 $rr_kids  = ridgeroad_mod( 'kids_show' ) && ridgeroad_kids_url();
-$rr_songs = ridgeroad_songs_page_on() && ridgeroad_songs_url();
+$rr_songs = ridgeroad_songs_page_on() && ridgeroad_songs_url() && ridgeroad_mod( 'songs_card' );
+$rr_vids  = ridgeroad_mod( 'seq_show' ) && ridgeroad_sequence_videos();
+$rr_votes = ridgeroad_mod( 'songs_show' ) && ridgeroad_song_list();
 if ( $rr_kids || $rr_songs ) : ?>
 <div class="rr-explore<?php echo ( $rr_kids && $rr_songs ) ? ' rr-explore--two' : ''; ?>">
 	<?php if ( $rr_songs ) : ?>
 	<a class="rr-kids-teaser rr-kids-teaser--songs" href="<?php echo esc_url( ridgeroad_songs_url() ); ?>">
 		<span class="rr-kids-teaser__icon"><?php echo ridgeroad_cicon( 'music' ); ?></span>
-		<span class="rr-kids-teaser__text"><b><?php esc_html_e( 'Show Videos & Voting', 'ridgeroad' ); ?></b> <?php echo ridgeroad_mod( 'songs_show' ) ? esc_html__( 'Watch videos of this year’s songs and vote for Fan Favorite Friday!', 'ridgeroad' ) : esc_html__( 'Watch the videos of this year’s songs!', 'ridgeroad' ); ?></span>
-		<span class="rr-kids-teaser__go"><?php esc_html_e( 'Watch', 'ridgeroad' ); ?> &rarr;</span>
+		<?php // the card says what's actually on the page: videos, voting or both ?>
+		<span class="rr-kids-teaser__text"><b><?php echo esc_html( $rr_vids && $rr_votes ? __( 'Show Videos & Voting', 'ridgeroad' ) : ( $rr_vids ? __( 'Show Videos', 'ridgeroad' ) : __( 'Vote for Your Favorite Song', 'ridgeroad' ) ) ); ?></b> <?php echo esc_html( $rr_vids && $rr_votes ? __( 'Watch videos of this year’s songs and vote for Fan Favorite Friday!', 'ridgeroad' ) : ( $rr_vids ? __( 'Watch the videos of this year’s songs!', 'ridgeroad' ) : __( 'Pick your favorite song in this year’s show for Fan Favorite Friday!', 'ridgeroad' ) ) ); ?></span>
+		<span class="rr-kids-teaser__go"><?php echo esc_html( $rr_vids ? __( 'Watch', 'ridgeroad' ) : __( 'Vote', 'ridgeroad' ) ); ?> &rarr;</span>
 	</a>
 	<?php endif; ?>
 	<?php if ( $rr_kids ) : ?>
