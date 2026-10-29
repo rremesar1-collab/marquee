@@ -13,6 +13,13 @@ extract( ridgeroad_home_ctx(), EXTR_SKIP ); // $status, $np, $wx, $opts, $b_titl
 			<h2 id="rr-show-h" class="rr-h"><span class="rr-h__tree"><?php echo ridgeroad_cicon( 'tree' ); ?></span><?php esc_html_e( 'Tonight’s Show', 'ridgeroad' ); ?></h2>
 			<span class="rr-badge rr-badge--<?php echo esc_attr( $status['state'] ); ?>" data-rr="badge"><i></i><span><?php echo esc_html( $status['badge'] ); ?></span></span>
 		</div>
+		<?php
+		$listen    = ridgeroad_mod( 'listen_url' );
+		$listen_qr = $listen && ridgeroad_mod( 'listen_qr' );
+		if ( $listen_qr ) {
+			wp_enqueue_script( 'ridgeroad-qrcode', RR_FEAT_URL . 'assets/js/qrcode.js', array(), '2.0.4', true );
+		}
+		?>
 		<div class="rr-show__row">
 			<div class="rr-tile">
 				<span class="rr-tile__icon rr-gold"><?php echo ridgeroad_cicon( 'radio' ); ?></span>
@@ -30,6 +37,20 @@ extract( ridgeroad_home_ctx(), EXTR_SKIP ); // $status, $np, $wx, $opts, $b_titl
 				</div>
 			</div>
 		</div>
+		<?php if ( $listen ) : ?>
+			<div class="rr-listen">
+				<div class="rr-listen__main">
+					<a class="rr-btn rr-btn--gold" href="<?php echo esc_url( $listen ); ?>" target="_blank" rel="noopener"><?php echo ridgeroad_cicon( 'headphones' ); ?><?php esc_html_e( 'Listen on Your Phone', 'ridgeroad' ); ?></a>
+					<span class="rr-listen__note"><?php esc_html_e( 'No radio handy? Hear the music on your phone.', 'ridgeroad' ); ?></span>
+				</div>
+				<?php if ( $listen_qr ) : ?>
+					<div class="rr-listen__qr">
+						<div class="rr-listen__code"><div class="rr-qr__gen" data-qr="<?php echo esc_url( $listen ); ?>" role="img" aria-label="<?php esc_attr_e( 'QR code to listen on your phone', 'ridgeroad' ); ?>"></div></div>
+						<span><?php esc_html_e( 'Scan to listen', 'ridgeroad' ); ?></span>
+					</div>
+				<?php endif; ?>
+			</div>
+		<?php endif; ?>
 		<div class="rr-tile rr-np<?php echo $np['title'] ? ' is-playing' : ''; ?>" data-rr="np">
 			<span class="rr-tile__icon rr-np__note"><?php echo ridgeroad_cicon( 'music' ); ?></span>
 			<div class="rr-np__copy">

@@ -6294,3 +6294,15 @@ msgstr "spectacle de lumières"
 
 msgid "christmas"
 msgstr "noël"
+
+msgid "Listen on your phone link (optional)"
+msgstr "Lien pour écouter sur le téléphone (facultatif)"
+
+msgid ""
+"Adds a “Listen on Your Phone” button under your radio station, for people "
+"who would rather hear the music on their phone. Use your PulseMesh link. "
+"Leave empty to hide it."
+msgstr ""
+"Ajoute un bouton « Écoutez sur votre téléphone » sous votre station de "
+"radio, pour ceux qui préfèrent écouter la musique sur leur téléphone. "
+"Utilisez votre lien PulseMesh. Laissez vide pour le masquer."

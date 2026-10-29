@@ -3690,3 +3690,42 @@ msgstr "Saltar al contenido"
 
 msgid "Main"
 msgstr "Principal"
+
+msgid ""
+"Listen on your phone link (adds a “Listen on Your Phone” button under your "
+"radio station)"
+msgstr ""
+"Enlace para escuchar en el teléfono (agrega un botón “Escucha en tu "
+"teléfono” debajo de tu emisora de radio)"
+
+msgid ""
+"For PulseMesh’s free plan use https://player.pulsemesh.io (it finds shows "
+"near the visitor). If you have a PulseMesh Display Code, use its link so "
+"phones go straight to your show. Leave empty to hide it."
+msgstr ""
+"Con el plan gratis de PulseMesh usa https://player.pulsemesh.io (encuentra "
+"los espectáculos cerca del visitante). Si tienes un Display Code de "
+"PulseMesh, usa su enlace para que los teléfonos vayan directo a tu "
+"espectáculo. Déjalo vacío para ocultarlo."
+
+msgid "Also show a QR code for it on computers"
+msgstr "Mostrar también un código QR en las computadoras"
+
+msgid ""
+"Visitors looking at your website on a computer can scan it with their phone."
+" Phones just see the button."
+msgstr ""
+"Quien vea tu sitio en una computadora puede escanearlo con su teléfono. En "
+"los teléfonos solo se ve el botón."
+
+msgid "Listen on Your Phone"
+msgstr "Escucha en tu teléfono"
+
+msgid "QR code to listen on your phone"
+msgstr "Código QR para escuchar en tu teléfono"
+
+msgid "Scan to listen"
+msgstr "Escanea para escuchar"
+
+msgid "No radio handy? Hear the music on your phone."
+msgstr "¿No tienes radio a mano? Escucha la música en tu teléfono."

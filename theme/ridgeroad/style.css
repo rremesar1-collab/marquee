@@ -4,7 +4,7 @@ Theme URI: https://alateka.com/
 Author: Alateka Corporation
 Author URI: https://alateka.com/
 Description: The festive Christmas look for the Marquee light show plugin: garlands, bows, a night-sky scene and glowing show cards for your status, Now Playing, weather, Kids’ Corner and more. Needs the free Marquee plugin (it holds all the show features and settings).
-Version: 2.17.0
+Version: 2.18.0
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -1732,6 +1732,16 @@ html.rr-sheet-open { overflow: hidden; }
 .rr-rfpick__note { font-size: 14px; color: #f3ead8; }
 .rr-rfpick.is-preview { padding: 8px 10px; border: 2px dashed rgba(255, 212, 92, .6); border-radius: 12px; }
 .rr-rfpick__preview { flex-basis: 100%; font-size: 12.5px; font-style: normal; color: #ffd45c; }
+
+/* Tonight's Show: Listen on Your Phone (PulseMesh or similar), with an optional QR code on computers */
+.rr-listen { display: flex; align-items: center; gap: 10px 16px; }
+.rr-listen__main { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; flex: 1 1 auto; min-width: 0; }
+.rr-listen .rr-btn .rr-cicon { width: 22px; height: 22px; }
+.rr-listen__note { font-size: 14px; color: #f3ead8; }
+.rr-listen__qr { flex: none; display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.rr-listen__code { width: 84px; height: 84px; padding: 5px; background: #fff; border-radius: 8px; }
+.rr-listen__qr span { font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: #f0dcc0; white-space: nowrap; }
+@media (max-width: 860px), (hover: none) and (pointer: coarse) { .rr-listen__qr { display: none; } }
 
 /* Pick the Next Song (Remote Falcon) pop-up */
 .rr-rf { width: min(560px, 94vw); }

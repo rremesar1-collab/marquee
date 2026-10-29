@@ -4856,3 +4856,34 @@ msgstr ""
 #: theme/ridgeroad/header.php:31
 msgid "Main"
 msgstr ""
+
+msgid ""
+"Listen on your phone link (adds a “Listen on Your Phone” button under your "
+"radio station)"
+msgstr ""
+
+msgid ""
+"For PulseMesh’s free plan use https://player.pulsemesh.io (it finds shows "
+"near the visitor). If you have a PulseMesh Display Code, use its link so "
+"phones go straight to your show. Leave empty to hide it."
+msgstr ""
+
+msgid "Also show a QR code for it on computers"
+msgstr ""
+
+msgid ""
+"Visitors looking at your website on a computer can scan it with their phone."
+" Phones just see the button."
+msgstr ""
+
+msgid "Listen on Your Phone"
+msgstr ""
+
+msgid "QR code to listen on your phone"
+msgstr ""
+
+msgid "Scan to listen"
+msgstr ""
+
+msgid "No radio handy? Hear the music on your phone."
+msgstr ""

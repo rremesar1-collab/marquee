@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.14.6
+Stable tag: 0.15.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,9 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.15.0 =
+* Marquee Festive 2.18.0: new "Listen on Your Phone" button in Tonight's Show, on its own line under the radio station. Paste your PulseMesh link in Settings → Show details or Customize → Show Hours & Status; leave it empty and nothing changes. Optional QR code next to it on computers (phones just see the button). In English, Spanish and French.
 
 = 0.14.6 =
 * Names script 3.15.2: in the short break for 1 or 2 names, names no longer run into the announcer's closing line. The script counted more name spots than the short break's audio has (it allowed one second for the closing), so with "Names per break" under 6 the last turn landed on the closing. The short breaks now use exactly the spots they were made with, and with 2 names both are still said.

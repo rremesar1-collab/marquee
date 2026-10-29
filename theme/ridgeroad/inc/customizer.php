@@ -25,6 +25,8 @@ function ridgeroad_defaults( $fresh = false ) {
 		'snow_real'         => 1,
 		// Show.
 		'radio'             => '',
+		'listen_url'        => '',              // Listen on your phone link (PulseMesh or similar)
+		'listen_qr'         => 0,               // also show a QR code for it on computers
 		'season_start'      => '2026-11-27',
 		'season_end'        => '2027-01-01',
 		'weeknight_label'   => __( 'Sun – Thu', 'ridgeroad' ),
@@ -256,7 +258,7 @@ function ridgeroad_lang_now() {
 
 /** Texts that are the same in every language (numbers, links, names), so they get no language boxes. */
 function ridgeroad_lang_same( $key ) {
-	return in_array( $key, array( 'radio', 'city', 'zip', 'radar_station', 'live_url', 'address', 'names_color', 'names_block', 'gb_site_key', 'social_hashtag', 'songs_manual', 'rf_viewer_url' ), true )
+	return in_array( $key, array( 'radio', 'city', 'zip', 'radar_station', 'live_url', 'address', 'names_color', 'names_block', 'gb_site_key', 'social_hashtag', 'songs_manual', 'rf_viewer_url', 'listen_url' ), true )
 		|| preg_match( '/^stat\d_num$/', $key );
 }
 
@@ -401,6 +403,8 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp ) {
 
 	// Show.
 	$add( 'radio', 'rr_show', __( 'Radio frequency', 'ridgeroad' ) );
+	$add( 'listen_url', 'rr_show', __( 'Listen on your phone link (adds a “Listen on Your Phone” button under your radio station)', 'ridgeroad' ), 'url', array( 'description' => __( 'For PulseMesh’s free plan use https://player.pulsemesh.io (it finds shows near the visitor). If you have a PulseMesh Display Code, use its link so phones go straight to your show. Leave empty to hide it.', 'ridgeroad' ) ) );
+	$add( 'listen_qr', 'rr_show', __( 'Also show a QR code for it on computers', 'ridgeroad' ), 'checkbox', array( 'description' => __( 'Visitors looking at your website on a computer can scan it with their phone. Phones just see the button.', 'ridgeroad' ) ) );
 	$image( 'share_image', 'rr_show', __( 'Share picture (optional)', 'ridgeroad' ), __( 'Shown when someone shares the website on Facebook or in a text. Best size 1200 × 630. Leave empty to use the built-in picture.', 'ridgeroad' ) );
 	$add( 'season_start', 'rr_show', __( 'Season opening night', 'ridgeroad' ), 'date' );
 	$add( 'season_end', 'rr_show', __( 'Season last night', 'ridgeroad' ), 'date' );

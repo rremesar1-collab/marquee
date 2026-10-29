@@ -6756,3 +6756,12 @@ msgstr ""
 #: plugin/marquee/inc/i18n-js.php:296
 msgid "christmas"
 msgstr ""
+
+msgid "Listen on your phone link (optional)"
+msgstr ""
+
+msgid ""
+"Adds a “Listen on Your Phone” button under your radio station, for people "
+"who would rather hear the music on their phone. Use your PulseMesh link. "
+"Leave empty to hide it."
+msgstr ""

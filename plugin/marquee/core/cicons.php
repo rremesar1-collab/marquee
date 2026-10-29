@@ -26,6 +26,9 @@ function ridgeroad_cicon( $name, $class = '' ) {
 			. '<rect x="12" y="25" width="40" height="7" rx="2" fill="' . $dark . '"/><rect x="15" y="27" width="22" height="3" rx="1" fill="#ffcc33" opacity=".7"/>'
 			. '<circle cx="21" cy="44" r="8" fill="' . $dark . '"/><circle cx="21" cy="44" r="4.5" fill="none" stroke="#ffcc33" stroke-width="1.8"/><circle cx="21" cy="44" r="1.6" fill="#ffcc33"/>'
 			. '<circle cx="43" cy="44" r="8" fill="' . $dark . '"/><circle cx="43" cy="44" r="4.5" fill="none" stroke="#ffcc33" stroke-width="1.8"/><circle cx="43" cy="44" r="1.6" fill="#ffcc33"/>',
+		'headphones' => $gold . '<path d="M10 38V31a22 22 0 0 1 44 0v7" fill="none" stroke="' . $G . '" stroke-width="5" stroke-linecap="round"/>'
+			. '<rect x="5" y="34" width="14" height="22" rx="5" fill="' . $G . '" stroke="#7a4a05" stroke-width="1.2"/><rect x="45" y="34" width="14" height="22" rx="5" fill="' . $G . '" stroke="#7a4a05" stroke-width="1.2"/>'
+			. '<rect x="9" y="39" width="6" height="12" rx="2.5" fill="' . $dark . '"/><rect x="49" y="39" width="6" height="12" rx="2.5" fill="' . $dark . '"/>',
 		'clock'  => $gold . '<circle cx="32" cy="32" r="26" fill="' . $G . '"/><circle cx="32" cy="32" r="20.5" fill="' . $dark . '"/>'
 			. '<path d="M32 18v15l10 6" fill="none" stroke="' . $G . '" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="33" r="2.6" fill="#ffcc33"/>',
 		'music'  => '<path d="M24 46V14l28-6v32" fill="none" stroke="#ff3b30" stroke-width="5" stroke-linejoin="round"/>'

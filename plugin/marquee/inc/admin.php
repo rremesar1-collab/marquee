@@ -223,6 +223,7 @@ function marquee_admin_page() {
 				</div>
 				<div class="mq__row">
 					<p><label for="mq-radio"><?php esc_html_e( 'Radio station', 'marquee' ); ?></label><input id="mq-radio" name="radio" type="text" placeholder="88.1 FM" value="<?php echo esc_attr( $tm( 'radio' ) ); ?>"></p>
+					<p><label for="mq-listen"><?php esc_html_e( 'Listen on your phone link (optional)', 'marquee' ); ?></label><input id="mq-listen" name="listen_url" type="url" placeholder="https://player.pulsemesh.io" value="<?php echo esc_attr( $tm( 'listen_url' ) ); ?>"><small><?php esc_html_e( 'Adds a “Listen on Your Phone” button under your radio station, for people who would rather hear the music on their phone. Use your PulseMesh link. Leave empty to hide it.', 'marquee' ); ?></small></p>
 				</div>
 				<?php $logo_id = (int) get_theme_mod( 'custom_logo' ); $logo_src = $logo_id ? wp_get_attachment_image_url( $logo_id, 'medium' ) : ''; ?>
 				<div class="mq__logo">

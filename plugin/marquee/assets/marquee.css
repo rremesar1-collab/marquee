@@ -1384,6 +1384,16 @@ dialog.mq-skin:not(#mq-0) { display: revert; container: none; }
 .mq-skin:not(#mq-0) .rr-rfpick.is-preview { padding: 8px 10px; border: 2px dashed rgba(255, 212, 92, .6); border-radius: 12px; }
 .mq-skin:not(#mq-0) .rr-rfpick__preview { flex-basis: 100%; font-size: 12.5px; font-style: normal; color: #ffd45c; }
 
+/* Tonight's Show: Listen on Your Phone (PulseMesh or similar), with an optional QR code on computers */
+.mq-skin:not(#mq-0) .rr-listen { display: flex; align-items: center; gap: 10px 16px; }
+.mq-skin:not(#mq-0) .rr-listen__main { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; flex: 1 1 auto; min-width: 0; }
+.mq-skin:not(#mq-0) .rr-listen .rr-btn .rr-cicon { width: 22px; height: 22px; }
+.mq-skin:not(#mq-0) .rr-listen__note { font-size: 14px; color: #f3ead8; }
+.mq-skin:not(#mq-0) .rr-listen__qr { flex: none; display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.mq-skin:not(#mq-0) .rr-listen__code { width: 84px; height: 84px; padding: 5px; background: #fff; border-radius: 8px; }
+.mq-skin:not(#mq-0) .rr-listen__qr span { font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: #f0dcc0; white-space: nowrap; }
+@media (max-width: 860px), (hover: none) and (pointer: coarse) { .mq-skin:not(#mq-0) .rr-listen__qr { display: none; } }
+
 /* Pick the Next Song (Remote Falcon) pop-up */
 .mq-skin:not(#mq-0) .rr-rf, .rr-rf.mq-skin:not(#mq-0) { width: min(560px, 94vw); }
 .mq-skin:not(#mq-0) .rr-rf__box { padding: 18px 16px 14px; color: #fff; max-height: 86vh; overflow-y: auto; }

@@ -29,15 +29,16 @@
 		ping(); setInterval(ping, 60000);
 	}
 
-	/* Cash App QR when no image was uploaded */
+	/* QR codes made from a link: Cash App (when no image was uploaded) and Listen on Your Phone */
 	function makeQR() {
-		var box = $('.rr-qr__gen');
-		if (!box || box.firstChild) { return; }
 		if (typeof window.qrcode !== 'function') { return; }
-		var qr = window.qrcode(0, 'H');
-		qr.addData(box.getAttribute('data-qr'));
-		qr.make();
-		box.innerHTML = qr.createSvgTag({ cellSize: 4, margin: 0, scalable: true });
+		Array.prototype.forEach.call(document.querySelectorAll('.rr-qr__gen'), function (box) {
+			if (box.firstChild) { return; }
+			var qr = window.qrcode(0, 'H');
+			qr.addData(box.getAttribute('data-qr'));
+			qr.make();
+			box.innerHTML = qr.createSvgTag({ cellSize: 4, margin: 0, scalable: true });
+		});
 	}
 
 	/* Live data */

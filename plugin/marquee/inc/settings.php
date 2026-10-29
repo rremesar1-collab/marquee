@@ -82,7 +82,7 @@ function marquee_get( $key = null ) {
 /** Settings the theme stores as theme mods; Marquee edits them in the same place. */
 function marquee_theme_keys() {
 	return array(
-		'radio', 'season_start', 'season_end', 'use_sunset', 'weeknight_start', 'weekend_start', 'weeknight_close', 'weekend_close',
+		'radio', 'listen_url', 'season_start', 'season_end', 'use_sunset', 'weeknight_start', 'weekend_start', 'weeknight_close', 'weekend_close',
 		'radar_station', 'cashapp_url', 'gb_show', 'names_on', 'names_geo', 'names_geo_miles', 'kids_show', 'lab_on', 'coloring_on', 'games_on', 'songs_show', 'contest_on', 'app_auto_on', 'snow_amount',
 		'names_geo_unit', 'count_to', 'count_name', 'count_date', 'rf_viewer_url', 'facebook_url', 'instagram_url', 'youtube_url', 'tiktok_url', 'facebook_show', 'instagram_show', 'youtube_show', 'tiktok_show',
 	);
@@ -216,6 +216,7 @@ function marquee_save( $in ) {
 	// theme-side settings
 	$t = array(
 		'radio'           => array( 'text', 20 ),
+		'listen_url'      => array( 'url' ),
 		'season_start'    => array( 'date' ),
 		'season_end'      => array( 'date' ),
 		'weeknight_start' => array( 'time' ),
