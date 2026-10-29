@@ -41,7 +41,7 @@ import socket
 import threading
 import urllib.request
 
-VERSION = "3.15.1"
+VERSION = "3.15.2"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -831,9 +831,11 @@ def slots_for(st):
     made with room for 3, 5 or 6 names gets every spot filled; a short break without a length that
     FPP reports says each of its 1 or 2 names twice."""
     want = int(S["max_names"])
+    short = 0
     for n, name in short_playlists().items():
         if playlist_name(st) == name:
             want = n * 2
+            short = want
     a, b = own_window()
     if b:
         # your own break audio: the names go in the quiet part between its intro and its closing,
@@ -848,6 +850,10 @@ def slots_for(st):
         fit = int((length - float(S["names_start"]) - 1.0) / float(S["slot"]))   # a second or so left for the outro
         if fit >= 1:
             slots = min(int(S["max_names"]), fit)
+    if short:
+        # a short break has room for each name twice and no more: its length also holds the announcer's
+        # closing (several seconds, not one), so counting from the length would put names over it
+        slots = min(slots, short)
     # names are said only up to the closing; any spots after it show names already said, no voice
     QUIET["until"] = b if b else float(S["names_start"]) + slots * float(S["slot"])
     return slots
@@ -1380,6 +1386,8 @@ def _run_break(color):
         if per < 6 and not own_window()[1]:
             # fewer names per break: the same stretch of the break, shared by fewer names, so each is up longer
             turns = max(1, int(round(slots * per / 6.0)))
+            if not theme and playlist_name(st) in short_playlists().values():
+                turns = min(slots, max(turns, per))  # a short break still fits the names it's set to (2 names: both)
             S["slot"] = float(S["slot"]) * slots / turns
             S["show_for"] = max(2.0, S["slot"] - 0.6)
             slots = turns

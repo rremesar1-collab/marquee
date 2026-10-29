@@ -52,7 +52,7 @@ Your website never connects into your house. Remote Falcon is reached from the s
 - A WordPress website (6.0 or newer, PHP 7.4 or newer). Any host works; https is needed for the app and alerts.
 - **For Now Playing, the playlist and song voting:** a free [Remote Falcon](https://remotefalcon.com) account **and the Remote Falcon plugin installed and running on your FPP** (FPP → Content Setup → Plugin Manager → Remote Falcon). Marquee reads what's playing from Remote Falcon, which gets it from that plugin.
 - **For Your Name in Lights:** FPP and a matrix, projector or TV that FPP can draw on (a Pixel Overlay Model). The Marquee FPP plugin needs FPP 10 or newer; on FPP 9, put the names script on by hand (see below). Kids' pictures need FPP 10 or newer and look best on a TV or projector.
-- **To have each name said out loud (optional):** an [ElevenLabs](https://elevenlabs.io) account and FPP 10 or newer. Marquee makes the spoken names and the names break audio (intro, soft music, outro) with your ElevenLabs voice, and the FPP script sets up the break playlists by itself.
+- **To have each name said out loud (optional):** an [ElevenLabs](https://elevenlabs.io) account. Works on FPP 9 and newer (it only needs FPP's Play Media command). Marquee makes the spoken names and the names break audio (intro, soft music, outro) with your ElevenLabs voice, and the FPP script sets up the break playlists by itself.
 
 Everything else (status, weather, Kids' Corner, guestbook, app) works with no extra setup.
 
