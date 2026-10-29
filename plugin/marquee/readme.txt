@@ -56,6 +56,7 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 = 0.15.0 =
 * Marquee Festive 2.18.0: new "Listen on Your Phone" button in Tonight's Show, on its own line under the radio station. Paste your PulseMesh link in Settings → Show details or Customize → Show Hours & Status; leave it empty and nothing changes. Optional QR code next to it on computers (phones just see the button). In English, Spanish and French.
+* Names script 3.15.2: in the short break for 1 or 2 names, names no longer run into the announcer's closing line. The script counted more name spots than the short break's audio has (it allowed one second for the closing), so with "Names per break" under 6 the last turn landed on the closing. The short breaks now use exactly the spots they were made with, and with 2 names both are still said.
 
 = 0.14.6 =
 * Names script 3.15.2: in the short break for 1 or 2 names, names no longer run into the announcer's closing line. The script counted more name spots than the short break's audio has (it allowed one second for the closing), so with "Names per break" under 6 the last turn landed on the closing. The short breaks now use exactly the spots they were made with, and with 2 names both are still said.
