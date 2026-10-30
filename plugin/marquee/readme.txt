@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.15.0
+Stable tag: 0.15.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,11 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.15.1 =
+* Names script 3.15.3: scrolling names in the short break for 1 or 2 names move slower again with "Names per break" under 6. Each name goes up once and gets the whole stretch, instead of twice at full speed.
+* Names script 3.15.3: Still text on a pixel matrix goes on two (or three) centered lines when that makes the letters bigger, like "MERRY CHRISTMAS," over "RALPH", and it's sized for bold capital letters so it no longer runs off the sides.
+* Names script 3.15.3: if a name's first turn was skipped because the break was running late (a slow website or a spoken name still downloading), the name is now said on its next turn. Before, it went up but was never said.
 
 = 0.15.0 =
 * Marquee Festive 2.18.0: new "Listen on Your Phone" button in Tonight's Show, on its own line under the radio station. Paste your PulseMesh link in Settings → Show details or Customize → Show Hours & Status; leave it empty and nothing changes. Optional QR code next to it on computers (phones just see the button). In English, Spanish and French.

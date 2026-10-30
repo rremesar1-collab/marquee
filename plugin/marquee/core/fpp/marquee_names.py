@@ -41,7 +41,7 @@ import socket
 import threading
 import urllib.request
 
-VERSION = "3.15.2"
+VERSION = "3.15.3"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -1194,8 +1194,11 @@ def screen_info(sc):
     return _info[k]
 
 
-def layout(text, width, height):
-    """Break after the comma (the name gets its own line), pick the biggest size that fits."""
+def layout(text, width, height, one_line=False, cap=100):
+    """Break after the comma (the name gets its own line), pick the biggest size that fits.
+    one_line: one line is also a choice (still text on a pixel matrix), and text with no comma
+    can go on two lines, split where the two lines come out most even."""
+    text = " ".join(text.split())
     if ", " in text:
         a, b = text.split(", ", 1)
         a += ","
@@ -1204,11 +1207,18 @@ def layout(text, width, height):
         options += [[" ".join(wa[:i]), " ".join(wa[i:]), b] for i in range(1, len(wa))]
         options += [[a, " ".join(wb[:i]), " ".join(wb[i:])] for i in range(1, len(wb))]
     else:
+        w = text.split(" ")
         options = [[text]]
+        if one_line and len(w) > 1:
+            options += [[" ".join(w[:i]), " ".join(w[i:])] for i in range(1, len(w))]
+    if one_line and [text] not in options:
+        options.append([text])
     best = None
     for lines in options:
         longest = max(len(l) for l in lines)
-        size = min(100, int(float(S["max_width"]) * width / (0.68 * longest)), int(float(S["max_height"]) * height / (1.25 * len(lines))))
+        tall = 1.0 if (one_line and len(lines) == 1) else 1.25 * len(lines)   # room between lines
+        cw = 0.72 if one_line else 0.68     # a capital letter in a bold font is about 0.7 of the size wide
+        size = min(cap, int(float(S["max_width"]) * width / (cw * longest)), int(float(S["max_height"]) * height / tall))
         key = (size, -len(lines), -longest)
         if best is None or key > best[0]:
             best = (key, (max(4, size), lines))
@@ -1231,7 +1241,7 @@ def text_plan(text, width, height, sc=None):
     one = " ".join(text.split())
     if size_k == "auto" and not small and style != "scroll":
         size, lines = layout(text, width, height)        # TVs: the comfortable look, name on its own line
-        return size, "Center", 0, "\\n".join(lines)
+        return size, "Center", 0, "\n".join(lines)   # a real line break: FPP 9 and 10 both draw it
     if style == "auto" and not small:
         style = "still"                                  # TVs only scroll when you pick Scrolling
     px = int(sc.get("px") or 0) if size_k == "custom" else 0
@@ -1239,16 +1249,17 @@ def text_plan(text, width, height, sc=None):
     big = max(4, px) if px else max(6, min(200, int(height * frac)))
     fit = min(big, int(width * 0.95 / (0.62 * max(1, len(one)))))
     if style == "still" or (style == "auto" and fit >= max(6, 0.7 * big)):
-        if fit >= (big if px else max(6, 0.7 * big)) or " " not in one:
+        if " " not in one:
             return max(4, fit), "Center", 0, one
-        # too long for one line: break it up and fill the same height
+        # one line, or two or three centered lines, whichever lets the text be biggest (never bigger
+        # than the Text size picked); the name gets its own line after the comma
         keep = S["max_width"], S["max_height"]
-        S["max_width"], S["max_height"] = 0.95, frac
+        S["max_width"], S["max_height"] = 0.95, 0.95
         try:
-            size, lines = layout(text, width, height)
+            size, lines = layout(text, width, height, one_line=True, cap=big)
         finally:
             S["max_width"], S["max_height"] = keep
-        return size, "Center", 0, "\\n".join(lines)
+        return size, "Center", 0, "\n".join(lines)   # a real line break: FPP 9 and 10 both draw it
     secs = turn_secs(speed_k)
     pps = (width + 0.62 * big * len(one)) / secs
     return big, "R2L", max(10, int(round(pps))), one
@@ -1386,8 +1397,11 @@ def _run_break(color):
         if per < 6 and not own_window()[1]:
             # fewer names per break: the same stretch of the break, shared by fewer names, so each is up longer
             turns = max(1, int(round(slots * per / 6.0)))
-            if not theme and playlist_name(st) in short_playlists().values():
-                turns = min(slots, max(turns, per))  # a short break still fits the names it's set to (2 names: both)
+            short = [n for n, name in short_playlists().items() if name == playlist_name(st)]
+            if not theme and short:
+                # a short break is made for 1 or 2 names: each goes up once and gets the whole stretch,
+                # so a scrolling name moves as slowly as it can (and with 2 names, both are said)
+                turns = min(slots, short[0])
             S["slot"] = float(S["slot"]) * slots / turns
             S["show_for"] = max(2.0, S["slot"] - 0.6)
             slots = turns
@@ -1471,7 +1485,7 @@ def _show_names(names, slots, color):
             # putting two names up at once and talking over the announcer; the name comes round again
             log("running %.1fs late - skipping turn %d" % (late, k + 1))
             continue
-        repeat = k >= first
+        repeat = k >= first and item["id"] in done   # a kid whose first turn was skipped (running late) is said on the next one
         if kind == "pic":
             if PIC_ON or HELD:
                 clear_pictures()                         # the last name or picture comes down first
