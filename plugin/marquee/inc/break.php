@@ -96,7 +96,7 @@ add_action( 'wp_ajax_marquee_break_save', function () {
 	$kind  = isset( $_POST['kind'] ) ? sanitize_key( $_POST['kind'] ) : '';
 	$part  = isset( $_POST['part'] ) ? absint( $_POST['part'] ) : 0;
 	$parts = isset( $_POST['parts'] ) ? absint( $_POST['parts'] ) : 0;
-	if ( ! in_array( $kind, array( 'full', 'short1', 'short2' ), true ) || ! $parts || $parts > 40 || $part >= $parts || empty( $_FILES['audio']['tmp_name'] ) ) { // phpcs:ignore
+	if ( ! in_array( $kind, array( 'full', 'short1', 'short2', 'intro', 'bed', 'outro' ), true ) || ! $parts || $parts > 40 || $part >= $parts || empty( $_FILES['audio']['tmp_name'] ) ) { // phpcs:ignore
 		wp_send_json_error( array( 'message' => __( 'Your web host refused the upload (it may only allow very small uploads).', 'marquee' ) ), 400 );
 	}
 	$tmp = $_FILES['audio']['tmp_name']; // phpcs:ignore
@@ -131,6 +131,9 @@ add_action( 'wp_ajax_marquee_break_save', function () {
 		foreach ( array( 'start', 'slot', 'secs', 'seq' ) as $k ) {
 			$pending[ $k ] = isset( $_POST[ $k ] ) ? round( (float) $_POST[ $k ], 3 ) : 0;
 		}
+	} elseif ( in_array( $kind, array( 'intro', 'bed', 'outro' ), true ) ) {
+		// the parts for the break with no fixed timing, and how long each one is
+		$pending[ $kind . '_secs' ] = isset( $_POST['part_secs'] ) ? round( (float) $_POST['part_secs'], 2 ) : 0;
 	}
 	$pending['v'] = $v;
 	if ( empty( $pending['full'] ) || empty( $pending['short1'] ) || empty( $pending['short2'] ) ) {
@@ -149,8 +152,8 @@ add_action( 'wp_ajax_marquee_break_save', function () {
 	update_option( 'marquee', $s, false );
 	// the previous version's files are no longer needed
 	if ( $old ) {
-		foreach ( array( 'full', 'short1', 'short2' ) as $k ) {
-			if ( ! empty( $old[ $k ] ) && $old[ $k ] !== $pending[ $k ] ) {
+		foreach ( array( 'full', 'short1', 'short2', 'intro', 'bed', 'outro' ) as $k ) {
+			if ( ! empty( $old[ $k ] ) && $old[ $k ] !== ( $pending[ $k ] ?? '' ) ) {
 				wp_delete_file( $dir . basename( $old[ $k ] ) );
 			}
 		}
@@ -170,6 +173,13 @@ add_filter( 'ridgeroad_names_pull_data', function ( $data ) {
 			'start'  => (float) $b['start'],
 			'slot'   => (float) $b['slot'],
 		);
+		if ( ! empty( $b['intro'] ) && ! empty( $b['bed'] ) && ! empty( $b['outro'] ) ) {
+			// names script 3.16+: Marquee's simple break plays these itself, giving each name the time it needs
+			foreach ( array( 'intro', 'bed', 'outro' ) as $k ) {
+				$data['break'][ $k ]           = $b[ $k ];
+				$data['break'][ $k . '_secs' ] = (float) ( $b[ $k . '_secs' ] ?? 0 );
+			}
+		}
 	}
 	return $data;
 } );
@@ -202,10 +212,14 @@ function marquee_break_box( $s ) {
 			<div class="mq__tl-part is-voice"><b>🎙 <?php esc_html_e( 'Outro', 'marquee' ); ?></b><small><?php esc_html_e( 'about 4 seconds', 'marquee' ); ?></small><em data-mq-tl-outro>“<?php echo esc_html( $s['break_outro'] ? $s['break_outro'] : $def['outro'] ); ?>”</em></div>
 		</div>
 		<?php marquee_break_demo( $s, $b, $def ); ?>
-		<p class="mq__fine"><?php esc_html_e( 'Only 1 or 2 names waiting? A shorter break plays instead and says each name twice, so nobody sits through 30 seconds of music for one name. Everything is set to the same loudness as your songs, so nobody has to touch the radio volume.', 'marquee' ); ?></p>
+		<p class="mq__fine"><?php esc_html_e( 'With the simple names break Marquee makes for you, your FPP plays the break itself: the intro, then each name for as long as it takes to read and say, then the outro. One name makes a short break, six a longer one. With your own names sequence, a shorter break plays when only 1 or 2 names are waiting. Everything is set to the same loudness as your songs, so nobody has to touch the radio volume.', 'marquee' ); ?></p>
 
 		<input type="hidden" name="break_own_sent" value="1">
-		<label class="mq__feat"><span><b><?php esc_html_e( 'Use my own names break audio', 'marquee' ); ?></b><small><?php esc_html_e( 'Your names break playlists already play audio you made. Marquee leaves it alone and puts the names up at “When the first name appears” and “Time between names”, so set those to the gaps in your audio. Turn this off to use the audio built here.', 'marquee' ); ?></small></span><input type="checkbox" name="break_own" value="1" <?php checked( ! empty( $s['break_own'] ) ); ?>></label>
+		<label class="mq__feat"><span><b><?php esc_html_e( 'Use my own names break audio', 'marquee' ); ?></b><small><?php esc_html_e( 'Your names break playlists already play audio you made, with your own announcer. Marquee leaves it alone. Enter when your intro talking ends and when the announcer starts again (below): names are only said in between, never over your announcer. Turn this off to use the audio built here.', 'marquee' ); ?></small></span><input type="checkbox" name="break_own" value="1" data-mq-own <?php checked( ! empty( $s['break_own'] ) ); ?>></label>
+		<div class="mq__row" data-mq-own-times <?php echo empty( $s['break_own'] ) ? 'hidden' : ''; ?>>
+			<p><label for="mq-own-a"><?php esc_html_e( 'First name at', 'marquee' ); ?> <span class="mq__unit"><?php esc_html_e( 'seconds into the break', 'marquee' ); ?></span></label><input id="mq-own-a" name="own_start" type="number" min="0" max="120" step="0.1" value="<?php echo esc_attr( ! empty( $s['own_start'] ) ? $s['own_start'] : '' ); ?>"><small><?php esc_html_e( 'When your intro talking ends.', 'marquee' ); ?></small></p>
+			<p><label for="mq-own-b"><?php esc_html_e( 'Closing starts at', 'marquee' ); ?> <span class="mq__unit"><?php esc_html_e( 'seconds into the break', 'marquee' ); ?></span></label><input id="mq-own-b" name="own_end" type="number" min="0" max="180" step="0.1" value="<?php echo esc_attr( ! empty( $s['own_end'] ) ? $s['own_end'] : '' ); ?>"><small><?php esc_html_e( 'When your announcer starts talking again. In xLights, the timing track shows where the words end and start. About 3.3 seconds fit one name.', 'marquee' ); ?></small></p>
+		</div>
 		<h4><?php esc_html_e( 'Before you start', 'marquee' ); ?></h4>
 		<ul class="mq__check">
 			<?php
@@ -252,6 +266,9 @@ function marquee_break_box( $s ) {
 				<a href="<?php echo esc_url( $b['short2'] ); ?>" target="_blank" rel="noopener"><?php esc_html_e( '2 names', 'marquee' ); ?></a> ·
 				<a href="<?php echo esc_url( $b['short1'] ); ?>" target="_blank" rel="noopener"><?php esc_html_e( '1 name', 'marquee' ); ?></a>
 			</p>
+			<?php if ( empty( $b['intro'] ) && empty( $s['break_own'] ) ) : ?>
+				<p class="is-warn"><?php esc_html_e( 'Built with an older Marquee. Build it again once: with the simple names break, your FPP then gives each name the time it needs instead of fixed turns.', 'marquee' ); ?></p>
+			<?php endif; ?>
 			<p class="mq__fine">
 				<?php
 				/* translators: %s: names break playlist */

@@ -1,5 +1,6 @@
 /* Marquee: names break builder (Settings → Names & FPP). Mixes the announcer lines and the
-   music in the browser (Web Audio) and saves three WAV files: full, 2 names, 1 name. */
+   music in the browser (Web Audio) and saves the WAV files: full, 2 names, 1 name, and the
+   intro, music and closing for the break with no fixed timing. */
 (function () {
 	var tr = function (s) { var d = window.rrI18n; return (d && d[s]) || s; };
 	var C = window.MarqueeAdmin || {};
@@ -51,6 +52,31 @@
 		var o = ctx.createBufferSource(); o.buffer = p.outro; o.connect(ctx.destination); o.start(outroAt);
 		return ctx.startRendering().then(wav);
 	}
+	/* the parts for a break with no fixed timing (the FPP plays them itself, around the names):
+	   the intro (music comes in, the announcer's first line, music settles down for the names),
+	   soft music for under the names, and the closing (the announcer's last line, music out) */
+	function renderPart(p, part) {
+		var len = part === 'intro' ? p.start : (part === 'bed' ? BED : 0.35 + p.outro.duration + 1.4);
+		var ctx = new OfflineAudioContext(2, Math.ceil(len * RATE), RATE);
+		var m = ctx.createBufferSource(); m.buffer = p.music; m.loop = true;
+		var g = ctx.createGain(); m.connect(g); g.connect(ctx.destination);
+		var G = g.gain, off = part === 'intro' ? 0 : (part === 'bed' ? p.start : (p.start + 20) % Math.max(1, p.music.duration - 1));
+		if (part === 'intro') {
+			G.setValueAtTime(0, 0); G.linearRampToValueAtTime(p.gTalk, 0.4);
+			G.setValueAtTime(p.gTalk, Math.max(0.5, len - 0.45)); G.linearRampToValueAtTime(p.gNames, len);
+			var i = ctx.createBufferSource(); i.buffer = p.intro; i.connect(ctx.destination); i.start(0.15);
+		} else if (part === 'bed') {
+			G.setValueAtTime(p.gNames, 0); G.setValueAtTime(p.gNames, len - 1.5); G.linearRampToValueAtTime(0, len);
+		} else {
+			G.setValueAtTime(p.gNames, 0); G.linearRampToValueAtTime(p.gTalk, 0.4);
+			G.setValueAtTime(p.gTalk, len - 1.0); G.linearRampToValueAtTime(0, len);
+			var o = ctx.createBufferSource(); o.buffer = p.outro; o.connect(ctx.destination); o.start(0.35);
+		}
+		m.start(0, off % p.music.duration);
+		return ctx.startRendering().then(function (b) { p[part + '_secs'] = Math.round(len * 100) / 100; return wav(b); });
+	}
+	var BED = 60;
+
 	/* 16-bit stereo WAV, with a soft limit instead of clipping */
 	function wav(buf) {
 		var n = buf.length, L = buf.getChannelData(0), R = buf.getChannelData(1);
@@ -105,15 +131,21 @@
 			return Promise.all([render(p, 4, s2), render(p, 2, s1)]);
 		}).then(function (sh) {
 			p.short2 = sh[0]; p.short1 = sh[1];
-			var v = String(Math.floor(Date.now() / 1000)), kinds = ['full', 'short2', 'short1'], i = 0;
+			return Promise.all([renderPart(p, 'intro'), renderPart(p, 'bed'), renderPart(p, 'outro')]);
+		}).then(function (parts) {
+			p.intro_w = parts[0]; p.bed = parts[1]; p.outro_w = parts[2];
+			// the parts go first: the break is put together once the three full mixes are in
+			var v = String(Math.floor(Date.now() / 1000)), kinds = ['intro_w', 'bed', 'outro_w', 'full', 'short2', 'short1'], i = 0;
 			say(tr('Saving…'));
 			function next() {
 				if (i >= kinds.length) { return null; }
 				var k = kinds[i++], blob = p[k], size = 1000000, parts = Math.ceil(blob.size / size), part = 0;
 				function send() {
 					if (part >= parts) { return next(); }
-					var fd = { kind: k, v: v, part: part, parts: parts, audio: new File([blob.slice(part * size, (part + 1) * size)], k + '.wav', { type: 'application/octet-stream' }) };
+					var kind = k.replace('_w', '');
+					var fd = { kind: kind, v: v, part: part, parts: parts, audio: new File([blob.slice(part * size, (part + 1) * size)], kind + '.wav', { type: 'application/octet-stream' }) };
 					if (k === 'full') { fd.start = p.start; fd.slot = p.slot; fd.secs = seq; fd.seq = seq; }
+					if (k !== 'full' && k !== 'short1' && k !== 'short2') { fd.part_secs = p[kind + '_secs']; }
 					say(tr('Saving…') + ' ' + Math.round(((i - 1) * parts + part + 1) / (kinds.length * parts) * 100) + '%');
 					part++;
 					return post('marquee_break_save', fd).then(function (j) {

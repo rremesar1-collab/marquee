@@ -51,7 +51,7 @@ Your website never connects into your house. Remote Falcon is reached from the s
 
 - A WordPress website (6.0 or newer, PHP 7.4 or newer). Any host works; https is needed for the app and alerts.
 - **For Now Playing, the playlist and song voting:** a free [Remote Falcon](https://remotefalcon.com) account **and the Remote Falcon plugin installed and running on your FPP** (FPP → Content Setup → Plugin Manager → Remote Falcon). Marquee reads what's playing from Remote Falcon, which gets it from that plugin.
-- **For Your Name in Lights:** FPP and a matrix, projector or TV that FPP can draw on (a Pixel Overlay Model). The Marquee FPP plugin needs FPP 10 or newer; on FPP 9, put the names script on by hand (see below). Kids' pictures need FPP 10 or newer and look best on a TV or projector.
+- **For Your Name in Lights:** FPP and a matrix, projector or TV that FPP can draw on (a Pixel Overlay Model). The Marquee FPP plugin works on FPP 9 and newer. Kids' pictures need FPP 10 or newer and look best on a TV or projector.
 - **To have each name said out loud (optional):** an [ElevenLabs](https://elevenlabs.io) account. Works on FPP 9 and newer (it only needs FPP's Play Media command). Marquee makes the spoken names and the names break audio (intro, soft music, outro) with your ElevenLabs voice, and the FPP script sets up the break playlists by itself.
 
 Everything else (status, weather, Kids' Corner, guestbook, app) works with no extra setup.
@@ -62,17 +62,17 @@ Everything else (status, weather, Kids' Corner, guestbook, app) works with no ex
 2. Open **Content Setup → Marquee**, paste the **connection code** from your website, and click **Connect**.
 3. Back on your website, in the **Screens** step, **pick your screen** from the list (your FPP sends its overlay models) and Save.
 
-The setup panel at the top of **Names in Lights** shows every step with a ✓ or ✗ and turns green by itself as your FPP checks in. **Check again** reruns the FPP's setup check, **Send a test name** puts a name on your screens right away, and **Put it in line** adds a test name to the line like a kid would, so you can try a full names break from your computer.
+The setup panel at the top of **Names in Lights** shows every step with a ✓ or ✗ and turns green by itself as your FPP checks in. Under it, **Last names breaks** shows what each break did: every name, whether it went up, and whether it was said (or why not). **Check again** reruns the FPP's setup check, **Send a test name** puts a name on your screens right away, and **Put it in line** adds a test name to the line like a kid would, so you can try a full names break from your computer.
 
-**On FPP 9, or if you'd rather not use the plugin:** download `marquee_names.py` and `marquee_names.json` from the Connect your FPP step ("Or put the script on your FPP by hand"), upload both in File Manager → Scripts, and add a Run Script command preset for FPPD_STARTED. The setup guide there has every step.
+**If you'd rather not use the plugin:** download `marquee_names.py` and `marquee_names.json` from the Connect your FPP step ("Or put the script on your FPP by hand"), upload both in File Manager → Scripts, and add a Run Script command preset for FPPD_STARTED. The setup guide there has every step.
 
 ### The names break
 
 When names are waiting, the FPP slips your **Names in Lights** playlist in after the current song and the names go up on your screens one at a time.
 
 - **No names sequence yet?** Leave "Make a simple names break for me" on and Marquee makes one: the show pauses, the names go up, then your show carries on.
-- **Names break audio:** Marquee can build the break's sound for you (intro, soft music under the names, outro) in your ElevenLabs voice, plus short breaks for 1 or 2 names. Already have your own, with your own announcer? Turn on **Use my own names break audio**, and on your FPP (Content Setup → Marquee → Your own names break audio) enter when the intro ends and when the closing starts: names are only said in between, never over your announcer.
-- **Names per break:** fewer names, each up longer, so scrolling text on a small matrix moves slower.
+- **Names break audio:** Marquee can build the break's sound for you (intro, soft music under the names, outro) in your ElevenLabs voice. With Marquee's simple names break, the FPP then runs the break itself: the intro, each name for as long as it takes to read and say, then the outro, so one name makes a short break and a name never runs into the outro. With your own names sequence, short breaks for 1 or 2 names play instead. Already have your own audio, with your own announcer? Turn on **Use my own names break audio** and enter when the intro ends and when the closing starts: names are only said in between, never over your announcer.
+- **Readable text by itself:** on Automatic, a matrix shows the message still, on one to three centered lines, when the letters come out big enough; otherwise it scrolls at reading speed, and a long message gets fewer, longer turns instead of rushing across. **Most names per break** keeps breaks short.
 - **Names break after every 1 to 6 songs:** names collect and go up together, so a busy night doesn't put a break between every song. If 6 are waiting, the break comes sooner.
 - **Only during these playlists:** names wait during something like a static display and go up once your show playlist plays.
 - **Kids' pictures:** a kid with a picture gets two turns, the picture while the name is said, then the name. The name goes straight over the picture with no flicker.

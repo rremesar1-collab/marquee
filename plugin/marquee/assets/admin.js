@@ -625,6 +625,12 @@ document.addEventListener('change', function (e) {
 	if (!box.hidden) { var inp = box.querySelector('input'); if (!inp.value) { inp.focus(); } }
 });
 
+/* Names break audio: the times for your own audio show when "Use my own names break audio" is on. */
+document.addEventListener('change', function (e) {
+	if (!e.target.matches || !e.target.matches('[data-mq-own]')) { return; }
+	document.querySelectorAll('[data-mq-own-times]').forEach(function (p) { p.hidden = !e.target.checked; });
+});
+
 /* Countdown: the name and date boxes show for "A date I pick". */
 document.addEventListener('change', function (e) {
 	if (!e.target.matches || !e.target.matches('[data-mq-cto]')) { return; }

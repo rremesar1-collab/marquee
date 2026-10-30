@@ -41,7 +41,7 @@ import socket
 import threading
 import urllib.request
 
-VERSION = "3.15.3"
+VERSION = "3.16.0"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -100,6 +100,8 @@ DEFAULTS = {
                                       #   after that the screens show names already said, with no voice
     "per_break": 6,                   # names in one break: fewer = each is up longer (spread over the same part of the break)
     "every": 1,                       # a names break after every this many songs (names collect in between)
+    "music_slot": 1,                  # FPP media stream slot for the names break's own music (the break with no fixed timing)
+    "flow": True,                     # Marquee's simple break: run it with no fixed timing when the website sent its parts
 }
 MODE = {"mode": None, "show_for": None}   # what the website said last (it wins over the settings file)
 ADVISORY = {"now": None, "last": 0.0}     # traffic & parking alert from Show Control, put on the screens now and then
@@ -337,7 +339,12 @@ def pull(done_ids, st=None, report=None):
         data["fpp"] = json.dumps(info)
     if report is not None:
         data["report"] = json.dumps(report)
+    sent = list(BREAKS["pending"])
+    if sent:
+        data["breaks"] = json.dumps(sent)              # 3.16+: what each names break did, for the website
     res = http_json(url, data)
+    if sent and isinstance(res, dict) and res.get("success"):
+        BREAKS["pending"] = [b for b in BREAKS["pending"] if b not in sent]
     if isinstance(res, dict) and isinstance(res.get("data"), dict):
         d = res["data"]
         if d.get("check") and str(d["check"]) != CHECK["done"]:      # "Check again" on the website
@@ -350,6 +357,7 @@ def pull(done_ids, st=None, report=None):
     if not res or not res.get("success"):
         raise RuntimeError("website said: %s" % (res,))
     if isinstance(res["data"], dict):
+        VOICE_ON["site"] = bool(res["data"].get("voice"))
         if res["data"].get("mode") in ("break", "live"):
             if MODE["mode"] and MODE["mode"] != res["data"]["mode"]:
                 log("website switched names to", "during songs on the screens" if res["data"]["mode"] == "live" else "a names break between songs")
@@ -381,9 +389,21 @@ def pull(done_ids, st=None, report=None):
     return res["data"]
 
 
+BREAKS = {"pending": []}    # what each names break did, waiting to be sent to the website
+
+
+def break_report(kind, rows, note=""):
+    """Remember what a names break did (each name: shown or not, said or why not) for the website."""
+    BREAKS["pending"].append({"t": int(time.time()), "kind": kind, "names": rows[:12], "note": note[:200]})
+    del BREAKS["pending"][:-10]
+
+
 # --------------------------------------------------- break from website ----
 STATE = os.path.join(DATA, "marquee_break_state.json")
 BREAK_FILES = {"full": "marquee-break-full.wav", "short2": "marquee-break-2.wav", "short1": "marquee-break-1.wav"}
+# 3.16+: the break's parts, for Marquee's simple break with no fixed timing: the intro (music comes in and the
+# announcer's first line), soft music for under the names, and the closing (the announcer's last line, music out)
+PART_FILES = {"intro": "marquee-break-intro.wav", "bed": "marquee-break-bed.wav", "outro": "marquee-break-outro.wav"}
 
 
 def break_state():
@@ -423,9 +443,21 @@ def sync_break(b):
         if not b.get(k):
             return
         download(b[k], os.path.join(MUSIC, name))
+    flow = None
+    if simple and all(b.get(k) for k in PART_FILES) and float(b.get("intro_secs") or 0) > 0 and float(b.get("outro_secs") or 0) > 0:
+        try:
+            for k, name in PART_FILES.items():
+                download(b[k], os.path.join(MUSIC, name))
+            flow = {"intro": float(b["intro_secs"]), "outro": float(b["outro_secs"]), "bed": float(b.get("bed_secs") or 60)}
+        except Exception as e:
+            log("could not download the names break parts (the break keeps its fixed timing):", e)
     if simple:                                  # Marquee's own names break: it just plays the new audio
         st.update({"v": str(b["v"]), "start": float(b.get("start") or S["names_start"]), "slot": float(b.get("slot") or S["slot"]),
                    "t": time.strftime("%Y-%m-%d %H:%M"), "simple": True})
+        if flow:
+            st["flow"] = flow
+        else:
+            st.pop("flow", None)
         st.pop("simple_sig", None)
         save_state(st)
         S["names_start"], S["slot"] = st["start"], st["slot"]
@@ -496,7 +528,28 @@ def is_simple(pl, st=None):
 
 
 def simple_sig(st):
-    return "%s|%s|%s|%s" % ((st.get("v") or "") if st.get("simple") else "", float(S["names_start"]), float(S["slot"]), int(S["max_names"]))
+    return "%s|%s|%s|%s|%s" % ((st.get("v") or "") if st.get("simple") else "", float(S["names_start"]), float(S["slot"]), int(S["max_names"]),
+                               "flow" if flow_ready(st) else "")
+
+
+FLOW = {"on": False}     # a names break with no fixed timing is running right now
+
+
+def flow_ready(st=None):
+    """Marquee's simple break, with its parts from the website on this FPP: the script runs the break itself
+    (intro, each name for as long as it needs, closing) instead of fitting names into fixed-length audio."""
+    st = break_state() if st is None else st
+    if not (S.get("flow") and S["simple_break"] and st.get("simple") and st.get("flow")) or S.get("break_own") or live():
+        return False
+    return all(os.path.exists(os.path.join(MUSIC, f)) for f in PART_FILES.values())
+
+
+def save_flow_break(total):
+    """The simple break playlist: a pause as long as this break (the show waits while the names go up)."""
+    bp = S["break_playlist"]
+    save_playlist(bp, {"name": bp, "desc": SIMPLE_DESC, "repeat": 0, "loopCount": 0, "leadIn": [], "leadOut": [],
+                       "mainPlaylist": [{"type": "pause", "enabled": 1, "playOnce": 0, "duration": round(float(total), 1)}]})
+    _playlists["t"] = 0
 
 
 def ensure_simple_break():
@@ -522,7 +575,11 @@ def ensure_simple_break():
     if in_break(master_status()):
         return ""
     audio = bool(st.get("simple") and st.get("v"))
+    flow = flow_ready(st)
     for key, pl, slots in (("full", bp, int(S["max_names"])), ("short2", bp + " 2", 4), ("short1", bp + " 1", 2)):
+        if flow and pl == bp:
+            save_flow_break(st.get("flow_total") or 30)
+            continue
         if pl != bp:
             other = fpp_playlist(pl)
             if other is not None and not is_simple(other):
@@ -537,8 +594,11 @@ def ensure_simple_break():
     st.update({"simple": True, "simple_sig": sig})
     save_state(st)
     _playlists["t"] = 0
-    msg = "made a simple names break: '%s' (and '%s 1', '%s 2' for one or two names) - %s, then the names go up on your screens" % (
-        bp, bp, bp, "the names break audio plays" if audio else "the show pauses")
+    if flow:
+        msg = "made a simple names break: '%s' - the show pauses, the intro plays, each name goes up for as long as it needs, then the closing" % bp
+    else:
+        msg = "made a simple names break: '%s' (and '%s 1', '%s 2' for one or two names) - %s, then the names go up on your screens" % (
+            bp, bp, bp, "the names break audio plays" if audio else "the show pauses")
     log(msg)
     return msg
 
@@ -944,8 +1004,184 @@ def queue_break(names=None):
         log("could not make the simple names break:", e)
     # "ifNotRunning" = true so a second request never stacks a second break
     pl = plan_break(names or [])
+    bp = S["break_playlist"]
+    if pl in (bp, bp + " 1", bp + " 2") and flow_ready():
+        try:
+            if is_simple(fpp_playlist(bp)):
+                total = plan_flow(names or [])[1]
+                save_flow_break(total)
+                st = break_state()
+                st["flow_total"] = total
+                save_state(st)
+                pl = bp
+        except Exception as e:
+            log("could not set the names break's length, using its fixed timing -", e)
     fpp_command(MASTER, "Insert Playlist After Current", [pl, -1, -1, "true"])
     return pl
+
+
+# ------------------------------------------------ break with no fixed timing ----
+FLOW_MAX_NAMES_SECS = 48.0     # the most time the names get in one break; anyone left goes up in the next
+
+
+def turn_secs(item):
+    """How long one kid's turn is in a break with no fixed timing: the picture while the name is said (if any),
+    then the name, up long enough to be read and to be said, never less than 3 seconds."""
+    try:
+        say_for = max(0.5, min(8.0, float(item.get("say_for") or 2.0))) if (item.get("audio") and S["voice"]) else 0.0
+    except (TypeError, ValueError):
+        say_for = 2.0
+    pic = bool(item.get("photo")) and not NOPIC_ALL()
+    name = max(3.0, need_secs(item.get("text", "")) + 0.4, 0.0 if pic else say_for + 1.0)
+    return (max(3.0, say_for + 1.0) if pic else 0.0) + name, pic, say_for, name
+
+
+def plan_flow(names):
+    """Which names go in the next break with no fixed timing, and how long the whole break is."""
+    f = break_state().get("flow") or {}
+    go = eligible(names, "") or list(names)
+    most = min(int(S["max_names"]), int(S.get("per_break") or 6))
+    plan, used = [], 0.0
+    for item in go[:most]:
+        t = turn_secs(item)[0]
+        if plan and used + t > FLOW_MAX_NAMES_SECS:
+            break
+        plan.append(item)
+        used += t
+    total = float(f.get("intro") or 4) + used + float(f.get("outro") or 5) + 1.2
+    return plan, round(total, 1)
+
+
+def music(part, stop=False):
+    try:
+        if stop:
+            fpp_command(MASTER, "Stop Media", [PART_FILES[part]], timeout=2)
+        else:
+            fpp_command(MASTER, "Play Media", [PART_FILES[part], 1, 0, int(S["music_slot"])], timeout=3)
+    except Exception as e:
+        if not stop:
+            log("could not play the names break %s:" % part, e)
+
+
+def _run_flow(color):
+    """Marquee's simple break, with no fixed timing: intro, then each name for as long as it needs, then the
+    closing. The show waits on a pause made just as long as this break when it was lined up."""
+    st0 = break_state()
+    f = st0.get("flow") or {}
+    intro, outro = float(f.get("intro") or 4), float(f.get("outro") or 5)
+    total = float(st0.get("flow_total") or 30)
+    try:
+        fresh = LATEST["data"] is not None and time.time() - LATEST["t"] < 90 and LATEST["t"] >= BRK["end"]
+        data = LATEST["data"] if fresh else pull([])
+        color = data.get("color") or color
+        everyone = data.get("names") or []
+    except Exception as e:
+        log("break started but the website could not be reached:", e)
+        everyone = []
+    go = eligible(everyone, "") or everyone
+    room = total - intro - outro - 1.2           # the names' share of the pause the show is waiting on
+    plan, used = [], 0.0
+    for item in go[:min(int(S["max_names"]), int(S.get("per_break") or 6))]:
+        t = turn_secs(item)
+        if plan and used + t[0] > room + 0.3:
+            break
+        plan.append((item, t))
+        used += t[0]
+    CUR.update(kind="flow", note="")
+    log("break started with %d name(s) (no fixed timing: intro %.1fs, names %.1fs, closing %.1fs)" % (len(plan), intro, used, outro))
+    prefetch([p[0] for p in plan])
+    rows, done = {}, []
+    t0 = BRK["t0"]
+    talk = {"until": 0.0}
+
+    def wait_until(t):
+        last = 0.0
+        while time.time() < t:
+            if talk["until"] and time.time() >= talk["until"]:
+                stop_talking()
+                talk["until"] = 0.0
+            if time.time() - last > 0.5:
+                last = time.time()
+                if not in_break(master_status()):
+                    return False
+            time.sleep(0.1)
+        return True
+
+    def speak(item):
+        if talk["until"]:
+            stop_talking()
+        talk["until"] = say(item)
+        _mark(rows, item, said=True)
+
+    FLOW["on"] = True
+    early = {"on": False}
+    keep = S["show_for"]
+    try:
+        music("intro")
+        if not wait_until(t0 + intro):
+            log("break ended early")
+            early["on"] = True
+            return done
+        music("bed")
+        at = t0 + intro
+        for item, (turn, pic, say_for, name_secs) in plan:
+            if pic:
+                if PIC_ON or HELD:
+                    clear_pictures()
+                if show_picture(item):
+                    log("showing the picture of:", item["text"])
+                    _mark(rows, item, shown=True)
+                    speak(item)
+                    at += max(3.0, say_for + 1.0)
+                    if not wait_until(at):
+                        log("break ended early")
+                        early["on"] = True
+                        return done
+                else:
+                    pic = False                          # no screen took the picture: the name, said, instead
+            if HELD:
+                clear_pictures(names_only=True)
+            S["show_for"] = max(2.0, name_secs - 0.3)
+            if show(item["text"], color):
+                log("showing:", item["text"])
+                _mark(rows, item, shown=True)
+                if not pic:
+                    speak(item)
+                if item["id"] not in done:
+                    done.append(item["id"])
+            else:
+                log("no screen took", item["text"], "- it will wait for the next break")
+                rows.setdefault(item.get("id"), {}).setdefault("voice", "no screen took it")
+            at += name_secs
+            if not wait_until(at):
+                log("break ended early")
+                early["on"] = True
+                return done
+        if PIC_ON or HELD:
+            clear_pictures()
+        music("bed", stop=True)
+        music("outro")
+        wait_until(time.time() + outro)
+        while in_break(master_status()) and time.time() < t0 + total + 15:   # let the pause finish
+            time.sleep(0.2)
+        return done
+    finally:
+        FLOW["on"] = False
+        S["show_for"] = keep
+        if talk["until"]:
+            stop_talking()
+        if PIC_ON or HELD:
+            clear_pictures()
+        music("bed", stop=True)
+        if early["on"]:
+            music("intro", stop=True)
+            music("outro", stop=True)
+        out = []
+        for item in go[:12]:
+            r = rows.get(item.get("id")) or {}
+            out.append({"text": item.get("text", ""), "shown": bool(r.get("shown")),
+                        "voice": r.get("voice") or ("" if r.get("shown") else "waits for the next break")})
+        break_report("flow", out)
 
 
 # --------------------------------------------------------------- voice ----
@@ -953,9 +1189,11 @@ def voice_file(item):
     """Local file name for a name's spoken clip, downloading it if needed. None = no voice for this name."""
     url = item.get("audio") if S["voice"] else None
     if not url or not str(url).startswith(("http://", "https://")):
+        SAY["why"] = "no voice clip from the website" if S["voice"] and VOICE_ON["site"] else "voice off"
         return None
     base = os.path.basename(urllib.parse.urlparse(url).path)
     if not base.endswith((".mp3", ".wav")) or "/" in base or base.startswith("."):
+        SAY["why"] = "the website sent a voice clip that isn't audio"
         return None
     name = VOICE_PREFIX + base
     path = os.path.join(MUSIC, name)
@@ -975,7 +1213,39 @@ def voice_file(item):
         return name
     except Exception as e:
         log("could not download the spoken name for", item.get("text"), "-", e)
+        SAY["why"] = "couldn't download the voice clip (%s)" % str(e)[:80]
         return None
+
+
+SAY = {"why": "", "n": 0}            # why the last name wasn't said; a counter for the play copies
+VOICE_ON = {"site": False}           # the website has spoken names on
+PLAY_PREFIX = "marquee-say-"
+
+
+def play_copy(name):
+    """A copy of a spoken clip under a name FPP hasn't played before. FPP can stay silent when it's asked
+    to play the same file again later (the second time a kid's name came round), so every play gets its
+    own name. It's a hard link: no extra space, and it's made in an instant. Old ones are tidied away."""
+    SAY["n"] += 1
+    new = "%s%d-%d-%s" % (PLAY_PREFIX, int(time.time()), SAY["n"], name[len(VOICE_PREFIX):] if name.startswith(VOICE_PREFIX) else name)
+    src, dst = os.path.join(MUSIC, name), os.path.join(MUSIC, new)
+    try:
+        try:
+            os.link(src, dst)
+        except OSError:
+            import shutil
+            shutil.copyfile(src, dst)
+    except OSError as e:
+        log("could not make a fresh copy of the spoken name, playing the saved one -", e)
+        return name
+    try:
+        cut = time.time() - 600
+        for f in os.listdir(MUSIC):
+            if f.startswith(PLAY_PREFIX) and f != new and os.path.getmtime(os.path.join(MUSIC, f)) < cut:
+                os.remove(os.path.join(MUSIC, f))
+    except OSError:
+        pass
+    return new
 
 
 def tidy_voice():
@@ -1111,19 +1381,27 @@ def clear_pictures(names_only=False):
 
 def say(item):
     """Start the spoken name (and the talking faces). Returns when to stop the faces, or 0."""
+    SAY["why"] = ""
     name = voice_file(item)
     if not name:
+        SAY["last"] = "" if SAY["why"] == "voice off" else "not said: " + (SAY["why"] or "no voice clip")
+        if SAY["why"] not in ("voice off", ""):
+            log("not saying %s - %s" % (item.get("text"), SAY["why"]))
         return 0
     try:
         os.utime(os.path.join(MUSIC, name))       # newest-used clips are kept
     except OSError:
         pass
+    play = play_copy(name)
     try:
         # its own stream slot, so the break's music (slot 1) keeps playing underneath
-        fpp_command(MASTER, "Play Media", [name, 1, int(S["voice_volume"]), int(S["voice_slot"])])
+        fpp_command(MASTER, "Play Media", [play, 1, int(S["voice_volume"]), int(S["voice_slot"])])
     except Exception as e:
         log("could not play the spoken name:", e)
+        SAY["last"] = "not said: FPP didn't take the play command (%s)" % str(e)[:80]
         return 0
+    SAY["last"] = "said"
+    log("saying:", item.get("text"))
     effs = talk_effects()
     if not effs:
         return 0
@@ -1226,14 +1504,34 @@ def layout(text, width, height, one_line=False, cap=100):
 
 
 SIZES = {"s": 0.45, "m": 0.6, "l": 0.8, "xl": 0.95}       # text height as a part of the screen's height
-SPEEDS = {"slow": 0.75, "normal": 1.0, "fast": 1.35}
+READ = {"slow": 5.0, "normal": 6.5, "fast": 8.0}         # letters a second people read comfortably as a name scrolls by
+CW = 0.7                                                  # a bold capital letter is about 0.7 of the font size wide
+STILL_SECS = 2.2                                          # still text: the least time to read the whole message
 
 
-def text_plan(text, width, height, sc=None):
-    """How one name goes up on one screen. Returns (size, position, pixels per second, text).
-    Each screen's Text style / Text size / Scroll speed come from the website (Your screens).
-    Automatic: small pixel matrices (64 pixels tall or less) get one big line that scrolls when it
-    won't fit; TVs and projectors get still text, the name on its own line."""
+def still_text(text, width, height, cap):
+    """Still text: one line, or two or three centered lines (the name on its own line after the comma),
+    whichever lets the letters be biggest, never bigger than cap. Returns (size, text)."""
+    one = " ".join(text.split())
+    if " " not in one:
+        return max(4, min(cap, int(width * 0.95 / (CW * max(1, len(one)))), int(height * 0.95))), one
+    keep = S["max_width"], S["max_height"]
+    S["max_width"], S["max_height"] = 0.95, 0.95
+    try:
+        size, lines = layout(one, width, height, one_line=True, cap=cap)
+    finally:
+        S["max_width"], S["max_height"] = keep
+    return size, "\n".join(lines)   # a real line break: FPP 9 and 10 both draw it
+
+
+def text_plan(text, width, height, sc=None, room=None):
+    """How one name goes up on one screen. Returns (size, position, pixels per second, text, seconds it needs).
+    Each screen's Text / Size / Scroll speed come from the website (Your screens).
+    Automatic on a pixel matrix (64 pixels tall or less): still text on one to three lines when the
+    letters come out big enough to read (8 pixels and a fifth of the screen's height or more), otherwise
+    one big line that scrolls at a speed people can read. TVs and projectors: still text.
+    room: the seconds this name has in a timed break. A scrolling name only goes faster than reading
+    speed when it has to, to get across in its turn."""
     sc = sc or {}
     style = sc.get("style") or str(S.get("scroll") or "auto").replace("always", "scroll").replace("never", "still")
     size_k, speed_k = sc.get("size") or "auto", sc.get("speed") or "normal"
@@ -1241,38 +1539,43 @@ def text_plan(text, width, height, sc=None):
     one = " ".join(text.split())
     if size_k == "auto" and not small and style != "scroll":
         size, lines = layout(text, width, height)        # TVs: the comfortable look, name on its own line
-        return size, "Center", 0, "\n".join(lines)   # a real line break: FPP 9 and 10 both draw it
+        return size, "Center", 0, "\n".join(lines), STILL_SECS
     if style == "auto" and not small:
         style = "still"                                  # TVs only scroll when you pick Scrolling
     px = int(sc.get("px") or 0) if size_k == "custom" else 0
     frac = (px / float(height)) if px else SIZES.get(size_k, 0.8 if small else 0.6)
     big = max(4, px) if px else max(6, min(200, int(height * frac)))
-    fit = min(big, int(width * 0.95 / (0.62 * max(1, len(one)))))
-    if style == "still" or (style == "auto" and fit >= max(6, 0.7 * big)):
-        if " " not in one:
-            return max(4, fit), "Center", 0, one
-        # one line, or two or three centered lines, whichever lets the text be biggest (never bigger
-        # than the Text size picked); the name gets its own line after the comma
-        keep = S["max_width"], S["max_height"]
-        S["max_width"], S["max_height"] = 0.95, 0.95
+    if style in ("still", "auto"):
+        size, txt = still_text(text, width, height, big)
+        if style == "still" or size >= max(8, int(0.2 * height)):
+            return size, "Center", 0, txt, STILL_SECS
+    dist = width + CW * big * len(one)                   # the whole message, from coming in to gone
+    pps = READ.get(speed_k, READ["normal"]) * CW * big
+    if room:
+        pps = max(pps, dist / max(1.5, room))
+    return big, "R2L", max(10, int(round(pps))), one, round(dist / pps + 0.3, 2)
+
+
+def turn_room():
+    """Seconds a name has on the screens: its turn in a timed break (less a breath), a live-mode turn,
+    or None in a break that gives each name the time it needs."""
+    if FLOW["on"]:
+        return None
+    if live():
+        return max(2.0, float(S["show_for"])) + 0.8
+    return max(2.0, float(S["slot"]) - 0.4)
+
+
+def need_secs(text):
+    """How long a message needs on the screens to be read, on the slowest of them."""
+    need = STILL_SECS
+    for sc in S["screens"]:
         try:
-            size, lines = layout(text, width, height, one_line=True, cap=big)
-        finally:
-            S["max_width"], S["max_height"] = keep
-        return size, "Center", 0, "\n".join(lines)   # a real line break: FPP 9 and 10 both draw it
-    secs = turn_secs(speed_k)
-    pps = (width + 0.62 * big * len(one)) / secs
-    return big, "R2L", max(10, int(round(pps))), one
-
-
-def turn_secs(speed_k="normal"):
-    """How long a scrolling name takes to cross the screen. Slow uses more of the name's turn, Fast less,
-    but a name never runs into the next one: when it outlasts its turn, FPP clears the screen as it
-    finishes and wipes out the name that just went up (said but never seen)."""
-    base = max(2.0, float(S["show_for"]))
-    want = base / SPEEDS.get(speed_k, 1.0)
-    room = max(2.0, float(S["slot"]) - 0.4) if not live() else base + 0.8   # the whole turn, less a breath
-    return max(1.5, min(want, room))
+            w, h, _ = screen_info(sc)
+            need = max(need, text_plan(text, w, h, sc)[4])
+        except Exception:
+            pass
+    return need
 
 
 DEAD = {}      # FPP address -> until when it's skipped (it didn't answer: switched off, unplugged)
@@ -1290,8 +1593,9 @@ def show(text, color):
             return
         try:
             w, h, font = screen_info(sc)
-            size, pos, pps, txt = text_plan(text, w, h, sc)
-            dur = turn_secs(sc.get("speed") or "normal") if pps else min(float(S["show_for"]), turn_secs())
+            room = turn_room()
+            size, pos, pps, txt, need = text_plan(text, w, h, sc, room)
+            dur = need if pps else (min(float(S["show_for"]), room) if room else float(S["show_for"]))
             args = [sc["model"], "Transparent", "Text", color, font, size, "true", pos, pps, round(dur, 2), txt]
             key = (sc["fpp"], sc["model"])
             fpp_command(sc["fpp"], "Overlay Model Effect", args, timeout=2)
@@ -1379,6 +1683,8 @@ def run_break(color):
 
 
 def _run_break(color):
+    if flow_ready() and playlist_name(master_status()) == S["break_playlist"]:
+        return _run_flow(color)
     try:
         fresh = LATEST["data"] is not None and time.time() - LATEST["t"] < 90 and LATEST["t"] >= BRK["end"]
         data = LATEST["data"] if fresh else pull([])      # the names we already have: no waiting on the internet
@@ -1405,8 +1711,25 @@ def _run_break(color):
             S["slot"] = float(S["slot"]) * slots / turns
             S["show_for"] = max(2.0, S["slot"] - 0.6)
             slots = turns
-        names = (eligible(everyone, theme) or everyone)[:min(int(S["max_names"]), slots)]
+        cands = (eligible(everyone, theme) or everyone)[:min(int(S["max_names"]), slots)]
+        if cands:
+            # a name that needs longer to read than its turn (a long message scrolling on a small matrix):
+            # fewer, longer turns in the same stretch of the break, instead of rushing it across
+            need = max(need_secs(n.get("text", "")) for n in cands) + 0.4
+            window = slots * float(S["slot"])
+            if need > float(S["slot"]) + 0.05:
+                fit = max(1, int(window // need))
+                while fit < min(slots, len(cands)) and window / (fit + 1) >= 0.8 * need:
+                    fit += 1                    # a little quicker than reading speed keeps one more kid in this break
+                if fit < slots:
+                    log("giving each name more time to be read: %d turn(s) of %.1fs instead of %d of %.1fs"
+                        % (fit, window / fit, slots, float(S["slot"])))
+                    S["slot"] = window / fit
+                    S["show_for"] = max(2.0, S["slot"] - 0.6)
+                    slots = fit
+        names = cands[:slots]
         color = data.get("color") or color
+        CUR.update(kind=("theme: %s" % THEMES[theme].get("name", theme)) if theme else "timed", note="")
     except Exception as e:
         log("break started but the website could not be reached:", e)
         return []
@@ -1424,6 +1747,30 @@ def _run_break(color):
 
 
 def _show_names(names, slots, color):
+    rows = {}
+    try:
+        return _show_turns(names, slots, color, rows)
+    finally:
+        out = []
+        for item in names:
+            r = rows.get(item.get("id")) or {}
+            out.append({"text": item.get("text", ""), "shown": bool(r.get("shown")),
+                        "voice": r.get("voice") or ("" if r.get("shown") else "waits for the next break")})
+        break_report(CUR["kind"] or "timed", out, CUR.get("note", ""))
+
+
+def _mark(rows, item, shown=None, said=False):
+    r = rows.setdefault(item.get("id"), {})
+    if shown:
+        r["shown"] = True
+    if said and r.get("voice") != "said":
+        r["voice"] = SAY.get("last") or ""
+
+
+CUR = {"kind": "", "note": ""}       # the break running now, for its report
+
+
+def _show_turns(names, slots, color, rows):
     prefetch(names)
     done = []
     talk_until = 0
@@ -1495,6 +1842,7 @@ def _show_names(names, slots, color):
                 log("showing:", item["text"])
             else:
                 continue
+            _mark(rows, item, shown=True)
             try:
                 say_for = max(0.5, min(8.0, float(item.get("say_for") or 2.0)))
             except (TypeError, ValueError):
@@ -1506,6 +1854,7 @@ def _show_names(names, slots, color):
                     stop_talking()
                 talk_until = say(item)
                 voice_until = time.time() + say_for
+                _mark(rows, item, said=True)
             said.add((k, item["id"]))
             if item["id"] not in done:
                 done.append(item["id"])
@@ -1514,6 +1863,7 @@ def _show_names(names, slots, color):
             clear_pictures(names_only=True)              # a name we kept on over a picture comes down first
         if show(item["text"], color):
             log("showing:", item["text"])
+            _mark(rows, item, shown=True)
             try:
                 say_for = max(0.5, min(8.0, float(item.get("say_for") or 2.0)))
             except (TypeError, ValueError):
@@ -1528,10 +1878,12 @@ def _show_names(names, slots, color):
                     stop_talking()
                 talk_until = say(item)
                 voice_until = time.time() + say_for
+                _mark(rows, item, said=True)
             if item["id"] not in done:
                 done.append(item["id"])
         else:
             log("no screen took", item["text"], "- it will wait for the next break")
+            rows.setdefault(item.get("id"), {}).setdefault("voice", "no screen took it")
     if PIC_ON or HELD:
         # the last one stays up for its whole turn, then comes down (FPP won't switch it off by itself)
         end_at = float(S["names_start"]) + len(turns) * float(S["slot"]) - 0.4
@@ -1606,6 +1958,10 @@ def run_checks(problems=None):
             ok = str(bst.get("v")) == str(d["break"].get("v"))
             add(ok, "break", ("names break audio from the website is set up (built %s)" % bst.get("t", "")) if ok
                 else "names break audio from the website isn't on this FPP yet (see the log)")
+            if ok and flow_ready(bst):
+                add(True, "break", "names break with no fixed timing: each name is up for as long as it needs, then the closing")
+            elif ok and bst.get("simple") and not d["break"].get("intro"):
+                add(True, "break", "tip: build the names break audio again on your website and each name gets the time it needs (no fixed timing)")
     except urllib.error.HTTPError as e:
         add(False, "website", "the private key is wrong - download marquee_names.json again" if e.code == 403 else "website answered %s %s" % (e.code, e.reason))
     except Exception as e:

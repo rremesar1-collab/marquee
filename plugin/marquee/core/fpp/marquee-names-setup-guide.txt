@@ -165,6 +165,28 @@ The names break audio (do this once, and again whenever you change it):
     break audio, and are leveled to the same loudness.
   - With fewer than 6 names, the screens repeat them, and each one is said
     again every time it goes up.
+  - No names sequence of your own (Marquee's simple names break)? Then
+    the names script (3.16 or newer) runs the break itself: the show
+    pauses, the intro plays, each name is up for as long as it takes to
+    read and say, then the outro. One name makes a short break, six a
+    longer one, and a name can never run into the outro. Build the break
+    audio again once with Marquee 0.16 or newer to get this.
+  - Using your own break audio, with your own announcer? Turn on "Use my
+    own names break audio" in the same card and enter when your intro
+    talking ends and when the announcer starts again. Names are only
+    said in between.
+
+Text on your screens:
+  - Leave Text and Size on Automatic. On a pixel matrix the names script
+    puts the message up still, on one to three centered lines, when the
+    letters come out big enough to read; otherwise it scrolls one big
+    line at a speed people can read, and gives a long message more time
+    (fewer, longer turns) instead of rushing it across.
+
+What each break did:
+  - The setup panel at the top of Names in Lights shows the last few
+    names breaks: each name, whether it went up on your screens, and
+    whether it was said (or why not). No FPP logs needed.
 
 Themed sequences (optional): kids pick the show their name goes up in.
   - Settings -> Names & FPP -> "Sequence maker" makes them for you:

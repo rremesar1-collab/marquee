@@ -6766,3 +6766,101 @@ msgid ""
 "who would rather hear the music on their phone. Use your PulseMesh link. "
 "Leave empty to hide it."
 msgstr ""
+
+msgid "Timing (you don’t normally need these)"
+msgstr ""
+
+msgid ""
+"Building the names break audio sets these for you, and with the simple names"
+" break each name gets the time it needs by itself. Change them only for your"
+" own names sequence, to match where its audio goes quiet."
+msgstr ""
+
+msgid "Most names per break"
+msgstr ""
+
+msgid ""
+"Names that need longer to read already get fewer, longer turns by "
+"themselves. Pick a lower number to keep breaks short; any extra names go up "
+"in the next break."
+msgstr ""
+
+msgid ""
+"With the simple names break Marquee makes for you, your FPP plays the break "
+"itself: the intro, then each name for as long as it takes to read and say, "
+"then the outro. One name makes a short break, six a longer one. With your "
+"own names sequence, a shorter break plays when only 1 or 2 names are "
+"waiting. Everything is set to the same loudness as your songs, so nobody has"
+" to touch the radio volume."
+msgstr ""
+
+msgid ""
+"Your names break playlists already play audio you made, with your own "
+"announcer. Marquee leaves it alone. Enter when your intro talking ends and "
+"when the announcer starts again (below): names are only said in between, "
+"never over your announcer. Turn this off to use the audio built here."
+msgstr ""
+
+msgid "First name at"
+msgstr ""
+
+msgid "When your intro talking ends."
+msgstr ""
+
+msgid "Closing starts at"
+msgstr ""
+
+msgid ""
+"When your announcer starts talking again. In xLights, the timing track shows"
+" where the words end and start. About 3.3 seconds fit one name."
+msgstr ""
+
+msgid "Last names breaks"
+msgstr ""
+
+msgid "each name for as long as it needs"
+msgstr ""
+
+msgid "timed break"
+msgstr ""
+
+msgid "theme: %s"
+msgstr ""
+
+msgid "No names were waiting."
+msgstr ""
+
+msgid "waits for the next break"
+msgstr ""
+
+msgid "no screen took it"
+msgstr ""
+
+msgid "on the screens and said"
+msgstr ""
+
+msgid "on the screens"
+msgstr ""
+
+msgid "on the screens, %s"
+msgstr ""
+
+msgid ""
+"not said: your website had no voice clip for it (Voice step: is there an "
+"error at the top?)"
+msgstr ""
+
+msgid "not said: the FPP couldn’t download its voice clip from your website"
+msgstr ""
+
+msgid "not said: FPP didn’t take the play command"
+msgstr ""
+
+msgid "not said: %s"
+msgstr ""
+
+msgid ""
+"Built with an older Marquee. Build it again once: with the simple names "
+"break, your FPP then gives each name the time it needs instead of fixed "
+"turns."
+msgstr ""

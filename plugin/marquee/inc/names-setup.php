@@ -177,47 +177,120 @@ function marquee_show_playlist_suggestion() {
 	return $sched[0]['items'] > $sched[1]['items'] ? $sched[0]['name'] : null;
 }
 
-/**
- * A screen where names scroll faster than people can read (a typical 22-letter message, the time each name
- * is up) but that is tall enough to show the message still instead. Returns its name, or ''.
- * Mirrors the names script's text_plan(); nothing changes on the screens by itself.
- */
-function marquee_fast_scroll_screen() {
-	$s      = marquee_get();
-	$models = marquee_fpp_models();
-	if ( ! $models ) {
-		return '';
+/* -------------------------------------------------------------------------
+ * What each names break did (names script 3.16+ reports it with its check-in,
+ * after the key is checked), for the setup panel: no FPP logs needed.
+ * ---------------------------------------------------------------------- */
+add_filter( 'ridgeroad_names_pull_data', function ( $data ) {
+	if ( empty( $_POST['breaks'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification -- the names key was checked
+		return $data;
 	}
-	$size = array();
-	foreach ( $models as $m ) {
-		$size[ $m['name'] ] = array( (int) $m['w'], (int) $m['h'] );
+	$in = json_decode( wp_unslash( $_POST['breaks'] ), true ); // phpcs:ignore
+	if ( ! is_array( $in ) ) {
+		return $data;
 	}
-	$b    = function_exists( 'marquee_break_info' ) ? marquee_break_info() : null;
-	$slot = ( $b && ! empty( $b['slot'] ) && empty( $s['break_own'] ) ) ? (float) $b['slot'] : (float) $s['names_slot'];
-	$slot = $slot * 6 / max( 1, min( 6, (int) $s['names_per_break'] ) );   // fewer names per break: each is up longer
-	$secs = max( 2.0, $slot - 0.6 );
-	foreach ( (array) $s['fpp_screens'] as $r ) {
-		if ( ! marquee_screen_is_local( $r['fpp'] ) || empty( $size[ $r['model'] ] ) ) {
+	$keep = get_option( 'marquee_names_breaks' );
+	$keep = is_array( $keep ) ? $keep : array();
+	foreach ( array_slice( $in, 0, 10 ) as $b ) {
+		if ( ! is_array( $b ) || empty( $b['t'] ) ) {
 			continue;
 		}
-		list( $w, $h ) = $size[ $r['model'] ];
-		$style = $r['style'] ?? 'auto';
-		if ( $h < 32 || ! $w || 'still' === $style || ( 'auto' === $style && $h > 64 ) ) {
-			continue; // small matrices need to scroll; TVs show still text on Automatic
+		$rows = array();
+		foreach ( array_slice( (array) ( $b['names'] ?? array() ), 0, 12 ) as $n ) {
+			if ( is_array( $n ) ) {
+				$rows[] = array(
+					'text'  => sanitize_text_field( mb_substr( (string) ( $n['text'] ?? '' ), 0, 60 ) ),
+					'shown' => ! empty( $n['shown'] ),
+					'voice' => sanitize_text_field( mb_substr( (string) ( $n['voice'] ?? '' ), 0, 140 ) ),
+				);
+			}
 		}
-		$fr  = array( 's' => 0.45, 'm' => 0.6, 'l' => 0.8, 'xl' => 0.95 );
-		$big = 'custom' === ( $r['size'] ?? 'auto' ) && ! empty( $r['px'] ) ? (int) $r['px'] : max( 6, (int) ( $h * ( $fr[ $r['size'] ?? '' ] ?? 0.8 ) ) );
-		$len = 22;
-		if ( 'auto' === $style && min( $big, (int) ( $w * 0.95 / ( 0.62 * $len ) ) ) >= 0.7 * $big ) {
-			continue; // fits on one line: no scrolling
-		}
-		$mult = array( 'slow' => 0.75, 'normal' => 1.0, 'fast' => 1.35 );
-		$cps  = ( $w / ( 0.62 * $big ) + $len ) / $secs * ( $mult[ $r['speed'] ?? 'normal' ] ?? 1.0 );
-		if ( $cps > 7 ) {
-			return $r['name'] ? $r['name'] : $r['model'];
-		}
+		$keep[] = array(
+			't'     => min( time(), (int) $b['t'] ),
+			'kind'  => sanitize_text_field( mb_substr( (string) ( $b['kind'] ?? '' ), 0, 60 ) ),
+			'names' => $rows,
+		);
 	}
-	return '';
+	usort( $keep, function ( $a, $b ) {
+		return $b['t'] <=> $a['t'];
+	} );
+	update_option( 'marquee_names_breaks', array_slice( $keep, 0, 6 ), false );
+	return $data;
+}, 5 );
+
+/** The last names breaks, newest first, for the setup panel. */
+function marquee_names_breaks_html() {
+	$list = get_option( 'marquee_names_breaks' );
+	if ( ! is_array( $list ) || ! $list ) {
+		return '';
+	}
+	ob_start();
+	?>
+	<details class="mq-nbreaks"<?php echo time() - (int) $list[0]['t'] < 2 * HOUR_IN_SECONDS ? ' open' : ''; ?>>
+		<summary><?php esc_html_e( 'Last names breaks', 'marquee' ); ?></summary>
+		<ul>
+			<?php foreach ( array_slice( $list, 0, 4 ) as $b ) : ?>
+				<?php
+				$kind = (string) $b['kind'];
+				if ( 'flow' === $kind ) {
+					$kind = __( 'each name for as long as it needs', 'marquee' );
+				} elseif ( 'timed' === $kind ) {
+					$kind = __( 'timed break', 'marquee' );
+				} elseif ( 0 === strpos( $kind, 'theme: ' ) ) {
+					/* translators: %s: theme name */
+					$kind = sprintf( __( 'theme: %s', 'marquee' ), substr( $kind, 7 ) );
+				}
+				?>
+				<li>
+					<b><?php /* translators: %s: time ago */ echo esc_html( sprintf( __( '%s ago', 'marquee' ), human_time_diff( (int) $b['t'] ) ) ); ?></b> <small><?php echo esc_html( $kind ); ?></small>
+					<?php if ( ! $b['names'] ) : ?>
+						<span class="mq-nbreaks__none"><?php esc_html_e( 'No names were waiting.', 'marquee' ); ?></span>
+					<?php endif; ?>
+					<?php foreach ( $b['names'] as $n ) : ?>
+						<?php
+						$said = 'said' === $n['voice'];
+						$bad  = $n['shown'] && '' !== $n['voice'] && ! $said;
+						?>
+						<span class="mq-nbreaks__n<?php echo $bad ? ' is-bad' : ( $n['shown'] ? ' is-ok' : '' ); ?>">
+							<?php echo esc_html( $n['text'] ); ?>
+							<em>
+							<?php
+							if ( ! $n['shown'] ) {
+								echo esc_html( 'waits for the next break' === $n['voice'] ? __( 'waits for the next break', 'marquee' ) : ( 'no screen took it' === $n['voice'] ? __( 'no screen took it', 'marquee' ) : $n['voice'] ) );
+							} elseif ( $said ) {
+								esc_html_e( 'on the screens and said', 'marquee' );
+							} elseif ( '' === $n['voice'] ) {
+								esc_html_e( 'on the screens', 'marquee' );
+							} else {
+								/* translators: %s: why the name wasn't said */
+								echo esc_html( sprintf( __( 'on the screens, %s', 'marquee' ), marquee_names_voice_why( $n['voice'] ) ) );
+							}
+							?>
+							</em>
+						</span>
+					<?php endforeach; ?>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+	</details>
+	<?php
+	return ob_get_clean();
+}
+
+/** The names script's reason a name wasn't said, in the owner's words. */
+function marquee_names_voice_why( $v ) {
+	$v = preg_replace( '/^not said: /', '', (string) $v );
+	if ( 0 === strpos( $v, 'no voice clip from the website' ) ) {
+		return __( 'not said: your website had no voice clip for it (Voice step: is there an error at the top?)', 'marquee' );
+	}
+	if ( 0 === strpos( $v, "couldn't download the voice clip" ) ) {
+		return __( 'not said: the FPP couldn’t download its voice clip from your website', 'marquee' );
+	}
+	if ( 0 === strpos( $v, "FPP didn't take the play command" ) ) {
+		return __( 'not said: FPP didn’t take the play command', 'marquee' );
+	}
+	/* translators: %s: reason, from the FPP */
+	return sprintf( __( 'not said: %s', 'marquee' ), $v );
 }
 
 /* -------------------------------------------------------------------------
@@ -352,11 +425,6 @@ function marquee_names_setup_steps() {
 		$steps[] = array( $off && $scr_ok ? 'wait' : 'bad', $head, $scr_bad[0]['msg'] . $tip . $more, 'screens' );
 	} elseif ( $scr_ok ) {
 		$steps[] = array( 'ok', __( 'Your screen is ready', 'marquee' ), $scr_ok[0]['msg'], 'screens' );
-		$fast = marquee_fast_scroll_screen();
-		if ( $fast ) {
-			/* translators: %s: screen name */
-			$steps[] = array( 'tip', sprintf( __( 'Names may scroll too fast on %s', 'marquee' ), $fast ), __( 'Each name is up for only a couple of seconds, so a scrolling message has to fly across. Show it still (Text: Still, in the Screens step), or give each name more time with fewer Names per break.', 'marquee' ), 'screens' );
-		}
 	} else {
 		$steps[] = array( 'wait', __( 'Your screen', 'marquee' ), __( 'Saved. The FPP checks it at its next setup check.', 'marquee' ), 'screens' );
 	}
@@ -465,6 +533,7 @@ function marquee_names_setup_panel_html() {
 			</li>
 		<?php endforeach; ?>
 	</ol>
+	<?php echo marquee_names_breaks_html(); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped inside ?>
 	<?php
 	return ob_get_clean();
 }

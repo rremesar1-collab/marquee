@@ -42,6 +42,8 @@ function marquee_defaults() {
 		'fpp_screens'  => array(),           // [ name, fpp address, overlay model ] for the names script
 		'names_simple' => 1,                 // no names break playlist on the FPP: the script (3.10+) makes a simple one, no sequence needed
 		'break_own'    => 0,                 // the show uses its own names break audio: Marquee doesn't put its break audio in the playlists
+		'own_start'    => 0,                 // own break audio: seconds in when the intro talking ends (first name); 0 = not set
+		'own_end'      => 0,                 // ... and when the announcer starts talking again (names are said only in between)
 		'voice_on'     => 0,                 // say each name out loud (ElevenLabs)
 		'voice_key'    => '',
 		'voice_id'     => '',
@@ -136,6 +138,8 @@ function marquee_save( $in ) {
 		'fpp_screens'  => isset( $in['fpp_sent'] ) ? marquee_clean_screens( isset( $in['fpp_screens'] ) ? (array) wp_unslash( $in['fpp_screens'] ) : array() ) : $cur['fpp_screens'],
 		'names_simple' => isset( $in['fpp_sent'] ) ? (int) ! empty( $in['names_simple'] ) : $cur['names_simple'],
 		'break_own'    => isset( $in['break_own_sent'] ) ? (int) ! empty( $in['break_own'] ) : $cur['break_own'],
+		'own_start'    => isset( $in['own_start'] ) ? max( 0, min( 120, round( (float) $in['own_start'], 2 ) ) ) : (float) ( $cur['own_start'] ?? 0 ),
+		'own_end'      => isset( $in['own_end'] ) ? max( 0, min( 180, round( (float) $in['own_end'], 2 ) ) ) : (float) ( $cur['own_end'] ?? 0 ),
 		'voice_on'     => isset( $in['voice_sent'] ) ? (int) ! empty( $in['voice_on'] ) : $cur['voice_on'],
 		'voice_key'    => ( isset( $in['voice_key'] ) && '' !== trim( (string) $in['voice_key'] ) && '••••••••' !== $in['voice_key'] ) ? $txt( 'voice_key', 200 ) : $cur['voice_key'],
 		'voice_id'     => isset( $in['voice_id'] ) ? substr( preg_replace( '/[^A-Za-z0-9]/', '', wp_unslash( $in['voice_id'] ) ), 0, 40 ) : $cur['voice_id'],
@@ -470,7 +474,18 @@ function marquee_fpp_config() {
 		'break_own'      => ! empty( $s['break_own'] ), // script 3.10+: leave the playlists' audio alone, use these timings
 		'per_break'      => max( 1, min( 6, (int) $s['names_per_break'] ) ), // script 3.11+: fewer names, each up longer
 		'every'          => max( 1, min( 6, (int) $s['names_every'] ) ),     // script 3.12+: a names break after every this many songs
-	);
+	) + marquee_own_window();
+}
+
+/**
+ * Own names break audio: when the intro talking ends and when the announcer starts again (script 3.15+).
+ * Sent only when both are set here, so times typed on the FPP's Marquee page (older setups) still count.
+ */
+function marquee_own_window() {
+	$s = marquee_get();
+	$a = (float) ( $s['own_start'] ?? 0 );
+	$b = (float) ( $s['own_end'] ?? 0 );
+	return ( ! empty( $s['break_own'] ) && $a > 0 && $b >= $a + 2.5 ) ? array( 'own_start' => $a, 'own_end' => $b ) : array();
 }
 
 /** Song covers from Settings: key => attachment ID (an image) or -1 (no cover); 0 = automatic, not stored. */

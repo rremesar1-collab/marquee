@@ -43,6 +43,7 @@
 .mq__fppstat p { margin: 4px 0; }
 .mq__fppstat ul { margin: 4px 0 2px 2px; }
 .mq__fppstat li.is-ok { color: #00702a; }
+.mq__fppstat p.is-warn { color: #8a5a00; font-weight: 600; }
 .mq__fppstat li.is-bad { color: #b32d2e; font-weight: 600; }
 .mq__ready { background: #fff; border: 1px solid #c3e6cb; border-left: 4px solid #00a32a; padding: 6px 20px 14px; margin: 14px 0 18px; }
 .mq__ready h2 { font-size: 20px; margin: 14px 0 10px; }
@@ -524,6 +525,9 @@
 .mq__fppplug li { margin-bottom: 8px; }
 .mq__copyrow { display: flex; gap: 6px; margin-top: 4px; }
 .mq__copyrow input { flex: 1; min-width: 0; font-family: monospace; font-size: 12px; }
+.mq__adv { margin: 10px 0 14px; border: 1px solid #e0e0e0; border-radius: 8px; padding: 0 12px; background: #fcfcfc; }
+.mq__adv > summary { cursor: pointer; padding: 10px 0; font-weight: 600; color: var(--mq-accent, #16603c); }
+.mq__adv[open] { padding-bottom: 12px; }
 .mq__byhand { margin: 8px 0; }
 .mq__byhand summary { cursor: pointer; color: var(--mq-accent, #16603c); }
 .mq__screens .mq__scr-look td { padding: 0 6px 10px 0; }
@@ -550,6 +554,18 @@
 .mq-nsetup__steps { list-style: none; margin: 0; padding: 0; counter-reset: none; }
 .mq-nsetup__steps li { display: flex; align-items: flex-start; gap: 10px; padding: 9px 0; border-top: 1px solid #f0f0f1; margin: 0; }
 .mq-nsetup__steps li:first-child { border-top: 0; }
+.mq-nbreaks { margin-top: 10px; border-top: 1px solid #f0f0f1; padding-top: 8px; }
+.mq-nbreaks > summary { cursor: pointer; font-weight: 600; color: var(--mq-accent, #16603c); }
+.mq-nbreaks ul { list-style: none; margin: 8px 0 0; padding: 0; }
+.mq-nbreaks li { margin: 0 0 10px; }
+.mq-nbreaks li > small { color: #646970; }
+.mq-nbreaks__n { display: block; margin: 3px 0 0; padding-left: 18px; text-indent: -18px; overflow-wrap: anywhere; }
+.mq-nbreaks__n::before { content: "•"; display: inline-block; width: 18px; text-indent: 0; color: #8c8f94; }
+.mq-nbreaks__n.is-ok::before { content: "✓"; color: #008a20; }
+.mq-nbreaks__n.is-bad::before { content: "!"; color: #b32d2e; font-weight: 700; }
+.mq-nbreaks__n em { font-style: normal; color: #646970; margin-left: 6px; }
+.mq-nbreaks__n.is-bad em { color: #b32d2e; }
+.mq-nbreaks__none { display: block; padding-left: 18px; color: #646970; }
 .mq-nsetup__icon { flex: 0 0 24px; height: 24px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; color: #fff; background: #8c8f94; }
 .mq-nsetup__steps .is-ok .mq-nsetup__icon { background: #00a32a; }
 .mq-nsetup__steps .is-bad .mq-nsetup__icon { background: #d63638; }

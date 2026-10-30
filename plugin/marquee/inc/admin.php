@@ -568,13 +568,6 @@ function marquee_admin_page() {
 					<p class="mq__note mq-only-live"><?php esc_html_e( 'Spoken names, the names break audio and themed sequences work with the names break. Pick “Between songs” above to use them.', 'marquee' ); ?></p>
 					<div class="mq__row mq-only-break">
 					<p><label for="mq-fpl"><?php esc_html_e( 'FPP playlist with your names break', 'marquee' ); ?></label><input id="mq-fpl" name="fpp_playlist" type="text" value="<?php echo esc_attr( $s['fpp_playlist'] ); ?>"><small><?php esc_html_e( 'A short sequence (about 30 seconds) in its own playlist, with your screens left dark where the names go. Don’t have one? The Sequence maker (below) makes it for you, or leave “Make a simple names break for me” on.', 'marquee' ); ?></small></p>
-					<p><label for="mq-nst"><?php esc_html_e( 'When the first name appears', 'marquee' ); ?> <span class="mq__unit"><?php esc_html_e( 'seconds into the break', 'marquee' ); ?></span></label><input id="mq-nst" name="names_start" type="number" min="0" max="120" step="0.5" value="<?php echo esc_attr( $s['names_start'] ); ?>"><small><?php esc_html_e( 'Usually right after the announcer’s intro ends (“It’s time for Names in Lights!”).', 'marquee' ); ?></small></p>
-					<p><label for="mq-nsl"><?php esc_html_e( 'Time between names', 'marquee' ); ?> <span class="mq__unit"><?php esc_html_e( 'seconds', 'marquee' ); ?></span></label><input id="mq-nsl" name="names_slot" type="number" min="2.5" max="10" step="0.05" value="<?php echo esc_attr( $s['names_slot'] ); ?>"><small><?php esc_html_e( 'How long each name gets before the next one goes up (up to 6 names per break).', 'marquee' ); ?></small></p>
-					<p><label for="mq-npb"><?php esc_html_e( 'Names per break', 'marquee' ); ?></label><select id="mq-npb" name="names_per_break">
-						<?php foreach ( array( 6, 5, 4, 3, 2, 1 ) as $mq_n ) : ?>
-							<option value="<?php echo (int) $mq_n; ?>" <?php selected( (int) $s['names_per_break'], $mq_n ); ?>><?php echo esc_html( 6 === $mq_n ? __( '6 (standard)', 'marquee' ) : (string) $mq_n ); ?></option>
-						<?php endforeach; ?>
-					</select><small><?php esc_html_e( 'Fewer names, each up longer: at 3, every name gets twice the time, so a scrolling message can move half as fast and is easier to read. The names still fit the same part of your break audio. Any extra names go up in the next break.', 'marquee' ); ?></small></p>
 					<p><label for="mq-nev"><?php esc_html_e( 'Names break after every', 'marquee' ); ?></label><select id="mq-nev" name="names_every">
 						<?php foreach ( array( 1, 2, 3, 4, 5, 6 ) as $mq_n ) : ?>
 							<option value="<?php echo (int) $mq_n; ?>" <?php selected( (int) $s['names_every'], $mq_n ); ?>><?php echo esc_html( 1 === $mq_n ? __( 'song (standard)', 'marquee' ) : sprintf( /* translators: %d: number of songs */ __( '%d songs', 'marquee' ), $mq_n ) ); ?></option>
@@ -587,8 +580,20 @@ function marquee_admin_page() {
 						<?php endforeach; ?>
 					</select><small><?php esc_html_e( 'So one family can’t fill a whole names break. You skip this limit while you’re logged in, for testing.', 'marquee' ); ?></small></p>
 					<label class="mq__feat mq-only-break"><span><b><?php esc_html_e( 'Make a simple names break for me', 'marquee' ); ?></b><small><?php esc_html_e( 'If your FPP has no names break playlist yet, Marquee makes one: the show pauses, the names go up on your screens (with the names break audio below, if you build it), then your show carries on. No sequence needed. A names break playlist you already have is never touched.', 'marquee' ); ?></small></span><input type="checkbox" name="names_simple" value="1" <?php checked( ! empty( $s['names_simple'] ) ); ?>></label>
-					<div class="mq-only-break"><?php marquee_name_timeline( '#mq-nst', '#mq-nsl', (float) $s['break_seq'] ); ?>
-					<p class="mq__fine"><?php esc_html_e( 'You don’t normally need to touch these: building the names break audio (below) sets both to match your intro and outro. Change them only if you made your own break audio; then match them to where your audio goes quiet.', 'marquee' ); ?></p></div>
+					<details class="mq__adv mq-only-break">
+						<summary><?php esc_html_e( 'Timing (you don’t normally need these)', 'marquee' ); ?></summary>
+						<p class="mq__fine"><?php esc_html_e( 'Building the names break audio sets these for you, and with the simple names break each name gets the time it needs by itself. Change them only for your own names sequence, to match where its audio goes quiet.', 'marquee' ); ?></p>
+						<div class="mq__row">
+						<p><label for="mq-nst"><?php esc_html_e( 'When the first name appears', 'marquee' ); ?> <span class="mq__unit"><?php esc_html_e( 'seconds into the break', 'marquee' ); ?></span></label><input id="mq-nst" name="names_start" type="number" min="0" max="120" step="0.5" value="<?php echo esc_attr( $s['names_start'] ); ?>"><small><?php esc_html_e( 'Usually right after the announcer’s intro ends (“It’s time for Names in Lights!”).', 'marquee' ); ?></small></p>
+						<p><label for="mq-nsl"><?php esc_html_e( 'Time between names', 'marquee' ); ?> <span class="mq__unit"><?php esc_html_e( 'seconds', 'marquee' ); ?></span></label><input id="mq-nsl" name="names_slot" type="number" min="2.5" max="10" step="0.05" value="<?php echo esc_attr( $s['names_slot'] ); ?>"><small><?php esc_html_e( 'How long each name gets before the next one goes up (up to 6 names per break).', 'marquee' ); ?></small></p>
+						<p><label for="mq-npb"><?php esc_html_e( 'Most names per break', 'marquee' ); ?></label><select id="mq-npb" name="names_per_break">
+							<?php foreach ( array( 6, 5, 4, 3, 2, 1 ) as $mq_n ) : ?>
+								<option value="<?php echo (int) $mq_n; ?>" <?php selected( (int) $s['names_per_break'], $mq_n ); ?>><?php echo esc_html( 6 === $mq_n ? __( '6 (standard)', 'marquee' ) : (string) $mq_n ); ?></option>
+							<?php endforeach; ?>
+						</select><small><?php esc_html_e( 'Names that need longer to read already get fewer, longer turns by themselves. Pick a lower number to keep breaks short; any extra names go up in the next break.', 'marquee' ); ?></small></p>
+						</div>
+						<?php marquee_name_timeline( '#mq-nst', '#mq-nsl', (float) $s['break_seq'] ); ?>
+					</details>
 					<details class="mq__card mq-only-break" <?php echo ( $v_on && ! $brk ) ? 'open' : ''; ?>>
 						<summary>
 							<span class="mq__card-n">3</span>

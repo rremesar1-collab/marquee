@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.15.1
+Stable tag: 0.16.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,14 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.16.0 =
+* Names break with no fixed timing (names script 3.16.0): with Marquee's simple names break, the FPP now runs the break itself. The show pauses, the intro plays, each name is up for as long as it takes to read and say, then the outro. One name makes a short break, six a longer one, and a name can never run into the outro. Build the names break audio again once to get it. Shows with their own names sequence keep the timed break.
+* Readable text by itself: on Automatic, a pixel matrix shows the message still on one to three centered lines when the letters come out big enough to read, otherwise it scrolls at reading speed. A long message gets fewer, longer turns instead of rushing across. The old "Names per break" is now "Most names per break", under a new Timing section with the other settings you don't normally need.
+* Last names breaks: the setup panel at the top of Names in Lights shows what each break did: every name, whether it went up on your screens, and whether it was said (or why not). No FPP logs needed.
+* Spoken names play under a fresh file name every time, so a name that comes round again (the same voice clip) is never silent.
+* Your own names break audio: "First name at" and "Closing starts at" are now on the website, under Use my own names break audio, instead of on the FPP's Marquee page.
+* The Marquee plugin for FPP now installs on FPP 9 too.
 
 = 0.15.1 =
 * Names script 3.15.3: scrolling names in the short break for 1 or 2 names move slower again with "Names per break" under 6. Each name goes up once and gets the whole stretch, instead of twice at full speed.
