@@ -95,10 +95,12 @@ msgstr[0] "Votre autre écran est prêt."
 msgstr[1] "Vos %d autres écrans sont prêts."
 
 msgid ""
-"If it’s just switched off, that’s fine: names go up on it once it’s on."
+"If it’s just switched off, that’s fine: names go up on it once it’s on. This"
+" updates by itself every couple of minutes."
 msgstr ""
-"S’il est simplement éteint, pas de souci : les noms s’y afficheront une fois"
-" allumé."
+"Si l’écran est simplement éteint, ce n’est pas grave : les noms s’y "
+"afficheront dès qu’il sera allumé. Ceci se met à jour tout seul toutes les "
+"deux minutes."
 
 msgid "Your screen is ready"
 msgstr "Votre écran est prêt"
@@ -6434,3 +6436,7 @@ msgstr ""
 "Créé avec une version antérieure de Marquee. Recréez-le une fois : avec la "
 "pause des prénoms simple, votre FPP donnera alors à chaque prénom le temps "
 "qu’il lui faut au lieu de tours fixes."
+
+#: inc/names-setup.php:536
+msgid "Asks your FPP to look for your screens again right now"
+msgstr "Demande à votre FPP de rechercher à nouveau vos écrans tout de suite"

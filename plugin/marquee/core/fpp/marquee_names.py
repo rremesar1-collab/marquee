@@ -41,7 +41,7 @@ import socket
 import threading
 import urllib.request
 
-VERSION = "3.16.0"
+VERSION = "3.16.1"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -611,6 +611,8 @@ TESTS = {"want": None, "done": set(), "results": []}   # "Send a test name" from
 FAST = {"until": 0.0}
 LATEST = {"data": None, "t": 0.0}          # the newest answer from the website (when that check-in started)
 BG = {"thread": None, "result": None, "error": None, "done": [], "started": 0.0}
+LASTCHK = {"list": None}                      # 3.16.1: the last setup check sent to the website
+SCR = {"t": 0.0, "thread": None, "result": None}   # 3.16.1: screens are checked again every couple of minutes
 
 
 def support_view():
@@ -2031,8 +2033,19 @@ def run_checks(problems=None):
             add(False, "voice", "could not check spoken-name support: %s" % e)
         if not os.access(MUSIC, os.W_OK):
             add(False, "voice", "can't save spoken names in %s" % MUSIC)
+    out += screen_checks()
+    LASTCHK["list"] = out
+    return out, site_ok
+
+
+def screen_checks(fresh=False):
+    """The setup check lines for your screens. fresh=True asks each FPP again instead of trusting what was looked up before."""
+    out = []
+    add = lambda ok, what, msg: out.append({"ok": bool(ok), "what": what, "msg": msg})
     for sc in S["screens"]:
         try:
+            if fresh:
+                _info.pop(sc["fpp"] + "|" + sc["model"], None)
             w, h, font = screen_info(sc)
             if w < h:
                 add(False, "screen", "%s: overlay model '%s' is taller than wide (%d x %d) - strings and nodes are swapped in xLights" % (sc["name"], sc["model"], w, h))
@@ -2048,7 +2061,7 @@ def run_checks(problems=None):
                 ms = fpp_models() or []
                 msg += " - models on this FPP: %s" % (", ".join(m["name"] for m in ms) or "none (upload your models with FPP Connect, Models ticked)")
             add(False, "screen", msg)
-    return out, site_ok
+    return out
 
 
 def fb_instead(sc, w, h):
@@ -2065,6 +2078,42 @@ def fb_instead(sc, w, h):
         if isinstance(m, dict) and str(m.get("Type", "")).lower() == "channel" and int(m.get("width") or 0) == w and int(m.get("height") or 0) == h:
             return str(m.get("Name"))
     return ""
+
+
+def recheck_screens():
+    """Every couple of minutes (not during a names break), ask each screen's FPP again in the background,
+    so the website shows a TV or projector as reachable once it's turned on, and as off once it's off."""
+    t = SCR["thread"]
+    if t is not None:
+        if t.is_alive():
+            return
+        SCR["thread"] = None
+        new = SCR["result"]
+        SCR["result"] = None
+        old = LASTCHK["list"]
+        if new is None or old is None:
+            return
+        was = [(c["ok"], c["msg"]) for c in old if c.get("what") == "screen"]
+        now = [(c["ok"], c["msg"]) for c in new]
+        if was != now:
+            merged = [c for c in old if c.get("what") != "screen"] + new
+            LASTCHK["list"] = merged
+            for c in new:
+                log(("screen ok: " if c["ok"] else "screen: ") + c["msg"])
+            send_report(merged)
+        return
+    # every 2 minutes; every 15 seconds while someone has the setup page open on the website
+    if time.time() - SCR["t"] < (15 if FAST["until"] > time.time() else 120) or not S["screens"]:
+        return
+    SCR["t"] = time.time()
+
+    def run():
+        try:
+            SCR["result"] = screen_checks(fresh=True)
+        except Exception:
+            SCR["result"] = None
+    SCR["thread"] = threading.Thread(target=run, daemon=True)
+    SCR["thread"].start()
 
 
 def send_report(checks, req=""):
@@ -2169,6 +2218,16 @@ def wait_until_ready(limit=180):
             time.sleep(5)
 
 
+def is_names_script(pid):
+    """True if that process is really a names script. After a restart the old number in the lock file
+    can belong to something else entirely, and then this copy must not give up."""
+    try:
+        with open("/proc/%d/cmdline" % pid, "rb") as f:
+            return b"marquee_names" in f.read()
+    except OSError:
+        return False
+
+
 def single_instance():
     other = other_copy()
     if other:
@@ -2179,7 +2238,7 @@ def single_instance():
     try:
         if os.path.exists(LOCK):
             old = int(open(LOCK).read().strip() or 0)
-            if old and old != os.getpid() and os.path.exists("/proc/%d" % old):
+            if old and old != os.getpid() and is_names_script(old):
                 log("already running (pid %d) - exiting" % old)
                 sys.exit(0)
         open(LOCK, "w").write(str(os.getpid()))
@@ -2273,6 +2332,7 @@ def main():
                         ensure_simple_break()
                     except Exception as e:
                         log("could not update the simple names break:", e)
+                recheck_screens()
             if in_break(st):
                 if BG["thread"] is not None:                  # don't wait for a check-in that's still going
                     BG["thread"].join(0)

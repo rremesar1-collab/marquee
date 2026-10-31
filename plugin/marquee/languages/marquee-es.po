@@ -94,10 +94,11 @@ msgstr[0] "Tu otra pantalla está lista."
 msgstr[1] "Tus otras %d pantallas están listas."
 
 msgid ""
-"If it’s just switched off, that’s fine: names go up on it once it’s on."
+"If it’s just switched off, that’s fine: names go up on it once it’s on. This"
+" updates by itself every couple of minutes."
 msgstr ""
 "Si solo está apagada, no pasa nada: los nombres aparecerán en ella cuando se"
-" encienda."
+" encienda. Esto se actualiza solo cada par de minutos."
 
 msgid "Your screen is ready"
 msgstr "Tu pantalla está lista"
@@ -6359,3 +6360,7 @@ msgstr ""
 "Creado con una versión anterior de Marquee. Vuelve a crearlo una vez: con la"
 " pausa de nombres sencilla, tu FPP le dará a cada nombre el tiempo que "
 "necesita en lugar de turnos fijos."
+
+#: inc/names-setup.php:536
+msgid "Asks your FPP to look for your screens again right now"
+msgstr "Le pide a tu FPP que vuelva a buscar tus pantallas ahora mismo"

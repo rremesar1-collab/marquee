@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.16.0
+Stable tag: 0.16.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,12 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.16.1 =
+* Screen status stays up to date: the FPP checks each TV, projector and matrix again every couple of minutes (names script 3.16.1), so a screen shows as ready once it’s turned on, and as off once it’s off.
+* When more than one screen can’t be reached, the setup panel names all of them.
+* Fixed: after the FPP restarted, the names script could think it was already running and not start (names and test names stopped going up). It now starts every time.
+* A Check again button right next to a screen that can’t be reached, and while you have the setup page open the FPP looks again every 15 seconds.
 
 = 0.16.0 =
 * Names break with no fixed timing (names script 3.16.0): with Marquee's simple names break, the FPP now runs the break itself. The show pauses, the intro plays, each name is up for as long as it takes to read and say, then the outro. One name makes a short break, six a longer one, and a name can never run into the outro. Build the names break audio again once to get it. Shows with their own names sequence keep the timed break.

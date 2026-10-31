@@ -93,7 +93,8 @@ msgstr[1] ""
 
 #: plugin/marquee/inc/names-setup.php:351
 msgid ""
-"If it’s just switched off, that’s fine: names go up on it once it’s on."
+"If it’s just switched off, that’s fine: names go up on it once it’s on. This"
+" updates by itself every couple of minutes."
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:354
@@ -6863,4 +6864,8 @@ msgid ""
 "Built with an older Marquee. Build it again once: with the simple names "
 "break, your FPP then gives each name the time it needs instead of fixed "
 "turns."
+msgstr ""
+
+#: inc/names-setup.php:536
+msgid "Asks your FPP to look for your screens again right now"
 msgstr ""
