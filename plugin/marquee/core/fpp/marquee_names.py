@@ -41,7 +41,7 @@ import socket
 import threading
 import urllib.request
 
-VERSION = "3.16.1"
+VERSION = "3.16.2"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -257,6 +257,18 @@ def site_config(cfg):
                 S[k] = str(cfg[k]) if isinstance(DEFAULTS[k], str) else float(cfg[k])
             except (TypeError, ValueError):
                 pass
+    # 3.16.2: the own-audio times set on the website, for the plugin's page on this FPP to show
+    try:
+        own = {"own_start": float(cfg.get("own_start") or 0), "own_end": float(cfg.get("own_end") or 0)}
+    except (TypeError, ValueError):
+        own = {"own_start": 0.0, "own_end": 0.0}
+    if own != LAST.get("site_own"):
+        LAST["site_own"] = own
+        try:
+            with open(os.path.join(DATA, "site_own.json"), "w") as f:
+                json.dump(own, f)
+        except OSError:
+            pass
     break_timing()
 
 
