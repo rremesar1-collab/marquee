@@ -4887,3 +4887,36 @@ msgstr ""
 
 msgid "No radio handy? Hear the music on your phone."
 msgstr ""
+
+msgid "Thank You to Our Sponsors"
+msgstr ""
+
+msgid ""
+"These local businesses help keep the lights on. Please stop by and say "
+"thanks!"
+msgstr ""
+
+msgid "Want to sponsor the show?"
+msgstr ""
+
+msgid "Get in touch"
+msgstr ""
+
+msgid "Sponsors"
+msgstr ""
+
+msgid "Show the sponsors section"
+msgstr ""
+
+msgid ""
+"Add your sponsors and their logos in Marquee → Settings → Sharing & "
+"donations."
+msgstr ""
+
+msgid "Thank-you line (leave empty to hide it)"
+msgstr ""
+
+msgid ""
+"“Want to sponsor the show?” link: an email or a web page (leave empty to "
+"hide it)"
+msgstr ""

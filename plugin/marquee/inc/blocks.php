@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /** The sections: slug => title, description, dashicon. */
 function marquee_sections() {
 	return array(
-		'home'      => array( __( 'Show Home Page', 'marquee' ), __( 'The whole show page in one block: status, countdown, tonight’s show, weather, playlist, tips, guestbook, donate and social.', 'marquee' ), 'star-filled' ),
+		'home'      => array( __( 'Show Home Page', 'marquee' ), __( 'The whole show page in one block: status, countdown, tonight’s show, weather, playlist, tips, guestbook, sponsors, donate and social.', 'marquee' ), 'star-filled' ),
 		'status'    => array( __( 'Show Status', 'marquee' ), __( 'Big banner: show tonight, starting soon, canceled or off season. Updates by itself.', 'marquee' ), 'megaphone' ),
 		'countdown' => array( __( 'Countdown', 'marquee' ), __( 'Counts down to showtime and to Christmas.', 'marquee' ), 'clock' ),
 		'tonight'   => array( __( 'Tonight’s Show + Weather', 'marquee' ), __( 'Tonight’s Show and Weather side by side.', 'marquee' ), 'calendar-alt' ),
@@ -28,6 +28,7 @@ function marquee_sections() {
 		'showwall'  => array( __( 'Kids’ Show Wall', 'marquee' ), __( 'The newest kids’ light shows from the contest, with their hearts (shows only when the contest has approved shows).', 'marquee' ), 'format-gallery' ),
 		'stats'     => array( __( 'Behind the Lights', 'marquee' ), __( 'Your show’s numbers (lights, channels, songs…).', 'marquee' ), 'chart-bar' ),
 		'guestbook' => array( __( 'Guestbook', 'marquee' ), __( 'Visitor messages and the sign-the-guestbook form.', 'marquee' ), 'book' ),
+		'sponsors'  => array( __( 'Sponsors', 'marquee' ), __( 'Thank You to Our Sponsors: the logos of local businesses that support your show.', 'marquee' ), 'groups' ),
 		'donate'    => array( __( 'Donate', 'marquee' ), __( 'Your donation link with a QR code.', 'marquee' ), 'heart' ),
 		'social'    => array( __( 'Stay Connected', 'marquee' ), __( 'Facebook, TikTok and Share the Show buttons.', 'marquee' ), 'share' ),
 		'app'       => array( __( 'Get the App', 'marquee' ), __( 'Install-the-app and show alerts card (shows only on phones that can use it).', 'marquee' ), 'smartphone' ),
@@ -81,7 +82,7 @@ function marquee_section_html( $slug ) {
 			ridgeroad_part( 'show' );
 			ridgeroad_part( 'weather' );
 			echo '</div>';
-			foreach ( array( 'playlist', 'live-cam', 'visit', 'explore', 'showwall', 'stats', 'guestbook' ) as $p ) {
+			foreach ( array( 'playlist', 'live-cam', 'visit', 'explore', 'showwall', 'stats', 'guestbook', 'sponsors' ) as $p ) {
 				ridgeroad_part( $p );
 			}
 			echo '<div id="support" class="rr-grid rr-grid--support">';

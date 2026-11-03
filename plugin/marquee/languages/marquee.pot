@@ -6869,3 +6869,100 @@ msgstr ""
 #: inc/names-setup.php:536
 msgid "Asks your FPP to look for your screens again right now"
 msgstr ""
+
+msgid "Donations, sponsors, social links"
+msgstr ""
+
+msgid "Logo"
+msgstr ""
+
+msgid "Sponsors"
+msgstr ""
+
+msgid "Sponsors box"
+msgstr ""
+
+msgid "Sponsors thank-you line"
+msgstr ""
+
+msgid "Sponsors title"
+msgstr ""
+
+msgid "Sponsors “Get in touch” link"
+msgstr ""
+
+msgid ""
+"Thank You to Our Sponsors: the logos of local businesses that support your "
+"show."
+msgstr ""
+
+msgid ""
+"Thank local businesses that support your show, with their logos (add them "
+"under Sharing & donations)"
+msgstr ""
+
+msgid ""
+"The whole show page in one block: status, countdown, tonight’s show, "
+"weather, playlist, tips, guestbook, sponsors, donate and social."
+msgstr ""
+
+msgid "Hot cocoa for visitors on Friday nights"
+msgstr ""
+
+msgid "Move down"
+msgstr ""
+
+msgid "Move up"
+msgstr ""
+
+msgid "Add a sponsor"
+msgstr ""
+
+msgid "Also under Features & pages."
+msgstr ""
+
+msgid ""
+"An email address or a web page. Adds “Want to sponsor the show? Get in "
+"touch” under the logos. Leave it empty to hide it."
+msgstr ""
+
+msgid "Business name"
+msgstr ""
+
+msgid ""
+"Local businesses that support your show, in a “Thank You to Our Sponsors” "
+"box on your home page between the guestbook and Donate. Clicking a logo "
+"opens the sponsor’s website."
+msgstr ""
+
+msgid "No sponsors yet. The box stays hidden until you add one."
+msgstr ""
+
+msgid "Short line under the name (optional)"
+msgstr ""
+
+msgid "Show the sponsors box"
+msgstr ""
+
+msgid "Shows under the title. Leave it empty for just the logos."
+msgstr ""
+
+msgid "Thank-you line (optional)"
+msgstr ""
+
+msgid "Their website (optional)"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid ""
+"Your donation link, your sponsors, your social pages, and posting to "
+"Facebook and Instagram when you cancel a night."
+msgstr ""
+
+msgid "“Want to sponsor the show?” link (optional)"
+msgstr ""
+
+msgid "Remove sponsor"
+msgstr ""

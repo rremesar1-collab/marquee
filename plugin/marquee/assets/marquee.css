@@ -212,8 +212,32 @@
 .mq-skin:not(#mq-0) .rr-footer__links { display: flex; justify-content: center; gap: 14px; margin-top: 6px; }
 .mq-skin:not(#mq-0) .rr-footer__links a { color: var(--cream); }
 .mq-skin:not(#mq-0) .rr-footer__links .rr-icon { width: 22px; height: 22px; }
-.mq-skin:not(#mq-0) .rr-guestbook { margin-top: 30px; }
-.mq-skin:not(#mq-0) .rr-guestbook + .rr-grid--support { margin-top: 30px; }
+.mq-skin:not(#mq-0) .rr-guestbook, .mq-skin:not(#mq-0) .rr-sponsors { margin-top: 30px; }
+.mq-skin:not(#mq-0) .rr-guestbook + .rr-grid--support, .mq-skin:not(#mq-0) .rr-sponsors + .rr-grid--support { margin-top: 30px; }
+/* ---------- Sponsors (full width between the guestbook and Donate / Stay Connected) ---------- */
+.mq-skin:not(#mq-0) .rr-sp__panel { text-align: center; }
+.mq-skin:not(#mq-0) .rr-sp__intro { max-width: 720px; margin: 0 auto 16px; font-size: 15px; color: #f3ead8; }
+.mq-skin:not(#mq-0) .rr-sp { list-style: none; margin: 0 auto; padding: 0; max-width: calc(var(--cols, 5) * 190px + (var(--cols, 5) - 1) * 16px); display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+.mq-skin:not(#mq-0) .rr-sp__item { width: 190px; margin: 0; }
+.mq-skin:not(#mq-0) .rr-sp__card { display: block; color: inherit; text-decoration: none; }
+.mq-skin:not(#mq-0) a.rr-sp__card { transition: transform .15s; }
+.mq-skin:not(#mq-0) a.rr-sp__card:hover, .mq-skin:not(#mq-0) a.rr-sp__card:focus-visible { transform: translateY(-2px); }
+.mq-skin:not(#mq-0) a.rr-sp__card:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; border-radius: 12px; }
+.mq-skin:not(#mq-0) .rr-sp__logo { height: 104px; padding: 12px 14px; border-radius: 12px; background: #fffaf0; display: flex; align-items: center; justify-content: center;
+	box-shadow: 0 0 0 2px rgba(255, 212, 92, .55), 0 4px 12px rgba(0, 0, 0, .45); }
+.mq-skin:not(#mq-0) .rr-sp__logo img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block; }
+.mq-skin:not(#mq-0) .rr-sp__word { font: 800 16px/1.2 var(--f-body); color: #2a2a2a; overflow-wrap: anywhere; }
+.mq-skin:not(#mq-0) .rr-sp__name { display: block; margin-top: 9px; font-weight: 800; font-size: 14.5px; color: #fde866; line-height: 1.25; overflow-wrap: anywhere; }
+.mq-skin:not(#mq-0) .rr-sp__line { display: block; margin-top: 4px; font-size: 13px; line-height: 1.35; color: #f0e6d2; }
+.mq-skin:not(#mq-0) .rr-sp__ask { margin: 18px 0 0; font-size: 14px; color: #f3ead8; }
+.mq-skin:not(#mq-0) .rr-sp__ask a { color: #fde866; font-weight: 700; }
+@container mq (max-width: 540px) {
+	.mq-skin:not(#mq-0) .rr-sp { gap: 12px; max-width: none; }
+	.mq-skin:not(#mq-0) .rr-sp__item { width: calc(50% - 6px); }
+	.mq-skin:not(#mq-0) .rr-sp__logo { height: 84px; padding: 10px; }
+	.mq-skin:not(#mq-0) .rr-sp__name { font-size: 13.5px; }
+	.mq-skin:not(#mq-0) .rr-sp__line { font-size: 12.5px; }
+}
 .mq-skin:not(#mq-0) .rr-gb-intro { max-width: 720px; margin: -6px auto 18px; text-align: center; }
 .mq-skin:not(#mq-0) .rr-gb-intro p { font-weight: 600; }
 .mq-skin:not(#mq-0) .rr-gb-intro p { font-size: 15.5px; color: #f3ead8; }

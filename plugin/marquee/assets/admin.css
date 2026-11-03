@@ -793,3 +793,19 @@
 }
 .mq-help__mgr { margin-top: 18px; }
 .mq-home__sub { margin: -6px 0 12px; }
+
+/* Sponsors (Sharing & donations) */
+.mq-sp { list-style: none; margin: 10px 0 0; padding: 0; counter-reset: sp; }
+.mq-sp__row { display: grid; grid-template-columns: 170px 1fr auto; gap: 14px 18px; align-items: start; padding: 14px 0; border-top: 1px solid var(--mq-line, #e5e5e5); }
+.mq-sp__row .mq__media { border-top: 0; padding: 0; }
+.mq-sp__row .mq__thumb img { max-width: 150px; max-height: 80px; object-fit: contain; background: #fffaf0; }
+.mq-sp__fields p { margin: 0 0 8px; }
+.mq-sp__fields label { display: block; font-weight: 600; }
+.mq-sp__fields input { display: block; width: 100%; margin-top: 3px; font-weight: 400; }
+.mq-sp__tools { display: flex; gap: 6px; align-items: center; margin: 22px 0 0; }
+.mq-sp__add [hidden] { display: none; }
+.mq-sp__add { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; padding-top: 6px; }
+@media (max-width: 782px) {
+	.mq-sp__row { grid-template-columns: 1fr; }
+	.mq-sp__tools { margin-top: 0; }
+}

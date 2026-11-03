@@ -257,7 +257,7 @@ var tr = function (s) { var d = window.rrI18n; return (d && d[s]) || s; };
 	}
 
 	/* picture pickers (Media Library) */
-	root.querySelectorAll('[data-mq-media]').forEach(function (box) {
+	function mqMedia(box) {
 		var multi = box.getAttribute('data-multi') === '1', input = box.querySelector('[data-mq-ids]');
 		var thumbs = box.querySelector('[data-mq-thumbs]'), pick = box.querySelector('[data-mq-pick]'), clear = box.querySelector('[data-mq-clear]');
 		var std = thumbs.getAttribute('data-std'), frame = null, kind = box.getAttribute('data-type') || 'image';
@@ -304,7 +304,39 @@ var tr = function (s) { var d = window.rrI18n; return (d && d[s]) || s; };
 			}
 			frame.open();
 		});
+	}
+	root.querySelectorAll('[data-mq-media]').forEach(mqMedia);
+	window.mqMediaInit = mqMedia;
+})();
+
+/* Sponsors (Sharing & donations): add, remove and reorder rows; one on/off switch shown in two places. */
+(function () {
+	var list = document.querySelector('[data-mq-splist]');
+	if (!list) { return; }
+	var tpl = document.querySelector('[data-mq-sptpl]'), empty = document.querySelector('[data-mq-spempty]');
+	function count() { if (empty) { empty.hidden = list.children.length > 0; } }
+	document.querySelector('[data-mq-spadd]').addEventListener('click', function () {
+		var row = tpl.content.firstElementChild.cloneNode(true);
+		list.appendChild(row);
+		row.querySelectorAll('[data-mq-media]').forEach(function (b) { if (window.mqMediaInit) { window.mqMediaInit(b); } });
+		count();
+		var name = row.querySelector('input[name="sp_name[]"]'); if (name) { name.focus(); }
+		var on = document.querySelector('[data-mq-spshow]');
+		if (on && !on.checked) { on.checked = true; on.dispatchEvent(new Event('change')); } // adding the first sponsor turns the box on
 	});
+	list.addEventListener('click', function (e) {
+		var row = e.target.closest('[data-mq-sprow]'); if (!row) { return; }
+		if (e.target.closest('[data-mq-spdel]')) { row.remove(); count(); return; }
+		var mv = e.target.closest('[data-mq-spmove]'); if (!mv) { return; }
+		if (mv.getAttribute('data-mq-spmove') === '-1' && row.previousElementSibling) { list.insertBefore(row, row.previousElementSibling); }
+		else if (mv.getAttribute('data-mq-spmove') === '1' && row.nextElementSibling) { list.insertBefore(row.nextElementSibling, row); }
+		mv.focus();
+	});
+	var here = document.querySelector('[data-mq-spshow]'), feat = document.querySelector('input[name="feat[]"][value="sp_show"]');
+	if (here && feat) {
+		here.addEventListener('change', function () { feat.checked = here.checked; });
+		feat.addEventListener('change', function () { here.checked = feat.checked; });
+	}
 })();
 
 /* Show Manager QR code */

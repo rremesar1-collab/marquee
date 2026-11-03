@@ -4,7 +4,7 @@ Theme URI: https://alateka.com/
 Author: Alateka Corporation
 Author URI: https://alateka.com/
 Description: The festive Christmas look for the Marquee light show plugin: garlands, bows, a night-sky scene and glowing show cards for your status, Now Playing, weather, Kids’ Corner and more. Needs the free Marquee plugin (it holds all the show features and settings).
-Version: 2.18.0
+Version: 2.19.0
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -458,6 +458,31 @@ body.rr-scene .rr-scroll::-webkit-scrollbar-thumb { background: rgba(247, 201, 9
 .rr-gb-form button { align-self: center; margin-top: 6px; padding: 12px 28px; font-size: 16px; cursor: pointer; }
 .rr-gb-honeypot { position: absolute !important; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 @media (max-width: 860px) { .rr-grid--gb { grid-template-columns: 1fr; } }
+
+/* ---------- Sponsors (full width between the guestbook and Donate / Stay Connected) ---------- */
+.rr-sp__panel { text-align: center; }
+.rr-sp__intro { max-width: 720px; margin: 0 auto 16px; font-size: 15px; color: #f3ead8; }
+.rr-sp { list-style: none; margin: 0 auto; padding: 0; max-width: calc(var(--cols, 5) * 190px + (var(--cols, 5) - 1) * 16px); display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+.rr-sp__item { width: 190px; margin: 0; }
+.rr-sp__card { display: block; color: inherit; text-decoration: none; }
+a.rr-sp__card { transition: transform .15s; }
+a.rr-sp__card:hover, a.rr-sp__card:focus-visible { transform: translateY(-2px); }
+a.rr-sp__card:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; border-radius: 12px; }
+.rr-sp__logo { height: 104px; padding: 12px 14px; border-radius: 12px; background: #fffaf0; display: flex; align-items: center; justify-content: center;
+	box-shadow: 0 0 0 2px rgba(255, 212, 92, .55), 0 4px 12px rgba(0, 0, 0, .45); }
+.rr-sp__logo img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block; }
+.rr-sp__word { font: 800 16px/1.2 var(--f-body); color: #2a2a2a; overflow-wrap: anywhere; }
+.rr-sp__name { display: block; margin-top: 9px; font-weight: 800; font-size: 14.5px; color: #fde866; line-height: 1.25; overflow-wrap: anywhere; }
+.rr-sp__line { display: block; margin-top: 4px; font-size: 13px; line-height: 1.35; color: #f0e6d2; }
+.rr-sp__ask { margin: 18px 0 0; font-size: 14px; color: #f3ead8; }
+.rr-sp__ask a { color: #fde866; font-weight: 700; }
+@media (max-width: 640px) {
+	.rr-sp { gap: 12px; max-width: none; }
+	.rr-sp__item { width: calc(50% - 6px); }
+	.rr-sp__logo { height: 84px; padding: 10px; }
+	.rr-sp__name { font-size: 13.5px; }
+	.rr-sp__line { font-size: 12.5px; }
+}
 
 /* ---------- Compact desktop sizing (matches the mockup's proportions) ---------- */
 @media (min-width: 1181px) {
@@ -1818,7 +1843,7 @@ html.rr-sheet-open { overflow: hidden; }
 .rr-ff { margin-bottom: 12px; }
 .rr-content + .rr-content { margin-top: 38px; }
 /* every section title sits the same distance below the box above it */
-.rr-visit, .rr-stats-sec, .rr-guestbook { margin-top: 28px; }
+.rr-visit, .rr-stats-sec, .rr-guestbook, .rr-sponsors { margin-top: 28px; }
 .rr-gb-intro { margin-top: 0; margin-bottom: 12px; }
 .rr-stats-sec__text { margin-top: 0; margin-bottom: 12px; }
 .rr-kc, .rr-kc__home, .rr-kc__act { gap: 12px; }

@@ -6440,3 +6440,116 @@ msgstr ""
 #: inc/names-setup.php:536
 msgid "Asks your FPP to look for your screens again right now"
 msgstr "Demande à votre FPP de rechercher à nouveau vos écrans tout de suite"
+
+msgid "Donations, sponsors, social links"
+msgstr "Dons, commanditaires, réseaux sociaux"
+
+msgid "Logo"
+msgstr "Logo"
+
+msgid "Sponsors"
+msgstr "Commanditaires"
+
+msgid "Sponsors box"
+msgstr "Encadré des commanditaires"
+
+msgid "Sponsors thank-you line"
+msgstr "Ligne de remerciement des commanditaires"
+
+msgid "Sponsors title"
+msgstr "Titre des commanditaires"
+
+msgid "Sponsors “Get in touch” link"
+msgstr "Lien « Contactez-nous » des commanditaires"
+
+msgid ""
+"Thank You to Our Sponsors: the logos of local businesses that support your "
+"show."
+msgstr ""
+"Merci à nos commanditaires : les logos des commerces d’ici qui soutiennent "
+"votre spectacle."
+
+msgid ""
+"Thank local businesses that support your show, with their logos (add them "
+"under Sharing & donations)"
+msgstr ""
+"Remerciez les commerces d’ici qui soutiennent votre spectacle, avec leurs "
+"logos (ajoutez-les dans Partage et dons)"
+
+msgid ""
+"The whole show page in one block: status, countdown, tonight’s show, "
+"weather, playlist, tips, guestbook, sponsors, donate and social."
+msgstr ""
+"Toute la page du spectacle en un bloc : état, compte à rebours, le spectacle"
+" de ce soir, la météo, la liste des chansons, conseils, livre d’or, "
+"commanditaires, dons et réseaux sociaux."
+
+msgid "Hot cocoa for visitors on Friday nights"
+msgstr "Chocolat chaud pour les visiteurs le vendredi soir"
+
+msgid "Move down"
+msgstr "Descendre"
+
+msgid "Move up"
+msgstr "Monter"
+
+msgid "Add a sponsor"
+msgstr "Ajouter un commanditaire"
+
+msgid "Also under Features & pages."
+msgstr "Aussi dans Fonctions et pages."
+
+msgid ""
+"An email address or a web page. Adds “Want to sponsor the show? Get in "
+"touch” under the logos. Leave it empty to hide it."
+msgstr ""
+"Une adresse e-mail ou une page web. Ajoute « Vous voulez commanditer le "
+"spectacle ? Contactez-nous » sous les logos. Laissez vide pour le masquer."
+
+msgid "Business name"
+msgstr "Nom du commerce"
+
+msgid ""
+"Local businesses that support your show, in a “Thank You to Our Sponsors” "
+"box on your home page between the guestbook and Donate. Clicking a logo "
+"opens the sponsor’s website."
+msgstr ""
+"Les commerces d’ici qui soutiennent votre spectacle, dans un encadré « Merci"
+" à nos commanditaires » sur votre page d’accueil, entre le livre d’or et "
+"Faire un don. Un clic sur un logo ouvre le site du commanditaire."
+
+msgid "No sponsors yet. The box stays hidden until you add one."
+msgstr ""
+"Aucun commanditaire pour l’instant. L’encadré reste masqué tant que vous "
+"n’en ajoutez pas."
+
+msgid "Short line under the name (optional)"
+msgstr "Courte ligne sous le nom (facultatif)"
+
+msgid "Show the sponsors box"
+msgstr "Afficher l’encadré des commanditaires"
+
+msgid "Shows under the title. Leave it empty for just the logos."
+msgstr "S’affiche sous le titre. Laissez vide pour n’afficher que les logos."
+
+msgid "Thank-you line (optional)"
+msgstr "Ligne de remerciement (facultatif)"
+
+msgid "Their website (optional)"
+msgstr "Leur site web (facultatif)"
+
+msgid "Title"
+msgstr "Titre"
+
+msgid ""
+"Your donation link, your sponsors, your social pages, and posting to "
+"Facebook and Instagram when you cancel a night."
+msgstr ""
+"Votre lien de dons, vos commanditaires, vos réseaux sociaux, et la "
+"publication sur Facebook et Instagram quand vous annulez un soir."
+
+msgid "“Want to sponsor the show?” link (optional)"
+msgstr "Lien « Vous voulez commanditer le spectacle ? » (facultatif)"
+
+msgid "Remove sponsor"
+msgstr "Retirer le commanditaire"

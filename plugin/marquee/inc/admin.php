@@ -112,6 +112,7 @@ function marquee_admin_page() {
 		'games_on'    => array( __( 'Games', 'marquee' ), __( 'Elf names and Christmas trivia', 'marquee' ), 'kid' ),
 		'songs_show'  => array( __( 'Favorite song voting', 'marquee' ), __( 'Uses your Remote Falcon song list', 'marquee' ) ),
 		'app_auto_on' => array( __( '“The lights are on!” alert', 'marquee' ), __( 'Sent to app users when FPP starts your show (needs https)', 'marquee' ) ),
+		'sp_show'     => array( __( 'Sponsors', 'marquee' ), __( 'Thank local businesses that support your show, with their logos (add them under Sharing & donations)', 'marquee' ) ),
 		'snow'        => array( __( 'Falling snow', 'marquee' ), __( 'Snowflakes on every page (size and amount in Show Control)', 'marquee' ) ),
 	);
 	$names_url = function_exists( 'ridgeroad_names_key' ) ? home_url( '/' ) : '';
@@ -125,7 +126,7 @@ function marquee_admin_page() {
 			4 => array( __( 'Names in Lights', 'marquee' ), __( 'Names on your screens', 'marquee' ), 'megaphone' ),
 			3 => array( __( 'Remote Falcon', 'marquee' ), __( 'Now Playing and song picks', 'marquee' ), 'playlist-audio' ),
 			6 => array( __( 'Artwork & Kids’ Corner', 'marquee' ), __( 'Coloring pages, songs, pictures', 'marquee' ), 'art' ),
-			7 => array( __( 'Sharing & donations', 'marquee' ), __( 'Donations, social links and posts', 'marquee' ), 'share' ),
+			7 => array( __( 'Sharing & donations', 'marquee' ), __( 'Donations, sponsors, social links', 'marquee' ), 'share' ),
 		) ),
 		array( '', array(
 			9 => array( __( 'Help', 'marquee' ), __( 'Support and your phone', 'marquee' ), 'sos' ),
@@ -856,12 +857,46 @@ function marquee_admin_page() {
 				<header class="mq-head">
 					<p class="mq-head__eyebrow"><?php esc_html_e( 'Add to your show', 'marquee' ); ?></p>
 					<h2><?php esc_html_e( 'Sharing & donations', 'marquee' ); ?></h2>
-					<p class="mq__lead"><?php esc_html_e( 'Your donation link, your social pages, and posting to Facebook and Instagram when you cancel a night.', 'marquee' ); ?></p>
+					<p class="mq__lead"><?php esc_html_e( 'Your donation link, your sponsors, your social pages, and posting to Facebook and Instagram when you cancel a night.', 'marquee' ); ?></p>
 				</header>
 
 				<div class="mq-sec" id="mq-sec-donate">
 				<h3 class="mq-sec__title"><?php esc_html_e( 'Donations', 'marquee' ); ?></h3>
 					<p><label for="mq-don"><?php esc_html_e( 'Donation link (optional)', 'marquee' ); ?></label><input id="mq-don" name="cashapp_url" type="url" placeholder="https://cash.app/$yourshow" value="<?php echo esc_attr( $tm( 'cashapp_url' ) ); ?>"><small><?php esc_html_e( 'Cash App, PayPal, Venmo or any link. Empty hides the donation box.', 'marquee' ); ?></small></p>
+				</div>
+				<div class="mq-sec" id="mq-sec-sponsors">
+					<h3 class="mq-sec__title"><?php esc_html_e( 'Sponsors', 'marquee' ); ?></h3>
+					<p class="mq__fine"><?php esc_html_e( 'Local businesses that support your show, in a “Thank You to Our Sponsors” box on your home page between the guestbook and Donate. Clicking a logo opens the sponsor’s website.', 'marquee' ); ?></p>
+					<input type="hidden" name="sp_sent" value="1">
+					<label class="mq__feat"><span><b><?php esc_html_e( 'Show the sponsors box', 'marquee' ); ?></b><small><?php esc_html_e( 'Also under Features & pages.', 'marquee' ); ?></small></span><input type="checkbox" <?php checked( (bool) $tm( 'sp_show' ) ); ?> data-mq-spshow></label>
+					<p><label for="mq-sp-title"><?php esc_html_e( 'Title', 'marquee' ); ?></label><input id="mq-sp-title" name="sp_title" type="text" maxlength="60" value="<?php echo esc_attr( $tm( 'sp_title' ) ); ?>"></p>
+					<p><label for="mq-sp-intro"><?php esc_html_e( 'Thank-you line (optional)', 'marquee' ); ?></label><input id="mq-sp-intro" name="sp_intro" type="text" maxlength="160" value="<?php echo esc_attr( $tm( 'sp_intro' ) ); ?>"><small><?php esc_html_e( 'Shows under the title. Leave it empty for just the logos.', 'marquee' ); ?></small></p>
+					<p><label for="mq-sp-ask"><?php esc_html_e( '“Want to sponsor the show?” link (optional)', 'marquee' ); ?></label><input id="mq-sp-ask" name="sp_ask" type="text" placeholder="you@example.com" value="<?php echo esc_attr( $tm( 'sp_ask' ) ); ?>"><small><?php esc_html_e( 'An email address or a web page. Adds “Want to sponsor the show? Get in touch” under the logos. Leave it empty to hide it.', 'marquee' ); ?></small></p>
+					<?php
+					$mq_sp = function_exists( 'ridgeroad_sponsors' ) ? ridgeroad_sponsors() : array();
+					$mq_sp_row = function ( $r ) {
+						?>
+						<li class="mq-sp__row" data-mq-sprow>
+							<div class="mq-sp__logo"><?php marquee_media_field( 'sp_logo[]', __( 'Logo', 'marquee' ), '', $r['logo'] ? array( $r['logo'] ) : array(), false ); ?></div>
+							<div class="mq-sp__fields">
+								<p><label><?php esc_html_e( 'Business name', 'marquee' ); ?><input name="sp_name[]" type="text" maxlength="60" value="<?php echo esc_attr( $r['name'] ); ?>"></label></p>
+								<p><label><?php esc_html_e( 'Their website (optional)', 'marquee' ); ?><input name="sp_url[]" type="text" placeholder="https://" value="<?php echo esc_attr( $r['url'] ); ?>"></label></p>
+								<p><label><?php esc_html_e( 'Short line under the name (optional)', 'marquee' ); ?><input name="sp_line[]" type="text" maxlength="90" placeholder="<?php esc_attr_e( 'Hot cocoa for visitors on Friday nights', 'marquee' ); ?>" value="<?php echo esc_attr( $r['line'] ); ?>"></label></p>
+							</div>
+							<p class="mq-sp__tools">
+								<button type="button" class="button" data-mq-spmove="-1" aria-label="<?php esc_attr_e( 'Move up', 'marquee' ); ?>">↑</button>
+								<button type="button" class="button" data-mq-spmove="1" aria-label="<?php esc_attr_e( 'Move down', 'marquee' ); ?>">↓</button>
+								<button type="button" class="button-link-delete" data-mq-spdel><?php esc_html_e( 'Remove sponsor', 'marquee' ); ?></button>
+							</p>
+						</li>
+						<?php
+					};
+					?>
+					<ol class="mq-sp" data-mq-splist>
+						<?php foreach ( $mq_sp as $r ) { $mq_sp_row( $r ); } ?>
+					</ol>
+					<template data-mq-sptpl><?php $mq_sp_row( array( 'logo' => 0, 'name' => '', 'url' => '', 'line' => '' ) ); ?></template>
+					<p class="mq-sp__add"><button type="button" class="button" data-mq-spadd><?php esc_html_e( 'Add a sponsor', 'marquee' ); ?></button> <small data-mq-spempty <?php echo $mq_sp ? 'hidden' : ''; ?>><?php esc_html_e( 'No sponsors yet. The box stays hidden until you add one.', 'marquee' ); ?></small></p>
 				</div>
 				<div class="mq-sec" id="mq-sec-social">
 				<?php if ( function_exists( 'ridgeroad_social_networks' ) ) : ?>

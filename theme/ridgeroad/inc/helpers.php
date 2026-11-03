@@ -309,3 +309,46 @@ if ( ! function_exists( 'ridgeroad_std_coloring' ) ) {
 		);
 	}
 }
+
+if ( ! function_exists( 'ridgeroad_sponsors' ) ) {
+	/** The show's sponsors, in order: array( logo (attachment id), name, url, line ). Rows with neither a logo nor a name are left out. */
+	function ridgeroad_sponsors() {
+		$out = array();
+		foreach ( (array) get_theme_mod( 'sponsors', array() ) as $r ) {
+			if ( ! is_array( $r ) ) {
+				continue;
+			}
+			$r = array(
+				'logo' => isset( $r['logo'] ) ? absint( $r['logo'] ) : 0,
+				'name' => isset( $r['name'] ) ? (string) $r['name'] : '',
+				'url'  => isset( $r['url'] ) ? (string) $r['url'] : '',
+				'line' => isset( $r['line'] ) ? (string) $r['line'] : '',
+			);
+			if ( $r['logo'] && ! wp_attachment_is_image( $r['logo'] ) ) {
+				$r['logo'] = 0;
+			}
+			if ( $r['logo'] || '' !== $r['name'] ) {
+				$out[] = $r;
+			}
+		}
+		return $out;
+	}
+}
+
+if ( ! function_exists( 'ridgeroad_sponsor_ask_url' ) ) {
+	/** Where "Want to sponsor the show? Get in touch" goes: an email becomes a mailto: link ('' hides the line). */
+	function ridgeroad_sponsor_ask_url() {
+		$v = trim( (string) ridgeroad_mod( 'sp_ask' ) );
+		if ( '' === $v ) {
+			return '';
+		}
+		$v = preg_replace( '/^mailto:/i', '', $v );
+		if ( is_email( $v ) ) {
+			return 'mailto:' . $v;
+		}
+		if ( ! preg_match( '#^https?://#i', $v ) ) {
+			$v = 'https://' . ltrim( $v, '/' );
+		}
+		return esc_url_raw( $v );
+	}
+}

@@ -3729,3 +3729,42 @@ msgstr "Escanea para escuchar"
 
 msgid "No radio handy? Hear the music on your phone."
 msgstr "¿No tienes radio a mano? Escucha la música en tu teléfono."
+
+msgid "Thank You to Our Sponsors"
+msgstr "Gracias a nuestros patrocinadores"
+
+msgid ""
+"These local businesses help keep the lights on. Please stop by and say "
+"thanks!"
+msgstr ""
+"Estos negocios locales ayudan a mantener las luces encendidas. ¡Pasa a "
+"visitarlos y dales las gracias!"
+
+msgid "Want to sponsor the show?"
+msgstr "¿Quieres patrocinar el espectáculo?"
+
+msgid "Get in touch"
+msgstr "Escríbenos"
+
+msgid "Sponsors"
+msgstr "Patrocinadores"
+
+msgid "Show the sponsors section"
+msgstr "Mostrar la sección de patrocinadores"
+
+msgid ""
+"Add your sponsors and their logos in Marquee → Settings → Sharing & "
+"donations."
+msgstr ""
+"Agrega tus patrocinadores y sus logotipos en Marquee → Ajustes → Compartir y"
+" donaciones."
+
+msgid "Thank-you line (leave empty to hide it)"
+msgstr "Línea de agradecimiento (déjala vacía para ocultarla)"
+
+msgid ""
+"“Want to sponsor the show?” link: an email or a web page (leave empty to "
+"hide it)"
+msgstr ""
+"Enlace de “¿Quieres patrocinar el espectáculo?”: un correo o una página web "
+"(déjalo vacío para ocultarlo)"

@@ -24,6 +24,7 @@ ridgeroad_part( 'explore' );
 ridgeroad_part( 'showwall' );
 ridgeroad_part( 'stats' );
 ridgeroad_part( 'guestbook' );
+ridgeroad_part( 'sponsors' );
 ?>
 
 <div id="support" class="rr-grid rr-grid--support">

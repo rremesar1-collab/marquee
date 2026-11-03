@@ -358,6 +358,7 @@ function marquee_support_labels() {
 		'songs_show' => __( 'Song voting', 'marquee' ), 'app_auto_on' => __( '“The lights are on” alert', 'marquee' ), 'snow_amount' => __( 'Falling snow', 'marquee' ),
 		'stats_show' => __( 'Behind the Lights section', 'marquee' ), 'cashapp_url' => __( 'Donation link', 'marquee' ), 'voice_key' => __( 'ElevenLabs key', 'marquee' ), 'rf_token' => __( 'Remote Falcon access token', 'marquee' ), 'rf_secret' => __( 'Remote Falcon secret key', 'marquee' ),
 		'facebook_url' => __( 'Facebook link', 'marquee' ), 'instagram_url' => __( 'Instagram link', 'marquee' ), 'youtube_url' => __( 'YouTube link', 'marquee' ), 'tiktok_url' => __( 'TikTok link', 'marquee' ),
+		'sp_show' => __( 'Sponsors box', 'marquee' ), 'sponsors' => __( 'Sponsors', 'marquee' ), 'sp_title' => __( 'Sponsors title', 'marquee' ), 'sp_intro' => __( 'Sponsors thank-you line', 'marquee' ), 'sp_ask' => __( 'Sponsors “Get in touch” link', 'marquee' ),
 		'vote_hide' => __( 'Left out of song voting', 'marquee' ), 'lab_songs' => __( 'Light Lab songs', 'marquee' ), 'art_pages' => __( 'Coloring pages', 'marquee' ),
 	);
 }

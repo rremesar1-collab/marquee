@@ -86,7 +86,7 @@ function marquee_theme_keys() {
 	return array(
 		'radio', 'listen_url', 'season_start', 'season_end', 'use_sunset', 'weeknight_start', 'weekend_start', 'weeknight_close', 'weekend_close',
 		'radar_station', 'cashapp_url', 'gb_show', 'names_on', 'names_geo', 'names_geo_miles', 'kids_show', 'lab_on', 'coloring_on', 'games_on', 'songs_show', 'contest_on', 'app_auto_on', 'snow_amount',
-		'names_geo_unit', 'count_to', 'count_name', 'count_date', 'rf_viewer_url', 'facebook_url', 'instagram_url', 'youtube_url', 'tiktok_url', 'facebook_show', 'instagram_show', 'youtube_show', 'tiktok_show',
+		'sp_show', 'sp_title', 'sp_intro', 'sp_ask', 'sponsors', 'names_geo_unit', 'count_to', 'count_name', 'count_date', 'rf_viewer_url', 'facebook_url', 'instagram_url', 'youtube_url', 'tiktok_url', 'facebook_show', 'instagram_show', 'youtube_show', 'tiktok_show',
 	);
 }
 function marquee_theme_get( $k ) {
@@ -281,9 +281,12 @@ function marquee_save( $in ) {
 			set_theme_mod( $net . '_show', in_array( $net, $on, true ) ? 1 : 0 );
 		}
 	}
+	if ( isset( $in['sp_sent'] ) ) {
+		marquee_save_sponsors( $in );
+	}
 	if ( isset( $in['features_sent'] ) ) {
 		$f = isset( $in['feat'] ) ? (array) $in['feat'] : array();
-		foreach ( array( 'gb_show', 'names_on', 'names_geo', 'kids_show', 'lab_on', 'coloring_on', 'games_on', 'songs_show', 'contest_on', 'app_auto_on' ) as $k ) {
+		foreach ( array( 'gb_show', 'names_on', 'names_geo', 'kids_show', 'lab_on', 'coloring_on', 'games_on', 'songs_show', 'contest_on', 'app_auto_on', 'sp_show' ) as $k ) {
 			set_theme_mod( $k, in_array( $k, $f, true ) ? 1 : 0 );
 		}
 		if ( isset( $in['names_geo_miles'] ) ) {
@@ -575,3 +578,49 @@ add_filter( 'ridgeroad_ctl_set', function ( $done, $k, $on, $v = '' ) {
 	update_option( 'marquee', $s, false );
 	return true;
 }, 10, 4 );
+
+/** Sponsors from Sharing & donations: the list, the title, the thank-you line and the "Get in touch" link. */
+function marquee_save_sponsors( $in ) {
+	$col = function ( $k ) use ( $in ) {
+		return isset( $in[ $k ] ) ? array_values( (array) wp_unslash( $in[ $k ] ) ) : array();
+	};
+	$logo = $col( 'sp_logo' );
+	$name = $col( 'sp_name' );
+	$url  = $col( 'sp_url' );
+	$line = $col( 'sp_line' );
+	$rows = array();
+	$n    = max( count( $logo ), count( $name ) );
+	for ( $i = 0; $i < $n && count( $rows ) < 24; $i++ ) {
+		$id = absint( isset( $logo[ $i ] ) ? strtok( (string) $logo[ $i ], ',' ) : 0 );
+		$id = $id && wp_attachment_is_image( $id ) ? $id : 0;
+		$nm = mb_substr( sanitize_text_field( (string) ( $name[ $i ] ?? '' ) ), 0, 60 );
+		if ( ! $id && '' === $nm ) {
+			continue; // an empty row
+		}
+		$u = trim( sanitize_text_field( (string) ( $url[ $i ] ?? '' ) ) );
+		if ( '' !== $u && ! preg_match( '#^https?://#i', $u ) ) {
+			$u = 'https://' . ltrim( $u, '/' );
+		}
+		$rows[] = array(
+			'logo' => $id,
+			'name' => $nm,
+			'url'  => '' !== $u ? esc_url_raw( $u ) : '',
+			'line' => mb_substr( sanitize_text_field( (string) ( $line[ $i ] ?? '' ) ), 0, 90 ),
+		);
+	}
+	set_theme_mod( 'sponsors', $rows );
+	if ( isset( $in['sp_title'] ) ) {
+		$t = mb_substr( sanitize_text_field( wp_unslash( $in['sp_title'] ) ), 0, 60 );
+		if ( '' === $t ) {
+			remove_theme_mod( 'sp_title' ); // back to the standard title (in the visitor's language)
+		} else {
+			set_theme_mod( 'sp_title', $t );
+		}
+	}
+	if ( isset( $in['sp_intro'] ) ) {
+		set_theme_mod( 'sp_intro', mb_substr( sanitize_text_field( wp_unslash( $in['sp_intro'] ) ), 0, 160 ) );
+	}
+	if ( isset( $in['sp_ask'] ) ) {
+		set_theme_mod( 'sp_ask', mb_substr( sanitize_text_field( wp_unslash( $in['sp_ask'] ) ), 0, 200 ) );
+	}
+}

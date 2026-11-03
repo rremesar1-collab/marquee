@@ -142,6 +142,11 @@ function ridgeroad_defaults( $fresh = false ) {
 		'youtube_show'      => 1,
 		'tiktok_show'       => 1,
 		'guestbook_url'     => '',
+		// Sponsors (the list itself is edited in Marquee → Settings → Sharing & donations).
+		'sp_show'           => 0,
+		'sp_title'          => __( 'Thank You to Our Sponsors', 'ridgeroad' ),
+		'sp_intro'          => __( 'These local businesses help keep the lights on. Please stop by and say thanks!', 'ridgeroad' ),
+		'sp_ask'            => '',
 		// Guestbook (RF Page Builder).
 		'gb_show'           => 1,
 		'gb_source'         => 'wordpress',
@@ -258,7 +263,7 @@ function ridgeroad_lang_now() {
 
 /** Texts that are the same in every language (numbers, links, names), so they get no language boxes. */
 function ridgeroad_lang_same( $key ) {
-	return in_array( $key, array( 'radio', 'city', 'zip', 'radar_station', 'live_url', 'address', 'names_color', 'names_block', 'gb_site_key', 'social_hashtag', 'songs_manual', 'rf_viewer_url', 'listen_url' ), true )
+	return in_array( $key, array( 'radio', 'city', 'zip', 'radar_station', 'live_url', 'address', 'names_color', 'names_block', 'gb_site_key', 'social_hashtag', 'songs_manual', 'rf_viewer_url', 'listen_url', 'sp_ask' ), true )
 		|| preg_match( '/^stat\d_num$/', $key );
 }
 
@@ -329,6 +334,7 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp ) {
 		'rr_stats'   => __( 'Behind the Lights (Stats)', 'ridgeroad' ),
 		'rr_support' => __( 'Donations & Social', 'ridgeroad' ),
 		'rr_guestbook' => __( 'Guestbook', 'ridgeroad' ),
+		'rr_sponsors'  => __( 'Sponsors', 'ridgeroad' ),
 	);
 	foreach ( $sections as $id => $title ) {
 		$wp->add_section( $id, array( 'title' => $title, 'panel' => 'ridgeroad' ) );
@@ -540,6 +546,10 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp ) {
 	$add( 'gb_intro', 'rr_guestbook', __( 'Intro text', 'ridgeroad' ), 'textarea' );
 	$add( 'gb_count', 'rr_guestbook', __( 'Messages to show', 'ridgeroad' ), 'number', array( 'input_attrs' => array( 'min' => 1, 'max' => 20 ) ) );
 	$add( 'gb_site_key', 'rr_guestbook', __( 'RF Page Builder site key', 'ridgeroad' ), 'text', array( 'description' => __( 'From RF Page Builder: a key with dashes, like 1a2b3c4d-…. Leave empty to turn the guestbook off.', 'ridgeroad' ) ) );
+	$add( 'sp_show', 'rr_sponsors', __( 'Show the sponsors section', 'ridgeroad' ), 'checkbox', array( 'description' => __( 'Add your sponsors and their logos in Marquee → Settings → Sharing & donations.', 'ridgeroad' ) ) );
+	$add( 'sp_title', 'rr_sponsors', __( 'Title', 'ridgeroad' ) );
+	$add( 'sp_intro', 'rr_sponsors', __( 'Thank-you line (leave empty to hide it)', 'ridgeroad' ), 'textarea' );
+	$add( 'sp_ask', 'rr_sponsors', __( '“Want to sponsor the show?” link: an email or a web page (leave empty to hide it)', 'ridgeroad' ) );
 	$add( 'footer_text', 'rr_support', __( 'Footer text (optional)', 'ridgeroad' ) );
 } );
 

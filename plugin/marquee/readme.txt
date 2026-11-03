@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.16.1
+Stable tag: 0.17.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,13 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.17.0 =
+* New: Sponsors. A "Thank You to Our Sponsors" box on your home page, full width between the guestbook and Donate / Stay Connected, for the local businesses that support your show. Turn it on in Features & pages, and add sponsors in Sharing & donations: a logo from your Media Library, the business name, their website (clicking the logo opens it) and an optional short line. Reorder with the arrows.
+* Optional thank-you line under the title (empty shows just the logos), and an optional "Want to sponsor the show? Get in touch" link to an email address or a web page.
+* Logos sit on light cards so any logo stays readable. Rows even out by themselves (6 sponsors = 3 + 3, 7 = 4 + 3), 2 per row on phones. With no sponsors, or switched off, the box isn't there at all.
+* Also a Sponsors block and [marquee section="sponsors"] for other themes. In English, Spanish and French.
+* Marquee Festive 2.19.0 adds the box to the home page.
 
 = 0.16.1 =
 * Screen status stays up to date: the FPP checks each TV, projector and matrix again every couple of minutes (names script 3.16.1), so a screen shows as ready once it’s turned on, and as off once it’s off.

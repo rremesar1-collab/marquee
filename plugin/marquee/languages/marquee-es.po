@@ -6364,3 +6364,117 @@ msgstr ""
 #: inc/names-setup.php:536
 msgid "Asks your FPP to look for your screens again right now"
 msgstr "Le pide a tu FPP que vuelva a buscar tus pantallas ahora mismo"
+
+msgid "Donations, sponsors, social links"
+msgstr "Donaciones, patrocinadores, redes sociales"
+
+msgid "Logo"
+msgstr "Logotipo"
+
+msgid "Sponsors"
+msgstr "Patrocinadores"
+
+msgid "Sponsors box"
+msgstr "Recuadro de patrocinadores"
+
+msgid "Sponsors thank-you line"
+msgstr "Línea de agradecimiento de patrocinadores"
+
+msgid "Sponsors title"
+msgstr "Título de patrocinadores"
+
+msgid "Sponsors “Get in touch” link"
+msgstr "Enlace “Escríbenos” de patrocinadores"
+
+msgid ""
+"Thank You to Our Sponsors: the logos of local businesses that support your "
+"show."
+msgstr ""
+"Gracias a nuestros patrocinadores: los logotipos de los negocios locales que"
+" apoyan tu espectáculo."
+
+msgid ""
+"Thank local businesses that support your show, with their logos (add them "
+"under Sharing & donations)"
+msgstr ""
+"Agradece a los negocios locales que apoyan tu espectáculo, con sus logotipos"
+" (agrégalos en Compartir y donaciones)"
+
+msgid ""
+"The whole show page in one block: status, countdown, tonight’s show, "
+"weather, playlist, tips, guestbook, sponsors, donate and social."
+msgstr ""
+"Toda la página del espectáculo en un bloque: estado, cuenta regresiva, el "
+"espectáculo de esta noche, el clima, la lista de canciones, consejos, libro "
+"de visitas, patrocinadores, donaciones y redes sociales."
+
+msgid "Hot cocoa for visitors on Friday nights"
+msgstr "Chocolate caliente para los visitantes los viernes por la noche"
+
+msgid "Move down"
+msgstr "Bajar"
+
+msgid "Move up"
+msgstr "Subir"
+
+msgid "Add a sponsor"
+msgstr "Agregar un patrocinador"
+
+msgid "Also under Features & pages."
+msgstr "También en Funciones y páginas."
+
+msgid ""
+"An email address or a web page. Adds “Want to sponsor the show? Get in "
+"touch” under the logos. Leave it empty to hide it."
+msgstr ""
+"Un correo o una página web. Agrega “¿Quieres patrocinar el espectáculo? "
+"Escríbenos” debajo de los logotipos. Déjalo vacío para ocultarlo."
+
+msgid "Business name"
+msgstr "Nombre del negocio"
+
+msgid ""
+"Local businesses that support your show, in a “Thank You to Our Sponsors” "
+"box on your home page between the guestbook and Donate. Clicking a logo "
+"opens the sponsor’s website."
+msgstr ""
+"Los negocios locales que apoyan tu espectáculo, en un recuadro “Gracias a "
+"nuestros patrocinadores” en tu página de inicio, entre el libro de visitas y"
+" Donar. Al hacer clic en un logotipo se abre el sitio web del patrocinador."
+
+msgid "No sponsors yet. The box stays hidden until you add one."
+msgstr ""
+"Todavía no hay patrocinadores. El recuadro queda oculto hasta que agregues "
+"uno."
+
+msgid "Short line under the name (optional)"
+msgstr "Línea corta debajo del nombre (opcional)"
+
+msgid "Show the sponsors box"
+msgstr "Mostrar el recuadro de patrocinadores"
+
+msgid "Shows under the title. Leave it empty for just the logos."
+msgstr ""
+"Aparece debajo del título. Déjala vacía para mostrar solo los logotipos."
+
+msgid "Thank-you line (optional)"
+msgstr "Línea de agradecimiento (opcional)"
+
+msgid "Their website (optional)"
+msgstr "Su sitio web (opcional)"
+
+msgid "Title"
+msgstr "Título"
+
+msgid ""
+"Your donation link, your sponsors, your social pages, and posting to "
+"Facebook and Instagram when you cancel a night."
+msgstr ""
+"Tu enlace para donaciones, tus patrocinadores, tus redes sociales y publicar"
+" en Facebook e Instagram cuando cancelas una noche."
+
+msgid "“Want to sponsor the show?” link (optional)"
+msgstr "Enlace de “¿Quieres patrocinar el espectáculo?” (opcional)"
+
+msgid "Remove sponsor"
+msgstr "Quitar patrocinador"
