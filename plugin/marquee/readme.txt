@@ -56,6 +56,7 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 = 0.17.0 =
 * New: Sponsors. A "Thank You to Our Sponsors" box on your home page, full width between the guestbook and Donate / Stay Connected, for the local businesses that support your show. Turn it on in Features & pages, and add sponsors in Sharing & donations: a logo from your Media Library, the business name, their website (clicking the logo opens it) and an optional short line. Reorder with the arrows.
+* Pick the box color (green, red or blue), and turn the box on or off from Show Control or the Show Manager on your phone.
 * Optional thank-you line under the title (empty shows just the logos), and an optional "Want to sponsor the show? Get in touch" link to an email address or a web page.
 * Logos sit on light cards so any logo stays readable. Rows even out by themselves (6 sponsors = 3 + 3, 7 = 4 + 3), 2 per row on phones. With no sponsors, or switched off, the box isn't there at all.
 * Also a Sponsors block and [marquee section="sponsors"] for other themes. In English, Spanish and French.

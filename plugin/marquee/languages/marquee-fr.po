@@ -6553,3 +6553,30 @@ msgstr "Lien « Vous voulez commanditer le spectacle ? » (facultatif)"
 
 msgid "Remove sponsor"
 msgstr "Retirer le commanditaire"
+
+msgid "The sponsors box on the home page"
+msgstr "L’encadré des commanditaires sur la page d’accueil"
+
+msgid "Box color"
+msgstr "Couleur de l’encadré"
+
+msgid "Green"
+msgstr "Vert"
+
+msgid "Red"
+msgstr "Rouge"
+
+msgid "Blue"
+msgstr "Bleu"
+
+msgid "Sponsors box color"
+msgstr "Couleur de l’encadré des commanditaires"
+
+msgid ""
+"Green sits nicely between the guestbook and the red Donate box. If Box "
+"colors (Appearance → Customize → Look) is set to one color for every box, "
+"that color is used here too."
+msgstr ""
+"Le vert s’accorde bien entre le livre d’or et l’encadré rouge Faire un don. "
+"Si Couleurs des encadrés (Apparence → Personnaliser → Style) utilise une "
+"seule couleur pour tous les encadrés, cette couleur est aussi utilisée ici."

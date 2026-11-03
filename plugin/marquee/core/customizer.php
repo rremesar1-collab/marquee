@@ -147,6 +147,7 @@ function ridgeroad_defaults( $fresh = false ) {
 		'sp_title'          => __( 'Thank You to Our Sponsors', 'ridgeroad' ),
 		'sp_intro'          => __( 'These local businesses help keep the lights on. Please stop by and say thanks!', 'ridgeroad' ),
 		'sp_ask'            => '',
+		'sp_color'          => 'green',
 		// Guestbook (RF Page Builder).
 		'gb_show'           => 1,
 		'gb_source'         => 'wordpress',
@@ -547,6 +548,10 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp ) {
 	$add( 'gb_count', 'rr_guestbook', __( 'Messages to show', 'ridgeroad' ), 'number', array( 'input_attrs' => array( 'min' => 1, 'max' => 20 ) ) );
 	$add( 'gb_site_key', 'rr_guestbook', __( 'RF Page Builder site key', 'ridgeroad' ), 'text', array( 'description' => __( 'From RF Page Builder: a key with dashes, like 1a2b3c4d-…. Leave empty to turn the guestbook off.', 'ridgeroad' ) ) );
 	$add( 'sp_show', 'rr_sponsors', __( 'Show the sponsors section', 'ridgeroad' ), 'checkbox', array( 'description' => __( 'Add your sponsors and their logos in Marquee → Settings → Sharing & donations.', 'ridgeroad' ) ) );
+	$add( 'sp_color', 'rr_sponsors', __( 'Box color', 'ridgeroad' ), 'select', array(
+		'choices'     => array( 'green' => __( 'Green', 'ridgeroad' ), 'red' => __( 'Red', 'ridgeroad' ), 'blue' => __( 'Blue', 'ridgeroad' ) ),
+		'description' => __( 'When Box colors (in Look) is set to one color for every box, that color is used here too.', 'ridgeroad' ),
+	) );
 	$add( 'sp_title', 'rr_sponsors', __( 'Title', 'ridgeroad' ) );
 	$add( 'sp_intro', 'rr_sponsors', __( 'Thank-you line (leave empty to hide it)', 'ridgeroad' ), 'textarea' );
 	$add( 'sp_ask', 'rr_sponsors', __( '“Want to sponsor the show?” link: an email or a web page (leave empty to hide it)', 'ridgeroad' ) );

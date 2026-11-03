@@ -17,7 +17,7 @@ if ( ridgeroad_mod( 'sp_show' ) && $sp_list ) :
 	?>
 <section id="sponsors" class="rr-sponsors" aria-labelledby="rr-sp-h">
 	<h2 id="rr-sp-h" class="rr-ribbon"><span><?php echo esc_html( ridgeroad_mod( 'sp_title' ) ); ?></span></h2>
-	<div class="rr-panel rr-panel--green rr-sp__panel">
+	<div class="rr-panel rr-panel--<?php echo esc_attr( in_array( ridgeroad_mod( 'sp_color' ), array( 'red', 'blue' ), true ) ? ridgeroad_mod( 'sp_color' ) : 'green' ); ?> rr-sp__panel">
 		<?php if ( '' !== trim( (string) $sp_text ) ) : ?>
 			<p class="rr-sp__intro"><?php echo esc_html( $sp_text ); ?></p>
 		<?php endif; ?>

@@ -3811,3 +3811,16 @@ msgid ""
 msgstr ""
 "Lien « Vous voulez commanditer le spectacle ? » : une adresse e-mail ou une "
 "page web (laissez vide pour le masquer)"
+
+msgid "The sponsors box on the home page"
+msgstr "L’encadré des commanditaires sur la page d’accueil"
+
+msgid "Box color"
+msgstr "Couleur de l’encadré"
+
+msgid ""
+"When Box colors (in Look) is set to one color for every box, that color is "
+"used here too."
+msgstr ""
+"Quand Couleurs des encadrés (dans Style) utilise une seule couleur pour tous"
+" les encadrés, cette couleur est aussi utilisée ici."

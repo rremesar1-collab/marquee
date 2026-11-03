@@ -3768,3 +3768,16 @@ msgid ""
 msgstr ""
 "Enlace de “¿Quieres patrocinar el espectáculo?”: un correo o una página web "
 "(déjalo vacío para ocultarlo)"
+
+msgid "The sponsors box on the home page"
+msgstr "El recuadro de patrocinadores en la página de inicio"
+
+msgid "Box color"
+msgstr "Color de la caja"
+
+msgid ""
+"When Box colors (in Look) is set to one color for every box, that color is "
+"used here too."
+msgstr ""
+"Cuando Colores de las cajas (en Aspecto) tiene un solo color para todas las "
+"cajas, ese color se usa aquí también."

@@ -298,6 +298,7 @@ function marquee_manager_app() {
 				$toggle( 'games_on', __( 'Games', 'marquee' ), __( 'Elf names and Christmas trivia', 'marquee' ) );
 				$toggle( 'songs_show', __( 'Favorite song voting', 'marquee' ), __( 'On the Songs & Videos page', 'marquee' ) );
 				$toggle( 'gb_show', __( 'Guestbook', 'marquee' ), __( 'Visitors can leave a message', 'marquee' ) );
+				$toggle( 'sp_show', __( 'Sponsors', 'marquee' ), __( 'The sponsors box on the home page', 'marquee' ) );
 				?>
 				<div class="mm-sw"><div><b><?php esc_html_e( 'Falling snow', 'marquee' ); ?></b><small><?php esc_html_e( 'On every page', 'marquee' ); ?></small></div>
 					<select data-mm-set="snow_amount" aria-label="<?php esc_attr_e( 'Falling snow', 'marquee' ); ?>"><option value="off"><?php esc_html_e( 'Off', 'marquee' ); ?></option><option value="light"><?php esc_html_e( 'Light', 'marquee' ); ?></option><option value="medium"><?php esc_html_e( 'Medium', 'marquee' ); ?></option><option value="heavy"><?php esc_html_e( 'Heavy', 'marquee' ); ?></option></select></div>

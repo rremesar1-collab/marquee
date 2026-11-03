@@ -6478,3 +6478,30 @@ msgstr "Enlace de “¿Quieres patrocinar el espectáculo?” (opcional)"
 
 msgid "Remove sponsor"
 msgstr "Quitar patrocinador"
+
+msgid "The sponsors box on the home page"
+msgstr "El recuadro de patrocinadores en la página de inicio"
+
+msgid "Box color"
+msgstr "Color de la caja"
+
+msgid "Green"
+msgstr "Verde"
+
+msgid "Red"
+msgstr "Rojo"
+
+msgid "Blue"
+msgstr "Azul"
+
+msgid "Sponsors box color"
+msgstr "Color de la caja de patrocinadores"
+
+msgid ""
+"Green sits nicely between the guestbook and the red Donate box. If Box "
+"colors (Appearance → Customize → Look) is set to one color for every box, "
+"that color is used here too."
+msgstr ""
+"El verde queda bien entre el libro de visitas y el recuadro rojo de Donar. "
+"Si Colores de las cajas (Apariencia → Personalizar → Aspecto) tiene un solo "
+"color para todas las cajas, ese color se usa aquí también."

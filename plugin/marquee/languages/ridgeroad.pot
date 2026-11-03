@@ -4920,3 +4920,14 @@ msgid ""
 "“Want to sponsor the show?” link: an email or a web page (leave empty to "
 "hide it)"
 msgstr ""
+
+msgid "The sponsors box on the home page"
+msgstr ""
+
+msgid "Box color"
+msgstr ""
+
+msgid ""
+"When Box colors (in Look) is set to one color for every box, that color is "
+"used here too."
+msgstr ""
