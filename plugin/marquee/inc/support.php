@@ -773,6 +773,7 @@ function marquee_support_page() {
 				<details class="mq-sup__report"><summary><?php esc_html_e( 'See the support report that’s sent', 'marquee' ); ?></summary><pre><?php echo esc_html( marquee_support_report_text() ); ?></pre><p class="description"><?php esc_html_e( 'No keys, tokens or passwords are included.', 'marquee' ); ?></p></details>
 				<p><button type="button" class="button button-primary button-hero" data-mq-sup-go><?php esc_html_e( 'Send to Marquee Support', 'marquee' ); ?></button> <span class="mq-sup__msg" data-mq-sup-err aria-live="polite"></span></p>
 				<?php if ( $chat ) : ?><p class="description"><?php esc_html_e( 'Your last support chat is below.', 'marquee' ); ?></p><?php endif; ?>
+				<p class="description"><?php echo wp_kses( sprintf( /* translators: %s: link to the Suggest an idea page */ __( 'Have an idea for a new feature instead? %s', 'marquee' ), '<a href="' . esc_url( admin_url( 'admin.php?page=marquee-ideas' ) ) . '">' . esc_html__( 'Suggest an idea', 'marquee' ) . '</a>' ), array( 'a' => array( 'href' => array() ) ) ); ?></p>
 			</div>
 		<?php endif; ?>
 

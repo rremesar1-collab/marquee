@@ -44,7 +44,7 @@ $winners    = array_filter( $entries, function ( $e ) {
 		<div class="rr-kc__doors<?php echo array( 0 => ' is-one', 1 => ' is-one', 2 => ' is-two', 3 => ' is-three', 4 => '' )[ $door_n ]; ?>" data-kc-doors>
 			<?php if ( $names_on ) : ?>
 				<a class="rr-kc__door" href="#names" data-kc-door="names" data-first="<?php echo $names_open ? '1' : '0'; ?>">
-					<img src="<?php echo esc_url( ridgeroad_door_url( 'names', 'door-1.jpg' ) ); ?>" width="490" height="685" alt="<?php echo esc_attr( $mq ? __( 'Your Name in Lights. See your name in our light show.', 'ridgeroad' ) : __( 'Your Name in Lights. See your name on our garage door.', 'ridgeroad' ) ); ?>">
+					<img src="<?php echo esc_url( ridgeroad_door_url( 'names', 'door-1.webp' ) ); ?>" width="490" height="685" alt="<?php echo esc_attr( $mq ? __( 'Your Name in Lights. See your name in our light show.', 'ridgeroad' ) : __( 'Your Name in Lights. See your name on our garage door.', 'ridgeroad' ) ); ?>">
 					<span class="rr-kc__sign" data-kc-names-sign <?php echo $names_open ? 'hidden' : ''; ?>><?php esc_html_e( 'At showtime', 'ridgeroad' ); ?></span>
 					<?php if ( ridgeroad_door_words( 'names' ) ) : ?>
 						<span class="rr-kc__sign" data-kc-names-on <?php echo $names_open ? '' : 'hidden'; ?>><?php esc_html_e( 'On now!', 'ridgeroad' ); ?></span>
@@ -55,7 +55,7 @@ $winners    = array_filter( $entries, function ( $e ) {
 			<?php endif; ?>
 			<?php if ( $lab ) : ?>
 			<a class="rr-kc__door" href="#light-show" data-kc-door="light-show">
-				<img src="<?php echo esc_url( ridgeroad_door_url( 'show', 'door-2.jpg' ) ); ?>" width="490" height="685" alt="<?php echo esc_attr( ( $mq ? __( 'Make a Light Show. Light up a house your way.', 'ridgeroad' ) : __( 'Make a Light Show. Light up our house your way.', 'ridgeroad' ) ) . ( $open ? ' ' . __( 'Win a prize!', 'ridgeroad' ) : '' ) ); ?>">
+				<img src="<?php echo esc_url( ridgeroad_door_url( 'show', 'door-2.webp' ) ); ?>" width="490" height="685" alt="<?php echo esc_attr( ( $mq ? __( 'Make a Light Show. Light up a house your way.', 'ridgeroad' ) : __( 'Make a Light Show. Light up our house your way.', 'ridgeroad' ) ) . ( $open ? ' ' . __( 'Win a prize!', 'ridgeroad' ) : '' ) ); ?>">
 				<?php if ( ! $open ) : ?><span class="rr-kc__sign rr-kc__sign--show"><?php esc_html_e( 'Just for fun', 'ridgeroad' ); ?></span><?php endif; ?>
 				<?php if ( ridgeroad_door_words( 'show' ) ) : ?>
 					<?php if ( $open ) : ?><span class="rr-kc__sign rr-kc__sign--show"><?php esc_html_e( 'Win a prize!', 'ridgeroad' ); ?></span><?php endif; ?>
@@ -66,7 +66,7 @@ $winners    = array_filter( $entries, function ( $e ) {
 			<?php endif; ?>
 			<?php if ( $coloring ) : ?>
 			<a class="rr-kc__door" href="#coloring" data-kc-door="coloring">
-				<img src="<?php echo esc_url( ridgeroad_door_url( 'coloring', 'door-coloring.jpg' ) ); ?>" width="490" height="685" alt="<?php esc_attr_e( 'Coloring Pages. Pick a picture to print and color.', 'ridgeroad' ); ?>">
+				<img src="<?php echo esc_url( ridgeroad_door_url( 'coloring', 'door-coloring.webp' ) ); ?>" width="490" height="685" alt="<?php esc_attr_e( 'Coloring Pages. Pick a picture to print and color.', 'ridgeroad' ); ?>">
 				<?php if ( ridgeroad_door_words( 'coloring' ) ) : ?>
 					<span class="rr-kc__words" aria-hidden="true"><?php ridgeroad_door_title( __( 'Coloring Pages', 'ridgeroad' ) ); ?><small><?php esc_html_e( 'Pick a picture to print and color it!', 'ridgeroad' ); ?></small></span>
 					<span class="rr-kc__go" aria-hidden="true"><?php esc_html_e( 'Let’s go!', 'ridgeroad' ); ?></span>
@@ -75,7 +75,7 @@ $winners    = array_filter( $entries, function ( $e ) {
 			<?php endif; ?>
 			<?php if ( $games ) : ?>
 			<a class="rr-kc__door" href="#games" data-kc-door="games">
-				<img src="<?php echo esc_url( ridgeroad_door_url( 'games', 'door-4.jpg' ) ); ?>" width="490" height="685" alt="<?php esc_attr_e( 'Games. Elf names and Christmas trivia.', 'ridgeroad' ); ?>">
+				<img src="<?php echo esc_url( ridgeroad_door_url( 'games', 'door-4.webp' ) ); ?>" width="490" height="685" alt="<?php esc_attr_e( 'Games. Elf names and Christmas trivia.', 'ridgeroad' ); ?>">
 				<?php if ( ridgeroad_door_words( 'games' ) ) : ?>
 					<span class="rr-kc__words rr-kc__words--games" aria-hidden="true"><?php ridgeroad_door_title( __( 'Games', 'ridgeroad' ) ); ?><small><?php esc_html_e( 'Elf names and Christmas trivia', 'ridgeroad' ); ?></small></span>
 					<span class="rr-kc__go" aria-hidden="true"><?php esc_html_e( 'Let’s go!', 'ridgeroad' ); ?></span>

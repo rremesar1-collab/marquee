@@ -6505,3 +6505,108 @@ msgstr ""
 "El verde queda bien entre el libro de visitas y el recuadro rojo de Donar. "
 "Si Colores de las cajas (Apariencia → Personalizar → Aspecto) tiene un solo "
 "color para todas las cajas, ese color se usa aquí también."
+
+msgid "A new feature"
+msgstr "Una función nueva"
+
+msgid "Make something better"
+msgstr "Mejorar algo"
+
+msgid "Something else"
+msgstr "Otra cosa"
+
+msgid "Suggest an idea"
+msgstr "Sugerir una idea"
+
+msgid "Thanks! Your idea was sent."
+msgstr "¡Gracias! Tu idea se envió."
+
+msgid "Every idea gets read. Ideas that help a lot of shows get built first."
+msgstr ""
+"Leemos todas las ideas. Las que ayudan a muchos espectáculos se hacen "
+"primero."
+
+msgid ""
+"Your website couldn’t send the email. Your idea is still in the box below. "
+"You can try again, or email it to %s."
+msgstr ""
+"Tu sitio web no pudo enviar el correo. Tu idea sigue en el cuadro de abajo. "
+"Puedes intentarlo de nuevo o enviarla por correo a %s."
+
+msgid "Write your idea in the box first."
+msgstr "Primero escribe tu idea en el cuadro."
+
+msgid ""
+"Got an idea for Marquee? A feature you wish it had, something that could "
+"work better, or anything else? Tell us here. Many of Marquee’s features "
+"started as a show owner’s idea."
+msgstr ""
+"¿Tienes una idea para Marquee? ¿Una función que te gustaría que tuviera, "
+"algo que podría funcionar mejor o cualquier otra cosa? Cuéntanos aquí. "
+"Muchas funciones de Marquee empezaron como la idea de alguien con un "
+"espectáculo."
+
+msgid "What kind of idea?"
+msgstr "¿Qué tipo de idea?"
+
+msgid "Your idea"
+msgstr "Tu idea"
+
+msgid "For example: let visitors pick a color for their name on the matrix."
+msgstr ""
+"Por ejemplo: que los visitantes elijan un color para su nombre en la matriz."
+
+msgid "A picture (optional)"
+msgstr "Una imagen (opcional)"
+
+msgid "A screenshot or a photo that shows what you mean. Up to 5 MB."
+msgstr ""
+"Una captura de pantalla o una foto que muestre lo que quieres decir. Hasta 5"
+" MB."
+
+msgid "Your email, if you’d like an answer"
+msgstr "Tu correo, si quieres una respuesta"
+
+msgid "Leave it empty if you don’t need one."
+msgstr "Déjalo vacío si no la necesitas."
+
+msgid ""
+"Along with your idea, we get your website’s address and which versions of "
+"Marquee, your theme and WordPress you have. Nothing else."
+msgstr ""
+"Junto con tu idea, recibimos la dirección de tu sitio web y las versiones de"
+" Marquee, de tu tema y de WordPress que tienes. Nada más."
+
+msgid "Send my idea"
+msgstr "Enviar mi idea"
+
+msgid ""
+"Something not working? Use %s instead, so Marquee Support can see your "
+"setup."
+msgstr ""
+"¿Algo no funciona? Usa %s, así Marquee Support puede ver tu configuración."
+
+msgid "Ideas you’ve sent"
+msgstr "Ideas que has enviado"
+
+msgid "M j, Y"
+msgstr "j M Y"
+
+msgid "with a picture"
+msgstr "con una imagen"
+
+msgid "Have an idea for a new feature instead? %s"
+msgstr "¿Tienes una idea para una función nueva? %s"
+
+msgid "A feature you wish Marquee had, or something that could work better."
+msgstr ""
+"Una función que te gustaría que Marquee tuviera, o algo que podría funcionar"
+" mejor."
+
+msgid "A PNG with see-through edges blends into your page best."
+msgstr "Un PNG con los bordes transparentes se integra mejor con tu página."
+
+msgid ""
+"That’s all the questions for today. Try again tomorrow, or use Get help."
+msgstr ""
+"Esas son todas las preguntas por hoy. Inténtalo mañana o usa Obtener ayuda."

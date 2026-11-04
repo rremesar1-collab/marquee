@@ -299,7 +299,7 @@ add_action( 'wp_ajax_marquee_ai_ask', function () {
 	$day  = 'marquee_ai_n_' . wp_date( 'Ymd' );
 	$used = (int) get_transient( $day );
 	if ( $used >= marquee_ai_daily() ) {
-		wp_send_json_error( array( 'message' => __( 'That’s all the questions for today. Try again tomorrow, or use Send feedback.', 'marquee' ) ) );
+		wp_send_json_error( array( 'message' => __( 'That’s all the questions for today. Try again tomorrow, or use Get help.', 'marquee' ) ) );
 	}
 	$raw  = isset( $_POST['messages'] ) ? json_decode( wp_unslash( $_POST['messages'] ), true ) : array(); // phpcs:ignore
 	$msgs = array();

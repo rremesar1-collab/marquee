@@ -219,7 +219,7 @@ if ( ! function_exists( 'ridgeroad_door_url' ) ) {
 	/** Kids' Corner door picture: the show's own upload (Marquee → Artwork), else the standard one. */
 	function ridgeroad_door_url( $key, $file ) {
 		if ( ridgeroad_door_words( $key ) ) {
-			return ridgeroad_asset_url( 'img/kids/' ) . str_replace( '.jpg', '-blank.jpg', $file ) . '?v=' . RIDGEROAD_VERSION;
+			return ridgeroad_asset_url( 'img/kids/' ) . str_replace( '.webp', '-blank.webp', $file ) . '?v=' . RIDGEROAD_VERSION;
 		}
 		if ( ridgeroad_is_marquee() ) {
 			$d = (array) marquee_get( 'art_doors' );

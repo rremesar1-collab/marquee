@@ -4,7 +4,7 @@ Theme URI: https://alateka.com/
 Author: Alateka Corporation
 Author URI: https://alateka.com/
 Description: The festive Christmas look for the Marquee light show plugin: garlands, bows, a night-sky scene and glowing show cards for your status, Now Playing, weather, Kids’ Corner and more. Needs the free Marquee plugin (it holds all the show features and settings).
-Version: 2.19.0
+Version: 2.20.0
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -1405,9 +1405,11 @@ img.emoji, img.wp-smiley { display: inline !important; width: 1em !important; he
 .rr-kc__doors.is-two { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 620px; }
 .rr-kc__doors.is-one { grid-template-columns: minmax(0, 1fr); max-width: 300px; }
 .rr-kc__none { text-align: center; font-weight: 700; color: #fff6dc; }
-.rr-kc__door { position: relative; display: block; border-radius: 18px; overflow: hidden; box-shadow: 0 12px 28px rgba(0, 0, 0, .55); transition: transform .18s, box-shadow .18s; }
-.rr-kc__door img { display: block; width: 100%; height: auto; aspect-ratio: 490 / 685; object-fit: cover; }
-.rr-kc__door:hover, .rr-kc__door:focus-visible { transform: translateY(-5px) rotate(-.6deg); box-shadow: 0 0 26px rgba(255, 210, 90, .55), 0 18px 34px rgba(0, 0, 0, .6); }
+/* the door pictures have see-through edges: the shadow and glow follow the sign's shape, not a box */
+.rr-kc__door { position: relative; display: block; transition: transform .18s; }
+.rr-kc__door img { display: block; width: 100%; height: auto; aspect-ratio: 490 / 685; object-fit: cover; border-radius: 18px; filter: drop-shadow(0 12px 12px rgba(0, 0, 0, .55)); transition: filter .18s; }
+.rr-kc__door:hover, .rr-kc__door:focus-visible { transform: translateY(-5px) rotate(-.6deg); }
+.rr-kc__door:hover img, .rr-kc__door:focus-visible img { filter: drop-shadow(0 0 12px rgba(255, 210, 90, .6)) drop-shadow(0 16px 14px rgba(0, 0, 0, .6)); }
 .rr-kc__door:nth-child(even):hover { transform: translateY(-5px) rotate(.6deg); }
 .rr-kc__sign { position: absolute; left: 56%; top: 14.2%; width: 41%; padding: 6px 4px; text-align: center; transform: rotate(8deg); font: 700 clamp(10px, 1.1vw, 15px)/1.1 var(--f-kid); color: #3a1d00; text-transform: uppercase; background: linear-gradient(180deg, #ffe7a3, #e9b94d 60%, #c98d25); border: 2px solid #8a5a12; border-radius: 6px; box-shadow: 0 3px 6px rgba(0, 0, 0, .5); }
 .rr-kc__sign[hidden] { display: none; }
@@ -1420,7 +1422,9 @@ img.emoji, img.wp-smiley { display: inline !important; width: 1em !important; he
 .rr-kc__words b.is-long { font-size: 9.6cqw; }
 .rr-kc__words b.is-longer { font-size: 8.4cqw; }
 .rr-kc__go { position: absolute; left: 28.6%; width: 43.3%; top: 80%; height: 10.2%; display: flex; align-items: center; justify-content: center; font: 700 7.4cqw/1 var(--f-kid, "Fredoka", sans-serif); color: #3a1d00; white-space: nowrap; pointer-events: none; }
-.rr-kc__sign--show { left: 52%; top: 12%; width: 45%; }
+.rr-kc__sign--show { left: 54.5%; top: 14.6%; width: 44%; }
+/* as big as the sign painted on the door, so it covers it completely */
+.rr-kc__sign { display: flex; align-items: center; justify-content: center; box-sizing: border-box; min-height: 17cqw; font-size: clamp(10px, 5.2cqw, 16px); }
 
 /* ---------- Kids' Corner: one activity ---------- */
 .rr-kc__top { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; }

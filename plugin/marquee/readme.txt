@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.17.0
+Stable tag: 0.18.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,13 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.18.0 =
+* New: Suggest an idea (Marquee → Suggest an idea, also in Settings → Help). Pick the kind of idea, write it, add a screenshot if you like and your email for an answer, and it's sent to Marquee Support from your website. No email app needed. The ideas you've sent are listed under the form.
+* Kids' Corner: the four door pictures now have see-through edges, so your page's background (and its lights) shows all around them instead of a dark box. The shadow and the glow when you point at a door follow the sign's shape.
+* Kids' Corner: the "At showtime" and "Just for fun" signs now fully cover the sign painted on the door.
+* The names script for FPP is 3.16.3: the first name waits the full "every N songs", and the website's "after this song" message is right after a names break.
+* In English, Spanish and French. Marquee Festive 2.20.0 has the same door changes.
 
 = 0.17.0 =
 * New: Sponsors. A "Thank You to Our Sponsors" box on your home page, full width between the guestbook and Donate / Stay Connected, for the local businesses that support your show. Turn it on in Features & pages, and add sponsors in Sharing & donations: a logo from your Media Library, the business name, their website (clicking the logo opens it) and an optional short line. Reorder with the arrows.

@@ -4,7 +4,7 @@ Marquee is a WordPress plugin (by Alateka Corporation) that turns a WordPress si
 
 ## Where things are in WP Admin
 
-- **Marquee → Settings** (0.10+): a left menu in two groups. Get set up: **Setup home** (the next thing to do, the setup list with ticks, and the show's connections: Names in Lights, Remote Falcon, Social posts), **Website basics** (show details, location & weather, schedule), **Features & pages**. Add to your show: **Names in Lights** (in six steps), **Remote Falcon**, **Artwork & Kids' Corner**, **Sharing & donations**. Then **Help** (Marquee Support, feedback, and the Show Manager box with the QR code for the phone). One Save changes button at the bottom saves every section; you stay where you were. Older versions called these Your show, Location, Schedule, Names & FPP, Features, Artwork and Social posts.
+- **Marquee → Settings** (0.10+): a left menu in two groups. Get set up: **Setup home** (the next thing to do, the setup list with ticks, and the show's connections: Names in Lights, Remote Falcon, Social posts), **Website basics** (show details, location & weather, schedule), **Features & pages**. Add to your show: **Names in Lights** (in six steps), **Remote Falcon**, **Artwork & Kids' Corner**, **Sharing & donations**. Then **Help** (Marquee Support, Suggest an idea, and the Show Manager box with the QR code for the phone). One Save changes button at the bottom saves every section; you stay where you were. Older versions called these Your show, Location, Schedule, Names & FPP, Features, Artwork and Social posts.
 - **Marquee → Contest entries, Show videos, Names in Lights** (the list of names kids sent; Block removes one), **Show Manager** (phone page at yoursite.com/manage).
 - **Show Control** (WP Admin menu): night-of switches: cancel tonight's show, pause names, send an alert to app users, snow amount.
 - **Appearance → Customize → Show Website**: visitor tips (Before You Visit), guestbook and Kids' Corner wording, extra blocked words for names.
@@ -81,12 +81,13 @@ The names break sequence: a short xLights sequence (about 30 seconds) in its own
 - **App / alerts**: need https; visitors add the site to their home screen.
 - **Show helpers**: give a family member a "Show helper" account; they can use the Show Manager and nothing else.
 - **Updates**: new versions arrive as normal WordPress updates (from the GitHub releases).
-- **Support**: Settings → Send feedback, or support@alateka.com.
+- **Support**: Marquee → Get help (a chat with Marquee Support), or support@alateka.com.
+- **Ideas and feature requests**: Marquee → Suggest an idea (also Settings → Help). The owner picks the kind of idea, writes it, can add a picture and an email for an answer; it's emailed to Marquee Support and listed under "Ideas you've sent".
 
 ## How to answer
 
 - Use the site status provided below the guide: it is live (versions, what's on, the FPP's last setup check, last errors). Point at the exact red line and the fix.
 - Never ask for or repeat passwords, API keys or private keys. If someone pastes one, tell them to remove it and regenerate it.
-- If something isn't covered here, say so and suggest Send feedback; don't invent settings or menus.
+- If something isn't covered here, say so and suggest Get help; don't invent settings or menus.
 - Keep answers short: a sentence of what's wrong, then numbered steps.
 - **Easiest FPP setup (Marquee 0.8.3+)**: the Marquee FPP plugin. FPP → Content Setup → Plugin Manager → search "Marquee" (or paste the pluginInfo.json address from Settings → Names in Lights → Connect your FPP) → Install → Content Setup → Marquee → paste the connection code from Settings → Names in Lights → Connect your FPP → Connect. No Command Presets or file uploads. If the old by-hand script is also set up, remove its FPPD_STARTED Run Script preset and delete marquee_names.py from Scripts; the plugin page warns about it. Plugin log: Help → FPP Logs → plugin-fpp-marquee.log.

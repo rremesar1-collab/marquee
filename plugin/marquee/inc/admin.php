@@ -836,14 +836,14 @@ function marquee_admin_page() {
 				marquee_media_field( 'lab_songs', __( 'Songs kids can pick in Make a Light Show', 'marquee' ), __( 'MP3 files, up to 12. Use songs you have the right to share on your website. The song’s title in the Media Library is the name kids see. With no songs, the lights play on their own for a minute.', 'marquee' ), (array) $s['lab_songs'], true, '', 'audio' );
 				?>
 				<h3><?php esc_html_e( 'Kids’ Corner door pictures', 'marquee' ); ?></h3>
-				<p class="mq__fine"><?php esc_html_e( 'Replace any of the four big pictures kids tap. Tall pictures work best (490 × 685 or bigger, same shape).', 'marquee' ); ?></p>
+				<p class="mq__fine"><?php esc_html_e( 'Replace any of the four big pictures kids tap. Tall pictures work best (490 × 685 or bigger, same shape).', 'marquee' ); ?> <?php esc_html_e( 'A PNG with see-through edges blends into your page best.', 'marquee' ); ?></p>
 				<div class="mq__doors">
 				<?php
 				$doors = array(
-					'names'    => array( __( 'Your Name in Lights', 'marquee' ), 'door-1.jpg' ),
-					'show'     => array( __( 'Make a Light Show', 'marquee' ), 'door-2.jpg' ),
-					'coloring' => array( __( 'Coloring Pages', 'marquee' ), 'door-coloring.jpg' ),
-					'games'    => array( __( 'Games', 'marquee' ), 'door-4.jpg' ),
+					'names'    => array( __( 'Your Name in Lights', 'marquee' ), 'door-1.webp' ),
+					'show'     => array( __( 'Make a Light Show', 'marquee' ), 'door-2.webp' ),
+					'coloring' => array( __( 'Coloring Pages', 'marquee' ), 'door-coloring.webp' ),
+					'games'    => array( __( 'Games', 'marquee' ), 'door-4.webp' ),
 				);
 				foreach ( $doors as $k => $d ) {
 					$id = ! empty( $s['art_doors'][ $k ] ) ? array( (int) $s['art_doors'][ $k ] ) : array();
@@ -1181,7 +1181,7 @@ function marquee_home_view( $s ) {
 	<?php
 }
 
-/** Help: support, feedback and the Show Manager for your phone. */
+/** Help: support, ideas and the Show Manager for your phone. */
 function marquee_help_view() {
 	?>
 	<header class="mq-head">
@@ -1200,10 +1200,10 @@ function marquee_help_view() {
 			<b><?php esc_html_e( 'Website text and tips', 'marquee' ); ?></b>
 			<small><?php esc_html_e( 'Before You Visit, guestbook and Kids’ Corner wording, in Customize.', 'marquee' ); ?></small>
 		</a>
-		<a class="mq-conn" href="<?php echo esc_url( marquee_feedback_url() ); ?>">
-			<span class="mq-conn__top"><span class="dashicons dashicons-email-alt" aria-hidden="true"></span></span>
-			<b><?php esc_html_e( 'Send feedback', 'marquee' ); ?></b>
-			<small><?php esc_html_e( 'An idea, or something that didn’t work? Tell us.', 'marquee' ); ?></small>
+		<a class="mq-conn" href="<?php echo esc_url( admin_url( 'admin.php?page=marquee-ideas' ) ); ?>">
+			<span class="mq-conn__top"><span class="dashicons dashicons-lightbulb" aria-hidden="true"></span></span>
+			<b><?php esc_html_e( 'Suggest an idea', 'marquee' ); ?></b>
+			<small><?php esc_html_e( 'A feature you wish Marquee had, or something that could work better.', 'marquee' ); ?></small>
 		</a>
 		<?php if ( MARQUEE_COFFEE_URL ) : ?>
 			<a class="mq-conn" href="<?php echo esc_url( MARQUEE_COFFEE_URL ); ?>" target="_blank" rel="noopener">
@@ -1273,14 +1273,9 @@ add_action( 'admin_menu', function () {
 	} );
 }, 999 );
 
-/** A pre-filled email to Marquee support (version and site included, nothing private). */
-function marquee_feedback_url() {
-	$body = sprintf( "\n\n---\nMarquee %s · WordPress %s · theme %s · %s", MARQUEE_VERSION, get_bloginfo( 'version' ), get_template(), home_url( '/' ) );
-	return 'mailto:support@alateka.com?subject=' . rawurlencode( 'Marquee feedback' ) . '&body=' . rawurlencode( $body );
-}
 add_filter( 'plugin_action_links_' . plugin_basename( MARQUEE_DIR . 'marquee.php' ), function ( $links ) {
 	array_unshift( $links, '<a href="' . esc_url( admin_url( 'admin.php?page=marquee' ) ) . '">' . esc_html__( 'Settings', 'marquee' ) . '</a>' );
-	$links[] = '<a href="' . esc_url( marquee_feedback_url() ) . '">' . esc_html__( 'Send feedback', 'marquee' ) . '</a>';
+	$links[] = '<a href="' . esc_url( admin_url( 'admin.php?page=marquee-ideas' ) ) . '">' . esc_html__( 'Suggest an idea', 'marquee' ) . '</a>';
 	if ( MARQUEE_COFFEE_URL ) {
 		$links[] = '<a href="' . esc_url( MARQUEE_COFFEE_URL ) . '" target="_blank" rel="noopener">☕ ' . esc_html__( 'Buy me a coffee', 'marquee' ) . '</a>';
 	}
