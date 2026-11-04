@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.18.0
+Stable tag: 0.18.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,10 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.18.1 =
+* Get help: asks for your email (filled in with yours) so Marquee Support can always reach you. Every support email now starts with your name, email and website, and answers from Marquee Support go to the email you typed.
+* In English, Spanish and French.
 
 = 0.18.0 =
 * New: Suggest an idea (Marquee → Suggest an idea, also in Settings → Help). Pick the kind of idea, write it, add a screenshot if you like and your email for an answer, and it's sent to Marquee Support from your website. No email app needed. The ideas you've sent are listed under the form.

@@ -6610,3 +6610,18 @@ msgid ""
 "That’s all the questions for today. Try again tomorrow, or use Get help."
 msgstr ""
 "Esas son todas las preguntas por hoy. Inténtalo mañana o usa Obtener ayuda."
+
+msgid "Your email"
+msgstr "Tu correo"
+
+msgid "So Marquee Support can reach you if they need to."
+msgstr "Para que Marquee Support pueda contactarte si lo necesita."
+
+msgid "Please type your email so Marquee Support can reach you."
+msgstr "Escribe tu correo para que Marquee Support pueda contactarte."
+
+msgid "Who asked"
+msgstr "Quién preguntó"
+
+msgid "Site admin email:"
+msgstr "Correo del administrador del sitio:"

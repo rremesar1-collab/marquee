@@ -182,6 +182,7 @@ function marquee_js_strings() {
 		'Playlists on the FPP (%s)' => __( 'Playlists on the FPP (%s)', 'marquee' ),
 		'Names script log' => __( 'Names script log', 'marquee' ),
 		'Please tell Marquee Support what’s wrong.' => __( 'Please tell Marquee Support what’s wrong.', 'marquee' ),
+		'Please type your email so Marquee Support can reach you.' => __( 'Please type your email so Marquee Support can reach you.', 'marquee' ),
 		'Something went wrong. Please try again.' => __( 'Something went wrong. Please try again.', 'marquee' ),
 		'That didn’t send. Please try again.' => __( 'That didn’t send. Please try again.', 'marquee' ),
 		// seqmaker-ui.js

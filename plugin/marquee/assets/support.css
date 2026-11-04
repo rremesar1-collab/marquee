@@ -61,3 +61,6 @@
 .mq-idea__sent p { margin: 4px 0 0; font-size: 14px; overflow-wrap: anywhere; }
 .mq-idea__meta { font-size: 12px; color: #50575e; }
 @media (max-width: 600px) { .mq-idea__row label { flex-basis: 100%; } .mq-sup__start { padding: 16px; } }
+.mq-sup__email { display: block; width: 100%; max-width: 360px; margin: 6px 0 14px; }
+.mq-sup__hint { color: #50575e; font-weight: 400; }
+.mq-sup__who p { margin: 6px 0 0; }

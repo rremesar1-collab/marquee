@@ -6688,3 +6688,18 @@ msgid ""
 msgstr ""
 "C’est tout pour les questions aujourd’hui. Réessayez demain, ou utilisez "
 "Obtenir de l’aide."
+
+msgid "Your email"
+msgstr "Votre e-mail"
+
+msgid "So Marquee Support can reach you if they need to."
+msgstr "Pour que Marquee Support puisse vous joindre au besoin."
+
+msgid "Please type your email so Marquee Support can reach you."
+msgstr "Tapez votre e-mail pour que Marquee Support puisse vous joindre."
+
+msgid "Who asked"
+msgstr "Qui a demandé"
+
+msgid "Site admin email:"
+msgstr "E-mail de l’administrateur du site :"

@@ -86,8 +86,10 @@
 		go.addEventListener('click', function () {
 			var t = $('[data-mq-sup-first]').value.trim(), err = $('[data-mq-sup-err]');
 			if (t.length < 5) { err.textContent = tr('Please tell Marquee Support what’s wrong.'); return; }
+			var em = $('[data-mq-sup-email]'), ev = em ? em.value.trim() : '';
+			if (em && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(ev)) { err.textContent = tr('Please type your email so Marquee Support can reach you.'); em.focus(); return; }
 			go.disabled = true; err.textContent = tr('Sending…');
-			post('marquee_support_start', { message: t, access: $('[data-mq-sup-access]').checked ? 1 : '' }).then(function (r) {
+			post('marquee_support_start', { message: t, email: ev, access: $('[data-mq-sup-access]').checked ? 1 : '' }).then(function (r) {
 				if (!r.success) { go.disabled = false; err.textContent = (r.data && r.data.message) || tr('Something went wrong. Please try again.'); return; }
 				$('[data-mq-sup-start]').hidden = true;
 				msgs.innerHTML = ''; next = 0;

@@ -7078,3 +7078,18 @@ msgstr ""
 msgid ""
 "That’s all the questions for today. Try again tomorrow, or use Get help."
 msgstr ""
+
+msgid "Your email"
+msgstr ""
+
+msgid "So Marquee Support can reach you if they need to."
+msgstr ""
+
+msgid "Please type your email so Marquee Support can reach you."
+msgstr ""
+
+msgid "Who asked"
+msgstr ""
+
+msgid "Site admin email:"
+msgstr ""

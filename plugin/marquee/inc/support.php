@@ -106,7 +106,7 @@ function marquee_support_report_text() {
 /* ----------------------------------------------------------------- session */
 
 /** Start a session: the support user, the private link, the first chat lines and the email. */
-function marquee_support_start( $message, $access ) {
+function marquee_support_start( $message, $access, $email = '' ) {
 	$now   = time();
 	$token = wp_generate_password( 40, false, false );
 	$uid   = 0;
@@ -127,6 +127,8 @@ function marquee_support_start( $message, $access ) {
 		'expires'  => $now + MARQUEE_SUPPORT_HOURS * HOUR_IN_SECONDS,
 		'user'     => $uid,
 		'owner'    => get_current_user_id(),
+		'email'    => $email ? $email : wp_get_current_user()->user_email, // where Marquee Support can reach the owner
+		'name'     => wp_get_current_user()->display_name,
 		'want'     => 1,
 		'tests'    => array(),
 		'actions'  => array(),
@@ -434,32 +436,43 @@ add_action( 'wp_ajax_marquee_break_build', function () {
 
 /* ------------------------------------------------------------------ emails */
 
+/** Who opened the request and how to reach them: name, email, website (at the top of every email to support). */
+function marquee_support_contact( $s = null ) {
+	$s     = $s ? $s : marquee_support();
+	$owner = get_userdata( (int) ( $s['owner'] ?? 0 ) );
+	$email = ! empty( $s['email'] ) ? $s['email'] : ( $owner && $owner->user_email ? $owner->user_email : get_option( 'admin_email' ) );
+	$name  = ! empty( $s['name'] ) ? $s['name'] : ( $owner ? $owner->display_name : '' );
+	return array( 'name' => $name, 'email' => $email, 'site' => home_url( '/' ), 'admin_email' => get_option( 'admin_email' ) );
+}
+function marquee_support_contact_text( $s = null ) {
+	$c = marquee_support_contact( $s );
+	return 'From: ' . ( $c['name'] ? $c['name'] . ' ' : '' ) . '<' . $c['email'] . ">\n"
+		. 'Website: ' . $c['site'] . "\n"
+		. ( $c['admin_email'] && strtolower( $c['admin_email'] ) !== strtolower( $c['email'] ) ? 'Site admin email: ' . $c['admin_email'] . "\n" : '' );
+}
 function marquee_support_mail_support( $kind, $text ) {
 	$s    = marquee_support();
 	$site = wp_specialchars_decode( get_bloginfo( 'name' ), ENT_QUOTES );
 	$link = marquee_support_link();
+	$who  = marquee_support_contact_text( $s ) . "\n";
 	if ( 'new' === $kind ) {
 		/* translators: 1: site name, 2: first words of the request */
 		$subj = sprintf( __( '[Marquee support] %1$s: %2$s', 'marquee' ), $site, mb_strimwidth( preg_replace( '/\s+/', ' ', $text ), 0, 60, '…' ) );
-		$body = __( 'New support request.', 'marquee' ) . "\n\n" . $text . "\n\n"
+		$body = $who . __( 'New support request.', 'marquee' ) . "\n\n" . $text . "\n\n"
 			. ( $link ? __( 'Sign in to help (works until', 'marquee' ) . ' ' . wp_date( __( 'M j, g:i A', 'marquee' ), (int) $s['expires'] ) . "):\n" . $link . "\n\n" : __( 'The owner didn’t allow sign-in. Answer in the chat:', 'marquee' ) . "\n" . admin_url( 'admin.php?page=marquee-support' ) . "\n\n" )
 			. "---- " . __( 'Support report', 'marquee' ) . " ----\n" . marquee_support_report_text();
 	} else {
 		/* translators: %s: site name */
 		$subj = sprintf( __( '[Marquee support] %s wrote back', 'marquee' ), $site );
-		$body = $text . "\n\n" . ( $link ? __( 'Open the session:', 'marquee' ) . "\n" . $link : '' );
+		$body = $who . $text . "\n\n" . ( $link ? __( 'Open the session:', 'marquee' ) . "\n" . $link : '' );
 	}
-	$headers = array();
-	$owner   = get_userdata( (int) ( $s['owner'] ?? 0 ) );
-	if ( $owner && $owner->user_email ) {
-		$headers[] = 'Reply-To: ' . $owner->display_name . ' <' . $owner->user_email . '>';
-	}
+	$c       = marquee_support_contact( $s );
+	$headers = array( 'Reply-To: ' . ( $c['name'] ? '"' . str_replace( '"', '', $c['name'] ) . '" ' : '' ) . '<' . $c['email'] . '>' );
 	wp_mail( MARQUEE_SUPPORT_EMAIL, $subj, $body, $headers );
 }
 function marquee_support_mail_owner( $text ) {
 	$s     = marquee_support();
-	$owner = get_userdata( (int) ( $s['owner'] ?? 0 ) );
-	$to    = $owner && $owner->user_email ? $owner->user_email : get_option( 'admin_email' );
+	$to    = marquee_support_contact( $s )['email'];
 	wp_mail( $to, __( 'Marquee Support answered', 'marquee' ), $text . "\n\n" . __( 'Read and answer it here:', 'marquee' ) . "\n" . admin_url( 'admin.php?page=marquee-support' ) );
 }
 /** Email the other side when they're not on the page (at most every 10 minutes). */
@@ -617,7 +630,11 @@ add_action( 'wp_ajax_marquee_support_start', function () {
 	if ( mb_strlen( $msg ) < 5 ) {
 		wp_send_json_error( array( 'message' => __( 'Please tell Marquee Support what’s wrong.', 'marquee' ) ) );
 	}
-	$r = marquee_support_start( mb_substr( $msg, 0, 3000 ), ! empty( $_POST['access'] ) ); // phpcs:ignore
+	$email = sanitize_email( wp_unslash( $_POST['email'] ?? '' ) ); // phpcs:ignore
+	if ( ! is_email( $email ) ) {
+		wp_send_json_error( array( 'message' => __( 'Please type your email so Marquee Support can reach you.', 'marquee' ) ) );
+	}
+	$r = marquee_support_start( mb_substr( $msg, 0, 3000 ), ! empty( $_POST['access'] ), $email ); // phpcs:ignore
 	if ( is_wp_error( $r ) ) {
 		wp_send_json_error( array( 'message' => $r->get_error_message() ) );
 	}
@@ -769,6 +786,8 @@ function marquee_support_page() {
 				<p class="mq-sup__lead"><?php esc_html_e( 'Stuck? Tell Marquee Support what’s going on. They get a support report so they can see your setup right away, and can sign in to fix it with you.', 'marquee' ); ?></p>
 				<label for="mq-sup-msg"><b><?php esc_html_e( 'What’s wrong?', 'marquee' ); ?></b></label>
 				<textarea id="mq-sup-msg" rows="5" maxlength="3000" placeholder="<?php esc_attr_e( 'For example: kids can send names and it says they’re in the queue, but they never show up on my matrix.', 'marquee' ); ?>" data-mq-sup-first></textarea>
+				<label for="mq-sup-email"><b><?php esc_html_e( 'Your email', 'marquee' ); ?></b> <small class="mq-sup__hint"><?php esc_html_e( 'So Marquee Support can reach you if they need to.', 'marquee' ); ?></small></label>
+				<input type="email" id="mq-sup-email" class="regular-text mq-sup__email" value="<?php echo esc_attr( wp_get_current_user()->user_email ); ?>" data-mq-sup-email>
 				<label class="mq-sup__allow"><input type="checkbox" checked data-mq-sup-access> <span><b><?php esc_html_e( 'Let Marquee Support sign in to fix it', 'marquee' ); ?></b><small><?php esc_html_e( 'For 24 hours, or until you end it. They can use Marquee’s pages and your media library only (no plugins, themes or users), and see your FPP’s status, playlists and log through the names script. Every change shows up in the chat.', 'marquee' ); ?></small></span></label>
 				<details class="mq-sup__report"><summary><?php esc_html_e( 'See the support report that’s sent', 'marquee' ); ?></summary><pre><?php echo esc_html( marquee_support_report_text() ); ?></pre><p class="description"><?php esc_html_e( 'No keys, tokens or passwords are included.', 'marquee' ); ?></p></details>
 				<p><button type="button" class="button button-primary button-hero" data-mq-sup-go><?php esc_html_e( 'Send to Marquee Support', 'marquee' ); ?></button> <span class="mq-sup__msg" data-mq-sup-err aria-live="polite"></span></p>
@@ -812,7 +831,11 @@ function marquee_support_page() {
 						<button type="button" class="button" data-mq-sup-do="restart"><?php esc_html_e( 'Restart the names script', 'marquee' ); ?></button></p>
 					<?php endif; ?>
 				</div>
-				<?php if ( $sup ) : ?>
+				<?php if ( $sup ) : $c = marquee_support_contact(); ?>
+					<div class="mq-sup__card mq-sup__who">
+						<b><?php esc_html_e( 'Who asked', 'marquee' ); ?></b>
+						<p><?php echo esc_html( $c['name'] ); ?><br><a href="mailto:<?php echo esc_attr( $c['email'] ); ?>"><?php echo esc_html( $c['email'] ); ?></a><?php if ( $c['admin_email'] && strtolower( $c['admin_email'] ) !== strtolower( $c['email'] ) ) : ?><br><small><?php esc_html_e( 'Site admin email:', 'marquee' ); ?> <a href="mailto:<?php echo esc_attr( $c['admin_email'] ); ?>"><?php echo esc_html( $c['admin_email'] ); ?></a></small><?php endif; ?></p>
+					</div>
 					<div class="mq-sup__card">
 						<b><?php esc_html_e( 'Support report', 'marquee' ); ?></b>
 						<p><a href="<?php echo esc_url( admin_url( 'admin.php?page=marquee' ) ); ?>"><?php esc_html_e( 'Open Marquee Settings', 'marquee' ); ?></a></p>
