@@ -41,7 +41,7 @@ import socket
 import threading
 import urllib.request
 
-VERSION = "3.16.2"
+VERSION = "3.16.3"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -988,7 +988,8 @@ def current_theme(st):
     return ""
 
 
-SONGS = {"key": None, "played": 0}       # songs finished since the last names break
+SONGS = {"key": None, "played": 0}       # songs finished while names wait (since the last names break)
+WAITING = {"n": 0}                       # 3.16.3: names waiting at the last check-in; songs only count while there are some
 QUEUED = {"on": False}                   # a names break is lined up after the current song
 
 
@@ -998,7 +999,9 @@ def count_songs(st):
         return
     cp = st.get("current_playlist") or {}
     key = "%s|%s|%s" % (playlist_name(st), cp.get("index", "") if isinstance(cp, dict) else "", st.get("current_sequence") or st.get("current_song") or "")
-    if SONGS["key"] is not None and key != SONGS["key"]:
+    if SONGS["key"] is not None and key != SONGS["key"] and WAITING["n"] > 0:
+        # 3.16.3: only songs that end while a name waits count, so the first name after a quiet
+        # stretch waits the full "every N songs" too (before, it went up after the current song)
         SONGS["played"] += 1
     SONGS["key"] = key
 
@@ -2353,7 +2356,14 @@ def main():
                 SONGS.update(key=None, played=0)          # start counting songs again
                 queued = QUEUED['on'] = False
                 try:
-                    pull(done)            # report what was shown (the next break must not show them again)
+                    try:
+                        now_st = master_status()
+                    except Exception:
+                        now_st = None
+                    # report what was shown (the next break must not show them again), and that the song count
+                    # starts over: 3.16.3 - without it the website kept saying "after this song" for a while
+                    after = pull(done, now_st) or {}
+                    WAITING["n"] = len(after.get("names") or [])
                     done = []
                 except Exception as e:
                     log("could not tell the website which names were shown:", e, "- trying again shortly")
@@ -2367,6 +2377,7 @@ def main():
                 queued = QUEUED['on'] = False
                 if res:
                     waiting = len(res.get("names") or [])
+                    WAITING["n"] = waiting
                     if waiting and time.time() - idle_said >= 600:   # say why names wait, every 10 minutes at most
                         idle_said = time.time()
                         log("%d name(s) waiting, but FPP is '%s', not playing a playlist - names go up once your show playlist plays on this FPP"
@@ -2395,6 +2406,7 @@ def main():
                 data = res
                 color = data.get("color") or color
                 waiting = len(data.get("names") or [])
+                WAITING["n"] = waiting
                 if waiting and not names_allowed(st):
                     if time.time() - other_said >= 600:   # say why names wait, every 10 minutes at most
                         other_said = time.time()
