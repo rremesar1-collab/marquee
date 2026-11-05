@@ -156,6 +156,8 @@ function ridgeroad_defaults( $fresh = false ) {
 		'gb_title'          => __( 'Leave a Little Christmas Cheer', 'ridgeroad' ),
 		'gb_intro'          => __( 'Enjoyed the lights? We’d love to hear from you! Sign our guestbook and share a holiday message with our family.', 'ridgeroad' ),
 		'gb_count'          => 5,
+		'gb_ts_site'        => '',
+		'gb_ts_secret'      => '',
 		'footer_text'       => '',
 	);
 	// Marquee (any show): no Lights On Ridge Road details as defaults.
@@ -178,6 +180,8 @@ function ridgeroad_defaults( $fresh = false ) {
 			'youtube_url'    => '',
 			'tiktok_url'     => '',
 			'gb_site_key'    => '',
+			'gb_ts_site'     => '',
+			'gb_ts_secret'   => '',
 			'stats_show'     => 0,
 			'stat1_num'      => '', 'stat2_num' => '', 'stat4_num' => '', 'stat5_num' => '', 'stat6_num' => '',
 		) );
@@ -264,7 +268,7 @@ function ridgeroad_lang_now() {
 
 /** Texts that are the same in every language (numbers, links, names), so they get no language boxes. */
 function ridgeroad_lang_same( $key ) {
-	return in_array( $key, array( 'radio', 'city', 'zip', 'radar_station', 'live_url', 'address', 'names_color', 'names_block', 'gb_site_key', 'social_hashtag', 'songs_manual', 'rf_viewer_url', 'listen_url', 'sp_ask' ), true )
+	return in_array( $key, array( 'radio', 'city', 'zip', 'radar_station', 'live_url', 'address', 'names_color', 'names_block', 'gb_site_key', 'gb_ts_site', 'gb_ts_secret', 'social_hashtag', 'songs_manual', 'rf_viewer_url', 'listen_url', 'sp_ask' ), true )
 		|| preg_match( '/^stat\d_num$/', $key );
 }
 
@@ -547,6 +551,8 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp ) {
 	$add( 'gb_intro', 'rr_guestbook', __( 'Intro text', 'ridgeroad' ), 'textarea' );
 	$add( 'gb_count', 'rr_guestbook', __( 'Messages to show', 'ridgeroad' ), 'number', array( 'input_attrs' => array( 'min' => 1, 'max' => 20 ) ) );
 	$add( 'gb_site_key', 'rr_guestbook', __( 'RF Page Builder site key', 'ridgeroad' ), 'text', array( 'description' => __( 'From RF Page Builder: a key with dashes, like 1a2b3c4d-…. Leave empty to turn the guestbook off.', 'ridgeroad' ) ) );
+	$add( 'gb_ts_site', 'rr_guestbook', __( 'Robot check: Turnstile site key (optional)', 'ridgeroad' ), 'text', array( 'description' => __( 'Robots are already sent to Comments → Spam on their own. If some still get through, add a free “I’m not a robot” check from Cloudflare Turnstile: make a free Cloudflare account, open Turnstile, add a widget for your website, then paste the site key here and the secret key below. Works with the WordPress guestbook.', 'ridgeroad' ) ) );
+	$add( 'gb_ts_secret', 'rr_guestbook', __( 'Robot check: Turnstile secret key', 'ridgeroad' ), 'text' );
 	$add( 'sp_show', 'rr_sponsors', __( 'Show the sponsors section', 'ridgeroad' ), 'checkbox', array( 'description' => __( 'Add your sponsors and their logos in Marquee → Settings → Sharing & donations.', 'ridgeroad' ) ) );
 	$add( 'sp_color', 'rr_sponsors', __( 'Box color', 'ridgeroad' ), 'select', array(
 		'choices'     => array( 'green' => __( 'Green', 'ridgeroad' ), 'red' => __( 'Red', 'ridgeroad' ), 'blue' => __( 'Blue', 'ridgeroad' ) ),

@@ -4,7 +4,7 @@ Theme URI: https://alateka.com/
 Author: Alateka Corporation
 Author URI: https://alateka.com/
 Description: The festive Christmas look for the Marquee light show plugin: garlands, bows, a night-sky scene and glowing show cards for your status, Now Playing, weather, Kids’ Corner and more. Needs the free Marquee plugin (it holds all the show features and settings).
-Version: 2.20.0
+Version: 2.20.1
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -457,6 +457,7 @@ body.rr-scene .rr-scroll::-webkit-scrollbar-thumb { background: rgba(247, 201, 9
 .rr-gb-form textarea { resize: vertical; min-height: 110px; }
 .rr-gb-form button { align-self: center; margin-top: 6px; padding: 12px 28px; font-size: 16px; cursor: pointer; }
 .rr-gb-honeypot { position: absolute !important; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.rr-gb-ts { margin: 2px 0 12px; min-height: 65px; }
 @media (max-width: 860px) { .rr-grid--gb { grid-template-columns: 1fr; } }
 
 /* ---------- Sponsors (full width between the guestbook and Donate / Stay Connected) ---------- */

@@ -86,7 +86,7 @@ function marquee_theme_keys() {
 	return array(
 		'radio', 'listen_url', 'season_start', 'season_end', 'use_sunset', 'weeknight_start', 'weekend_start', 'weeknight_close', 'weekend_close',
 		'radar_station', 'cashapp_url', 'gb_show', 'names_on', 'names_geo', 'names_geo_miles', 'kids_show', 'lab_on', 'coloring_on', 'games_on', 'songs_show', 'contest_on', 'app_auto_on', 'snow_amount',
-		'sp_show', 'sp_title', 'sp_intro', 'sp_ask', 'sp_color', 'sponsors', 'names_geo_unit', 'count_to', 'count_name', 'count_date', 'rf_viewer_url', 'facebook_url', 'instagram_url', 'youtube_url', 'tiktok_url', 'facebook_show', 'instagram_show', 'youtube_show', 'tiktok_show',
+		'sp_show', 'sp_title', 'sp_intro', 'sp_ask', 'sp_color', 'sponsors', 'gb_ts_site', 'gb_ts_secret', 'names_geo_unit', 'count_to', 'count_name', 'count_date', 'rf_viewer_url', 'facebook_url', 'instagram_url', 'youtube_url', 'tiktok_url', 'facebook_show', 'instagram_show', 'youtube_show', 'tiktok_show',
 	);
 }
 function marquee_theme_get( $k ) {

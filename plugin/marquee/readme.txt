@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.18.1
+Stable tag: 0.18.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,12 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.18.2 =
+* Guestbook: robot messages now go straight to Comments → Spam instead of waiting in Pending. Messages sent without the form, sent in a few seconds, sent without anyone typing, or with links or spam words are caught. Real visitors don't see anything different.
+* Guestbook: robot messages already waiting in Pending are moved to Spam once, and guestbook spam is emptied after 30 days.
+* Guestbook: optional free "I'm not a robot" check (Cloudflare Turnstile): add its two keys in Customize → Guestbook.
+* In English, Spanish and French. Marquee Festive 2.20.1 has the same guestbook changes.
 
 = 0.18.1 =
 * Get help: asks for your email (filled in with yours) so Marquee Support can always reach you. Every support email now starts with your name, email and website, and answers from Marquee Support go to the email you typed.

@@ -66,8 +66,15 @@ if ( ridgeroad_mod( 'gb_show' ) && ( ridgeroad_gb_wp() || $gb_key ) ) : // WordP
 				<input id="gb-name" maxlength="100" name="author" placeholder="<?php esc_attr_e( 'Your name', 'ridgeroad' ); ?>" required type="text">
 				<label for="gb-message"><?php esc_html_e( 'Your Christmas message', 'ridgeroad' ); ?></label>
 				<textarea id="gb-message" maxlength="500" name="comment" placeholder="<?php esc_attr_e( 'Leave a message...', 'ridgeroad' ); ?>" required rows="5"></textarea>
+				<input name="gb_t" type="hidden" value="<?php echo esc_attr( ridgeroad_gb_stamp() ); ?>">
+				<input name="gb_h" type="hidden" value="" data-rr-gb-h>
+				<?php $gb_ts = ridgeroad_gb_turnstile(); if ( $gb_ts ) : ?>
+					<div class="cf-turnstile rr-gb-ts" data-sitekey="<?php echo esc_attr( $gb_ts[0] ); ?>" data-theme="dark" data-size="flexible"></div>
+					<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+				<?php endif; ?>
 				<button class="rr-btn rr-btn--red" type="submit"><?php esc_html_e( 'Sign Guestbook', 'ridgeroad' ); ?></button>
 				<p class="rr-gb-fine"><?php esc_html_e( 'Messages appear after we review them.', 'ridgeroad' ); ?></p>
+				<script>(function(f){if(!f)return;var k=0,p=0,h=f.querySelector('[data-rr-gb-h]');function s(){h.value='k'+k+'.p'+p;}f.addEventListener('keydown',function(){k++;s();});f.addEventListener('input',function(){k++;s();});f.addEventListener('pointerdown',function(){p++;s();});f.addEventListener('focusin',function(){p++;s();});}(document.currentScript&&document.currentScript.closest('form')));</script>
 			</form>
 			<?php else : ?>
 			<form action="https://rfpagebuilder.com/api/guestbook/submit" method="POST">

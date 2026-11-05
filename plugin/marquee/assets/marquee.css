@@ -259,6 +259,7 @@
 .mq-skin:not(#mq-0) .rr-gb-form textarea { resize: vertical; min-height: 110px; }
 .mq-skin:not(#mq-0) .rr-gb-form button { align-self: center; margin-top: 6px; padding: 12px 28px; font-size: 16px; cursor: pointer; }
 .mq-skin:not(#mq-0) .rr-gb-honeypot { position: absolute !important; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.mq-skin:not(#mq-0) .rr-gb-ts { margin: 2px 0 12px; min-height: 65px; }
 @container mq (max-width: 760px) { .mq-skin:not(#mq-0) .rr-grid--gb { grid-template-columns: 1fr; } }
 @container mq (min-width: 1001px) {
 	.mq-skin:not(#mq-0) .rr-grid { gap: 18px; }

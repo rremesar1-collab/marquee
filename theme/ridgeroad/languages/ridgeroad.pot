@@ -4931,3 +4931,21 @@ msgid ""
 "When Box colors (in Look) is set to one color for every box, that color is "
 "used here too."
 msgstr ""
+
+msgid ""
+"Please finish the “I’m not a robot” check, then send your message again."
+msgstr ""
+
+msgid "Robot check: Turnstile site key (optional)"
+msgstr ""
+
+msgid "Robot check: Turnstile secret key"
+msgstr ""
+
+msgid ""
+"Robots are already sent to Comments → Spam on their own. If some still get "
+"through, add a free “I’m not a robot” check from Cloudflare Turnstile: make "
+"a free Cloudflare account, open Turnstile, add a widget for your website, "
+"then paste the site key here and the secret key below. Works with the "
+"WordPress guestbook."
+msgstr ""
