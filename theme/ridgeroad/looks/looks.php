@@ -59,6 +59,21 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp ) {
 		'choices'     => ridgeroad_box_colors(),
 		'priority'    => 20,
 	) );
+	$wp->add_setting( 'see_through', array(
+		'default'           => 'solid',
+		'transport'         => 'refresh',
+		'sanitize_callback' => function ( $v ) {
+			return isset( ridgeroad_see_through()[ $v ] ) ? $v : 'solid';
+		},
+	) );
+	$wp->add_control( 'see_through', array(
+		'label'       => __( 'See-through boxes and titles', 'ridgeroad' ),
+		'description' => __( 'Let your page picture show through the boxes and the section titles. The words, lights and borders stay bright.', 'ridgeroad' ),
+		'section'     => 'rr_look',
+		'type'        => 'radio',
+		'choices'     => ridgeroad_see_through(),
+		'priority'    => 21,
+	) );
 	$wp->add_control( new Ridgeroad_Look_Control( $wp, 'look', array(
 		'label'   => __( 'Look', 'ridgeroad' ),
 		'section' => 'rr_look',
@@ -117,7 +132,21 @@ function ridgeroad_box_colors() {
 	);
 }
 
+/** See-through boxes and titles: how much of the page picture shows through. */
+function ridgeroad_see_through() {
+	return array(
+		'solid' => __( 'Solid', 'ridgeroad' ),
+		'1'     => __( 'A little see-through', 'ridgeroad' ),
+		'2'     => __( 'More see-through', 'ridgeroad' ),
+	);
+}
+
 add_filter( 'body_class', function ( $classes ) {
+	$st = (string) get_theme_mod( 'see_through', 'solid' );
+	if ( 'solid' !== $st && isset( ridgeroad_see_through()[ $st ] ) ) {
+		$classes[] = 'rr-glass';
+		$classes[] = 'rr-glass--' . $st;
+	}
 	$bc = (string) get_theme_mod( 'box_colors', 'classic' );
 	if ( 'classic' !== $bc && isset( ridgeroad_box_colors()[ $bc ] ) ) {
 		$classes[] = 'rr-boxes--' . $bc;

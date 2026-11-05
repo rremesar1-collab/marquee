@@ -3849,3 +3849,22 @@ msgstr ""
 "robot » de Cloudflare Turnstile : créez un compte Cloudflare gratuit, ouvrez"
 " Turnstile, ajoutez un widget pour votre site, puis collez la clé du site "
 "ici et la clé secrète ci-dessous. Fonctionne avec le livre d’or WordPress."
+
+msgid "See-through boxes and titles"
+msgstr "Cadres et titres transparents"
+
+msgid ""
+"Let your page picture show through the boxes and the section titles. The "
+"words, lights and borders stay bright."
+msgstr ""
+"Laissez l’image de votre page apparaître à travers les cadres et les titres "
+"des sections. Les mots, les lumières et les bordures restent bien visibles."
+
+msgid "Solid"
+msgstr "Opaque"
+
+msgid "A little see-through"
+msgstr "Un peu transparent"
+
+msgid "More see-through"
+msgstr "Plus transparent"

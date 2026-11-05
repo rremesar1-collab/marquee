@@ -4949,3 +4949,20 @@ msgid ""
 "then paste the site key here and the secret key below. Works with the "
 "WordPress guestbook."
 msgstr ""
+
+msgid "See-through boxes and titles"
+msgstr ""
+
+msgid ""
+"Let your page picture show through the boxes and the section titles. The "
+"words, lights and borders stay bright."
+msgstr ""
+
+msgid "Solid"
+msgstr ""
+
+msgid "A little see-through"
+msgstr ""
+
+msgid "More see-through"
+msgstr ""

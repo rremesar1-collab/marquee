@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.18.2
+Stable tag: 0.18.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,10 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.18.3 =
+* Marquee Festive 2.21.0: new "See-through boxes and titles" in Customize → Look (Solid, A little, More). Your page picture shows through the boxes and the section titles; the words, lights and borders stay bright. Works with every look and every box color.
+* Marquee Support knows about the new setting.
 
 = 0.18.2 =
 * Guestbook: robot messages now go straight to Comments → Spam instead of waiting in Pending. Messages sent without the form, sent in a few seconds, sent without anyone typing, or with links or spam words are caught. Real visitors don't see anything different.

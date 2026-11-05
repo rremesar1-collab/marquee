@@ -4,7 +4,7 @@ Theme URI: https://alateka.com/
 Author: Alateka Corporation
 Author URI: https://alateka.com/
 Description: The festive Christmas look for the Marquee light show plugin: garlands, bows, a night-sky scene and glowing show cards for your status, Now Playing, weather, Kids’ Corner and more. Needs the free Marquee plugin (it holds all the show features and settings).
-Version: 2.20.1
+Version: 2.21.0
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -1883,3 +1883,304 @@ body.rr-boxes--blue .rr-panel--red, body.rr-boxes--blue .rr-panel--green, body.r
 		linear-gradient(#0a1d44, #0a1d44) border-box;
 }
 body.rr-boxes--blue .rr-stat, body.rr-boxes--blue .rr-stat:nth-child(even) { background: radial-gradient(ellipse at 50% 0%, rgba(40, 110, 220, .35), transparent 70%), linear-gradient(180deg, #02214d, #00122e); box-shadow: 0 0 16px rgba(70, 150, 255, .35), inset 0 0 18px rgba(0, 0, 0, .4); }
+
+/* ---------- See-through boxes and titles (generated from the rules above by a script; Customize → Look → See-through).
+   Only the fill colors fade; the words, bulbs, borders and glow stay solid. ---------- */
+body.rr-glass--1 { --rr-glass: .78; }
+body.rr-glass--2 { --rr-glass: .58; }
+body.rr-glass .rr-panel--red {
+	background:
+		radial-gradient(ellipse at 30% 0%, rgba(255, 90, 70, .18), transparent 60%), linear-gradient(160deg, var(--red-1), var(--red-2));
+}
+body.rr-glass .rr-panel--green {
+	background:
+		radial-gradient(ellipse at 50% 0%, rgba(120, 255, 150, .12), transparent 60%), linear-gradient(160deg, var(--green-1), var(--green-2));
+}
+body.rr-glass .rr-panel--blue {
+	background:
+		radial-gradient(ellipse at 20% 0%, rgba(120, 170, 255, .16), transparent 60%), linear-gradient(160deg, var(--blue-1), var(--blue-2));
+}
+body.rr-glass .rr-panel--night {
+	background:
+		var(--night);
+}
+body.rr-glass .rr-banner--canceled {
+	background:
+		radial-gradient(ellipse at 50% 0%, rgba(255, 120, 100, .2), transparent 60%),
+		linear-gradient(160deg, rgb(141 18 24 / var(--rr-glass)), rgb(58 5 8 / var(--rr-glass)));
+}
+body.rr-glass .rr-banner--off {
+	background:
+		linear-gradient(160deg, var(--blue-1), var(--blue-2));
+}
+body.rr-glass .rr-ribbon span {
+	background:
+		linear-gradient(180deg, rgb(138 18 25 / var(--rr-glass)), rgb(77 7 12 / var(--rr-glass)));
+}
+body.rr-glass .rr-panel--red {
+	background:
+		radial-gradient(ellipse at 50% 0%, rgba(160, 10, 10, .45), transparent 65%),
+		linear-gradient(180deg, rgb(90 3 3 / var(--rr-glass)), rgb(58 1 1 / var(--rr-glass)));
+}
+body.rr-glass .rr-panel--green {
+	background:
+		radial-gradient(ellipse at 50% 0%, rgba(30, 160, 60, .35), transparent 65%),
+		linear-gradient(180deg, rgb(5 74 21 / var(--rr-glass)), rgb(2 42 11 / var(--rr-glass)));
+}
+body.rr-glass .rr-panel--blue {
+	background:
+		radial-gradient(ellipse at 30% 0%, rgba(40, 110, 220, .35), transparent 65%),
+		linear-gradient(180deg, rgb(2 33 77 / var(--rr-glass)), rgb(0 18 46 / var(--rr-glass)));
+}
+body.rr-glass .rr-banner--ok {
+	background:
+		radial-gradient(ellipse at 50% 0%, rgba(40, 180, 70, .35), transparent 65%),
+		linear-gradient(180deg, rgb(6 80 26 / var(--rr-glass)), rgb(3 48 12 / var(--rr-glass)));
+}
+body.rr-glass .rr-banner--off {
+	background:
+		radial-gradient(ellipse at 50% 0%, rgba(40, 110, 220, .35), transparent 65%),
+		linear-gradient(180deg, rgb(2 33 77 / var(--rr-glass)), rgb(0 18 46 / var(--rr-glass)));
+}
+body.rr-glass .rr-ribbon span {
+	background:
+		linear-gradient(180deg, rgb(122 6 6 / var(--rr-glass)), rgb(74 1 1 / var(--rr-glass)));
+}
+body.rr-glass .rr-panel--red {
+	background:
+		radial-gradient(ellipse at 50% 0%, rgba(160, 10, 10, .45), transparent 65%) padding-box,
+		linear-gradient(180deg, rgb(90 3 3 / var(--rr-glass)), rgb(58 1 1 / var(--rr-glass))) padding-box,
+		var(--bulbs-h) 0 0 / 88px 7px repeat-x border-box,
+		var(--bulbs-h) 0 100% / 88px 7px repeat-x border-box,
+		var(--bulbs-v) 0 0 / 7px 88px repeat-y border-box,
+		var(--bulbs-v) 100% 0 / 7px 88px repeat-y border-box,
+		linear-gradient(#5c0505, #5c0505) 0 0 / 100% 7px no-repeat border-box,
+		linear-gradient(#5c0505, #5c0505) 0 100% / 100% 7px no-repeat border-box,
+		linear-gradient(#5c0505, #5c0505) 0 0 / 7px 100% no-repeat border-box,
+		linear-gradient(#5c0505, #5c0505) 100% 0 / 7px 100% no-repeat border-box;
+}
+body.rr-glass .rr-panel--green {
+	background:
+		radial-gradient(ellipse at 50% 0%, rgba(30, 160, 60, .35), transparent 65%) padding-box,
+		linear-gradient(180deg, rgb(5 74 21 / var(--rr-glass)), rgb(2 42 11 / var(--rr-glass))) padding-box,
+		var(--bulbs-h) 0 0 / 88px 7px repeat-x border-box,
+		var(--bulbs-h) 0 100% / 88px 7px repeat-x border-box,
+		var(--bulbs-v) 0 0 / 7px 88px repeat-y border-box,
+		var(--bulbs-v) 100% 0 / 7px 88px repeat-y border-box,
+		linear-gradient(#0d3a12, #0d3a12) 0 0 / 100% 7px no-repeat border-box,
+		linear-gradient(#0d3a12, #0d3a12) 0 100% / 100% 7px no-repeat border-box,
+		linear-gradient(#0d3a12, #0d3a12) 0 0 / 7px 100% no-repeat border-box,
+		linear-gradient(#0d3a12, #0d3a12) 100% 0 / 7px 100% no-repeat border-box;
+}
+body.rr-glass .rr-panel--blue,
+body.rr-glass .rr-panel--night {
+	background:
+		radial-gradient(ellipse at 30% 0%, rgba(40, 110, 220, .35), transparent 65%) padding-box,
+		linear-gradient(180deg, rgb(2 33 77 / var(--rr-glass)), rgb(0 18 46 / var(--rr-glass))) padding-box,
+		var(--bulbs-h) 0 0 / 88px 7px repeat-x border-box,
+		var(--bulbs-h) 0 100% / 88px 7px repeat-x border-box,
+		var(--bulbs-v) 0 0 / 7px 88px repeat-y border-box,
+		var(--bulbs-v) 100% 0 / 7px 88px repeat-y border-box,
+		linear-gradient(#0a1d44, #0a1d44) 0 0 / 100% 7px no-repeat border-box,
+		linear-gradient(#0a1d44, #0a1d44) 0 100% / 100% 7px no-repeat border-box,
+		linear-gradient(#0a1d44, #0a1d44) 0 0 / 7px 100% no-repeat border-box,
+		linear-gradient(#0a1d44, #0a1d44) 100% 0 / 7px 100% no-repeat border-box;
+}
+body.rr-glass .rr-banner--ok {
+	background:
+		radial-gradient(ellipse at 50% 0%, rgba(40, 180, 70, .35), transparent 65%) padding-box,
+		linear-gradient(180deg, rgb(6 80 26 / var(--rr-glass)), rgb(3 48 12 / var(--rr-glass))) padding-box,
+		var(--bulbs-h) 0 0 / 88px 7px repeat-x border-box,
+		var(--bulbs-h) 0 100% / 88px 7px repeat-x border-box,
+		var(--bulbs-v) 0 0 / 7px 88px repeat-y border-box,
+		var(--bulbs-v) 100% 0 / 7px 88px repeat-y border-box,
+		linear-gradient(#0d3a12, #0d3a12) 0 0 / 100% 7px no-repeat border-box,
+		linear-gradient(#0d3a12, #0d3a12) 0 100% / 100% 7px no-repeat border-box,
+		linear-gradient(#0d3a12, #0d3a12) 0 0 / 7px 100% no-repeat border-box,
+		linear-gradient(#0d3a12, #0d3a12) 100% 0 / 7px 100% no-repeat border-box;
+}
+body.rr-glass .rr-banner--canceled {
+	background:
+		linear-gradient(180deg, rgb(141 18 24 / var(--rr-glass)), rgb(58 5 8 / var(--rr-glass))) padding-box,
+		var(--bulbs-h) 0 0 / 88px 7px repeat-x border-box,
+		var(--bulbs-h) 0 100% / 88px 7px repeat-x border-box,
+		var(--bulbs-v) 0 0 / 7px 88px repeat-y border-box,
+		var(--bulbs-v) 100% 0 / 7px 88px repeat-y border-box,
+		linear-gradient(#5c0505, #5c0505) 0 0 / 100% 7px no-repeat border-box,
+		linear-gradient(#5c0505, #5c0505) 0 100% / 100% 7px no-repeat border-box,
+		linear-gradient(#5c0505, #5c0505) 0 0 / 7px 100% no-repeat border-box,
+		linear-gradient(#5c0505, #5c0505) 100% 0 / 7px 100% no-repeat border-box;
+}
+body.rr-glass .rr-banner--off {
+	background:
+		radial-gradient(ellipse at 50% 0%, rgba(40, 110, 220, .35), transparent 65%) padding-box,
+		linear-gradient(180deg, rgb(2 33 77 / var(--rr-glass)), rgb(0 18 46 / var(--rr-glass))) padding-box,
+		var(--bulbs-h) 0 0 / 88px 7px repeat-x border-box,
+		var(--bulbs-h) 0 100% / 88px 7px repeat-x border-box,
+		var(--bulbs-v) 0 0 / 7px 88px repeat-y border-box,
+		var(--bulbs-v) 100% 0 / 7px 88px repeat-y border-box,
+		linear-gradient(#0a1d44, #0a1d44) 0 0 / 100% 7px no-repeat border-box,
+		linear-gradient(#0a1d44, #0a1d44) 0 100% / 100% 7px no-repeat border-box,
+		linear-gradient(#0a1d44, #0a1d44) 0 0 / 7px 100% no-repeat border-box,
+		linear-gradient(#0a1d44, #0a1d44) 100% 0 / 7px 100% no-repeat border-box;
+}
+body.rr-glass .rr-stat {
+	background:
+		radial-gradient(ellipse at 50% 0%, rgba(40, 110, 220, .35), transparent 70%),
+		linear-gradient(180deg, rgb(2 33 77 / var(--rr-glass)), rgb(0 18 46 / var(--rr-glass)));
+}
+body.rr-glass .rr-stat:nth-child(even) {
+	background:
+		radial-gradient(ellipse at 50% 0%, rgba(160, 10, 10, .45), transparent 70%),
+		linear-gradient(180deg, rgb(90 3 3 / var(--rr-glass)), rgb(46 1 1 / var(--rr-glass)));
+}
+body.rr-glass .rr-kids-teaser {
+	background:
+		linear-gradient(90deg, rgb(90 3 3 / var(--rr-glass)), rgb(122 6 6 / var(--rr-glass)) 40%, rgb(5 74 21 / var(--rr-glass)));
+}
+body.rr-glass .rr-panel--gold {
+	background:
+		linear-gradient(180deg, rgb(107 74 6 / var(--rr-glass)), rgb(58 38 2 / var(--rr-glass)));
+}
+body.rr-glass .rr-ff {
+	background:
+		linear-gradient(90deg, rgb(90 3 3 / var(--rr-glass)), rgb(60 40 2 / var(--rr-glass)));
+}
+body.rr-glass .rr-ff.is-today {
+	background:
+		linear-gradient(90deg, rgb(138 96 0 / var(--rr-glass)), rgb(200 138 0 / var(--rr-glass)) 50%, rgb(138 96 0 / var(--rr-glass)));
+}
+body.rr-glass .rr-kids-teaser--songs {
+	background:
+		linear-gradient(90deg, rgb(2 33 77 / var(--rr-glass)), rgb(10 58 138 / var(--rr-glass)) 45%, rgb(58 10 90 / var(--rr-glass)));
+}
+body.rr-glass .rr-kc__prize {
+	background:
+		radial-gradient(ellipse at 15% 0%, rgba(255, 210, 100, .25), transparent 60%),
+		linear-gradient(160deg, rgb(130 76 0 / var(--rr-glass)), rgb(60 28 0 / var(--rr-glass)));
+}
+body.rr-glass .rr-kids-teaser,
+body.rr-glass .rr-ff,
+body.rr-glass .rr-kc__prize {
+	background:
+		radial-gradient(ellipse at 50% 0%, rgba(160, 10, 10, .45), transparent 65%) padding-box,
+		linear-gradient(180deg, rgb(90 3 3 / var(--rr-glass)), rgb(58 1 1 / var(--rr-glass))) padding-box,
+		var(--bulbs-h) 0 0 / 88px 7px repeat-x border-box,
+		var(--bulbs-h) 0 100% / 88px 7px repeat-x border-box,
+		var(--bulbs-v) 0 0 / 7px 88px repeat-y border-box,
+		var(--bulbs-v) 100% 0 / 7px 88px repeat-y border-box,
+		linear-gradient(#5c0505, #5c0505) 0 0 / 100% 7px no-repeat border-box,
+		linear-gradient(#5c0505, #5c0505) 0 100% / 100% 7px no-repeat border-box,
+		linear-gradient(#5c0505, #5c0505) 0 0 / 7px 100% no-repeat border-box,
+		linear-gradient(#5c0505, #5c0505) 100% 0 / 7px 100% no-repeat border-box;
+}
+body.rr-glass .rr-kids-teaser--songs {
+	background:
+		radial-gradient(ellipse at 30% 0%, rgba(40, 110, 220, .35), transparent 65%) padding-box,
+		linear-gradient(180deg, rgb(2 33 77 / var(--rr-glass)), rgb(0 18 46 / var(--rr-glass))) padding-box,
+		var(--bulbs-h) 0 0 / 88px 7px repeat-x border-box,
+		var(--bulbs-h) 0 100% / 88px 7px repeat-x border-box,
+		var(--bulbs-v) 0 0 / 7px 88px repeat-y border-box,
+		var(--bulbs-v) 100% 0 / 7px 88px repeat-y border-box,
+		linear-gradient(#0a1d44, #0a1d44) 0 0 / 100% 7px no-repeat border-box,
+		linear-gradient(#0a1d44, #0a1d44) 0 100% / 100% 7px no-repeat border-box,
+		linear-gradient(#0a1d44, #0a1d44) 0 0 / 7px 100% no-repeat border-box,
+		linear-gradient(#0a1d44, #0a1d44) 100% 0 / 7px 100% no-repeat border-box;
+}
+body.rr-glass .rr-ff.is-today {
+	background:
+		linear-gradient(90deg, rgb(138 96 0 / var(--rr-glass)), rgb(200 138 0 / var(--rr-glass)) 50%, rgb(138 96 0 / var(--rr-glass))) padding-box,
+		var(--bulbs-h) 0 0 / 88px 7px repeat-x border-box,
+		var(--bulbs-h) 0 100% / 88px 7px repeat-x border-box,
+		var(--bulbs-v) 0 0 / 7px 88px repeat-y border-box,
+		var(--bulbs-v) 100% 0 / 7px 88px repeat-y border-box,
+		linear-gradient(#5c3a00, #5c3a00) 0 0 / 100% 7px no-repeat border-box,
+		linear-gradient(#5c3a00, #5c3a00) 0 100% / 100% 7px no-repeat border-box,
+		linear-gradient(#5c3a00, #5c3a00) 0 0 / 7px 100% no-repeat border-box,
+		linear-gradient(#5c3a00, #5c3a00) 100% 0 / 7px 100% no-repeat border-box;
+}
+body.rr-glass .rr-kids-teaser::after,
+body.rr-glass .rr-ff::after,
+body.rr-glass .rr-kc__prize::after {
+	background:
+		url(assets/img/garland-v137.webp) center / auto 30px repeat-x;
+}
+body.rr-glass.rr-boxes--red .rr-panel--red,
+body.rr-glass.rr-boxes--red .rr-panel--green,
+body.rr-glass.rr-boxes--red .rr-panel--blue,
+body.rr-glass.rr-boxes--red .rr-panel--night,
+body.rr-glass.rr-boxes--red .rr-kids-teaser,
+body.rr-glass.rr-boxes--red .rr-kids-teaser--songs,
+body.rr-glass.rr-boxes--red .rr-ff:not(.is-today),
+body.rr-glass.rr-boxes--red .rr-kc__prize {
+	background:
+		radial-gradient(ellipse at 50% 0%, rgba(160, 10, 10, .45), transparent 65%) padding-box,
+		linear-gradient(180deg, rgb(90 3 3 / var(--rr-glass)), rgb(58 1 1 / var(--rr-glass))) padding-box,
+		var(--bulbs-h) 0 0 / 88px 7px repeat-x border-box,
+		var(--bulbs-h) 0 100% / 88px 7px repeat-x border-box,
+		var(--bulbs-v) 0 0 / 7px 88px repeat-y border-box,
+		var(--bulbs-v) 100% 0 / 7px 88px repeat-y border-box,
+		linear-gradient(#5c0505, #5c0505) 0 0 / 100% 7px no-repeat border-box,
+		linear-gradient(#5c0505, #5c0505) 0 100% / 100% 7px no-repeat border-box,
+		linear-gradient(#5c0505, #5c0505) 0 0 / 7px 100% no-repeat border-box,
+		linear-gradient(#5c0505, #5c0505) 100% 0 / 7px 100% no-repeat border-box;
+}
+body.rr-glass.rr-boxes--red .rr-stat,
+body.rr-glass.rr-boxes--red .rr-stat:nth-child(even) {
+	background:
+		radial-gradient(ellipse at 50% 0%, rgba(160, 10, 10, .45), transparent 70%),
+		linear-gradient(180deg, rgb(90 3 3 / var(--rr-glass)), rgb(46 1 1 / var(--rr-glass)));
+}
+body.rr-glass.rr-boxes--green .rr-panel--red,
+body.rr-glass.rr-boxes--green .rr-panel--green,
+body.rr-glass.rr-boxes--green .rr-panel--blue,
+body.rr-glass.rr-boxes--green .rr-panel--night,
+body.rr-glass.rr-boxes--green .rr-kids-teaser,
+body.rr-glass.rr-boxes--green .rr-kids-teaser--songs,
+body.rr-glass.rr-boxes--green .rr-ff:not(.is-today),
+body.rr-glass.rr-boxes--green .rr-kc__prize {
+	background:
+		radial-gradient(ellipse at 50% 0%, rgba(30, 160, 60, .35), transparent 65%) padding-box,
+		linear-gradient(180deg, rgb(5 74 21 / var(--rr-glass)), rgb(2 42 11 / var(--rr-glass))) padding-box,
+		var(--bulbs-h) 0 0 / 88px 7px repeat-x border-box,
+		var(--bulbs-h) 0 100% / 88px 7px repeat-x border-box,
+		var(--bulbs-v) 0 0 / 7px 88px repeat-y border-box,
+		var(--bulbs-v) 100% 0 / 7px 88px repeat-y border-box,
+		linear-gradient(#0d3a12, #0d3a12) 0 0 / 100% 7px no-repeat border-box,
+		linear-gradient(#0d3a12, #0d3a12) 0 100% / 100% 7px no-repeat border-box,
+		linear-gradient(#0d3a12, #0d3a12) 0 0 / 7px 100% no-repeat border-box,
+		linear-gradient(#0d3a12, #0d3a12) 100% 0 / 7px 100% no-repeat border-box;
+}
+body.rr-glass.rr-boxes--green .rr-stat,
+body.rr-glass.rr-boxes--green .rr-stat:nth-child(even) {
+	background:
+		radial-gradient(ellipse at 50% 0%, rgba(30, 160, 60, .35), transparent 70%),
+		linear-gradient(180deg, rgb(5 74 21 / var(--rr-glass)), rgb(2 42 11 / var(--rr-glass)));
+}
+body.rr-glass.rr-boxes--blue .rr-panel--red,
+body.rr-glass.rr-boxes--blue .rr-panel--green,
+body.rr-glass.rr-boxes--blue .rr-panel--blue,
+body.rr-glass.rr-boxes--blue .rr-panel--night,
+body.rr-glass.rr-boxes--blue .rr-kids-teaser,
+body.rr-glass.rr-boxes--blue .rr-kids-teaser--songs,
+body.rr-glass.rr-boxes--blue .rr-ff:not(.is-today),
+body.rr-glass.rr-boxes--blue .rr-kc__prize {
+	background:
+		radial-gradient(ellipse at 30% 0%, rgba(40, 110, 220, .35), transparent 65%) padding-box,
+		linear-gradient(180deg, rgb(2 33 77 / var(--rr-glass)), rgb(0 18 46 / var(--rr-glass))) padding-box,
+		var(--bulbs-h) 0 0 / 88px 7px repeat-x border-box,
+		var(--bulbs-h) 0 100% / 88px 7px repeat-x border-box,
+		var(--bulbs-v) 0 0 / 7px 88px repeat-y border-box,
+		var(--bulbs-v) 100% 0 / 7px 88px repeat-y border-box,
+		linear-gradient(#0a1d44, #0a1d44) 0 0 / 100% 7px no-repeat border-box,
+		linear-gradient(#0a1d44, #0a1d44) 0 100% / 100% 7px no-repeat border-box,
+		linear-gradient(#0a1d44, #0a1d44) 0 0 / 7px 100% no-repeat border-box,
+		linear-gradient(#0a1d44, #0a1d44) 100% 0 / 7px 100% no-repeat border-box;
+}
+body.rr-glass.rr-boxes--blue .rr-stat,
+body.rr-glass.rr-boxes--blue .rr-stat:nth-child(even) {
+	background:
+		radial-gradient(ellipse at 50% 0%, rgba(40, 110, 220, .35), transparent 70%),
+		linear-gradient(180deg, rgb(2 33 77 / var(--rr-glass)), rgb(0 18 46 / var(--rr-glass)));
+}
+/* ---------- end see-through ---------- */
