@@ -1884,10 +1884,9 @@ body.rr-boxes--blue .rr-panel--red, body.rr-boxes--blue .rr-panel--green, body.r
 }
 body.rr-boxes--blue .rr-stat, body.rr-boxes--blue .rr-stat:nth-child(even) { background: radial-gradient(ellipse at 50% 0%, rgba(40, 110, 220, .35), transparent 70%), linear-gradient(180deg, #02214d, #00122e); box-shadow: 0 0 16px rgba(70, 150, 255, .35), inset 0 0 18px rgba(0, 0, 0, .4); }
 
-/* ---------- See-through boxes and titles (generated from the rules above by a script; Customize → Look → See-through).
+/* ---------- See-through boxes and titles (generated from the rules above by a script; Customize → Look → See-through slider).
    Only the fill colors fade; the words, bulbs, borders and glow stay solid. ---------- */
-body.rr-glass--1 { --rr-glass: .78; }
-body.rr-glass--2 { --rr-glass: .58; }
+body.rr-glass { --rr-glass: .78; } /* the slider sets the real amount in the page head */
 body.rr-glass .rr-panel--red {
 	background:
 		radial-gradient(ellipse at 30% 0%, rgba(255, 90, 70, .18), transparent 60%), linear-gradient(160deg, var(--red-1), var(--red-2));

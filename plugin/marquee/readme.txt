@@ -55,7 +55,7 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 == Changelog ==
 
 = 0.18.3 =
-* Marquee Festive 2.21.0: new "See-through boxes and titles" in Customize → Look (Solid, A little, More). Your page picture shows through the boxes and the section titles; the words, lights and borders stay bright. Works with every look and every box color.
+* Marquee Festive 2.21.0: new "See-through boxes and titles" slider in Customize → Look, from Solid to 50% see-through, with a live preview as you slide. Your page picture shows through the boxes and the section titles; the words, lights and borders stay bright. Works with every look and every box color.
 * Marquee Support knows about the new setting.
 
 = 0.18.2 =

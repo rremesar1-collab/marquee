@@ -60,20 +60,18 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp ) {
 		'priority'    => 20,
 	) );
 	$wp->add_setting( 'see_through', array(
-		'default'           => 'solid',
-		'transport'         => 'refresh',
-		'sanitize_callback' => function ( $v ) {
-			return isset( ridgeroad_see_through()[ $v ] ) ? $v : 'solid';
-		},
+		'default'           => 0,
+		'transport'         => 'postMessage', // the slider changes the preview right away
+		'sanitize_callback' => 'ridgeroad_see_through_pct',
 	) );
-	$wp->add_control( 'see_through', array(
-		'label'       => __( 'See-through boxes and titles', 'ridgeroad' ),
-		'description' => __( 'Let your page picture show through the boxes and the section titles. The words, lights and borders stay bright.', 'ridgeroad' ),
-		'section'     => 'rr_look',
-		'type'        => 'radio',
-		'choices'     => ridgeroad_see_through(),
-		'priority'    => 21,
-	) );
+	if ( class_exists( 'Ridgeroad_Slider_Control' ) ) {
+		$wp->add_control( new Ridgeroad_Slider_Control( $wp, 'see_through', array(
+			'label'       => __( 'See-through boxes and titles', 'ridgeroad' ),
+			'description' => __( 'Slide right to let your page picture show through the boxes and the section titles. The words, lights and borders stay bright.', 'ridgeroad' ),
+			'section'     => 'rr_look',
+			'priority'    => 21,
+		) ) );
+	}
 	$wp->add_control( new Ridgeroad_Look_Control( $wp, 'look', array(
 		'label'   => __( 'Look', 'ridgeroad' ),
 		'section' => 'rr_look',
@@ -85,6 +83,23 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp ) {
 add_action( 'customize_register', function () {
 	if ( class_exists( 'Ridgeroad_Look_Control' ) ) {
 		return;
+	}
+	/** A slider with the amount shown next to it: Solid ... More see-through. */
+	class Ridgeroad_Slider_Control extends WP_Customize_Control {
+		public $type = 'rr_slider';
+		public function render_content() {
+			$v = ridgeroad_see_through_pct( $this->value() );
+			$id = 'rr-slider-' . $this->id;
+			?>
+			<label class="customize-control-title" for="<?php echo esc_attr( $id ); ?>"><?php echo esc_html( $this->label ); ?></label>
+			<span class="description customize-control-description"><?php echo esc_html( $this->description ); ?></span>
+			<div style="display:flex;align-items:center;gap:10px">
+				<input type="range" id="<?php echo esc_attr( $id ); ?>" min="0" max="50" step="1" value="<?php echo esc_attr( $v ); ?>" <?php $this->link(); ?> style="flex:1" oninput="this.nextElementSibling.textContent=this.value==0?'<?php echo esc_js( __( 'Solid', 'ridgeroad' ) ); ?>':this.value+'%'">
+				<output style="min-width:3.6em;text-align:right;font-weight:600"><?php echo $v ? esc_html( $v . '%' ) : esc_html__( 'Solid', 'ridgeroad' ); ?></output>
+			</div>
+			<div style="display:flex;justify-content:space-between;font-size:12px;color:#646970;margin-top:2px"><span><?php esc_html_e( 'Solid', 'ridgeroad' ); ?></span><span><?php esc_html_e( 'More see-through', 'ridgeroad' ); ?></span></div>
+			<?php
+		}
 	}
 	class Ridgeroad_Look_Control extends WP_Customize_Control {
 		public $type = 'rr_look';
@@ -132,20 +147,34 @@ function ridgeroad_box_colors() {
 	);
 }
 
-/** See-through boxes and titles: how much of the page picture shows through. */
-function ridgeroad_see_through() {
-	return array(
-		'solid' => __( 'Solid', 'ridgeroad' ),
-		'1'     => __( 'A little see-through', 'ridgeroad' ),
-		'2'     => __( 'More see-through', 'ridgeroad' ),
-	);
+/**
+ * See-through boxes and titles: how much of the page picture shows through, 0 (solid) to 50 percent.
+ * (2.21.0 saved "1" and "2" for A little / More; those become 22 and 42.)
+ */
+function ridgeroad_see_through_pct( $v = null ) {
+	if ( null === $v ) {
+		$v = get_theme_mod( 'see_through', 0 );
+	}
+	$old = array( 'solid' => 0, '1' => 22, '2' => 42 );
+	if ( is_string( $v ) && isset( $old[ $v ] ) ) {
+		return $old[ $v ];
+	}
+	return max( 0, min( 50, (int) round( (float) $v ) ) );
 }
 
+add_action( 'wp_head', function () {
+	$pct = ridgeroad_see_through_pct();
+	if ( $pct > 0 ) {
+		printf( "<style id=\"rr-glass-amount\">body.rr-glass{--rr-glass:%s}</style>\n", esc_html( rtrim( rtrim( number_format( 1 - $pct / 100, 2, '.', '' ), '0' ), '.' ) ) );
+	}
+}, 30 );
+add_action( 'customize_preview_init', function () {
+	wp_add_inline_script( 'customize-preview', "wp.customize('see_through',function(v){v.bind(function(n){n=Math.max(0,Math.min(50,parseInt(n,10)||0));document.body.classList.toggle('rr-glass',n>0);document.body.style.setProperty('--rr-glass',String(1-n/100));});});" );
+} );
+
 add_filter( 'body_class', function ( $classes ) {
-	$st = (string) get_theme_mod( 'see_through', 'solid' );
-	if ( 'solid' !== $st && isset( ridgeroad_see_through()[ $st ] ) ) {
+	if ( ridgeroad_see_through_pct() > 0 ) {
 		$classes[] = 'rr-glass';
-		$classes[] = 'rr-glass--' . $st;
 	}
 	$bc = (string) get_theme_mod( 'box_colors', 'classic' );
 	if ( 'classic' !== $bc && isset( ridgeroad_box_colors()[ $bc ] ) ) {

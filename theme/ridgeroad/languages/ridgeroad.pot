@@ -4966,3 +4966,8 @@ msgstr ""
 
 msgid "More see-through"
 msgstr ""
+
+msgid ""
+"Slide right to let your page picture show through the boxes and the section "
+"titles. The words, lights and borders stay bright."
+msgstr ""

@@ -3824,3 +3824,11 @@ msgstr "Un poco transparente"
 
 msgid "More see-through"
 msgstr "Más transparente"
+
+msgid ""
+"Slide right to let your page picture show through the boxes and the section "
+"titles. The words, lights and borders stay bright."
+msgstr ""
+"Desliza a la derecha para que la imagen de tu página se vea a través de los "
+"cuadros y los títulos de las secciones. Las palabras, las luces y los bordes"
+" siguen brillantes."
