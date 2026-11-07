@@ -72,7 +72,7 @@ function ridgeroad_fact_numbers() {
 function ridgeroad_fav_years() {
 	$years = array();
 	// typed in by hand
-	foreach ( (array) ridgeroad_mod( 'fav_past' ) as $r ) {
+	foreach ( array_filter( (array) ridgeroad_mod( 'fav_past' ), 'is_array' ) as $r ) {
 		$y = (int) ( $r['year'] ?? 0 );
 		if ( $y > 1990 && ! empty( $r['songs'] ) ) {
 			$years[ $y ] = array_map( function ( $t ) {

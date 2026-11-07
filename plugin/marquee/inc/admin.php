@@ -944,7 +944,7 @@ function marquee_admin_page() {
 					<div class="mq-facts__box">
 						<p class="mq__fine"><?php esc_html_e( 'Years with song voting fill in by themselves, with the top 5 songs and their votes. For years before you had voting, type the top songs here.', 'marquee' ); ?></p>
 						<?php
-						$mq_fp = array_values( (array) $tm( 'fav_past' ) );
+						$mq_fp = array_values( array_filter( (array) $tm( 'fav_past' ), 'is_array' ) ); // nothing saved yet = an empty list, not one empty row
 						$mq_fp_row = function ( $r ) {
 							?>
 							<li class="mq-fp__row" data-mq-fprow>
