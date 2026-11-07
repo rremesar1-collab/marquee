@@ -455,7 +455,7 @@ function marquee_names_setup_steps() {
 			if ( ! empty( $s['names_simple'] ) && $new && marquee_theme_get( 'names_on' ) ) {
 				$steps[] = array( 'wait', __( 'Names break', 'marquee' ), __( 'Marquee makes a simple names break on your FPP for you. Click Check again.', 'marquee' ), 'break' );
 			} elseif ( ! empty( $s['names_simple'] ) && $new ) {
-				$steps[] = array( 'bad', __( 'Names break', 'marquee' ), __( 'Turn on Your Name in Lights (Features & pages) and Marquee makes a simple names break on your FPP for you.', 'marquee' ), 'break' );
+				$steps[] = array( 'bad', __( 'Names break', 'marquee' ), __( 'Turn on Your Name in Lights (Names in Lights, at the top) and Marquee makes a simple names break on your FPP for you.', 'marquee' ), 'break' );
 			} elseif ( ! empty( $s['names_simple'] ) && $x['script'] ) {
 				$steps[] = array( 'bad', __( 'Names break', 'marquee' ), sprintf( /* translators: %s: playlist */ __( 'Your FPP has no “%s” playlist. Update the Marquee plugin on your FPP and it makes a simple one for you, or make one with your names sequence (the Sequence maker can make it).', 'marquee' ), $bp ), 'break' );
 			} else {

@@ -142,7 +142,7 @@ function ridgeroad_defaults( $fresh = false ) {
 		'youtube_show'      => 1,
 		'tiktok_show'       => 1,
 		'guestbook_url'     => '',
-		// Sponsors (the list itself is edited in Marquee → Settings → Sharing & donations).
+		// Sponsors (the list itself is edited in Marquee → Settings → Home page → Sponsors).
 		'sp_show'           => 0,
 		'sp_title'          => __( 'Thank You to Our Sponsors', 'ridgeroad' ),
 		'sp_intro'          => __( 'These local businesses help keep the lights on. Please stop by and say thanks!', 'ridgeroad' ),
@@ -413,6 +413,15 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp ) {
 		) ) );
 	};
 
+	ridgeroad_customize_fields( $add, $image );
+} );
+
+/**
+ * Every show setting: key, section, label, type and extras, in the order they are shown.
+ * Customize registers them with its own $add / $image; Marquee → Settings reads the same list,
+ * so a setting is described in one place only.
+ */
+function ridgeroad_customize_fields( $add, $image ) {
 	// Header.
 	$add( 'subtitle', 'rr_header', __( 'Line under the logo', 'ridgeroad' ) );
 	$add( 'tagline', 'rr_header', __( 'Script tagline', 'ridgeroad' ) );
@@ -571,7 +580,7 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp ) {
 	$add( 'facts_hero', 'rr_facts', __( 'Show your photo and numbers', 'ridgeroad' ), 'checkbox', array( 'description' => __( 'The numbers are the same as Behind the Lights.', 'ridgeroad' ) ) );
 	$add( 'facts_did', 'rr_facts', __( 'Show Did You Know?', 'ridgeroad' ), 'checkbox' );
 	$add( 'facts_fav', 'rr_facts', __( 'Show Fan Favorites', 'ridgeroad' ), 'checkbox', array( 'description' => __( 'The most-voted songs each year, from your song voting.', 'ridgeroad' ) ) );
-	$add( 'sp_show', 'rr_sponsors', __( 'Show the sponsors section', 'ridgeroad' ), 'checkbox', array( 'description' => __( 'Add your sponsors and their logos in Marquee → Settings → Sharing & donations.', 'ridgeroad' ) ) );
+	$add( 'sp_show', 'rr_sponsors', __( 'Show the sponsors section', 'ridgeroad' ), 'checkbox', array( 'description' => __( 'Add your sponsors and their logos in Marquee → Settings → Home page → Sponsors.', 'ridgeroad' ) ) );
 	$add( 'sp_color', 'rr_sponsors', __( 'Box color', 'ridgeroad' ), 'select', array(
 		'choices'     => array( 'green' => __( 'Green', 'ridgeroad' ), 'red' => __( 'Red', 'ridgeroad' ), 'blue' => __( 'Blue', 'ridgeroad' ) ),
 		'description' => __( 'When Box colors (in Look) is set to one color for every box, that color is used here too.', 'ridgeroad' ),
@@ -580,7 +589,7 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp ) {
 	$add( 'sp_intro', 'rr_sponsors', __( 'Thank-you line (leave empty to hide it)', 'ridgeroad' ), 'textarea' );
 	$add( 'sp_ask', 'rr_sponsors', __( '“Want to sponsor the show?” link: an email or a web page (leave empty to hide it)', 'ridgeroad' ) );
 	$add( 'footer_text', 'rr_support', __( 'Footer text (optional)', 'ridgeroad' ) );
-} );
+}
 
 /** Miles for "Only at the show" (0.1 to 50, one decimal). */
 if ( ! function_exists( 'ridgeroad_sanitize_miles' ) ) {

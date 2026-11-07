@@ -71,19 +71,29 @@ var tr = function (s) { var d = window.rrI18n; return (d && d[s]) || s; };
 	if (bk) { bk.addEventListener('click', function () { go(order[order.indexOf(cur) - 1]); window.scrollTo(0, 0); }); }
 	if (nx) { nx.addEventListener('click', function () { go(order[order.indexOf(cur) + 1]); window.scrollTo(0, 0); }); }
 
-	/* #mq-step-N links (Setup home, the checklist, older links): 1 and 2 are now parts of Website basics */
+	/* #mq-step-N links (Start here, the checklist, older links). 1 and 2 are parts of Show details;
+	   7 was Sharing & donations (its boxes are on the Home page now). #mq-step-10-stats opens that box. */
 	function fromHash() {
-		var m = /^#mq-step-(\d)(?:-([a-z]+))?$/.exec(location.hash);
+		var m = /^#mq-step-(\d+)(?:-([a-z]+))?$/.exec(location.hash);
 		if (!m) { return false; }
 		var n = m[1], sec = { 1: 'mq-sec-location', 2: 'mq-sec-schedule' }[n];
+		if (n === '7') { n = '10'; }
 		go(sec ? '0' : n);
-		if (m[2]) { goSub(m[2]); }
+		var box = m[2] && document.getElementById('mq-box-' + m[2]);
+		if (box) { box.open = true; sec = 'mq-box-' + m[2]; }
+		else if (m[2]) { goSub(m[2]); }
 		if (sec) {
 			var el = document.getElementById(sec);
 			if (el) { setTimeout(function () { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60); }
 		} else { top(); }
 		return true;
 	}
+	/* a box's switch: dims the box when it's off, and never opens or closes the box */
+	root.querySelectorAll('.mq-pbox__sw').forEach(function (l) {
+		var cb = l.querySelector('input'), box = l.closest('.mq-pbox');
+		l.addEventListener('click', function (e) { e.stopPropagation(); });
+		cb.addEventListener('change', function () { box.classList.toggle('is-off', !cb.checked); });
+	});
 	go(order[0]);
 	goSub(curSub);
 	fromHash();
@@ -309,7 +319,7 @@ var tr = function (s) { var d = window.rrI18n; return (d && d[s]) || s; };
 	window.mqMediaInit = mqMedia;
 })();
 
-/* Sponsors (Sharing & donations): add, remove and reorder rows; one on/off switch shown in two places. */
+/* Sponsors (Home page → Sponsors): add, remove and reorder rows. */
 (function () {
 	var list = document.querySelector('[data-mq-splist]');
 	if (!list) { return; }
@@ -321,7 +331,7 @@ var tr = function (s) { var d = window.rrI18n; return (d && d[s]) || s; };
 		row.querySelectorAll('[data-mq-media]').forEach(function (b) { if (window.mqMediaInit) { window.mqMediaInit(b); } });
 		count();
 		var name = row.querySelector('input[name="sp_name[]"]'); if (name) { name.focus(); }
-		var on = document.querySelector('[data-mq-spshow]');
+		var on = document.querySelector('[data-mq-sw="sp_show"]');
 		if (on && !on.checked) { on.checked = true; on.dispatchEvent(new Event('change')); } // adding the first sponsor turns the box on
 	});
 	list.addEventListener('click', function (e) {
@@ -332,14 +342,14 @@ var tr = function (s) { var d = window.rrI18n; return (d && d[s]) || s; };
 		else if (mv.getAttribute('data-mq-spmove') === '1' && row.nextElementSibling) { list.insertBefore(row.nextElementSibling, row); }
 		mv.focus();
 	});
-	var here = document.querySelector('[data-mq-spshow]'), feat = document.querySelector('input[name="feat[]"][value="sp_show"]');
+	var here = null, feat = null; // one switch now (in the Sponsors box)
 	if (here && feat) {
 		here.addEventListener('change', function () { feat.checked = here.checked; });
 		feat.addEventListener('change', function () { here.checked = feat.checked; });
 	}
 })();
 
-/* Show Facts (Sharing & donations): fact cards and past fan favorites; one on/off switch shown in two places. */
+/* Show Facts: fact cards and past fan favorites. */
 (function () {
 	function rows(listSel, tplSel, addSel, rowSel, delSel, moveAttr, focusSel) {
 		var list = document.querySelector(listSel), tpl = document.querySelector(tplSel), add = document.querySelector(addSel);
@@ -551,7 +561,7 @@ var tr = function (s) { var d = window.rrI18n; return (d && d[s]) || s; };
 		thc.disabled = true; thm.textContent = tr('Connecting…');
 		post('marquee_social_threads', { token: box.querySelector('[data-so-thtoken]').value, secret: box.querySelector('[data-so-thsecret]').value }).then(function (j) {
 			thc.disabled = false;
-			if (j && j.success) { thm.textContent = tr('Connected to @%s!').replace('%s', function () { return j.data.name; }); try { location.hash = '#mq-step-7'; } catch (e) {} location.reload(); }
+			if (j && j.success) { thm.textContent = tr('Connected to @%s!').replace('%s', function () { return j.data.name; }); try { location.hash = '#mq-step-3'; } catch (e) {} location.reload(); }
 			else { thm.textContent = (j && j.data && j.data.message) || tr('Something went wrong.'); }
 		}).catch(function () { thc.disabled = false; thm.textContent = tr('Couldn’t reach your website.'); });
 	});
@@ -569,7 +579,7 @@ var tr = function (s) { var d = window.rrI18n; return (d && d[s]) || s; };
 				b.addEventListener('click', function () {
 					cmsg.textContent = tr('Saving…');
 					post('marquee_social_pick', { page: p.id }).then(function (k) {
-						if (k && k.success) { cmsg.textContent = tr('Connected to %s!').replace('%s', function () { return k.data.name; }); try { location.hash = '#mq-step-7'; } catch (e) {} location.reload(); }
+						if (k && k.success) { cmsg.textContent = tr('Connected to %s!').replace('%s', function () { return k.data.name; }); try { location.hash = '#mq-step-3'; } catch (e) {} location.reload(); }
 						else { cmsg.textContent = (k && k.data && k.data.message) || tr('Something went wrong.'); }
 					});
 				});

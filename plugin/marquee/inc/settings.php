@@ -275,7 +275,7 @@ function marquee_save( $in ) {
 	if ( isset( $in['start_mode'] ) ) {
 		set_theme_mod( 'use_sunset', 'sunset' === $in['start_mode'] ? 1 : 0 );
 	}
-	if ( isset( $in['social_sent'] ) && function_exists( 'ridgeroad_social_networks' ) ) {
+	if ( isset( $in['social_links_sent'] ) && function_exists( 'ridgeroad_social_networks' ) ) {
 		$on = isset( $in['social_on'] ) ? (array) $in['social_on'] : array();
 		foreach ( array_keys( ridgeroad_social_networks() ) as $net ) {
 			set_theme_mod( $net . '_show', in_array( $net, $on, true ) ? 1 : 0 );
@@ -287,10 +287,16 @@ function marquee_save( $in ) {
 	if ( isset( $in['facts_sent'] ) ) {
 		marquee_save_facts( $in );
 	}
-	if ( isset( $in['features_sent'] ) ) {
-		$f = isset( $in['feat'] ) ? (array) $in['feat'] : array();
+	if ( isset( $in['tm'] ) || isset( $in['tm_img'] ) ) {
+		marquee_save_fields( $in );
+	}
+	if ( isset( $in['features_sent'] ) || isset( $in['feat_keys'] ) ) {
+		$f     = isset( $in['feat'] ) ? (array) $in['feat'] : array();
+		$shown = isset( $in['feat_keys'] ) ? (array) $in['feat_keys'] : null; // the switches on the page (all of them on older forms)
 		foreach ( array( 'gb_show', 'names_on', 'names_geo', 'kids_show', 'lab_on', 'coloring_on', 'games_on', 'songs_show', 'contest_on', 'app_auto_on', 'sp_show', 'facts_show' ) as $k ) {
-			set_theme_mod( $k, in_array( $k, $f, true ) ? 1 : 0 );
+			if ( null === $shown || in_array( $k, $shown, true ) ) {
+				set_theme_mod( $k, in_array( $k, $f, true ) ? 1 : 0 );
+			}
 		}
 		if ( isset( $in['names_geo_miles'] ) ) {
 			$mi = (float) str_replace( ',', '.', (string) $in['names_geo_miles'] );
@@ -302,7 +308,9 @@ function marquee_save( $in ) {
 			}
 			set_theme_mod( 'names_geo_miles', (string) round( max( 0.1, min( 50.0, $mi > 0 ? $mi : 0.5 ) ), 2 ) );
 		}
-		set_theme_mod( 'snow_amount', in_array( 'snow', $f, true ) ? ( 'off' === marquee_theme_get( 'snow_amount' ) ? 'medium' : marquee_theme_get( 'snow_amount' ) ) : 'off' );
+		if ( null === $shown || in_array( 'snow', $shown, true ) ) {
+			set_theme_mod( 'snow_amount', in_array( 'snow', $f, true ) ? ( 'off' === marquee_theme_get( 'snow_amount' ) ? 'medium' : marquee_theme_get( 'snow_amount' ) ) : 'off' );
+		}
 	}
 	if ( isset( $in['block_sent'] ) ) {   // Blocked names and words (Names & FPP)
 		$words = array();
@@ -582,7 +590,7 @@ add_filter( 'ridgeroad_ctl_set', function ( $done, $k, $on, $v = '' ) {
 	return true;
 }, 10, 4 );
 
-/** Sponsors from Sharing & donations: the list, the title, the thank-you line and the "Get in touch" link. */
+/** Sponsors (Home page → Sponsors): the list, the title, the thank-you line and the "Get in touch" link. */
 function marquee_save_sponsors( $in ) {
 	$col = function ( $k ) use ( $in ) {
 		return isset( $in[ $k ] ) ? array_values( (array) wp_unslash( $in[ $k ] ) ) : array();
@@ -615,7 +623,7 @@ function marquee_save_sponsors( $in ) {
 	if ( isset( $in['sp_title'] ) ) {
 		$t = mb_substr( sanitize_text_field( wp_unslash( $in['sp_title'] ) ), 0, 60 );
 		if ( '' === $t ) {
-			remove_theme_mod( 'sp_title' ); // back to the standard title (in the visitor's language)
+			marquee_unset_mod( 'sp_title' ); // back to the standard title (in the visitor's language)
 		} else {
 			set_theme_mod( 'sp_title', $t );
 		}
@@ -631,14 +639,14 @@ function marquee_save_sponsors( $in ) {
 	}
 }
 
-/** Show Facts (Sharing & donations): the photo, words, part switches, fact cards and past fan favorites. */
+/** Show Facts: the photo, words, part switches, fact cards and past fan favorites. */
 function marquee_save_facts( $in ) {
 	$col = function ( $k ) use ( $in ) {
 		return isset( $in[ $k ] ) ? array_values( (array) wp_unslash( $in[ $k ] ) ) : array();
 	};
 	$t = isset( $in['facts_title'] ) ? mb_substr( sanitize_text_field( wp_unslash( $in['facts_title'] ) ), 0, 40 ) : '';
 	if ( '' === $t ) {
-		remove_theme_mod( 'facts_title' ); // back to the standard title (in the visitor's language)
+		marquee_unset_mod( 'facts_title' ); // back to the standard title (in the visitor's language)
 	} else {
 		set_theme_mod( 'facts_title', $t );
 	}

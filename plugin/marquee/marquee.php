@@ -27,6 +27,7 @@ require MARQUEE_DIR . 'inc/settings.php';
 require MARQUEE_DIR . 'inc/langs.php';
 require MARQUEE_DIR . 'inc/remote-falcon.php';
 require MARQUEE_DIR . 'inc/lookup.php';
+require MARQUEE_DIR . 'inc/fields.php';
 require MARQUEE_DIR . 'inc/admin.php';
 require MARQUEE_DIR . 'inc/blocks.php';
 require MARQUEE_DIR . 'inc/updates.php';

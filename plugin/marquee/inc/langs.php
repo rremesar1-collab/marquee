@@ -3,7 +3,7 @@
  * Visitors pick the language: English, Español or Français.
  *
  * The site starts in Settings → General → Site Language. When the show ticks two or more
- * languages in Marquee → Settings → Website basics, a small language button shows on the
+ * languages in Marquee → Settings → Show details, a small language button shows on the
  * website; a visitor's pick is kept in a cookie for a year. Only the public website (and the
  * Show Manager) follows it; WP Admin keeps each admin's own language.
  */
@@ -168,7 +168,7 @@ add_action( 'wp_head', function () {
 	}
 }, 5 );
 
-/** Settings: the language choices (Marquee → Settings → Website basics). */
+/** Settings: the language choices (Marquee → Settings → Show details). */
 function marquee_langs_box( $s ) {
 	$on   = isset( $s['langs'] ) ? (array) $s['langs'] : array();
 	$site = marquee_lang_site();

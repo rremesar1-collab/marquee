@@ -381,7 +381,7 @@ add_filter( 'ridgeroad_social_state', function () {
 		marquee_social_run_job();                 // the background request never started: post now
 	}
 	$s    = marquee_social_get();
-	$out  = array( 'ready' => marquee_social_ready( $s ), 'setup' => admin_url( 'admin.php?page=marquee#mq-step-7' ) );
+	$out  = array( 'ready' => marquee_social_ready( $s ), 'setup' => admin_url( 'admin.php?page=marquee#mq-step-3' ) );
 	$last = $s['last'];
 	if ( is_array( $job ) ) {
 		$out['posting'] = true;

@@ -167,7 +167,7 @@ add_action( 'admin_post_marquee_covers_again', function () {
 	wp_clear_scheduled_hook( 'marquee_find_covers' );
 	wp_schedule_single_event( time(), 'marquee_find_covers' );
 	spawn_cron();
-	wp_safe_redirect( admin_url( 'admin.php?page=marquee&covers=again#mq-step-3' ) );
+	wp_safe_redirect( admin_url( 'admin.php?page=marquee&covers=again#mq-step-11-voting' ) );
 	exit;
 } );
 
