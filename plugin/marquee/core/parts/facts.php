@@ -16,6 +16,10 @@ $sf_head  = trim( (string) ridgeroad_mod( 'facts_tagline' ) );
 $sf_line  = trim( (string) ridgeroad_mod( 'facts_line' ) );
 $sf_did   = ridgeroad_mod( 'facts_did' ) ? ridgeroad_facts() : array();
 $sf_fav   = ridgeroad_mod( 'facts_fav' ) ? ridgeroad_fav_years() : array();
+if ( 'boxes' === ridgeroad_facts_style() ) {
+	include __DIR__ . '/facts-boxes.php'; // the Boxes style: number boxes, small fact cards, favorites by year side by side
+	return;
+}
 ?>
 <div class="rr-facts" data-rr-facts>
 	<?php if ( $sf_img || $sf_nums ) : ?>

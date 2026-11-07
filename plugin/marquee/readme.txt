@@ -56,7 +56,8 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 = 0.19.0 =
 * New: Show Facts, a page about your show with its own button at the top next to Kids' Corner. Turn it on in Features & pages, and fill it in under Sharing & donations.
-* Three parts, each with its own switch: your show (a photo you upload, a headline and your Behind the Lights numbers counting up), Did You Know? fact cards, and Fan Favorites by year (the top 5 songs with a light string as long as their votes).
+* Two page styles to pick from: Photo or Boxes.
+* Three parts, each with its own switch (a hidden part's title goes too): your show (a photo you upload, a headline and your Behind the Lights numbers counting up), Did You Know? fact cards, and Fan Favorites by year (the top 5 songs with a light string as long as their votes).
 * Years with song voting fill in by themselves and are kept when you clear the votes for a new season. Type in the top songs for years before you had voting.
 * Also a Show Facts block and [marquee section="facts"] for other themes. Switch it on or off from Show Control or the Show Manager on your phone. In English, Spanish and French.
 * Also in this version: long playlists (more than 12 songs) scroll inside their own box (0.18.4, not released on its own).

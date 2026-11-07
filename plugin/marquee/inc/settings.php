@@ -86,7 +86,7 @@ function marquee_theme_keys() {
 	return array(
 		'radio', 'listen_url', 'season_start', 'season_end', 'use_sunset', 'weeknight_start', 'weekend_start', 'weeknight_close', 'weekend_close',
 		'radar_station', 'cashapp_url', 'gb_show', 'names_on', 'names_geo', 'names_geo_miles', 'kids_show', 'lab_on', 'coloring_on', 'games_on', 'songs_show', 'contest_on', 'app_auto_on', 'snow_amount',
-		'sp_show', 'sp_title', 'sp_intro', 'sp_ask', 'sp_color', 'sponsors', 'facts_show', 'facts_title', 'facts_tagline', 'facts_line', 'facts_photo', 'facts_hero', 'facts_did', 'facts_fav', 'facts', 'fav_past', 'gb_ts_site', 'gb_ts_secret', 'names_geo_unit', 'count_to', 'count_name', 'count_date', 'rf_viewer_url', 'facebook_url', 'instagram_url', 'youtube_url', 'tiktok_url', 'facebook_show', 'instagram_show', 'youtube_show', 'tiktok_show',
+		'sp_show', 'sp_title', 'sp_intro', 'sp_ask', 'sp_color', 'sponsors', 'facts_show', 'facts_style', 'facts_title', 'facts_tagline', 'facts_line', 'facts_photo', 'facts_hero', 'facts_did', 'facts_fav', 'facts', 'fav_past', 'gb_ts_site', 'gb_ts_secret', 'names_geo_unit', 'count_to', 'count_name', 'count_date', 'rf_viewer_url', 'facebook_url', 'instagram_url', 'youtube_url', 'tiktok_url', 'facebook_show', 'instagram_show', 'youtube_show', 'tiktok_show',
 	);
 }
 function marquee_theme_get( $k ) {
@@ -646,6 +646,7 @@ function marquee_save_facts( $in ) {
 	set_theme_mod( 'facts_line', mb_substr( sanitize_text_field( wp_unslash( $in['facts_line'] ?? '' ) ), 0, 120 ) );
 	$photo = absint( strtok( (string) ( $in['facts_photo'] ?? '' ), ',' ) );
 	set_theme_mod( 'facts_photo', $photo && wp_attachment_is_image( $photo ) ? $photo : 0 );
+	set_theme_mod( 'facts_style', isset( $in['facts_style'] ) && 'boxes' === $in['facts_style'] ? 'boxes' : 'photo' );
 	foreach ( array( 'facts_hero', 'facts_did', 'facts_fav' ) as $k ) {
 		set_theme_mod( $k, empty( $in[ $k ] ) ? 0 : 1 );
 	}

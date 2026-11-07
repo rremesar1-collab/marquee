@@ -905,6 +905,18 @@ function marquee_admin_page() {
 					<p class="mq__fine"><?php esc_html_e( 'A page about your show, with its own button at the top next to Kids’ Corner. It has three parts; show the ones you like.', 'marquee' ); ?></p>
 					<input type="hidden" name="facts_sent" value="1">
 					<label class="mq__feat"><span><b><?php esc_html_e( 'Show the Show Facts page', 'marquee' ); ?></b><small><?php esc_html_e( 'Also under Features & pages.', 'marquee' ); ?></small></span><input type="checkbox" <?php checked( (bool) $tm( 'facts_show' ) ); ?> data-mq-factsshow></label>
+					<fieldset class="mq-fstyle"><legend><?php esc_html_e( 'Page style', 'marquee' ); ?></legend>
+						<?php
+						$mq_fs = array(
+							'photo' => array( __( 'Photo', 'marquee' ), __( 'A big photo of your show with your numbers under it, fact cards with big words, and each year’s favorites as light strings.', 'marquee' ) ),
+							'boxes' => array( __( 'Boxes', 'marquee' ), __( 'Your numbers in boxes like Behind the Lights, small fact cards together in one box, and the favorites of each year side by side.', 'marquee' ) ),
+						);
+						$mq_fs_cur = in_array( $tm( 'facts_style' ), array( 'photo', 'boxes' ), true ) ? $tm( 'facts_style' ) : 'photo';
+						foreach ( $mq_fs as $k => $f ) :
+							?>
+							<label class="mq-fstyle__opt"><input type="radio" name="facts_style" value="<?php echo esc_attr( $k ); ?>" <?php checked( $mq_fs_cur, $k ); ?>><img src="<?php echo esc_url( MARQUEE_URL . 'assets/img/facts-' . $k . '.jpg' ); ?>" alt="" width="240" height="135" loading="lazy"><b><?php echo esc_html( $f[0] ); ?></b><small><?php echo esc_html( $f[1] ); ?></small></label>
+						<?php endforeach; ?>
+					</fieldset>
 					<p><label for="mq-facts-title"><?php esc_html_e( 'Page title', 'marquee' ); ?></label><input id="mq-facts-title" name="facts_title" type="text" maxlength="40" value="<?php echo esc_attr( $tm( 'facts_title' ) ); ?>"><small><?php esc_html_e( 'Also the name on the button at the top.', 'marquee' ); ?></small></p>
 
 					<h4 class="mq-facts__part"><label><input type="checkbox" name="facts_hero" value="1" <?php checked( (bool) $tm( 'facts_hero' ) ); ?>> <?php esc_html_e( 'Your show: a photo and your numbers', 'marquee' ); ?></label></h4>

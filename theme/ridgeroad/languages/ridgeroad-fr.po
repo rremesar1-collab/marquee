@@ -3969,3 +3969,12 @@ msgstr ""
 
 msgid "The Show Facts page and its button"
 msgstr "La page Le spectacle en bref et son bouton"
+
+msgid "Page style"
+msgstr "Style de la page"
+
+msgid "Photo"
+msgstr "Photo"
+
+msgid "Boxes"
+msgstr "Cadres"

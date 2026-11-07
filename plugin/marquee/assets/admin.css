@@ -823,3 +823,11 @@
 .mq-fp__row textarea { width: 100%; }
 .mq-fp__row .button-link-delete { margin-top: 22px; }
 @media (max-width: 782px) { .mq-fc__row { grid-template-columns: 1fr 1fr; } .mq-fc__text, .mq-fc__tools { grid-column: 1 / -1; } .mq-fp__row { grid-template-columns: 1fr; } .mq-facts__box { padding-left: 0; } }
+.mq-fstyle { display: grid; grid-template-columns: repeat(2, minmax(0, 260px)); gap: 14px; margin: 6px 0 16px; border: 0; padding: 0; }
+.mq-fstyle legend { font-weight: 600; margin-bottom: 8px; }
+.mq-fstyle__opt { position: relative; display: grid; gap: 4px; padding: 10px; border: 2px solid #dcdcde; border-radius: 10px; cursor: pointer; background: #fff; }
+.mq-fstyle__opt:has(input:checked) { border-color: #2271b1; box-shadow: 0 0 0 1px #2271b1; }
+.mq-fstyle__opt input { position: absolute; top: 14px; left: 14px; margin: 0; }
+.mq-fstyle__opt img { width: 100%; height: auto; border-radius: 6px; display: block; }
+.mq-fstyle__opt small { color: #50575e; }
+@media (max-width: 600px) { .mq-fstyle { grid-template-columns: 1fr; } }

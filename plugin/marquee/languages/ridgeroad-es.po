@@ -3924,3 +3924,12 @@ msgstr "Las canciones más votadas cada año, según la votación de canciones."
 
 msgid "The Show Facts page and its button"
 msgstr "La página Datos del espectáculo y su botón"
+
+msgid "Page style"
+msgstr "Estilo de la página"
+
+msgid "Photo"
+msgstr "Foto"
+
+msgid "Boxes"
+msgstr "Cuadros"

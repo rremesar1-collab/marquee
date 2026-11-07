@@ -5061,3 +5061,12 @@ msgstr ""
 
 msgid "The Show Facts page and its button"
 msgstr ""
+
+msgid "Page style"
+msgstr ""
+
+msgid "Photo"
+msgstr ""
+
+msgid "Boxes"
+msgstr ""

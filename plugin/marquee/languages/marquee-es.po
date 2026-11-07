@@ -6734,3 +6734,27 @@ msgid ""
 msgstr ""
 "La foto y los números de tu espectáculo, las tarjetas ¿Sabías que…? y las "
 "favoritas del público por año."
+
+msgid "Page style"
+msgstr "Estilo de la página"
+
+msgid "Photo"
+msgstr "Foto"
+
+msgid "Boxes"
+msgstr "Cuadros"
+
+msgid ""
+"A big photo of your show with your numbers under it, fact cards with big "
+"words, and each year’s favorites as light strings."
+msgstr ""
+"Una foto grande de tu espectáculo con tus números debajo, tarjetas de datos "
+"con palabras grandes y las favoritas de cada año como hileras de luces."
+
+msgid ""
+"Your numbers in boxes like Behind the Lights, small fact cards together in "
+"one box, and the favorites of each year side by side."
+msgstr ""
+"Tus números en cuadros como en Detrás de las luces, tarjetas de datos "
+"pequeñas juntas en un cuadro y las favoritas de cada año una al lado de la "
+"otra."

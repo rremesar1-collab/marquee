@@ -153,6 +153,7 @@ function ridgeroad_defaults( $fresh = false ) {
 		'facts_tagline'     => '',
 		'facts_line'        => '',
 		'facts_photo'       => 0,
+		'facts_style'       => 'photo',
 		'facts_hero'        => 1,
 		'facts_did'         => 1,
 		'facts_fav'         => 1,
@@ -563,6 +564,7 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp ) {
 	$add( 'gb_ts_site', 'rr_guestbook', __( 'Robot check: Turnstile site key (optional)', 'ridgeroad' ), 'text', array( 'description' => __( 'Robots are already sent to Comments → Spam on their own. If some still get through, add a free “I’m not a robot” check from Cloudflare Turnstile: make a free Cloudflare account, open Turnstile, add a widget for your website, then paste the site key here and the secret key below. Works with the WordPress guestbook.', 'ridgeroad' ) ) );
 	$add( 'gb_ts_secret', 'rr_guestbook', __( 'Robot check: Turnstile secret key', 'ridgeroad' ), 'text' );
 	$add( 'facts_show', 'rr_facts', __( 'Show the Show Facts page', 'ridgeroad' ), 'checkbox', array( 'description' => __( 'A page about your show, with its own button at the top. Add the photo, fact cards and past fan favorites in Marquee → Settings → Show Facts.', 'ridgeroad' ) ) );
+	$add( 'facts_style', 'rr_facts', __( 'Page style', 'ridgeroad' ), 'select', array( 'choices' => ridgeroad_facts_styles() ) );
 	$add( 'facts_title', 'rr_facts', __( 'Page title', 'ridgeroad' ) );
 	$add( 'facts_tagline', 'rr_facts', __( 'Headline on the photo', 'ridgeroad' ) );
 	$add( 'facts_line', 'rr_facts', __( 'Line under the headline', 'ridgeroad' ) );

@@ -28,6 +28,18 @@ function ridgeroad_fact_icons() {
 	);
 }
 
+/** Page styles: Photo (a big photo of the show with the numbers under it) or Boxes (number boxes and small fact cards). */
+function ridgeroad_facts_styles() {
+	return array(
+		'photo' => __( 'Photo', 'ridgeroad' ),
+		'boxes' => __( 'Boxes', 'ridgeroad' ),
+	);
+}
+function ridgeroad_facts_style() {
+	$s = (string) ridgeroad_mod( 'facts_style' );
+	return isset( ridgeroad_facts_styles()[ $s ] ) ? $s : 'photo';
+}
+
 /** The fact cards: rows of icon, big words and a line. */
 function ridgeroad_facts() {
 	$out = array();
@@ -58,7 +70,7 @@ function ridgeroad_fact_numbers() {
 			$num = $fm[0];
 		}
 		if ( $label && '' !== $num ) {
-			$out[] = array( 'num' => $num, 'label' => $label );
+			$out[] = array( 'num' => $num, 'label' => $label, 'icon' => ridgeroad_mod( "stat{$i}_icon" ) );
 		}
 	}
 	return $out;

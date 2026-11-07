@@ -7190,3 +7190,22 @@ msgid ""
 "Your show photo and numbers, Did You Know? fact cards, and fan favorites by "
 "year."
 msgstr ""
+
+msgid "Page style"
+msgstr ""
+
+msgid "Photo"
+msgstr ""
+
+msgid "Boxes"
+msgstr ""
+
+msgid ""
+"A big photo of your show with your numbers under it, fact cards with big "
+"words, and each year’s favorites as light strings."
+msgstr ""
+
+msgid ""
+"Your numbers in boxes like Behind the Lights, small fact cards together in "
+"one box, and the favorites of each year side by side."
+msgstr ""

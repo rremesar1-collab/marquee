@@ -1504,3 +1504,25 @@ dialog.mq-skin:not(#mq-0) { display: revert; container: none; }
 	.mq-skin:not(#mq-0) .rr-fav__name, .mq-skin:not(#mq-0) .rr-fav__song:first-child .rr-fav__name { font-size: 16px; }
 	.mq-skin:not(#mq-0) .rr-fav__year { font-size: 16px; padding: 6px 16px; }
 }
+
+/* Show Facts, Boxes style */
+.mq-skin:not(#mq-0) .rr-facts__intro { max-width: 720px; margin: -6px auto 18px; text-align: center; font-size: 18px; color: #f3e7c9; text-shadow: 0 2px 6px #000, 0 0 2px #000; }
+.mq-skin:not(#mq-0) .rr-mfacts { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.mq-skin:not(#mq-0) .rr-mfact { display: flex; gap: 14px; align-items: flex-start; padding: 16px; border-radius: 14px; background: rgba(0, 0, 0, .28); border: 1px solid rgba(255, 215, 120, .28); }
+.mq-skin:not(#mq-0) .rr-mfact .rr-cicon { width: 40px; height: 40px; flex: 0 0 40px; }
+.mq-skin:not(#mq-0) .rr-mfact p { margin: 0; font-size: 17px; line-height: 1.45; color: #fff; }
+.mq-skin:not(#mq-0) .rr-mfact b { color: #fde866; }
+.mq-skin:not(#mq-0) .rr-fyears { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.mq-skin:not(#mq-0) .rr-fyear { padding: 14px 16px; border-radius: 14px; background: rgba(0, 0, 0, .28); border: 1px solid rgba(255, 215, 120, .28); }
+.mq-skin:not(#mq-0) .rr-fyear h3 { margin: 0 0 8px; text-align: center; font-size: 26px; color: #ffd45a; }
+.mq-skin:not(#mq-0) .rr-fyear ol { list-style: none; margin: 0; padding: 0; }
+.mq-skin:not(#mq-0) .rr-fyear li { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-top: 1px solid rgba(255, 255, 255, .12); color: #fff; font-size: 16px; }
+.mq-skin:not(#mq-0) .rr-fyear li:first-child { border-top: 0; }
+.mq-skin:not(#mq-0) .rr-fyear__medal { flex: 0 0 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; color: #3a2000; background: radial-gradient(circle at 35% 30%, #fff6c8, #ffc533 55%, #b9780a); }
+.mq-skin:not(#mq-0) .rr-fyear li:nth-child(2) .rr-fyear__medal { background: radial-gradient(circle at 35% 30%, #fff, #c9d1da 55%, #7c8794); }
+.mq-skin:not(#mq-0) .rr-fyear li:nth-child(3) .rr-fyear__medal { background: radial-gradient(circle at 35% 30%, #ffe1c2, #d98a45 55%, #8a4a17); }
+.mq-skin:not(#mq-0) .rr-fyear__name { min-width: 0; overflow-wrap: anywhere; }
+.mq-skin:not(#mq-0) .rr-fyear small { margin-left: auto; padding-left: 8px; color: #e8d9b0; white-space: nowrap; }
+@container mq (max-width: 760px) { .mq-skin:not(#mq-0) .rr-mfacts, .mq-skin:not(#mq-0) .rr-fyears { grid-template-columns: 1fr 1fr; } }
+@container mq (max-width: 540px) { .mq-skin:not(#mq-0) .rr-mfacts, .mq-skin:not(#mq-0) .rr-fyears { grid-template-columns: 1fr; } .mq-skin:not(#mq-0) .rr-facts__intro { font-size: 16px; } }
+.mq-skin:not(#mq-0) .rr-facts__intro b { display: inline-block; font: 400 clamp(30px, 3.4vw, 46px)/1.15 var(--f-script, cursive); color: #fff1c2; text-shadow: 0 0 16px rgba(255, 200, 80, .55), 0 3px 8px rgba(0, 0, 0, .9); }
