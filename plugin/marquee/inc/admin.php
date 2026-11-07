@@ -1368,6 +1368,7 @@ function marquee_home_view( $s ) {
 			array( $here( '10-visit' ), 'car', __( 'Before You Visit tips', 'marquee' ), __( 'Parking, headlights and your other tips for visitors.', 'marquee' ) ),
 			array( $here( 6 ), 'smiley', __( 'Kids’ Corner', 'marquee' ), __( 'Which parts show, the contest and its prizes.', 'marquee' ) ),
 			array( $here( '10-donate' ), 'heart', __( 'Donations & social', 'marquee' ), __( 'Your donation link and words, and your social buttons.', 'marquee' ) ),
+			array( admin_url( 'post-new.php?post_type=page' ), 'welcome-add-page', __( 'Make a new page', 'marquee' ), __( 'Our Story, Questions & Answers, a photo gallery… Start from a layout in your show’s colors.', 'marquee' ) ),
 		) );
 		foreach ( $site as $c ) :
 			?>

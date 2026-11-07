@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'RIDGEROAD_VERSION' ) ) {
-	define( 'RIDGEROAD_VERSION', '2.22.0' );
+	define( 'RIDGEROAD_VERSION', '2.23.0' );
 }
 // Show location: from Marquee → Settings (0,0 until the Marquee plugin is set up).
 $rr_mq = function_exists( 'marquee_get' ) ? marquee_get() : array();
@@ -166,6 +166,19 @@ function ridgeroad_fallback_menu() {
 	}
 	if ( function_exists( 'ridgeroad_facts_on' ) && ridgeroad_facts_on() && ridgeroad_facts_url() ) {
 		$li( ridgeroad_facts_url(), 'star', ridgeroad_mod( 'facts_title' ), $cur && $cur === (int) get_option( 'ridgeroad_facts_page' ) );
+	}
+	// the owner's own pages that asked for a button (Marquee page builder)
+	$n = 1 + count( array_filter( array( ridgeroad_songs_url() && ridgeroad_mod( 'seq_show' ) && ridgeroad_sequence_videos(), ridgeroad_songs_url() && ridgeroad_mod( 'songs_show' ) && ridgeroad_song_list(), ridgeroad_mod( 'kids_show' ) && ridgeroad_kids_url(), function_exists( 'ridgeroad_facts_on' ) && ridgeroad_facts_on() && ridgeroad_facts_url() ) ) );
+	foreach ( function_exists( 'marquee_menu_pages' ) ? marquee_menu_pages() : array() as $pg ) {
+		$li( get_permalink( $pg ), 'tree', get_the_title( $pg ), $cur === $pg->ID );
+		$n++;
+	}
+	if ( $n > 4 ) { // on phones only four fit: the rest go under More
+		printf(
+			'<li class="rr-menu__more"><button type="button" aria-expanded="false" data-rr-more>%1$s<span>%2$s</span></button></li>',
+			ridgeroad_cicon( 'more' ), // SVG markup from our own icon set.
+			esc_html__( 'More', 'ridgeroad' )
+		);
 	}
 	echo '</ul>';
 }

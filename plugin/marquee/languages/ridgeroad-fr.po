@@ -3992,3 +3992,6 @@ msgid ""
 msgstr ""
 "Ajoutez vos sponsors et leurs logos dans Marquee → Réglages → Page d’accueil"
 " → Commanditaires."
+
+msgid "More"
+msgstr "Plus"

@@ -5080,3 +5080,6 @@ msgid ""
 "Add your sponsors and their logos in Marquee → Settings → Home page → "
 "Sponsors."
 msgstr ""
+
+msgid "More"
+msgstr ""

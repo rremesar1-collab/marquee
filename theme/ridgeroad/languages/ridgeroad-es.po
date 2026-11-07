@@ -3947,3 +3947,6 @@ msgid ""
 msgstr ""
 "Agrega tus patrocinadores y sus logos en Marquee → Ajustes → Página de "
 "inicio → Patrocinadores."
+
+msgid "More"
+msgstr "Más"

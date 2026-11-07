@@ -6,6 +6,7 @@
 	var el = wp.element.createElement;
 	var useBlockProps = wp.blockEditor && wp.blockEditor.useBlockProps;
 	D.sections.forEach(function (s) {
+		if (s.slug === 'live-cam') { return; } // the Live Camera has its own settings (builder.js)
 		wp.blocks.registerBlockType('marquee/' + s.slug, {
 			apiVersion: 2,
 			title: s.title,

@@ -6754,7 +6754,7 @@ msgid "Headline on the photo (optional)"
 msgstr "Titre sur la photo (facultatif)"
 
 msgid "Lighting up our street since 2019"
-msgstr "On illumine notre rue depuis 2019"
+msgstr "Nous illuminons notre rue depuis 2019"
 
 msgid "Line under the headline (optional)"
 msgstr "Ligne sous le titre (facultatif)"
@@ -7228,3 +7228,404 @@ msgstr ""
 
 msgid "Snow & background"
 msgstr "Neige et fond"
+
+msgid ""
+"A box in your show’s colors, with snow on top and lights around it. Put "
+"anything inside."
+msgstr ""
+"Un bloc aux couleurs de votre spectacle, avec de la neige dessus et des "
+"lumières tout autour. Mettez-y ce que vous voulez."
+
+msgid "A grid of your photos. Visitors can tap one to see it big."
+msgstr ""
+"Une grille de vos photos. Les visiteurs peuvent en toucher une pour la voir "
+"en grand."
+
+msgid "A photo next to a few lines of words."
+msgstr "Une photo à côté de quelques lignes de texte."
+
+msgid ""
+"About six weekends in the fall, plus a lot of evenings at the computer."
+msgstr ""
+"Environ six week-ends à l’automne, plus beaucoup de soirées devant "
+"l’ordinateur."
+
+msgid "Add a YouTube link in the block settings"
+msgstr "Ajoutez un lien YouTube dans les réglages du bloc"
+
+msgid "Behind the scenes"
+msgstr "Dans les coulisses"
+
+msgid "Bring a can"
+msgstr "Apportez une conserve"
+
+msgid "Can we get out of the car?"
+msgstr "Peut-on sortir de la voiture ?"
+
+msgid "Caption as a badge"
+msgstr "Légende en étiquette"
+
+msgid "Color"
+msgstr "Couleur"
+
+msgid "Does it cost anything?"
+msgstr "Est-ce payant ?"
+
+msgid "Donate online"
+msgstr "Faire un don en ligne"
+
+msgid "Drop off canned food in the bin by the mailbox during show hours."
+msgstr ""
+"Déposez des conserves dans le bac près de la boîte aux lettres pendant le "
+"spectacle."
+
+msgid "Every donation goes straight to them."
+msgstr "Chaque don leur est versé directement."
+
+msgid "Give Back"
+msgstr "Donner en retour"
+
+msgid "Head of security"
+msgstr "Chef de la sécurité"
+
+msgid "Hidden when the lights are off."
+msgstr "Masqué quand les lumières sont éteintes."
+
+msgid "Hot cocoa department"
+msgstr "Service du chocolat chaud"
+
+msgid "How do I hear the music?"
+msgstr "Comment entendre la musique ?"
+
+msgid "How it started"
+msgstr "Comment tout a commencé"
+
+msgid "How it started, meet the family, then and now"
+msgstr "Comment tout a commencé, la famille, avant et maintenant"
+
+msgid "How long does it take to set up?"
+msgstr "Combien de temps faut-il pour l’installer ?"
+
+msgid ""
+"It began with one strand of lights on the porch and a kid who wanted “more.”"
+" Every year since, we’ve added a little more, and a lot more extension "
+"cords."
+msgstr ""
+"Tout a commencé avec une guirlande sur le perron et un enfant qui en voulait"
+" « plus ». Chaque année depuis, on en ajoute un peu plus, et beaucoup plus "
+"de rallonges."
+
+msgid "LIVE CAM"
+msgstr "CAMÉRA EN DIRECT"
+
+msgid "Lights and programming"
+msgstr "Lumières et programmation"
+
+msgid "Lights around the edge"
+msgstr "Lumières sur le bord"
+
+msgid "Lights for a Cause"
+msgstr "Des lumières pour une cause"
+
+msgid "Line under the video"
+msgstr "Ligne sous la vidéo"
+
+msgid "Live from your show"
+msgstr "En direct de votre spectacle"
+
+msgid ""
+"Marquee: the Live Camera needs a YouTube link (in this block, or Marquee → "
+"Settings → Home page → Live camera). Only editors see this note."
+msgstr ""
+"Marquee : la Caméra en direct a besoin d’un lien YouTube (dans ce bloc, ou "
+"dans Marquee → Réglages → Page d’accueil → Caméra en direct). Seuls les "
+"éditeurs voient cette note."
+
+msgid "Meet the Family"
+msgstr "La famille"
+
+msgid "Meet the Team"
+msgstr "L’équipe"
+
+msgid "Name"
+msgstr "Nom"
+
+msgid ""
+"Next to Kids’ Corner and Show Facts. On phones, extra buttons go under More."
+msgstr ""
+"À côté de Coin des enfants et Le spectacle en bref. Sur les téléphones, les "
+"boutons en trop vont dans Plus."
+
+msgid "Night"
+msgstr "Nuit"
+
+msgid ""
+"No live camera link yet. Add it in Marquee → Settings → Home page → Live "
+"camera."
+msgstr ""
+"Pas encore de lien de caméra en direct. Ajoutez-le dans Marquee → Réglages →"
+" Page d’accueil → Caméra en direct."
+
+msgid "Only during show hours"
+msgstr "Seulement pendant le spectacle"
+
+msgid "Our Story"
+msgstr "Notre histoire"
+
+msgid "Our first year"
+msgstr "Notre première année"
+
+msgid "Parking, the radio, can we get out of the car…"
+msgstr "Stationnement, la radio, peut-on sortir de la voiture…"
+
+msgid "People"
+msgstr "Personnes"
+
+msgid "Photo & Words"
+msgstr "Photo et texte"
+
+msgid "Photo Gallery"
+msgstr "Galerie photos"
+
+msgid "Picks the songs"
+msgstr "Choisit les chansons"
+
+msgid ""
+"Pull over on the right side of the street and keep driveways clear for our "
+"neighbors."
+msgstr ""
+"Garez-vous sur le côté droit de la rue et laissez les entrées des voisins "
+"libres."
+
+msgid "Questions & Answers"
+msgstr "Questions et réponses"
+
+msgid "Questions We Get"
+msgstr "Questions fréquentes"
+
+msgid "Questions visitors can open to read the answer."
+msgstr "Des questions que les visiteurs ouvrent pour lire la réponse."
+
+msgid "Ribbon title above the box"
+msgstr "Titre en ruban au-dessus du bloc"
+
+msgid "Round photo"
+msgstr "Photo ronde"
+
+msgid "Round photos with a name and a line about each person."
+msgstr "Des photos rondes avec un nom et une ligne sur chaque personne."
+
+msgid "See-through"
+msgstr "Transparence"
+
+msgid "See-through works with the Marquee Festive theme."
+msgstr "La transparence fonctionne avec le thème Marquee Festive."
+
+msgid "Share the show"
+msgstr "Partagez le spectacle"
+
+msgid "Show Box"
+msgstr "Bloc du spectacle"
+
+msgid "Show a button for this page at the top"
+msgstr "Afficher un bouton pour cette page en haut"
+
+msgid "Show boxes"
+msgstr "Blocs du spectacle"
+
+msgid "Snow and lights"
+msgstr "Neige et lumières"
+
+msgid "Snow on top"
+msgstr "Neige dessus"
+
+msgid "Solid"
+msgstr "Opaque"
+
+msgid "Tap to watch & listen"
+msgstr "Touchez pour voir et écouter"
+
+msgid ""
+"Tell visitors who builds the show, how long it takes and what everyone’s "
+"favorite part is."
+msgstr ""
+"Racontez aux visiteurs qui construit le spectacle, combien de temps ça prend"
+" et la partie préférée de chacun."
+
+msgid "Tell your friends! The more visitors, the more we raise."
+msgstr "Parlez-en à vos amis ! Plus il y a de visiteurs, plus on récolte."
+
+msgid "Tell your story here."
+msgstr "Racontez votre histoire ici."
+
+msgid ""
+"The box changes with your look: Classic, Christmas Village or Santa’s North "
+"Pole."
+msgstr ""
+"Le bloc change avec votre style : Classique, Village de Noël ou le pôle Nord"
+" du père Noël."
+
+msgid "The charity you support and how to help"
+msgstr "L’association que vous soutenez et comment aider"
+
+msgid "The people (and pets) behind the lights"
+msgstr "Les personnes (et animaux) derrière les lumières"
+
+msgid ""
+"The show is free. If you’d like to help, there’s a donation link on our home"
+" page."
+msgstr ""
+"Le spectacle est gratuit. Pour aider, il y a un lien de don sur notre page "
+"d’accueil."
+
+msgid "Then & Now"
+msgstr "Avant et maintenant"
+
+msgid "Then and Now"
+msgstr "Avant et maintenant"
+
+msgid "This Year"
+msgstr "Cette année"
+
+msgid "This year"
+msgstr "Cette année"
+
+msgid ""
+"Today the whole yard dances to music on the radio, and every bit of it is "
+"planned, built and programmed right here at home."
+msgstr ""
+"Aujourd’hui, tout le jardin danse sur la musique à la radio, et chaque "
+"détail est imaginé, construit et programmé ici, à la maison."
+
+msgid "Top of your website"
+msgstr "Haut de votre site"
+
+msgid ""
+"Tune your car radio to our station. You can also listen on your phone from "
+"our home page."
+msgstr ""
+"Réglez la radio de votre voiture sur notre station. Vous pouvez aussi "
+"écouter sur votre téléphone depuis notre page d’accueil."
+
+msgid "Two photos side by side, like your first year and this year."
+msgstr "Deux photos côte à côte, comme votre première année et cette année."
+
+msgid "Type here, or press / to add a photo, a video, columns, buttons…"
+msgstr ""
+"Écrivez ici, ou tapez / pour ajouter une photo, une vidéo, des colonnes, des"
+" boutons…"
+
+msgid "Type the answer."
+msgstr "Écrivez la réponse."
+
+msgid "Use a different link (a second camera, or last year’s show)"
+msgstr ""
+"Utiliser un autre lien (une deuxième caméra, ou le spectacle de l’an "
+"dernier)"
+
+msgid "Use my live camera (the link in Marquee → Settings → Home page)"
+msgstr ""
+"Utiliser ma caméra en direct (le lien dans Marquee → Réglages → Page "
+"d’accueil)"
+
+msgid "Use my website’s setting"
+msgstr "Utiliser le réglage de mon site"
+
+msgid ""
+"Use the donation link on our home page. Every dollar goes to the charity."
+msgstr ""
+"Utilisez le lien de don sur notre page d’accueil. Chaque dollar va à "
+"l’association."
+
+msgid "Ways to Help"
+msgstr "Comment aider"
+
+msgid "What they do"
+msgstr "Son rôle"
+
+msgid "Where do I park?"
+msgstr "Où se garer ?"
+
+msgid "Who we’re helping this year"
+msgstr "Qui nous aidons cette année"
+
+msgid "Words"
+msgstr "Textes"
+
+msgid ""
+"Write a few lines about the charity you support and why it matters to your "
+"family."
+msgstr ""
+"Écrivez quelques lignes sur l’association que vous soutenez et pourquoi elle"
+" compte pour votre famille."
+
+msgid ""
+"Year one: a few hundred lights. This year: thousands, all dancing to the "
+"music."
+msgstr ""
+"Première année : quelques centaines de lumières. Cette année : des milliers,"
+" qui dansent toutes sur la musique."
+
+msgid "Year one: a few hundred lights. This year: thousands."
+msgstr ""
+"Première année : quelques centaines de lumières. Cette année : des milliers."
+
+msgid "Yes! Please stay on the sidewalk and don’t touch the lights."
+msgstr "Oui ! Restez sur le trottoir et ne touchez pas aux lumières."
+
+msgid ""
+"Your YouTube live stream in a show box. Visitors tap to watch and listen."
+msgstr ""
+"Votre direct YouTube dans un bloc du spectacle. Les visiteurs touchent pour "
+"voir et écouter."
+
+msgid ""
+"Your background shows through this box only. The rest of your site keeps its"
+" own setting (Look & colors)."
+msgstr ""
+"Votre fond se voit à travers ce bloc seulement. Le reste du site garde son "
+"propre réglage (Style et couleurs)."
+
+msgid "Your best pictures, year by year"
+msgstr "Vos plus belles photos, année après année"
+
+msgid "Your name"
+msgstr "Votre nom"
+
+msgid ""
+"Your website’s Box colors setting (Look & colors) shows every box in one "
+"color."
+msgstr ""
+"Le réglage Couleurs des encadrés de votre site (Style et couleurs) affiche "
+"tous les blocs d’une seule couleur."
+
+msgid "Your website’s boxes are set to"
+msgstr "Les blocs de votre site sont réglés sur"
+
+msgid "Your website’s boxes are solid."
+msgstr "Les blocs de votre site sont opaques."
+
+msgid "box"
+msgstr "bloc"
+
+msgid "camera"
+msgstr "caméra"
+
+msgid "live"
+msgstr "en direct"
+
+msgid "panel"
+msgstr "panneau"
+
+msgid "section"
+msgstr "section"
+
+msgid "Make a new page"
+msgstr "Créer une nouvelle page"
+
+msgid ""
+"Our Story, Questions & Answers, a photo gallery… Start from a layout in your"
+" show’s colors."
+msgstr ""
+"Notre histoire, Questions et réponses, une galerie photos… Partez d’une mise"
+" en page aux couleurs de votre spectacle."

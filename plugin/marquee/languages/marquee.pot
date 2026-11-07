@@ -7517,3 +7517,353 @@ msgstr ""
 
 msgid "Snow & background"
 msgstr ""
+
+msgid ""
+"A box in your show’s colors, with snow on top and lights around it. Put "
+"anything inside."
+msgstr ""
+
+msgid "A grid of your photos. Visitors can tap one to see it big."
+msgstr ""
+
+msgid "A photo next to a few lines of words."
+msgstr ""
+
+msgid ""
+"About six weekends in the fall, plus a lot of evenings at the computer."
+msgstr ""
+
+msgid "Add a YouTube link in the block settings"
+msgstr ""
+
+msgid "Behind the scenes"
+msgstr ""
+
+msgid "Bring a can"
+msgstr ""
+
+msgid "Can we get out of the car?"
+msgstr ""
+
+msgid "Caption as a badge"
+msgstr ""
+
+msgid "Color"
+msgstr ""
+
+msgid "Does it cost anything?"
+msgstr ""
+
+msgid "Donate online"
+msgstr ""
+
+msgid "Drop off canned food in the bin by the mailbox during show hours."
+msgstr ""
+
+msgid "Every donation goes straight to them."
+msgstr ""
+
+msgid "Give Back"
+msgstr ""
+
+msgid "Head of security"
+msgstr ""
+
+msgid "Hidden when the lights are off."
+msgstr ""
+
+msgid "Hot cocoa department"
+msgstr ""
+
+msgid "How do I hear the music?"
+msgstr ""
+
+msgid "How it started"
+msgstr ""
+
+msgid "How it started, meet the family, then and now"
+msgstr ""
+
+msgid "How long does it take to set up?"
+msgstr ""
+
+msgid ""
+"It began with one strand of lights on the porch and a kid who wanted “more.”"
+" Every year since, we’ve added a little more, and a lot more extension "
+"cords."
+msgstr ""
+
+msgid "LIVE CAM"
+msgstr ""
+
+msgid "Lights and programming"
+msgstr ""
+
+msgid "Lights around the edge"
+msgstr ""
+
+msgid "Lights for a Cause"
+msgstr ""
+
+msgid "Line under the video"
+msgstr ""
+
+msgid "Live from your show"
+msgstr ""
+
+msgid ""
+"Marquee: the Live Camera needs a YouTube link (in this block, or Marquee → "
+"Settings → Home page → Live camera). Only editors see this note."
+msgstr ""
+
+msgid "Meet the Family"
+msgstr ""
+
+msgid "Meet the Team"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid ""
+"Next to Kids’ Corner and Show Facts. On phones, extra buttons go under More."
+msgstr ""
+
+msgid "Night"
+msgstr ""
+
+msgid ""
+"No live camera link yet. Add it in Marquee → Settings → Home page → Live "
+"camera."
+msgstr ""
+
+msgid "Only during show hours"
+msgstr ""
+
+msgid "Our Story"
+msgstr ""
+
+msgid "Our first year"
+msgstr ""
+
+msgid "Parking, the radio, can we get out of the car…"
+msgstr ""
+
+msgid "People"
+msgstr ""
+
+msgid "Photo & Words"
+msgstr ""
+
+msgid "Photo Gallery"
+msgstr ""
+
+msgid "Picks the songs"
+msgstr ""
+
+msgid ""
+"Pull over on the right side of the street and keep driveways clear for our "
+"neighbors."
+msgstr ""
+
+msgid "Questions & Answers"
+msgstr ""
+
+msgid "Questions We Get"
+msgstr ""
+
+msgid "Questions visitors can open to read the answer."
+msgstr ""
+
+msgid "Ribbon title above the box"
+msgstr ""
+
+msgid "Round photo"
+msgstr ""
+
+msgid "Round photos with a name and a line about each person."
+msgstr ""
+
+msgid "See-through"
+msgstr ""
+
+msgid "See-through works with the Marquee Festive theme."
+msgstr ""
+
+msgid "Share the show"
+msgstr ""
+
+msgid "Show Box"
+msgstr ""
+
+msgid "Show a button for this page at the top"
+msgstr ""
+
+msgid "Show boxes"
+msgstr ""
+
+msgid "Snow and lights"
+msgstr ""
+
+msgid "Snow on top"
+msgstr ""
+
+msgid "Solid"
+msgstr ""
+
+msgid "Tap to watch & listen"
+msgstr ""
+
+msgid ""
+"Tell visitors who builds the show, how long it takes and what everyone’s "
+"favorite part is."
+msgstr ""
+
+msgid "Tell your friends! The more visitors, the more we raise."
+msgstr ""
+
+msgid "Tell your story here."
+msgstr ""
+
+msgid ""
+"The box changes with your look: Classic, Christmas Village or Santa’s North "
+"Pole."
+msgstr ""
+
+msgid "The charity you support and how to help"
+msgstr ""
+
+msgid "The people (and pets) behind the lights"
+msgstr ""
+
+msgid ""
+"The show is free. If you’d like to help, there’s a donation link on our home"
+" page."
+msgstr ""
+
+msgid "Then & Now"
+msgstr ""
+
+msgid "Then and Now"
+msgstr ""
+
+msgid "This Year"
+msgstr ""
+
+msgid "This year"
+msgstr ""
+
+msgid ""
+"Today the whole yard dances to music on the radio, and every bit of it is "
+"planned, built and programmed right here at home."
+msgstr ""
+
+msgid "Top of your website"
+msgstr ""
+
+msgid ""
+"Tune your car radio to our station. You can also listen on your phone from "
+"our home page."
+msgstr ""
+
+msgid "Two photos side by side, like your first year and this year."
+msgstr ""
+
+msgid "Type here, or press / to add a photo, a video, columns, buttons…"
+msgstr ""
+
+msgid "Type the answer."
+msgstr ""
+
+msgid "Use a different link (a second camera, or last year’s show)"
+msgstr ""
+
+msgid "Use my live camera (the link in Marquee → Settings → Home page)"
+msgstr ""
+
+msgid "Use my website’s setting"
+msgstr ""
+
+msgid ""
+"Use the donation link on our home page. Every dollar goes to the charity."
+msgstr ""
+
+msgid "Ways to Help"
+msgstr ""
+
+msgid "What they do"
+msgstr ""
+
+msgid "Where do I park?"
+msgstr ""
+
+msgid "Who we’re helping this year"
+msgstr ""
+
+msgid "Words"
+msgstr ""
+
+msgid ""
+"Write a few lines about the charity you support and why it matters to your "
+"family."
+msgstr ""
+
+msgid ""
+"Year one: a few hundred lights. This year: thousands, all dancing to the "
+"music."
+msgstr ""
+
+msgid "Year one: a few hundred lights. This year: thousands."
+msgstr ""
+
+msgid "Yes! Please stay on the sidewalk and don’t touch the lights."
+msgstr ""
+
+msgid ""
+"Your YouTube live stream in a show box. Visitors tap to watch and listen."
+msgstr ""
+
+msgid ""
+"Your background shows through this box only. The rest of your site keeps its"
+" own setting (Look & colors)."
+msgstr ""
+
+msgid "Your best pictures, year by year"
+msgstr ""
+
+msgid "Your name"
+msgstr ""
+
+msgid ""
+"Your website’s Box colors setting (Look & colors) shows every box in one "
+"color."
+msgstr ""
+
+msgid "Your website’s boxes are set to"
+msgstr ""
+
+msgid "Your website’s boxes are solid."
+msgstr ""
+
+msgid "box"
+msgstr ""
+
+msgid "camera"
+msgstr ""
+
+msgid "live"
+msgstr ""
+
+msgid "panel"
+msgstr ""
+
+msgid "section"
+msgstr ""
+
+msgid "Make a new page"
+msgstr ""
+
+msgid ""
+"Our Story, Questions & Answers, a photo gallery… Start from a layout in your"
+" show’s colors."
+msgstr ""

@@ -187,7 +187,7 @@ add_action( 'init', function () {
 } );
 
 add_filter( 'block_categories_all', function ( $cats ) {
-	array_unshift( $cats, array( 'slug' => 'marquee', 'title' => __( 'Marquee (light show)', 'marquee' ), 'icon' => 'star-filled' ) );
+	array_unshift( $cats, array( 'slug' => 'marquee', 'title' => __( 'Live from your show', 'marquee' ), 'icon' => 'star-filled' ) );
 	return $cats;
 } );
 

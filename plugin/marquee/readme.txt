@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.19.0
+Stable tag: 0.20.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,14 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.20.0 =
+* New: make your own pages. Show Boxes (red, green, blue or night, with snow on top and lights around them) hold anything: words, photos, videos, columns, buttons. Ready-made kinds: Photo & Words, People, Then & Now, Questions, Photo Gallery.
+* Each box has its own see-through slider (or follows your website's setting), an optional ribbon title, and switches for the snow and the lights.
+* New pages can start from a layout in your show's colors: Our Story, Questions & Answers, Photo Gallery, Meet the Team, Give Back.
+* The Live Camera block has its own settings: your live camera or a different YouTube link, its title and words, only during show hours, and the box color and see-through.
+* Your pages get a button at the top of the website (you can turn it off for each page). On phones, extra buttons go under More.
+* In English, Spanish and French. Marquee Festive 2.23.0 draws the new pages.
 
 = 0.19.0 =
 * New: Show Facts, a page about your show with its own button at the top next to Kids' Corner. Turn it on and fill it in under Marquee → Settings → Show Facts.

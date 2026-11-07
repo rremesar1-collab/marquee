@@ -7139,3 +7139,400 @@ msgstr ""
 
 msgid "Snow & background"
 msgstr "Nieve y fondo"
+
+msgid ""
+"A box in your show’s colors, with snow on top and lights around it. Put "
+"anything inside."
+msgstr ""
+"Un recuadro con los colores de tu espectáculo, con nieve arriba y luces "
+"alrededor. Pon lo que quieras adentro."
+
+msgid "A grid of your photos. Visitors can tap one to see it big."
+msgstr ""
+"Una cuadrícula con tus fotos. Los visitantes pueden tocar una para verla en "
+"grande."
+
+msgid "A photo next to a few lines of words."
+msgstr "Una foto junto a unas líneas de texto."
+
+msgid ""
+"About six weekends in the fall, plus a lot of evenings at the computer."
+msgstr ""
+"Unos seis fines de semana en otoño, más muchas noches frente a la "
+"computadora."
+
+msgid "Add a YouTube link in the block settings"
+msgstr "Agrega un enlace de YouTube en los ajustes del bloque"
+
+msgid "Behind the scenes"
+msgstr "Detrás de escena"
+
+msgid "Bring a can"
+msgstr "Trae una lata"
+
+msgid "Can we get out of the car?"
+msgstr "¿Podemos bajar del carro?"
+
+msgid "Caption as a badge"
+msgstr "Leyenda como etiqueta"
+
+msgid "Color"
+msgstr "Color"
+
+msgid "Does it cost anything?"
+msgstr "¿Cuesta algo?"
+
+msgid "Donate online"
+msgstr "Dona en línea"
+
+msgid "Drop off canned food in the bin by the mailbox during show hours."
+msgstr ""
+"Deja comida enlatada en la caja junto al buzón durante el horario del "
+"espectáculo."
+
+msgid "Every donation goes straight to them."
+msgstr "Cada donación va directo a ellos."
+
+msgid "Give Back"
+msgstr "Ayuda a otros"
+
+msgid "Head of security"
+msgstr "Jefe de seguridad"
+
+msgid "Hidden when the lights are off."
+msgstr "Se oculta cuando las luces están apagadas."
+
+msgid "Hot cocoa department"
+msgstr "Departamento de chocolate caliente"
+
+msgid "How do I hear the music?"
+msgstr "¿Cómo escucho la música?"
+
+msgid "How it started"
+msgstr "Cómo empezó"
+
+msgid "How it started, meet the family, then and now"
+msgstr "Cómo empezó, conoce a la familia, antes y ahora"
+
+msgid "How long does it take to set up?"
+msgstr "¿Cuánto tiempo toma armarlo?"
+
+msgid ""
+"It began with one strand of lights on the porch and a kid who wanted “more.”"
+" Every year since, we’ve added a little more, and a lot more extension "
+"cords."
+msgstr ""
+"Empezó con una tira de luces en el porche y un niño que quería “más”. Cada "
+"año desde entonces hemos agregado un poco más, y muchas más extensiones."
+
+msgid "LIVE CAM"
+msgstr "CÁMARA EN VIVO"
+
+msgid "Lights and programming"
+msgstr "Luces y programación"
+
+msgid "Lights around the edge"
+msgstr "Luces alrededor del borde"
+
+msgid "Lights for a Cause"
+msgstr "Luces por una causa"
+
+msgid "Line under the video"
+msgstr "Línea bajo el video"
+
+msgid "Live from your show"
+msgstr "En vivo desde tu espectáculo"
+
+msgid ""
+"Marquee: the Live Camera needs a YouTube link (in this block, or Marquee → "
+"Settings → Home page → Live camera). Only editors see this note."
+msgstr ""
+"Marquee: la Cámara en vivo necesita un enlace de YouTube (en este bloque, o "
+"en Marquee → Ajustes → Página de inicio → Cámara en vivo). Solo los editores"
+" ven esta nota."
+
+msgid "Meet the Family"
+msgstr "Conoce a la familia"
+
+msgid "Meet the Team"
+msgstr "Conoce al equipo"
+
+msgid "Name"
+msgstr "Nombre"
+
+msgid ""
+"Next to Kids’ Corner and Show Facts. On phones, extra buttons go under More."
+msgstr ""
+"Junto al Rincón de los niños y Datos del espectáculo. En los teléfonos, los "
+"botones de más van en Más."
+
+msgid "Night"
+msgstr "Noche"
+
+msgid ""
+"No live camera link yet. Add it in Marquee → Settings → Home page → Live "
+"camera."
+msgstr ""
+"Aún no hay enlace de cámara en vivo. Agrégalo en Marquee → Ajustes → Página "
+"de inicio → Cámara en vivo."
+
+msgid "Only during show hours"
+msgstr "Solo durante el horario del espectáculo"
+
+msgid "Our Story"
+msgstr "Nuestra historia"
+
+msgid "Our first year"
+msgstr "Nuestro primer año"
+
+msgid "Parking, the radio, can we get out of the car…"
+msgstr "Estacionamiento, la radio, ¿podemos bajar del carro?…"
+
+msgid "People"
+msgstr "Personas"
+
+msgid "Photo & Words"
+msgstr "Foto y texto"
+
+msgid "Photo Gallery"
+msgstr "Galería de fotos"
+
+msgid "Picks the songs"
+msgstr "Elige las canciones"
+
+msgid ""
+"Pull over on the right side of the street and keep driveways clear for our "
+"neighbors."
+msgstr ""
+"Estaciónate en el lado derecho de la calle y deja libres las entradas de los"
+" vecinos."
+
+msgid "Questions & Answers"
+msgstr "Preguntas y respuestas"
+
+msgid "Questions We Get"
+msgstr "Preguntas frecuentes"
+
+msgid "Questions visitors can open to read the answer."
+msgstr "Preguntas que los visitantes pueden abrir para leer la respuesta."
+
+msgid "Ribbon title above the box"
+msgstr "Título en cinta sobre el recuadro"
+
+msgid "Round photo"
+msgstr "Foto redonda"
+
+msgid "Round photos with a name and a line about each person."
+msgstr "Fotos redondas con un nombre y una línea sobre cada persona."
+
+msgid "See-through"
+msgstr "Transparencia"
+
+msgid "See-through works with the Marquee Festive theme."
+msgstr "La transparencia funciona con el tema Marquee Festive."
+
+msgid "Share the show"
+msgstr "Comparte el espectáculo"
+
+msgid "Show Box"
+msgstr "Recuadro del espectáculo"
+
+msgid "Show a button for this page at the top"
+msgstr "Mostrar un botón para esta página arriba"
+
+msgid "Show boxes"
+msgstr "Recuadros del espectáculo"
+
+msgid "Snow and lights"
+msgstr "Nieve y luces"
+
+msgid "Snow on top"
+msgstr "Nieve arriba"
+
+msgid "Solid"
+msgstr "Sólido"
+
+msgid "Tap to watch & listen"
+msgstr "Toca para ver y escuchar"
+
+msgid ""
+"Tell visitors who builds the show, how long it takes and what everyone’s "
+"favorite part is."
+msgstr ""
+"Cuéntales a los visitantes quién arma el espectáculo, cuánto tiempo toma y "
+"cuál es la parte favorita de cada uno."
+
+msgid "Tell your friends! The more visitors, the more we raise."
+msgstr "¡Cuéntales a tus amigos! Cuantos más visitantes, más recaudamos."
+
+msgid "Tell your story here."
+msgstr "Cuenta tu historia aquí."
+
+msgid ""
+"The box changes with your look: Classic, Christmas Village or Santa’s North "
+"Pole."
+msgstr ""
+"El recuadro cambia con tu aspecto: Clásico, Pueblo navideño o el Polo Norte "
+"de Santa."
+
+msgid "The charity you support and how to help"
+msgstr "La organización benéfica que apoyas y cómo ayudar"
+
+msgid "The people (and pets) behind the lights"
+msgstr "Las personas (y mascotas) detrás de las luces"
+
+msgid ""
+"The show is free. If you’d like to help, there’s a donation link on our home"
+" page."
+msgstr ""
+"El espectáculo es gratis. Si quieres ayudar, hay un enlace para donar en "
+"nuestra página de inicio."
+
+msgid "Then & Now"
+msgstr "Antes y ahora"
+
+msgid "Then and Now"
+msgstr "Antes y ahora"
+
+msgid "This Year"
+msgstr "Este año"
+
+msgid "This year"
+msgstr "Este año"
+
+msgid ""
+"Today the whole yard dances to music on the radio, and every bit of it is "
+"planned, built and programmed right here at home."
+msgstr ""
+"Hoy todo el jardín baila con la música de la radio, y cada parte se planea, "
+"se construye y se programa aquí mismo en casa."
+
+msgid "Top of your website"
+msgstr "Parte de arriba de tu sitio"
+
+msgid ""
+"Tune your car radio to our station. You can also listen on your phone from "
+"our home page."
+msgstr ""
+"Sintoniza nuestra emisora en la radio del carro. También puedes escuchar en "
+"tu teléfono desde nuestra página de inicio."
+
+msgid "Two photos side by side, like your first year and this year."
+msgstr "Dos fotos lado a lado, como tu primer año y este año."
+
+msgid "Type here, or press / to add a photo, a video, columns, buttons…"
+msgstr ""
+"Escribe aquí, o presiona / para agregar una foto, un video, columnas, "
+"botones…"
+
+msgid "Type the answer."
+msgstr "Escribe la respuesta."
+
+msgid "Use a different link (a second camera, or last year’s show)"
+msgstr ""
+"Usar otro enlace (una segunda cámara, o el espectáculo del año pasado)"
+
+msgid "Use my live camera (the link in Marquee → Settings → Home page)"
+msgstr ""
+"Usar mi cámara en vivo (el enlace en Marquee → Ajustes → Página de inicio)"
+
+msgid "Use my website’s setting"
+msgstr "Usar el ajuste de mi sitio"
+
+msgid ""
+"Use the donation link on our home page. Every dollar goes to the charity."
+msgstr ""
+"Usa el enlace para donar en nuestra página de inicio. Cada dólar va a la "
+"organización."
+
+msgid "Ways to Help"
+msgstr "Formas de ayudar"
+
+msgid "What they do"
+msgstr "Lo que hace"
+
+msgid "Where do I park?"
+msgstr "¿Dónde me estaciono?"
+
+msgid "Who we’re helping this year"
+msgstr "A quién ayudamos este año"
+
+msgid "Words"
+msgstr "Textos"
+
+msgid ""
+"Write a few lines about the charity you support and why it matters to your "
+"family."
+msgstr ""
+"Escribe unas líneas sobre la organización que apoyas y por qué es importante"
+" para tu familia."
+
+msgid ""
+"Year one: a few hundred lights. This year: thousands, all dancing to the "
+"music."
+msgstr ""
+"Primer año: unos cientos de luces. Este año: miles, todas bailando con la "
+"música."
+
+msgid "Year one: a few hundred lights. This year: thousands."
+msgstr "Primer año: unos cientos de luces. Este año: miles."
+
+msgid "Yes! Please stay on the sidewalk and don’t touch the lights."
+msgstr "¡Sí! Por favor quédate en la acera y no toques las luces."
+
+msgid ""
+"Your YouTube live stream in a show box. Visitors tap to watch and listen."
+msgstr ""
+"Tu transmisión en vivo de YouTube en un recuadro del espectáculo. Los "
+"visitantes tocan para ver y escuchar."
+
+msgid ""
+"Your background shows through this box only. The rest of your site keeps its"
+" own setting (Look & colors)."
+msgstr ""
+"Tu fondo se ve a través de este recuadro solamente. El resto de tu sitio "
+"mantiene su propio ajuste (Aspecto y colores)."
+
+msgid "Your best pictures, year by year"
+msgstr "Tus mejores fotos, año por año"
+
+msgid "Your name"
+msgstr "Tu nombre"
+
+msgid ""
+"Your website’s Box colors setting (Look & colors) shows every box in one "
+"color."
+msgstr ""
+"El ajuste Colores de las cajas de tu sitio (Aspecto y colores) muestra todos"
+" los recuadros de un solo color."
+
+msgid "Your website’s boxes are set to"
+msgstr "Los recuadros de tu sitio están en"
+
+msgid "Your website’s boxes are solid."
+msgstr "Los recuadros de tu sitio son sólidos."
+
+msgid "box"
+msgstr "recuadro"
+
+msgid "camera"
+msgstr "cámara"
+
+msgid "live"
+msgstr "en vivo"
+
+msgid "panel"
+msgstr "panel"
+
+msgid "section"
+msgstr "sección"
+
+msgid "Make a new page"
+msgstr "Crear una página nueva"
+
+msgid ""
+"Our Story, Questions & Answers, a photo gallery… Start from a layout in your"
+" show’s colors."
+msgstr ""
+"Nuestra historia, Preguntas y respuestas, una galería de fotos… Empieza con "
+"un diseño en los colores de tu espectáculo."

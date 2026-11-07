@@ -1527,3 +1527,61 @@ dialog.mq-skin:not(#mq-0) { display: revert; container: none; }
 @container mq (max-width: 760px) { .mq-skin:not(#mq-0) .rr-mfacts > .rr-mfact, .mq-skin:not(#mq-0) .rr-fyears > .rr-fyear { flex-basis: calc((100% - 14px) / 2); } }
 @container mq (max-width: 540px) { .mq-skin:not(#mq-0) .rr-mfacts > .rr-mfact, .mq-skin:not(#mq-0) .rr-fyears > .rr-fyear { flex-basis: 100%; } .mq-skin:not(#mq-0) .rr-facts__intro { font-size: 16px; } }
 .mq-skin:not(#mq-0) .rr-facts__intro b { display: inline-block; font: 400 clamp(30px, 3.4vw, 46px)/1.15 var(--f-script, cursive); color: #fff1c2; text-shadow: 0 0 16px rgba(255, 200, 80, .55), 0 3px 8px rgba(0, 0, 0, .9); }
+
+/* ---------- Page builder: Show Boxes (any theme) ---------- */
+.mq-skin:not(#mq-0) .mq-script, .rr-showpage__body > .mq-script{ font: 400 clamp(26px, 3vw, 42px)/1.2 var(--f-script); color: #fff1c2; text-align: center; text-shadow: 0 0 16px rgba(255, 200, 80, .55), 0 3px 8px rgba(0, 0, 0, .9); margin-top: -18px; }
+.mq-skin:not(#mq-0) .mq-boxwrap{ margin: 0; }
+.mq-skin:not(#mq-0) .mq-boxwrap + .mq-boxwrap{ margin-top: 34px; }
+.mq-skin:not(#mq-0) .mq-box--nosnow::before{ display: none !important; }
+.mq-skin:not(#mq-0) .mq-box--nolights{ --bulbs-h: none; --bulbs-v: none; }
+.mq-skin:not(#mq-0) .mq-box{ color: #fff; }
+.mq-skin:not(#mq-0) .mq-box > :first-child{ margin-top: 0; }
+.mq-skin:not(#mq-0) .mq-box > :last-child{ margin-bottom: 0; }
+.mq-skin:not(#mq-0) .mq-box p{ font-size: 17px; line-height: 1.6; margin: 0 0 12px; }
+.mq-skin:not(#mq-0) .mq-box h2, .mq-skin:not(#mq-0) .mq-box h3, .mq-skin:not(#mq-0) .mq-box h4{ color: var(--gold); margin: 0 0 10px; text-shadow: 0 2px 4px rgba(0, 0, 0, .6); }
+.mq-skin:not(#mq-0) .mq-box h2{ font-size: clamp(24px, 2.4vw, 32px); }
+.mq-skin:not(#mq-0) .mq-box h3{ font-size: clamp(21px, 2vw, 27px); }
+.mq-skin:not(#mq-0) .mq-box h4{ font-size: 19px; font-family: var(--f-body); font-weight: 800; -webkit-text-stroke: 0; color: #fff; }
+.mq-skin:not(#mq-0) .mq-box a:not(.wp-block-button__link){ color: var(--gold); }
+.mq-skin:not(#mq-0) .mq-box ul, .mq-skin:not(#mq-0) .mq-box ol{ font-size: 17px; line-height: 1.6; padding-left: 1.3em; }
+.mq-skin:not(#mq-0) .mq-box .wp-block-image, .mq-skin:not(#mq-0) .mq-box .wp-block-media-text, .mq-skin:not(#mq-0) .mq-box .wp-block-video, .mq-skin:not(#mq-0) .mq-box .wp-block-embed{ margin: 0 0 14px; }
+.mq-skin:not(#mq-0) .mq-box .wp-block-image img, .mq-skin:not(#mq-0) .mq-box .wp-block-media-text__media img, .mq-skin:not(#mq-0) .mq-box .wp-block-video video, .mq-skin:not(#mq-0) .mq-box .wp-block-cover{
+	border-radius: 14px; border: 3px solid rgba(255, 215, 120, .6); box-shadow: 0 8px 22px rgba(0, 0, 0, .45);
+}
+.mq-skin:not(#mq-0) .mq-box .wp-block-image figcaption{ color: var(--muted); text-align: center; font-size: 14px; }
+.mq-skin:not(#mq-0) .mq-box .wp-block-media-text{ gap: 0; }
+.mq-skin:not(#mq-0) .mq-box .wp-block-media-text__media img{ aspect-ratio: 4 / 3; object-fit: cover; }
+.mq-skin:not(#mq-0) .mq-box .wp-block-media-text__content{ padding: 0 0 0 30px; }
+.mq-skin:not(#mq-0) .mq-box .wp-block-media-text.has-media-on-the-right .wp-block-media-text__content{ padding: 0 30px 0 0; }
+.mq-skin:not(#mq-0) .mq-box .wp-block-columns{ gap: 22px; margin-bottom: 12px; }
+.mq-skin:not(#mq-0) .mq-box .wp-block-button__link{ display: inline-flex; align-items: center; padding: 10px 20px; border-radius: 10px; font: 800 15px/1.2 var(--f-body); color: #fff; background: linear-gradient(180deg, #ff2b3d, #c70d1e); border: 1px solid rgba(255, 255, 255, .25); box-shadow: 0 0 14px rgba(255, 40, 60, .4); text-decoration: none; }
+.mq-skin:not(#mq-0) .mq-box .wp-block-separator{ border: 0; height: 2px; background: var(--gold-line); opacity: .6; }
+.mq-skin:not(#mq-0) .mq-box .wp-block-quote{ border-left: 4px solid var(--gold); padding-left: 16px; margin: 0 0 14px; font-style: italic; }
+/* round photos (People) */
+.mq-skin:not(#mq-0) .mq-box .is-style-mq-round{ text-align: center; }
+.mq-skin:not(#mq-0) .mq-box .is-style-mq-round img{ width: 132px !important; height: 132px !important; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 4px solid var(--gold); box-shadow: 0 0 0 4px rgba(0, 0, 0, .25), 0 6px 16px rgba(0, 0, 0, .4); margin: 0 auto; display: block; }
+.mq-skin:not(#mq-0) .mq-box--people .wp-block-column{ text-align: center; }
+.mq-skin:not(#mq-0) .mq-box--people h4{ margin: 10px 0 2px; }
+.mq-skin:not(#mq-0) .mq-box--people p{ font-size: 15px; color: var(--cream); margin: 0; }
+/* a caption as a badge on the photo (Then & Now) */
+.mq-skin:not(#mq-0) .mq-box .is-style-mq-badge{ position: relative; }
+.mq-skin:not(#mq-0) .mq-box .is-style-mq-badge img{ aspect-ratio: 16 / 9; object-fit: cover; width: 100%; }
+.mq-skin:not(#mq-0) .mq-box .is-style-mq-badge figcaption{ position: absolute; left: 12px; top: 12px; margin: 0; background: #b3121b; color: #fff; font: 800 17px/1.2 var(--f-body); padding: 5px 14px; border-radius: 30px; border: 2px solid var(--gold); box-shadow: 0 3px 10px rgba(0, 0, 0, .5); }
+.mq-skin:not(#mq-0) .mq-box--then p.has-text-align-center{ text-align: center; }
+/* questions */
+.mq-skin:not(#mq-0) .mq-box details{ background: rgba(0, 0, 0, .25); border: 1px solid rgba(255, 215, 120, .3); border-radius: 12px; padding: 14px 18px; margin: 0 0 10px; }
+.mq-skin:not(#mq-0) .mq-box details summary{ font-weight: 800; font-size: 18px; cursor: pointer; color: #fff; }
+.mq-skin:not(#mq-0) .mq-box details[open] summary{ color: var(--gold); margin-bottom: 8px; }
+.mq-skin:not(#mq-0) .mq-box details p{ margin: 0; font-size: 16px; }
+/* gallery */
+.mq-skin:not(#mq-0) .mq-box .wp-block-gallery{ gap: 12px; }
+.mq-skin:not(#mq-0) .mq-box .wp-block-gallery .wp-block-image img{ border-width: 2px; aspect-ratio: 4 / 3; object-fit: cover; }
+/* a box with its own see-through: the ribbon above it follows the box */
+.mq-skin:not(#mq-0) .mq-see .rr-ribbon span{ --rr-glass: inherit; }
+@container mq (max-width: 700px) {
+	.mq-skin:not(#mq-0) .mq-box .wp-block-media-text__content, .mq-skin:not(#mq-0) .mq-box .wp-block-media-text.has-media-on-the-right .wp-block-media-text__content{ padding: 18px 0 0; }
+	.mq-skin:not(#mq-0) .mq-box--people .wp-block-columns{ display: grid; grid-template-columns: 1fr 1fr; }
+	.mq-skin:not(#mq-0) .mq-box .is-style-mq-round img{ width: 104px !important; height: 104px !important; }
+}
+
+.mq-script { font: 400 clamp(24px, 3vw, 36px)/1.2 "Playball", "Great Vibes", cursive; text-align: center; }

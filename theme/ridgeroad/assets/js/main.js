@@ -612,7 +612,18 @@
 		}
 	}
 
+	/* Phones: only four buttons fit at the top; More shows the rest. */
+	function moreMenu() {
+		document.querySelectorAll('[data-rr-more]').forEach(function (b) {
+			b.addEventListener('click', function () {
+				var ul = b.closest('.rr-menu'), open = ul.classList.toggle('is-open');
+				b.setAttribute('aria-expanded', open ? 'true' : 'false');
+			});
+		});
+	}
+
 	function init() {
+		moreMenu();
 		presence();
 		votes();
 		seqVideos();
