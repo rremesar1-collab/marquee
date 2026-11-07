@@ -561,10 +561,11 @@ marquee_geo_row( $s );
 									$look = array(
 										'style' => array( __( 'Text', 'marquee' ), array( 'auto' => __( 'Automatic', 'marquee' ), 'still' => __( 'Still', 'marquee' ), 'scroll' => __( 'Scrolling', 'marquee' ) ) ),
 										'size'  => array( __( 'Size', 'marquee' ), array( 'auto' => __( 'Automatic', 'marquee' ), 's' => __( 'Small', 'marquee' ), 'm' => __( 'Medium', 'marquee' ), 'l' => __( 'Large', 'marquee' ), 'xl' => __( 'Fill the screen', 'marquee' ), 'custom' => __( 'Custom…', 'marquee' ) ) ),
+										'scale' => array( __( 'Bigger or smaller', 'marquee' ), array( '100' => __( 'As picked', 'marquee' ), '60' => __( 'Smaller', 'marquee' ), '80' => __( 'A little smaller', 'marquee' ), '125' => __( 'A little bigger', 'marquee' ), '150' => __( 'Bigger', 'marquee' ), '200' => __( 'Biggest', 'marquee' ) ) ),
 										'speed' => array( __( 'Scroll speed', 'marquee' ), array( 'normal' => __( 'Normal', 'marquee' ), 'slow' => __( 'Slow', 'marquee' ), 'fast' => __( 'Fast', 'marquee' ) ) ),
 									);
 									foreach ( $look as $k => $l ) :
-										$cur_v = isset( $r[ $k ] ) ? $r[ $k ] : key( $l[1] );
+										$cur_v = isset( $r[ $k ] ) ? (string) $r[ $k ] : (string) key( $l[1] );
 										?>
 										<label><?php echo esc_html( $l[0] ); ?>
 											<select name="fpp_screens[<?php echo (int) $i; ?>][<?php echo esc_attr( $k ); ?>]">
@@ -583,7 +584,7 @@ marquee_geo_row( $s );
 						</tbody>
 					</table>
 					<small><?php echo is_array( $mq_models ) && $mq_models ? esc_html__( 'Pick your screen from the list: those are the Pixel Overlay Models on the FPP running the plugin. For a screen on a different FPP, type that FPP’s address and the model name. Not in the list? Upload your models to the FPP with FPP Connect (Models ticked).', 'marquee' ) : esc_html__( 'FPP address: the FPP that drives that screen (127.0.0.1 means the FPP running the script). Overlay model: its name under FPP → Input/Output Setup → Pixel Overlay Models.', 'marquee' ); ?></small>
-					<small class="mq__fine"><?php esc_html_e( 'Text and Size: Automatic works for most screens. Small pixel matrices (64 pixels tall or less) get one big line that scrolls across when the message won’t fit; TVs and projectors get still text with the name on its own line. Scrolling text always crosses the screen in the time each name is up; Slow may not quite finish on long messages. Custom size: the font size FPP uses, about how many pixels tall the letters are (a 10-pixel-tall matrix looks good at 8 or 9). Still text goes on one, two or three centered lines (the name on its own line after the comma), whichever lets the letters be biggest without going over that size; scrolling text keeps it.', 'marquee' ); ?></small>
+					<small class="mq__fine"><?php esc_html_e( 'Text and Size: Automatic works for most screens. Pixel matrices (up to 256 pixels tall) get one big line that scrolls across when the message won’t fit; TVs and projectors get still text with the name on its own line. Bigger or smaller makes the letters bigger or smaller than that, but still text never goes past the edges of the screen (for even bigger letters, use Scrolling). Scrolling text always crosses the screen in the time each name is up; Slow may not quite finish on long messages. Custom size: the font size FPP uses, about how many pixels tall the letters are (a 10-pixel-tall matrix looks good at 8 or 9). Still text goes on one, two or three centered lines (the name on its own line after the comma), whichever lets the letters be biggest without going over that size; scrolling text keeps it.', 'marquee' ); ?></small>
 						<?php $mq_next( 'screens' ); ?>
 					</div>
 
@@ -907,6 +908,7 @@ marquee_geo_row( $s );
 				<?php marquee_pbox_end(); ?>
 
 				<?php marquee_pbox( 'countdown', __( 'Countdown', 'marquee' ), __( 'Counts down to showtime and to Christmas', 'marquee' ), 'show_countdown' ); ?>
+					<?php marquee_field( 'count_live' ); ?>
 				<?php $cto = marquee_theme_get( 'count_to' ); ?>
 				<h3><?php esc_html_e( 'Countdown', 'marquee' ); ?></h3>
 				<div class="mq__row">
@@ -1027,7 +1029,7 @@ marquee_geo_row( $s );
 				</div>
 				<?php marquee_pbox_end(); ?>
 
-				<?php marquee_pbox( 'app', __( 'Get the App', 'marquee' ), __( 'Shows on phones that can install your website as an app', 'marquee' ) ); ?>
+				<?php marquee_pbox( 'app', __( 'Get the App', 'marquee' ), __( 'Shows on phones that can install your website as an app', 'marquee' ), 'app_show' ); ?>
 					<?php marquee_switch( 'app_auto_on', __( '“The lights are on!” alert', 'marquee' ), __( 'Sent to app users when FPP starts your show (needs https)', 'marquee' ) ); ?>
 				<?php marquee_pbox_end(); ?>
 
@@ -1093,26 +1095,45 @@ marquee_geo_row( $s );
 						<?php endforeach; ?>
 					</fieldset>
 					<p><label for="mq-facts-title"><?php esc_html_e( 'Page title', 'marquee' ); ?></label><input id="mq-facts-title" name="facts_title" type="text" maxlength="40" value="<?php echo esc_attr( $tm( 'facts_title' ) ); ?>"><small><?php esc_html_e( 'Also the name on the button at the top.', 'marquee' ); ?></small></p>
+					<?php marquee_lang_boxes( 'facts_title', __( 'Page title', 'marquee' ) ); ?>
 
 					<h4 class="mq-facts__part"><label><input type="checkbox" name="facts_hero" value="1" <?php checked( (bool) $tm( 'facts_hero' ) ); ?>> <?php esc_html_e( 'Your show: a photo and your numbers', 'marquee' ); ?></label></h4>
 					<div class="mq-facts__box">
 						<?php marquee_media_field( 'facts_photo', __( 'Photo of your show', 'marquee' ), __( 'A wide night photo of your display works best.', 'marquee' ), $tm( 'facts_photo' ) ? array( (int) $tm( 'facts_photo' ) ) : array(), false ); ?>
 						<p><label for="mq-facts-head"><?php esc_html_e( 'Headline on the photo (optional)', 'marquee' ); ?></label><input id="mq-facts-head" name="facts_tagline" type="text" maxlength="70" placeholder="<?php esc_attr_e( 'Lighting up our street since 2019', 'marquee' ); ?>" value="<?php echo esc_attr( $tm( 'facts_tagline' ) ); ?>"></p>
+						<?php marquee_lang_boxes( 'facts_tagline', __( 'Headline on the photo', 'marquee' ) ); ?>
 						<p><label for="mq-facts-line"><?php esc_html_e( 'Line under the headline (optional)', 'marquee' ); ?></label><input id="mq-facts-line" name="facts_line" type="text" maxlength="120" value="<?php echo esc_attr( $tm( 'facts_line' ) ); ?>"></p>
+						<?php marquee_lang_boxes( 'facts_line', __( 'Line under the headline', 'marquee' ) ); ?>
 						<p class="mq__fine"><?php esc_html_e( 'The numbers under the photo are your Behind the Lights numbers. They count up when the page opens.', 'marquee' ); ?> <a href="#mq-step-10-stats"><?php esc_html_e( 'Change the numbers', 'marquee' ); ?></a></p>
 					</div>
 
 					<h4 class="mq-facts__part"><label><input type="checkbox" name="facts_did" value="1" <?php checked( (bool) $tm( 'facts_did' ) ); ?>> <?php esc_html_e( 'Did You Know? fact cards', 'marquee' ); ?></label></h4>
 					<div class="mq-facts__box">
+						<?php marquee_field( 'facts_did_title', array( 'label' => __( 'Title of this part', 'marquee' ) ) ); ?>
 						<?php
-						$mq_fc = function_exists( 'ridgeroad_facts' ) ? ridgeroad_facts() : array();
+						$mq_fc = array_values( array_filter( (array) $tm( 'facts' ), function ( $r ) {
+							return is_array( $r ) && ( '' !== trim( (string) ( $r['big'] ?? '' ) ) || '' !== trim( (string) ( $r['text'] ?? '' ) ) );
+						} ) ); // as typed (with each language's words), not as a visitor sees them
+						$mq_fc_langs = function_exists( 'ridgeroad_lang_extra' ) ? ridgeroad_lang_extra() : array();
+						$mq_fc_names = function_exists( 'marquee_langs_all' ) ? marquee_langs_all() : array();
 						$mq_icons = function_exists( 'ridgeroad_fact_icons' ) ? ridgeroad_fact_icons() : array( 'star' => 'Star' );
-						$mq_fc_row = function ( $r ) use ( $mq_icons ) {
+						$mq_fc_row = function ( $r ) use ( $mq_icons, $mq_fc_langs, $mq_fc_names ) {
 							?>
 							<li class="mq-fc__row" data-mq-fcrow>
 								<label class="mq-fc__icon"><?php esc_html_e( 'Picture', 'marquee' ); ?><select name="fc_icon[]"><?php foreach ( $mq_icons as $k => $l ) : ?><option value="<?php echo esc_attr( $k ); ?>" <?php selected( $r['icon'], $k ); ?>><?php echo esc_html( $l ); ?></option><?php endforeach; ?></select></label>
 								<label class="mq-fc__big"><?php esc_html_e( 'Big words', 'marquee' ); ?><input name="fc_big[]" type="text" maxlength="24" placeholder="<?php esc_attr_e( '40 hours', 'marquee' ); ?>" value="<?php echo esc_attr( $r['big'] ); ?>"></label>
 								<label class="mq-fc__text"><?php esc_html_e( 'The fact', 'marquee' ); ?><input name="fc_text[]" type="text" maxlength="140" placeholder="<?php esc_attr_e( 'to program one song. Every light is set by hand.', 'marquee' ); ?>" value="<?php echo esc_attr( $r['text'] ); ?>"></label>
+								<?php if ( $mq_fc_langs ) : ?>
+									<details class="mq-f__langs mq-fc__langs"<?php echo array_filter( array_map( function ( $c ) use ( $r ) { return ( $r[ 'big_' . $c ] ?? '' ) . ( $r[ 'text_' . $c ] ?? '' ); }, $mq_fc_langs ) ) ? ' open' : ''; ?>>
+										<summary><?php echo esc_html( sprintf( /* translators: %s: language names */ __( 'Other languages: %s', 'marquee' ), implode( ', ', array_map( function ( $c ) use ( $mq_fc_names ) { return $mq_fc_names[ $c ][0] ?? $c; }, $mq_fc_langs ) ) ) ); ?></summary>
+										<?php foreach ( $mq_fc_langs as $c ) : ?>
+											<span class="mq-fc__lang">
+												<label class="mq-fc__big"><?php echo esc_html( __( 'Big words', 'marquee' ) . ' · ' . ( $mq_fc_names[ $c ][0] ?? $c ) ); ?><input name="fc_big_<?php echo esc_attr( $c ); ?>[]" type="text" maxlength="24" value="<?php echo esc_attr( $r[ 'big_' . $c ] ?? '' ); ?>"></label>
+												<label class="mq-fc__text"><?php echo esc_html( __( 'The fact', 'marquee' ) . ' · ' . ( $mq_fc_names[ $c ][0] ?? $c ) ); ?><input name="fc_text_<?php echo esc_attr( $c ); ?>[]" type="text" maxlength="140" value="<?php echo esc_attr( $r[ 'text_' . $c ] ?? '' ); ?>"></label>
+											</span>
+										<?php endforeach; ?>
+									</details>
+								<?php endif; ?>
 								<span class="mq-fc__tools">
 									<button type="button" class="button" data-mq-fcmove="-1" aria-label="<?php esc_attr_e( 'Move up', 'marquee' ); ?>">↑</button>
 									<button type="button" class="button" data-mq-fcmove="1" aria-label="<?php esc_attr_e( 'Move down', 'marquee' ); ?>">↓</button>
@@ -1129,6 +1150,7 @@ marquee_geo_row( $s );
 
 					<h4 class="mq-facts__part"><label><input type="checkbox" name="facts_fav" value="1" <?php checked( (bool) $tm( 'facts_fav' ) ); ?>> <?php esc_html_e( 'Fan Favorites by year', 'marquee' ); ?></label></h4>
 					<div class="mq-facts__box">
+						<?php marquee_field( 'facts_fav_title', array( 'label' => __( 'Title of this part', 'marquee' ) ) ); ?>
 						<p class="mq__fine"><?php esc_html_e( 'Years with song voting fill in by themselves, with the top 5 songs and their votes. For years before you had voting, type the top songs here.', 'marquee' ); ?></p>
 						<?php
 						$mq_fp = array_values( array_filter( (array) $tm( 'fav_past' ), 'is_array' ) ); // nothing saved yet = an empty list, not one empty row

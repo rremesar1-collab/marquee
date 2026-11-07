@@ -4,7 +4,7 @@ Theme URI: https://alateka.com/
 Author: Alateka Corporation
 Author URI: https://alateka.com/
 Description: The festive Christmas look for the Marquee light show plugin: garlands, bows, a night-sky scene and glowing show cards for your status, Now Playing, weather, Kids’ Corner and more. Needs the free Marquee plugin (it holds all the show features and settings).
-Version: 2.23.0
+Version: 2.23.1
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -884,6 +884,10 @@ a.rr-sp__card:focus-visible { outline: 2px solid var(--gold); outline-offset: 4p
 .rr-playlist.is-long .rr-pl::-webkit-scrollbar-thumb { background: #f7c95a; border-radius: 10px; }
 .rr-playlist.is-long .rr-pl:focus-visible { outline: 2px solid #fde866; outline-offset: 4px; }
 .rr-pl__hint { margin: 0 0 10px; text-align: center; font-size: 14px; color: #e3e9f8; }
+.rr-pl__top { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px 16px; margin: 0 0 12px; }
+.rr-pl__top .rr-pl__hint { margin: 0; }
+.rr-pl__vote { padding: 8px 16px; font-size: 14px; }
+.rr-pl__vote .rr-cicon { width: 20px; height: 20px; }
 .rr-pl__item {
 	break-inside: avoid; display: flex; align-items: center; gap: 10px; margin: 0 0 8px; padding: 9px 12px; border-radius: 10px;
 	background: rgba(0, 30, 10, .55); border: 1px solid rgba(247, 201, 90, .25); font-size: 15px; color: #eef4ea;
@@ -1242,7 +1246,7 @@ img.emoji, img.wp-smiley { display: inline !important; width: 1em !important; he
 .rr-ff__body strong { color: #fff; }
 .rr-grid--vote { grid-template-columns: 1.35fr 1fr; align-items: stretch; }
 .rr-grid--vote > .rr-panel { display: flex; flex-direction: column; }
-.rr-vlist { list-style: none; margin: 4px 0 0; padding: 0 4px 0 0; display: flex; flex-direction: column; gap: 6px; max-height: 520px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: rgba(247, 201, 90, .6) transparent; }
+.rr-vlist { list-style: none; margin: 4px 0 0; padding: 0 4px 0 0; display: flex; flex-direction: column; gap: 6px; max-height: 600px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: rgba(247, 201, 90, .6) transparent; }
 .rr-vlist__item { display: flex; align-items: center; gap: 10px; padding: 7px 8px 7px 10px; border-radius: 12px; background: rgba(0, 0, 0, .3); border: 1px solid rgba(255, 255, 255, .08); }
 .rr-vlist__num { flex: none; width: 24px; font: 800 13px var(--f-body); color: #f0bdbd; text-align: right; }
 .rr-vlist__name { flex: 1; min-width: 0; }
@@ -1279,7 +1283,7 @@ img.emoji, img.wp-smiley { display: inline !important; width: 1em !important; he
 .rr-lb__mine { margin: auto 0 0; padding: 10px 12px; border-radius: 10px; background: rgba(255, 60, 90, .16); border: 1px solid rgba(255, 110, 140, .5); font-size: 14px; }
 .rr-lb__total + .rr-lb__mine { margin-top: 14px; }
 .rr-lb__msg { min-height: 1.3em; margin: 8px 0 0; font-weight: 800; color: #fde866; }
-@media (max-width: 900px) { .rr-grid--vote { grid-template-columns: 1fr; } .rr-vlist { max-height: 420px; } }
+@media (max-width: 900px) { .rr-grid--vote { grid-template-columns: 1fr; } .rr-vlist { max-height: min(600px, 72vh); } }
 
 /* ---------- Sequence videos ---------- */
 .rr-seq__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; max-width: 1180px; margin: 0 auto; }
@@ -1890,6 +1894,11 @@ body.rr-boxes--blue .rr-panel--red, body.rr-boxes--blue .rr-panel--green, body.r
 		linear-gradient(#0a1d44, #0a1d44) border-box;
 }
 body.rr-boxes--blue .rr-stat, body.rr-boxes--blue .rr-stat:nth-child(even) { background: radial-gradient(ellipse at 50% 0%, rgba(40, 110, 220, .35), transparent 70%), linear-gradient(180deg, #02214d, #00122e); box-shadow: 0 0 16px rgba(70, 150, 255, .35), inset 0 0 18px rgba(0, 0, 0, .4); }
+
+/* Box colors: the glow around each box follows the color too (a red site has no green glow) */
+body.rr-boxes--red :is(.rr-panel--red, .rr-panel--green, .rr-panel--blue, .rr-panel--night, .rr-kids-teaser, .rr-ff:not(.is-today), .rr-kc__prize):not(.rr-banner) { border-color: rgba(255, 120, 90, .55); box-shadow: 0 0 0 2px rgba(120, 0, 0, .9), 0 0 16px 3px rgba(255, 40, 30, .55), 0 0 40px rgba(255, 60, 30, .3), inset 0 0 26px rgba(255, 40, 20, .25); }
+body.rr-boxes--green :is(.rr-panel--red, .rr-panel--green, .rr-panel--blue, .rr-panel--night, .rr-kids-teaser, .rr-ff:not(.is-today), .rr-kc__prize):not(.rr-banner) { border-color: rgba(240, 200, 90, .7); box-shadow: 0 0 0 2px rgba(0, 40, 10, .9), 0 0 16px 3px rgba(60, 255, 100, .35), 0 0 36px rgba(255, 200, 80, .25), inset 0 0 24px rgba(80, 255, 120, .15); }
+body.rr-boxes--blue :is(.rr-panel--red, .rr-panel--green, .rr-panel--blue, .rr-panel--night, .rr-kids-teaser, .rr-ff:not(.is-today), .rr-kc__prize):not(.rr-banner) { border-color: rgba(120, 180, 255, .6); box-shadow: 0 0 0 2px rgba(0, 10, 40, .9), 0 0 16px 3px rgba(70, 150, 255, .45), 0 0 38px rgba(255, 70, 40, .22), inset 0 0 24px rgba(60, 140, 255, .2); }
 
 /* ---------- See-through boxes and titles (generated from the rules above by a script; Customize → Look → See-through slider).
    Only the fill colors fade; the words, bulbs, borders and glow stay solid. ---------- */

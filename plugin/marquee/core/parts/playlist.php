@@ -15,8 +15,19 @@ if ( ridgeroad_mod( 'show_playlist' ) && ! empty( $np['playlist'] ) ) : ?>
 <section id="playlist" class="rr-playlist<?php echo $pl_long ? ' is-long' : ''; ?>" aria-labelledby="rr-pl-h" data-rr-pl-when="<?php echo esc_attr( $pl_when ); ?>"<?php echo $pl_vis ? '' : ' hidden'; ?>>
 	<h2 id="rr-pl-h" class="rr-ribbon"><span><?php echo esc_html( ridgeroad_mod( 'playlist_title' ) ); ?></span></h2>
 	<div class="rr-panel rr-panel--green rr-playlist__panel">
-		<?php if ( $pl_long ) : ?>
-			<p class="rr-pl__hint"><?php echo esc_html( sprintf( /* translators: %d: number of songs */ __( '%d songs tonight. Scroll the list to see them all.', 'ridgeroad' ), count( $np['playlist'] ) ) ); ?></p>
+		<?php
+		// song voting is on: a button straight to it
+		$pl_vote = ridgeroad_mod( 'songs_show' ) && function_exists( 'ridgeroad_songs_url' ) && ridgeroad_songs_url() && function_exists( 'ridgeroad_song_list' ) && ridgeroad_song_list() ? ridgeroad_songs_url() . '#vote' : '';
+		?>
+		<?php if ( $pl_long || $pl_vote ) : ?>
+			<div class="rr-pl__top">
+				<?php if ( $pl_long ) : ?>
+					<p class="rr-pl__hint"><?php echo esc_html( sprintf( /* translators: %d: number of songs */ __( '%d songs tonight. Scroll the list to see them all.', 'ridgeroad' ), count( $np['playlist'] ) ) ); ?></p>
+				<?php endif; ?>
+				<?php if ( $pl_vote ) : ?>
+					<a class="rr-btn rr-btn--red rr-pl__vote" href="<?php echo esc_url( $pl_vote ); ?>"><?php echo ridgeroad_cicon( 'heart' ); ?><?php esc_html_e( 'Vote for your favorite', 'ridgeroad' ); ?></a>
+				<?php endif; ?>
+			</div>
 		<?php endif; ?>
 		<ol class="rr-pl" data-rr="playlist"<?php echo $pl_long ? ' tabindex="0" aria-label="' . esc_attr__( 'Tonight’s songs', 'ridgeroad' ) . '"' : ''; ?>>
 			<?php foreach ( $np['playlist'] as $i => $song ) : ?>

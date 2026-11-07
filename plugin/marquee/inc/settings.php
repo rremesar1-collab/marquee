@@ -423,6 +423,7 @@ function marquee_clean_screens( $rows ) {
 			'style' => $pick( 'style', array( 'auto', 'still', 'scroll' ) ),
 			'size'  => $pick( 'size', array( 'auto', 's', 'm', 'l', 'xl', 'custom' ) ),
 			'px'    => max( 0, min( 400, (int) ( $r['px'] ?? 0 ) ) ),
+			'scale' => in_array( (int) ( $r['scale'] ?? 100 ), array( 60, 80, 100, 125, 150, 200 ), true ) ? (int) $r['scale'] : 100,
 			'speed' => $pick( 'speed', array( 'normal', 'slow', 'fast' ) ),
 		);
 	}
@@ -471,6 +472,7 @@ function marquee_fpp_config() {
 				'style' => $r['style'] ?? 'auto',   // how the text goes up: auto, still, scroll (script 3.8+)
 				'size'  => $r['size'] ?? 'auto',    // auto, s, m, l, xl, custom
 				'px'    => (int) ( $r['px'] ?? 0 ),  // custom: the font size (about how many pixels tall the letters are)
+				'scale' => (int) ( $r['scale'] ?? 100 ), // Bigger or smaller: percent of the size picked (script 3.17+)
 				'speed' => $r['speed'] ?? 'normal', // scrolling speed: slow, normal, fast
 			);
 		}
@@ -669,6 +671,10 @@ function marquee_save_facts( $in ) {
 	$ic    = $col( 'fc_icon' );
 	$big   = $col( 'fc_big' );
 	$txt   = $col( 'fc_text' );
+	$langs = array();
+	foreach ( function_exists( 'ridgeroad_lang_extra' ) ? ridgeroad_lang_extra() : array() as $c ) {
+		$langs[ $c ] = array( $col( 'fc_big_' . $c ), $col( 'fc_text_' . $c ) );
+	}
 	$rows  = array();
 	for ( $i = 0, $n = max( count( $big ), count( $txt ) ); $i < $n && count( $rows ) < 16; $i++ ) {
 		$b = mb_substr( sanitize_text_field( (string) ( $big[ $i ] ?? '' ) ), 0, 24 );
@@ -676,7 +682,16 @@ function marquee_save_facts( $in ) {
 		if ( '' === $b && '' === $x ) {
 			continue;
 		}
-		$rows[] = array( 'icon' => isset( $icons[ $ic[ $i ] ?? '' ] ) ? $ic[ $i ] : 'star', 'big' => $b, 'text' => $x );
+		$row = array( 'icon' => isset( $icons[ $ic[ $i ] ?? '' ] ) ? $ic[ $i ] : 'star', 'big' => $b, 'text' => $x );
+		foreach ( $langs as $c => $cols ) { // the same card in the other languages
+			$lb = mb_substr( sanitize_text_field( (string) ( $cols[0][ $i ] ?? '' ) ), 0, 24 );
+			$lt = mb_substr( sanitize_text_field( (string) ( $cols[1][ $i ] ?? '' ) ), 0, 140 );
+			if ( '' !== $lb || '' !== $lt ) {
+				$row[ 'big_' . $c ]  = $lb;
+				$row[ 'text_' . $c ] = $lt;
+			}
+		}
+		$rows[] = $row;
 	}
 	set_theme_mod( 'facts', $rows );
 	$yrs  = $col( 'fp_year' );

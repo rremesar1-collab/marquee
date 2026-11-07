@@ -32,7 +32,7 @@ $sf_intro = '' !== $sf_head || '' !== $sf_line;
 
 	<?php if ( $sf_did ) : ?>
 		<section class="rr-facts__sec rr-facts__did" aria-labelledby="rr-did-h">
-			<h2 id="rr-did-h" class="rr-ribbon"><span><?php esc_html_e( 'Did You Know?', 'ridgeroad' ); ?></span></h2>
+			<h2 id="rr-did-h" class="rr-ribbon"><span><?php echo esc_html( ridgeroad_mod( 'facts_did_title' ) ); ?></span></h2>
 			<div class="rr-panel rr-panel--green">
 				<ul class="rr-mfacts">
 					<?php foreach ( $sf_did as $d ) : ?>
@@ -45,7 +45,7 @@ $sf_intro = '' !== $sf_head || '' !== $sf_line;
 
 	<?php if ( $sf_fav ) : ?>
 		<section class="rr-facts__sec rr-facts__fav" aria-labelledby="rr-fav-h">
-			<h2 id="rr-fav-h" class="rr-ribbon"><span><?php esc_html_e( 'Fan Favorites', 'ridgeroad' ); ?></span></h2>
+			<h2 id="rr-fav-h" class="rr-ribbon"><span><?php echo esc_html( ridgeroad_mod( 'facts_fav_title' ) ); ?></span></h2>
 			<div class="rr-panel rr-panel--red">
 				<div class="rr-fyears">
 					<?php foreach ( $sf_fav as $y => $l ) : ?>

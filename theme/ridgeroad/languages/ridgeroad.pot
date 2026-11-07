@@ -5083,3 +5083,26 @@ msgstr ""
 
 msgid "More"
 msgstr ""
+
+msgid "Did You Know? title"
+msgstr ""
+
+msgid "Fan Favorites title"
+msgstr ""
+
+msgid "On phones that can install your website as an app."
+msgstr ""
+
+msgid "Show the Get the App box"
+msgstr ""
+
+msgid ""
+"Shown in place of the clocks during show hours. Leave empty for “The Show Is"
+" On Right Now — Tune to (your station)!”"
+msgstr ""
+
+msgid "Vote for your favorite"
+msgstr ""
+
+msgid "Words while the show is on"
+msgstr ""

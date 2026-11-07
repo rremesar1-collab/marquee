@@ -7660,3 +7660,61 @@ msgstr "Utiliser cette mise en page"
 
 msgid "Start with a blank page"
 msgstr "Commencer avec une page vide"
+
+msgid "A little bigger"
+msgstr "Un peu plus grand"
+
+msgid "A little smaller"
+msgstr "Un peu plus petit"
+
+msgid "As picked"
+msgstr "Tel quel"
+
+msgid "Bigger"
+msgstr "Plus grand"
+
+msgid "Bigger or smaller"
+msgstr "Plus grand ou plus petit"
+
+msgid "Biggest"
+msgstr "Le plus grand"
+
+msgid "Smaller"
+msgstr "Plus petit"
+
+msgid "Headline on the photo"
+msgstr "Titre sur la photo"
+
+msgid "Line under the headline"
+msgstr "Ligne sous le titre"
+
+msgid "Title of this part"
+msgstr "Titre de cette partie"
+
+msgid ""
+"Text and Size: Automatic works for most screens. Pixel matrices (up to 256 "
+"pixels tall) get one big line that scrolls across when the message won’t "
+"fit; TVs and projectors get still text with the name on its own line. Bigger"
+" or smaller makes the letters bigger or smaller than that, but still text "
+"never goes past the edges of the screen (for even bigger letters, use "
+"Scrolling). Scrolling text always crosses the screen in the time each name "
+"is up; Slow may not quite finish on long messages. Custom size: the font "
+"size FPP uses, about how many pixels tall the letters are (a 10-pixel-tall "
+"matrix looks good at 8 or 9). Still text goes on one, two or three centered "
+"lines (the name on its own line after the comma), whichever lets the letters"
+" be biggest without going over that size; scrolling text keeps it."
+msgstr ""
+"Texte et Taille : Automatique convient à la plupart des écrans. Les matrices"
+" de pixels (jusqu’à 256 pixels de haut) reçoivent une seule grande ligne qui"
+" défile quand le message ne tient pas ; les télés et projecteurs reçoivent "
+"un texte fixe avec le nom sur sa propre ligne. Plus grand ou plus petit "
+"agrandit ou réduit les lettres à partir de là, mais un texte fixe ne dépasse"
+" jamais les bords de l’écran (pour des lettres encore plus grandes, "
+"choisissez Défilant). Le texte défilant traverse toujours l’écran pendant la"
+" durée d’affichage de chaque nom ; Lente peut ne pas tout à fait finir sur "
+"les longs messages. Taille personnalisée : la taille de police utilisée par "
+"FPP, soit la hauteur approximative des lettres en pixels (une matrice de 10 "
+"pixels de haut rend bien à 8 ou 9). Un texte fixe s’affiche sur une, deux ou"
+" trois lignes centrées (le nom sur sa propre ligne après la virgule), selon "
+"ce qui donne les plus grandes lettres sans dépasser cette taille ; un texte "
+"défilant la conserve."

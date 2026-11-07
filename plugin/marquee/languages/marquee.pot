@@ -7893,3 +7893,47 @@ msgstr ""
 
 msgid "Start with a blank page"
 msgstr ""
+
+msgid "A little bigger"
+msgstr ""
+
+msgid "A little smaller"
+msgstr ""
+
+msgid "As picked"
+msgstr ""
+
+msgid "Bigger"
+msgstr ""
+
+msgid "Bigger or smaller"
+msgstr ""
+
+msgid "Biggest"
+msgstr ""
+
+msgid "Smaller"
+msgstr ""
+
+msgid "Headline on the photo"
+msgstr ""
+
+msgid "Line under the headline"
+msgstr ""
+
+msgid "Title of this part"
+msgstr ""
+
+msgid ""
+"Text and Size: Automatic works for most screens. Pixel matrices (up to 256 "
+"pixels tall) get one big line that scrolls across when the message won’t "
+"fit; TVs and projectors get still text with the name on its own line. Bigger"
+" or smaller makes the letters bigger or smaller than that, but still text "
+"never goes past the edges of the screen (for even bigger letters, use "
+"Scrolling). Scrolling text always crosses the screen in the time each name "
+"is up; Slow may not quite finish on long messages. Custom size: the font "
+"size FPP uses, about how many pixels tall the letters are (a 10-pixel-tall "
+"matrix looks good at 8 or 9). Still text goes on one, two or three centered "
+"lines (the name on its own line after the comma), whichever lets the letters"
+" be biggest without going over that size; scrolling text keeps it."
+msgstr ""

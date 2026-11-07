@@ -12,7 +12,7 @@ extract( ridgeroad_home_ctx(), EXTR_SKIP ); // $status, $np, $wx, $opts, $b_titl
 	$hol = ridgeroad_count_target();
 	?>
 <section class="rr-count" aria-label="<?php esc_attr_e( 'Countdown', 'ridgeroad' ); ?>"
-	data-rr-count data-opening="<?php echo (int) $status['opening_ts']; ?>" data-start="<?php echo (int) $status['start_ts']; ?>" data-end="<?php echo (int) $status['end_ts']; ?>" data-now="<?php echo (int) $status['now_ts']; ?>" data-xmas="<?php echo (int) $hol[0]; ?>" data-hol-many="<?php echo esc_attr( $hol[2] ); ?>" data-hol-one="<?php echo esc_attr( $hol[3] ); ?>" data-hol-day="<?php echo esc_attr( $hol[4] ); ?>">
+	data-rr-count data-opening="<?php echo (int) $status['opening_ts']; ?>" data-start="<?php echo (int) $status['start_ts']; ?>" data-end="<?php echo (int) $status['end_ts']; ?>" data-now="<?php echo (int) $status['now_ts']; ?>" data-xmas="<?php echo (int) $hol[0]; ?>" data-hol-many="<?php echo esc_attr( $hol[2] ); ?>" data-hol-one="<?php echo esc_attr( $hol[3] ); ?>" data-hol-day="<?php echo esc_attr( $hol[4] ); ?>"<?php echo '' !== trim( (string) ridgeroad_mod( 'count_live' ) ) ? ' data-live="' . esc_attr( ridgeroad_mod( 'count_live' ) ) . '"' : ''; ?>>
 	<p class="rr-count__label" data-rr="count-label"><?php esc_html_e( 'Countdown', 'ridgeroad' ); ?></p>
 	<div class="rr-count__tiles" data-rr="count-tiles">
 		<div class="rr-count__tile"><b data-u="d">00</b><span><?php esc_html_e( 'Days', 'ridgeroad' ); ?></span></div>

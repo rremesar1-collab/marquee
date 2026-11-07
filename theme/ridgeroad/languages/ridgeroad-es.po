@@ -3950,3 +3950,29 @@ msgstr ""
 
 msgid "More"
 msgstr "Más"
+
+msgid "Did You Know? title"
+msgstr "Título de ¿Sabías que…?"
+
+msgid "Fan Favorites title"
+msgstr "Título de Las favoritas del público"
+
+msgid "On phones that can install your website as an app."
+msgstr "En los teléfonos que pueden instalar tu sitio como app."
+
+msgid "Show the Get the App box"
+msgstr "Mostrar el recuadro Descarga la app"
+
+msgid ""
+"Shown in place of the clocks during show hours. Leave empty for “The Show Is"
+" On Right Now — Tune to (your station)!”"
+msgstr ""
+"Se muestra en lugar de los relojes durante el horario del espectáculo. "
+"Déjalo vacío para usar “¡El espectáculo está en marcha! ¡Sintoniza (tu "
+"emisora)!”"
+
+msgid "Vote for your favorite"
+msgstr "Vota por tu favorita"
+
+msgid "Words while the show is on"
+msgstr "Texto mientras el espectáculo está en marcha"

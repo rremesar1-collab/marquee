@@ -6,6 +6,9 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+if ( ! ridgeroad_mod( 'app_show' ) ) {
+	return; // the show turned the Get the App box off
+}
 $sw = function ( $k, $label, $sub ) {
 	printf(
 		'<div class="rr-app__opt"><span id="rr-app-%1$s">%2$s<small>%3$s</small></span><button type="button" class="rr-app__sw" role="switch" aria-checked="true" aria-labelledby="rr-app-%1$s" data-rr-app-topic="%1$s"></button></div>',

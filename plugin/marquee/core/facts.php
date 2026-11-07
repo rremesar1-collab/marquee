@@ -42,15 +42,22 @@ function ridgeroad_facts_style() {
 
 /** The fact cards: rows of icon, big words and a line. */
 function ridgeroad_facts() {
-	$out = array();
+	$out  = array();
+	$lang = function_exists( 'ridgeroad_lang_now' ) ? ridgeroad_lang_now() : ''; // a visitor who picked another language sees its words, when typed
 	foreach ( (array) ridgeroad_mod( 'facts' ) as $r ) {
 		if ( ! is_array( $r ) || ( '' === trim( (string) ( $r['big'] ?? '' ) ) && '' === trim( (string) ( $r['text'] ?? '' ) ) ) ) {
 			continue;
 		}
+		$big  = (string) ( $r['big'] ?? '' );
+		$text = (string) ( $r['text'] ?? '' );
+		if ( $lang && '' !== trim( (string) ( $r[ 'big_' . $lang ] ?? '' ) . (string) ( $r[ 'text_' . $lang ] ?? '' ) ) ) {
+			$big  = (string) ( $r[ 'big_' . $lang ] ?? '' );
+			$text = (string) ( $r[ 'text_' . $lang ] ?? '' );
+		}
 		$out[] = array(
 			'icon' => isset( ridgeroad_fact_icons()[ $r['icon'] ?? '' ] ) ? $r['icon'] : 'star',
-			'big'  => (string) ( $r['big'] ?? '' ),
-			'text' => (string) ( $r['text'] ?? '' ),
+			'big'  => $big,
+			'text' => $text,
 		);
 	}
 	return $out;

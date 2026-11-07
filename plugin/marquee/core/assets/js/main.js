@@ -240,7 +240,7 @@
 		else if (now < start) { target = start; text = tr('Lights On In'); }
 		else if (now < end) {
 			var rEl = document.querySelector('.rr-radio'), radio = rEl ? rEl.textContent.trim() : '';   // the show's own station, from Tonight's Show
-			text = radio ? tr('The Show Is On Right Now — Tune to %s!').replace('%s', function () { return radio; }) : tr('The Show Is On Right Now!');
+			text = cd.getAttribute('data-live') || (radio ? tr('The Show Is On Right Now — Tune to %s!').replace('%s', function () { return radio; }) : tr('The Show Is On Right Now!')); // the show's own words, if typed
 		}
 		else { target = start; text = tr('Next Show In'); }
 		if (label && label.textContent !== text) { label.textContent = text; }

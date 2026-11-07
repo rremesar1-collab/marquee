@@ -87,29 +87,38 @@ function marquee_field( $key, $o = array() ) {
 	echo '</p>';
 	// the language button is on: the same words in each other language, right under it
 	if ( marquee_field_langs( $key, $type ) ) {
-		$all   = function_exists( 'marquee_langs_all' ) ? marquee_langs_all() : array();
-		$names = array();
-		$any   = false;
-		foreach ( ridgeroad_lang_extra() as $code ) {
-			$names[] = isset( $all[ $code ] ) ? $all[ $code ][0] : $code;
-			$any     = $any || '' !== (string) get_theme_mod( $key . '__' . $code, '' );
-		}
-		/* translators: %s: language names, like "Español, Français" */
-		echo '<details class="mq-f__langs"' . ( $any ? ' open' : '' ) . '><summary>' . esc_html( sprintf( __( 'Other languages: %s', 'marquee' ), implode( ', ', $names ) ) ) . '</summary>';
-		foreach ( ridgeroad_lang_extra() as $code ) {
-			$lid = $id . '-' . $code;
-			$lv  = (string) get_theme_mod( $key . '__' . $code, '' );
-			$ll  = isset( $all[ $code ] ) ? $all[ $code ][0] : $code;
-			echo '<p class="mq-f mq-f--lang"><label for="' . esc_attr( $lid ) . '">' . esc_html( $label . ' · ' . $ll ) . '</label>';
-			if ( 'textarea' === $type ) {
-				echo '<textarea id="' . esc_attr( $lid ) . '" name="' . esc_attr( 'tm[' . $key . '__' . $code . ']' ) . '" rows="2" data-mq-sync>' . esc_textarea( $lv ) . '</textarea>';
-			} else {
-				echo '<input type="text" id="' . esc_attr( $lid ) . '" name="' . esc_attr( 'tm[' . $key . '__' . $code . ']' ) . '" value="' . esc_attr( $lv ) . '" data-mq-sync>';
-			}
-			echo '<small>' . esc_html__( 'Leave empty to use the words above.', 'marquee' ) . '</small></p>';
-		}
-		echo '</details>';
+		marquee_lang_boxes( $key, $label, $type, $id );
 	}
+}
+
+/** The "Other languages" boxes for one text setting (tm[key__code]); nothing when the language button is off. */
+function marquee_lang_boxes( $key, $label, $type = 'text', $id = '' ) {
+	if ( ! marquee_field_langs( $key, $type ) ) {
+		return;
+	}
+	$id    = $id ? $id : 'mq-f-' . $key;
+	$all   = function_exists( 'marquee_langs_all' ) ? marquee_langs_all() : array();
+	$names = array();
+	$any   = false;
+	foreach ( ridgeroad_lang_extra() as $code ) {
+		$names[] = isset( $all[ $code ] ) ? $all[ $code ][0] : $code;
+		$any     = $any || '' !== (string) get_theme_mod( $key . '__' . $code, '' );
+	}
+	/* translators: %s: language names, like "Español, Français" */
+	echo '<details class="mq-f__langs"' . ( $any ? ' open' : '' ) . '><summary>' . esc_html( sprintf( __( 'Other languages: %s', 'marquee' ), implode( ', ', $names ) ) ) . '</summary>';
+	foreach ( ridgeroad_lang_extra() as $code ) {
+		$lid = $id . '-' . $code;
+		$lv  = (string) get_theme_mod( $key . '__' . $code, '' );
+		$ll  = isset( $all[ $code ] ) ? $all[ $code ][0] : $code;
+		echo '<p class="mq-f mq-f--lang"><label for="' . esc_attr( $lid ) . '">' . esc_html( $label . ' · ' . $ll ) . '</label>';
+		if ( 'textarea' === $type ) {
+			echo '<textarea id="' . esc_attr( $lid ) . '" name="' . esc_attr( 'tm[' . $key . '__' . $code . ']' ) . '" rows="2" data-mq-sync>' . esc_textarea( $lv ) . '</textarea>';
+		} else {
+			echo '<input type="text" id="' . esc_attr( $lid ) . '" name="' . esc_attr( 'tm[' . $key . '__' . $code . ']' ) . '" value="' . esc_attr( $lv ) . '" data-mq-sync>';
+		}
+		echo '<small>' . esc_html__( 'Leave empty to use the words above.', 'marquee' ) . '</small></p>';
+	}
+	echo '</details>';
 }
 
 /** Draw several settings. */

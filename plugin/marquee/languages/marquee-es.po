@@ -7566,3 +7566,61 @@ msgstr "Usar este diseño"
 
 msgid "Start with a blank page"
 msgstr "Empezar con una página en blanco"
+
+msgid "A little bigger"
+msgstr "Un poco más grande"
+
+msgid "A little smaller"
+msgstr "Un poco más pequeño"
+
+msgid "As picked"
+msgstr "Como está"
+
+msgid "Bigger"
+msgstr "Más grande"
+
+msgid "Bigger or smaller"
+msgstr "Más grande o más pequeño"
+
+msgid "Biggest"
+msgstr "Lo más grande"
+
+msgid "Smaller"
+msgstr "Más pequeño"
+
+msgid "Headline on the photo"
+msgstr "Titular sobre la foto"
+
+msgid "Line under the headline"
+msgstr "Línea bajo el titular"
+
+msgid "Title of this part"
+msgstr "Título de esta parte"
+
+msgid ""
+"Text and Size: Automatic works for most screens. Pixel matrices (up to 256 "
+"pixels tall) get one big line that scrolls across when the message won’t "
+"fit; TVs and projectors get still text with the name on its own line. Bigger"
+" or smaller makes the letters bigger or smaller than that, but still text "
+"never goes past the edges of the screen (for even bigger letters, use "
+"Scrolling). Scrolling text always crosses the screen in the time each name "
+"is up; Slow may not quite finish on long messages. Custom size: the font "
+"size FPP uses, about how many pixels tall the letters are (a 10-pixel-tall "
+"matrix looks good at 8 or 9). Still text goes on one, two or three centered "
+"lines (the name on its own line after the comma), whichever lets the letters"
+" be biggest without going over that size; scrolling text keeps it."
+msgstr ""
+"Texto y Tamaño: Automático funciona para la mayoría de las pantallas. Las "
+"matrices de píxeles (hasta 256 píxeles de alto) reciben una sola línea "
+"grande que se desplaza cuando el mensaje no cabe; las TV y proyectores "
+"reciben texto fijo con el nombre en su propia línea. Más grande o más "
+"pequeño agranda o achica las letras a partir de eso, pero el texto fijo "
+"nunca se sale de los bordes de la pantalla (para letras aún más grandes, usa"
+" Desplazamiento). El texto que se desplaza siempre cruza la pantalla en el "
+"tiempo que se muestra cada nombre; Lenta puede no terminar del todo en "
+"mensajes largos. Tamaño personalizado: el tamaño de letra que usa FPP, "
+"aproximadamente cuántos píxeles de alto miden las letras (una matriz de 10 "
+"píxeles de alto se ve bien con 8 o 9). El texto fijo va en una, dos o tres "
+"líneas centradas (el nombre en su propia línea después de la coma), según lo"
+" que permita las letras más grandes sin pasar de ese tamaño; el texto que se"
+" desplaza lo conserva."

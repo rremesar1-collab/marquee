@@ -45,6 +45,7 @@ function ridgeroad_defaults( $fresh = false ) {
 		'off_text'          => __( 'The show is resting for now. Check back for opening night!', 'ridgeroad' ),
 		// Countdown, playlist, directions.
 		'show_countdown'    => 1,
+		'count_live'        => '',              // countdown words while the show is on ('' = the standard words with your radio station)
 		'ok_hide'           => 0,
 		'count_to'          => 'auto',          // countdown holiday: auto, christmas, halloween, custom
 		'count_name'        => '',
@@ -88,6 +89,7 @@ function ridgeroad_defaults( $fresh = false ) {
 		'names_on'          => 1,
 		'app_auto_on'       => 1,
 		'app_buzz_on'       => 1,
+		'app_show'          => 1,               // the Get the App box on the home page
 		'names_always'      => 0,
 		'names_geo'         => 0,
 		'names_geo_miles'   => '0.5',
@@ -157,6 +159,8 @@ function ridgeroad_defaults( $fresh = false ) {
 		'facts_hero'        => 1,
 		'facts_did'         => 1,
 		'facts_fav'         => 1,
+		'facts_did_title'   => __( 'Did You Know?', 'ridgeroad' ),
+		'facts_fav_title'   => __( 'Fan Favorites', 'ridgeroad' ),
 		// Guestbook (RF Page Builder).
 		'gb_show'           => 1,
 		'gb_source'         => 'wordpress',
@@ -455,6 +459,7 @@ function ridgeroad_customize_fields( $add, $image ) {
 	$add( 'off_text', 'rr_show', __( 'Banner text — off season', 'ridgeroad' ), 'textarea' );
 
 	$add( 'show_countdown', 'rr_show', __( 'Show the countdown clocks', 'ridgeroad' ), 'checkbox' );
+	$add( 'count_live', 'rr_show', __( 'Words while the show is on', 'ridgeroad' ), 'text', array( 'description' => __( 'Shown in place of the clocks during show hours. Leave empty for “The Show Is On Right Now — Tune to (your station)!”', 'ridgeroad' ) ) );
 	$add( 'count_to', 'rr_show', __( 'Count down to', 'ridgeroad' ), 'select', array( 'choices' => array( 'auto' => __( 'Automatic (Halloween if your last night is in August to October, otherwise Christmas)', 'ridgeroad' ), 'christmas' => __( 'Christmas', 'ridgeroad' ), 'halloween' => __( 'Halloween', 'ridgeroad' ), 'custom' => __( 'A date I pick', 'ridgeroad' ) ) ) );
 	$add( 'count_name', 'rr_show', __( 'Your date’s name (like New Year’s Eve)', 'ridgeroad' ), 'text', array( 'description' => __( 'For “A date I pick”.', 'ridgeroad' ) ) );
 	$add( 'count_date', 'rr_show', __( 'Your date (the year doesn’t matter; it repeats every year)', 'ridgeroad' ), 'date', array( 'description' => __( 'For “A date I pick”.', 'ridgeroad' ) ) );
@@ -546,6 +551,7 @@ function ridgeroad_customize_fields( $add, $image ) {
 	}
 
 	// Support.
+	$add( 'app_show', 'rr_support', __( 'Show the Get the App box', 'ridgeroad' ), 'checkbox', array( 'description' => __( 'On phones that can install your website as an app.', 'ridgeroad' ) ) );
 	$add( 'donate_title', 'rr_support', __( 'Donation title', 'ridgeroad' ) );
 	$add( 'donate_text', 'rr_support', __( 'Donation text', 'ridgeroad' ), 'textarea' );
 	$add( 'cashapp_url', 'rr_support', __( 'Cash App link', 'ridgeroad' ), 'url', array( 'description' => __( 'e.g. https://cash.app/$YourCashtag — leave empty to hide the donation box.', 'ridgeroad' ) ) );
@@ -580,6 +586,8 @@ function ridgeroad_customize_fields( $add, $image ) {
 	$add( 'facts_hero', 'rr_facts', __( 'Show your photo and numbers', 'ridgeroad' ), 'checkbox', array( 'description' => __( 'The numbers are the same as Behind the Lights.', 'ridgeroad' ) ) );
 	$add( 'facts_did', 'rr_facts', __( 'Show Did You Know?', 'ridgeroad' ), 'checkbox' );
 	$add( 'facts_fav', 'rr_facts', __( 'Show Fan Favorites', 'ridgeroad' ), 'checkbox', array( 'description' => __( 'The most-voted songs each year, from your song voting.', 'ridgeroad' ) ) );
+	$add( 'facts_did_title', 'rr_facts', __( 'Did You Know? title', 'ridgeroad' ) );
+	$add( 'facts_fav_title', 'rr_facts', __( 'Fan Favorites title', 'ridgeroad' ) );
 	$add( 'sp_show', 'rr_sponsors', __( 'Show the sponsors section', 'ridgeroad' ), 'checkbox', array( 'description' => __( 'Add your sponsors and their logos in Marquee → Settings → Home page → Sponsors.', 'ridgeroad' ) ) );
 	$add( 'sp_color', 'rr_sponsors', __( 'Box color', 'ridgeroad' ), 'select', array(
 		'choices'     => array( 'green' => __( 'Green', 'ridgeroad' ), 'red' => __( 'Red', 'ridgeroad' ), 'blue' => __( 'Blue', 'ridgeroad' ) ),

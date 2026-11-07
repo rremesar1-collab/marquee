@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.20.0
+Stable tag: 0.20.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,16 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.20.1 =
+* Show Facts: the page title, headline, line, the Did You Know? and Fan Favorites titles, and every fact card can have their own words in each language you turned on. The two part titles can now be changed too.
+* Countdown: type your own words for while the show is on (Home page → Countdown), in each language.
+* Song voting list is taller (about 8 songs before it scrolls, on phones too).
+* Tonight's Playlist: a "Vote for your favorite" button straight to song voting.
+* Box colors: with every box set to one color, the glow around the boxes follows it too.
+* Get the App: a switch for the whole box (Home page → Get the App).
+* Names in Lights: big LED matrices (up to 256 pixels tall) get matrix-sized letters, and each screen has Bigger or smaller (names script 3.17).
+* In English, Spanish and French.
 
 = 0.20.0 =
 * New: make your own pages. Show Boxes (red, green, blue or night, with snow on top and lights around them) hold anything: words, photos, videos, columns, buttons. Ready-made kinds: Photo & Words, People, Then & Now, Questions, Photo Gallery.

@@ -57,7 +57,7 @@ if ( 'boxes' === ridgeroad_facts_style() ) {
 
 	<?php if ( $sf_did ) : ?>
 		<section class="rr-facts__sec rr-facts__did" aria-labelledby="rr-did-h">
-			<h2 id="rr-did-h" class="rr-ribbon"><span><?php esc_html_e( 'Did You Know?', 'ridgeroad' ); ?></span></h2>
+			<h2 id="rr-did-h" class="rr-ribbon"><span><?php echo esc_html( ridgeroad_mod( 'facts_did_title' ) ); ?></span></h2>
 			<div class="rr-grid rr-grid--tips rr-facts__cards">
 				<?php foreach ( $sf_did as $d ) : ?>
 					<article class="rr-panel rr-panel--green rr-tip">
@@ -72,7 +72,7 @@ if ( 'boxes' === ridgeroad_facts_style() ) {
 
 	<?php if ( $sf_fav ) : ?>
 		<section class="rr-facts__sec rr-facts__fav" aria-labelledby="rr-fav-h">
-			<h2 id="rr-fav-h" class="rr-ribbon"><span><?php esc_html_e( 'Fan Favorites', 'ridgeroad' ); ?></span></h2>
+			<h2 id="rr-fav-h" class="rr-ribbon"><span><?php echo esc_html( ridgeroad_mod( 'facts_fav_title' ) ); ?></span></h2>
 			<div class="rr-panel rr-panel--blue rr-fav">
 				<?php if ( count( $sf_fav ) > 1 ) : ?>
 					<div class="rr-fav__years" role="tablist" aria-label="<?php esc_attr_e( 'Year', 'ridgeroad' ); ?>">

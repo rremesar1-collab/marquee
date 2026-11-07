@@ -3995,3 +3995,29 @@ msgstr ""
 
 msgid "More"
 msgstr "Plus"
+
+msgid "Did You Know? title"
+msgstr "Titre de Le saviez-vous ?"
+
+msgid "Fan Favorites title"
+msgstr "Titre de Les préférées du public"
+
+msgid "On phones that can install your website as an app."
+msgstr "Sur les téléphones qui peuvent installer votre site comme une appli."
+
+msgid "Show the Get the App box"
+msgstr "Afficher le bloc Obtenir l’appli"
+
+msgid ""
+"Shown in place of the clocks during show hours. Leave empty for “The Show Is"
+" On Right Now — Tune to (your station)!”"
+msgstr ""
+"S’affiche à la place des compteurs pendant le spectacle. Laissez vide pour «"
+" Le spectacle a lieu en ce moment ! Réglez votre radio sur (votre station) !"
+" »"
+
+msgid "Vote for your favorite"
+msgstr "Votez pour votre préférée"
+
+msgid "Words while the show is on"
+msgstr "Texte pendant le spectacle"

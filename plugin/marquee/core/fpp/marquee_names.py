@@ -41,7 +41,7 @@ import socket
 import threading
 import urllib.request
 
-VERSION = "3.16.3"
+VERSION = "3.17.0"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -195,6 +195,7 @@ def clean_screens(rows):
                             "style": pick("style", ("auto", "still", "scroll"), "auto"),
                             "size": pick("size", ("auto", "s", "m", "l", "xl", "custom"), "auto"),
                             "px": max(0, min(400, int(float(sc.get("px") or 0)))),
+                            "scale": max(50, min(200, int(float(sc.get("scale") or 100)))),   # Text size fine-tune, percent (3.17+)
                             "speed": pick("speed", ("slow", "normal", "fast"), "normal")})
     return screens
 
@@ -1489,7 +1490,7 @@ def screen_info(sc):
     return _info[k]
 
 
-def layout(text, width, height, one_line=False, cap=100):
+def layout(text, width, height, one_line=False, cap=100, grow=1.0):
     """Break after the comma (the name gets its own line), pick the biggest size that fits.
     one_line: one line is also a choice (still text on a pixel matrix), and text with no comma
     can go on two lines, split where the two lines come out most even."""
@@ -1513,7 +1514,8 @@ def layout(text, width, height, one_line=False, cap=100):
         longest = max(len(l) for l in lines)
         tall = 1.0 if (one_line and len(lines) == 1) else 1.25 * len(lines)   # room between lines
         cw = 0.72 if one_line else 0.68     # a capital letter in a bold font is about 0.7 of the size wide
-        size = min(cap, int(float(S["max_width"]) * width / (cw * longest)), int(float(S["max_height"]) * height / tall))
+        mw, mh = min(0.95, float(S["max_width"]) * grow), min(0.95, float(S["max_height"]) * grow)   # grow: the screen's Text size fine-tune
+        size = min(cap, int(mw * width / (cw * longest)), int(mh * height / tall))
         key = (size, -len(lines), -longest)
         if best is None or key > best[0]:
             best = (key, (max(4, size), lines))
@@ -1544,7 +1546,7 @@ def still_text(text, width, height, cap):
 def text_plan(text, width, height, sc=None, room=None):
     """How one name goes up on one screen. Returns (size, position, pixels per second, text, seconds it needs).
     Each screen's Text / Size / Scroll speed come from the website (Your screens).
-    Automatic on a pixel matrix (64 pixels tall or less): still text on one to three lines when the
+    Automatic on a pixel matrix (256 pixels tall or less): still text on one to three lines when the
     letters come out big enough to read (8 pixels and a fifth of the screen's height or more), otherwise
     one big line that scrolls at a speed people can read. TVs and projectors: still text.
     room: the seconds this name has in a timed break. A scrolling name only goes faster than reading
@@ -1552,16 +1554,19 @@ def text_plan(text, width, height, sc=None, room=None):
     sc = sc or {}
     style = sc.get("style") or str(S.get("scroll") or "auto").replace("always", "scroll").replace("never", "still")
     size_k, speed_k = sc.get("size") or "auto", sc.get("speed") or "normal"
-    small = height <= 64
+    k = max(0.5, min(2.0, float(sc.get("scale") or 100) / 100.0))   # Text size fine-tune: smaller or bigger than the size picked
+    if size_k == "custom":
+        k = 1.0                                          # a custom font size is used as typed
+    small = height <= 256    # a pixel matrix, even a big one (3.17: was 64; bigger matrices got TV-sized text)
     one = " ".join(text.split())
     if size_k == "auto" and not small and style != "scroll":
-        size, lines = layout(text, width, height)        # TVs: the comfortable look, name on its own line
+        size, lines = layout(text, width, height, cap=int(100 * k), grow=k)   # TVs and big matrices: the comfortable look, name on its own line
         return size, "Center", 0, "\n".join(lines), STILL_SECS
     if style == "auto" and not small:
         style = "still"                                  # TVs only scroll when you pick Scrolling
     px = int(sc.get("px") or 0) if size_k == "custom" else 0
     frac = (px / float(height)) if px else SIZES.get(size_k, 0.8 if small else 0.6)
-    big = max(4, px) if px else max(6, min(200, int(height * frac)))
+    big = max(4, px) if px else max(6, min(int(200 * k), int(height * frac * k)))
     if style in ("still", "auto"):
         size, txt = still_text(text, width, height, big)
         if style == "still" or size >= max(8, int(0.2 * height)):
