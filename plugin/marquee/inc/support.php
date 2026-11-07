@@ -356,7 +356,7 @@ function marquee_support_labels() {
 		'themes_on' => __( 'Let kids pick a themed sequence', 'marquee' ), 'themes' => __( 'Themes kids can pick', 'marquee' ), 'classic_img' => __( 'Classic card picture', 'marquee' ),
 		'name_msgs' => __( 'Messages kids can pick', 'marquee' ), 'names_block' => __( 'Blocked names and words', 'marquee' ),
 		'names_on' => __( 'Your Name in Lights', 'marquee' ), 'names_geo' => __( 'Only at the show', 'marquee' ), 'names_geo_miles' => __( 'Distance for names', 'marquee' ),
-		'gb_show' => __( 'Guestbook', 'marquee' ), 'kids_show' => __( 'Kids’ Corner', 'marquee' ), 'lab_on' => __( 'Make a Light Show', 'marquee' ), 'contest_on' => __( 'Light show contest', 'marquee' ),
+		'gb_show' => __( 'Guestbook', 'marquee' ), 'facts_show' => __( 'Show Facts page', 'marquee' ), 'kids_show' => __( 'Kids’ Corner', 'marquee' ), 'lab_on' => __( 'Make a Light Show', 'marquee' ), 'contest_on' => __( 'Light show contest', 'marquee' ),
 		'songs_show' => __( 'Song voting', 'marquee' ), 'app_auto_on' => __( '“The lights are on” alert', 'marquee' ), 'snow_amount' => __( 'Falling snow', 'marquee' ),
 		'stats_show' => __( 'Behind the Lights section', 'marquee' ), 'cashapp_url' => __( 'Donation link', 'marquee' ), 'voice_key' => __( 'ElevenLabs key', 'marquee' ), 'rf_token' => __( 'Remote Falcon access token', 'marquee' ), 'rf_secret' => __( 'Remote Falcon secret key', 'marquee' ),
 		'facebook_url' => __( 'Facebook link', 'marquee' ), 'instagram_url' => __( 'Instagram link', 'marquee' ), 'youtube_url' => __( 'YouTube link', 'marquee' ), 'tiktok_url' => __( 'TikTok link', 'marquee' ),

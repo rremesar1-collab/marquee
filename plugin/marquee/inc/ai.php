@@ -117,7 +117,7 @@ function marquee_ai_status() {
 		'season'            => $tm( 'season_start' ) . ' to ' . $tm( 'season_end' ),
 		'show_status_now'   => function_exists( 'ridgeroad_status' ) ? ridgeroad_status()['state'] : '',
 		'remote_falcon'     => function_exists( 'marquee_rf_configured' ) && marquee_rf_configured() ? 'keys saved' : 'not set up',
-		'features_on'       => array_values( array_filter( array( 'gb_show', 'names_on', 'kids_show', 'lab_on', 'contest_on', 'songs_show', 'app_auto_on', 'sp_show' ), function ( $k ) use ( $tm ) {
+		'features_on'       => array_values( array_filter( array( 'gb_show', 'names_on', 'kids_show', 'lab_on', 'contest_on', 'songs_show', 'app_auto_on', 'sp_show', 'facts_show' ), function ( $k ) use ( $tm ) {
 			return (bool) $tm( $k );
 		} ) ),
 		'names'             => array(

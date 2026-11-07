@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.18.4
+Stable tag: 0.19.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,13 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.19.0 =
+* New: Show Facts, a page about your show with its own button at the top next to Kids' Corner. Turn it on in Features & pages, and fill it in under Sharing & donations.
+* Three parts, each with its own switch: your show (a photo you upload, a headline and your Behind the Lights numbers counting up), Did You Know? fact cards, and Fan Favorites by year (the top 5 songs with a light string as long as their votes).
+* Years with song voting fill in by themselves and are kept when you clear the votes for a new season. Type in the top songs for years before you had voting.
+* Also a Show Facts block and [marquee section="facts"] for other themes. Switch it on or off from Show Control or the Show Manager on your phone. In English, Spanish and French.
+* Also in this version: long playlists (more than 12 songs) scroll inside their own box (0.18.4, not released on its own).
 
 = 0.18.4 =
 * Tonight's Playlist: with more than 12 songs, the list stays a fixed height and scrolls inside its own box, so visitors reach the rest of the page right away. A line above it says how many songs there are, and the box scrolls by itself to the song playing now.

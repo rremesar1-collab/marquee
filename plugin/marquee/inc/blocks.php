@@ -34,6 +34,7 @@ function marquee_sections() {
 		'app'       => array( __( 'Get the App', 'marquee' ), __( 'Install-the-app and show alerts card (shows only on phones that can use it).', 'marquee' ), 'smartphone' ),
 		'kids'      => array( __( 'Kids’ Corner', 'marquee' ), __( 'Your Name in Lights, Make a Light Show (and the contest), coloring pages and games.', 'marquee' ), 'smiley' ),
 		'songs'     => array( __( 'Songs & Videos', 'marquee' ), __( 'This year’s show videos and favorite song voting.', 'marquee' ), 'format-video' ),
+		'facts'     => array( __( 'Show Facts', 'marquee' ), __( 'Your show photo and numbers, Did You Know? fact cards, and fan favorites by year.', 'marquee' ), 'star-filled' ),
 	);
 }
 
@@ -63,7 +64,7 @@ function marquee_drawn_by_theme( $slug ) {
 	if ( 'home' === $slug ) {
 		return is_front_page();
 	}
-	return in_array( $slug, array( 'kids', 'songs' ), true ) && is_page() && (int) get_option( 'ridgeroad_' . $slug . '_page' ) === get_queried_object_id();
+	return in_array( $slug, array( 'kids', 'songs', 'facts' ), true ) && is_page() && (int) get_option( 'ridgeroad_' . $slug . '_page' ) === get_queried_object_id();
 }
 
 /** HTML of one section (no wrapper). */
@@ -129,7 +130,7 @@ function marquee_block_class( $slug ) {
 	$c = 'marquee mq-block mq-block--' . $slug;
 	if ( ! marquee_festive() ) {
 		$c .= ' mq-skin';
-		$own = array( 'kids' => 'ridgeroad_kids_page', 'songs' => 'ridgeroad_songs_page' );
+		$own = array( 'kids' => 'ridgeroad_kids_page', 'songs' => 'ridgeroad_songs_page', 'facts' => 'ridgeroad_facts_page' );
 		if ( isset( $own[ $slug ] ) && is_page() && (int) get_option( $own[ $slug ] ) === get_queried_object_id() ) {
 			$c .= ' mq-notitle';
 		}
@@ -235,6 +236,7 @@ add_filter( 'the_content', function ( $content ) {
 	$map = array(
 		'kids'  => (int) get_option( 'ridgeroad_kids_page' ),
 		'songs' => (int) get_option( 'ridgeroad_songs_page' ),
+		'facts' => (int) get_option( 'ridgeroad_facts_page' ),
 	);
 	foreach ( $map as $slug => $page ) {
 		if ( $page && $id === $page && ! has_block( 'marquee/' . $slug ) && ! has_shortcode( $content, 'marquee_' . $slug ) && false === strpos( $content, 'section="' . $slug . '"' ) ) {
@@ -280,7 +282,10 @@ function marquee_make_pages() {
 	if ( $home ) {
 		$out['pages'][] = $home;
 	}
-	foreach ( array( 'kids' => 'ridgeroad_kids_url', 'songs' => 'ridgeroad_songs_url' ) as $slug => $fn ) {
+	foreach ( array( 'kids' => 'ridgeroad_kids_url', 'songs' => 'ridgeroad_songs_url', 'facts' => 'ridgeroad_facts_url' ) as $slug => $fn ) {
+		if ( 'facts' === $slug && ! ridgeroad_mod( 'facts_show' ) ) {
+			continue; // made when the owner turns Show Facts on
+		}
 		if ( ! function_exists( $fn ) ) {
 			continue;
 		}

@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'RIDGEROAD_VERSION' ) ) {
-	define( 'RIDGEROAD_VERSION', '2.21.1' );
+	define( 'RIDGEROAD_VERSION', '2.22.0' );
 }
 // Show location: from Marquee → Settings (0,0 until the Marquee plugin is set up).
 $rr_mq = function_exists( 'marquee_get' ) ? marquee_get() : array();
@@ -44,6 +44,7 @@ if ( ! defined( 'MARQUEE_CORE' ) ) {
 	require get_template_directory() . '/inc/guestbook.php';
 	require get_template_directory() . '/inc/contest.php';
 	require get_template_directory() . '/inc/songs.php';
+	require get_template_directory() . '/inc/facts.php';
 	require get_template_directory() . '/inc/sequences.php';
 	require get_template_directory() . '/inc/shoutouts.php';
 	require get_template_directory() . '/inc/control.php';
@@ -162,6 +163,9 @@ function ridgeroad_fallback_menu() {
 	}
 	if ( ridgeroad_mod( 'kids_show' ) && ridgeroad_kids_url() ) {
 		$li( ridgeroad_kids_url(), 'gift', ridgeroad_mod( 'kids_title' ), $cur && $cur === (int) get_option( 'ridgeroad_kids_page' ) );
+	}
+	if ( function_exists( 'ridgeroad_facts_on' ) && ridgeroad_facts_on() && ridgeroad_facts_url() ) {
+		$li( ridgeroad_facts_url(), 'star', ridgeroad_mod( 'facts_title' ), $cur && $cur === (int) get_option( 'ridgeroad_facts_page' ) );
 	}
 	echo '</ul>';
 }

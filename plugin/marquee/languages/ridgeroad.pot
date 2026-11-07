@@ -4978,3 +4978,86 @@ msgstr ""
 
 msgid "Tonight’s songs"
 msgstr ""
+
+msgid "Show Facts"
+msgstr ""
+
+msgid "Did You Know?"
+msgstr ""
+
+msgid "Fan Favorites"
+msgstr ""
+
+msgid "Year"
+msgstr ""
+
+msgid "Show facts are coming soon. Check back!"
+msgstr ""
+
+msgid "Star"
+msgstr ""
+
+msgid "Light bulb"
+msgstr ""
+
+msgid "Tree"
+msgstr ""
+
+msgid "Music"
+msgstr ""
+
+msgid "Clock"
+msgstr ""
+
+msgid "House"
+msgstr ""
+
+msgid "Car"
+msgstr ""
+
+msgid "Heart"
+msgstr ""
+
+msgid "Present"
+msgstr ""
+
+msgid "Radio"
+msgstr ""
+
+msgid "Camera"
+msgstr ""
+
+msgid "Show the Show Facts page"
+msgstr ""
+
+msgid ""
+"A page about your show, with its own button at the top. Add the photo, fact "
+"cards and past fan favorites in Marquee → Settings → Show Facts."
+msgstr ""
+
+msgid "Page title"
+msgstr ""
+
+msgid "Headline on the photo"
+msgstr ""
+
+msgid "Line under the headline"
+msgstr ""
+
+msgid "Show your photo and numbers"
+msgstr ""
+
+msgid "The numbers are the same as Behind the Lights."
+msgstr ""
+
+msgid "Show Did You Know?"
+msgstr ""
+
+msgid "Show Fan Favorites"
+msgstr ""
+
+msgid "The most-voted songs each year, from your song voting."
+msgstr ""
+
+msgid "The Show Facts page and its button"
+msgstr ""

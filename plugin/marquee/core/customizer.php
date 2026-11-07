@@ -148,6 +148,14 @@ function ridgeroad_defaults( $fresh = false ) {
 		'sp_intro'          => __( 'These local businesses help keep the lights on. Please stop by and say thanks!', 'ridgeroad' ),
 		'sp_ask'            => '',
 		'sp_color'          => 'green',
+		'facts_show'        => 0,
+		'facts_title'       => __( 'Show Facts', 'ridgeroad' ),
+		'facts_tagline'     => '',
+		'facts_line'        => '',
+		'facts_photo'       => 0,
+		'facts_hero'        => 1,
+		'facts_did'         => 1,
+		'facts_fav'         => 1,
 		// Guestbook (RF Page Builder).
 		'gb_show'           => 1,
 		'gb_source'         => 'wordpress',
@@ -340,6 +348,7 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp ) {
 		'rr_support' => __( 'Donations & Social', 'ridgeroad' ),
 		'rr_guestbook' => __( 'Guestbook', 'ridgeroad' ),
 		'rr_sponsors'  => __( 'Sponsors', 'ridgeroad' ),
+		'rr_facts'     => __( 'Show Facts', 'ridgeroad' ),
 	);
 	foreach ( $sections as $id => $title ) {
 		$wp->add_section( $id, array( 'title' => $title, 'panel' => 'ridgeroad' ) );
@@ -553,6 +562,13 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp ) {
 	$add( 'gb_site_key', 'rr_guestbook', __( 'RF Page Builder site key', 'ridgeroad' ), 'text', array( 'description' => __( 'From RF Page Builder: a key with dashes, like 1a2b3c4d-…. Leave empty to turn the guestbook off.', 'ridgeroad' ) ) );
 	$add( 'gb_ts_site', 'rr_guestbook', __( 'Robot check: Turnstile site key (optional)', 'ridgeroad' ), 'text', array( 'description' => __( 'Robots are already sent to Comments → Spam on their own. If some still get through, add a free “I’m not a robot” check from Cloudflare Turnstile: make a free Cloudflare account, open Turnstile, add a widget for your website, then paste the site key here and the secret key below. Works with the WordPress guestbook.', 'ridgeroad' ) ) );
 	$add( 'gb_ts_secret', 'rr_guestbook', __( 'Robot check: Turnstile secret key', 'ridgeroad' ), 'text' );
+	$add( 'facts_show', 'rr_facts', __( 'Show the Show Facts page', 'ridgeroad' ), 'checkbox', array( 'description' => __( 'A page about your show, with its own button at the top. Add the photo, fact cards and past fan favorites in Marquee → Settings → Show Facts.', 'ridgeroad' ) ) );
+	$add( 'facts_title', 'rr_facts', __( 'Page title', 'ridgeroad' ) );
+	$add( 'facts_tagline', 'rr_facts', __( 'Headline on the photo', 'ridgeroad' ) );
+	$add( 'facts_line', 'rr_facts', __( 'Line under the headline', 'ridgeroad' ) );
+	$add( 'facts_hero', 'rr_facts', __( 'Show your photo and numbers', 'ridgeroad' ), 'checkbox', array( 'description' => __( 'The numbers are the same as Behind the Lights.', 'ridgeroad' ) ) );
+	$add( 'facts_did', 'rr_facts', __( 'Show Did You Know?', 'ridgeroad' ), 'checkbox' );
+	$add( 'facts_fav', 'rr_facts', __( 'Show Fan Favorites', 'ridgeroad' ), 'checkbox', array( 'description' => __( 'The most-voted songs each year, from your song voting.', 'ridgeroad' ) ) );
 	$add( 'sp_show', 'rr_sponsors', __( 'Show the sponsors section', 'ridgeroad' ), 'checkbox', array( 'description' => __( 'Add your sponsors and their logos in Marquee → Settings → Sharing & donations.', 'ridgeroad' ) ) );
 	$add( 'sp_color', 'rr_sponsors', __( 'Box color', 'ridgeroad' ), 'select', array(
 		'choices'     => array( 'green' => __( 'Green', 'ridgeroad' ), 'red' => __( 'Red', 'ridgeroad' ), 'blue' => __( 'Blue', 'ridgeroad' ) ),

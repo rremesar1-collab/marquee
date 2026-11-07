@@ -339,6 +339,34 @@ var tr = function (s) { var d = window.rrI18n; return (d && d[s]) || s; };
 	}
 })();
 
+/* Show Facts (Sharing & donations): fact cards and past fan favorites; one on/off switch shown in two places. */
+(function () {
+	function rows(listSel, tplSel, addSel, rowSel, delSel, moveAttr, focusSel) {
+		var list = document.querySelector(listSel), tpl = document.querySelector(tplSel), add = document.querySelector(addSel);
+		if (!list || !tpl || !add) { return; }
+		add.addEventListener('click', function () {
+			var row = tpl.content.firstElementChild.cloneNode(true);
+			list.appendChild(row);
+			var f = row.querySelector(focusSel); if (f) { f.focus(); }
+		});
+		list.addEventListener('click', function (e) {
+			var row = e.target.closest(rowSel); if (!row) { return; }
+			if (e.target.closest(delSel)) { row.remove(); return; }
+			var mv = moveAttr && e.target.closest('[' + moveAttr + ']'); if (!mv) { return; }
+			if (mv.getAttribute(moveAttr) === '-1' && row.previousElementSibling) { list.insertBefore(row, row.previousElementSibling); }
+			else if (mv.getAttribute(moveAttr) === '1' && row.nextElementSibling) { list.insertBefore(row.nextElementSibling, row); }
+			mv.focus();
+		});
+	}
+	rows('[data-mq-fclist]', '[data-mq-fctpl]', '[data-mq-fcadd]', '[data-mq-fcrow]', '[data-mq-fcdel]', 'data-mq-fcmove', 'input[name="fc_big[]"]');
+	rows('[data-mq-fplist]', '[data-mq-fptpl]', '[data-mq-fpadd]', '[data-mq-fprow]', '[data-mq-fpdel]', '', 'input[name="fp_year[]"]');
+	var here = document.querySelector('[data-mq-factsshow]'), feat = document.querySelector('input[name="feat[]"][value="facts_show"]');
+	if (here && feat) {
+		here.addEventListener('change', function () { feat.checked = here.checked; });
+		feat.addEventListener('change', function () { here.checked = feat.checked; });
+	}
+})();
+
 /* Show Manager QR code */
 (function () {
 	var box = document.querySelector('[data-mq-qr]');

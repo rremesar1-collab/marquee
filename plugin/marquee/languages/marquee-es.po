@@ -6625,3 +6625,112 @@ msgstr "Quién preguntó"
 
 msgid "Site admin email:"
 msgstr "Correo del administrador del sitio:"
+
+msgid "Show Facts"
+msgstr "Datos del espectáculo"
+
+msgid "Show Facts page"
+msgstr "Página Datos del espectáculo"
+
+msgid "The Show Facts page and its button"
+msgstr "La página Datos del espectáculo y su botón"
+
+msgid ""
+"A page about your show with its own button at the top: your photo and "
+"numbers, fact cards and fan favorites (fill it in under Sharing & donations)"
+msgstr ""
+"Una página sobre tu espectáculo con su propio botón arriba: tu foto y tus "
+"números, tarjetas de datos y favoritas del público (complétala en Compartir "
+"y donaciones)"
+
+msgid "Donations, sponsors, show facts, social links"
+msgstr "Donaciones, patrocinadores, datos del espectáculo, redes sociales"
+
+msgid ""
+"A page about your show, with its own button at the top next to Kids’ Corner."
+" It has three parts; show the ones you like."
+msgstr ""
+"Una página sobre tu espectáculo, con su propio botón arriba junto a Rincón "
+"de los niños. Tiene tres partes; muestra las que quieras."
+
+msgid "Show the Show Facts page"
+msgstr "Mostrar la página Datos del espectáculo"
+
+msgid "Page title"
+msgstr "Título de la página"
+
+msgid "Also the name on the button at the top."
+msgstr "También es el nombre del botón de arriba."
+
+msgid "Your show: a photo and your numbers"
+msgstr "Tu espectáculo: una foto y tus números"
+
+msgid "Photo of your show"
+msgstr "Foto de tu espectáculo"
+
+msgid "A wide night photo of your display works best."
+msgstr "Una foto nocturna y ancha de tu decoración se ve mejor."
+
+msgid "Headline on the photo (optional)"
+msgstr "Titular sobre la foto (opcional)"
+
+msgid "Lighting up our street since 2019"
+msgstr "Iluminando nuestra calle desde 2019"
+
+msgid "Line under the headline (optional)"
+msgstr "Línea debajo del titular (opcional)"
+
+msgid ""
+"The numbers under the photo are your Behind the Lights numbers (Appearance →"
+" Customize → Behind the Lights). They count up when the page opens."
+msgstr ""
+"Los números debajo de la foto son los de Detrás de las luces (Apariencia → "
+"Personalizar → Detrás de las luces). Van subiendo cuando se abre la página."
+
+msgid "Did You Know? fact cards"
+msgstr "Tarjetas ¿Sabías que…?"
+
+msgid "Big words"
+msgstr "Palabras grandes"
+
+msgid "40 hours"
+msgstr "40 horas"
+
+msgid "The fact"
+msgstr "El dato"
+
+msgid "to program one song. Every light is set by hand."
+msgstr "para programar una canción. Cada luz se ajusta a mano."
+
+msgid "Add a fact"
+msgstr "Agregar un dato"
+
+msgid "Four or eight cards fill the rows evenly."
+msgstr "Cuatro u ocho tarjetas llenan las filas de forma pareja."
+
+msgid "Fan Favorites by year"
+msgstr "Favoritas del público por año"
+
+msgid ""
+"Years with song voting fill in by themselves, with the top 5 songs and their"
+" votes. For years before you had voting, type the top songs here."
+msgstr ""
+"Los años con votación de canciones se completan solos, con las 5 canciones "
+"más votadas y sus votos. Para los años antes de la votación, escribe aquí "
+"las canciones favoritas."
+
+msgid "Year"
+msgstr "Año"
+
+msgid "Top songs, one per line, most popular first"
+msgstr "Canciones favoritas, una por línea, la más popular primero"
+
+msgid "Add a past year"
+msgstr "Agregar un año anterior"
+
+msgid ""
+"Your show photo and numbers, Did You Know? fact cards, and fan favorites by "
+"year."
+msgstr ""
+"La foto y los números de tu espectáculo, las tarjetas ¿Sabías que…? y las "
+"favoritas del público por año."

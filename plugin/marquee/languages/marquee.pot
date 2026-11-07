@@ -7093,3 +7093,100 @@ msgstr ""
 
 msgid "Site admin email:"
 msgstr ""
+
+msgid "Show Facts"
+msgstr ""
+
+msgid "Show Facts page"
+msgstr ""
+
+msgid "The Show Facts page and its button"
+msgstr ""
+
+msgid ""
+"A page about your show with its own button at the top: your photo and "
+"numbers, fact cards and fan favorites (fill it in under Sharing & donations)"
+msgstr ""
+
+msgid "Donations, sponsors, show facts, social links"
+msgstr ""
+
+msgid ""
+"A page about your show, with its own button at the top next to Kids’ Corner."
+" It has three parts; show the ones you like."
+msgstr ""
+
+msgid "Show the Show Facts page"
+msgstr ""
+
+msgid "Page title"
+msgstr ""
+
+msgid "Also the name on the button at the top."
+msgstr ""
+
+msgid "Your show: a photo and your numbers"
+msgstr ""
+
+msgid "Photo of your show"
+msgstr ""
+
+msgid "A wide night photo of your display works best."
+msgstr ""
+
+msgid "Headline on the photo (optional)"
+msgstr ""
+
+msgid "Lighting up our street since 2019"
+msgstr ""
+
+msgid "Line under the headline (optional)"
+msgstr ""
+
+msgid ""
+"The numbers under the photo are your Behind the Lights numbers (Appearance →"
+" Customize → Behind the Lights). They count up when the page opens."
+msgstr ""
+
+msgid "Did You Know? fact cards"
+msgstr ""
+
+msgid "Big words"
+msgstr ""
+
+msgid "40 hours"
+msgstr ""
+
+msgid "The fact"
+msgstr ""
+
+msgid "to program one song. Every light is set by hand."
+msgstr ""
+
+msgid "Add a fact"
+msgstr ""
+
+msgid "Four or eight cards fill the rows evenly."
+msgstr ""
+
+msgid "Fan Favorites by year"
+msgstr ""
+
+msgid ""
+"Years with song voting fill in by themselves, with the top 5 songs and their"
+" votes. For years before you had voting, type the top songs here."
+msgstr ""
+
+msgid "Year"
+msgstr ""
+
+msgid "Top songs, one per line, most popular first"
+msgstr ""
+
+msgid "Add a past year"
+msgstr ""
+
+msgid ""
+"Your show photo and numbers, Did You Know? fact cards, and fan favorites by "
+"year."
+msgstr ""

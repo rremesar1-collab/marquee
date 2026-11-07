@@ -86,7 +86,7 @@ function marquee_theme_keys() {
 	return array(
 		'radio', 'listen_url', 'season_start', 'season_end', 'use_sunset', 'weeknight_start', 'weekend_start', 'weeknight_close', 'weekend_close',
 		'radar_station', 'cashapp_url', 'gb_show', 'names_on', 'names_geo', 'names_geo_miles', 'kids_show', 'lab_on', 'coloring_on', 'games_on', 'songs_show', 'contest_on', 'app_auto_on', 'snow_amount',
-		'sp_show', 'sp_title', 'sp_intro', 'sp_ask', 'sp_color', 'sponsors', 'gb_ts_site', 'gb_ts_secret', 'names_geo_unit', 'count_to', 'count_name', 'count_date', 'rf_viewer_url', 'facebook_url', 'instagram_url', 'youtube_url', 'tiktok_url', 'facebook_show', 'instagram_show', 'youtube_show', 'tiktok_show',
+		'sp_show', 'sp_title', 'sp_intro', 'sp_ask', 'sp_color', 'sponsors', 'facts_show', 'facts_title', 'facts_tagline', 'facts_line', 'facts_photo', 'facts_hero', 'facts_did', 'facts_fav', 'facts', 'fav_past', 'gb_ts_site', 'gb_ts_secret', 'names_geo_unit', 'count_to', 'count_name', 'count_date', 'rf_viewer_url', 'facebook_url', 'instagram_url', 'youtube_url', 'tiktok_url', 'facebook_show', 'instagram_show', 'youtube_show', 'tiktok_show',
 	);
 }
 function marquee_theme_get( $k ) {
@@ -284,9 +284,12 @@ function marquee_save( $in ) {
 	if ( isset( $in['sp_sent'] ) ) {
 		marquee_save_sponsors( $in );
 	}
+	if ( isset( $in['facts_sent'] ) ) {
+		marquee_save_facts( $in );
+	}
 	if ( isset( $in['features_sent'] ) ) {
 		$f = isset( $in['feat'] ) ? (array) $in['feat'] : array();
-		foreach ( array( 'gb_show', 'names_on', 'names_geo', 'kids_show', 'lab_on', 'coloring_on', 'games_on', 'songs_show', 'contest_on', 'app_auto_on', 'sp_show' ) as $k ) {
+		foreach ( array( 'gb_show', 'names_on', 'names_geo', 'kids_show', 'lab_on', 'coloring_on', 'games_on', 'songs_show', 'contest_on', 'app_auto_on', 'sp_show', 'facts_show' ) as $k ) {
 			set_theme_mod( $k, in_array( $k, $f, true ) ? 1 : 0 );
 		}
 		if ( isset( $in['names_geo_miles'] ) ) {
@@ -627,3 +630,52 @@ function marquee_save_sponsors( $in ) {
 		set_theme_mod( 'sp_ask', mb_substr( sanitize_text_field( wp_unslash( $in['sp_ask'] ) ), 0, 200 ) );
 	}
 }
+
+/** Show Facts (Sharing & donations): the photo, words, part switches, fact cards and past fan favorites. */
+function marquee_save_facts( $in ) {
+	$col = function ( $k ) use ( $in ) {
+		return isset( $in[ $k ] ) ? array_values( (array) wp_unslash( $in[ $k ] ) ) : array();
+	};
+	$t = isset( $in['facts_title'] ) ? mb_substr( sanitize_text_field( wp_unslash( $in['facts_title'] ) ), 0, 40 ) : '';
+	if ( '' === $t ) {
+		remove_theme_mod( 'facts_title' ); // back to the standard title (in the visitor's language)
+	} else {
+		set_theme_mod( 'facts_title', $t );
+	}
+	set_theme_mod( 'facts_tagline', mb_substr( sanitize_text_field( wp_unslash( $in['facts_tagline'] ?? '' ) ), 0, 70 ) );
+	set_theme_mod( 'facts_line', mb_substr( sanitize_text_field( wp_unslash( $in['facts_line'] ?? '' ) ), 0, 120 ) );
+	$photo = absint( strtok( (string) ( $in['facts_photo'] ?? '' ), ',' ) );
+	set_theme_mod( 'facts_photo', $photo && wp_attachment_is_image( $photo ) ? $photo : 0 );
+	foreach ( array( 'facts_hero', 'facts_did', 'facts_fav' ) as $k ) {
+		set_theme_mod( $k, empty( $in[ $k ] ) ? 0 : 1 );
+	}
+	$icons = function_exists( 'ridgeroad_fact_icons' ) ? ridgeroad_fact_icons() : array( 'star' => '' );
+	$ic    = $col( 'fc_icon' );
+	$big   = $col( 'fc_big' );
+	$txt   = $col( 'fc_text' );
+	$rows  = array();
+	for ( $i = 0, $n = max( count( $big ), count( $txt ) ); $i < $n && count( $rows ) < 16; $i++ ) {
+		$b = mb_substr( sanitize_text_field( (string) ( $big[ $i ] ?? '' ) ), 0, 24 );
+		$x = mb_substr( sanitize_text_field( (string) ( $txt[ $i ] ?? '' ) ), 0, 140 );
+		if ( '' === $b && '' === $x ) {
+			continue;
+		}
+		$rows[] = array( 'icon' => isset( $icons[ $ic[ $i ] ?? '' ] ) ? $ic[ $i ] : 'star', 'big' => $b, 'text' => $x );
+	}
+	set_theme_mod( 'facts', $rows );
+	$yrs  = $col( 'fp_year' );
+	$sngs = $col( 'fp_songs' );
+	$past = array();
+	foreach ( $yrs as $i => $y ) {
+		$y = (int) $y;
+		$l = array_slice( array_values( array_filter( array_map( function ( $s ) {
+			return mb_substr( sanitize_text_field( $s ), 0, 80 );
+		}, preg_split( '/\R/', (string) ( $sngs[ $i ] ?? '' ) ) ) ) ), 0, 5 );
+		if ( $y >= 1990 && $y <= 2100 && $l ) {
+			$past[ $y ] = array( 'year' => $y, 'songs' => $l );
+		}
+	}
+	krsort( $past );
+	set_theme_mod( 'fav_past', array_values( $past ) );
+}
+

@@ -183,6 +183,7 @@ function ridgeroad_control_page() {
 						'songs_show'  => array( __( 'Favorite song voting', 'ridgeroad' ), __( 'On the Songs & Videos page', 'ridgeroad' ), '' ),
 						'gb_show'     => array( __( 'Guestbook', 'ridgeroad' ), __( 'Visitors can leave a message', 'ridgeroad' ), '' ),
 						'sp_show'     => array( __( 'Sponsors', 'ridgeroad' ), __( 'The sponsors box on the home page', 'ridgeroad' ), '' ),
+						'facts_show'  => array( __( 'Show Facts', 'ridgeroad' ), __( 'The Show Facts page and its button', 'ridgeroad' ), '' ),
 					);
 					foreach ( $sw as $k => $s ) {
 						printf(
@@ -429,6 +430,7 @@ function ridgeroad_control_state() {
 			'games_on'     => (bool) ridgeroad_mod( 'games_on' ),
 			'gb_show'      => (bool) ridgeroad_mod( 'gb_show' ),
 			'sp_show'      => (bool) ridgeroad_mod( 'sp_show' ),
+			'facts_show'   => (bool) ridgeroad_mod( 'facts_show' ),
 			'names_on'     => (bool) ridgeroad_mod( 'names_on' ),
 			'paused'       => ridgeroad_names_paused(),
 			'names_always' => (bool) ridgeroad_mod( 'names_always' ),
@@ -533,6 +535,7 @@ add_action( 'wp_ajax_rr_ctl_set', function () {
 		case 'games_on':
 		case 'gb_show':
 		case 'sp_show':
+		case 'facts_show':
 			set_theme_mod( $k, $on ? 1 : 0 );
 			break;
 		case 'ok_banner':

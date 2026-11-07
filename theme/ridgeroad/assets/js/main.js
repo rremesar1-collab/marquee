@@ -282,9 +282,28 @@
 		}
 	}
 
+	/* Show Facts: Fan Favorites year buttons (arrow keys move between years) */
+	function favYears() {
+		var tabs = [].slice.call(document.querySelectorAll('[data-rr-fav-year]'));
+		if (!tabs.length) { return; }
+		function pick(t, focus) {
+			tabs.forEach(function (x) { var on = x === t; x.setAttribute('aria-selected', on ? 'true' : 'false'); x.tabIndex = on ? 0 : -1; });
+			document.querySelectorAll('[data-rr-fav-list]').forEach(function (l) { l.hidden = l.getAttribute('data-rr-fav-list') !== t.getAttribute('data-rr-fav-year'); });
+			if (focus) { t.focus(); }
+		}
+		tabs.forEach(function (t, i) {
+			t.tabIndex = t.getAttribute('aria-selected') === 'true' ? 0 : -1;
+			t.addEventListener('click', function () { pick(t); });
+			t.addEventListener('keydown', function (e) {
+				var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+				if (d) { e.preventDefault(); pick(tabs[(i + d + tabs.length) % tabs.length], true); }
+			});
+		});
+	}
+
 	/* Stats: count up when scrolled into view */
 	function stats() {
-		var nums = document.querySelectorAll('.rr-stat__num[data-count]');
+		var nums = document.querySelectorAll('.rr-stat__num[data-count], .rr-facts__nums b[data-count]');
 		if (!nums.length || !('IntersectionObserver' in window)) { return; }
 		var io = new IntersectionObserver(function (es) {
 			es.forEach(function (e) {
@@ -603,6 +622,7 @@
 		quiz();
 		countdown();
 		stats();
+		favYears();
 		share();
 		live();
 		fixHead();

@@ -3838,3 +3838,89 @@ msgstr "%d canciones esta noche. Desplaza la lista para verlas todas."
 
 msgid "Tonight’s songs"
 msgstr "Las canciones de esta noche"
+
+msgid "Show Facts"
+msgstr "Datos del espectáculo"
+
+msgid "Did You Know?"
+msgstr "¿Sabías que…?"
+
+msgid "Fan Favorites"
+msgstr "Las favoritas del público"
+
+msgid "Year"
+msgstr "Año"
+
+msgid "Show facts are coming soon. Check back!"
+msgstr "Pronto habrá datos del espectáculo. ¡Vuelve pronto!"
+
+msgid "Star"
+msgstr "Estrella"
+
+msgid "Light bulb"
+msgstr "Bombilla"
+
+msgid "Tree"
+msgstr "Árbol"
+
+msgid "Music"
+msgstr "Música"
+
+msgid "Clock"
+msgstr "Reloj"
+
+msgid "House"
+msgstr "Casa"
+
+msgid "Car"
+msgstr "Auto"
+
+msgid "Heart"
+msgstr "Corazón"
+
+msgid "Present"
+msgstr "Regalo"
+
+msgid "Radio"
+msgstr "Radio"
+
+msgid "Camera"
+msgstr "Cámara"
+
+msgid "Show the Show Facts page"
+msgstr "Mostrar la página Datos del espectáculo"
+
+msgid ""
+"A page about your show, with its own button at the top. Add the photo, fact "
+"cards and past fan favorites in Marquee → Settings → Show Facts."
+msgstr ""
+"Una página sobre tu espectáculo, con su propio botón arriba. Agrega la foto,"
+" las tarjetas de datos y las favoritas de años pasados en Marquee → Ajustes "
+"→ Datos del espectáculo."
+
+msgid "Page title"
+msgstr "Título de la página"
+
+msgid "Headline on the photo"
+msgstr "Titular sobre la foto"
+
+msgid "Line under the headline"
+msgstr "Línea debajo del titular"
+
+msgid "Show your photo and numbers"
+msgstr "Mostrar tu foto y tus números"
+
+msgid "The numbers are the same as Behind the Lights."
+msgstr "Los números son los mismos de Detrás de las luces."
+
+msgid "Show Did You Know?"
+msgstr "Mostrar ¿Sabías que…?"
+
+msgid "Show Fan Favorites"
+msgstr "Mostrar Las favoritas del público"
+
+msgid "The most-voted songs each year, from your song voting."
+msgstr "Las canciones más votadas cada año, según la votación de canciones."
+
+msgid "The Show Facts page and its button"
+msgstr "La página Datos del espectáculo y su botón"

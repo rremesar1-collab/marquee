@@ -113,6 +113,7 @@ function marquee_admin_page() {
 		'songs_show'  => array( __( 'Favorite song voting', 'marquee' ), __( 'Uses your Remote Falcon song list', 'marquee' ) ),
 		'app_auto_on' => array( __( '“The lights are on!” alert', 'marquee' ), __( 'Sent to app users when FPP starts your show (needs https)', 'marquee' ) ),
 		'sp_show'     => array( __( 'Sponsors', 'marquee' ), __( 'Thank local businesses that support your show, with their logos (add them under Sharing & donations)', 'marquee' ) ),
+		'facts_show'  => array( __( 'Show Facts', 'marquee' ), __( 'A page about your show with its own button at the top: your photo and numbers, fact cards and fan favorites (fill it in under Sharing & donations)', 'marquee' ) ),
 		'snow'        => array( __( 'Falling snow', 'marquee' ), __( 'Snowflakes on every page (size and amount in Show Control)', 'marquee' ) ),
 	);
 	$names_url = function_exists( 'ridgeroad_names_key' ) ? home_url( '/' ) : '';
@@ -126,7 +127,7 @@ function marquee_admin_page() {
 			4 => array( __( 'Names in Lights', 'marquee' ), __( 'Names on your screens', 'marquee' ), 'megaphone' ),
 			3 => array( __( 'Remote Falcon', 'marquee' ), __( 'Now Playing and song picks', 'marquee' ), 'playlist-audio' ),
 			6 => array( __( 'Artwork & Kids’ Corner', 'marquee' ), __( 'Coloring pages, songs, pictures', 'marquee' ), 'art' ),
-			7 => array( __( 'Sharing & donations', 'marquee' ), __( 'Donations, sponsors, social links', 'marquee' ), 'share' ),
+			7 => array( __( 'Sharing & donations', 'marquee' ), __( 'Donations, sponsors, show facts, social links', 'marquee' ), 'share' ),
 		) ),
 		array( '', array(
 			9 => array( __( 'Help', 'marquee' ), __( 'Support and your phone', 'marquee' ), 'sos' ),
@@ -898,6 +899,66 @@ function marquee_admin_page() {
 					</ol>
 					<template data-mq-sptpl><?php $mq_sp_row( array( 'logo' => 0, 'name' => '', 'url' => '', 'line' => '' ) ); ?></template>
 					<p class="mq-sp__add"><button type="button" class="button" data-mq-spadd><?php esc_html_e( 'Add a sponsor', 'marquee' ); ?></button> <small data-mq-spempty <?php echo $mq_sp ? 'hidden' : ''; ?>><?php esc_html_e( 'No sponsors yet. The box stays hidden until you add one.', 'marquee' ); ?></small></p>
+				</div>
+				<div class="mq-sec" id="mq-sec-facts">
+					<h3 class="mq-sec__title"><?php esc_html_e( 'Show Facts', 'marquee' ); ?></h3>
+					<p class="mq__fine"><?php esc_html_e( 'A page about your show, with its own button at the top next to Kids’ Corner. It has three parts; show the ones you like.', 'marquee' ); ?></p>
+					<input type="hidden" name="facts_sent" value="1">
+					<label class="mq__feat"><span><b><?php esc_html_e( 'Show the Show Facts page', 'marquee' ); ?></b><small><?php esc_html_e( 'Also under Features & pages.', 'marquee' ); ?></small></span><input type="checkbox" <?php checked( (bool) $tm( 'facts_show' ) ); ?> data-mq-factsshow></label>
+					<p><label for="mq-facts-title"><?php esc_html_e( 'Page title', 'marquee' ); ?></label><input id="mq-facts-title" name="facts_title" type="text" maxlength="40" value="<?php echo esc_attr( $tm( 'facts_title' ) ); ?>"><small><?php esc_html_e( 'Also the name on the button at the top.', 'marquee' ); ?></small></p>
+
+					<h4 class="mq-facts__part"><label><input type="checkbox" name="facts_hero" value="1" <?php checked( (bool) $tm( 'facts_hero' ) ); ?>> <?php esc_html_e( 'Your show: a photo and your numbers', 'marquee' ); ?></label></h4>
+					<div class="mq-facts__box">
+						<?php marquee_media_field( 'facts_photo', __( 'Photo of your show', 'marquee' ), __( 'A wide night photo of your display works best.', 'marquee' ), $tm( 'facts_photo' ) ? array( (int) $tm( 'facts_photo' ) ) : array(), false ); ?>
+						<p><label for="mq-facts-head"><?php esc_html_e( 'Headline on the photo (optional)', 'marquee' ); ?></label><input id="mq-facts-head" name="facts_tagline" type="text" maxlength="70" placeholder="<?php esc_attr_e( 'Lighting up our street since 2019', 'marquee' ); ?>" value="<?php echo esc_attr( $tm( 'facts_tagline' ) ); ?>"></p>
+						<p><label for="mq-facts-line"><?php esc_html_e( 'Line under the headline (optional)', 'marquee' ); ?></label><input id="mq-facts-line" name="facts_line" type="text" maxlength="120" value="<?php echo esc_attr( $tm( 'facts_line' ) ); ?>"></p>
+						<p class="mq__fine"><?php esc_html_e( 'The numbers under the photo are your Behind the Lights numbers (Appearance → Customize → Behind the Lights). They count up when the page opens.', 'marquee' ); ?></p>
+					</div>
+
+					<h4 class="mq-facts__part"><label><input type="checkbox" name="facts_did" value="1" <?php checked( (bool) $tm( 'facts_did' ) ); ?>> <?php esc_html_e( 'Did You Know? fact cards', 'marquee' ); ?></label></h4>
+					<div class="mq-facts__box">
+						<?php
+						$mq_fc = function_exists( 'ridgeroad_facts' ) ? ridgeroad_facts() : array();
+						$mq_icons = function_exists( 'ridgeroad_fact_icons' ) ? ridgeroad_fact_icons() : array( 'star' => 'Star' );
+						$mq_fc_row = function ( $r ) use ( $mq_icons ) {
+							?>
+							<li class="mq-fc__row" data-mq-fcrow>
+								<label class="mq-fc__icon"><?php esc_html_e( 'Picture', 'marquee' ); ?><select name="fc_icon[]"><?php foreach ( $mq_icons as $k => $l ) : ?><option value="<?php echo esc_attr( $k ); ?>" <?php selected( $r['icon'], $k ); ?>><?php echo esc_html( $l ); ?></option><?php endforeach; ?></select></label>
+								<label class="mq-fc__big"><?php esc_html_e( 'Big words', 'marquee' ); ?><input name="fc_big[]" type="text" maxlength="24" placeholder="<?php esc_attr_e( '40 hours', 'marquee' ); ?>" value="<?php echo esc_attr( $r['big'] ); ?>"></label>
+								<label class="mq-fc__text"><?php esc_html_e( 'The fact', 'marquee' ); ?><input name="fc_text[]" type="text" maxlength="140" placeholder="<?php esc_attr_e( 'to program one song. Every light is set by hand.', 'marquee' ); ?>" value="<?php echo esc_attr( $r['text'] ); ?>"></label>
+								<span class="mq-fc__tools">
+									<button type="button" class="button" data-mq-fcmove="-1" aria-label="<?php esc_attr_e( 'Move up', 'marquee' ); ?>">↑</button>
+									<button type="button" class="button" data-mq-fcmove="1" aria-label="<?php esc_attr_e( 'Move down', 'marquee' ); ?>">↓</button>
+									<button type="button" class="button-link-delete" data-mq-fcdel><?php esc_html_e( 'Remove', 'marquee' ); ?></button>
+								</span>
+							</li>
+							<?php
+						};
+						?>
+						<ol class="mq-fc" data-mq-fclist><?php foreach ( $mq_fc as $r ) { $mq_fc_row( $r ); } ?></ol>
+						<template data-mq-fctpl><?php $mq_fc_row( array( 'icon' => 'star', 'big' => '', 'text' => '' ) ); ?></template>
+						<p><button type="button" class="button" data-mq-fcadd><?php esc_html_e( 'Add a fact', 'marquee' ); ?></button> <small class="mq__fine"><?php esc_html_e( 'Four or eight cards fill the rows evenly.', 'marquee' ); ?></small></p>
+					</div>
+
+					<h4 class="mq-facts__part"><label><input type="checkbox" name="facts_fav" value="1" <?php checked( (bool) $tm( 'facts_fav' ) ); ?>> <?php esc_html_e( 'Fan Favorites by year', 'marquee' ); ?></label></h4>
+					<div class="mq-facts__box">
+						<p class="mq__fine"><?php esc_html_e( 'Years with song voting fill in by themselves, with the top 5 songs and their votes. For years before you had voting, type the top songs here.', 'marquee' ); ?></p>
+						<?php
+						$mq_fp = array_values( (array) $tm( 'fav_past' ) );
+						$mq_fp_row = function ( $r ) {
+							?>
+							<li class="mq-fp__row" data-mq-fprow>
+								<label class="mq-fp__year"><?php esc_html_e( 'Year', 'marquee' ); ?><input name="fp_year[]" type="number" min="1990" max="2100" value="<?php echo $r['year'] ? (int) $r['year'] : ''; ?>"></label>
+								<label class="mq-fp__songs"><?php esc_html_e( 'Top songs, one per line, most popular first', 'marquee' ); ?><textarea name="fp_songs[]" rows="4"><?php echo esc_textarea( implode( "\n", (array) $r['songs'] ) ); ?></textarea></label>
+								<button type="button" class="button-link-delete" data-mq-fpdel><?php esc_html_e( 'Remove', 'marquee' ); ?></button>
+							</li>
+							<?php
+						};
+						?>
+						<ol class="mq-fp" data-mq-fplist><?php foreach ( $mq_fp as $r ) { $mq_fp_row( $r ); } ?></ol>
+						<template data-mq-fptpl><?php $mq_fp_row( array( 'year' => 0, 'songs' => array() ) ); ?></template>
+						<p><button type="button" class="button" data-mq-fpadd><?php esc_html_e( 'Add a past year', 'marquee' ); ?></button></p>
+					</div>
 				</div>
 				<div class="mq-sec" id="mq-sec-social">
 				<?php if ( function_exists( 'ridgeroad_social_networks' ) ) : ?>
