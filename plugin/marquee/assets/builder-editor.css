@@ -75,3 +75,22 @@
 .mq-sw__b.is-on { color: #1e1e1e; font-weight: 600; }
 .mq-ed-note { color: #757575; font-size: 12px; margin: 8px 0 0; }
 .mq-tbdot { width: 16px; height: 16px; border-radius: 50%; display: block; box-shadow: 0 0 0 1px rgba(0, 0, 0, .3); }
+
+/* "Start your page" */
+.mq-start.components-modal__frame { width: min(1180px, calc(100vw - 48px)); max-width: none; }
+.mq-start .components-modal__header-heading { font-size: 22px; }
+.mq-start__sub { margin: 0 0 18px; font-size: 15px; color: #50575e; }
+.mq-start__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.mq-start__card { display: flex; flex-direction: column; text-align: left; padding: 0; border: 1px solid #dcdcde; border-radius: 10px; background: #fff; cursor: pointer; overflow: hidden; }
+.mq-start__card:hover { border-color: #8c8f94; }
+.mq-start__card.is-on { outline: 3px solid var(--wp-admin-theme-color, #3858e9); outline-offset: -1px; border-color: transparent; }
+.mq-start__card:focus-visible { outline: 3px solid var(--wp-admin-theme-color, #3858e9); }
+.mq-start__img { display: block; aspect-ratio: 16 / 8; background: #08122b center top / cover no-repeat; }
+.mq-start__img--blank { display: grid; place-items: center; font-size: 44px; color: #c3c4c7; background: repeating-linear-gradient(45deg, #f6f7f7, #f6f7f7 10px, #fff 10px, #fff 20px); }
+.mq-start__card b { padding: 12px 14px 0; font-size: 16px; color: #1e1e1e; }
+.mq-start__card small { padding: 3px 14px 14px; font-size: 13.5px; color: #50575e; line-height: 1.4; }
+.mq-start__foot { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin: 20px -32px -32px; padding: 14px 32px 22px; border-top: 1px solid #e0e0e0; position: sticky; bottom: -32px; background: #fff; z-index: 2; }
+.mq-start__foot .components-base-control { margin: 0; }
+.mq-start__foot .components-checkbox-control__label { font-size: 14px; }
+@media (max-width: 900px) { .mq-start__grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .mq-start__grid { grid-template-columns: 1fr; } .mq-start__foot { flex-direction: column; align-items: stretch; } }

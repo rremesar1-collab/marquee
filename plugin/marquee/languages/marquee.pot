@@ -7867,3 +7867,29 @@ msgid ""
 "Our Story, Questions & Answers, a photo gallery… Start from a layout in your"
 " show’s colors."
 msgstr ""
+
+msgid "Start your page"
+msgstr ""
+
+msgid ""
+"Pick a layout to start from. It’s already in your show’s colors; change the "
+"words and photos, move boxes around, or add more."
+msgstr ""
+
+msgid "Blank page"
+msgstr ""
+
+msgid "Start with nothing and add boxes yourself"
+msgstr ""
+
+msgid "Add a button for this page at the top of my website"
+msgstr ""
+
+msgid "Next to Kids’ Corner and Show Facts. You can turn it off later."
+msgstr ""
+
+msgid "Use this layout"
+msgstr ""
+
+msgid "Start with a blank page"
+msgstr ""

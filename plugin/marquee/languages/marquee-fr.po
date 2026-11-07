@@ -7629,3 +7629,34 @@ msgid ""
 msgstr ""
 "Notre histoire, Questions et réponses, une galerie photos… Partez d’une mise"
 " en page aux couleurs de votre spectacle."
+
+msgid "Start your page"
+msgstr "Commencez votre page"
+
+msgid ""
+"Pick a layout to start from. It’s already in your show’s colors; change the "
+"words and photos, move boxes around, or add more."
+msgstr ""
+"Choisissez une mise en page pour commencer. Elle est déjà aux couleurs de "
+"votre spectacle ; changez les textes et les photos, déplacez les blocs ou "
+"ajoutez-en."
+
+msgid "Blank page"
+msgstr "Page vide"
+
+msgid "Start with nothing and add boxes yourself"
+msgstr "Partez de zéro et ajoutez vos blocs vous-même"
+
+msgid "Add a button for this page at the top of my website"
+msgstr "Ajouter un bouton pour cette page en haut de mon site"
+
+msgid "Next to Kids’ Corner and Show Facts. You can turn it off later."
+msgstr ""
+"À côté de Coin des enfants et Le spectacle en bref. Vous pourrez le "
+"désactiver plus tard."
+
+msgid "Use this layout"
+msgstr "Utiliser cette mise en page"
+
+msgid "Start with a blank page"
+msgstr "Commencer avec une page vide"

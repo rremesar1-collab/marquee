@@ -109,6 +109,14 @@ function marquee_live_render( $a ) {
 /** Words used by the editor script (assets/builder.js), in the admin's language. */
 function marquee_builder_i18n() {
 	return array(
+		'Start your page' => __( 'Start your page', 'marquee' ),
+		'Pick a layout to start from. It’s already in your show’s colors; change the words and photos, move boxes around, or add more.' => __( 'Pick a layout to start from. It’s already in your show’s colors; change the words and photos, move boxes around, or add more.', 'marquee' ),
+		'Blank page' => __( 'Blank page', 'marquee' ),
+		'Start with nothing and add boxes yourself' => __( 'Start with nothing and add boxes yourself', 'marquee' ),
+		'Add a button for this page at the top of my website' => __( 'Add a button for this page at the top of my website', 'marquee' ),
+		'Next to Kids’ Corner and Show Facts. You can turn it off later.' => __( 'Next to Kids’ Corner and Show Facts. You can turn it off later.', 'marquee' ),
+		'Use this layout' => __( 'Use this layout', 'marquee' ),
+		'Start with a blank page' => __( 'Start with a blank page', 'marquee' ),
 		'Color' => __( 'Color', 'marquee' ),
 		'Your website’s Box colors setting (Look & colors) shows every box in one color.' => __( 'Your website’s Box colors setting (Look & colors) shows every box in one color.', 'marquee' ),
 		'See-through' => __( 'See-through', 'marquee' ),
@@ -239,6 +247,9 @@ add_action( 'init', function () {
 		'liveX'    => (string) ridgeroad_mod( 'live_text' ),
 		'img'      => MARQUEE_URL . 'assets/img/builder/',
 		't'        => marquee_builder_i18n(),
+		'layouts'  => array_map( function ( $slug, $p ) {
+			return array( 'slug' => $slug, 'title' => $p[0], 'desc' => $p[1], 'img' => MARQUEE_URL . 'assets/img/builder/layout-' . $slug . '.webp', 'content' => $p[2] );
+		}, array_keys( marquee_page_layouts() ), marquee_page_layouts() ),
 	) ) . ';', 'before' );
 }, 20 ); // after blocks.php registered the Marquee blocks
 
@@ -313,9 +324,8 @@ add_action( 'init', function () {
 			'title'       => $p[0],
 			'description' => $p[1],
 			'categories'  => array( 'marquee-pages' ),
-			'blockTypes'  => array( 'core/post-content' ),
 			'postTypes'   => array( 'page' ),
-			'viewportWidth' => 1200,
+			'viewportWidth' => 900, // in the Patterns list; new pages get Marquee's own "Start your page" picker
 			'content'     => $p[2],
 		) );
 	}
@@ -408,7 +418,7 @@ function marquee_page_layouts() {
 		'faq'     => array(
 			__( 'Questions & Answers', 'marquee' ),
 			__( 'Parking, the radio, can we get out of the car…', 'marquee' ),
-			marquee_bx( array( 'color' => 'green', 'kind' => 'faq', 'ribbon' => true, 'title' => __( 'Questions We Get', 'marquee' ) ), $faq( array(
+			marquee_bx( array( 'color' => 'green', 'kind' => 'faq' ), $faq( array(
 				array( __( 'Where do I park?', 'marquee' ), __( 'Pull over on the right side of the street and keep driveways clear for our neighbors.', 'marquee' ) ),
 				array( __( 'How do I hear the music?', 'marquee' ), __( 'Tune your car radio to our station. You can also listen on your phone from our home page.', 'marquee' ) ),
 				array( __( 'Can we get out of the car?', 'marquee' ), __( 'Yes! Please stay on the sidewalk and don’t touch the lights.', 'marquee' ) ),
@@ -419,19 +429,20 @@ function marquee_page_layouts() {
 		'gallery' => array(
 			__( 'Photo Gallery', 'marquee' ),
 			__( 'Your best pictures, year by year', 'marquee' ),
-			marquee_bx( array( 'color' => 'blue', 'kind' => 'gallery', 'ribbon' => true, 'title' => __( 'This Year', 'marquee' ) ), $gallery )
+			marquee_bx( array( 'color' => 'blue', 'kind' => 'gallery' ), $gallery )
 			. marquee_bx( array( 'color' => 'red', 'kind' => 'then', 'ribbon' => true, 'title' => __( 'Then and Now', 'marquee' ) ), $then ),
 		),
 		'team'    => array(
 			__( 'Meet the Team', 'marquee' ),
 			__( 'The people (and pets) behind the lights', 'marquee' ),
-			marquee_bx( array( 'color' => 'green', 'kind' => 'people', 'ribbon' => true, 'title' => __( 'Meet the Team', 'marquee' ) ), $people() )
+			marquee_bx( array( 'color' => 'green', 'kind' => 'people' ), $people() )
 			. marquee_bx( array( 'color' => 'red', 'kind' => 'photo' ), marquee_bmt( 'house.webp', __( 'Behind the scenes', 'marquee' ), array( __( 'Tell visitors who builds the show, how long it takes and what everyone’s favorite part is.', 'marquee' ) ), true ) ),
 		),
 		'give'    => array(
 			__( 'Give Back', 'marquee' ),
 			__( 'The charity you support and how to help', 'marquee' ),
-			marquee_bx( array( 'color' => 'red', 'kind' => 'photo', 'ribbon' => true, 'title' => __( 'Lights for a Cause', 'marquee' ) ), marquee_bmt( 'give.webp', __( 'Who we’re helping this year', 'marquee' ), array( __( 'Write a few lines about the charity you support and why it matters to your family.', 'marquee' ), __( 'Every donation goes straight to them.', 'marquee' ) ) ) )
+			marquee_bscript( __( 'Lights for a Cause', 'marquee' ) ) . "\n\n"
+			. marquee_bx( array( 'color' => 'red', 'kind' => 'photo' ), marquee_bmt( 'give.webp', __( 'Who we’re helping this year', 'marquee' ), array( __( 'Write a few lines about the charity you support and why it matters to your family.', 'marquee' ), __( 'Every donation goes straight to them.', 'marquee' ) ) ) )
 			. marquee_bx( array( 'color' => 'green', 'kind' => 'faq', 'ribbon' => true, 'title' => __( 'Ways to Help', 'marquee' ) ), $faq( array(
 				array( __( 'Donate online', 'marquee' ), __( 'Use the donation link on our home page. Every dollar goes to the charity.', 'marquee' ) ),
 				array( __( 'Bring a can', 'marquee' ), __( 'Drop off canned food in the bin by the mailbox during show hours.', 'marquee' ) ),

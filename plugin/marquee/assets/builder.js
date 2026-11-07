@@ -189,4 +189,48 @@
 			}
 		});
 	}
+
+	/* ---------- "Start your page": big, readable layout picker for a new page ---------- */
+	if (wp.plugins && B.layouts && B.layouts.length) {
+		wp.plugins.registerPlugin('marquee-start', {
+			render: function () {
+				var st = wp.element.useState(null), done = st[0], setDone = st[1];
+				var pick = wp.element.useState(B.layouts[0].slug), sel = pick[0], setSel = pick[1];
+				var mb = wp.element.useState(true), menu = mb[0], setMenu = mb[1];
+				var info = wp.data.useSelect(function (s) {
+					var e = s('core/editor');
+					return { type: e.getCurrentPostType(), isNew: e.isCleanNewPost && e.isCleanNewPost(), empty: s('core/block-editor').getBlockCount() === 0 || (s('core/block-editor').getBlockCount() === 1 && wp.blocks.isUnmodifiedDefaultBlock && wp.blocks.isUnmodifiedDefaultBlock(s('core/block-editor').getBlocks()[0])) };
+				}, []);
+				var be2 = wp.data.useDispatch('core/block-editor'), ed = wp.data.useDispatch('core/editor');
+				if (done !== null || info.type !== 'page' || !info.isNew || !info.empty) { return null; }
+				var use = function (slug) {
+					var L = B.layouts.filter(function (l) { return l.slug === slug; })[0];
+					if (L) {
+						be2.resetBlocks(wp.blocks.parse(L.content));
+						ed.editPost({ title: L.title, meta: { mq_menu: !!menu } });
+					} else {
+						ed.editPost({ meta: { mq_menu: !!menu } });
+					}
+					setDone(slug || '');
+				};
+				var card = function (L) {
+					var on = sel === L.slug;
+					return el('button', {
+						key: L.slug || 'blank', type: 'button', className: 'mq-start__card' + (on ? ' is-on' : ''), 'aria-pressed': on,
+						onClick: function () { setSel(L.slug); }, onDoubleClick: function () { use(L.slug); }
+					},
+						L.img ? el('span', { className: 'mq-start__img', style: { backgroundImage: 'url(' + L.img + ')' } }) : el('span', { className: 'mq-start__img mq-start__img--blank' }, '+'),
+						el('b', null, L.title), el('small', null, L.desc));
+				};
+				return el(C.Modal, {
+					title: tr('Start your page'), className: 'mq-start', onRequestClose: function () { setDone(''); }, shouldCloseOnClickOutside: false
+				},
+					el('p', { className: 'mq-start__sub' }, tr('Pick a layout to start from. It’s already in your show’s colors; change the words and photos, move boxes around, or add more.')),
+					el('div', { className: 'mq-start__grid' }, B.layouts.map(card).concat([card({ slug: '', title: tr('Blank page'), desc: tr('Start with nothing and add boxes yourself') })])),
+					el('div', { className: 'mq-start__foot' },
+						el(C.CheckboxControl, { label: tr('Add a button for this page at the top of my website'), help: tr('Next to Kids’ Corner and Show Facts. You can turn it off later.'), checked: menu, onChange: setMenu }),
+						el(C.Button, { variant: 'primary', onClick: function () { use(sel); } }, sel ? tr('Use this layout') : tr('Start with a blank page'))));
+			}
+		});
+	}
 })(window.wp, window.MarqueeBuilder);
