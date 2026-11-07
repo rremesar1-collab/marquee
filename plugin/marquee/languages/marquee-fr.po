@@ -7218,3 +7218,13 @@ msgstr ""
 
 msgid "Your social buttons, a hashtag and Share the Show"
 msgstr "Vos boutons de réseaux sociaux, un hashtag et Partagez le spectacle"
+
+msgid ""
+"Falling snow and your own background photo are in Appearance → Customize → "
+"Show Website → Snow & background."
+msgstr ""
+"La neige qui tombe et votre propre photo de fond sont dans Apparence → "
+"Personnaliser → Site web du spectacle → Neige et fond."
+
+msgid "Snow & background"
+msgstr "Neige et fond"

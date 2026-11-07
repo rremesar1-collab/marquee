@@ -7509,3 +7509,11 @@ msgstr ""
 
 msgid "Your social buttons, a hashtag and Share the Show"
 msgstr ""
+
+msgid ""
+"Falling snow and your own background photo are in Appearance → Customize → "
+"Show Website → Snow & background."
+msgstr ""
+
+msgid "Snow & background"
+msgstr ""

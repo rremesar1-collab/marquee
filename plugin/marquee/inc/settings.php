@@ -622,7 +622,7 @@ function marquee_save_sponsors( $in ) {
 	set_theme_mod( 'sponsors', $rows );
 	if ( isset( $in['sp_title'] ) ) {
 		$t = mb_substr( sanitize_text_field( wp_unslash( $in['sp_title'] ) ), 0, 60 );
-		if ( '' === $t ) {
+		if ( '' === $t || marquee_is_std_words( 'sp_title', $t ) ) {
 			marquee_unset_mod( 'sp_title' ); // back to the standard title (in the visitor's language)
 		} else {
 			set_theme_mod( 'sp_title', $t );
@@ -640,12 +640,19 @@ function marquee_save_sponsors( $in ) {
 }
 
 /** Show Facts: the photo, words, part switches, fact cards and past fan favorites. */
+/** Are these the standard words for this setting (in English or the admin's language)? Those aren't saved, so they follow each visitor's language. */
+function marquee_is_std_words( $key, $v ) {
+	$d  = function_exists( 'ridgeroad_defaults' ) ? ridgeroad_defaults() : array();
+	$en = function_exists( 'ridgeroad_defaults_en' ) ? ridgeroad_defaults_en() : array();
+	return ( isset( $d[ $key ] ) && $v === $d[ $key ] ) || ( isset( $en[ $key ] ) && $v === $en[ $key ] );
+}
+
 function marquee_save_facts( $in ) {
 	$col = function ( $k ) use ( $in ) {
 		return isset( $in[ $k ] ) ? array_values( (array) wp_unslash( $in[ $k ] ) ) : array();
 	};
 	$t = isset( $in['facts_title'] ) ? mb_substr( sanitize_text_field( wp_unslash( $in['facts_title'] ) ), 0, 40 ) : '';
-	if ( '' === $t ) {
+	if ( '' === $t || marquee_is_std_words( 'facts_title', $t ) ) {
 		marquee_unset_mod( 'facts_title' ); // back to the standard title (in the visitor's language)
 	} else {
 		set_theme_mod( 'facts_title', $t );

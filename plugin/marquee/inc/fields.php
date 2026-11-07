@@ -243,6 +243,7 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp ) {
 	if ( $look ) {
 		$wp->remove_section( 'rr_header' );
 	} else { // no Look section with this theme: the snow and background stay under Header, without the words
+		$wp->get_section( 'rr_header' )->title = __( 'Snow & background', 'marquee' );
 		foreach ( array_keys( marquee_field_defs() ) as $k ) {
 			$c = $wp->get_control( $k );
 			if ( $c && 'rr_header' === $c->section && ! in_array( $k, $keep, true ) ) {

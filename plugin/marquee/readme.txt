@@ -55,11 +55,14 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 == Changelog ==
 
 = 0.19.0 =
-* New: Show Facts, a page about your show with its own button at the top next to Kids' Corner. Turn it on in Features & pages, and fill it in under Sharing & donations.
+* New: Show Facts, a page about your show with its own button at the top next to Kids' Corner. Turn it on and fill it in under Marquee → Settings → Show Facts.
 * Two page styles to pick from: Photo or Boxes.
 * Three parts, each with its own switch (a hidden part's title goes too): your show (a photo you upload, a headline and your Behind the Lights numbers counting up), Did You Know? fact cards, and Fan Favorites by year (the top 5 songs with a light string as long as their votes).
 * Years with song voting fill in by themselves and are kept when you clear the votes for a new season. Type in the top songs for years before you had voting.
 * Also a Show Facts block and [marquee section="facts"] for other themes. Switch it on or off from Show Control or the Show Manager on your phone. In English, Spanish and French.
+* Settings reorganized, one page at a time. Your show: Start here, Show details, Connections. Your pages: Home page (every box from top to bottom, each with its switch on it and all its words), Songs & Videos, Kids' Corner, Names in Lights, Show Facts. Settings that were in two places now live in one; other-language words sit under each text box.
+* Appearance → Customize keeps just the look (look, box colors, see-through, snow, background photo) while Marquee is on. Show Control and the Show Manager are unchanged; the Show me how tours follow the new layout. All settings are kept.
+* Fixed: putting a title back to its standard words now really goes back to the standard (and follows each visitor's language).
 * Also in this version: long playlists (more than 12 songs) scroll inside their own box (0.18.4, not released on its own).
 
 = 0.18.4 =

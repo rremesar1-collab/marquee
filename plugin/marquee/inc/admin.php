@@ -894,7 +894,7 @@ marquee_geo_row( $s );
 				<div class="mq-pboxes">
 				<?php marquee_pbox( 'header', __( 'Top of the page', 'marquee' ), __( 'The lines under your logo and your welcome', 'marquee' ) ); ?>
 					<?php marquee_fields( array( 'subtitle', 'tagline', 'intro' ) ); ?>
-					<p class="mq__fine"><?php esc_html_e( 'Falling snow and your own background photo are under Look & colors.', 'marquee' ); ?></p>
+					<p class="mq__fine"><?php echo $theme ? esc_html__( 'Falling snow and your own background photo are under Look & colors.', 'marquee' ) : esc_html__( 'Falling snow and your own background photo are in Appearance → Customize → Show Website → Snow & background.', 'marquee' ); ?></p>
 				<?php marquee_pbox_end(); ?>
 
 				<?php marquee_pbox( 'status', __( 'Status banner', 'marquee' ), __( 'Show tonight, canceled or off season. It changes by itself.', 'marquee' ) ); ?>
