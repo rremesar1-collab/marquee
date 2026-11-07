@@ -3876,3 +3876,9 @@ msgstr ""
 "Glissez vers la droite pour laisser l’image de votre page apparaître à "
 "travers les cadres et les titres des sections. Les mots, les lumières et les"
 " bordures restent bien visibles."
+
+msgid "%d songs tonight. Scroll the list to see them all."
+msgstr "%d chansons ce soir. Faites défiler la liste pour toutes les voir."
+
+msgid "Tonight’s songs"
+msgstr "Les chansons de ce soir"

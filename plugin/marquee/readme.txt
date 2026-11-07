@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.18.3
+Stable tag: 0.18.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,10 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.18.4 =
+* Tonight's Playlist: with more than 12 songs, the list stays a fixed height and scrolls inside its own box, so visitors reach the rest of the page right away. A line above it says how many songs there are, and the box scrolls by itself to the song playing now.
+* In English, Spanish and French. Marquee Festive 2.21.1 has the same change.
 
 = 0.18.3 =
 * Marquee Festive 2.21.0: new "See-through boxes and titles" slider in Customize → Look, from Solid to 50% see-through, with a live preview as you slide. Your page picture shows through the boxes and the section titles; the words, lights and borders stay bright. Works with every look and every box color.

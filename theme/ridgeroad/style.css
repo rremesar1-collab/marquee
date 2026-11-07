@@ -4,7 +4,7 @@ Theme URI: https://alateka.com/
 Author: Alateka Corporation
 Author URI: https://alateka.com/
 Description: The festive Christmas look for the Marquee light show plugin: garlands, bows, a night-sky scene and glowing show cards for your status, Now Playing, weather, Kids’ Corner and more. Needs the free Marquee plugin (it holds all the show features and settings).
-Version: 2.21.0
+Version: 2.21.1
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -877,6 +877,13 @@ a.rr-sp__card:focus-visible { outline: 2px solid var(--gold); outline-offset: 4p
 .rr-playlist { margin-top: 30px; }
 .rr-playlist__panel { padding-top: 30px; }
 .rr-pl { list-style: none; margin: 0; padding: 0; columns: 3 260px; column-gap: 18px; }
+/* a long playlist (more than 12 songs) stays a fixed height and scrolls inside its own box */
+.rr-playlist.is-long .rr-pl { columns: auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0 18px; align-content: start; max-height: 336px; overflow-y: auto; padding: 2px 8px 2px 2px; scrollbar-width: thin; scrollbar-color: #f7c95a rgba(0, 0, 0, .35); border-radius: 10px; }
+.rr-playlist.is-long .rr-pl::-webkit-scrollbar { width: 10px; }
+.rr-playlist.is-long .rr-pl::-webkit-scrollbar-track { background: rgba(0, 0, 0, .35); border-radius: 10px; }
+.rr-playlist.is-long .rr-pl::-webkit-scrollbar-thumb { background: #f7c95a; border-radius: 10px; }
+.rr-playlist.is-long .rr-pl:focus-visible { outline: 2px solid #fde866; outline-offset: 4px; }
+.rr-pl__hint { margin: 0 0 10px; text-align: center; font-size: 14px; color: #e3e9f8; }
 .rr-pl__item {
 	break-inside: avoid; display: flex; align-items: center; gap: 10px; margin: 0 0 8px; padding: 9px 12px; border-radius: 10px;
 	background: rgba(0, 30, 10, .55); border: 1px solid rgba(247, 201, 90, .25); font-size: 15px; color: #eef4ea;

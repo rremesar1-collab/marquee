@@ -3832,3 +3832,9 @@ msgstr ""
 "Desliza a la derecha para que la imagen de tu página se vea a través de los "
 "cuadros y los títulos de las secciones. Las palabras, las luces y los bordes"
 " siguen brillantes."
+
+msgid "%d songs tonight. Scroll the list to see them all."
+msgstr "%d canciones esta noche. Desplaza la lista para verlas todas."
+
+msgid "Tonight’s songs"
+msgstr "Las canciones de esta noche"

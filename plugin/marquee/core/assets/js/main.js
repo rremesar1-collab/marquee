@@ -267,6 +267,13 @@
 		}
 		var items = document.querySelectorAll('[data-rr="playlist"] [data-song]');
 		items.forEach(function (li) { li.classList.toggle('is-now', !!np.title && li.getAttribute('data-song') === np.title); });
+		/* a long playlist scrolls inside its box: bring the song playing now into view there (only when it changes, so it never fights someone scrolling) */
+		var box = $('.rr-playlist.is-long [data-rr="playlist"]');
+		if (box && np.title && box.getAttribute('data-now') !== np.title) {
+			box.setAttribute('data-now', np.title);
+			var now = box.querySelector('.is-now');
+			if (now) { box.scrollTop += now.getBoundingClientRect().top - box.getBoundingClientRect().top - 8; }
+		}
 		var rec = $('[data-rr="recent"]'), rl = $('[data-rr="recent-list"]');
 		if (rec && rl && np.recent) {
 			rec.hidden = !np.recent.length;

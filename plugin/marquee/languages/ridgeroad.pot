@@ -4971,3 +4971,10 @@ msgid ""
 "Slide right to let your page picture show through the boxes and the section "
 "titles. The words, lights and borders stay bright."
 msgstr ""
+
+#, php-format
+msgid "%d songs tonight. Scroll the list to see them all."
+msgstr ""
+
+msgid "Tonight’s songs"
+msgstr ""
