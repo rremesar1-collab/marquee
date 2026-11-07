@@ -21,7 +21,7 @@ function marquee_walks() {
 				array( 'rf-account', array( 0, 0, 1351, 480 ), array( array( 277, 116, 340, 145 ) ), __( 'Open the Account tab.', 'marquee' ) ),
 				array( 'rf-account', array( 0, 0, 1351, 480 ), array( array( 205, 285, 1200, 350 ) ), __( 'Click Request API Access (only the first time). Once it’s approved, the API Access Token shows up here.', 'marquee' ) ),
 				array( 'rf-account', array( 0, 0, 1351, 480 ), array( array( 950, 330, 1052, 378 ), array( 1088, 288, 1198, 320 ) ), __( 'Copy the API Access Token (the copy icon). Then click Refresh Secret and copy the secret key it shows you.', 'marquee' ) ),
-				array( 'mq-rf', array( 118, 25, 980, 540 ), array( array( 338, 222, 945, 312 ) ), __( 'Paste both here, in Marquee → Remote Falcon, click Test connection, then Save settings.', 'marquee' ) ),
+				array( 'mq-rf', array( 118, 25, 980, 540 ), array( array( 338, 222, 945, 312 ) ), __( 'Paste both here, in Marquee → Settings → Connections, click Test connection, then Save settings.', 'marquee' ) ),
 				array( 'fpp-plugins', array( 0, 0, 1372, 470 ), array( array( 55, 235, 465, 410 ) ), __( 'On your FPP: Content Setup → Plugin Manager. Install the Remote Falcon plugin.', 'marquee' ) ),
 				array( 'fpp-rfplugin', array( 0, 0, 1372, 720 ), array( array( 61, 288, 1299, 400 ) ), __( 'Open the plugin, paste your Show Token (Remote Falcon → Account Settings → Account → Show Token) and pick the playlist with your show.', 'marquee' ) ),
 				array( 'rf-dashboard', array( 0, 0, 1372, 800 ), array( array( 1133, 141, 1354, 219 ) ), __( 'Back on the Remote Falcon dashboard, FPP Plugin says Connected. Now Playing and voting work on your site.', 'marquee' ) ),

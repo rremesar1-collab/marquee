@@ -6839,3 +6839,382 @@ msgstr ""
 "Vos chiffres dans des cadres comme dans Les coulisses des lumières, de "
 "petites cartes de faits réunies dans un cadre et les préférées de chaque "
 "année côte à côte."
+
+msgid "A long list gets its own scroll bar, so it never takes over the page."
+msgstr ""
+"Une longue liste a sa propre barre de défilement, elle n’envahit donc jamais"
+" la page."
+
+msgid ""
+"A page about your show with its own button at the top: your photo and "
+"numbers, fact cards and fan favorites (fill it in later under Show Facts)"
+msgstr ""
+"Une page sur votre spectacle avec son propre bouton en haut : votre photo et"
+" vos chiffres, des cartes d’anecdotes et les favoris du public (à remplir "
+"plus tard dans Le spectacle en bref)"
+
+msgid ""
+"A page just for kids. Turn on the parts you want; open one to change its "
+"pictures and words. Anything left empty uses the standard pictures."
+msgstr ""
+"Une page rien que pour les enfants. Activez les parties que vous voulez ; "
+"ouvrez-en une pour changer ses images et ses textes. Ce qui reste vide "
+"utilise les images standard."
+
+msgid ""
+"A page with this year’s show videos and favorite song voting. It shows when "
+"either part is on and has something in it."
+msgstr ""
+"Une page avec les vidéos du spectacle de cette année et le vote pour la "
+"chanson préférée. Elle s’affiche quand l’une des deux parties est activée et"
+" contient quelque chose."
+
+msgid "Add or change videos"
+msgstr "Ajouter ou changer des vidéos"
+
+msgid ""
+"At the top of this page, switch on Your Name in Lights. Kids can send names "
+"only while your show is on (your hours in Schedule)."
+msgstr ""
+"En haut de cette page, activez Votre nom en lumières. Les enfants ne peuvent"
+" envoyer des noms que pendant votre spectacle (vos horaires dans "
+"Calendrier)."
+
+msgid "Bottom of the page"
+msgstr "Bas de la page"
+
+msgid "Canceled"
+msgstr "Annulé"
+
+msgid "Change the numbers"
+msgstr "Changer les chiffres"
+
+msgid ""
+"Classic, Christmas Village or Santa’s North Pole, colors, snow and your "
+"background."
+msgstr ""
+"Classique, Village de Noël ou le pôle Nord du père Noël, couleurs, neige et "
+"votre fond."
+
+msgid "Coloring, Light Lab, contest, games"
+msgstr "Coloriage, Light Lab, concours, jeux"
+
+msgid "Connections"
+msgstr "Connexions"
+
+msgid "Counts down to showtime and to Christmas"
+msgstr "Compte à rebours jusqu’au spectacle et jusqu’à Noël"
+
+msgid "Door pictures"
+msgstr "Images des portes"
+
+msgid "Entries, the Show Wall and hearts (needs Make a Light Show)"
+msgstr ""
+"Participations, le Mur des spectacles et les cœurs (nécessite Créez un "
+"spectacle de lumières)"
+
+msgid ""
+"Every box on your home page, with its words, under Your pages → Home page."
+msgstr ""
+"Chaque bloc de votre page d’accueil, avec ses textes, dans Vos pages → Page "
+"d’accueil."
+
+msgid "Every box, top to bottom"
+msgstr "Chaque bloc, de haut en bas"
+
+msgid "Falling snow and your own background photo are under Look & colors."
+msgstr ""
+"La neige qui tombe et votre propre photo de fond sont dans Style et "
+"couleurs."
+
+msgid "Home page"
+msgstr "Page d’accueil"
+
+msgid ""
+"Its own button at the top of your website, and a big link on your home page."
+msgstr ""
+"Son propre bouton en haut de votre site, et un grand lien sur votre page "
+"d’accueil."
+
+msgid "Its own button at the top of your website."
+msgstr "Son propre bouton en haut de votre site."
+
+msgid ""
+"Kids send a name to your matrix, projector or TV (needs the FPP script). Its"
+" door shows in the Kids’ Corner."
+msgstr ""
+"Les enfants envoient un nom sur votre matrice, projecteur ou télé (nécessite"
+" le script FPP). Sa porte s’affiche dans le Coin des enfants."
+
+msgid "Leave empty to use the words above."
+msgstr "Laissez vide pour utiliser le texte ci-dessus."
+
+msgid "Live camera"
+msgstr "Caméra en direct"
+
+msgid "Look & colors"
+msgstr "Style et couleurs"
+
+msgid ""
+"Look & colors opens the live preview of your website. The others open that "
+"box of your page here."
+msgstr ""
+"Style et couleurs ouvre l’aperçu en direct de votre site. Les autres ouvrent"
+" ce bloc de votre page ici."
+
+msgid ""
+"Marquee: “%s” has nothing to show right now (turned off, or not set up yet "
+"in Marquee → Settings). Only editors see this note."
+msgstr ""
+"Marquee : « %s » n’a rien à afficher pour le moment (désactivé, ou pas "
+"encore configuré dans Marquee → Réglages). Seuls les éditeurs voient cette "
+"note."
+
+msgid "Name, place, dates, hours"
+msgstr "Nom, lieu, dates, horaires"
+
+msgid "Name, radio and logo"
+msgstr "Nom, radio et logo"
+
+msgid "Nothing to set up: the games are ready to play."
+msgstr "Rien à configurer : les jeux sont prêts."
+
+msgid "Off season"
+msgstr "Hors saison"
+
+msgid "Opens Customize"
+msgstr "Ouvre Personnaliser"
+
+msgid ""
+"Optional. Remote Falcon puts what’s playing, your playlist and song voting "
+"on your website. Facebook and Instagram get a post when you cancel a night."
+msgstr ""
+"Facultatif. Remote Falcon met sur votre site ce qui passe, votre liste de "
+"chansons et le vote. Facebook et Instagram reçoivent une publication quand "
+"vous annulez une soirée."
+
+msgid "Other languages: %s"
+msgstr "Autres langues : %s"
+
+msgid "Pages to print and color"
+msgstr "Pages à imprimer et à colorier"
+
+msgid "Pages to print and color (pick which ones later under Kids’ Corner)"
+msgstr ""
+"Pages à imprimer et à colorier (choisissez lesquelles plus tard dans Coin "
+"des enfants)"
+
+msgid ""
+"Paste both here, in Marquee → Settings → Connections, click Test connection,"
+" then Save settings."
+msgstr ""
+"Collez les deux ici, dans Marquee → Réglages → Connexions, cliquez sur "
+"Tester la connexion, puis sur Enregistrer les réglages."
+
+msgid "Photo, fun facts, fan favorites"
+msgstr "Photo, anecdotes, favoris du public"
+
+msgid "Radio station, hours, Now Playing and directions"
+msgstr "Station de radio, horaires, En ce moment et itinéraire"
+
+msgid "Remote Falcon, Facebook, Instagram"
+msgstr "Remote Falcon, Facebook, Instagram"
+
+msgid ""
+"Set your show’s address in Show details first: without it, names can be sent"
+" from anywhere."
+msgstr ""
+"Indiquez d’abord l’adresse de votre spectacle dans Détails du spectacle : "
+"sans elle, des noms peuvent être envoyés de n’importe où."
+
+msgid "Show %s"
+msgstr "Afficher %s"
+
+msgid "Show the Kids’ Corner page"
+msgstr "Afficher la page Coin des enfants"
+
+msgid "Show tonight"
+msgstr "Spectacle ce soir"
+
+msgid "Show tonight, canceled or off season. It changes by itself."
+msgstr "Spectacle ce soir, annulé ou hors saison. Il change tout seul."
+
+msgid "Shows on phones that can install your website as an app"
+msgstr ""
+"S’affiche sur les téléphones qui peuvent installer votre site comme une "
+"appli"
+
+msgid "Shows when you add a YouTube link"
+msgstr "S’affiche quand vous ajoutez un lien YouTube"
+
+msgid "Shows when you add a donation link"
+msgstr "S’affiche quand vous ajoutez un lien de don"
+
+msgid "Start here"
+msgstr "Commencer ici"
+
+msgid "Status banner"
+msgstr "Bannière d’état"
+
+msgid "Stop spam (optional)"
+msgstr "Bloquer le spam (facultatif)"
+
+msgid "Thank local businesses that support your show, with their logos"
+msgstr ""
+"Remerciez les commerces locaux qui soutiennent votre spectacle, avec leurs "
+"logos"
+
+msgid ""
+"Thank local businesses that support your show, with their logos (add them "
+"later under Home page)"
+msgstr ""
+"Remerciez les commerces locaux qui soutiennent votre spectacle, avec leurs "
+"logos (ajoutez-les plus tard dans Page d’accueil)"
+
+msgid ""
+"The Show Facts page uses these numbers too. A number left empty is hidden."
+msgstr ""
+"La page Le spectacle en bref utilise aussi ces chiffres. Un chiffre vide est"
+" masqué."
+
+msgid "The big pictures kids tap"
+msgstr "Les grandes images que les enfants touchent"
+
+msgid "The lines under your logo and your welcome"
+msgstr "Les lignes sous votre logo et votre accueil"
+
+msgid "The lines under your logo and your welcome."
+msgstr "Les lignes sous votre logo et votre accueil."
+
+msgid ""
+"The numbers under the photo are your Behind the Lights numbers. They count "
+"up when the page opens."
+msgstr ""
+"Les chiffres sous la photo sont vos chiffres de « Dans les coulisses des "
+"lumières ». Ils défilent quand la page s’ouvre."
+
+msgid "The small line at the very bottom"
+msgstr "La petite ligne tout en bas"
+
+msgid "The weather is for your show’s address in Show details."
+msgstr ""
+"La météo est celle de l’adresse de votre spectacle dans Détails du "
+"spectacle."
+
+msgid ""
+"This box is made from your Show details (radio, hours, address, parking) "
+"and, once it’s connected, Remote Falcon (Now Playing and Pick the Next "
+"Song)."
+msgstr ""
+"Ce bloc est fait à partir de vos Détails du spectacle (radio, horaires, "
+"adresse, stationnement) et, une fois connecté, de Remote Falcon (En ce "
+"moment et Choisissez la prochaine chanson)."
+
+msgid "Tip %d"
+msgstr "Conseil %d"
+
+msgid ""
+"Turn on Your Name in Lights (Names in Lights, at the top) and Marquee makes "
+"a simple names break on your FPP for you."
+msgstr ""
+"Activez Votre nom en lumières (Votre nom en lumières, en haut) et Marquee "
+"crée pour vous une pause des noms simple sur votre FPP."
+
+msgid "Turned off. Kids can’t send names yet."
+msgstr "Désactivé. Les enfants ne peuvent pas encore envoyer de noms."
+
+msgid "Up to four tips for visitors. A tip with no title is hidden."
+msgstr ""
+"Jusqu’à quatre conseils pour les visiteurs. Un conseil sans titre est "
+"masqué."
+
+msgid "Videos and song voting"
+msgstr "Vidéos et vote des chansons"
+
+msgid "Visitors vote for their favorite song"
+msgstr "Les visiteurs votent pour leur chanson préférée"
+
+msgid "Weather now, tonight hour by hour, and the radar"
+msgstr "La météo maintenant, ce soir heure par heure, et le radar"
+
+msgid "Website words and tips"
+msgstr "Textes et conseils du site"
+
+msgid ""
+"Who you are, where you are and when the lights are on. Every page of your "
+"website uses these."
+msgstr ""
+"Qui vous êtes, où vous êtes et quand les lumières sont allumées. Toutes les "
+"pages de votre site les utilisent."
+
+msgid "Words & page settings"
+msgstr "Textes et réglages des pages"
+
+msgid ""
+"Words you typed yourself (your banner messages, tips and button words) show "
+"the way you wrote them. With two or more languages ticked, each text box in "
+"your page settings gets “Other languages” under it: fill it in and visitors "
+"who pick that language see those words instead."
+msgstr ""
+"Les textes que vous avez écrits (messages de la bannière, conseils et textes"
+" des boutons) s’affichent tels quels. Avec deux langues cochées ou plus, "
+"chaque zone de texte de vos réglages de pages a « Autres langues » en "
+"dessous : remplissez-la et les visiteurs qui choisissent cette langue "
+"verront ce texte."
+
+msgid "Your MP4 videos, one for each song"
+msgstr "Vos vidéos MP4, une par chanson"
+
+msgid ""
+"Your Name in Lights is switched off, so kids can’t send names yet. Turn it "
+"on above when you’re ready."
+msgstr ""
+"Votre nom en lumières est désactivé, les enfants ne peuvent donc pas encore "
+"envoyer de noms. Activez-le ci-dessus quand vous êtes prêt."
+
+msgid "Your Remote Falcon song list, with the song playing now lit up"
+msgstr ""
+"Votre liste de chansons Remote Falcon, avec celle qui passe en ce moment "
+"allumée"
+
+msgid ""
+"Your YouTube live stream (set it in Marquee → Settings → Home page → Live "
+"camera)."
+msgstr ""
+"Votre direct YouTube (à régler dans Marquee → Réglages → Page d’accueil → "
+"Caméra en direct)."
+
+msgid ""
+"Your home page, box by box from top to bottom. Use a box’s switch to show or"
+" hide it; open it to change its words."
+msgstr ""
+"Votre page d’accueil, bloc par bloc de haut en bas. Utilisez l’interrupteur "
+"d’un bloc pour l’afficher ou le masquer ; ouvrez-le pour changer ses textes."
+
+msgid "Your pages"
+msgstr "Vos pages"
+
+msgid "Your show"
+msgstr "Votre spectacle"
+
+msgid ""
+"Your show name is printed in the corner of every standard coloring page (or "
+"your logo, once you add one in Show details)."
+msgstr ""
+"Le nom de votre spectacle est imprimé dans le coin de chaque coloriage "
+"standard (ou votre logo, une fois ajouté dans Détails du spectacle)."
+
+msgid "Your show’s numbers: lights, channels, songs…"
+msgstr "Les chiffres de votre spectacle : lumières, canaux, chansons…"
+
+msgid ""
+"Your show’s words, boxes and switches are in Marquee → Settings now, one "
+"page at a time: Home page, Songs & Videos, Kids’ Corner, Names in Lights and"
+" Show Facts."
+msgstr ""
+"Les textes, blocs et interrupteurs de votre spectacle sont maintenant dans "
+"Marquee → Réglages, une page à la fois : Page d’accueil, Chansons et vidéos,"
+" Coin des enfants, Votre nom en lumières et Le spectacle en bref."
+
+msgid "Your social buttons, a hashtag and Share the Show"
+msgstr "Vos boutons de réseaux sociaux, un hashtag et Partagez le spectacle"

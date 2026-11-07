@@ -22,7 +22,7 @@ function marquee_sections() {
 		'show'      => array( __( 'Tonight’s Show', 'marquee' ), __( 'Radio station, show hours, Now Playing from Remote Falcon and directions.', 'marquee' ), 'format-audio' ),
 		'weather'   => array( __( 'Weather', 'marquee' ), __( 'Weather now, tonight hour by hour, and the radar.', 'marquee' ), 'cloud' ),
 		'playlist'  => array( __( 'Tonight’s Playlist', 'marquee' ), __( 'The song list from Remote Falcon, with the song playing now lit up.', 'marquee' ), 'playlist-audio' ),
-		'live-cam'  => array( __( 'Live Camera', 'marquee' ), __( 'Your YouTube live stream (set it in Appearance → Customize).', 'marquee' ), 'video-alt3' ),
+		'live-cam'  => array( __( 'Live Camera', 'marquee' ), __( 'Your YouTube live stream (set it in Marquee → Settings → Home page → Live camera).', 'marquee' ), 'video-alt3' ),
 		'visit'     => array( __( 'Before You Visit', 'marquee' ), __( 'Your visitor tips.', 'marquee' ), 'info' ),
 		'explore'   => array( __( 'Songs & Kids’ Corner Links', 'marquee' ), __( 'Two big buttons to the Songs page and the Kids’ Corner.', 'marquee' ), 'admin-links' ),
 		'showwall'  => array( __( 'Kids’ Show Wall', 'marquee' ), __( 'The newest kids’ light shows from the contest, with their hearts (shows only when the contest has approved shows).', 'marquee' ), 'format-gallery' ),
@@ -150,7 +150,7 @@ function marquee_render( $slug, $wrapper = '' ) {
 			return '';
 		}
 		// Only people who can edit the site see why a section is empty.
-		$html = '<p class="mq-off">' . esc_html( sprintf( __( 'Marquee: “%s” has nothing to show right now (turned off, or not set up yet in Marquee → Settings or Appearance → Customize). Only editors see this note.', 'marquee' ), marquee_sections()[ $slug ][0] ) ) . '</p>';
+		$html = '<p class="mq-off">' . esc_html( sprintf( __( 'Marquee: “%s” has nothing to show right now (turned off, or not set up yet in Marquee → Settings). Only editors see this note.', 'marquee' ), marquee_sections()[ $slug ][0] ) ) . '</p>';
 	}
 	$class = marquee_block_class( $slug );
 	if ( $wrapper ) {

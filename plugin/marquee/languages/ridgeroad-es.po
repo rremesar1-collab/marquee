@@ -3933,3 +3933,17 @@ msgstr "Foto"
 
 msgid "Boxes"
 msgstr "Cuadros"
+
+msgid ""
+"Add words to block in Marquee → Settings → Names in Lights → Messages & "
+"pictures."
+msgstr ""
+"Agrega palabras para bloquear en Marquee → Ajustes → Tu nombre en luces → "
+"Mensajes y fotos."
+
+msgid ""
+"Add your sponsors and their logos in Marquee → Settings → Home page → "
+"Sponsors."
+msgstr ""
+"Agrega tus patrocinadores y sus logos en Marquee → Ajustes → Página de "
+"inicio → Patrocinadores."

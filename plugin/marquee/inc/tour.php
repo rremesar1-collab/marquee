@@ -42,7 +42,7 @@ function marquee_tours() {
 			'title' => __( 'Connect your FPP', 'marquee' ),
 			'steps' => array(
 				array( 'el' => '.mq-how__modes', 't' => __( 'How names go up', 'marquee' ), 'x' => __( 'First pick one: between songs in a short names break (most shows), or during songs on a spare TV or projector your show doesn’t use. The steps below follow your choice.', 'marquee' ) ),
-				array( 'el' => 'input[name="feat[]"][value="names_on"]', 'up' => 1, 't' => __( 'Turn names on', 'marquee' ), 'x' => __( 'Under Features, switch on Your Name in Lights. Kids can send names only while your show is on (your hours in Schedule).', 'marquee' ) ),
+				array( 'el' => 'input[name="feat[]"][value="names_on"]', 'up' => 1, 't' => __( 'Turn names on', 'marquee' ), 'x' => __( 'At the top of this page, switch on Your Name in Lights. Kids can send names only while your show is on (your hours in Schedule).', 'marquee' ) ),
 				array( 'el' => '#mq-lsf', 'up' => 1, 'mode' => 'live', 't' => __( 'How long each name stays up', 'marquee' ), 'x' => __( 'Names go up on your spare screen one after another while your show plays. 6 seconds is a good start.', 'marquee' ) ),
 				array( 'el' => '.mq-playlists', 't' => __( 'Only during these playlists', 'marquee' ), 'x' => __( 'Running a static or background playlist alongside your show? Tick your show playlist here and names wait for it. Leave it empty to put names up during any playlist. Your FPP’s playlists show up as checkboxes once it has checked in.', 'marquee' ) ),
 				array( 'el' => '[data-mq-fppplug]', 't' => __( 'The Marquee plugin for FPP', 'marquee' ), 'x' => __( 'Copy the plugin address. You’ll paste it into FPP’s Plugin Manager next.', 'marquee' ) ),

@@ -7209,3 +7209,303 @@ msgid ""
 "Your numbers in boxes like Behind the Lights, small fact cards together in "
 "one box, and the favorites of each year side by side."
 msgstr ""
+
+msgid "A long list gets its own scroll bar, so it never takes over the page."
+msgstr ""
+
+msgid ""
+"A page about your show with its own button at the top: your photo and "
+"numbers, fact cards and fan favorites (fill it in later under Show Facts)"
+msgstr ""
+
+msgid ""
+"A page just for kids. Turn on the parts you want; open one to change its "
+"pictures and words. Anything left empty uses the standard pictures."
+msgstr ""
+
+msgid ""
+"A page with this year’s show videos and favorite song voting. It shows when "
+"either part is on and has something in it."
+msgstr ""
+
+msgid "Add or change videos"
+msgstr ""
+
+msgid ""
+"At the top of this page, switch on Your Name in Lights. Kids can send names "
+"only while your show is on (your hours in Schedule)."
+msgstr ""
+
+msgid "Bottom of the page"
+msgstr ""
+
+msgid "Canceled"
+msgstr ""
+
+msgid "Change the numbers"
+msgstr ""
+
+msgid ""
+"Classic, Christmas Village or Santa’s North Pole, colors, snow and your "
+"background."
+msgstr ""
+
+msgid "Coloring, Light Lab, contest, games"
+msgstr ""
+
+msgid "Connections"
+msgstr ""
+
+msgid "Counts down to showtime and to Christmas"
+msgstr ""
+
+msgid "Door pictures"
+msgstr ""
+
+msgid "Entries, the Show Wall and hearts (needs Make a Light Show)"
+msgstr ""
+
+msgid ""
+"Every box on your home page, with its words, under Your pages → Home page."
+msgstr ""
+
+msgid "Every box, top to bottom"
+msgstr ""
+
+msgid "Falling snow and your own background photo are under Look & colors."
+msgstr ""
+
+msgid "Home page"
+msgstr ""
+
+msgid ""
+"Its own button at the top of your website, and a big link on your home page."
+msgstr ""
+
+msgid "Its own button at the top of your website."
+msgstr ""
+
+msgid ""
+"Kids send a name to your matrix, projector or TV (needs the FPP script). Its"
+" door shows in the Kids’ Corner."
+msgstr ""
+
+msgid "Leave empty to use the words above."
+msgstr ""
+
+msgid "Live camera"
+msgstr ""
+
+msgid "Look & colors"
+msgstr ""
+
+msgid ""
+"Look & colors opens the live preview of your website. The others open that "
+"box of your page here."
+msgstr ""
+
+msgid ""
+"Marquee: “%s” has nothing to show right now (turned off, or not set up yet "
+"in Marquee → Settings). Only editors see this note."
+msgstr ""
+
+msgid "Name, place, dates, hours"
+msgstr ""
+
+msgid "Name, radio and logo"
+msgstr ""
+
+msgid "Nothing to set up: the games are ready to play."
+msgstr ""
+
+msgid "Off season"
+msgstr ""
+
+msgid "Opens Customize"
+msgstr ""
+
+msgid ""
+"Optional. Remote Falcon puts what’s playing, your playlist and song voting "
+"on your website. Facebook and Instagram get a post when you cancel a night."
+msgstr ""
+
+msgid "Other languages: %s"
+msgstr ""
+
+msgid "Pages to print and color"
+msgstr ""
+
+msgid "Pages to print and color (pick which ones later under Kids’ Corner)"
+msgstr ""
+
+msgid ""
+"Paste both here, in Marquee → Settings → Connections, click Test connection,"
+" then Save settings."
+msgstr ""
+
+msgid "Photo, fun facts, fan favorites"
+msgstr ""
+
+msgid "Radio station, hours, Now Playing and directions"
+msgstr ""
+
+msgid "Remote Falcon, Facebook, Instagram"
+msgstr ""
+
+msgid ""
+"Set your show’s address in Show details first: without it, names can be sent"
+" from anywhere."
+msgstr ""
+
+msgid "Show %s"
+msgstr ""
+
+msgid "Show the Kids’ Corner page"
+msgstr ""
+
+msgid "Show tonight"
+msgstr ""
+
+msgid "Show tonight, canceled or off season. It changes by itself."
+msgstr ""
+
+msgid "Shows on phones that can install your website as an app"
+msgstr ""
+
+msgid "Shows when you add a YouTube link"
+msgstr ""
+
+msgid "Shows when you add a donation link"
+msgstr ""
+
+msgid "Start here"
+msgstr ""
+
+msgid "Status banner"
+msgstr ""
+
+msgid "Stop spam (optional)"
+msgstr ""
+
+msgid "Thank local businesses that support your show, with their logos"
+msgstr ""
+
+msgid ""
+"Thank local businesses that support your show, with their logos (add them "
+"later under Home page)"
+msgstr ""
+
+msgid ""
+"The Show Facts page uses these numbers too. A number left empty is hidden."
+msgstr ""
+
+msgid "The big pictures kids tap"
+msgstr ""
+
+msgid "The lines under your logo and your welcome"
+msgstr ""
+
+msgid "The lines under your logo and your welcome."
+msgstr ""
+
+msgid ""
+"The numbers under the photo are your Behind the Lights numbers. They count "
+"up when the page opens."
+msgstr ""
+
+msgid "The small line at the very bottom"
+msgstr ""
+
+msgid "The weather is for your show’s address in Show details."
+msgstr ""
+
+msgid ""
+"This box is made from your Show details (radio, hours, address, parking) "
+"and, once it’s connected, Remote Falcon (Now Playing and Pick the Next "
+"Song)."
+msgstr ""
+
+msgid "Tip %d"
+msgstr ""
+
+msgid ""
+"Turn on Your Name in Lights (Names in Lights, at the top) and Marquee makes "
+"a simple names break on your FPP for you."
+msgstr ""
+
+msgid "Turned off. Kids can’t send names yet."
+msgstr ""
+
+msgid "Up to four tips for visitors. A tip with no title is hidden."
+msgstr ""
+
+msgid "Videos and song voting"
+msgstr ""
+
+msgid "Visitors vote for their favorite song"
+msgstr ""
+
+msgid "Weather now, tonight hour by hour, and the radar"
+msgstr ""
+
+msgid "Website words and tips"
+msgstr ""
+
+msgid ""
+"Who you are, where you are and when the lights are on. Every page of your "
+"website uses these."
+msgstr ""
+
+msgid "Words & page settings"
+msgstr ""
+
+msgid ""
+"Words you typed yourself (your banner messages, tips and button words) show "
+"the way you wrote them. With two or more languages ticked, each text box in "
+"your page settings gets “Other languages” under it: fill it in and visitors "
+"who pick that language see those words instead."
+msgstr ""
+
+msgid "Your MP4 videos, one for each song"
+msgstr ""
+
+msgid ""
+"Your Name in Lights is switched off, so kids can’t send names yet. Turn it "
+"on above when you’re ready."
+msgstr ""
+
+msgid "Your Remote Falcon song list, with the song playing now lit up"
+msgstr ""
+
+msgid ""
+"Your YouTube live stream (set it in Marquee → Settings → Home page → Live "
+"camera)."
+msgstr ""
+
+msgid ""
+"Your home page, box by box from top to bottom. Use a box’s switch to show or"
+" hide it; open it to change its words."
+msgstr ""
+
+msgid "Your pages"
+msgstr ""
+
+msgid "Your show"
+msgstr ""
+
+msgid ""
+"Your show name is printed in the corner of every standard coloring page (or "
+"your logo, once you add one in Show details)."
+msgstr ""
+
+msgid "Your show’s numbers: lights, channels, songs…"
+msgstr ""
+
+msgid ""
+"Your show’s words, boxes and switches are in Marquee → Settings now, one "
+"page at a time: Home page, Songs & Videos, Kids’ Corner, Names in Lights and"
+" Show Facts."
+msgstr ""
+
+msgid "Your social buttons, a hashtag and Share the Show"
+msgstr ""

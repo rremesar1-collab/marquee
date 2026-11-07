@@ -5070,3 +5070,13 @@ msgstr ""
 
 msgid "Boxes"
 msgstr ""
+
+msgid ""
+"Add words to block in Marquee → Settings → Names in Lights → Messages & "
+"pictures."
+msgstr ""
+
+msgid ""
+"Add your sponsors and their logos in Marquee → Settings → Home page → "
+"Sponsors."
+msgstr ""

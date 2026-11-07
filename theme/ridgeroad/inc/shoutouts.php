@@ -396,6 +396,6 @@ add_action( 'admin_notices', function () {
 		'<div class="notice notice-info"><p>%s %s</p><p>%s</p></div>',
 		( function_exists( 'marquee_get' ) ? esc_html__( 'Names go up in the show automatically if they pass the word filter. Click “Block” under any name to stop it.', 'ridgeroad' ) : esc_html__( 'Names go on the garage door and TV automatically if they pass the word filter. Click “Block” under any name to stop it.', 'ridgeroad' ) ),
 		$seen ? esc_html( sprintf( __( 'FPP last checked in %s ago.', 'ridgeroad' ), human_time_diff( $seen ) ) ) : esc_html__( 'FPP has not checked in yet.', 'ridgeroad' ),
-		esc_html__( 'Add words to block in Appearance → Customize → Show Website → Kids’ Corner.', 'ridgeroad' )
+		function_exists( 'marquee_get' ) ? esc_html__( 'Add words to block in Marquee → Settings → Names in Lights → Messages & pictures.', 'ridgeroad' ) : esc_html__( 'Add words to block in Appearance → Customize → Show Website → Kids’ Corner.', 'ridgeroad' )
 	);
 } );

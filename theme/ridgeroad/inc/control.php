@@ -125,7 +125,7 @@ add_action( 'admin_enqueue_scripts', function ( $hook ) {
 } );
 
 function ridgeroad_control_page() {
-	$cust = admin_url( 'customize.php?autofocus[section]=rr_kids' );
+	$cust = function_exists( 'marquee_get' ) ? admin_url( 'admin.php?page=marquee#mq-step-6-contest' ) : admin_url( 'customize.php?autofocus[section]=rr_kids' ); // the contest prizes: Marquee → Settings → Kids’ Corner, or Customize without Marquee
 	?>
 	<div class="wrap rrc" data-rrc>
 		<h1 class="screen-reader-text"><?php esc_html_e( 'Show Control', 'ridgeroad' ); ?></h1>
