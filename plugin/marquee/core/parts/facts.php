@@ -48,7 +48,7 @@ $sf_fav   = ridgeroad_mod( 'facts_fav' ) ? ridgeroad_fav_years() : array();
 			</div>
 		</section>
 	<?php else : ?>
-		<h1 class="rr-ribbon"><span><?php echo esc_html( ridgeroad_mod( 'facts_title' ) ); ?></span></h1>
+		<h1 class="screen-reader-text"><?php echo esc_html( ridgeroad_mod( 'facts_title' ) ); ?></h1><?php // the photo part is off: its title goes too (kept for screen readers only) ?>
 	<?php endif; ?>
 
 	<?php if ( $sf_did ) : ?>
