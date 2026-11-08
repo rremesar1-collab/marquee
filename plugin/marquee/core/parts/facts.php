@@ -12,6 +12,8 @@ if ( ! ridgeroad_mod( 'facts_show' ) ) {
 $sf_nums  = ridgeroad_mod( 'facts_hero' ) ? ridgeroad_fact_numbers() : array();
 $sf_photo = ridgeroad_mod( 'facts_hero' ) ? (int) ridgeroad_mod( 'facts_photo' ) : 0;
 $sf_img   = $sf_photo ? wp_get_attachment_image_url( $sf_photo, 'full' ) : '';
+$sf_src   = $sf_photo ? wp_get_attachment_image_src( $sf_photo, 'full' ) : null;
+$sf_wh    = $sf_src && $sf_src[1] ? ' width="' . (int) $sf_src[1] . '" height="' . (int) $sf_src[2] . '"' : ''; // its own shape, without a jump while it loads
 $sf_head  = trim( (string) ridgeroad_mod( 'facts_tagline' ) );
 $sf_line  = trim( (string) ridgeroad_mod( 'facts_line' ) );
 $sf_did   = ridgeroad_mod( 'facts_did' ) ? ridgeroad_facts() : array();
@@ -28,7 +30,7 @@ if ( 'boxes' === ridgeroad_facts_style() ) {
 			<div class="rr-panel rr-panel--red rr-facts__hero">
 				<?php if ( $sf_img ) : ?>
 					<figure class="rr-facts__photo">
-						<img src="<?php echo esc_url( $sf_img ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" decoding="async">
+						<img src="<?php echo esc_url( $sf_img ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"<?php echo $sf_wh; // phpcs:ignore WordPress.Security.EscapeOutput -- numbers ?> decoding="async">
 						<?php if ( '' !== $sf_head || '' !== $sf_line ) : ?>
 							<figcaption>
 								<?php if ( '' !== $sf_head ) : ?><p class="rr-facts__head"><?php echo esc_html( $sf_head ); ?></p><?php endif; ?>

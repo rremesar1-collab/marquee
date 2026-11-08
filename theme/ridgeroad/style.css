@@ -4,7 +4,7 @@ Theme URI: https://alateka.com/
 Author: Alateka Corporation
 Author URI: https://alateka.com/
 Description: The festive Christmas look for the Marquee light show plugin: garlands, bows, a night-sky scene and glowing show cards for your status, Now Playing, weather, Kids’ Corner and more. Needs the free Marquee plugin (it holds all the show features and settings).
-Version: 2.23.1
+Version: 2.23.2
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -2205,7 +2205,7 @@ body.rr-glass.rr-boxes--blue .rr-stat:nth-child(even) {
 .rr-facts__sec + .rr-facts__sec { margin-top: 28px; }
 .rr-facts__hero { padding: 24px 24px 22px; }
 .rr-facts__photo { position: relative; margin: 0; border-radius: 12px; overflow: hidden; box-shadow: 0 0 0 3px #f7c95a, 0 0 30px rgba(255, 190, 70, .45); }
-.rr-facts__photo img { display: block; width: 100%; aspect-ratio: 16 / 6; object-fit: cover; }
+.rr-facts__photo img { display: block; width: 100%; height: auto; max-height: 460px; object-fit: cover; } /* the photo keeps its own shape (a wide night photo shows whole); a tall one is trimmed to 460px */
 .rr-facts__photo figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 48px 20px 14px; text-align: center; background: linear-gradient(transparent, rgba(0, 0, 0, .85)); }
 .rr-facts__words { text-align: center; padding: 4px 10px 0; }
 .rr-facts__head { margin: 0; font: 400 clamp(32px, 4.2vw, 58px)/1.15 var(--f-script); color: #fff1c2; text-shadow: 0 0 18px rgba(255, 200, 80, .55), 0 3px 8px rgba(0, 0, 0, .9); text-wrap: balance; }
@@ -2237,7 +2237,8 @@ body.rr-glass.rr-boxes--blue .rr-stat:nth-child(even) {
 @media (prefers-reduced-motion: reduce) { .rr-fav__song::after { animation: none; } }
 @media (max-width: 640px) {
 	.rr-facts__hero { padding: 16px; }
-	.rr-facts__photo img { aspect-ratio: 4 / 3; }
+	.rr-facts__photo img { max-height: 300px; }
+	.rr-facts__photo figcaption { position: static; padding: 12px 14px 14px; background: #0a0d1c; } /* phones: the words go under the photo so they don't cover it */
 	.rr-facts__nums { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 	.rr-facts__nums .rr-count__tile { min-width: 0; }
 	.rr-fav__song { grid-template-columns: 34px 1fr; gap: 4px 12px; }
@@ -2269,6 +2270,7 @@ body.rr-glass.rr-boxes--blue .rr-stat:nth-child(even) {
 @media (max-width: 900px) { .rr-mfacts > .rr-mfact, .rr-fyears > .rr-fyear { flex-basis: calc((100% - 14px) / 2); } }
 @media (max-width: 600px) { .rr-mfacts > .rr-mfact, .rr-fyears > .rr-fyear { flex-basis: 100%; } .rr-facts__intro { font-size: 16px; } }
 .rr-facts__intro b { display: inline-block; font: 400 clamp(30px, 3.4vw, 46px)/1.15 var(--f-script, cursive); color: #fff1c2; text-shadow: 0 0 16px rgba(255, 200, 80, .55), 0 3px 8px rgba(0, 0, 0, .9); }
+.rr-facts--boxes .rr-facts__photo { margin: 0 0 22px; }
 
 
 /* ---------- Page builder (Marquee): Show Boxes on your own pages ---------- */

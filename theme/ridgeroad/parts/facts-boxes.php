@@ -10,10 +10,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 $sf_intro = '' !== $sf_head || '' !== $sf_line;
 ?>
 <div class="rr-facts rr-facts--boxes" data-rr-facts>
-	<?php if ( $sf_nums || ( ridgeroad_mod( 'facts_hero' ) && $sf_intro ) ) : ?>
+	<?php if ( $sf_nums || $sf_img || ( ridgeroad_mod( 'facts_hero' ) && $sf_intro ) ) : ?>
 		<section class="rr-facts__sec rr-facts__top" aria-labelledby="rr-facts-h">
 			<h1 id="rr-facts-h" class="rr-ribbon"><span><?php echo esc_html( ridgeroad_mod( 'facts_title' ) ); ?></span></h1>
-			<?php if ( $sf_intro ) : ?><p class="rr-facts__intro"><?php if ( '' !== $sf_head ) : ?><b><?php echo esc_html( $sf_head ); ?></b><?php endif; ?><?php if ( '' !== $sf_head && '' !== $sf_line ) : ?><br><?php endif; ?><?php echo esc_html( $sf_line ); ?></p><?php endif; ?>
+			<?php if ( $sf_img ) : // your photo, with the headline and line on it (like the Photo style), above the number boxes ?>
+				<figure class="rr-facts__photo">
+					<img src="<?php echo esc_url( $sf_img ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"<?php echo $sf_wh; // phpcs:ignore WordPress.Security.EscapeOutput -- numbers ?> decoding="async">
+					<?php if ( $sf_intro ) : ?>
+						<figcaption>
+							<?php if ( '' !== $sf_head ) : ?><p class="rr-facts__head"><?php echo esc_html( $sf_head ); ?></p><?php endif; ?>
+							<?php if ( '' !== $sf_line ) : ?><p class="rr-facts__line"><?php echo esc_html( $sf_line ); ?></p><?php endif; ?>
+						</figcaption>
+					<?php endif; ?>
+				</figure>
+			<?php elseif ( $sf_intro ) : ?><p class="rr-facts__intro"><?php if ( '' !== $sf_head ) : ?><b><?php echo esc_html( $sf_head ); ?></b><?php endif; ?><?php if ( '' !== $sf_head && '' !== $sf_line ) : ?><br><?php endif; ?><?php echo esc_html( $sf_line ); ?></p><?php endif; ?>
 			<?php if ( $sf_nums ) : ?>
 				<div class="rr-statgrid">
 					<?php foreach ( $sf_nums as $n ) : ?>

@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.20.1
+Stable tag: 0.20.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,10 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.20.2 =
+* Show Facts, Boxes style: your photo now shows too, with the headline and line on it, above the number boxes.
+* Show Facts: the photo keeps its own shape, so a wide night photo of your house shows whole instead of being zoomed in and cut off. On phones the words go under the photo.
 
 = 0.20.1 =
 * Show Facts: the page title, headline, line, the Did You Know? and Fan Favorites titles, and every fact card can have their own words in each language you turned on. The two part titles can now be changed too.
