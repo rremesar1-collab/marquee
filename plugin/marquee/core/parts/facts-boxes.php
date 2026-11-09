@@ -46,7 +46,7 @@ $sf_intro = '' !== $sf_head || '' !== $sf_line;
 			<div class="rr-panel rr-panel--green">
 				<ul class="rr-mfacts">
 					<?php foreach ( $sf_did as $d ) : ?>
-						<li class="rr-mfact"><?php echo ridgeroad_cicon( $d['icon'] ); ?><p><?php if ( '' !== $d['big'] ) : ?><b><?php echo esc_html( $d['big'] ); ?></b> <?php endif; ?><?php echo esc_html( $d['text'] ); ?></p></li>
+						<li class="rr-mfact"><?php echo ridgeroad_cicon( $d['icon'] ); ?><?php if ( '' !== $d['big'] ) : ?><h3 class="rr-mfact__big"><?php echo esc_html( $d['big'] ); ?></h3><?php endif; ?><p><?php echo esc_html( $d['text'] ); ?></p></li>
 					<?php endforeach; ?>
 				</ul>
 			</div>

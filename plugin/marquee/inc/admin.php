@@ -30,6 +30,7 @@ add_action( 'admin_enqueue_scripts', function ( $hook ) {
 	wp_localize_script( 'marquee-admin', 'MarqueeAdmin', array(
 		'ajax'  => admin_url( 'admin-ajax.php' ),
 		'nonce' => wp_create_nonce( 'marquee_admin' ),
+		'icons' => function_exists( 'ridgeroad_cicon' ) && function_exists( 'ridgeroad_fact_icons' ) ? array_combine( array_keys( ridgeroad_fact_icons() ), array_map( 'ridgeroad_cicon', array_keys( ridgeroad_fact_icons() ) ) ) : array(), // the picture next to each icon picker
 	) );
 } );
 

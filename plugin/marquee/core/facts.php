@@ -10,21 +10,37 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/** Icons a fact card can use. */
+/** Icons a fact card, number box or tip can use: the show, then the equipment behind it. */
 function ridgeroad_fact_icons() {
 	return array(
-		'star'   => __( 'Star', 'ridgeroad' ),
-		'bulb'   => __( 'Light bulb', 'ridgeroad' ),
-		'tree'   => __( 'Tree', 'ridgeroad' ),
-		'music'  => __( 'Music', 'ridgeroad' ),
-		'clock'  => __( 'Clock', 'ridgeroad' ),
-		'home'   => __( 'House', 'ridgeroad' ),
-		'car'    => __( 'Car', 'ridgeroad' ),
-		'heart'  => __( 'Heart', 'ridgeroad' ),
-		'gift'   => __( 'Present', 'ridgeroad' ),
-		'radio'  => __( 'Radio', 'ridgeroad' ),
-		'camera' => __( 'Camera', 'ridgeroad' ),
-		'cloud'  => __( 'Weather', 'ridgeroad' ),
+		'star'       => __( 'Star', 'ridgeroad' ),
+		'bulb'       => __( 'Light bulb', 'ridgeroad' ),
+		'tree'       => __( 'Tree', 'ridgeroad' ),
+		'music'      => __( 'Music', 'ridgeroad' ),
+		'clock'      => __( 'Clock', 'ridgeroad' ),
+		'calendar'   => __( 'Calendar', 'ridgeroad' ),
+		'home'       => __( 'House', 'ridgeroad' ),
+		'car'        => __( 'Car', 'ridgeroad' ),
+		'people'     => __( 'People', 'ridgeroad' ),
+		'heart'      => __( 'Heart', 'ridgeroad' ),
+		'gift'       => __( 'Present', 'ridgeroad' ),
+		'snowflake'  => __( 'Snowflake', 'ridgeroad' ),
+		'candycane'  => __( 'Candy cane', 'ridgeroad' ),
+		'arch'       => __( 'Arch', 'ridgeroad' ),
+		'radio'      => __( 'Radio', 'ridgeroad' ),
+		'camera'     => __( 'Camera', 'ridgeroad' ),
+		'cloud'      => __( 'Weather', 'ridgeroad' ),
+		'pixels'     => __( 'Pixels (string of lights)', 'ridgeroad' ),
+		'matrix'     => __( 'LED panel', 'ridgeroad' ),
+		'tv'         => __( 'TV', 'ridgeroad' ),
+		'projector'  => __( 'Projector', 'ridgeroad' ),
+		'controller' => __( 'Controller', 'ridgeroad' ),
+		'computer'   => __( 'Computer', 'ridgeroad' ),
+		'power'      => __( 'Power', 'ridgeroad' ),
+		'plug'       => __( 'Plug', 'ridgeroad' ),
+		'speaker'    => __( 'Speaker', 'ridgeroad' ),
+		'antenna'    => __( 'FM transmitter', 'ridgeroad' ),
+		'wifi'       => __( 'Wi-Fi', 'ridgeroad' ),
 	);
 }
 

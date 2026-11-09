@@ -5123,3 +5123,57 @@ msgid ""
 "Pick the spot that doesn’t cover your display. A night photo usually has "
 "dark sky at the top."
 msgstr ""
+
+msgid "Above the photo"
+msgstr ""
+
+msgid "Above or under the photo keeps your whole display clear."
+msgstr ""
+
+msgid "Calendar"
+msgstr ""
+
+msgid "People"
+msgstr ""
+
+msgid "Snowflake"
+msgstr ""
+
+msgid "Candy cane"
+msgstr ""
+
+msgid "Arch"
+msgstr ""
+
+msgid "Pixels (string of lights)"
+msgstr ""
+
+msgid "LED panel"
+msgstr ""
+
+msgid "TV"
+msgstr ""
+
+msgid "Projector"
+msgstr ""
+
+msgid "Controller"
+msgstr ""
+
+msgid "Computer"
+msgstr ""
+
+msgid "Power"
+msgstr ""
+
+msgid "Plug"
+msgstr ""
+
+msgid "Speaker"
+msgstr ""
+
+msgid "FM transmitter"
+msgstr ""
+
+msgid "Wi-Fi"
+msgstr ""

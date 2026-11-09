@@ -832,3 +832,27 @@ document.addEventListener('click', function (e) {
 	frame.open();
 });
 })();
+
+/* Icon pickers: show the chosen picture next to the list */
+(function () {
+	var icons = (window.MarqueeAdmin && MarqueeAdmin.icons) || {};
+	if (!Object.keys(icons).length) { return; }
+	var isPick = function (el) { return el && el.tagName === 'SELECT' && /(^fc_icon\[\]$|_icon\]$)/.test(el.name || ''); };
+	var paint = function (sel) {
+		var box = sel.nextElementSibling;
+		if (!box || !box.classList.contains('mq-ipv')) {
+			box = document.createElement('span');
+			box.className = 'mq-ipv';
+			box.setAttribute('aria-hidden', 'true');
+			sel.parentNode.insertBefore(box, sel.nextSibling);
+			sel.parentNode.classList.add('mq-ipick');
+		}
+		seq++;
+		box.innerHTML = (icons[sel.value] || '').replace(/rrg\d+/g, 'mqi' + seq + 'g'); // its own color ids (a copy in a hidden section would blank them)
+	};
+	var seq = 0;
+	var all = function (root) { Array.prototype.forEach.call((root || document).querySelectorAll('select'), function (s) { if (isPick(s)) { paint(s); } }); };
+	document.addEventListener('change', function (e) { if (isPick(e.target)) { paint(e.target); } });
+	new MutationObserver(function (m) { m.forEach(function (r) { Array.prototype.forEach.call(r.addedNodes, function (n) { if (n.nodeType === 1 && !n.classList.contains('mq-ipv')) { all(n); } }); }); }).observe(document.body, { childList: true, subtree: true });
+	all();
+})();

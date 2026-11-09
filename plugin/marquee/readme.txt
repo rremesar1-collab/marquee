@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.20.3
+Stable tag: 0.20.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,11 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.20.4 =
+* 17 new pictures for your numbers, tips and fact cards, including show gear: LED panel, TV, projector, controller, computer, pixels, power, plug, speaker, FM transmitter and Wi-Fi, plus calendar, people, snowflake, candy cane and arch. Settings shows the picture next to each list.
+* Show Facts: "Above the photo" puts the headline in a dark strip above your photo, so it never covers your display.
+* Show Facts, Boxes style: the Did You Know? cards now look like the home page tips: picture on top, then the gold words, then the fact.
 
 = 0.20.3 =
 * Show Facts, Boxes style: your photo now shows too, with the headline and line on it, above the number boxes.

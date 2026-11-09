@@ -20,6 +20,20 @@ function ridgeroad_cicon( $name, $class = '' ) {
 	$N = 'url(#' . $g . 'gr)';
 	$dark = '#2a0a04';
 
+	// LED panel: a grid of colored dots; arch: a rainbow of bulbs.
+	$mx = '';
+	$mc = array( '#ff3b30', '#ffd23c', '#3cff6a', '#4aa8ff', '#ff5ad1', '#ffffff' );
+	for ( $r = 0; $r < 5; $r++ ) {
+		for ( $c = 0; $c < 7; $c++ ) {
+			$mx .= '<circle cx="' . ( 13 + $c * 6.3 ) . '" cy="' . ( 20 + $r * 6 ) . '" r="2" fill="' . $mc[ ( $r + $c ) % 6 ] . '"/>';
+		}
+	}
+	$ar = '';
+	for ( $k = 0; $k <= 10; $k++ ) {
+		$a   = M_PI - $k * M_PI / 10;
+		$ar .= '<circle cx="' . round( 32 + 27 * cos( $a ), 1 ) . '" cy="' . round( 56 - 27 * sin( $a ), 1 ) . '" r="4.4" fill="' . $mc[ $k % 4 ] . '"/>';
+	}
+
 	$icons = array(
 		'radio'  => $gold . '<line x1="22" y1="21" x2="44" y2="7" stroke="' . $G . '" stroke-width="3.2" stroke-linecap="round"/><circle cx="44" cy="7" r="3" fill="' . $G . '"/>'
 			. '<rect x="6" y="20" width="52" height="36" rx="7" fill="' . $G . '" stroke="#7a4a05" stroke-width="1.2"/>'
@@ -66,6 +80,51 @@ function ridgeroad_cicon( $name, $class = '' ) {
 			. '<path d="M16 52h32a10 10 0 0 0 1-20 14 14 0 0 0-27-3 11 11 0 0 0-6 23z" fill="#fff8e6" stroke="#ffcc33" stroke-width="2.4"/>',
 		'pin'    => $red . '<path d="M32 60S12 38 12 24a20 20 0 0 1 40 0c0 14-20 36-20 36z" fill="' . $R . '"/><circle cx="32" cy="24" r="8" fill="#fff4e0"/>',
 		'mail'   => $gold . '<rect x="5" y="14" width="54" height="38" rx="5" fill="' . $G . '"/><path d="M7 17l25 19 25-19" fill="none" stroke="#7a4a05" stroke-width="3" stroke-linejoin="round"/>',
+		// show equipment
+		'projector' => $gold . '<path d="M42 28l20-12v36L42 40z" fill="#fff4b0" opacity=".35"/>'
+			. '<rect x="3" y="20" width="42" height="28" rx="6" fill="' . $G . '" stroke="#7a4a05" stroke-width="1.2"/>'
+			. '<circle cx="33" cy="34" r="9.5" fill="' . $dark . '"/><circle cx="33" cy="34" r="6" fill="none" stroke="#ffcc33" stroke-width="2"/><circle cx="31" cy="32" r="2" fill="#fff" opacity=".8"/>'
+			. '<rect x="9" y="26" width="12" height="3" rx="1.5" fill="' . $dark . '"/><rect x="9" y="32" width="8" height="3" rx="1.5" fill="' . $dark . '"/>'
+			. '<rect x="8" y="48" width="6" height="5" rx="1" fill="#7a4a05"/><rect x="34" y="48" width="6" height="5" rx="1" fill="#7a4a05"/>',
+		'tv'        => $gold . '<rect x="4" y="8" width="56" height="38" rx="4" fill="' . $G . '" stroke="#7a4a05" stroke-width="1.2"/>'
+			. '<rect x="8" y="12" width="48" height="30" rx="2" fill="#0b1f4a"/><path d="M8 42l14-14 9 9 7-6 18 11z" fill="#1f9e35"/><circle cx="44" cy="20" r="4" fill="#fff59a"/>'
+			. '<path d="M24 56h16l-3-10H27z" fill="' . $G . '"/><rect x="18" y="55" width="28" height="4" rx="2" fill="' . $G . '"/>',
+		'matrix'    => $gold . '<rect x="5" y="12" width="54" height="40" rx="4" fill="#0a0d1c" stroke="' . $G . '" stroke-width="3"/>' . $mx,
+		'controller' => $gold . $grn . '<rect x="5" y="12" width="54" height="40" rx="4" fill="' . $N . '" stroke="#0d5e1e" stroke-width="1.2"/>'
+			. '<rect x="10" y="6" width="9" height="10" rx="1.5" fill="' . $G . '"/><rect x="23" y="6" width="9" height="10" rx="1.5" fill="' . $G . '"/><rect x="36" y="6" width="9" height="10" rx="1.5" fill="' . $G . '"/>'
+			. '<rect x="23" y="24" width="18" height="18" rx="2" fill="#1a1a1a"/><g stroke="#ffcc33" stroke-width="1.6"><path d="M20 28h3M20 33h3M20 38h3M41 28h3M41 33h3M41 38h3"/></g>'
+			. '<circle cx="51" cy="20" r="2.4" fill="#ff3b30"/><circle cx="51" cy="27" r="2.4" fill="#3cff6a"/><circle cx="12" cy="45" r="2" fill="#4aa8ff"/>',
+		'computer'  => $gold . '<rect x="10" y="10" width="44" height="30" rx="3" fill="' . $G . '" stroke="#7a4a05" stroke-width="1.2"/>'
+			. '<rect x="14" y="14" width="36" height="22" rx="1.5" fill="#0a0d1c"/>'
+			. '<rect x="17" y="18" width="14" height="3" fill="#ff3b30"/><rect x="25" y="23" width="18" height="3" fill="#3cff6a"/><rect x="18" y="28" width="10" height="3" fill="#4aa8ff"/><rect x="32" y="28" width="12" height="3" fill="#ffd23c"/>'
+			. '<path d="M4 46h56l-4 7H8z" fill="' . $G . '" stroke="#7a4a05" stroke-width="1.2"/><rect x="27" y="47" width="10" height="2" rx="1" fill="#7a4a05"/>',
+		'power'     => $gold . '<path d="M37 3L12 36h15l-5 25 28-35H35z" fill="' . $G . '" stroke="#9a5a05" stroke-width="1.4" stroke-linejoin="round"/>'
+			. '<path d="M33 9L18 31h9" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".5"/>',
+		'speaker'   => $gold . '<rect x="13" y="4" width="38" height="56" rx="6" fill="' . $G . '" stroke="#7a4a05" stroke-width="1.2"/>'
+			. '<circle cx="32" cy="17" r="7" fill="' . $dark . '"/><circle cx="32" cy="17" r="2.5" fill="#ffcc33"/>'
+			. '<circle cx="32" cy="40" r="13" fill="' . $dark . '"/><circle cx="32" cy="40" r="8" fill="none" stroke="#ffcc33" stroke-width="2"/><circle cx="32" cy="40" r="3.5" fill="#ffcc33"/>',
+		'antenna'   => $red . $gold . '<path d="M32 22L20 60M32 22l12 38M24 46h16M27 36h10" fill="none" stroke="' . $G . '" stroke-width="3.4" stroke-linecap="round"/>'
+			. '<circle cx="32" cy="20" r="5" fill="' . $R . '"/>'
+			. '<g fill="none" stroke="#ff5a4a" stroke-width="3" stroke-linecap="round"><path d="M22 11a14 14 0 0 0 0 18M42 11a14 14 0 0 1 0 18"/><path d="M15 5a23 23 0 0 0 0 30M49 5a23 23 0 0 1 0 30" opacity=".6"/></g>',
+		'pixels'    => '<path d="M2 22c10 14 20 14 30 0s20-14 30 0" fill="none" stroke="#b9c2b9" stroke-width="2"/>'
+			. '<g><circle cx="8" cy="30" r="5.5" fill="#ff3b30"/><circle cx="20" cy="36" r="5.5" fill="#ffd23c"/><circle cx="32" cy="22" r="5.5" fill="#3cff6a"/><circle cx="44" cy="10" r="5.5" fill="#4aa8ff"/><circle cx="56" cy="16" r="5.5" fill="#ff5ad1"/></g>'
+			. '<path d="M2 44c10 14 20 14 30 0s20-14 30 0" fill="none" stroke="#b9c2b9" stroke-width="2"/>'
+			. '<g><circle cx="8" cy="52" r="5.5" fill="#4aa8ff"/><circle cx="20" cy="58" r="5.5" fill="#ff3b30"/><circle cx="32" cy="44" r="5.5" fill="#ffd23c"/><circle cx="44" cy="32" r="5.5" fill="#3cff6a"/><circle cx="56" cy="38" r="5.5" fill="#ff3b30"/></g>'
+			. '<g fill="#fff" opacity=".55"><circle cx="6.5" cy="28.5" r="1.6"/><circle cx="30.5" cy="20.5" r="1.6"/><circle cx="54.5" cy="14.5" r="1.6"/><circle cx="30.5" cy="42.5" r="1.6"/></g>',
+		'plug'      => $gold . '<path d="M32 44v10c0 4 4 6 8 6h16" fill="none" stroke="#1a1a1a" stroke-width="5" stroke-linecap="round"/>'
+			. '<rect x="22" y="4" width="5" height="14" rx="2" fill="#c9c9c9"/><rect x="37" y="4" width="5" height="14" rx="2" fill="#c9c9c9"/>'
+			. '<path d="M14 16h36v12c0 10-8 18-18 18s-18-8-18-18z" fill="' . $G . '" stroke="#7a4a05" stroke-width="1.2"/>',
+		'snowflake' => '<g stroke="#dff1ff" stroke-width="4" stroke-linecap="round" fill="none"><path d="M32 4v56M8 18l48 28M8 46l48-28"/><path d="M25 9l7 7 7-7M25 55l7-7 7 7M7 27l10-2-3-9M57 37l-10 2 3 9M7 37l10 2-3 9M57 27l-10-2 3-9"/></g>'
+			. '<circle cx="32" cy="32" r="5" fill="#9fd6ff"/>',
+		'candycane' => '<path d="M38 60V22a10 10 0 0 0-20 0v5" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round"/>'
+			. '<path d="M38 60V22a10 10 0 0 0-20 0v5" fill="none" stroke="#e5121e" stroke-width="10" stroke-dasharray="6 7"/>',
+		'arch'      => '<path d="M5 56a27 27 0 0 1 54 0" fill="none" stroke="#b9c2b9" stroke-width="2"/>' . $ar,
+		'people'    => $gold . '<circle cx="22" cy="20" r="9" fill="' . $G . '"/><path d="M5 56c0-12 7-20 17-20s17 8 17 20z" fill="' . $G . '"/>'
+			. '<circle cx="44" cy="24" r="7.5" fill="#ffd77a"/><path d="M33 56c1-10 5-16 11-16 8 0 14 6 14 16z" fill="#ffd77a"/>',
+		'calendar'  => $red . '<rect x="6" y="10" width="52" height="48" rx="5" fill="#fff8e6"/><path d="M6 15a5 5 0 0 1 5-5h42a5 5 0 0 1 5 5v9H6z" fill="' . $R . '"/>'
+			. '<rect x="17" y="5" width="5" height="11" rx="2" fill="#7a4a05"/><rect x="42" y="5" width="5" height="11" rx="2" fill="#7a4a05"/>'
+			. '<text x="32" y="51" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="22" fill="#b3121b">25</text>',
+		'wifi'      => $gold . '<g fill="none" stroke="' . $G . '" stroke-width="5.5" stroke-linecap="round"><path d="M6 24a37 37 0 0 1 52 0"/><path d="M14 33a25 25 0 0 1 36 0"/><path d="M22 42a13 13 0 0 1 20 0"/></g><circle cx="32" cy="52" r="5" fill="' . $G . '"/>',
 	);
 
 	if ( ! isset( $icons[ $name ] ) ) {

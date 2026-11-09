@@ -4040,3 +4040,57 @@ msgid ""
 msgstr ""
 "Choisissez l’endroit qui ne cache pas votre décor. Une photo de nuit a "
 "souvent un ciel sombre en haut."
+
+msgid "Above the photo"
+msgstr "Au-dessus de la photo"
+
+msgid "Above or under the photo keeps your whole display clear."
+msgstr "Au-dessus ou sous la photo, tout votre décor reste visible."
+
+msgid "Calendar"
+msgstr "Calendrier"
+
+msgid "People"
+msgstr "Personnes"
+
+msgid "Snowflake"
+msgstr "Flocon de neige"
+
+msgid "Candy cane"
+msgstr "Sucre d’orge"
+
+msgid "Arch"
+msgstr "Arche"
+
+msgid "Pixels (string of lights)"
+msgstr "Pixels (guirlande de lumières)"
+
+msgid "LED panel"
+msgstr "Panneau LED"
+
+msgid "TV"
+msgstr "Télé"
+
+msgid "Projector"
+msgstr "Projecteur"
+
+msgid "Controller"
+msgstr "Contrôleur"
+
+msgid "Computer"
+msgstr "Ordinateur"
+
+msgid "Power"
+msgstr "Électricité"
+
+msgid "Plug"
+msgstr "Prise"
+
+msgid "Speaker"
+msgstr "Haut-parleur"
+
+msgid "FM transmitter"
+msgstr "Émetteur FM"
+
+msgid "Wi-Fi"
+msgstr "Wi-Fi"

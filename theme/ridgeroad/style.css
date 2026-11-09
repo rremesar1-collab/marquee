@@ -4,7 +4,7 @@ Theme URI: https://alateka.com/
 Author: Alateka Corporation
 Author URI: https://alateka.com/
 Description: The festive Christmas look for the Marquee light show plugin: garlands, bows, a night-sky scene and glowing show cards for your status, Now Playing, weather, Kids’ Corner and more. Needs the free Marquee plugin (it holds all the show features and settings).
-Version: 2.23.3
+Version: 2.23.4
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -2252,10 +2252,10 @@ body.rr-glass.rr-boxes--blue .rr-stat:nth-child(even) {
 .rr-facts__intro { max-width: 720px; margin: -6px auto 18px; text-align: center; font-size: 18px; color: #f3e7c9; text-shadow: 0 2px 6px #000, 0 0 2px #000; }
 .rr-mfacts { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
 .rr-mfacts > .rr-mfact, .rr-fyears > .rr-fyear { flex: 0 1 calc((100% - 28px) / 3); min-width: 0; box-sizing: border-box; } /* a short last row stays centered */
-.rr-mfact { display: flex; gap: 14px; align-items: flex-start; padding: 16px; border-radius: 14px; background: rgba(0, 0, 0, .28); border: 1px solid rgba(255, 215, 120, .28); }
-.rr-mfact .rr-cicon { width: 40px; height: 40px; flex: 0 0 40px; }
-.rr-mfact p { margin: 0; font-size: 17px; line-height: 1.45; color: #fff; }
-.rr-mfact b { color: #fde866; }
+.rr-mfact { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 20px 18px 18px; border-radius: 14px; background: rgba(0, 0, 0, .28); border: 1px solid rgba(255, 215, 120, .28); } /* like the home page tips: picture on top, gold words, then the fact */
+.rr-mfact .rr-cicon { width: 46px; height: 46px; flex: none; filter: drop-shadow(0 0 7px rgba(255, 200, 60, .65)); }
+.rr-mfact__big { margin: 8px 0 4px; font-size: clamp(19px, 1.5vw, 22px); line-height: 1.2; color: #fae46d; }
+.rr-mfact p { margin: 0; font-size: 16.5px; line-height: 1.45; color: #fff; }
 .rr-fyears { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
 .rr-fyear { padding: 14px 16px; border-radius: 14px; background: rgba(0, 0, 0, .28); border: 1px solid rgba(255, 215, 120, .28); }
 .rr-fyear h3 { margin: 0 0 8px; text-align: center; font-size: 26px; color: #ffd45a; }
@@ -2271,9 +2271,10 @@ body.rr-glass.rr-boxes--blue .rr-stat:nth-child(even) {
 @media (max-width: 600px) { .rr-mfacts > .rr-mfact, .rr-fyears > .rr-fyear { flex-basis: 100%; } .rr-facts__intro { font-size: 16px; } }
 .rr-facts__intro b { display: inline-block; font: 400 clamp(30px, 3.4vw, 46px)/1.15 var(--f-script, cursive); color: #fff1c2; text-shadow: 0 0 16px rgba(255, 200, 80, .55), 0 3px 8px rgba(0, 0, 0, .9); }
 .rr-facts--boxes .rr-facts__photo { margin: 0 0 22px; }
-.rr-facts__photo--top figcaption { top: 0; bottom: auto; padding: 16px 20px 48px; background: linear-gradient(rgba(0, 0, 0, .8), transparent); } /* the headline in the sky above the display */
+.rr-facts__photo--top { display: flex; flex-direction: column; background: #000; }
+.rr-facts__photo--top figcaption { position: static; order: -1; padding: 18px 20px 10px; background: #000; } /* the headline in a dark strip just above the photo: it never covers the display */
 .rr-facts__photo--below figcaption { position: static; padding: 14px 20px 16px; background: #0a0d1c; } /* the headline under the photo, which stays clear */
-@media (max-width: 640px) { .rr-facts__photo figcaption, .rr-facts__photo--top figcaption { position: static; padding: 12px 14px 14px; background: #0a0d1c; } } /* phones: always under the photo */
+@media (max-width: 640px) { .rr-facts__photo figcaption { position: static; padding: 12px 14px 14px; background: #0a0d1c; } .rr-facts__photo--top figcaption { background: #000; } } /* phones: the words never sit on the photo */
 
 
 /* ---------- Page builder (Marquee): Show Boxes on your own pages ---------- */

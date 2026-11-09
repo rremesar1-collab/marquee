@@ -877,3 +877,9 @@
 	.mq-pbox__body { padding: 6px 14px 14px; }
 	.mq-pbox__on, .mq-pbox__offl { display: none !important; }
 }
+
+/* icon pickers: the chosen picture beside the list */
+.mq-ipick { position: relative; }
+.mq-ipick select { padding-right: 52px !important; }
+.mq-ipv { position: absolute; right: 26px; bottom: 4px; width: 28px; height: 28px; pointer-events: none; display: grid; place-items: center; background: #1b1022; border-radius: 6px; }
+.mq-ipv svg { width: 22px; height: 22px; display: block; }

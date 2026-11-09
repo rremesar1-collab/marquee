@@ -3995,3 +3995,57 @@ msgid ""
 msgstr ""
 "Elige el lugar que no tape tu espectáculo. Una foto de noche suele tener "
 "cielo oscuro arriba."
+
+msgid "Above the photo"
+msgstr "Encima de la foto"
+
+msgid "Above or under the photo keeps your whole display clear."
+msgstr "Encima o debajo de la foto, tu espectáculo se ve completo."
+
+msgid "Calendar"
+msgstr "Calendario"
+
+msgid "People"
+msgstr "Personas"
+
+msgid "Snowflake"
+msgstr "Copo de nieve"
+
+msgid "Candy cane"
+msgstr "Bastón de caramelo"
+
+msgid "Arch"
+msgstr "Arco"
+
+msgid "Pixels (string of lights)"
+msgstr "Píxeles (tira de luces)"
+
+msgid "LED panel"
+msgstr "Panel LED"
+
+msgid "TV"
+msgstr "TV"
+
+msgid "Projector"
+msgstr "Proyector"
+
+msgid "Controller"
+msgstr "Controlador"
+
+msgid "Computer"
+msgstr "Computadora"
+
+msgid "Power"
+msgstr "Electricidad"
+
+msgid "Plug"
+msgstr "Enchufe"
+
+msgid "Speaker"
+msgstr "Altavoz"
+
+msgid "FM transmitter"
+msgstr "Transmisor FM"
+
+msgid "Wi-Fi"
+msgstr "Wi-Fi"

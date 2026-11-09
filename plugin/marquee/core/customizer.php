@@ -318,19 +318,7 @@ function ridgeroad_sanitize_check( $v ) {
 	return $v ? 1 : 0;
 }
 function ridgeroad_icon_choices() {
-	return array(
-		'car'    => 'Car',
-		'bulb'   => 'Light bulb',
-		'home'   => 'House',
-		'camera' => 'Camera',
-		'radio'  => 'Radio',
-		'music'  => 'Musical note',
-		'tree'   => 'Christmas tree',
-		'star'   => 'Star',
-		'heart'  => 'Heart',
-		'gift'   => 'Gift',
-		'clock'  => 'Clock',
-	);
+	return function_exists( 'ridgeroad_fact_icons' ) ? ridgeroad_fact_icons() : array( 'star' => 'Star' ); // one list for every icon picker
 }
 
 add_action( 'customize_register', function ( WP_Customize_Manager $wp ) {
@@ -581,7 +569,7 @@ function ridgeroad_customize_fields( $add, $image ) {
 	$add( 'gb_ts_secret', 'rr_guestbook', __( 'Robot check: Turnstile secret key', 'ridgeroad' ), 'text' );
 	$add( 'facts_show', 'rr_facts', __( 'Show the Show Facts page', 'ridgeroad' ), 'checkbox', array( 'description' => __( 'A page about your show, with its own button at the top. Add the photo, fact cards and past fan favorites in Marquee → Settings → Show Facts.', 'ridgeroad' ) ) );
 	$add( 'facts_style', 'rr_facts', __( 'Page style', 'ridgeroad' ), 'select', array( 'choices' => ridgeroad_facts_styles() ) );
-	$add( 'facts_cap', 'rr_facts', __( 'Where the headline goes', 'ridgeroad' ), 'select', array( 'choices' => array( 'top' => __( 'On the photo, at the top', 'ridgeroad' ), 'bottom' => __( 'On the photo, at the bottom', 'ridgeroad' ), 'below' => __( 'Under the photo', 'ridgeroad' ) ), 'description' => __( 'Pick the spot that doesn’t cover your display. A night photo usually has dark sky at the top.', 'ridgeroad' ) ) );
+	$add( 'facts_cap', 'rr_facts', __( 'Where the headline goes', 'ridgeroad' ), 'select', array( 'choices' => array( 'top' => __( 'Above the photo', 'ridgeroad' ), 'bottom' => __( 'On the photo, at the bottom', 'ridgeroad' ), 'below' => __( 'Under the photo', 'ridgeroad' ) ), 'description' => __( 'Above or under the photo keeps your whole display clear.', 'ridgeroad' ) ) );
 	$add( 'facts_title', 'rr_facts', __( 'Page title', 'ridgeroad' ) );
 	$add( 'facts_tagline', 'rr_facts', __( 'Headline on the photo', 'ridgeroad' ) );
 	$add( 'facts_line', 'rr_facts', __( 'Line under the headline', 'ridgeroad' ) );
