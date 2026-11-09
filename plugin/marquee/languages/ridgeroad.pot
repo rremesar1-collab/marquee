@@ -5106,3 +5106,20 @@ msgstr ""
 
 msgid "Words while the show is on"
 msgstr ""
+
+msgid "Where the headline goes"
+msgstr ""
+
+msgid "On the photo, at the top"
+msgstr ""
+
+msgid "On the photo, at the bottom"
+msgstr ""
+
+msgid "Under the photo"
+msgstr ""
+
+msgid ""
+"Pick the spot that doesn’t cover your display. A night photo usually has "
+"dark sky at the top."
+msgstr ""

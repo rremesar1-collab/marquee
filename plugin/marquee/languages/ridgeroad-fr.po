@@ -4021,3 +4021,22 @@ msgstr "Votez pour votre préférée"
 
 msgid "Words while the show is on"
 msgstr "Texte pendant le spectacle"
+
+msgid "Where the headline goes"
+msgstr "Où placer le titre"
+
+msgid "On the photo, at the top"
+msgstr "Sur la photo, en haut"
+
+msgid "On the photo, at the bottom"
+msgstr "Sur la photo, en bas"
+
+msgid "Under the photo"
+msgstr "Sous la photo"
+
+msgid ""
+"Pick the spot that doesn’t cover your display. A night photo usually has "
+"dark sky at the top."
+msgstr ""
+"Choisissez l’endroit qui ne cache pas votre décor. Une photo de nuit a "
+"souvent un ciel sombre en haut."

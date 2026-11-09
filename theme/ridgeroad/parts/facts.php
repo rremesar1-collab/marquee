@@ -29,7 +29,7 @@ if ( 'boxes' === ridgeroad_facts_style() ) {
 			<h1 id="rr-facts-h" class="rr-ribbon"><span><?php echo esc_html( ridgeroad_mod( 'facts_title' ) ); ?></span></h1>
 			<div class="rr-panel rr-panel--red rr-facts__hero">
 				<?php if ( $sf_img ) : ?>
-					<figure class="rr-facts__photo">
+					<figure class="rr-facts__photo rr-facts__photo--<?php echo esc_attr( in_array( ridgeroad_mod( 'facts_cap' ), array( 'top', 'below' ), true ) ? ridgeroad_mod( 'facts_cap' ) : 'bottom' ); ?>">
 						<img src="<?php echo esc_url( $sf_img ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"<?php echo $sf_wh; // phpcs:ignore WordPress.Security.EscapeOutput -- numbers ?> decoding="async">
 						<?php if ( '' !== $sf_head || '' !== $sf_line ) : ?>
 							<figcaption>

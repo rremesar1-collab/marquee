@@ -1104,6 +1104,7 @@ marquee_geo_row( $s );
 						<?php marquee_lang_boxes( 'facts_tagline', __( 'Headline on the photo', 'marquee' ) ); ?>
 						<p><label for="mq-facts-line"><?php esc_html_e( 'Line under the headline (optional)', 'marquee' ); ?></label><input id="mq-facts-line" name="facts_line" type="text" maxlength="120" value="<?php echo esc_attr( $tm( 'facts_line' ) ); ?>"></p>
 						<?php marquee_lang_boxes( 'facts_line', __( 'Line under the headline', 'marquee' ) ); ?>
+						<?php marquee_field( 'facts_cap' ); ?>
 						<p class="mq__fine"><?php esc_html_e( 'The numbers under the photo are your Behind the Lights numbers. They count up when the page opens.', 'marquee' ); ?> <a href="#mq-step-10-stats"><?php esc_html_e( 'Change the numbers', 'marquee' ); ?></a></p>
 					</div>
 

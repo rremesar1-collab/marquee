@@ -156,6 +156,7 @@ function ridgeroad_defaults( $fresh = false ) {
 		'facts_line'        => '',
 		'facts_photo'       => 0,
 		'facts_style'       => 'photo',
+		'facts_cap'         => 'bottom',          // where the headline goes on the photo: top, bottom or below
 		'facts_hero'        => 1,
 		'facts_did'         => 1,
 		'facts_fav'         => 1,
@@ -580,6 +581,7 @@ function ridgeroad_customize_fields( $add, $image ) {
 	$add( 'gb_ts_secret', 'rr_guestbook', __( 'Robot check: Turnstile secret key', 'ridgeroad' ), 'text' );
 	$add( 'facts_show', 'rr_facts', __( 'Show the Show Facts page', 'ridgeroad' ), 'checkbox', array( 'description' => __( 'A page about your show, with its own button at the top. Add the photo, fact cards and past fan favorites in Marquee → Settings → Show Facts.', 'ridgeroad' ) ) );
 	$add( 'facts_style', 'rr_facts', __( 'Page style', 'ridgeroad' ), 'select', array( 'choices' => ridgeroad_facts_styles() ) );
+	$add( 'facts_cap', 'rr_facts', __( 'Where the headline goes', 'ridgeroad' ), 'select', array( 'choices' => array( 'top' => __( 'On the photo, at the top', 'ridgeroad' ), 'bottom' => __( 'On the photo, at the bottom', 'ridgeroad' ), 'below' => __( 'Under the photo', 'ridgeroad' ) ), 'description' => __( 'Pick the spot that doesn’t cover your display. A night photo usually has dark sky at the top.', 'ridgeroad' ) ) );
 	$add( 'facts_title', 'rr_facts', __( 'Page title', 'ridgeroad' ) );
 	$add( 'facts_tagline', 'rr_facts', __( 'Headline on the photo', 'ridgeroad' ) );
 	$add( 'facts_line', 'rr_facts', __( 'Line under the headline', 'ridgeroad' ) );
