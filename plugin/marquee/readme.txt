@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.20.2
+Stable tag: 0.20.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,7 +54,7 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
 
-= 0.20.2 =
+= 0.20.3 =
 * Show Facts, Boxes style: your photo now shows too, with the headline and line on it, above the number boxes.
 * Show Facts: the photo keeps its own shape, so a wide night photo of your house shows whole instead of being zoomed in and cut off. On phones the words go under the photo.
 * Show Facts: pick where the headline goes: on the photo at the top, at the bottom, or under the photo.
