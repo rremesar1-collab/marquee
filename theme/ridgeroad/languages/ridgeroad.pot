@@ -5177,3 +5177,13 @@ msgstr ""
 
 msgid "Wi-Fi"
 msgstr ""
+
+msgid "Show “Show website by Marquee” at the bottom"
+msgstr ""
+
+msgid ""
+"A small link to Marquee under your footer line. Turn it off to hide it."
+msgstr ""
+
+msgid "Show website by %s"
+msgstr ""

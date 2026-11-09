@@ -4094,3 +4094,15 @@ msgstr "Émetteur FM"
 
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
+
+msgid "Show “Show website by Marquee” at the bottom"
+msgstr "Afficher « Site du spectacle par Marquee » en bas de page"
+
+msgid ""
+"A small link to Marquee under your footer line. Turn it off to hide it."
+msgstr ""
+"Un petit lien vers Marquee sous la ligne du bas de page. Désactivez-le pour "
+"le masquer."
+
+msgid "Show website by %s"
+msgstr "Site du spectacle par %s"

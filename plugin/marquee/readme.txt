@@ -58,6 +58,8 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 * 17 new pictures for your numbers, tips and fact cards, including show gear: LED panel, TV, projector, controller, computer, pixels, power, plug, speaker, FM transmitter and Wi-Fi, plus calendar, people, snowflake, candy cane and arch. Settings shows the picture next to each list.
 * Show Facts: "Above the photo" puts the headline in a dark strip above your photo, so it never covers your display.
 * Show Facts, Boxes style: the Did You Know? cards now look like the home page tips: picture on top, then the gold words, then the fact.
+* A small "Show website by Marquee" line at the bottom of the page, linking to the Marquee page. Turn it off in Settings → Home page → Bottom of the page.
+* Phones: the language buttons no longer cover the last line at the bottom of the page.
 
 = 0.20.3 =
 * Show Facts, Boxes style: your photo now shows too, with the headline and line on it, above the number boxes.

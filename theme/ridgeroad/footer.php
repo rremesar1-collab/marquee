@@ -12,6 +12,12 @@
 			<a href="<?php echo esc_url( $l['url'] ); ?>" target="_blank" rel="noopener"><?php echo ridgeroad_icon( $net ); ?><span class="screen-reader-text"><?php echo esc_html( $l['label'] ); ?></span></a>
 		<?php endforeach; ?>
 	</p>
+	<?php if ( ridgeroad_mod( 'credit_show' ) ) : ?>
+		<p class="rr-footer__credit"><?php
+			/* translators: %s: the word Marquee, linked */
+			printf( esc_html__( 'Show website by %s', 'ridgeroad' ), '<a href="https://alateka.com/marquee/" target="_blank" rel="noopener">Marquee</a>' );
+		?></p>
+	<?php endif; ?>
 </footer>
 </div><!-- .rr-scroll -->
 <?php ridgeroad_part( 'app-sheet' ); ?>

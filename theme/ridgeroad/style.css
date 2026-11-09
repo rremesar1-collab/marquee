@@ -1674,6 +1674,9 @@ img.emoji, img.wp-smiley { display: inline !important; width: 1em !important; he
 .rr-app__off { background: none; border: 0; padding: 10px 4px; color: #ffb3b3; font: 700 14px var(--f-body); text-decoration: underline; cursor: pointer; }
 .rr-footer__app { margin: 0 0 4px; }
 .rr-footer__app a { color: var(--gold); font-weight: 800; }
+.rr-footer__credit { margin: 10px 0 0; font-size: 13px; } /* "Show website by Marquee": small and quiet */
+.rr-footer__credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.rr-footer__credit a:hover, .rr-footer__credit a:focus-visible { color: var(--gold); opacity: 1; }
 
 /* install steps */
 .rr-appsheet { position: fixed; inset: 0; z-index: 1000; display: grid; align-items: end; justify-items: center; }

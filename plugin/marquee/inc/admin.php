@@ -1036,6 +1036,7 @@ marquee_geo_row( $s );
 
 				<?php marquee_pbox( 'footer', __( 'Bottom of the page', 'marquee' ), __( 'The small line at the very bottom', 'marquee' ) ); ?>
 					<?php marquee_field( 'footer_text' ); ?>
+					<?php marquee_field( 'credit_show' ); ?>
 				<?php marquee_pbox_end(); ?>
 				</div>
 			</section>

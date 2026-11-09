@@ -161,7 +161,7 @@ add_action( 'wp_head', function () {
 	echo '<style id="mq-lang-css">.mq-lang{position:fixed;top:12px;right:14px;z-index:9999;display:flex;gap:2px;padding:3px;border-radius:999px;background:rgba(8,14,36,.82);box-shadow:0 2px 10px rgba(0,0,0,.35),inset 0 0 0 1px rgba(255,215,130,.45);font:600 13px/1 system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}'
 		. '.mq-lang a{padding:7px 11px;border-radius:999px;color:#fff3d6;text-decoration:none}.mq-lang a:hover,.mq-lang a:focus-visible{background:rgba(255,255,255,.14);color:#fff;outline:0}'
 		. '.mq-lang a.is-on{background:#f2c75a;color:#2a1600}.admin-bar .mq-lang{top:44px}'
-		. '@media (max-width:600px){.mq-lang{top:auto;bottom:14px;right:50%;transform:translateX(50%);font-size:12.5px}.admin-bar .mq-lang{top:auto}}</style>' . "\n";
+		. '@media (max-width:600px){.mq-lang{top:auto;bottom:14px;right:50%;transform:translateX(50%);font-size:12.5px}.admin-bar .mq-lang{top:auto}body .rr-footer{padding-bottom:76px}body>.mq-owner{padding-bottom:64px}}</style>' . "\n";
 	// tell search engines which languages the page comes in
 	foreach ( marquee_lang_links() as $code => $l ) {
 		printf( '<link rel="alternate" hreflang="%s" href="%s">' . "\n", esc_attr( $code ), esc_url( $l[1] ) );

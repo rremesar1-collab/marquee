@@ -173,6 +173,7 @@ function ridgeroad_defaults( $fresh = false ) {
 		'gb_ts_site'        => '',
 		'gb_ts_secret'      => '',
 		'footer_text'       => '',
+		'credit_show'       => 1,               // "Show website by Marquee" at the very bottom (can be turned off)
 	);
 	// Marquee (any show): no Lights On Ridge Road details as defaults.
 	if ( function_exists( 'marquee_get' ) ) {
@@ -587,6 +588,7 @@ function ridgeroad_customize_fields( $add, $image ) {
 	$add( 'sp_intro', 'rr_sponsors', __( 'Thank-you line (leave empty to hide it)', 'ridgeroad' ), 'textarea' );
 	$add( 'sp_ask', 'rr_sponsors', __( '“Want to sponsor the show?” link: an email or a web page (leave empty to hide it)', 'ridgeroad' ) );
 	$add( 'footer_text', 'rr_support', __( 'Footer text (optional)', 'ridgeroad' ) );
+	$add( 'credit_show', 'rr_support', __( 'Show “Show website by Marquee” at the bottom', 'ridgeroad' ), 'checkbox', array( 'description' => __( 'A small link to Marquee under your footer line. Turn it off to hide it.', 'ridgeroad' ) ) );
 }
 
 /** Miles for "Only at the show" (0.1 to 50, one decimal). */
