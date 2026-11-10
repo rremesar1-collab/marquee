@@ -41,7 +41,7 @@ import socket
 import threading
 import urllib.request
 
-VERSION = "3.17.0"
+VERSION = "3.17.1"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -1567,6 +1567,10 @@ def text_plan(text, width, height, sc=None, room=None):
     px = int(sc.get("px") or 0) if size_k == "custom" else 0
     frac = (px / float(height)) if px else SIZES.get(size_k, 0.8 if small else 0.6)
     big = max(4, px) if px else max(6, min(int(200 * k), int(height * frac * k)))
+    if not px and small and width < 2 * height:
+        # 3.17.1: a squarish or tall matrix (60x60, 66x88): letters sized from the height alone were so wide
+        # that only about two fit across, too few to read a name going by. Keep at least 4 letters on the screen.
+        big = max(6, min(big, int(width / (CW * 4) * k)))
     if style in ("still", "auto"):
         size, txt = still_text(text, width, height, big)
         if style == "still" or size >= max(8, int(0.2 * height)):
