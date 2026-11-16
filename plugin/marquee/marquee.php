@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Marquee – Show Website for xLights & FPP
  * Description: Show status, Remote Falcon, Your Name in Lights, Kids' Corner, app and alerts for Christmas light shows. Start with Marquee → Setup.
- * Version: 0.20.4
+ * Version: 0.20.5
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Alateka Corporation
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MARQUEE_VERSION', '0.20.4' );
+define( 'MARQUEE_VERSION', '0.20.5' );
 defined( 'MARQUEE_FPP_PLUGIN_INFO' ) || define( 'MARQUEE_FPP_PLUGIN_INFO', 'https://raw.githubusercontent.com/rremesar1-collab/fpp-marquee/main/pluginInfo.json' );
 define( 'MARQUEE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'MARQUEE_URL', plugin_dir_url( __FILE__ ) );
@@ -78,15 +78,28 @@ if ( ! function_exists( 'ridgeroad_mod' ) && ! marquee_old_theme() ) {
 /*
  * Languages: the website follows the language picked in Settings → General → Site Language
  * (and each admin's own language in their profile). Spanish and French come with Marquee;
- * any Spanish or French variant (es_MX, fr_CA…) uses them.
+ * any Spanish or French variant (es_MX, fr_CA…) uses them. English (Canada) and English
+ * (UK, Australia, New Zealand, Ireland, South Africa) only change spellings: colour, favourite…
  */
+function marquee_lang_file( $locale ) {
+	$locale = (string) $locale;
+	$lang   = strtolower( substr( $locale, 0, 2 ) );
+	if ( in_array( $lang, array( 'es', 'fr' ), true ) ) {
+		return $lang;
+	}
+	if ( 'en_CA' === $locale ) {
+		return 'en_CA';
+	}
+	return in_array( $locale, array( 'en_GB', 'en_AU', 'en_NZ', 'en_IE', 'en_ZA' ), true ) ? 'en_GB' : '';
+}
+
 function marquee_load_languages() {
-	$lang = strtolower( substr( determine_locale(), 0, 2 ) );
-	if ( ! in_array( $lang, array( 'es', 'fr' ), true ) ) {
+	$file = marquee_lang_file( determine_locale() );
+	if ( '' === $file ) {
 		return;
 	}
 	foreach ( array( 'marquee', 'ridgeroad' ) as $domain ) {
-		$mo = MARQUEE_DIR . 'languages/' . $domain . '-' . $lang . '.mo';
+		$mo = MARQUEE_DIR . 'languages/' . $domain . '-' . $file . '.mo';
 		if ( file_exists( $mo ) ) {
 			load_textdomain( $domain, $mo );
 		}

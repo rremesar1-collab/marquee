@@ -195,7 +195,11 @@ if ( ! function_exists( 'ridgeroad_door_words' ) ) {
 	 */
 	function ridgeroad_door_words( $key ) {
 		if ( 0 === strpos( determine_locale(), 'en' ) ) {
-			return false;
+			// English pictures have the words painted on. Only the colouring door changes in Canadian/UK
+			// spelling ("Colouring Pages"), so that one gets the blank picture with the words on top.
+			if ( 'coloring' !== $key || 'Coloring Pages' === __( 'Coloring Pages', 'ridgeroad' ) ) {
+				return false;
+			}
 		}
 		if ( ridgeroad_is_marquee() ) {
 			$d = (array) marquee_get( 'art_doors' );

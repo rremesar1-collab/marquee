@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'RIDGEROAD_VERSION' ) ) {
-	define( 'RIDGEROAD_VERSION', '2.23.4' );
+	define( 'RIDGEROAD_VERSION', '2.23.5' );
 }
 // Show location: from Marquee → Settings (0,0 until the Marquee plugin is set up).
 $rr_mq = function_exists( 'marquee_get' ) ? marquee_get() : array();
@@ -20,11 +20,14 @@ defined( 'RIDGEROAD_LAT' ) || define( 'RIDGEROAD_LAT', ( isset( $rr_mq['lat'] ) 
 defined( 'RIDGEROAD_LON' ) || define( 'RIDGEROAD_LON', ( isset( $rr_mq['lon'] ) && '' !== $rr_mq['lon'] ) ? (float) $rr_mq['lon'] : 0.0 );
 unset( $rr_mq );
 
-/* Languages: follows Settings → General → Site Language. Spanish and French come with the theme. */
+/* Languages: follows Settings → General → Site Language. Spanish and French come with the theme,
+   plus English (Canada) and English (UK, Australia…) spellings: colour, favourite… */
 add_action( 'after_setup_theme', function () {
-	$lang = strtolower( substr( determine_locale(), 0, 2 ) );
-	$mo   = get_template_directory() . '/languages/ridgeroad-' . $lang . '.mo';
-	if ( in_array( $lang, array( 'es', 'fr' ), true ) && file_exists( $mo ) ) {
+	$loc  = (string) determine_locale();
+	$lang = strtolower( substr( $loc, 0, 2 ) );
+	$file = in_array( $lang, array( 'es', 'fr' ), true ) ? $lang : ( 'en_CA' === $loc ? 'en_CA' : ( in_array( $loc, array( 'en_GB', 'en_AU', 'en_NZ', 'en_IE', 'en_ZA' ), true ) ? 'en_GB' : '' ) );
+	$mo   = get_template_directory() . '/languages/ridgeroad-' . $file . '.mo';
+	if ( '' !== $file && file_exists( $mo ) ) {
 		load_textdomain( 'ridgeroad', $mo );
 	}
 }, -2000 );

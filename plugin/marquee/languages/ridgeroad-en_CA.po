@@ -1,0 +1,232 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ridgeroad\n"
+"Language: en_CA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid ""
+"No weather cancellation announced. Please check back before traveling during"
+" severe weather."
+msgstr ""
+"No weather cancellation announced. Please check back before travelling "
+"during severe weather."
+
+msgid "Tonight’s Show Is Canceled"
+msgstr "Tonight’s Show Is Cancelled"
+
+msgid "Vote for Your Favorite Song"
+msgstr "Vote for Your Favourite Song"
+
+msgid ""
+"Tap the heart on your favorite song in this year’s show. You can change your"
+" vote anytime!"
+msgstr ""
+"Tap the heart on your favourite song in this year’s show. You can change "
+"your vote anytime!"
+
+msgid "Respect Our Neighbors"
+msgstr "Respect Our Neighbours"
+
+msgid "Songs Page: Favorite Song Voting"
+msgstr "Songs Page: Favourite Song Voting"
+
+msgid "Banner title — canceled"
+msgstr "Banner title — cancelled"
+
+msgid "Banner text — canceled"
+msgstr "Banner text — cancelled"
+
+msgid "All season (hide off-season and canceled nights)"
+msgstr "All season (hide off-season and cancelled nights)"
+
+msgid "ZIP code"
+msgstr "Postal code"
+
+msgid "Show favorite song voting (on the Songs & Videos page)"
+msgstr "Show favourite song voting (on the Songs & Videos page)"
+
+msgid "Fan Favorite Friday (this week’s top song is featured every Friday)"
+msgstr "Fan Favourite Friday (this week’s top song is featured every Friday)"
+
+msgid "Fan Favorite Friday message"
+msgstr "Fan Favourite Friday message"
+
+msgid "Coloring Pages"
+msgstr "Colouring Pages"
+
+msgid "Name text color on the screens (like #FFD45C)"
+msgstr "Name text colour on the screens (like #FFD45C)"
+
+msgid "It’s Fan Favorite Friday!"
+msgstr "It’s Fan Favourite Friday!"
+
+msgid "No votes yet this week. Vote now to pick next Friday’s favorite!"
+msgstr "No votes yet this week. Vote now to pick next Friday’s favourite!"
+
+msgid "Fan Favorite Friday is tomorrow!"
+msgstr "Fan Favourite Friday is tomorrow!"
+
+msgid "Fan Favorite Friday is in %s days"
+msgstr "Fan Favourite Friday is in %s days"
+
+msgid "That’s already your favorite!"
+msgstr "That’s already your favourite!"
+
+msgid "What color should the whole house be?"
+msgstr "What colour should the whole house be?"
+
+msgid "What color should the %s be?"
+msgstr "What colour should the %s be?"
+
+msgid "Canceled"
+msgstr "Cancelled"
+
+msgid "Coloring pages"
+msgstr "Colouring pages"
+
+msgid "Canceled. Alert sent to %s phone"
+msgstr "Cancelled. Alert sent to %s phone"
+
+msgid "Canceled. Alert sent to %s phones"
+msgstr "Cancelled. Alert sent to %s phones"
+
+msgid "Canceled for tonight"
+msgstr "Cancelled for tonight"
+
+msgid "All the colors"
+msgstr "All the colours"
+
+msgid "Mixed Colors"
+msgstr "Mixed Colours"
+
+msgid "Shows the canceled banner on the website until 6 AM"
+msgstr "Shows the cancelled banner on the website until 6 AM"
+
+msgid "Favorite song voting"
+msgstr "Favourite song voting"
+
+msgid "The website will show the canceled banner until 6 AM."
+msgstr "The website will show the cancelled banner until 6 AM."
+
+msgid "Name color on the screens"
+msgstr "Name colour on the screens"
+
+msgid "The website shows the canceled banner"
+msgstr "The website shows the cancelled banner"
+
+msgid ""
+"Our neighbors need to get in and out. Please only park where it’s allowed."
+msgstr ""
+"Our neighbours need to get in and out. Please only park where it’s allowed."
+
+msgid "Favorite Song Votes"
+msgstr "Favourite Song Votes"
+
+msgid "This week (Fan Favorite Friday)"
+msgstr "This week (Fan Favourite Friday)"
+
+msgid "Fan Favorite Friday is in %d days"
+msgstr "Fan Favourite Friday is in %d days"
+
+msgid "Pick Your Favorite"
+msgstr "Pick Your Favourite"
+
+msgid "Coloring Pages. Pick a picture to print and color."
+msgstr "Colouring Pages. Pick a picture to print and colour."
+
+msgid "Pick a picture to print and color it!"
+msgstr "Pick a picture to print and colour it!"
+
+msgid "Watch the other kids’ shows and give your favorites a heart"
+msgstr "Watch the other kids’ shows and give your favourites a heart"
+
+msgid "Pick a color"
+msgstr "Pick a colour"
+
+msgid "Watch videos of this year’s songs and vote for Fan Favorite Friday!"
+msgstr "Watch videos of this year’s songs and vote for Fan Favourite Friday!"
+
+msgid "Pick your favorite song in this year’s show for Fan Favorite Friday!"
+msgstr ""
+"Pick your favourite song in this year’s show for Fan Favourite Friday!"
+
+msgid "coloring pages"
+msgstr "colouring pages"
+
+msgid ""
+"Make your own light show to win a prize, and vote for your favorite kids’ "
+"shows on the Show Wall!"
+msgstr ""
+"Make your own light show to win a prize, and vote for your favourite kids’ "
+"shows on the Show Wall!"
+
+msgid "Watch the shows and tap the heart on your favorites!"
+msgstr "Watch the shows and tap the heart on your favourites!"
+
+msgid ""
+"Kids design their own light show for our house in the Christmas Light Lab. "
+"Watch them and give your favorites a heart: the show with the most hearts "
+"wins People’s Choice!"
+msgstr ""
+"Kids design their own light show for our house in the Christmas Light Lab. "
+"Watch them and give your favourites a heart: the show with the most hearts "
+"wins People’s Choice!"
+
+msgid "Canceled Tonight"
+msgstr "Cancelled Tonight"
+
+msgid ""
+"Kids’ Corner at %s: put your name in lights, design your own light show, "
+"print coloring pages and play Christmas games."
+msgstr ""
+"Kids’ Corner at %s: put your name in lights, design your own light show, "
+"print colouring pages and play Christmas games."
+
+msgid ""
+"Pick the picture behind your website. Everything else stays the same in "
+"every look: your sections, colors and settings."
+msgstr ""
+"Pick the picture behind your website. Everything else stays the same in "
+"every look: your sections, colours and settings."
+
+msgid "Box colors"
+msgstr "Box colours"
+
+msgid ""
+"The color of the boxes on every page, with any look. Only the colors change."
+msgstr ""
+"The colour of the boxes on every page, with any look. Only the colours "
+"change."
+
+msgid "Box color"
+msgstr "Box colour"
+
+msgid ""
+"When Box colors (in Look) is set to one color for every box, that color is "
+"used here too."
+msgstr ""
+"When Box colours (in Look) is set to one colour for every box, that colour "
+"is used here too."
+
+msgid "Fan Favorites"
+msgstr "Fan Favourites"
+
+msgid ""
+"A page about your show, with its own button at the top. Add the photo, fact "
+"cards and past fan favorites in Marquee → Settings → Show Facts."
+msgstr ""
+"A page about your show, with its own button at the top. Add the photo, fact "
+"cards and past fan favourites in Marquee → Settings → Show Facts."
+
+msgid "Show Fan Favorites"
+msgstr "Show Fan Favourites"
+
+msgid "Fan Favorites title"
+msgstr "Fan Favourites title"
+
+msgid "Vote for your favorite"
+msgstr "Vote for your favourite"
