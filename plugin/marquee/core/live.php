@@ -315,7 +315,25 @@ function ridgeroad_weather_raw() {
 	return $data;
 }
 
+/** The weather words in the visitor's language. */
 function ridgeroad_wx_label( $code ) {
+	$en    = ridgeroad_wx_label_en( $code );
+	$words = array(
+		'Clear Skies'            => __( 'Clear Skies', 'ridgeroad' ),
+		'Mostly Clear'           => __( 'Mostly Clear', 'ridgeroad' ),
+		'Partly Cloudy'          => __( 'Partly Cloudy', 'ridgeroad' ),
+		'Cloudy'                 => __( 'Cloudy', 'ridgeroad' ),
+		'Fog'                    => __( 'Fog', 'ridgeroad' ),
+		'Drizzle'                => __( 'Drizzle', 'ridgeroad' ),
+		'Rain'                   => __( 'Rain', 'ridgeroad' ),
+		'Snow'                   => __( 'Snow', 'ridgeroad' ),
+		'Thunderstorms'          => __( 'Thunderstorms', 'ridgeroad' ),
+		'Conditions Unavailable' => __( 'Conditions Unavailable', 'ridgeroad' ),
+	);
+	return isset( $words[ $en ] ) ? $words[ $en ] : $en;
+}
+
+function ridgeroad_wx_label_en( $code ) {
 	$code = (int) $code;
 	if ( function_exists( 'lor_weather_label' ) ) {
 		$l = lor_weather_label( $code );

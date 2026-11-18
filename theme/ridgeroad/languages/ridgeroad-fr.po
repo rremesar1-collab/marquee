@@ -4106,3 +4106,33 @@ msgstr ""
 
 msgid "Show website by %s"
 msgstr "Site du spectacle par %s"
+
+msgid "Clear Skies"
+msgstr "Ciel dégagé"
+
+msgid "Mostly Clear"
+msgstr "Plutôt dégagé"
+
+msgid "Partly Cloudy"
+msgstr "Partiellement nuageux"
+
+msgid "Cloudy"
+msgstr "Nuageux"
+
+msgid "Fog"
+msgstr "Brouillard"
+
+msgid "Drizzle"
+msgstr "Bruine"
+
+msgid "Rain"
+msgstr "Pluie"
+
+msgid "Snow"
+msgstr "Neige"
+
+msgid "Thunderstorms"
+msgstr "Orages"
+
+msgid "Conditions Unavailable"
+msgstr "Conditions indisponibles"

@@ -4061,3 +4061,33 @@ msgstr ""
 
 msgid "Show website by %s"
 msgstr "Sitio web del espectáculo por %s"
+
+msgid "Clear Skies"
+msgstr "Cielo despejado"
+
+msgid "Mostly Clear"
+msgstr "Mayormente despejado"
+
+msgid "Partly Cloudy"
+msgstr "Parcialmente nublado"
+
+msgid "Cloudy"
+msgstr "Nublado"
+
+msgid "Fog"
+msgstr "Niebla"
+
+msgid "Drizzle"
+msgstr "Llovizna"
+
+msgid "Rain"
+msgstr "Lluvia"
+
+msgid "Snow"
+msgstr "Nieve"
+
+msgid "Thunderstorms"
+msgstr "Tormentas"
+
+msgid "Conditions Unavailable"
+msgstr "Condiciones no disponibles"

@@ -97,6 +97,8 @@
 }
 .mq-skin:not(#mq-0) .rr-hours { display: block; font-size: 16px; color: var(--gold); white-space: nowrap; }
 .mq-skin:not(#mq-0) .rr-hours b { color: var(--cream); font-weight: 600; }
+.mq-skin:not(#mq-0) .rr-tile > div { min-width: 0; }
+@container mq (max-width: 400px) { .mq-skin:not(#mq-0) .rr-hours { white-space: normal; } .mq-skin:not(#mq-0) .rr-hours b { display: block; } }
 
 .mq-skin:not(#mq-0) .rr-badge {
 	display: inline-flex; align-items: center; gap: 10px; padding: 8px 18px; border-radius: 10px;
@@ -144,6 +146,8 @@
 .mq-skin:not(#mq-0) .rr-stats { margin: 0; padding-left: 14px; border-left: 1px solid rgba(160, 190, 255, .3); display: grid; grid-template-columns: auto auto; gap: 4px 16px; font-size: 14px; }
 .mq-skin:not(#mq-0) .rr-stats dt { color: #dbe4fa; }
 .mq-skin:not(#mq-0) .rr-stats dd { margin: 0; text-align: right; font-weight: 800; color: #fff; white-space: nowrap; }
+.mq-skin:not(#mq-0) .rr-weather > *, .mq-skin:not(#mq-0) .rr-weather__main, .mq-skin:not(#mq-0) .rr-now > div { min-width: 0; }
+@container mq (max-width: 600px) { .mq-skin:not(#mq-0) .rr-now { grid-template-columns: minmax(0, 1fr) auto; } .mq-skin:not(#mq-0) .rr-now__label { white-space: normal; } }
 .mq-skin:not(#mq-0) .rr-hourly { list-style: none; margin: 14px 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); border: 1px solid rgba(150, 180, 255, .3); border-radius: 12px; overflow: hidden; background: rgba(0, 8, 30, .35); }
 .mq-skin:not(#mq-0) .rr-hourly li { display: flex; flex-direction: column; align-items: center; padding: 10px 4px 10px; gap: 2px; }
 .mq-skin:not(#mq-0) .rr-hourly li + li { border-left: 1px solid rgba(150, 180, 255, .2); }

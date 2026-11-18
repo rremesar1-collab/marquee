@@ -5187,3 +5187,33 @@ msgstr ""
 
 msgid "Show website by %s"
 msgstr ""
+
+msgid "Clear Skies"
+msgstr ""
+
+msgid "Mostly Clear"
+msgstr ""
+
+msgid "Partly Cloudy"
+msgstr ""
+
+msgid "Cloudy"
+msgstr ""
+
+msgid "Fog"
+msgstr ""
+
+msgid "Drizzle"
+msgstr ""
+
+msgid "Rain"
+msgstr ""
+
+msgid "Snow"
+msgstr ""
+
+msgid "Thunderstorms"
+msgstr ""
+
+msgid "Conditions Unavailable"
+msgstr ""

@@ -4,7 +4,7 @@ Theme URI: https://alateka.com/
 Author: Alateka Corporation
 Author URI: https://alateka.com/
 Description: The festive Christmas look for the Marquee light show plugin: garlands, bows, a night-sky scene and glowing show cards for your status, Now Playing, weather, Kids’ Corner and more. Needs the free Marquee plugin (it holds all the show features and settings).
-Version: 2.23.5
+Version: 2.23.6
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -279,6 +279,8 @@ body.rr-scene .rr-scroll::-webkit-scrollbar-thumb { background: rgba(247, 201, 9
 }
 .rr-hours { display: block; font-size: 16px; color: var(--gold); white-space: nowrap; }
 .rr-hours b { color: var(--cream); font-weight: 600; }
+.rr-tile > div { min-width: 0; }
+@media (max-width: 400px) { .rr-hours { white-space: normal; } .rr-hours b { display: block; } } /* the smallest phones (and big text): the hours wrap instead of pushing the page sideways */
 
 .rr-badge {
 	display: inline-flex; align-items: center; gap: 10px; padding: 8px 18px; border-radius: 10px;
@@ -329,6 +331,8 @@ body.rr-scene .rr-scroll::-webkit-scrollbar-thumb { background: rgba(247, 201, 9
 .rr-stats { margin: 0; padding-left: 14px; border-left: 1px solid rgba(160, 190, 255, .3); display: grid; grid-template-columns: auto auto; gap: 4px 16px; font-size: 14px; }
 .rr-stats dt { color: #dbe4fa; }
 .rr-stats dd { margin: 0; text-align: right; font-weight: 800; color: #fff; white-space: nowrap; }
+.rr-weather > *, .rr-weather__main, .rr-now > div { min-width: 0; } /* long weather words (French, Spanish) can't push the box wider */
+@media (max-width: 600px) { .rr-now { grid-template-columns: minmax(0, 1fr) auto; } .rr-now__label { white-space: normal; } }
 .rr-hourly { list-style: none; margin: 14px 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); border: 1px solid rgba(150, 180, 255, .3); border-radius: 12px; overflow: hidden; background: rgba(0, 8, 30, .35); }
 .rr-hourly li { display: flex; flex-direction: column; align-items: center; padding: 10px 4px 10px; gap: 2px; }
 .rr-hourly li + li { border-left: 1px solid rgba(150, 180, 255, .2); }
