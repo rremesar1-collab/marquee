@@ -56,7 +56,8 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 = 0.20.6 =
 * Weather: the weather words (Partly Cloudy, Rain, Snow…) now show in Spanish and French, and long words no longer push the weather box wider than a phone screen.
-* Tonight's Show: on the smallest phones (and with bigger text turned on) the show hours wrap neatly instead of making the page slide sideways.
+* Tonight's Show: the show hours always stay inside their box. On narrow screens the day wraps onto its own line and the times stay together.
+* Weather radar: it no longer stretches into a tall strip when the box next to it (Tonight's Show) is taller; the weather sits in the middle of its box instead.
 
 = 0.20.5 =
 * Canadian and UK spelling: set Settings → General → Site Language to English (Canada) or English (UK) and the website says colour, favourite, neighbours, cancelled and centre, with "Postal code" or "Postcode" instead of ZIP code. The Kids' Corner colouring door changes too. UK English also uses customise and synchronise. Australia, New Zealand, Ireland and South Africa get the UK spelling.

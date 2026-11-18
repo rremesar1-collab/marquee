@@ -32,8 +32,8 @@ extract( ridgeroad_home_ctx(), EXTR_SKIP ); // $status, $np, $wx, $opts, $b_titl
 				<span class="rr-tile__icon rr-gold"><?php echo ridgeroad_cicon( 'clock' ); ?></span>
 				<div>
 					<span class="rr-tile__label"><?php esc_html_e( 'Show Hours', 'ridgeroad' ); ?></span>
-					<span class="rr-hours"><b><?php echo esc_html( ridgeroad_mod( 'weeknight_label' ) ); ?>:</b> <?php echo esc_html( ( ridgeroad_mod( 'use_sunset' ) ? __( 'Sunset', 'ridgeroad' ) : ridgeroad_clock( ridgeroad_mod( 'weeknight_start' ) ) ) . ' – ' . ridgeroad_clock( ridgeroad_mod( 'weeknight_close' ) ) ); ?></span>
-					<span class="rr-hours"><b><?php echo esc_html( ridgeroad_mod( 'weekend_label' ) ); ?>:</b> <?php echo esc_html( ( ridgeroad_mod( 'use_sunset' ) ? __( 'Sunset', 'ridgeroad' ) : ridgeroad_clock( ridgeroad_mod( 'weekend_start' ) ) ) . ' – ' . ridgeroad_clock( ridgeroad_mod( 'weekend_close' ) ) ); ?></span>
+					<span class="rr-hours"><b><?php echo esc_html( ridgeroad_mod( 'weeknight_label' ) ); ?>:</b> <span class="rr-hours__t"><?php echo esc_html( ( ridgeroad_mod( 'use_sunset' ) ? __( 'Sunset', 'ridgeroad' ) : ridgeroad_clock( ridgeroad_mod( 'weeknight_start' ) ) ) . ' – ' . ridgeroad_clock( ridgeroad_mod( 'weeknight_close' ) ) ); ?></span></span>
+					<span class="rr-hours"><b><?php echo esc_html( ridgeroad_mod( 'weekend_label' ) ); ?>:</b> <span class="rr-hours__t"><?php echo esc_html( ( ridgeroad_mod( 'use_sunset' ) ? __( 'Sunset', 'ridgeroad' ) : ridgeroad_clock( ridgeroad_mod( 'weekend_start' ) ) ) . ' – ' . ridgeroad_clock( ridgeroad_mod( 'weekend_close' ) ) ); ?></span></span>
 				</div>
 			</div>
 		</div>

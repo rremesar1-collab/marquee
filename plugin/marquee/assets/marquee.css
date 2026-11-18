@@ -84,7 +84,7 @@
 .mq-skin:not(#mq-0) .rr-banner--off { background: linear-gradient(160deg, var(--blue-1), var(--blue-2)); }
 .mq-skin:not(#mq-0) .rr-show { display: flex; flex-direction: column; gap: 14px; }
 .mq-skin:not(#mq-0) .rr-show__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-.mq-skin:not(#mq-0) .rr-show__row { display: grid; grid-template-columns: 1fr 1.15fr; gap: 14px; }
+.mq-skin:not(#mq-0) .rr-show__row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 14px; }
 .mq-skin:not(#mq-0) .rr-tile {
 	display: flex; align-items: center; gap: 16px; padding: 16px 18px; border-radius: 12px;
 	background: linear-gradient(180deg, rgba(20, 0, 2, .55), rgba(40, 3, 6, .4));
@@ -95,10 +95,10 @@
 .mq-skin:not(#mq-0) .rr-radio {
 	display: block; font-size: clamp(30px, 2.7vw, 46px); font-weight: 800; line-height: 1.05; color: var(--gold); white-space: nowrap;
 }
-.mq-skin:not(#mq-0) .rr-hours { display: block; font-size: 16px; color: var(--gold); white-space: nowrap; }
+.mq-skin:not(#mq-0) .rr-hours { display: block; font-size: 16px; color: var(--gold); }
+.mq-skin:not(#mq-0) .rr-hours__t { white-space: nowrap; }
 .mq-skin:not(#mq-0) .rr-hours b { color: var(--cream); font-weight: 600; }
 .mq-skin:not(#mq-0) .rr-tile > div { min-width: 0; }
-@container mq (max-width: 400px) { .mq-skin:not(#mq-0) .rr-hours { white-space: normal; } .mq-skin:not(#mq-0) .rr-hours b { display: block; } }
 
 .mq-skin:not(#mq-0) .rr-badge {
 	display: inline-flex; align-items: center; gap: 10px; padding: 8px 18px; border-radius: 10px;
@@ -133,7 +133,7 @@
 .mq-skin:not(#mq-0) .rr-np.is-playing .rr-eq i:nth-child(7n) { animation-duration: .55s; animation-delay: -.2s; }
 @keyframes rr-eq { 0% { height: 12%; } 50% { height: 70%; } 100% { height: 35%; } }
 .mq-skin:not(#mq-0) .rr-show__note { margin: 0; font-size: 14px; color: #f0dcc0; text-align: center; }
-.mq-skin:not(#mq-0) .rr-weather { display: grid; grid-template-columns: 1.55fr 1fr; gap: 16px; }
+.mq-skin:not(#mq-0) .rr-weather { display: grid; grid-template-columns: 1.55fr 1fr; gap: 16px; align-content: center; }
 .mq-skin:not(#mq-0) .rr-weather__city { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 12px; font-size: clamp(19px, 1.7vw, 24px); color: #fff; }
 .mq-skin:not(#mq-0) .rr-weather__city .rr-icon { width: 30px; height: 30px; color: #cfe2ff; stroke-width: 1.3; }
 .mq-skin:not(#mq-0) .rr-weather__city small { font-family: inherit; font-size: 16px; font-weight: 600; color: #c9d5f0; }
@@ -146,8 +146,7 @@
 .mq-skin:not(#mq-0) .rr-stats { margin: 0; padding-left: 14px; border-left: 1px solid rgba(160, 190, 255, .3); display: grid; grid-template-columns: auto auto; gap: 4px 16px; font-size: 14px; }
 .mq-skin:not(#mq-0) .rr-stats dt { color: #dbe4fa; }
 .mq-skin:not(#mq-0) .rr-stats dd { margin: 0; text-align: right; font-weight: 800; color: #fff; white-space: nowrap; }
-.mq-skin:not(#mq-0) .rr-weather > *, .mq-skin:not(#mq-0) .rr-weather__main, .mq-skin:not(#mq-0) .rr-now > div { min-width: 0; }
-@container mq (max-width: 600px) { .mq-skin:not(#mq-0) .rr-now { grid-template-columns: minmax(0, 1fr) auto; } .mq-skin:not(#mq-0) .rr-now__label { white-space: normal; } }
+@container mq (max-width: 600px) { .mq-skin:not(#mq-0) .rr-weather > *, .mq-skin:not(#mq-0) .rr-weather__main { min-width: 0; } .mq-skin:not(#mq-0) .rr-now { grid-template-columns: minmax(0, 1fr) auto; } .mq-skin:not(#mq-0) .rr-now__label { white-space: normal; } }
 .mq-skin:not(#mq-0) .rr-hourly { list-style: none; margin: 14px 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); border: 1px solid rgba(150, 180, 255, .3); border-radius: 12px; overflow: hidden; background: rgba(0, 8, 30, .35); }
 .mq-skin:not(#mq-0) .rr-hourly li { display: flex; flex-direction: column; align-items: center; padding: 10px 4px 10px; gap: 2px; }
 .mq-skin:not(#mq-0) .rr-hourly li + li { border-left: 1px solid rgba(150, 180, 255, .2); }
@@ -155,8 +154,8 @@
 .mq-skin:not(#mq-0) .rr-hourly .rr-wx { width: 44px; height: 44px; }
 .mq-skin:not(#mq-0) .rr-hourly__v { font-size: 20px; font-weight: 800; color: #fff; }
 .mq-skin:not(#mq-0) .rr-hourly__p { font-size: 12px; color: #9fd0ff; }
-.mq-skin:not(#mq-0) .rr-weather__side { display: flex; flex-direction: column; gap: 10px; }
-.mq-skin:not(#mq-0) .rr-radar { position: relative; display: block; flex: 1; min-height: 170px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(150, 180, 255, .45); background: #0a1a3a; line-height: 0; }
+.mq-skin:not(#mq-0) .rr-weather__side { display: flex; flex-direction: column; gap: 10px; container-type: inline-size; }
+.mq-skin:not(#mq-0) .rr-radar { position: relative; display: block; flex: 1; min-height: 170px; max-height: 150cqi; border-radius: 12px; overflow: hidden; border: 1px solid rgba(150, 180, 255, .45); background: #0a1a3a; line-height: 0; }
 .mq-skin:not(#mq-0) .rr-radar img { width: 100%; height: 100%; object-fit: cover; }
 .mq-skin:not(#mq-0) .rr-radar.is-off img { display: none; }
 .mq-skin:not(#mq-0) .rr-radar--map iframe { width: 100%; height: 100%; min-height: 170px; border: 0; }
