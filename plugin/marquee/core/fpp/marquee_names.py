@@ -41,15 +41,14 @@ import socket
 import threading
 import urllib.request
 
-VERSION = "3.17.1"
+VERSION = "3.17.2"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
-CONFIG_PLACES = [os.path.join(HERE, "marquee_names.json"),
-                 "/home/fpp/media/scripts/marquee_names.json",
-                 "/home/fpp/media/upload/marquee_names.json",
-                 "/home/fpp/media/uploads/marquee_names.json",
-                 "/home/fpp/media/config/marquee_names.json"]
+# (Installed as the Marquee plugin, the settings come from the plugin itself and none of these are used.)
+MEDIA = os.environ.get("MEDIADIR", "/home/fpp/media")
+CONFIG_PLACES = [os.path.join(HERE, "marquee_names.json")] + [
+    os.path.join(MEDIA, d, "marquee_names.json") for d in ("upload", "uploads", "config")]
 CONFIG = os.environ.get("MARQUEE_NAMES_CONFIG", "")
 
 
