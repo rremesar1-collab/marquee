@@ -4091,3 +4091,11 @@ msgstr "Tormentas"
 
 msgid "Conditions Unavailable"
 msgstr "Condiciones no disponibles"
+
+msgid "Show the Now Playing box"
+msgstr "Mostrar el cuadro Sonando ahora"
+
+msgid "In Tonight’s Show. Needs Remote Falcon to show the song playing."
+msgstr ""
+"En El espectáculo de esta noche. Necesita Remote Falcon para mostrar la "
+"canción que suena."

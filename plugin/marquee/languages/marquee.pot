@@ -7937,3 +7937,11 @@ msgid ""
 "lines (the name on its own line after the comma), whichever lets the letters"
 " be biggest without going over that size; scrolling text keeps it."
 msgstr ""
+
+msgid "Show the Now Playing box"
+msgstr ""
+
+msgid ""
+"The song playing now and the one up next, from Remote Falcon. Without Remote"
+" Falcon it shows when the lights come on instead."
+msgstr ""

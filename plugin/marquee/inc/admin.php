@@ -926,6 +926,7 @@ marquee_geo_row( $s );
 				<?php marquee_pbox_end(); ?>
 
 				<?php marquee_pbox( 'show', __( 'Tonight’s Show', 'marquee' ), __( 'Radio station, hours, Now Playing and directions' , 'marquee' ) ); ?>
+					<?php marquee_switch( 'np_show', __( 'Show the Now Playing box', 'marquee' ), __( 'The song playing now and the one up next, from Remote Falcon. Without Remote Falcon it shows when the lights come on instead.', 'marquee' ) ); ?>
 					<p class="mq__fine"><?php esc_html_e( 'This box is made from your Show details (radio, hours, address, parking) and, once it’s connected, Remote Falcon (Now Playing and Pick the Next Song).', 'marquee' ); ?></p>
 					<p><button type="button" class="button" data-step="0"><?php esc_html_e( 'Show details', 'marquee' ); ?></button> <button type="button" class="button" data-step="3"><?php esc_html_e( 'Connections', 'marquee' ); ?></button></p>
 				<?php marquee_pbox_end(); ?>

@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.20.6
+Stable tag: 0.20.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,9 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.20.7 =
+* Tonight's Show: a new switch hides the Now Playing box, for shows that don't use Remote Falcon. Settings → Home page → Tonight's Show.
 
 = 0.20.6 =
 * Weather: the weather words (Partly Cloudy, Rain, Snow…) now show in Spanish and French, and long words no longer push the weather box wider than a phone screen.

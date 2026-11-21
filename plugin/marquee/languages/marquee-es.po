@@ -7624,3 +7624,13 @@ msgstr ""
 "líneas centradas (el nombre en su propia línea después de la coma), según lo"
 " que permita las letras más grandes sin pasar de ese tamaño; el texto que se"
 " desplaza lo conserva."
+
+msgid "Show the Now Playing box"
+msgstr "Mostrar el cuadro Sonando ahora"
+
+msgid ""
+"The song playing now and the one up next, from Remote Falcon. Without Remote"
+" Falcon it shows when the lights come on instead."
+msgstr ""
+"La canción que suena ahora y la siguiente, desde Remote Falcon. Sin Remote "
+"Falcon, muestra a qué hora se encienden las luces."

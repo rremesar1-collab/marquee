@@ -7718,3 +7718,13 @@ msgstr ""
 " trois lignes centrées (le nom sur sa propre ligne après la virgule), selon "
 "ce qui donne les plus grandes lettres sans dépasser cette taille ; un texte "
 "défilant la conserve."
+
+msgid "Show the Now Playing box"
+msgstr "Afficher le bloc En ce moment"
+
+msgid ""
+"The song playing now and the one up next, from Remote Falcon. Without Remote"
+" Falcon it shows when the lights come on instead."
+msgstr ""
+"La chanson en cours et la suivante, depuis Remote Falcon. Sans Remote "
+"Falcon, le bloc indique plutôt l’heure où les lumières s’allument."

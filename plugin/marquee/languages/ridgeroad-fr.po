@@ -4136,3 +4136,11 @@ msgstr "Orages"
 
 msgid "Conditions Unavailable"
 msgstr "Conditions indisponibles"
+
+msgid "Show the Now Playing box"
+msgstr "Afficher le bloc En ce moment"
+
+msgid "In Tonight’s Show. Needs Remote Falcon to show the song playing."
+msgstr ""
+"Dans Le spectacle de ce soir. Remote Falcon est nécessaire pour afficher la "
+"chanson en cours."

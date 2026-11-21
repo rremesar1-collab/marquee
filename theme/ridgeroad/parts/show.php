@@ -51,6 +51,7 @@ extract( ridgeroad_home_ctx(), EXTR_SKIP ); // $status, $np, $wx, $opts, $b_titl
 				<?php endif; ?>
 			</div>
 		<?php endif; ?>
+		<?php if ( ridgeroad_mod( 'np_show' ) ) : ?>
 		<div class="rr-tile rr-np<?php echo $np['title'] ? ' is-playing' : ''; ?>" data-rr="np">
 			<span class="rr-tile__icon rr-np__note"><?php echo ridgeroad_cicon( 'music' ); ?></span>
 			<div class="rr-np__copy">
@@ -60,6 +61,7 @@ extract( ridgeroad_home_ctx(), EXTR_SKIP ); // $status, $np, $wx, $opts, $b_titl
 			</div>
 			<div class="rr-eq" aria-hidden="true"><?php echo str_repeat( '<i></i>', 28 ); ?></div>
 		</div>
+		<?php endif; ?>
 		<?php
 		$rf_pick = ridgeroad_mod( 'rf_viewer_url' );
 		$rf_prev = $rf_pick && 'running' !== $status['state'] && current_user_can( 'manage_options' ); // the owner sees it any time, to check it

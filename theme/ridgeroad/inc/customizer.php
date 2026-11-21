@@ -90,6 +90,7 @@ function ridgeroad_defaults( $fresh = false ) {
 		'app_auto_on'       => 1,
 		'app_buzz_on'       => 1,
 		'app_show'          => 1,               // the Get the App box on the home page
+		'np_show'           => 1,               // the Now Playing box in Tonight's Show
 		'names_always'      => 0,
 		'names_geo'         => 0,
 		'names_geo_miles'   => '0.5',
@@ -541,6 +542,7 @@ function ridgeroad_customize_fields( $add, $image ) {
 	}
 
 	// Support.
+	$add( 'np_show', 'rr_support', __( 'Show the Now Playing box', 'ridgeroad' ), 'checkbox', array( 'description' => __( 'In Tonight’s Show. Needs Remote Falcon to show the song playing.', 'ridgeroad' ) ) );
 	$add( 'app_show', 'rr_support', __( 'Show the Get the App box', 'ridgeroad' ), 'checkbox', array( 'description' => __( 'On phones that can install your website as an app.', 'ridgeroad' ) ) );
 	$add( 'donate_title', 'rr_support', __( 'Donation title', 'ridgeroad' ) );
 	$add( 'donate_text', 'rr_support', __( 'Donation text', 'ridgeroad' ), 'textarea' );

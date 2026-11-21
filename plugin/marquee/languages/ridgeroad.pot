@@ -5217,3 +5217,9 @@ msgstr ""
 
 msgid "Conditions Unavailable"
 msgstr ""
+
+msgid "Show the Now Playing box"
+msgstr ""
+
+msgid "In Tonight’s Show. Needs Remote Falcon to show the song playing."
+msgstr ""
