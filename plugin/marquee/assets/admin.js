@@ -132,9 +132,13 @@ var tr = function (s) { var d = window.rrI18n; return (d && d[s]) || s; };
 			if (d.region) { $('#mq-region').value = d.region; }
 			if (d.zip) { $('#mq-zip').value = d.zip; }
 			if (d.country) { $('[data-mq-country]').value = d.country; $('#mq-units').value = d.country === 'US' ? 'us' : 'metric'; }
+			var rough = $('[data-mq-rough]'); if (rough) { rough.hidden = !d.rough; }
 			say(lkMsg, tr('Found it: %s. Check the fields below.').replace('%s', function () { return [d.city, d.region].filter(Boolean).join(', ') + (d.tz ? ' · ' + d.tz : '') + (d.radar ? ' · ' + tr('radar %s').replace('%s', function () { return d.radar; }) : ''); }), true);
 		}).catch(function () { lk.disabled = false; say(lkMsg, tr('Couldn’t reach the website. Try again.'), false); });
 	});
+
+	/* typing your own pin clears the "middle of your ZIP code" note (it's checked again on save) */
+	['#mq-lat', '#mq-lon'].forEach(function (id) { var el = $(id); if (el) { el.addEventListener('input', function () { var r = $('[data-mq-rough]'); if (r) { r.hidden = true; } }); } });
 
 	/* "Only at the show": switching miles/km converts the number in the box */
 	var geoUnit = $('[data-mq-geo-unit]'), geoDist = $('[data-mq-geo-dist]');

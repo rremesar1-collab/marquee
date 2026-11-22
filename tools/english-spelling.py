@@ -19,8 +19,8 @@ UK = [
     (r'synchroniz(e|ed|es|ing)', lambda m: 'synchronis' + m.group(1)),
 ]
 PHRASES = {
-    'en_CA': [('“Town, State ZIP”', '“Town, Province postal code”'), ('ZIP / postcode', 'Postal code'), ('ZIP code', 'Postal code')],
-    'en_GB': [('“Town, State ZIP”', '“Town, postcode”'), ('ZIP / postcode', 'Postcode'), ('ZIP code', 'Postcode')],
+    'en_CA': [('“Town, State ZIP”', '“Town, Province postal code”'), ('ZIP / postcode', 'Postal code'), ('ZIP code', 'Postal code'), ('your Postal code', 'your postal code')],
+    'en_GB': [('“Town, State ZIP”', '“Town, postcode”'), ('ZIP / postcode', 'Postcode'), ('ZIP code', 'Postcode'), ('your Postcode', 'your postcode')],
 }
 
 def keep_case(src, out):

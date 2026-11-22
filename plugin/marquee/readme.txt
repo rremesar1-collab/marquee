@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.20.7
+Stable tag: 0.20.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,11 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.20.8 =
+* Show address: Find now finds the house itself for street addresses (US Census Bureau address finder in the US, OpenStreetMap elsewhere), not just the middle of the ZIP code or town.
+* Settings warns when your show's location is only the middle of your ZIP code or town, under the address and next to "Only at the show", with how to set the exact spot from Google Maps.
+* Only at the show: turning it on or off works right away, even on sites with a page cache. Phones also take a fresh location reading every time a name is sent.
 
 = 0.20.7 =
 * Tonight's Show: a new switch hides the Now Playing box, for shows that don't use Remote Falcon. Settings → Home page → Tonight's Show.

@@ -104,8 +104,8 @@ $status = ridgeroad_status();
 		<p class="rr-contest__msg" data-rr-names-msg aria-live="polite"></p>
 		<p class="rr-kid__fine"><?php esc_html_e( 'First names only. Our elves check every name before it goes on the screens.', 'ridgeroad' ); ?></p>
 	<?php if ( function_exists( 'marquee_voice_on' ) && marquee_voice_on() ) : ?>	<p class="rr-kid__fine"><?php esc_html_e( 'Turn up your radio: we’ll say your name out loud too!', 'ridgeroad' ); ?></p>
-	<?php endif; ?>	<?php if ( function_exists( 'ridgeroad_names_geo' ) && ridgeroad_names_geo() ) : ?>	<p class="rr-kid__fine" data-rr-names-geo><?php esc_html_e( 'Names can only be sent from the show. Your phone will ask to share its location: it’s only used to check you’re here, and it isn’t saved.', 'ridgeroad' ); ?></p>
-	<?php endif; ?></form>
+	<?php endif; ?>	<p class="rr-kid__fine" data-rr-names-geo<?php echo ( function_exists( 'ridgeroad_names_geo' ) && ridgeroad_names_geo() ) ? '' : ' hidden'; ?>><?php esc_html_e( 'Names can only be sent from the show. Your phone will ask to share its location: it’s only used to check you’re here, and it isn’t saved.', 'ridgeroad' ); ?></p>
+</form>
 
 	<div class="rr-names__done" data-rr-names-done hidden>
 		<p class="rr-names__preview" data-rr-names-text></p>

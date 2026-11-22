@@ -14,13 +14,19 @@ function marquee_lookup( $address ) {
 	if ( '' === $a ) {
 		return new WP_Error( 'marquee_lookup_empty', __( 'Type your show’s address first.', 'marquee' ) );
 	}
-	$m = array();
+	$m   = array();
+	$zip = preg_match( '/\b(\d{5})(?:-\d{4})?\b/', $a, $zm ) ? $zm[1] : '';
 	if ( preg_match( '#^(-?\d{1,2}\.\d+)\s*,\s*(-?\d{1,3}\.\d+)$#', $a, $m ) || preg_match( '#!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)#', $a, $m ) || preg_match( '#@(-?\d+\.\d+),(-?\d+\.\d+)#', $a, $m ) ) {
 		$out['lat'] = (float) $m[1];
 		$out['lon'] = (float) $m[2];
+	} elseif ( preg_match( '/^\s*\d+[A-Za-z]?\s+\S/', $a ) && ( $hit = marquee_lookup_street( $a, $zip ) ) ) {
+		// a street address the free address finders know: the pin is the house itself
+		$out['lat'] = $hit[0];
+		$out['lon'] = $hit[1];
+		$out['zip'] = $zip;
 	} else {
-		// The free geocoder knows places and postal codes, not street numbers: try the postcode, then the town.
-		$zip   = preg_match( '/\b(\d{5})(?:-\d{4})?\b/', $a, $zm ) ? $zm[1] : '';
+		$out['rough'] = 1; // only the postcode or the town: the pin is the middle of it, not the house
+		// Not found as a street address: try the postcode, then the town.
 		$parts = array_map( 'trim', explode( ',', $a ) );
 		$tries = array_filter( array( $zip, count( $parts ) >= 2 ? $parts[ count( $parts ) - 2 ] : '', $parts[0] ) );
 		foreach ( array_unique( $tries ) as $q ) {
@@ -81,6 +87,70 @@ function marquee_lookup( $address ) {
 		}
 	}
 	return $out;
+}
+
+/**
+ * A street address → array( lat, lon ) of the house, or null. US addresses go to the US Census
+ * Bureau's free address finder; others (or a US miss) to OpenStreetMap, kept only when it found the
+ * building or the house number, never just the street or the town.
+ */
+function marquee_lookup_street( $a, $zip ) {
+	$ua = 'Marquee/' . MARQUEE_VERSION . ' (' . home_url() . ')';
+	if ( $zip || preg_match( '/\b(USA?|United States)\b/i', $a ) ) {
+		$r = wp_remote_get( add_query_arg( array( 'address' => $a, 'benchmark' => 'Public_AR_Current', 'format' => 'json' ), 'https://geocoding.geo.census.gov/geocoder/locations/onelineaddress' ), array( 'timeout' => 10, 'headers' => array( 'User-Agent' => $ua ) ) );
+		if ( ! is_wp_error( $r ) && 200 === (int) wp_remote_retrieve_response_code( $r ) ) {
+			$j = json_decode( wp_remote_retrieve_body( $r ), true );
+			$c = isset( $j['result']['addressMatches'][0]['coordinates'] ) ? $j['result']['addressMatches'][0]['coordinates'] : null;
+			if ( $c && isset( $c['x'], $c['y'] ) && ( (float) $c['x'] || (float) $c['y'] ) ) {
+				return array( round( (float) $c['y'], 6 ), round( (float) $c['x'], 6 ) );
+			}
+		}
+	}
+	$r = wp_remote_get( add_query_arg( array( 'q' => $a, 'format' => 'jsonv2', 'limit' => 1 ), 'https://nominatim.openstreetmap.org/search' ), array( 'timeout' => 10, 'headers' => array( 'User-Agent' => $ua, 'Accept-Language' => 'en' ) ) );
+	if ( ! is_wp_error( $r ) && 200 === (int) wp_remote_retrieve_response_code( $r ) ) {
+		$j = json_decode( wp_remote_retrieve_body( $r ), true );
+		if ( ! empty( $j[0]['lat'] ) && isset( $j[0]['place_rank'] ) && (int) $j[0]['place_rank'] >= 28 ) {
+			return array( round( (float) $j[0]['lat'], 6 ), round( (float) $j[0]['lon'], 6 ) );
+		}
+	}
+	return null;
+}
+
+/**
+ * True when the saved show location is only the middle of its postcode or town (an older Find, or an
+ * address the finders didn't know), so "Only at the show" and directions point at the wrong spot.
+ * Checked once per location and remembered.
+ */
+function marquee_loc_rough() {
+	$s   = marquee_get();
+	$lat = (float) $s['lat'];
+	$lon = (float) $s['lon'];
+	if ( ! $lat && ! $lon ) {
+		return false;
+	}
+	$key = 'marquee_rough_' . md5( $lat . ',' . $lon . '|' . $s['zip'] . '|' . $s['city'] . '|' . $s['region'] );
+	$got = get_transient( $key );
+	if ( false !== $got ) {
+		return '1' === $got;
+	}
+	$rough = false;
+	$miss  = false;
+	foreach ( array_unique( array_filter( array( trim( (string) $s['zip'] ), trim( (string) $s['city'] ) ) ) ) as $q ) {
+		$r = wp_remote_get( add_query_arg( array( 'name' => $q, 'count' => 10, 'language' => 'en', 'format' => 'json' ), 'https://geocoding-api.open-meteo.com/v1/search' ), array( 'timeout' => 6 ) );
+		if ( is_wp_error( $r ) ) {
+			$miss = true;
+			continue;
+		}
+		$j = json_decode( wp_remote_retrieve_body( $r ), true );
+		foreach ( ! empty( $j['results'] ) ? $j['results'] : array() as $res ) {
+			if ( isset( $res['latitude'], $res['longitude'] ) && abs( $lat - (float) $res['latitude'] ) < 0.0008 && abs( $lon - (float) $res['longitude'] ) < 0.0008 ) {
+				$rough = true;
+				break 2;
+			}
+		}
+	}
+	set_transient( $key, $rough ? '1' : '0', ( $miss && ! $rough ) ? HOUR_IN_SECONDS : 60 * DAY_IN_SECONDS );
+	return $rough;
 }
 
 /**

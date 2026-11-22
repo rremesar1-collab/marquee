@@ -362,7 +362,7 @@ add_action( 'wp_ajax_rr_names_nonce', 'ridgeroad_names_nonce' );
 add_action( 'wp_ajax_nopriv_rr_names_nonce', 'ridgeroad_names_nonce' );
 function ridgeroad_names_nonce() {
 	nocache_headers();
-	wp_send_json_success( array( 'nonce' => wp_create_nonce( 'rr_names' ), 'open' => ridgeroad_names_open() ) );
+	wp_send_json_success( array( 'nonce' => wp_create_nonce( 'rr_names' ), 'open' => ridgeroad_names_open(), 'geo' => (bool) ridgeroad_names_geo() ) );
 }
 
 /* -------------------------------------------------------------------------

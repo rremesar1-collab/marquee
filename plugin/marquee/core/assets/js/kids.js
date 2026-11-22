@@ -218,7 +218,9 @@
 		}
 	}
 	if ($('[data-kc-door="names"]') || nb) {
-		var check = function () { nonceN().then(function (j) { if (j && j.success) { namesOpen(j.data.open); } }).catch(function () {}); };
+		/* "Only at the show" can be switched on or off after the page was cached: the site says which */
+		var geoNote = function (on) { var g = nb && nb.querySelector('[data-rr-names-geo]'); if (g) { g.hidden = !on; } };
+		var check = function () { nonceN().then(function (j) { if (j && j.success) { namesOpen(j.data.open); geoNote(j.data.geo); } }).catch(function () {}); };
 		check(); setInterval(check, 60000);
 	}
 	if (nb) {
@@ -242,23 +244,24 @@
 			}
 			if (pic && !pic.ready()) { nmsg.textContent = t('A parent or guardian needs to tick the box to say your picture can go on our screens.'); return; }
 			var btn = nf.querySelector('button[type=submit]'); btn.disabled = true;
-			var geo = !!nb.querySelector('[data-rr-names-geo]'), pos = null;
-			nmsg.textContent = geo ? t('Checking you’re at the show…') : t('Sending to Santa’s elves…');
-			/* "Only at the show": ask the phone where it is (compared on the website, never saved) */
-			var where = !geo ? Promise.resolve() : new Promise(function (ok, no) {
-				if (!navigator.geolocation || !window.isSecureContext) { no('unsupported'); return; }
-				navigator.geolocation.getCurrentPosition(function (p) { pos = p.coords; ok(); }, function (er) { no(er && er.code === 1 ? 'denied' : 'unavailable'); }, { enableHighAccuracy: true, timeout: 15000, maximumAge: 60000 });
-			});
-			where.then(function () {
-				nmsg.textContent = t('Sending to Santa’s elves…');
-				return nonceN();
+			var pos = null;
+			nmsg.textContent = t('Sending to Santa’s elves…');
+			/* Ask the site first (never cached) whether "Only at the show" is on right now. If it is, ask the
+			   phone where it is with a fresh reading (compared on the website, never saved). */
+			nonceN().then(function (j) {
+				if (!j || !j.success || !j.data.geo) { return j; }
+				var g = nb.querySelector('[data-rr-names-geo]'); if (g) { g.hidden = false; }
+				nmsg.textContent = t('Checking you’re at the show…');
+				return new Promise(function (ok, no) {
+					if (!navigator.geolocation || !window.isSecureContext) { no({ geo: 'unsupported' }); return; }
+					navigator.geolocation.getCurrentPosition(function (p) { pos = p.coords; ok(j); }, function (er) { no({ geo: er && er.code === 1 ? 'denied' : 'unavailable' }); }, { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 });
+				});
 			}).then(function (j) {
+				nmsg.textContent = t('Sending to Santa’s elves…');
 				var fd = new FormData(nf);
 				fd.append('action', 'rr_name_send'); fd.append('nonce', j.data.nonce);
 				if (pos) { fd.append('lat', pos.latitude); fd.append('lon', pos.longitude); fd.append('acc', Math.round(pos.accuracy || 0)); }
 				return fetch(cfg.ajax, { method: 'POST', body: fd, credentials: 'same-origin' });
-			}, function (why) {
-				throw typeof why === 'string' ? { geo: why } : why;
 			}).then(function (r) { return r.json(); }).then(function (j) {
 				btn.disabled = false;
 				if (j && j.success) {

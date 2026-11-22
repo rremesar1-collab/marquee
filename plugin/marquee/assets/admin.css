@@ -10,6 +10,8 @@
 .mq__msg { font-weight: 600; }
 .mq__msg.is-ok { color: #00a32a; }
 .mq__msg.is-bad { color: #d63638; }
+.mq__rough { margin: 4px 0 12px; padding: 8px 12px; border-left: 4px solid #dba617; background: #fcf9e8; color: #50410a; max-width: 640px; }
+.mq__rough[hidden] { display: none; }
 .mq__feat { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 11px 0; border-top: 1px solid #f0f0f1; cursor: pointer; }
 .mq__feat:first-of-type { border-top: 0; }
 .mq__feat small { display: block; font-weight: 400; }
