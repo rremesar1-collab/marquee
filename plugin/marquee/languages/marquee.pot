@@ -3469,12 +3469,6 @@ msgstr ""
 msgid "Find"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:263
-msgid ""
-"Or paste a Google Maps link to your house. Used for sunset, weather, radar "
-"and directions."
-msgstr ""
-
 #: plugin/marquee/inc/admin.php:266
 msgid "Latitude"
 msgstr ""
@@ -7947,14 +7941,22 @@ msgid ""
 msgstr ""
 
 msgid ""
-"This pin is the middle of your ZIP code or town, not your house. Weather and"
-" sunset are fine, but directions and “Only at the show” need the exact spot."
-" In Google Maps, right-click your house, click the numbers at the top of the"
-" menu to copy them, then paste them in the address box and click Find."
-msgstr ""
-
-msgid ""
 "Your show’s location is only the middle of your ZIP code or town, so people "
 "at your show may be told they’re too far away. Set the exact spot in Show "
 "details → Location & weather."
+msgstr ""
+
+msgid ""
+"This pin is the middle of your ZIP code or town, not your house. Weather and"
+" sunset are fine, but directions and “Only at the show” need the exact spot."
+" Type your full street address above and click Find. If your house still "
+"isn’t found, paste a Google Maps link to it instead."
+msgstr ""
+
+msgid ""
+"Type your full street address and your house is found for you. Used for "
+"sunset, weather, radar and directions."
+msgstr ""
+
+msgid "Couldn’t find your house at that address, only the town."
 msgstr ""

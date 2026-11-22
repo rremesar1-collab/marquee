@@ -133,9 +133,19 @@ var tr = function (s) { var d = window.rrI18n; return (d && d[s]) || s; };
 			if (d.zip) { $('#mq-zip').value = d.zip; }
 			if (d.country) { $('[data-mq-country]').value = d.country; $('#mq-units').value = d.country === 'US' ? 'us' : 'metric'; }
 			var rough = $('[data-mq-rough]'); if (rough) { rough.hidden = !d.rough; }
+			if (d.rough && /^\s*\d+\w?\s+\S/.test($('#mq-addr').value)) { say(lkMsg, tr('Couldn’t find your house at that address, only the town.'), false); return; }
 			say(lkMsg, tr('Found it: %s. Check the fields below.').replace('%s', function () { return [d.city, d.region].filter(Boolean).join(', ') + (d.tz ? ' · ' + d.tz : '') + (d.radar ? ' · ' + tr('radar %s').replace('%s', function () { return d.radar; }) : ''); }), true);
 		}).catch(function () { lk.disabled = false; say(lkMsg, tr('Couldn’t reach the website. Try again.'), false); });
 	});
+
+	/* no button needed: the address is looked up when you leave the box or press Enter */
+	var addr = $('#mq-addr'), looked = addr ? addr.value.trim() : '';
+	if (addr) {
+		var auto = function () { var v = addr.value.trim(); if (v && v !== looked && !lk.disabled) { looked = v; lk.click(); } };
+		addr.addEventListener('change', auto);
+		addr.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); looked = ''; auto(); } });
+		lk.addEventListener('click', function () { looked = addr.value.trim(); });
+	}
 
 	/* typing your own pin clears the "middle of your ZIP code" note (it's checked again on save) */
 	['#mq-lat', '#mq-lon'].forEach(function (id) { var el = $(id); if (el) { el.addEventListener('input', function () { var r = $('[data-mq-rough]'); if (r) { r.hidden = true; } }); } });

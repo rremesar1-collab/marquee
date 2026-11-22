@@ -99,6 +99,7 @@ function marquee_theme_get( $k ) {
 /** Clean and save everything posted from the wizard or the settings page. */
 function marquee_save( $in ) {
 	$cur = marquee_get();
+	$in  = marquee_save_locate( $in, $cur );
 	$txt = function ( $k, $max = 120 ) use ( $in, $cur ) {
 		return isset( $in[ $k ] ) ? mb_substr( sanitize_text_field( wp_unslash( $in[ $k ] ) ), 0, $max ) : $cur[ $k ];
 	};
@@ -593,6 +594,36 @@ add_filter( 'ridgeroad_ctl_set', function ( $done, $k, $on, $v = '' ) {
 }, 10, 4 );
 
 /** Sponsors (Home page → Sponsors): the list, the title, the thank-you line and the "Get in touch" link. */
+/**
+ * A new show address saved before Find finished (or without clicking it): look the address up here so
+ * the pin, time zone and radar follow it. Skipped when the owner typed their own pin.
+ */
+function marquee_save_locate( $in, $cur ) {
+	if ( ! isset( $in['address'] ) || ! function_exists( 'marquee_lookup' ) ) {
+		return $in;
+	}
+	$addr = trim( sanitize_text_field( wp_unslash( $in['address'] ) ) );
+	$same = function ( $k ) use ( $in, $cur ) {
+		return ! isset( $in[ $k ] ) || abs( (float) $in[ $k ] - (float) $cur[ $k ] ) < 0.000001;
+	};
+	$empty = '' === trim( (string) ( isset( $in['lat'] ) ? $in['lat'] : $cur['lat'] ) );
+	if ( '' === $addr || ( ! $empty && ( $addr === trim( (string) $cur['address'] ) || ! $same( 'lat' ) || ! $same( 'lon' ) ) ) ) {
+		return $in;
+	}
+	$r = marquee_lookup( $addr );
+	if ( is_wp_error( $r ) || '' === $r['lat'] ) {
+		return $in;
+	}
+	$in['lat'] = (string) $r['lat'];
+	$in['lon'] = (string) $r['lon'];
+	foreach ( array( 'tz' => 'tz', 'office' => 'nws_office', 'radar' => 'radar_station', 'city' => 'city', 'region' => 'region', 'zip' => 'zip', 'country' => 'country' ) as $from => $to ) {
+		if ( '' !== (string) $r[ $from ] ) {
+			$in[ $to ] = $r[ $from ];
+		}
+	}
+	return $in;
+}
+
 function marquee_save_sponsors( $in ) {
 	$col = function ( $k ) use ( $in ) {
 		return isset( $in[ $k ] ) ? array_values( (array) wp_unslash( $in[ $k ] ) ) : array();

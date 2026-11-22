@@ -287,9 +287,9 @@ function marquee_admin_page() {
 				<h3 class="mq-sec__title"><?php esc_html_e( 'Location & weather', 'marquee' ); ?></h3>
 				<p><label for="mq-addr"><?php esc_html_e( 'Show address', 'marquee' ); ?></label>
 					<span class="mq__inline"><input id="mq-addr" name="address" type="text" value="<?php echo esc_attr( $s['address'] ); ?>" placeholder="123 Main St, Town, ST 12345"><button type="button" class="button" data-mq-lookup><?php esc_html_e( 'Find', 'marquee' ); ?></button></span>
-					<small><?php esc_html_e( 'Or paste a Google Maps link to your house. Used for sunset, weather, radar and directions.', 'marquee' ); ?></small></p>
+					<small><?php esc_html_e( 'Type your full street address and your house is found for you. Used for sunset, weather, radar and directions.', 'marquee' ); ?></small></p>
 <p class="mq__msg" data-mq-lookup-msg aria-live="polite"></p>
-				<p class="mq__rough" data-mq-rough<?php echo ( function_exists( 'marquee_loc_rough' ) && marquee_loc_rough() ) ? '' : ' hidden'; ?>><?php esc_html_e( 'This pin is the middle of your ZIP code or town, not your house. Weather and sunset are fine, but directions and “Only at the show” need the exact spot. In Google Maps, right-click your house, click the numbers at the top of the menu to copy them, then paste them in the address box and click Find.', 'marquee' ); ?></p>
+				<p class="mq__rough" data-mq-rough<?php echo ( function_exists( 'marquee_loc_rough' ) && marquee_loc_rough() ) ? '' : ' hidden'; ?>><?php esc_html_e( 'This pin is the middle of your ZIP code or town, not your house. Weather and sunset are fine, but directions and “Only at the show” need the exact spot. Type your full street address above and click Find. If your house still isn’t found, paste a Google Maps link to it instead.', 'marquee' ); ?></p>
 				<?php if ( ! $setup ) { marquee_field( 'parking_note' ); } ?>
 				<div class="mq__row mq__row--4">
 					<p><label for="mq-lat"><?php esc_html_e( 'Latitude', 'marquee' ); ?></label><input id="mq-lat" name="lat" type="text" inputmode="decimal" value="<?php echo esc_attr( $s['lat'] ); ?>"></p>

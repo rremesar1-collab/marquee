@@ -55,7 +55,7 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 == Changelog ==
 
 = 0.20.8 =
-* Show address: Find now finds the house itself for street addresses (US Census Bureau address finder in the US, OpenStreetMap elsewhere), not just the middle of the ZIP code or town.
+* Show address: type your street address and the house is found for you (US Census Bureau address finder in the US, OpenStreetMap elsewhere), not just the middle of the ZIP code or town. No need to click Find: it looks up the address when you leave the box, press Enter or save.
 * Settings warns when your show's location is only the middle of your ZIP code or town, under the address and next to "Only at the show", with how to set the exact spot from Google Maps.
 * Only at the show: turning it on or off works right away, even on sites with a page cache. Phones also take a fresh location reading every time a name is sent.
 

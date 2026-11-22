@@ -16,6 +16,7 @@ function marquee_js_strings() {
 		'Looking it up…' => __( 'Looking it up…', 'marquee' ),
 		'Couldn’t look that up.' => __( 'Couldn’t look that up.', 'marquee' ),
 		'Found it: %s. Check the fields below.' => __( 'Found it: %s. Check the fields below.', 'marquee' ),
+		'Couldn’t find your house at that address, only the town.' => __( 'Couldn’t find your house at that address, only the town.', 'marquee' ),
 		'radar %s' => __( 'radar %s', 'marquee' ),
 		'Couldn’t reach the website. Try again.' => __( 'Couldn’t reach the website. Try again.', 'marquee' ),
 		'New logo picked. Click Save settings to use it.' => __( 'New logo picked. Click Save settings to use it.', 'marquee' ),
