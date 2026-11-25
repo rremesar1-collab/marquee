@@ -4121,9 +4121,3 @@ msgstr "Ocultar el botón Elige la próxima canción"
 
 msgid "Show it with my message and the song list"
 msgstr "Mostrarlo con mi mensaje y la lista de canciones"
-
-msgid ""
-"Visitors don’t see this right now: Viewer Control is off in Remote Falcon."
-msgstr ""
-"Los visitantes no ven esto ahora: Viewer Control está desactivado en Remote "
-"Falcon."

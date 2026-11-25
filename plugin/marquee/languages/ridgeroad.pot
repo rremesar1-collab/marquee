@@ -5241,7 +5241,3 @@ msgstr ""
 
 msgid "Show it with my message and the song list"
 msgstr ""
-
-msgid ""
-"Visitors don’t see this right now: Viewer Control is off in Remote Falcon."
-msgstr ""

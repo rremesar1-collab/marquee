@@ -55,7 +55,7 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 == Changelog ==
 
 = 0.20.11 =
-* Pick the Next Song hides itself while Viewer Control is off in Remote Falcon, and comes back within about 30 seconds of turning it on. Prefer the "picking is closed" message with the song list? Pick "Show it with my message and the song list" in Settings → Connections. You still see the button while logged in, with a note.
+* Pick the Next Song hides itself while Viewer Control is off in Remote Falcon, and comes back within about 30 seconds of turning it on. Prefer the "picking is closed" message with the song list? Pick "Show it with my message and the song list" in Settings → Connections.
 
 = 0.20.10 =
 * Pick the Next Song shows the same song covers as your Songs page: your own picture for each song, Remote Falcon's artwork, or one Marquee found. Songs set to "No cover" stay without one.
