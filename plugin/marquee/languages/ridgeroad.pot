@@ -5241,3 +5241,6 @@ msgstr ""
 
 msgid "Show it with my message and the song list"
 msgstr ""
+
+msgid "Look at the screens! Your name goes up in a moment: %s"
+msgstr ""

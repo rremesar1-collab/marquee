@@ -56,6 +56,7 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 = 0.20.12 =
 * Names in Lights: new "Repeat names to fill the break" switch (Settings → Names in Lights, names break tab). On, as before: with fewer names than your break has room for, they go up again. Off: each name goes up once. Needs the FPP plugin 3.17.3 or newer.
+* "Buzz me when my name is up" waits for the names break to actually start (or, with names during songs, for the show to be playing). It never buzzes while nothing is playing. With the FPP plugin 3.17.3, the buzz comes right as the break starts, a few seconds before the first name.
 
 = 0.20.11 =
 * Pick the Next Song hides itself while Viewer Control is off in Remote Falcon, and comes back within about 30 seconds of turning it on. Prefer the "picking is closed" message with the song list? Pick "Show it with my message and the song list" in Settings → Connections.

@@ -335,7 +335,9 @@ def pull(done_ids, st=None, report=None):
     if st is not None:
         info = {"status": status_name(st), "playlist": playlist_name(st), "sequence": st.get("current_sequence", ""),
                 # 3.13+: where the show is in "names break after every N songs", for the website's messages and buzz
-                "played": SONGS["played"], "every": int(S.get("every") or 1), "queued": bool(QUEUED["on"])}
+                "played": SONGS["played"], "every": int(S.get("every") or 1), "queued": bool(QUEUED["on"]),
+                # 3.17.3+: the names break is playing (the website buzzes kids' phones only then, never while idle)
+                "in_break": bool(in_break(st))}
         if time.time() - PL_SENT["t"] > 600:          # the playlist list, for the website's "Only during these playlists"
             pls = fpp_playlists()
             if pls:
@@ -1710,7 +1712,27 @@ def run_break(color):
         S["names_start"], S["slot"], S["show_for"] = keep
 
 
+def ping_break_started():
+    """3.17.3: tell the website the names break just started, so the phones that asked buzz now, before the
+    first name goes up (the next regular check-in can come after the names are already up). In the background:
+    the break never waits on the internet. Only what FPP is doing is sent, nothing else that a check-in carries."""
+    import threading
+
+    def go():
+        try:
+            st = master_status()
+            info = {"status": status_name(st), "playlist": playlist_name(st), "sequence": st.get("current_sequence", ""),
+                    "played": SONGS["played"], "every": int(S.get("every") or 1), "queued": bool(QUEUED["on"]),
+                    "in_break": bool(in_break(st))}
+            url = str(S["site"]).rstrip("/") + "/wp-admin/admin-ajax.php?action=rr_names_pull&key=" + urllib.parse.quote(str(S["key"]))
+            http_json(url, {"ping": "1", "fpp": json.dumps(info)})
+        except Exception as e:
+            log("could not tell the website the names break started:", e)
+    threading.Thread(target=go, daemon=True).start()
+
+
 def _run_break(color):
+    ping_break_started()
     if flow_ready() and playlist_name(master_status()) == S["break_playlist"]:
         return _run_flow(color)
     try:

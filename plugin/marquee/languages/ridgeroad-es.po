@@ -4121,3 +4121,6 @@ msgstr "Ocultar el botón Elige la próxima canción"
 
 msgid "Show it with my message and the song list"
 msgstr "Mostrarlo con mi mensaje y la lista de canciones"
+
+msgid "Look at the screens! Your name goes up in a moment: %s"
+msgstr "¡Mira las pantallas! Tu nombre aparece en un momento: %s"

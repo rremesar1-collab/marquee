@@ -303,6 +303,8 @@ function ridgeroad_names_pull() {
 				'played'   => isset( $f['played'] ) ? max( 0, (int) $f['played'] ) : null,
 				'every'    => isset( $f['every'] ) ? max( 1, (int) $f['every'] ) : null,
 				'queued'   => ! empty( $f['queued'] ),
+				// names script 3.17.3+: true while the names break is playing (it checks in the moment the break starts)
+				'in_break' => array_key_exists( 'in_break', $f ) ? ! empty( $f['in_break'] ) : null,
 				'playlists' => isset( $f['playlists'] ) && is_array( $f['playlists'] )
 					? array_slice( array_values( array_filter( array_map( function ( $p ) { return sanitize_text_field( mb_substr( (string) $p, 0, 80 ) ); }, $f['playlists'] ) ) ), 0, 60 )
 					: ( is_array( $prev = get_option( 'ridgeroad_fpp' ) ) && isset( $prev['playlists'] ) ? (array) $prev['playlists'] : array() ),
@@ -335,12 +337,33 @@ function ridgeroad_names_pull() {
 				$out[] = $item;
 			}
 		}
-		// the first 6 go up at the next break: buzz the phones that asked, once that break is coming up
-		if ( $out && function_exists( 'ridgeroad_app_buzz_names' ) && ridgeroad_names_songs_left() <= 1 ) {
-			ridgeroad_app_buzz_names( wp_list_pluck( array_slice( $out, 0, 6 ), 'id' ) );
+		// buzz the phones that asked, for the names going up next: only once the show is actually playing
+		$buzz = function_exists( 'ridgeroad_app_buzz_names' ) ? ridgeroad_names_buzz_due() : '';
+		if ( $out && $buzz ) {
+			$most = function_exists( 'marquee_get' ) ? max( 1, min( 6, (int) marquee_get( 'names_per_break' ) ) ) : 6;
+			ridgeroad_app_buzz_names( wp_list_pluck( array_slice( $out, 0, $most ), 'id' ), 'now' === $buzz );
 		}
 	}
 	wp_send_json_success( apply_filters( 'ridgeroad_names_pull_data', array( 'names' => $out, 'color' => ridgeroad_mod( 'names_color' ) ) ) );
+}
+
+/**
+ * When to buzz the phones of the names going up next: 'now' (the names break has started, or names go up
+ * during the songs and the show is playing), 'soon' (an older names script that can't say when its break
+ * starts: the break is after the current song), or '' (not yet; never while nothing is playing).
+ */
+function ridgeroad_names_buzz_due() {
+	$f = get_option( 'ridgeroad_fpp' );
+	if ( ! is_array( $f ) || 'playing' !== ( $f['status'] ?? '' ) ) {
+		return '';
+	}
+	if ( apply_filters( 'ridgeroad_names_live', false ) ) {
+		return 'now';
+	}
+	if ( isset( $f['in_break'] ) && null !== $f['in_break'] ) {
+		return $f['in_break'] ? 'now' : '';
+	}
+	return ridgeroad_names_songs_left() <= 1 ? 'soon' : '';
 }
 
 /**

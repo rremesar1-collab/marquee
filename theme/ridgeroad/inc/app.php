@@ -601,7 +601,7 @@ function ridgeroad_app_fpp_checkin( $status, $playlist ) {
 }
 
 /** Called when FPP picks up names for the next break: buzz the phones that asked. */
-function ridgeroad_app_buzz_names( $ids ) {
+function ridgeroad_app_buzz_names( $ids, $now = false ) {
 	if ( ! ridgeroad_mod( 'app_buzz_on' ) ) {
 		return;
 	}
@@ -616,7 +616,7 @@ function ridgeroad_app_buzz_names( $ids ) {
 	if ( ! $todo ) {
 		return;
 	}
-	ridgeroad_push_later( function () use ( $todo ) {
+	ridgeroad_push_later( function () use ( $todo, $now ) {
 		foreach ( $todo as $id => $h ) {
 			$row = ridgeroad_push_row( $h );
 			if ( ! $row ) {
@@ -625,7 +625,10 @@ function ridgeroad_app_buzz_names( $ids ) {
 			$res = ridgeroad_push_send( array( $row ), array(
 				'title' => __( 'Your name is up next! ⭐', 'ridgeroad' ),
 				/* translators: %s: the name text, e.g. MERRY CHRISTMAS, LIAM! */
-				'body'  => sprintf( __( 'Watch for your name after this song: %s', 'ridgeroad' ), get_post_meta( $id, '_rr_text', true ) ),
+				'body'  => $now
+					/* translators: %s: the name text, e.g. MERRY CHRISTMAS, LIAM! */
+					? sprintf( __( 'Look at the screens! Your name goes up in a moment: %s', 'ridgeroad' ), get_post_meta( $id, '_rr_text', true ) )
+					: sprintf( __( 'Watch for your name after this song: %s', 'ridgeroad' ), get_post_meta( $id, '_rr_text', true ) ),
 				'tag'   => 'name-' . $id,
 				'url'   => function_exists( 'ridgeroad_kids_url' ) ? ridgeroad_kids_url() . '#names' : home_url( '/' ),
 				'ttl'   => 10 * MINUTE_IN_SECONDS,
