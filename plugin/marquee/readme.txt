@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.20.12
+Stable tag: 0.20.13
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,9 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.20.13 =
+* Songs page: sequence videos no longer freeze on computers while the snow is falling. The snow now holds still while a video pop-up is open and falls again when you close it.
 
 = 0.20.12 =
 * Names in Lights: new "Repeat names to fill the break" switch (Settings → Names in Lights, names break tab). On, as before: with fewer names than your break has room for, they go up again. Off: each name goes up once. Needs the FPP plugin 3.17.3 or newer.
