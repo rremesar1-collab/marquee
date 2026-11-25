@@ -51,6 +51,7 @@ function ridgeroad_defaults( $fresh = false ) {
 		'count_name'        => '',
 		'count_date'        => '',
 		'rf_viewer_url'     => '',              // your Remote Falcon viewer page (Pick the next song)
+		'rf_off_msg'        => '',              // shown in Pick the Next Song while Viewer Control is off in Remote Falcon
 		'show_playlist'     => 1,
 		'playlist_when'     => 'running',
 		'playlist_title'    => __( 'Tonight’s Playlist', 'ridgeroad' ),
@@ -455,6 +456,7 @@ function ridgeroad_customize_fields( $add, $image ) {
 	$add( 'count_name', 'rr_show', __( 'Your date’s name (like New Year’s Eve)', 'ridgeroad' ), 'text', array( 'description' => __( 'For “A date I pick”.', 'ridgeroad' ) ) );
 	$add( 'count_date', 'rr_show', __( 'Your date (the year doesn’t matter; it repeats every year)', 'ridgeroad' ), 'date', array( 'description' => __( 'For “A date I pick”.', 'ridgeroad' ) ) );
 	$add( 'rf_viewer_url', 'rr_show', __( 'Remote Falcon viewer page (adds “Pick the next song” to Tonight’s Show)', 'ridgeroad' ), 'url', array( 'description' => __( 'Like https://yourshow.remotefalcon.com. Visitors pick songs right on your website while the show is running (your Remote Falcon rules still apply). Leave empty to hide it.', 'ridgeroad' ) ) );
+	$add( 'rf_off_msg', 'rr_show', __( 'Message when song picking is off', 'ridgeroad' ), 'text', array( 'description' => __( 'Shown in Pick the Next Song while Viewer Control is turned off in Remote Falcon, like “Voting is closed tonight for our special opening show.” The song list still shows. Leave empty for the standard message.', 'ridgeroad' ) ) );
 	$add( 'show_playlist', 'rr_show', __( 'Show the playlist section', 'ridgeroad' ), 'checkbox' );
 	$add( 'playlist_when', 'rr_show', __( 'When to show the playlist', 'ridgeroad' ), 'select', array( 'choices' => array( 'running' => __( 'Only while the show is running', 'ridgeroad' ), 'season' => __( 'All season (hide off-season and canceled nights)', 'ridgeroad' ), 'always' => __( 'Always', 'ridgeroad' ) ) ) );
 	$add( 'playlist_title', 'rr_show', __( 'Playlist title', 'ridgeroad' ) );

@@ -7960,3 +7960,15 @@ msgstr ""
 
 msgid "Couldn’t find your house at that address, only the town."
 msgstr ""
+
+msgid "Message when song picking is off (optional)"
+msgstr ""
+
+msgid "Voting is closed tonight for our special opening show"
+msgstr ""
+
+msgid ""
+"To close song picking for a night, turn off Viewer Control in Remote Falcon."
+" Pick the Next Song then shows this message and your song list, without the "
+"pick buttons. Leave empty for the standard message."
+msgstr ""

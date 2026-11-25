@@ -5223,3 +5223,12 @@ msgstr ""
 
 msgid "In Tonight’s Show. Needs Remote Falcon to show the song playing."
 msgstr ""
+
+msgid "Message when song picking is off"
+msgstr ""
+
+msgid ""
+"Shown in Pick the Next Song while Viewer Control is turned off in Remote "
+"Falcon, like “Voting is closed tonight for our special opening show.” The "
+"song list still shows. Leave empty for the standard message."
+msgstr ""

@@ -10,9 +10,10 @@
 	if (!box || !dlg) { return; }
 	var API = box.getAttribute('data-api') || 'https://remotefalcon.com/remote-falcon-viewer/graphql';
 	var SUB = box.getAttribute('data-sub') || '';
+	var OFF = (box.getAttribute('data-off') || '').trim();   // the owner's own "picking is closed" message
 	if (!SUB) { return; }   // no show name: the button stays a plain link to the Remote Falcon page
 	var list = dlg.querySelector('[data-rf-list]'), msg = dlg.querySelector('[data-rf-msg]'), head = dlg.querySelector('[data-rf-head]');
-	var show = null, timer = null, busy = false, pos = null, hide = [];
+	var show = null, timer = null, busy = false, pos = null, hide = [], wasOff = false;
 	try { hide = (JSON.parse(box.getAttribute('data-hide') || '[]') || []).map(function (t) { return String(t).toLowerCase(); }); } catch (e) {}
 	function title(q) { return (q.displayName || String(q.name || '').replace(/\.(fseq|xsq|mp3)$/i, '').replace(/_/g, ' ')).trim(); }
 
@@ -57,10 +58,18 @@
 		var q = (show.requests || []).slice().sort(function (a, b) { return a.position - b.position; })
 			.map(function (r) { return r.sequence ? esc(r.sequence.displayName || r.sequence.name) : ''; }).filter(Boolean);
 		var line = !voting && q.length ? '<p>' + tr('<b>In line:</b> %s').replace('%s', function () { return q.join(', '); }) + '</p>' : (show.playingNext ? '<p>' + tr('<b>Up next:</b> %s').replace('%s', function () { return esc(show.playingNext); }) + '</p>' : '');
-		head.innerHTML = now + line + '<p class="rr-rf__how">' + (voting ? tr('Vote for the song you want next. The one with the most votes plays after this song.') : tr('Pick a song and it gets in line to play.')) + '</p>';
-		if (!p.viewerControlEnabled) {
-			list.innerHTML = '';
-			say(tr('Song picking is off right now. Check back during the show!'), 'warn');
+		var off = !p.viewerControlEnabled;
+		if (!off && wasOff) { say(''); }   // picking just opened again: drop the closed message
+		wasOff = off;
+		head.innerHTML = now + line + (off ? '' : '<p class="rr-rf__how">' + (voting ? tr('Vote for the song you want next. The one with the most votes plays after this song.') : tr('Pick a song and it gets in line to play.')) + '</p>');
+		if (off) {
+			/* picking closed in Remote Falcon: the owner's message, and the songs as a plain list */
+			say(OFF || tr('Song picking is off right now. Check back during the show!'), 'warn');
+			list.innerHTML = items().map(function (it) {
+				return '<li><div class="rr-rf__song is-off">' +
+					(it.img ? '<img src="' + esc(it.img) + '" alt="" loading="lazy">' : '<span class="rr-rf__note" aria-hidden="true">&#9835;</span>') +
+					'<span class="rr-rf__t"><b>' + esc(it.title) + '</b>' + (it.artist ? '<small>' + esc(it.artist) + '</small>' : '') + '</span></div></li>';
+			}).join('');
 			return;
 		}
 		list.innerHTML = items().map(function (it) {
@@ -75,8 +84,8 @@
 	function load(first) {
 		return gql(Q, { s: SUB }).then(function (j) {
 			if (!j || !j.data || !j.data.getShow) { throw new Error('no show'); }
-			show = j.data.getShow; draw();
 			if (first) { say(''); }
+			show = j.data.getShow; draw();
 		}).catch(function () { if (first) { list.innerHTML = ''; say(tr('We couldn’t reach Remote Falcon. Try again in a minute.'), 'bad'); } });
 	}
 	function where() {
