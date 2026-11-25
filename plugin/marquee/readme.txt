@@ -55,7 +55,7 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 == Changelog ==
 
 = 0.20.9 =
-* Pick the Next Song: your own message for nights song picking is closed (Settings → Remote Falcon), like "Voting is closed tonight for our special opening show". While Viewer Control is off in Remote Falcon, visitors see that message and the song list, without the pick buttons.
+* Pick the Next Song: your own message for nights song picking is closed (Settings → Connections → Remote Falcon), like "Voting is closed tonight for our special opening show". While Viewer Control is off in Remote Falcon, visitors see that message and the song list, without the pick buttons.
 
 = 0.20.8 =
 * Show address: type your street address and the house is found for you (US Census Bureau address finder in the US, OpenStreetMap elsewhere), not just the middle of the ZIP code or town. No need to click Find: it looks up the address when you leave the box, press Enter or save.
@@ -304,7 +304,7 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 = 0.8.5 =
 * Countdown: count down to Christmas, Halloween or a date you pick (with its own name, like New Year's Eve). Automatic picks Halloween when your last night is in August to October. Settings → Schedule → Countdown.
-* Pick the Next Song: add your Remote Falcon viewer page (Settings → Remote Falcon) and Tonight's Show gets a "Pick the Next Song" button while the show is running. Visitors see your songs and vote or request right on your website; Remote Falcon's own rules (one pick each, queue size, location check) still apply.
+* Pick the Next Song: add your Remote Falcon viewer page (Settings → Connections → Remote Falcon) and Tonight's Show gets a "Pick the Next Song" button while the show is running. Visitors see your songs and vote or request right on your website; Remote Falcon's own rules (one pick each, queue size, location check) still apply.
 
 = 0.8.4 =
 * Names script 3.8.1: restarts itself with the new version when it's updated (by the Marquee FPP plugin or a new copy put on by hand), so there's nothing to restart after an update.
