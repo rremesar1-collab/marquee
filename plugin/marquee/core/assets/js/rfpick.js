@@ -11,6 +11,8 @@
 	var API = box.getAttribute('data-api') || 'https://remotefalcon.com/remote-falcon-viewer/graphql';
 	var SUB = box.getAttribute('data-sub') || '';
 	var OFF = (box.getAttribute('data-off') || '').trim();   // the owner's own "picking is closed" message
+	var HIDE = box.getAttribute('data-off-mode') !== 'message';   // Viewer Control off: hide the button
+	var ADMIN = box.hasAttribute('data-preview') || !!document.querySelector('#wpadminbar');
 	if (!SUB) { return; }   // no show name: the button stays a plain link to the Remote Falcon page
 	var list = dlg.querySelector('[data-rf-list]'), msg = dlg.querySelector('[data-rf-msg]'), head = dlg.querySelector('[data-rf-head]');
 	var show = null, timer = null, busy = false, pos = null, hide = [], wasOff = false;
@@ -134,6 +136,23 @@
 	}
 	function close() { clearInterval(timer); if (dlg.open) { dlg.close(); } }
 	box.querySelector('[data-rf-open]').addEventListener('click', function (e) { e.preventDefault(); open(); });
+
+	/* "Hide" mode: the button shows only while Viewer Control is on in Remote Falcon (checked every 30 s).
+	   The owner (logged in) keeps seeing it, with a note. If Remote Falcon can't be reached, it shows. */
+	if (HIDE) {
+		var note = box.querySelector('[data-rf-offnote]');
+		var gate = function (on) {
+			if (ADMIN) { box.removeAttribute('data-rf-closed'); if (note) { note.hidden = on; } return; }
+			if (on) { box.removeAttribute('data-rf-closed'); } else { box.setAttribute('data-rf-closed', ''); if (dlg.open) { close(); } }
+		};
+		var check = function () {
+			gql('query($s:String){getShow(showSubdomain:$s){preferences{viewerControlEnabled}}}', { s: SUB })
+				.then(function (j) { var p = j && j.data && j.data.getShow && j.data.getShow.preferences; gate(!p || p.viewerControlEnabled !== false); })
+				.catch(function () { gate(true); });
+		};
+		check();
+		setInterval(function () { if (!document.hidden) { check(); } }, 30000);
+	}
 	dlg.querySelectorAll('[data-rf-close]').forEach(function (b) { b.addEventListener('click', close); });
 	dlg.addEventListener('click', function (e) { if (e.target === dlg) { close(); } });
 	dlg.addEventListener('close', function () { clearInterval(timer); });

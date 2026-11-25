@@ -65,6 +65,7 @@ extract( ridgeroad_home_ctx(), EXTR_SKIP ); // $status, $np, $wx, $opts, $b_titl
 		<?php
 		$rf_pick = ridgeroad_mod( 'rf_viewer_url' );
 		$rf_prev = $rf_pick && 'running' !== $status['state'] && current_user_can( 'manage_options' ); // the owner sees it any time, to check it
+		$rf_om   = 'message' === ridgeroad_mod( 'rf_off_mode' ) ? 'message' : 'hide'; // Viewer Control off: hide the button, or show the closed message
 		$rf_sub  = $rf_pick && preg_match( '#^https?://([a-z0-9-]+)\.remotefalcon\.com#i', $rf_pick, $rf_m ) ? strtolower( $rf_m[1] ) : '';
 		if ( $rf_pick ) :
 			if ( $rf_sub ) {
@@ -93,9 +94,10 @@ extract( ridgeroad_home_ctx(), EXTR_SKIP ); // $status, $np, $wx, $opts, $b_titl
 				}
 			}
 			?>
-			<div class="rr-rfpick<?php echo $rf_prev ? ' is-preview' : ''; ?>" data-rr-rfpick data-hide="<?php echo esc_attr( wp_json_encode( $rf_hide ) ); ?>" data-sub="<?php echo esc_attr( $rf_sub ); ?>" data-off="<?php echo esc_attr( trim( (string) ridgeroad_mod( 'rf_off_msg' ) ) ); ?>"<?php echo null !== $rf_covers ? ' data-covers="' . esc_attr( wp_json_encode( (object) $rf_covers ) ) . '"' : ''; ?> data-api="<?php echo esc_url( apply_filters( 'ridgeroad_rf_viewer_api', 'https://remotefalcon.com/remote-falcon-viewer/graphql' ) ); ?>" <?php echo $rf_prev ? 'data-preview="1"' : ''; ?> <?php echo ( 'running' === $status['state'] || $rf_prev ) ? '' : 'hidden'; ?>>
+			<div class="rr-rfpick<?php echo $rf_prev ? ' is-preview' : ''; ?>" data-rr-rfpick data-hide="<?php echo esc_attr( wp_json_encode( $rf_hide ) ); ?>" data-sub="<?php echo esc_attr( $rf_sub ); ?>" data-off="<?php echo esc_attr( trim( (string) ridgeroad_mod( 'rf_off_msg' ) ) ); ?>" data-off-mode="<?php echo esc_attr( $rf_om ); ?>"<?php echo ( $rf_sub && 'hide' === $rf_om && ! $rf_prev ) ? ' data-rf-closed' : ''; ?><?php echo null !== $rf_covers ? ' data-covers="' . esc_attr( wp_json_encode( (object) $rf_covers ) ) . '"' : ''; ?> data-api="<?php echo esc_url( apply_filters( 'ridgeroad_rf_viewer_api', 'https://remotefalcon.com/remote-falcon-viewer/graphql' ) ); ?>" <?php echo $rf_prev ? 'data-preview="1"' : ''; ?> <?php echo ( 'running' === $status['state'] || $rf_prev ) ? '' : 'hidden'; ?>>
 				<a class="rr-btn rr-btn--red" href="<?php echo esc_url( $rf_pick ); ?>" target="_blank" rel="noopener" data-rf-open><?php echo ridgeroad_cicon( 'music' ); ?><?php esc_html_e( 'Pick the Next Song', 'ridgeroad' ); ?></a>
 				<span class="rr-rfpick__note"><?php esc_html_e( 'Choose what plays next!', 'ridgeroad' ); ?></span>
+				<?php if ( $rf_sub && 'hide' === $rf_om ) : ?><em class="rr-rfpick__preview" data-rf-offnote hidden><?php esc_html_e( 'Visitors don’t see this right now: Viewer Control is off in Remote Falcon.', 'ridgeroad' ); ?></em><?php endif; ?>
 				<?php if ( $rf_prev ) : ?><em class="rr-rfpick__preview"><?php esc_html_e( 'Only you can see this right now (you’re logged in). Visitors see it while the show is running.', 'ridgeroad' ); ?></em><?php endif; ?>
 			</div>
 			<?php if ( $rf_sub ) : ?>

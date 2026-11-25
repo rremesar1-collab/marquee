@@ -1451,6 +1451,7 @@ dialog.mq-skin:not(#mq-0) { display: revert; container: none; }
 .mq-skin:not(#mq-0) .rr-rf__song { display: flex; align-items: center; gap: 10px; width: 100%; padding: 8px 10px; border: 1px solid rgba(150, 190, 255, .35); border-radius: 10px; background: rgba(2, 33, 77, .7); color: #fff; font: inherit; text-align: left; cursor: pointer; }
 .mq-skin:not(#mq-0) .rr-rf__song:hover { border-color: #ffd45c; }
 .mq-skin:not(#mq-0) .rr-rf__song.is-busy { opacity: .6; }
+.mq-skin:not(#mq-0) [data-rr-rfpick][data-rf-closed], [data-rr-rfpick][data-rf-closed] { display: none !important; }
 .mq-skin:not(#mq-0) .rr-rf__song.is-off, .mq-skin:not(#mq-0) .rr-rf__song.is-off:hover { cursor: default; border-color: rgba(150, 190, 255, .35); }
 .mq-skin:not(#mq-0) .rr-rf__song img, .mq-skin:not(#mq-0) .rr-rf__note { flex: none; width: 44px; height: 44px; border-radius: 6px; object-fit: cover; }
 .mq-skin:not(#mq-0) .rr-rf__note { display: grid; place-items: center; background: rgba(255, 255, 255, .08); font-size: 22px; color: #ffd45c; }

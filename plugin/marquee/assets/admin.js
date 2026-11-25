@@ -147,6 +147,10 @@ var tr = function (s) { var d = window.rrI18n; return (d && d[s]) || s; };
 		lk.addEventListener('click', function () { looked = addr.value.trim(); });
 	}
 
+	/* "When song picking is off": the message box only matters for "Show it with my message" */
+	var rfom = $('[data-mq-rfom]'), rfomMsg = $('[data-mq-rfom-msg]');
+	if (rfom && rfomMsg) { rfom.addEventListener('change', function () { rfomMsg.hidden = rfom.value !== 'message'; }); }
+
 	/* typing your own pin clears the "middle of your ZIP code" note (it's checked again on save) */
 	['#mq-lat', '#mq-lon'].forEach(function (id) { var el = $(id); if (el) { el.addEventListener('input', function () { var r = $('[data-mq-rough]'); if (r) { r.hidden = true; } }); } });
 

@@ -7967,8 +7967,22 @@ msgstr ""
 msgid "Voting is closed tonight for our special opening show"
 msgstr ""
 
+msgid "When song picking is off"
+msgstr ""
+
+msgid "Hide the Pick the Next Song button"
+msgstr ""
+
+msgid "Show it with my message and the song list"
+msgstr ""
+
 msgid ""
-"To close song picking for a night, turn off Viewer Control in Remote Falcon."
-" Pick the Next Song then shows this message and your song list, without the "
-"pick buttons. Leave empty for the standard message."
+"Song picking is off when Viewer Control is turned off in Remote Falcon. "
+"Hidden, the button comes back by itself within about 30 seconds of turning "
+"Viewer Control on. You still see it while you’re logged in, with a note."
+msgstr ""
+
+msgid ""
+"Pick the Next Song shows this message and your song list, without the pick "
+"buttons. Leave empty for the standard message."
 msgstr ""

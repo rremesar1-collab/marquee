@@ -5232,3 +5232,16 @@ msgid ""
 "Falcon, like “Voting is closed tonight for our special opening show.” The "
 "song list still shows. Leave empty for the standard message."
 msgstr ""
+
+msgid "When song picking is off in Remote Falcon"
+msgstr ""
+
+msgid "Hide the Pick the Next Song button"
+msgstr ""
+
+msgid "Show it with my message and the song list"
+msgstr ""
+
+msgid ""
+"Visitors don’t see this right now: Viewer Control is off in Remote Falcon."
+msgstr ""

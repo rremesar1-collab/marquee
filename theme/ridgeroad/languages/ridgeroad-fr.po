@@ -4157,3 +4157,18 @@ msgstr ""
 "désactivé dans Remote Falcon, par exemple « Le vote est fermé ce soir pour "
 "notre spectacle spécial d’ouverture. » La liste des chansons reste affichée."
 " Laissez vide pour le message standard."
+
+msgid "When song picking is off in Remote Falcon"
+msgstr "Lorsque le choix des chansons est fermé dans Remote Falcon"
+
+msgid "Hide the Pick the Next Song button"
+msgstr "Masquer le bouton Choisissez la prochaine chanson"
+
+msgid "Show it with my message and the song list"
+msgstr "L’afficher avec mon message et la liste des chansons"
+
+msgid ""
+"Visitors don’t see this right now: Viewer Control is off in Remote Falcon."
+msgstr ""
+"Les visiteurs ne voient pas ceci pour le moment : Viewer Control est "
+"désactivé dans Remote Falcon."
