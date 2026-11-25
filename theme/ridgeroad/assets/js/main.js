@@ -433,7 +433,7 @@
 		var big = { small: 0.7, medium: 1, large: 1.45 }[cfg.snowSize || 'medium'] || 1;
 		if (!cv || !level || !cv.getContext) { if (cv) { cv.remove(); } return; }
 		if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { cv.remove(); return; }
-		var ctx = cv.getContext('2d'), W = 0, H = 0, dpr = Math.min(2, window.devicePixelRatio || 1), flakes = [], wind = 0, t = 0, running = true;
+		var ctx = cv.getContext('2d'), W = 0, H = 0, dpr = Math.min(2, window.devicePixelRatio || 1), flakes = [], wind = 0, t = 0, running = true, hold = false, raf = 0;
 		var sprites = rrFlakeSprites(dpr);
 		function size() { W = window.innerWidth; H = window.innerHeight; cv.width = W * dpr; cv.height = H * dpr; }
 		function want() { return Math.round(Math.min(260, W * H / 9000) * level * snowBoost); }
@@ -447,6 +447,7 @@
 			return f;
 		}
 		function frame() {
+			raf = 0;
 			if (!running) { return; }
 			t += 0.01; wind = Math.sin(t * 0.7) * 0.6;
 			var n = want(), first = !flakes.length;
@@ -468,11 +469,17 @@
 				} else { ctx.beginPath(); ctx.arc(f.x, f.y, f.r, 0, 6.283); ctx.fill(); }
 			}
 			ctx.globalAlpha = 1;
-			requestAnimationFrame(frame);
+			raf = requestAnimationFrame(frame);
 		}
 		size(); window.addEventListener('resize', size);
-		document.addEventListener('visibilitychange', function () { running = !document.hidden; if (running) { requestAnimationFrame(frame); } });
-		requestAnimationFrame(frame);
+		/* the snow stands still while the page is hidden or a video pop-up is open, so a PC can play the video smoothly */
+		function sync() {
+			running = !document.hidden && !hold;
+			if (running && !raf) { raf = requestAnimationFrame(frame); }
+		}
+		document.addEventListener('visibilitychange', sync);
+		document.addEventListener('rr-video', function (e) { hold = !!(e.detail && e.detail.open); sync(); });
+		raf = requestAnimationFrame(frame);
 	}
 
 	/* ---------- Favorite song voting ---------- */
@@ -566,7 +573,8 @@
 		if (!dlg) { return; }
 		var player = dlg.querySelector('[data-rr-vplayer]'), ttl = dlg.querySelector('[data-rr-vtitle]'), yt = dlg.querySelector('[data-rr-vyt]');
 		function stopYt() { if (yt) { yt.innerHTML = ''; yt.hidden = true; } }
-		function close() { player.pause(); player.removeAttribute('src'); player.load(); stopYt(); if (dlg.open) { dlg.close(); } }
+		function snowHold(open) { try { document.dispatchEvent(new CustomEvent('rr-video', { detail: { open: open } })); } catch (e) {} }
+		function close() { player.pause(); player.removeAttribute('src'); player.load(); stopYt(); snowHold(false); if (dlg.open) { dlg.close(); } }
 		document.querySelectorAll('.rr-seq__card').forEach(function (c) {
 			c.addEventListener('click', function () {
 				var id = c.getAttribute('data-yt');
@@ -579,19 +587,21 @@
 					f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
 					f.allowFullscreen = true;
 					yt.innerHTML = ''; yt.appendChild(f); yt.hidden = false;
+					snowHold(true);
 					if (dlg.showModal) { dlg.showModal(); } else { dlg.setAttribute('open', ''); }
 					return;
 				}
 				stopYt(); player.hidden = false;
 				player.src = c.getAttribute('data-video');
+				snowHold(true);
 				if (dlg.showModal) { dlg.showModal(); } else { dlg.setAttribute('open', ''); }
 				var p = player.play(); if (p && p.catch) { p.catch(function () {}); }
 			});
 		});
 		dlg.querySelector('[data-rr-vclose]').addEventListener('click', close);
 		dlg.addEventListener('click', function (e) { if (e.target === dlg) { close(); } });
-		dlg.addEventListener('cancel', function () { player.pause(); stopYt(); });
-		dlg.addEventListener('close', function () { player.pause(); stopYt(); });
+		dlg.addEventListener('cancel', function () { player.pause(); stopYt(); snowHold(false); });
+		dlg.addEventListener('close', function () { player.pause(); stopYt(); snowHold(false); });
 
 		/* card previews (videos without a cover picture) load only when they come near the screen */
 		var lazy = [].slice.call(document.querySelectorAll('.rr-seq__media video[data-src]'));
