@@ -41,7 +41,7 @@ import socket
 import threading
 import urllib.request
 
-VERSION = "3.17.2"
+VERSION = "3.17.3"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -97,6 +97,7 @@ DEFAULTS = {
     "own_start": 0,                   # your own break audio: seconds in when the intro ends (first name goes up); 0 = not set
     "own_end": 0,                     # ... and when the closing lines start. Names are said only in between;
                                       #   after that the screens show names already said, with no voice
+    "repeat_names": True,             # 3.17.3: fewer names than spots: go round them again (False = each name once)
     "per_break": 6,                   # names in one break: fewer = each is up longer (spread over the same part of the break)
     "every": 1,                       # a names break after every this many songs (names collect in between)
     "music_slot": 1,                  # FPP media stream slot for the names break's own music (the break with no fixed timing)
@@ -237,6 +238,8 @@ def site_config(cfg):
             S["per_break"] = max(1, min(6, int(cfg["per_break"])))
         except (TypeError, ValueError):
             pass
+    if "repeat_names" in cfg:
+        S["repeat_names"] = bool(cfg.get("repeat_names"))
     if "simple_break" in cfg:
         S["simple_break"] = bool(cfg.get("simple_break"))
         LAST["site_simple"] = True                  # the website (Marquee 0.9+) has the "simple names break" switch
@@ -1795,16 +1798,8 @@ def _mark(rows, item, shown=None, said=False):
 CUR = {"kind": "", "note": ""}       # the break running now, for its report
 
 
-def _show_turns(names, slots, color, rows):
-    prefetch(names)
-    done = []
-    talk_until = 0
-    voice_until = 0.0                                  # when the name being said right now ends
-    outro_at = float(S["names_start"]) + slots * float(S["slot"])    # the break audio's outro starts about here
-    if QUIET["until"]:
-        # extra spots the break has room for are shown, but not said: Santa's own outro is talking by then
-        outro_at = min(outro_at, QUIET["until"])
-    QUIET["until"] = 0.0
+def plan_turns(names, slots, outro_at):
+    """The turns of a timed names break: [("pic"|"name", kid)], and how many are first turns."""
     # A kid with a picture gets two turns: the picture (while the name is said), then the name.
     # Only whole kids that fit; the rest go up in the next break. Spare slots go round the names again.
     turns = []
@@ -1820,7 +1815,7 @@ def _show_turns(names, slots, color, rows):
     first = len(turns)
     base = list(turns)
     i = 0
-    while turns and len(turns) < slots:              # go round again, pictures too
+    while S.get("repeat_names", True) and turns and len(turns) < slots:   # go round again, pictures too (unless switched off)
         kind, item = base[i % len(base)]
         if kind == "pic" and (len(turns) + 2 > slots or
                               float(S["names_start"]) + len(turns) * float(S["slot"]) + 1.0 > outro_at):
@@ -1829,6 +1824,20 @@ def _show_turns(names, slots, color, rows):
             continue
         turns.append((kind, item))
         i += 1
+    return turns, first
+
+
+def _show_turns(names, slots, color, rows):
+    prefetch(names)
+    done = []
+    talk_until = 0
+    voice_until = 0.0                                  # when the name being said right now ends
+    outro_at = float(S["names_start"]) + slots * float(S["slot"])    # the break audio's outro starts about here
+    if QUIET["until"]:
+        # extra spots the break has room for are shown, but not said: Santa's own outro is talking by then
+        outro_at = min(outro_at, QUIET["until"])
+    QUIET["until"] = 0.0
+    turns, first = plan_turns(names, slots, outro_at)
     said = set()                                     # (turn, kid) where the name was said with the picture
     for k in range(len(turns)):
         kind, item = turns[k]

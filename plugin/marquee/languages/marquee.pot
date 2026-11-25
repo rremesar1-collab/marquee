@@ -7986,3 +7986,11 @@ msgid ""
 "Hidden, the button comes back by itself within about 30 seconds of turning "
 "Viewer Control on."
 msgstr ""
+
+msgid "Repeat names to fill the break"
+msgstr ""
+
+msgid ""
+"With fewer names waiting than your names break has room for, they go up "
+"again so your screens aren’t empty. Turn off to show each name once."
+msgstr ""

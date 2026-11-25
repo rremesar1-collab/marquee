@@ -40,6 +40,7 @@ function marquee_defaults() {
 		'fpp_playlist' => 'Names in Lights', // FPP playlist holding the names break
 		'names_playlists' => array(),        // names go up only while one of these FPP playlists plays (empty = any playlist)
 		'fpp_screens'  => array(),           // [ name, fpp address, overlay model ] for the names script
+		'names_repeat' => 1,                 // fewer names than spots in a names break: go round them again (0 = each name once)
 		'names_simple' => 1,                 // no names break playlist on the FPP: the script (3.10+) makes a simple one, no sequence needed
 		'break_own'    => 0,                 // the show uses its own names break audio: Marquee doesn't put its break audio in the playlists
 		'own_start'    => 0,                 // own break audio: seconds in when the intro talking ends (first name); 0 = not set
@@ -138,6 +139,7 @@ function marquee_save( $in ) {
 		'names_playlists' => isset( $in['fpp_sent'] ) ? marquee_clean_playlist_list( isset( $in['names_playlists'] ) ? (array) wp_unslash( $in['names_playlists'] ) : array(), isset( $in['names_playlists_more'] ) ? (string) wp_unslash( $in['names_playlists_more'] ) : '' ) : $cur['names_playlists'],
 		'fpp_screens'  => isset( $in['fpp_sent'] ) ? marquee_clean_screens( isset( $in['fpp_screens'] ) ? (array) wp_unslash( $in['fpp_screens'] ) : array() ) : $cur['fpp_screens'],
 		'names_simple' => isset( $in['fpp_sent'] ) ? (int) ! empty( $in['names_simple'] ) : $cur['names_simple'],
+		'names_repeat' => isset( $in['fpp_sent'] ) ? (int) ! empty( $in['names_repeat'] ) : ( $cur['names_repeat'] ?? 1 ),
 		'break_own'    => isset( $in['break_own_sent'] ) ? (int) ! empty( $in['break_own'] ) : $cur['break_own'],
 		'own_start'    => isset( $in['own_start'] ) ? max( 0, min( 120, round( (float) $in['own_start'], 2 ) ) ) : (float) ( $cur['own_start'] ?? 0 ),
 		'own_end'      => isset( $in['own_end'] ) ? max( 0, min( 180, round( (float) $in['own_end'], 2 ) ) ) : (float) ( $cur['own_end'] ?? 0 ),
@@ -493,6 +495,7 @@ function marquee_fpp_config() {
 		'break_own'      => ! empty( $s['break_own'] ), // script 3.10+: leave the playlists' audio alone, use these timings
 		'per_break'      => max( 1, min( 6, (int) $s['names_per_break'] ) ), // script 3.11+: fewer names, each up longer
 		'every'          => max( 1, min( 6, (int) $s['names_every'] ) ),     // script 3.12+: a names break after every this many songs
+		'repeat_names'   => ! isset( $s['names_repeat'] ) || ! empty( $s['names_repeat'] ), // script 3.17.3+: false = each name goes up once
 	) + marquee_own_window();
 }
 

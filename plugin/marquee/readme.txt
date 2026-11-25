@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.20.11
+Stable tag: 0.20.12
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,9 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.20.12 =
+* Names in Lights: new "Repeat names to fill the break" switch (Settings → Names in Lights, names break tab). On, as before: with fewer names than your break has room for, they go up again. Off: each name goes up once. Needs the FPP plugin 3.17.3 or newer.
 
 = 0.20.11 =
 * Pick the Next Song hides itself while Viewer Control is off in Remote Falcon, and comes back within about 30 seconds of turning it on. Prefer the "picking is closed" message with the song list? Pick "Show it with my message and the song list" in Settings → Connections.
