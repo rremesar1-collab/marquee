@@ -5,7 +5,7 @@ Tags: christmas lights, xlights, fpp, remote falcon, light show
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.20.9
+Stable tag: 0.20.10
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,9 @@ Yes. With the Marquee Festive theme the show sections use its look. With any oth
 Marquee → Settings → "Send feedback", or email support@alateka.com.
 
 == Changelog ==
+
+= 0.20.10 =
+* Pick the Next Song shows the same song covers as your Songs page: your own picture for each song, Remote Falcon's artwork, or one Marquee found. Songs set to "No cover" stay without one.
 
 = 0.20.9 =
 * Pick the Next Song: your own message for nights song picking is closed (Settings → Connections → Remote Falcon), like "Voting is closed tonight for our special opening show". While Viewer Control is off in Remote Falcon, visitors see that message and the song list, without the pick buttons.

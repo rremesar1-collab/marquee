@@ -72,17 +72,28 @@ extract( ridgeroad_home_ctx(), EXTR_SKIP ); // $status, $np, $wx, $opts, $b_titl
 			}
 			?>
 			<?php
-			$rf_hide = array(); // songs ticked under "Leave out of song voting" are left out here too
+			$rf_hide   = array(); // songs ticked under "Leave out of song voting" are left out here too
+			$rf_covers = null;    // the same song covers as the Songs page (title => picture, false = "No cover")
 			if ( function_exists( 'marquee_get' ) && function_exists( 'ridgeroad_song_list_all' ) ) {
 				$rf_off = (array) marquee_get( 'vote_hide' );
+				$rf_cov = marquee_get( 'covers_on' ) && function_exists( 'ridgeroad_song_cover' );
+				$rf_own = (array) marquee_get( 'covers' );
 				foreach ( ridgeroad_song_list_all() as $rf_s ) {
 					if ( in_array( $rf_s['key'], $rf_off, true ) ) {
 						$rf_hide[] = $rf_s['title'];
 					}
+					if ( $rf_cov ) {
+						$rf_u = ridgeroad_song_cover( $rf_s );
+						if ( '' !== $rf_u ) {
+							$rf_covers[ mb_strtolower( $rf_s['title'] ) ] = $rf_u;
+						} elseif ( isset( $rf_own[ $rf_s['key'] ] ) && (int) $rf_own[ $rf_s['key'] ] < 0 ) {
+							$rf_covers[ mb_strtolower( $rf_s['title'] ) ] = false; // "No cover" picked for this song
+						}
+					}
 				}
 			}
 			?>
-			<div class="rr-rfpick<?php echo $rf_prev ? ' is-preview' : ''; ?>" data-rr-rfpick data-hide="<?php echo esc_attr( wp_json_encode( $rf_hide ) ); ?>" data-sub="<?php echo esc_attr( $rf_sub ); ?>" data-off="<?php echo esc_attr( trim( (string) ridgeroad_mod( 'rf_off_msg' ) ) ); ?>" data-api="<?php echo esc_url( apply_filters( 'ridgeroad_rf_viewer_api', 'https://remotefalcon.com/remote-falcon-viewer/graphql' ) ); ?>" <?php echo $rf_prev ? 'data-preview="1"' : ''; ?> <?php echo ( 'running' === $status['state'] || $rf_prev ) ? '' : 'hidden'; ?>>
+			<div class="rr-rfpick<?php echo $rf_prev ? ' is-preview' : ''; ?>" data-rr-rfpick data-hide="<?php echo esc_attr( wp_json_encode( $rf_hide ) ); ?>" data-sub="<?php echo esc_attr( $rf_sub ); ?>" data-off="<?php echo esc_attr( trim( (string) ridgeroad_mod( 'rf_off_msg' ) ) ); ?>"<?php echo null !== $rf_covers ? ' data-covers="' . esc_attr( wp_json_encode( (object) $rf_covers ) ) . '"' : ''; ?> data-api="<?php echo esc_url( apply_filters( 'ridgeroad_rf_viewer_api', 'https://remotefalcon.com/remote-falcon-viewer/graphql' ) ); ?>" <?php echo $rf_prev ? 'data-preview="1"' : ''; ?> <?php echo ( 'running' === $status['state'] || $rf_prev ) ? '' : 'hidden'; ?>>
 				<a class="rr-btn rr-btn--red" href="<?php echo esc_url( $rf_pick ); ?>" target="_blank" rel="noopener" data-rf-open><?php echo ridgeroad_cicon( 'music' ); ?><?php esc_html_e( 'Pick the Next Song', 'ridgeroad' ); ?></a>
 				<span class="rr-rfpick__note"><?php esc_html_e( 'Choose what plays next!', 'ridgeroad' ); ?></span>
 				<?php if ( $rf_prev ) : ?><em class="rr-rfpick__preview"><?php esc_html_e( 'Only you can see this right now (you’re logged in). Visitors see it while the show is running.', 'ridgeroad' ); ?></em><?php endif; ?>

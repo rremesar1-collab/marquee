@@ -15,6 +15,14 @@
 	var list = dlg.querySelector('[data-rf-list]'), msg = dlg.querySelector('[data-rf-msg]'), head = dlg.querySelector('[data-rf-head]');
 	var show = null, timer = null, busy = false, pos = null, hide = [], wasOff = false;
 	try { hide = (JSON.parse(box.getAttribute('data-hide') || '[]') || []).map(function (t) { return String(t).toLowerCase(); }); } catch (e) {}
+	var covers = null;   // the site's song covers (your own picture, Remote Falcon's, or one found for it), by title
+	try { covers = box.hasAttribute('data-covers') ? JSON.parse(box.getAttribute('data-covers')) : null; } catch (e) {}
+	function cover(t, rf) {
+		if (!covers) { return rf || ''; }
+		var k = String(t).toLowerCase();
+		if (!Object.prototype.hasOwnProperty.call(covers, k)) { return rf || ''; }
+		return covers[k] === false ? '' : covers[k];   // false: "No cover" picked in Marquee
+	}
 	function title(q) { return (q.displayName || String(q.name || '').replace(/\.(fseq|xsq|mp3)$/i, '').replace(/_/g, ' ')).trim(); }
 
 	var SAY = {
@@ -41,7 +49,7 @@
 				var key = q.group ? 'g:' + q.group : q.name;
 				if (seen[key]) { return; }
 				seen[key] = 1;
-				out.push(q.group ? { name: q.group, title: q.group, artist: '', img: q.imageUrl } : { name: q.name, title: q.displayName || q.name, artist: q.artist, img: q.imageUrl });
+				out.push(q.group ? { name: q.group, title: q.group, artist: '', img: cover(q.group, q.imageUrl) } : { name: q.name, title: q.displayName || q.name, artist: q.artist, img: cover(title(q), q.imageUrl) });
 			});
 		return out;
 	}
