@@ -41,7 +41,7 @@ import socket
 import threading
 import urllib.request
 
-VERSION = "3.17.4"
+VERSION = "3.17.5"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -1432,9 +1432,15 @@ def say(item):
     if not effs:
         return 0
     started = 0
+    eseqs = effect_files()
     for eff in effs:
         try:
-            fpp_command(MASTER, "FSEQ Effect Start", [eff, "true", "false"])
+            if eff in eseqs or eseqs is None:
+                # 3.17.5: an .eseq (FPP -> Effects, exported from xLights) plays with "Effect Start", on the
+                # channels of the model it was exported from ("FSEQ Effect Start" only plays .fseq sequences)
+                fpp_command(MASTER, "Effect Start", [eff, "0", "true", "false"])
+            else:
+                fpp_command(MASTER, "FSEQ Effect Start", [eff, "true", "false"])   # an .fseq in Sequences
             started += 1
         except Exception as e:
             log("could not start the talking effect '%s':" % eff, e)
@@ -1453,10 +1459,25 @@ def talk_effects():
             for e in str(S["talk_effect"] or "").split(",") if e.strip()]
 
 
+_EFFS = {"t": 0.0, "list": None}
+
+
+def effect_files():
+    """The .eseq effects on this FPP (names without .eseq), looked up every few minutes; None if FPP didn't say."""
+    if time.time() - _EFFS["t"] > 300 or _EFFS["list"] is None:
+        try:
+            got = fpp_get(MASTER, "/api/effects", timeout=3) or []
+            _EFFS["list"] = {str(e)[:-5] if str(e).lower().endswith(".eseq") else str(e) for e in got}
+        except Exception:
+            _EFFS["list"] = None
+        _EFFS["t"] = time.time()
+    return _EFFS["list"]
+
+
 def stop_talking():
     for eff in talk_effects():
         try:
-            fpp_command(MASTER, "FSEQ Effect Stop", [eff])
+            fpp_command(MASTER, "Effect Stop", [eff])   # stops an .eseq or an .fseq effect alike
         except Exception as e:
             log("could not stop the talking effect:", e)
 
