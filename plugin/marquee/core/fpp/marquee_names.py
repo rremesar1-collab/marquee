@@ -41,7 +41,7 @@ import socket
 import threading
 import urllib.request
 
-VERSION = "3.17.3"
+VERSION = "3.17.4"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -929,6 +929,10 @@ def slots_for(st):
         fit = int((length - float(S["names_start"]) - 1.0) / float(S["slot"]))   # a second or so left for the outro
         if fit >= 1:
             slots = min(int(S["max_names"]), fit)
+    if b:
+        # 3.17.4: your own break audio sets where the names go; the break's full length (its closing, the
+        # Kids' Corner part) is no room for more names, so never more spots than fit before the closing
+        slots = min(slots, want)
     if short:
         # a short break has room for each name twice and no more: its length also holds the announcer's
         # closing (several seconds, not one), so counting from the length would put names over it
