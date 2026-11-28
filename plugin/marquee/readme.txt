@@ -58,7 +58,7 @@ Marquee → Settings → "Send feedback", or email support@alateka.com.
 * Guestbook: reply to messages from the Show Manager (Approve tab). Your reply shows under their message on the guestbook, labeled with your show's name. Replying to a waiting message approves it too. Messages from the last 3 days can get a reply, or have it changed. If the visitor's phone has your show's alerts on, it gets a buzz with your reply.
 * Names in Lights: "Then they wait" setting, next to "Names each phone can send" (Settings and the Show Manager's Names tab). Pick 1 to 24 hours. A phone that used up its names is told what time it can send again.
 * Name buzz in three steps when it's a few songs away: "Got it, about 3 songs" right after the kid asks, "Get ready, after this song" when the last song before the names break starts, then "Look at the screens" when the break starts. A name that doesn't fit in a full break is told it's in the next one.
-* Bundled FPP plugin 3.17.6: reports how many names fit in a break (so only the kids going up get buzzed), and an emptied talking-faces box now turns the faces off.
+* Bundled FPP plugin 3.17.7: reports how many names fit in a break (so only the kids going up get buzzed); an emptied talking-faces box now turns the faces off; Santa never talks over himself (a long name, or Santa answering a "Hi Santa!", gets a longer turn, and the next name waits until he has finished).
 
 = 0.20.13 =
 * Songs page: sequence videos no longer freeze on computers while the snow is falling. The snow now holds still while a video pop-up is open and falls again when you close it.

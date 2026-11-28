@@ -41,7 +41,7 @@ import socket
 import threading
 import urllib.request
 
-VERSION = "3.17.6"
+VERSION = "3.17.7"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -1631,6 +1631,17 @@ def turn_room():
     return max(2.0, float(S["slot"]) - 0.4)
 
 
+def say_secs(item):
+    """How long Santa talks for this name (0 when spoken names are off). A long name with a long message,
+    or Santa answering a "Hi Santa!", can run past one kid's turn in the break."""
+    if not S["voice"] or not item.get("audio"):
+        return 0.0
+    try:
+        return max(0.5, min(8.0, float(item.get("say_for") or 2.0)))
+    except (TypeError, ValueError):
+        return 2.0
+
+
 def need_secs(text):
     """How long a message needs on the screens to be read, on the slowest of them."""
     need = STILL_SECS
@@ -1802,14 +1813,15 @@ def _run_break(color):
         if cands:
             # a name that needs longer to read than its turn (a long message scrolling on a small matrix):
             # fewer, longer turns in the same stretch of the break, instead of rushing it across
-            need = max(need_secs(n.get("text", "")) for n in cands) + 0.4
+            # 3.17.7: and long enough for Santa to finish saying it before the next name starts
+            need = max(max(need_secs(n.get("text", "")) + 0.4 for n in cands), max(say_secs(n) for n in cands) + 0.6)
             window = slots * float(S["slot"])
             if need > float(S["slot"]) + 0.05:
                 fit = max(1, int(window // need))
                 while fit < min(slots, len(cands)) and window / (fit + 1) >= 0.8 * need:
                     fit += 1                    # a little quicker than reading speed keeps one more kid in this break
                 if fit < slots:
-                    log("giving each name more time to be read: %d turn(s) of %.1fs instead of %d of %.1fs"
+                    log("giving each name more time (to be read and said): %d turn(s) of %.1fs instead of %d of %.1fs"
                         % (fit, window / fit, slots, float(S["slot"])))
                     S["slot"] = window / fit
                     S["show_for"] = max(2.0, S["slot"] - 0.6)
@@ -1899,6 +1911,18 @@ def _show_turns(names, slots, color, rows):
     QUIET["until"] = 0.0
     turns, first = plan_turns(names, slots, outro_at)
     said = set()                                     # (turn, kid) where the name was said with the picture
+    owed = set()                                     # 3.17.7: kids not said yet because Santa was still talking
+
+    def wait_for_santa(say_for, el):
+        """3.17.7: Santa is still saying the last name: wait for him to finish (the name is already up), as long
+        as this one still ends before the outro. False = no time left: it's said on the kid's next turn."""
+        left = voice_until - time.time()
+        if left <= 0:
+            return True
+        if el + left + say_for > outro_at - 0.3:
+            return False
+        time.sleep(left + 0.15)
+        return True
     for k in range(len(turns)):
         kind, item = turns[k]
         at = float(S["names_start"]) + k * float(S["slot"])
@@ -1943,12 +1967,16 @@ def _show_turns(names, slots, color, rows):
                 say_for = 2.0
             # the name is said while the picture is up; going round again, only when Santa has finished
             # the last one and it ends before the outro (same as a name on its own)
-            if not repeat or (S["say_every_time"] and time.time() >= voice_until and el + say_for <= outro_at - 0.3):
-                if talk_until:
-                    stop_talking()
-                talk_until = say(item)
-                voice_until = time.time() + say_for
-                _mark(rows, item, said=True)
+            if not repeat or item["id"] in owed or (S["say_every_time"] and time.time() >= voice_until and el + say_for <= outro_at - 0.3):
+                if not wait_for_santa(say_for, el):
+                    owed.add(item["id"])
+                else:
+                    owed.discard(item["id"])
+                    if talk_until:
+                        stop_talking()
+                    talk_until = say(item)
+                    voice_until = time.time() + say_for
+                    _mark(rows, item, said=True)
             said.add((k, item["id"]))
             if item["id"] not in done:
                 done.append(item["id"])
@@ -1965,14 +1993,20 @@ def _show_turns(names, slots, color, rows):
             # a name going round again is only said when Santa has finished the last one and it ends before the outro
             if (k - 1, item["id"]) in said:
                 pass                                     # just said with its picture
-            elif repeat and (time.time() < voice_until or el + say_for > outro_at - 0.3):
+            elif repeat and item["id"] not in owed and (time.time() < voice_until or el + say_for > outro_at - 0.3):
                 pass
-            elif S["say_every_time"] or not repeat:
-                if talk_until:
-                    stop_talking()
-                talk_until = say(item)
-                voice_until = time.time() + say_for
-                _mark(rows, item, said=True)
+            elif S["say_every_time"] or not repeat or item["id"] in owed:
+                # never over Santa: a long name (or Santa answering a "Hi Santa!") can still be playing
+                if not wait_for_santa(say_for, el):
+                    owed.add(item["id"])
+                    log("not saying %s yet - Santa is still talking; it's said on its next turn" % item.get("text"))
+                else:
+                    owed.discard(item["id"])
+                    if talk_until:
+                        stop_talking()
+                    talk_until = say(item)
+                    voice_until = time.time() + say_for
+                    _mark(rows, item, said=True)
             if item["id"] not in done:
                 done.append(item["id"])
         else:
