@@ -41,7 +41,7 @@ import socket
 import threading
 import urllib.request
 
-VERSION = "3.17.5"
+VERSION = "3.17.6"
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Where the settings file may be: next to this script, or wherever FPP's File Manager
 # put it (it files .json uploads under Uploads or Config, not Scripts).
@@ -254,8 +254,12 @@ def site_config(cfg):
     if cfg.get("break_playlist") not in (None, "") and str(cfg["break_playlist"]) != S["break_playlist"] and "bp" in LAST:
         CHECK["want"] = CHECK["want"] or "changed"
     LAST["bp"] = True
+    if "talk_effect" in cfg and str(cfg.get("talk_effect") or "").strip() != str(S.get("talk_effect") or "").strip():
+        # 3.17.6: the website's box is the one to go by, even emptied (an emptied box used to keep the old effects)
+        S["talk_effect"] = str(cfg.get("talk_effect") or "").strip()
+        log("talking faces effect from the website:", S["talk_effect"] or "none")
     for k in SITE_KEYS:
-        if cfg.get(k) not in (None, ""):
+        if k != "talk_effect" and cfg.get(k) not in (None, ""):
             try:
                 S[k] = str(cfg[k]) if isinstance(DEFAULTS[k], str) else float(cfg[k])
             except (TypeError, ValueError):
@@ -337,7 +341,9 @@ def pull(done_ids, st=None, report=None):
                 # 3.13+: where the show is in "names break after every N songs", for the website's messages and buzz
                 "played": SONGS["played"], "every": int(S.get("every") or 1), "queued": bool(QUEUED["on"]),
                 # 3.17.3+: the names break is playing (the website buzzes kids' phones only then, never while idle)
-                "in_break": bool(in_break(st))}
+                "in_break": bool(in_break(st)),
+                # 3.17.6: names that fit in one break (the last one), so the website buzzes only the kids going up
+                "spots": int(LAST.get("spots") or 0)}
         if time.time() - PL_SENT["t"] > 600:          # the playlist list, for the website's "Only during these playlists"
             pls = fpp_playlists()
             if pls:
@@ -1430,7 +1436,11 @@ def say(item):
     log("saying:", item.get("text"))
     effs = talk_effects()
     if not effs:
+        if not LAST.get("no_talk"):
+            log("no talking faces effect set on the website (Names in Lights, Voice), so the faces stay still")
+            LAST["no_talk"] = True
         return 0
+    LAST["no_talk"] = False
     started = 0
     eseqs = effect_files()
     for eff in effs:
@@ -1748,7 +1758,9 @@ def ping_break_started():
             st = master_status()
             info = {"status": status_name(st), "playlist": playlist_name(st), "sequence": st.get("current_sequence", ""),
                     "played": SONGS["played"], "every": int(S.get("every") or 1), "queued": bool(QUEUED["on"]),
-                    "in_break": bool(in_break(st))}
+                    "in_break": bool(in_break(st)),
+                # 3.17.6: names that fit in one break (the last one), so the website buzzes only the kids going up
+                "spots": int(LAST.get("spots") or 0)}
             url = str(S["site"]).rstrip("/") + "/wp-admin/admin-ajax.php?action=rr_names_pull&key=" + urllib.parse.quote(str(S["key"]))
             http_json(url, {"ping": "1", "fpp": json.dumps(info)})
         except Exception as e:
@@ -1803,6 +1815,7 @@ def _run_break(color):
                     S["show_for"] = max(2.0, S["slot"] - 0.6)
                     slots = fit
         names = cands[:slots]
+        LAST["spots"] = slots
         color = data.get("color") or color
         CUR.update(kind=("theme: %s" % THEMES[theme].get("name", theme)) if theme else "timed", note="")
     except Exception as e:

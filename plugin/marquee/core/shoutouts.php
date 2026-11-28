@@ -197,14 +197,29 @@ function ridgeroad_name_send() {
 	$g    = isset( $_POST['greet'] ) ? sanitize_key( $_POST['greet'] ) : '';
 	$g    = isset( $msgs[ $g ] ) ? $g : array_keys( $msgs )[0];
 
-	// limits: a few an hour from one phone/network (3 unless the show picked another number), and
-	// no repeats of the same name for 20 minutes. A logged-in site admin (you, testing) skips both limits.
+	// limits: a few names from one phone/network (3 unless the show picked another number), then a wait
+	// (1 hour unless the show picked longer), and no repeats of the same name for 20 minutes.
+	// A logged-in site admin (you, testing) skips both limits.
 	$admin = current_user_can( 'manage_options' );
 	$ip    = ridgeroad_ip_hash();
 	$k     = 'rr_nm_' . $ip;
-	$n     = (int) get_transient( $k );
+	$got   = get_transient( $k );
+	$n     = is_array( $got ) ? (int) $got['n'] : (int) $got;
+	$until = is_array( $got ) ? (int) $got['until'] : 0;
 	$most  = max( 1, min( 10, (int) apply_filters( 'ridgeroad_names_per_phone', 3 ) ) );
+	$wait  = max( 1, min( 24, (int) apply_filters( 'ridgeroad_names_wait_hours', 1 ) ) );
 	if ( ! $admin && $n >= $most ) {
+		if ( $wait > 1 && $until > time() ) {
+			// a longer wait: say when they can send again ("9:30 PM", or the day for tomorrow)
+			$tz   = function_exists( 'ridgeroad_tz' ) ? ridgeroad_tz() : wp_timezone();
+			$same = wp_date( 'Ymd', $until, $tz ) === wp_date( 'Ymd', time(), $tz );
+			$when = wp_date( $same ? __( 'g:i A', 'ridgeroad' ) : __( 'l g:i A', 'ridgeroad' ), $until, $tz );
+			$fail( 1 === $most
+				/* translators: %s: when they can send again, e.g. 9:30 PM or Saturday 6:00 PM */
+				? sprintf( __( 'You already sent your name! Watch for it in the show. You can send another after %s.', 'ridgeroad' ), $when )
+				/* translators: 1: how many names one phone can send, 2: when they can send again, e.g. 9:30 PM */
+				: sprintf( __( 'You already sent %1$d names! Watch for them in the show. You can send more after %2$s.', 'ridgeroad' ), $most, $when ), 429 );
+		}
 		$fail( 1 === $most
 			? __( 'You already sent your name! Watch for it in the show. You can send another in a little while.', 'ridgeroad' )
 			/* translators: %d: how many names one phone can send in an hour */
@@ -243,7 +258,9 @@ function ridgeroad_name_send() {
 	update_post_meta( $id, '_rr_shown', 0 );
 	ridgeroad_stat_add( 'name_sent' );
 	if ( ! $admin ) {
-		set_transient( $k, $n + 1, HOUR_IN_SECONDS );
+		// the wait counts from this phone's first name, so a 2-hour wait means 2 hours after it started
+		$until = $until > time() ? $until : time() + $wait * HOUR_IN_SECONDS;
+		set_transient( $k, array( 'n' => $n + 1, 'until' => $until ), max( 60, $until - time() ) );
 	}
 	do_action( 'ridgeroad_name_added', $id, $text ); // Marquee: make the spoken version
 	$theme_name = ( $theme && function_exists( 'marquee_themes' ) && isset( marquee_themes()[ $theme ] ) ) ? marquee_themes()[ $theme ]['name'] : '';
@@ -294,6 +311,8 @@ function ridgeroad_names_pull() {
 	if ( ! empty( $_POST['fpp'] ) ) {
 		$f = json_decode( wp_unslash( $_POST['fpp'] ), true ); // phpcs:ignore
 		if ( is_array( $f ) ) {
+			$prev0 = get_option( 'ridgeroad_fpp' );
+			$prev0 = is_array( $prev0 ) ? $prev0 : array();
 			update_option( 'ridgeroad_fpp', array(
 				'status'   => isset( $f['status'] ) ? sanitize_text_field( mb_substr( (string) $f['status'], 0, 30 ) ) : '',
 				'playlist' => isset( $f['playlist'] ) ? sanitize_text_field( mb_substr( (string) $f['playlist'], 0, 80 ) ) : '',
@@ -304,7 +323,12 @@ function ridgeroad_names_pull() {
 				'every'    => isset( $f['every'] ) ? max( 1, (int) $f['every'] ) : null,
 				'queued'   => ! empty( $f['queued'] ),
 				// names script 3.17.3+: true while the names break is playing (it checks in the moment the break starts)
-				'in_break' => array_key_exists( 'in_break', $f ) ? ! empty( $f['in_break'] ) : null,
+				'in_break' => $ib = ( array_key_exists( 'in_break', $f ) ? ! empty( $f['in_break'] ) : null ),
+				// when this break started and when the last one ended (for which phones to buzz, and when)
+				'break_at' => $ib && empty( $prev0['in_break'] ) ? time() : (int) ( $prev0['break_at'] ?? 0 ),
+				'break_end' => ! $ib && ! empty( $prev0['in_break'] ) ? time() : (int) ( $prev0['break_end'] ?? 0 ),
+				// names script 3.17.6+: names that fit in one break (the last break's count)
+				'spots'    => isset( $f['spots'] ) && (int) $f['spots'] > 0 ? min( 12, (int) $f['spots'] ) : (int) ( $prev0['spots'] ?? 0 ),
 				'playlists' => isset( $f['playlists'] ) && is_array( $f['playlists'] )
 					? array_slice( array_values( array_filter( array_map( function ( $p ) { return sanitize_text_field( mb_substr( (string) $p, 0, 80 ) ); }, $f['playlists'] ) ) ), 0, 60 )
 					: ( is_array( $prev = get_option( 'ridgeroad_fpp' ) ) && isset( $prev['playlists'] ) ? (array) $prev['playlists'] : array() ),
@@ -340,8 +364,18 @@ function ridgeroad_names_pull() {
 		// buzz the phones that asked, for the names going up next: only once the show is actually playing
 		$buzz = function_exists( 'ridgeroad_app_buzz_names' ) ? ridgeroad_names_buzz_due() : '';
 		if ( $out && $buzz ) {
-			$most = function_exists( 'marquee_get' ) ? max( 1, min( 6, (int) marquee_get( 'names_per_break' ) ) ) : 6;
-			ridgeroad_app_buzz_names( wp_list_pluck( array_slice( $out, 0, $most ), 'id' ), 'now' === $buzz );
+			$ids = wp_list_pluck( array_slice( $out, 0, ridgeroad_names_per_break() ), 'id' );
+			if ( 'now' === $buzz && ! apply_filters( 'ridgeroad_names_live', false ) ) {
+				// a name sent after this break started waits for the next one: no "look now" for it
+				$f   = get_option( 'ridgeroad_fpp' );
+				$at  = is_array( $f ) ? (int) ( $f['break_at'] ?? 0 ) : 0;
+				$ids = array_values( array_filter( $ids, function ( $id ) use ( $at ) {
+					return ! $at || (int) get_post_time( 'U', true, $id ) <= $at;
+				} ) );
+			}
+			if ( $ids ) {
+				ridgeroad_app_buzz_names( $ids, $buzz );
+			}
 		}
 	}
 	wp_send_json_success( apply_filters( 'ridgeroad_names_pull_data', array( 'names' => $out, 'color' => ridgeroad_mod( 'names_color' ) ) ) );
@@ -349,8 +383,9 @@ function ridgeroad_names_pull() {
 
 /**
  * When to buzz the phones of the names going up next: 'now' (the names break has started, or names go up
- * during the songs and the show is playing), 'soon' (an older names script that can't say when its break
- * starts: the break is after the current song), or '' (not yet; never while nothing is playing).
+ * during the songs and the show is playing), 'soon' (the last song before the names break is playing),
+ * 'old' (an older names script that can't say when its break starts: the break is after the current song,
+ * one buzz only), or '' (not yet; never while nothing is playing).
  */
 function ridgeroad_names_buzz_due() {
 	$f = get_option( 'ridgeroad_fpp' );
@@ -361,9 +396,37 @@ function ridgeroad_names_buzz_due() {
 		return 'now';
 	}
 	if ( isset( $f['in_break'] ) && null !== $f['in_break'] ) {
-		return $f['in_break'] ? 'now' : '';
+		if ( $f['in_break'] ) {
+			return 'now';
+		}
+		return ridgeroad_names_songs_left() <= 1 ? 'soon' : '';
 	}
-	return ridgeroad_names_songs_left() <= 1 ? 'soon' : '';
+	return ridgeroad_names_songs_left() <= 1 ? 'old' : '';
+}
+
+/** Names that go up in one break: "Most names per break" (Marquee), or fewer if the FPP said fewer fit. */
+function ridgeroad_names_per_break() {
+	$most = function_exists( 'marquee_get' ) ? max( 1, min( 6, (int) marquee_get( 'names_per_break' ) ) ) : 6;
+	$f    = get_option( 'ridgeroad_fpp' );
+	$fit  = is_array( $f ) ? (int) ( $f['spots'] ?? 0 ) : 0;
+	return $fit > 0 ? min( $most, $fit ) : $most;
+}
+
+/**
+ * About how many songs until this name goes up: the songs left before the next names break, plus a full
+ * "every N songs" for each break it has to wait through when more names are ahead of it than fit in one.
+ * 0 = can't tell (the show isn't playing, or an older names script).
+ */
+function ridgeroad_name_songs_ahead( $id ) {
+	$f = get_option( 'ridgeroad_fpp' );
+	if ( ! is_array( $f ) || 'playing' !== ( $f['status'] ?? '' ) || ! isset( $f['in_break'] ) || null === $f['in_break'] || apply_filters( 'ridgeroad_names_live', false ) ) {
+		return 0;
+	}
+	$every  = max( 1, (int) ( $f['every'] ?? 1 ) );
+	$breaks = (int) floor( ( ridgeroad_name_place( $id ) - 1 ) / ridgeroad_names_per_break() );
+	// during a break, this name waits for the next one (the break playing took its names already)
+	$left = $f['in_break'] ? $every : ridgeroad_names_songs_left();
+	return $left + $breaks * $every;
 }
 
 /**

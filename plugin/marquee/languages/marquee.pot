@@ -6,10 +6,7 @@ msgstr ""
 "X-Domain: marquee\n"
 
 #: plugin/marquee/marquee.php:111
-msgid ""
-"Your festive theme is older than 2.9.0, so it is still using its own built-"
-"in show features. Upload Marquee Festive 2.9.0 or newer (Appearance → Themes"
-" → Add New → Upload, then “Replace current”) to finish the switch."
+msgid "Your festive theme is older than 2.9.0, so it is still using its own built-in show features. Upload Marquee Festive 2.9.0 or newer (Appearance → Themes → Add New → Upload, then “Replace current”) to finish the switch."
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:269
@@ -17,9 +14,7 @@ msgid "Type a first name to put in line."
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:282
-msgid ""
-"“%s” is in line. It goes up at the next names break (start your Names in "
-"Lights playlist to see it now)."
+msgid "“%s” is in line. It goes up at the next names break (start your Names in Lights playlist to see it now)."
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:294
@@ -35,9 +30,7 @@ msgid "It last checked in %s ago."
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:329
-msgid ""
-"Update the Marquee plugin on your FPP (Content Setup → Plugin Manager) for "
-"the screen picker and the simple names break."
+msgid "Update the Marquee plugin on your FPP (Content Setup → Plugin Manager) for the screen picker and the simple names break."
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:331
@@ -45,20 +38,15 @@ msgid "Your FPP hasn’t checked in lately"
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:331
-msgid ""
-"Last time was %s ago. Is the FPP on, and is the Marquee plugin running on "
-"it?"
+msgid "Last time was %s ago. Is the FPP on, and is the Marquee plugin running on it?"
 msgstr ""
 
-#: plugin/marquee/inc/names-setup.php:333 plugin/marquee/inc/admin.php:373
-#: plugin/marquee/inc/tour.php:42
+#: plugin/marquee/inc/names-setup.php:333 plugin/marquee/inc/admin.php:373 plugin/marquee/inc/tour.php:42
 msgid "Connect your FPP"
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:333
-msgid ""
-"Install the Marquee plugin on the FPP that plays your show and paste your "
-"connection code. The steps are in step 2 below (Connect your FPP)."
+msgid "Install the Marquee plugin on the FPP that plays your show and paste your connection code. The steps are in step 2 below (Connect your FPP)."
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:344
@@ -66,15 +54,11 @@ msgid "Pick your screen"
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:344
-msgid ""
-"Pick the matrix, TV or projector the names go on from the list in step 3 "
-"below (Screens), then Save."
+msgid "Pick the matrix, TV or projector the names go on from the list in step 3 below (Screens), then Save."
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:344
-msgid ""
-"Type the overlay model name of your matrix, TV or projector in step 3 below "
-"(Screens), then Save."
+msgid "Type the overlay model name of your matrix, TV or projector in step 3 below (Screens), then Save."
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:349
@@ -92,9 +76,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: plugin/marquee/inc/names-setup.php:351
-msgid ""
-"If it’s just switched off, that’s fine: names go up on it once it’s on. This"
-" updates by itself every couple of minutes."
+msgid "If it’s just switched off, that’s fine: names go up on it once it’s on. This updates by itself every couple of minutes."
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:354
@@ -106,10 +88,7 @@ msgid "Names may scroll too fast on %s"
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:358
-msgid ""
-"Each name is up for only a couple of seconds, so a scrolling message has to "
-"fly across. Show it still (Text: Still, in the Screens step), or give each "
-"name more time with fewer Names per break."
+msgid "Each name is up for only a couple of seconds, so a scrolling message has to fly across. Show it still (Text: Still, in the Screens step), or give each name more time with fewer Names per break."
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:361
@@ -125,44 +104,31 @@ msgid "Names break is ready"
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:379
-msgid ""
-"Marquee made a simple names break on your FPP: the show pauses and the names"
-" go up on your screens. Want music, a voice or a light show with it? The "
-"Names break and Voice steps add them."
+msgid "Marquee made a simple names break on your FPP: the show pauses and the names go up on your screens. Want music, a voice or a light show with it? The Names break and Voice steps add them."
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:379
 msgid "Your FPP has the “%s” playlist."
 msgstr ""
 
-#: plugin/marquee/inc/names-setup.php:382
-#: plugin/marquee/inc/names-setup.php:384
-#: plugin/marquee/inc/names-setup.php:386
+#: plugin/marquee/inc/names-setup.php:382 plugin/marquee/inc/names-setup.php:384 plugin/marquee/inc/names-setup.php:386
 msgid "Names break"
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:382
-msgid ""
-"Marquee makes a simple names break on your FPP for you. Click Check again."
+msgid "Marquee makes a simple names break on your FPP for you. Click Check again."
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:384
-msgid ""
-"Turn on Your Name in Lights (Features & pages) and Marquee makes a simple "
-"names break on your FPP for you."
+msgid "Turn on Your Name in Lights (Features & pages) and Marquee makes a simple names break on your FPP for you."
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:386
-msgid ""
-"Your FPP has no “%s” playlist. Update the Marquee plugin on your FPP and it "
-"makes a simple one for you, or make one with your names sequence (the "
-"Sequence maker can make it)."
+msgid "Your FPP has no “%s” playlist. Update the Marquee plugin on your FPP and it makes a simple one for you, or make one with your names sequence (the Sequence maker can make it)."
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:388
-msgid ""
-"Your FPP has no “%s” playlist. Make one with your names sequence in it (the "
-"Sequence maker can make it)."
+msgid "Your FPP has no “%s” playlist. Make one with your names sequence in it (the Sequence maker can make it)."
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:391
@@ -182,9 +148,7 @@ msgid "Names wait for your show?"
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:400
-msgid ""
-"Your FPP runs more than one playlist. “%s” looks like your show: names can "
-"wait for it, so they don’t go up during the others."
+msgid "Your FPP runs more than one playlist. “%s” looks like your show: names can wait for it, so they don’t go up during the others."
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:402
@@ -192,9 +156,7 @@ msgid "Names go up during any playlist"
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:402
-msgid ""
-"Running something like a static display too? Pick your show playlist under "
-"“Only during these playlists” in step 1."
+msgid "Running something like a static display too? Pick your show playlist under “Only during these playlists” in step 1."
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:408
@@ -202,8 +164,7 @@ msgid "Test name sent"
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:408
-msgid ""
-"It goes up on your screens within a minute (when the FPP next checks in)."
+msgid "It goes up on your screens within a minute (when the FPP next checks in)."
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:411
@@ -235,9 +196,7 @@ msgid "Puts a name on your screens right now, to see how it looks."
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:414
-msgid ""
-"Update the Marquee plugin on your FPP for the test button here, or send your"
-" name from your website while the show plays."
+msgid "Update the Marquee plugin on your FPP for the test button here, or send your name from your website while the show plays."
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:436
@@ -272,15 +231,12 @@ msgstr ""
 msgid "Shows it on your screens right now"
 msgstr ""
 
-#: plugin/marquee/inc/names-setup.php:459 plugin/marquee/inc/support.php:806
-#: plugin/marquee/inc/tour.php:60
+#: plugin/marquee/inc/names-setup.php:459 plugin/marquee/inc/support.php:806 plugin/marquee/inc/tour.php:60
 msgid "Send a test name"
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:460
-msgid ""
-"Adds it to the line like a kid’s name, with the voice; it goes up at the "
-"next names break"
+msgid "Adds it to the line like a kid’s name, with the voice; it goes up at the next names break"
 msgstr ""
 
 #: plugin/marquee/inc/names-setup.php:460
@@ -292,12 +248,7 @@ msgid "Show me"
 msgstr ""
 
 #: plugin/marquee/inc/seqmaker.php:43
-msgid ""
-"Don’t want to sequence the names break yourself? Marquee makes it from your "
-"xLights layout: your screens stay dark for the names, the rest of your house"
-" plays gentle effects, and every prop flashes as each name goes up. It can "
-"also make themed versions for kids to pick from (Candy Cane Swirl, "
-"Snowfall…). You open them in xLights, render, and upload, like any sequence."
+msgid "Don’t want to sequence the names break yourself? Marquee makes it from your xLights layout: your screens stay dark for the names, the rest of your house plays gentle effects, and every prop flashes as each name goes up. It can also make themed versions for kids to pick from (Candy Cane Swirl, Snowfall…). You open them in xLights, render, and upload, like any sequence."
 msgstr ""
 
 #: plugin/marquee/inc/seqmaker.php:47
@@ -305,9 +256,7 @@ msgid "Your xLights layout"
 msgstr ""
 
 #: plugin/marquee/inc/seqmaker.php:48
-msgid ""
-"The file xlights_rgbeffects.xml in your xLights show folder. It stays on "
-"your computer: Marquee reads it right here in your browser."
+msgid "The file xlights_rgbeffects.xml in your xLights show folder. It stays on your computer: Marquee reads it right here in your browser."
 msgstr ""
 
 #: plugin/marquee/inc/seqmaker.php:52
@@ -315,9 +264,7 @@ msgid "Choose or drop your xlights_rgbeffects.xml"
 msgstr ""
 
 #: plugin/marquee/inc/seqmaker.php:52
-msgid ""
-"Not chosen yet. On Windows it’s usually in Documents → xLights (your show "
-"folder)."
+msgid "Not chosen yet. On Windows it’s usually in Documents → xLights (your show folder)."
 msgstr ""
 
 #: plugin/marquee/inc/seqmaker.php:56
@@ -325,10 +272,7 @@ msgid "Your names break sequence (if you have one)"
 msgstr ""
 
 #: plugin/marquee/inc/seqmaker.php:57
-msgid ""
-"Optional. Give it your own names break (.xsq) and the themed versions are "
-"made from it: same music, same timing, same singing faces, just new colors "
-"and effects. Leave it empty and Marquee makes everything from scratch."
+msgid "Optional. Give it your own names break (.xsq) and the themed versions are made from it: same music, same timing, same singing faces, just new colors and effects. Leave it empty and Marquee makes everything from scratch."
 msgstr ""
 
 #: plugin/marquee/inc/seqmaker.php:61
@@ -360,18 +304,11 @@ msgid "Add as many ideas as you like, one at a time. "
 msgstr ""
 
 #: plugin/marquee/inc/seqmaker.php:77
-msgid ""
-"How the AI helps: Marquee reads your layout (step 1) here in your browser "
-"and tells the AI only your prop names and what kind each is (trees, arches, "
-"rooflines…). The AI picks the colors and an effect for each kind; Marquee "
-"then writes the sequence from your layout. Your layout file itself never "
-"leaves your computer."
+msgid "How the AI helps: Marquee reads your layout (step 1) here in your browser and tells the AI only your prop names and what kind each is (trees, arches, rooflines…). The AI picks the colors and an effect for each kind; Marquee then writes the sequence from your layout. Your layout file itself never leaves your computer."
 msgstr ""
 
 #: plugin/marquee/inc/seqmaker.php:77
-msgid ""
-"Describing your own theme uses the AI under “Need help?” (add a ChatGPT or "
-"Claude key there). The ready-made themes don’t need it."
+msgid "Describing your own theme uses the AI under “Need help?” (add a ChatGPT or Claude key there). The ready-made themes don’t need it."
 msgstr ""
 
 #: plugin/marquee/inc/seqmaker.php:80
@@ -379,11 +316,7 @@ msgid "You don’t need to set up any timing."
 msgstr ""
 
 #: plugin/marquee/inc/seqmaker.php:80
-msgid ""
-"Marquee makes sure each kid’s name shows up at the right moment: right after"
-" the announcer’s intro, then a new name every few seconds, so the names "
-"always line up with the music. It works this out for you, and “Use it” fills"
-" in the numbers. There’s nothing to measure in xLights."
+msgid "Marquee makes sure each kid’s name shows up at the right moment: right after the announcer’s intro, then a new name every few seconds, so the names always line up with the music. It works this out for you, and “Use it” fills in the numbers. There’s nothing to measure in xLights."
 msgstr ""
 
 #: plugin/marquee/inc/seqmaker.php:81
@@ -395,44 +328,27 @@ msgid "Then: render them in xLights (FPP can only play rendered sequences)"
 msgstr ""
 
 #: plugin/marquee/inc/seqmaker.php:88
-msgid ""
-"Save the .xsq files into your xLights show folder (the folder with "
-"xlights_rgbeffects.xml in it)."
+msgid "Save the .xsq files into your xLights show folder (the folder with xlights_rgbeffects.xml in it)."
 msgstr ""
 
 #: plugin/marquee/inc/seqmaker.php:91
-msgid ""
-"Open one in xLights. If it asks for the music, pick %s (download it below "
-"and put it in your show folder)."
+msgid "Open one in xLights. If it asks for the music, pick %s (download it below and put it in your show folder)."
 msgstr ""
 
 #: plugin/marquee/inc/seqmaker.php:93
-msgid ""
-"Click Render All, play it in the house preview, change anything you like, "
-"then Save. Saving writes the .fseq file next to it: that’s what FPP plays."
+msgid "Click Render All, play it in the house preview, change anything you like, then Save. Saving writes the .fseq file next to it: that’s what FPP plays."
 msgstr ""
 
 #: plugin/marquee/inc/seqmaker.php:94
-msgid ""
-"Send them to your FPP, either way: in xLights, Tools → FPP Connect, tick "
-"your FPP and the new sequences, and click Upload (it sends the .fseq and the"
-" music together); or in FPP → Content Setup → File Manager, upload the .fseq"
-" (Sequences tab) and the music (Audio tab)."
+msgid "Send them to your FPP, either way: in xLights, Tools → FPP Connect, tick your FPP and the new sequences, and click Upload (it sends the .fseq and the music together); or in FPP → Content Setup → File Manager, upload the .fseq (Sequences tab) and the music (Audio tab)."
 msgstr ""
 
 #: plugin/marquee/inc/seqmaker.php:95
-msgid ""
-"In FPP → Content Setup → Playlists, make a playlist for each one with just "
-"that sequence and its music: “%s” for your names break, “Names - Candy Cane "
-"Swirl” and so on for the themes. Don’t add them to your show schedule; "
-"Marquee plays them between songs."
+msgid "In FPP → Content Setup → Playlists, make a playlist for each one with just that sequence and its music: “%s” for your names break, “Names - Candy Cane Swirl” and so on for the themes. Don’t add them to your show schedule; Marquee plays them between songs."
 msgstr ""
 
 #: plugin/marquee/inc/seqmaker.php:96
-msgid ""
-"Themes: click “Use it” next to each one below so kids can pick it, then Save"
-" settings. The setup check at the top of Names in Lights tells you if FPP "
-"can’t find a playlist."
+msgid "Themes: click “Use it” next to each one below so kids can pick it, then Save settings. The setup check at the top of Names in Lights tells you if FPP can’t find a playlist."
 msgstr ""
 
 #: plugin/marquee/inc/seqmaker.php:98
@@ -444,17 +360,14 @@ msgid "Your names break audio: the announcer, the soft music and the outro."
 msgstr ""
 
 #: plugin/marquee/inc/seqmaker.php:98
-msgid ""
-"Soft music for the break. Build your names break audio (above) to get one "
-"with your announcer in it."
+msgid "Soft music for the break. Build your names break audio (above) to get one with your announcer in it."
 msgstr ""
 
 #: plugin/marquee/inc/manager.php:36
 msgid "Show helper"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:129 plugin/marquee/inc/manager.php:141
-#: plugin/marquee/inc/manager.php:180
+#: plugin/marquee/inc/manager.php:129 plugin/marquee/inc/manager.php:141 plugin/marquee/inc/manager.php:180
 msgid "Show Manager"
 msgstr ""
 
@@ -475,9 +388,7 @@ msgid "This account can’t manage the show"
 msgstr ""
 
 #: plugin/marquee/inc/manager.php:193
-msgid ""
-"You’re signed in as %s. Ask the show owner to make your account a Show "
-"helper, or sign out and use the owner’s account."
+msgid "You’re signed in as %s. Ask the show owner to make your account a Show helper, or sign out and use the owner’s account."
 msgstr ""
 
 #: plugin/marquee/inc/manager.php:210
@@ -485,9 +396,7 @@ msgid "Sign in to run your show"
 msgstr ""
 
 #: plugin/marquee/inc/manager.php:211
-msgid ""
-"Use your website account. On your own phone, leave “Keep me signed in” on "
-"and you won’t be asked again."
+msgid "Use your website account. On your own phone, leave “Keep me signed in” on and you won’t be asked again."
 msgstr ""
 
 #: plugin/marquee/inc/manager.php:213
@@ -530,8 +439,7 @@ msgstr ""
 msgid "Now playing"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:246 plugin/marquee/inc/admin.php:125
-#: plugin/marquee/inc/admin.php:351
+#: plugin/marquee/inc/manager.php:246 plugin/marquee/inc/admin.php:125 plugin/marquee/inc/admin.php:351
 msgid "Names in Lights"
 msgstr ""
 
@@ -580,9 +488,7 @@ msgid "Traffic & parking"
 msgstr ""
 
 #: plugin/marquee/inc/manager.php:276
-msgid ""
-"One tap puts a message at the top of your website. It turns itself off when "
-"the time is up."
+msgid "One tap puts a message at the top of your website. It turns itself off when the time is up."
 msgstr ""
 
 #: plugin/marquee/inc/manager.php:278
@@ -621,8 +527,7 @@ msgstr ""
 msgid "Also on my screens every 3 minutes"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:289 plugin/marquee/inc/support.php:356
-#: plugin/marquee/inc/admin.php:108
+#: plugin/marquee/inc/manager.php:289 plugin/marquee/inc/support.php:356 plugin/marquee/inc/admin.php:108
 msgid "Your Name in Lights"
 msgstr ""
 
@@ -646,8 +551,7 @@ msgstr ""
 msgid "Off: the banner only shows when you cancel a night"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:294 plugin/marquee/inc/support.php:357
-#: plugin/marquee/inc/blocks.php:34
+#: plugin/marquee/inc/manager.php:294 plugin/marquee/inc/support.php:357 plugin/marquee/inc/blocks.php:34
 msgid "Kids’ Corner"
 msgstr ""
 
@@ -655,8 +559,7 @@ msgstr ""
 msgid "The whole kids’ page"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:295 plugin/marquee/inc/support.php:357
-#: plugin/marquee/inc/admin.php:109
+#: plugin/marquee/inc/manager.php:295 plugin/marquee/inc/support.php:357 plugin/marquee/inc/admin.php:109
 msgid "Make a Light Show"
 msgstr ""
 
@@ -664,8 +567,7 @@ msgstr ""
 msgid "The Light Lab in the Kids’ Corner"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:296 plugin/marquee/inc/manager.php:335
-#: plugin/marquee/inc/support.php:357
+#: plugin/marquee/inc/manager.php:296 plugin/marquee/inc/manager.php:335 plugin/marquee/inc/support.php:357
 msgid "Light show contest"
 msgstr ""
 
@@ -673,8 +575,7 @@ msgstr ""
 msgid "Entries, Show Wall and hearts"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:297 plugin/marquee/inc/support.php:361
-#: plugin/marquee/inc/admin.php:777
+#: plugin/marquee/inc/manager.php:297 plugin/marquee/inc/support.php:361 plugin/marquee/inc/admin.php:777
 msgid "Coloring pages"
 msgstr ""
 
@@ -682,8 +583,7 @@ msgstr ""
 msgid "In the Kids’ Corner"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:298 plugin/marquee/inc/admin.php:112
-#: plugin/marquee/inc/admin.php:839
+#: plugin/marquee/inc/manager.php:298 plugin/marquee/inc/admin.php:112 plugin/marquee/inc/admin.php:839
 msgid "Games"
 msgstr ""
 
@@ -699,8 +599,7 @@ msgstr ""
 msgid "On the Songs & Videos page"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:300 plugin/marquee/inc/support.php:357
-#: plugin/marquee/inc/blocks.php:30
+#: plugin/marquee/inc/manager.php:300 plugin/marquee/inc/support.php:357 plugin/marquee/inc/blocks.php:30
 msgid "Guestbook"
 msgstr ""
 
@@ -708,8 +607,7 @@ msgstr ""
 msgid "Visitors can leave a message"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:302 plugin/marquee/inc/manager.php:303
-#: plugin/marquee/inc/support.php:358
+#: plugin/marquee/inc/manager.php:302 plugin/marquee/inc/manager.php:303 plugin/marquee/inc/support.php:358
 msgid "Falling snow"
 msgstr ""
 
@@ -717,8 +615,7 @@ msgstr ""
 msgid "On every page"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:303 plugin/marquee/inc/photos.php:120
-#: plugin/marquee/inc/social.php:677
+#: plugin/marquee/inc/manager.php:303 plugin/marquee/inc/photos.php:120 plugin/marquee/inc/social.php:677
 msgid "Off"
 msgstr ""
 
@@ -754,8 +651,7 @@ msgstr ""
 msgid "For testing outside show hours"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:317 plugin/marquee/inc/support.php:356
-#: plugin/marquee/inc/admin.php:1277
+#: plugin/marquee/inc/manager.php:317 plugin/marquee/inc/support.php:356 plugin/marquee/inc/admin.php:1277
 msgid "Only at the show"
 msgstr ""
 
@@ -763,8 +659,7 @@ msgstr ""
 msgid "Names only from phones near your show"
 msgstr ""
 
-#: plugin/marquee/inc/manager.php:319 plugin/marquee/inc/manager.php:320
-#: plugin/marquee/inc/admin.php:577
+#: plugin/marquee/inc/manager.php:319 plugin/marquee/inc/manager.php:320 plugin/marquee/inc/admin.php:577
 msgid "Names break after every"
 msgstr ""
 
@@ -785,9 +680,7 @@ msgid "Waiting for the next break"
 msgstr ""
 
 #: plugin/marquee/inc/manager.php:325
-msgid ""
-"“Block” removes the name and adds it to your block list, so it can’t be sent"
-" again."
+msgid "“Block” removes the name and adds it to your block list, so it can’t be sent again."
 msgstr ""
 
 #: plugin/marquee/inc/manager.php:328
@@ -823,9 +716,7 @@ msgid "Not yet"
 msgstr ""
 
 #: plugin/marquee/inc/manager.php:356
-msgid ""
-"Alerts need your website on https with a recent PHP. Ask your web host if "
-"alerts don’t work."
+msgid "Alerts need your website on https with a recent PHP. Ask your web host if alerts don’t work."
 msgstr ""
 
 #: plugin/marquee/inc/manager.php:359 plugin/marquee/inc/admin.php:114
@@ -881,10 +772,7 @@ msgid "Languages"
 msgstr ""
 
 #: plugin/marquee/inc/langs.php:179
-msgid ""
-"Your website starts in the language picked in Settings → General → Site "
-"Language. Tick two or more to show a small language button on your website, "
-"so visitors can switch. Their pick is remembered on their phone."
+msgid "Your website starts in the language picked in Settings → General → Site Language. Tick two or more to show a small language button on your website, so visitors can switch. Their pick is remembered on their phone."
 msgstr ""
 
 #: plugin/marquee/inc/langs.php:182
@@ -892,18 +780,11 @@ msgid "your Site Language"
 msgstr ""
 
 #: plugin/marquee/inc/langs.php:185
-msgid ""
-"Words you typed yourself (your banner messages, tips and button words in "
-"Customize) show the way you wrote them. With two or more languages ticked, "
-"Customize has an extra box under each of them for every other language: fill"
-" it in and visitors who pick that language see those words instead."
+msgid "Words you typed yourself (your banner messages, tips and button words in Customize) show the way you wrote them. With two or more languages ticked, Customize has an extra box under each of them for every other language: fill it in and visitors who pick that language see those words instead."
 msgstr ""
 
 #: plugin/marquee/inc/langs.php:186
-msgid ""
-"Using a page cache plugin (WP Rocket, LiteSpeed Cache, W3 Total Cache…)? Add"
-" the cookie mq_lang to its list of cookies that skip the cache, so each "
-"visitor gets their own language."
+msgid "Using a page cache plugin (WP Rocket, LiteSpeed Cache, W3 Total Cache…)? Add the cookie mq_lang to its list of cookies that skip the cache, so each visitor gets their own language."
 msgstr ""
 
 #: plugin/marquee/inc/remote-falcon.php:34
@@ -915,9 +796,7 @@ msgid "Could not reach Remote Falcon. Try again in a minute."
 msgstr ""
 
 #: plugin/marquee/inc/remote-falcon.php:45
-msgid ""
-"Remote Falcon did not accept the token and secret key. Copy both again from "
-"Remote Falcon → Account → API Access."
+msgid "Remote Falcon did not accept the token and secret key. Copy both again from Remote Falcon → Account → API Access."
 msgstr ""
 
 #: plugin/marquee/inc/remote-falcon.php:50
@@ -929,8 +808,7 @@ msgid "Set up “Say each name out loud” first (API key and voice), and Save."
 msgstr ""
 
 #: plugin/marquee/inc/break.php:100
-msgid ""
-"Your web host refused the upload (it may only allow very small uploads)."
+msgid "Your web host refused the upload (it may only allow very small uploads)."
 msgstr ""
 
 #: plugin/marquee/inc/break.php:104
@@ -941,13 +819,11 @@ msgstr ""
 msgid "Couldn’t make the uploads/marquee-voice/break folder."
 msgstr ""
 
-#: plugin/marquee/inc/break.php:118 plugin/marquee/inc/break.php:125
-#: plugin/marquee/inc/i18n-js.php:255
+#: plugin/marquee/inc/break.php:118 plugin/marquee/inc/break.php:125 plugin/marquee/inc/i18n-js.php:255
 msgid "Couldn’t save the break audio."
 msgstr ""
 
-#: plugin/marquee/inc/break.php:196 plugin/marquee/inc/admin.php:594
-#: plugin/marquee/inc/tour.php:84
+#: plugin/marquee/inc/break.php:196 plugin/marquee/inc/admin.php:594 plugin/marquee/inc/tour.php:84
 msgid "Names break audio"
 msgstr ""
 
@@ -956,11 +832,7 @@ msgid "optional"
 msgstr ""
 
 #: plugin/marquee/inc/break.php:197
-msgid ""
-"When kids have sent names, your show plays a short <b>names break</b> "
-"between songs: your “%s” playlist. This builds the sound for that break, so "
-"you don’t need any audio software. Your lights and screens stay exactly as "
-"you sequenced them."
+msgid "When kids have sent names, your show plays a short <b>names break</b> between songs: your “%s” playlist. This builds the sound for that break, so you don’t need any audio software. Your lights and screens stay exactly as you sequenced them."
 msgstr ""
 
 #: plugin/marquee/inc/break.php:199
@@ -988,11 +860,7 @@ msgid "Outro"
 msgstr ""
 
 #: plugin/marquee/inc/break.php:205
-msgid ""
-"Only 1 or 2 names waiting? A shorter break plays instead and says each name "
-"twice, so nobody sits through 30 seconds of music for one name. Everything "
-"is set to the same loudness as your songs, so nobody has to touch the radio "
-"volume."
+msgid "Only 1 or 2 names waiting? A shorter break plays instead and says each name twice, so nobody sits through 30 seconds of music for one name. Everything is set to the same loudness as your songs, so nobody has to touch the radio volume."
 msgstr ""
 
 #: plugin/marquee/inc/break.php:208
@@ -1000,11 +868,7 @@ msgid "Use my own names break audio"
 msgstr ""
 
 #: plugin/marquee/inc/break.php:208
-msgid ""
-"Your names break playlists already play audio you made. Marquee leaves it "
-"alone and puts the names up at “When the first name appears” and “Time "
-"between names”, so set those to the gaps in your audio. Turn this off to use"
-" the audio built here."
+msgid "Your names break playlists already play audio you made. Marquee leaves it alone and puts the names up at “When the first name appears” and “Time between names”, so set those to the gaps in your audio. Turn this off to use the audio built here."
 msgstr ""
 
 #: plugin/marquee/inc/break.php:209 plugin/marquee/inc/tour.php:86
@@ -1016,15 +880,11 @@ msgid "A voice is set up (step 2, “Say each name out loud”)."
 msgstr ""
 
 #: plugin/marquee/inc/break.php:212
-msgid ""
-"Set up step 2, <b>Say each name out loud</b>, first (ElevenLabs key and a "
-"voice), and Save. The intro and outro are made with that voice."
+msgid "Set up step 2, <b>Say each name out loud</b>, first (ElevenLabs key and a voice), and Save. The intro and outro are made with that voice."
 msgstr ""
 
 #: plugin/marquee/inc/break.php:213
-msgid ""
-"Your FPP needs the names script 3.3 or newer. It hasn’t reported its version"
-" yet."
+msgid "Your FPP needs the names script 3.3 or newer. It hasn’t reported its version yet."
 msgstr ""
 
 #: plugin/marquee/inc/break.php:213
@@ -1032,15 +892,11 @@ msgid "Your FPP runs a names script that can set up the break by itself."
 msgstr ""
 
 #: plugin/marquee/inc/break.php:213
-msgid ""
-"Your FPP runs names script %s. Download <b>marquee_names.py</b> in step 1 "
-"and upload it to your FPP (it must be 3.3 or newer)."
+msgid "Your FPP runs names script %s. Download <b>marquee_names.py</b> in step 1 and upload it to your FPP (it must be 3.3 or newer)."
 msgstr ""
 
 #: plugin/marquee/inc/break.php:222
-msgid ""
-"Your FPP has a playlist named <b>%s</b> with your names sequence in it (the "
-"one you already use for names)."
+msgid "Your FPP has a playlist named <b>%s</b> with your names sequence in it (the one you already use for names)."
 msgstr ""
 
 #: plugin/marquee/inc/break.php:226
@@ -1064,9 +920,7 @@ msgid "Outro (after the names)"
 msgstr ""
 
 #: plugin/marquee/inc/break.php:232
-msgid ""
-"Tell people how to send a name. Write your website the way it’s said out "
-"loud, like “lights on main street dot com”, or the voice may spell it out."
+msgid "Tell people how to send a name. Write your website the way it’s said out loud, like “lights on main street dot com”, or the voice may spell it out."
 msgstr ""
 
 #: plugin/marquee/inc/break.php:235
@@ -1077,16 +931,12 @@ msgstr ""
 msgid "Length in seconds"
 msgstr ""
 
-#: plugin/marquee/inc/break.php:236 plugin/marquee/inc/themes.php:174
-#: plugin/marquee/inc/themes.php:175
+#: plugin/marquee/inc/break.php:236 plugin/marquee/inc/themes.php:174 plugin/marquee/inc/themes.php:175
 msgid "seconds"
 msgstr ""
 
 #: plugin/marquee/inc/break.php:237
-msgid ""
-"The full break is made exactly this long, so it fits the sequence you "
-"already have. You can see the length in xLights (the end time of the "
-"sequence) or in FPP when the playlist plays. About 30 seconds works well."
+msgid "The full break is made exactly this long, so it fits the sequence you already have. You can see the length in xLights (the end time of the sequence) or in FPP when the playlist plays. About 30 seconds works well."
 msgstr ""
 
 #: plugin/marquee/inc/break.php:239 plugin/marquee/inc/support.php:353
@@ -1098,10 +948,7 @@ msgid "Your own music"
 msgstr ""
 
 #: plugin/marquee/inc/break.php:240
-msgid ""
-"Use music only: no singing and no talking, or it will talk over the names. A"
-" soft, calm tune at least 30 seconds long works best. Leave it empty to use "
-"the soft music box that comes with Marquee."
+msgid "Use music only: no singing and no talking, or it will talk over the names. A soft, calm tune at least 30 seconds long works best. Leave it empty to use the soft music box that comes with Marquee."
 msgstr ""
 
 #: plugin/marquee/inc/break.php:242
@@ -1117,45 +964,27 @@ msgid "Build the names break"
 msgstr ""
 
 #: plugin/marquee/inc/break.php:249
-msgid ""
-"✓ Last built %1$s ago. Names start %2$s seconds in, one every %3$s seconds. "
-"Listen:"
+msgid "✓ Last built %1$s ago. Names start %2$s seconds in, one every %3$s seconds. Listen:"
 msgstr ""
 
 #: plugin/marquee/inc/break.php:251
 msgid "full break"
 msgstr ""
 
-#: plugin/marquee/inc/break.php:252 plugin/marquee/inc/break.php:288
-#: plugin/marquee/inc/i18n-js.php:260
+#: plugin/marquee/inc/break.php:252 plugin/marquee/inc/break.php:288 plugin/marquee/inc/i18n-js.php:260
 msgid "2 names"
 msgstr ""
 
-#: plugin/marquee/inc/break.php:253 plugin/marquee/inc/break.php:289
-#: plugin/marquee/inc/i18n-js.php:262
+#: plugin/marquee/inc/break.php:253 plugin/marquee/inc/break.php:289 plugin/marquee/inc/i18n-js.php:262
 msgid "1 name"
 msgstr ""
 
 #: plugin/marquee/inc/break.php:258
-msgid ""
-"📋 <b>You’ll see three playlists on your FPP: “%1$s”, “%1$s 2” and “%1$s 1”. "
-"Keep all three.</b> They aren’t copies by mistake: they play the same light "
-"sequence with the full, 2-name and 1-name sound, and your FPP picks the "
-"right one for how many names are waiting. If you delete one, Marquee makes "
-"it again the next time you build."
+msgid "📋 <b>You’ll see three playlists on your FPP: “%1$s”, “%1$s 2” and “%1$s 1”. Keep all three.</b> They aren’t copies by mistake: they play the same light sequence with the full, 2-name and 1-name sound, and your FPP picks the right one for how many names are waiting. If you delete one, Marquee makes it again the next time you build."
 msgstr ""
 
 #: plugin/marquee/inc/break.php:262
-msgid ""
-"You’ll get three versions to listen to right here. They start the same on "
-"purpose: the names aren’t in the files, because your FPP says each name live"
-" over the soft music as it goes up. The versions only differ in length: the "
-"full break (3 to 6 names waiting), a shorter one for 2 names and the "
-"shortest for 1 name (each said twice), so nobody waits through 30 seconds of"
-" music for one name. Your FPP picks the right one by itself. Happy with it? "
-"You’re done: within a minute your FPP downloads it and sets up the playlists"
-" by itself. Not happy? Change a line or the music and build again. Each "
-"build uses about 100 ElevenLabs credits."
+msgid "You’ll get three versions to listen to right here. They start the same on purpose: the names aren’t in the files, because your FPP says each name live over the soft music as it goes up. The versions only differ in length: the full break (3 to 6 names waiting), a shorter one for 2 names and the shortest for 1 name (each said twice), so nobody waits through 30 seconds of music for one name. Your FPP picks the right one by itself. Happy with it? You’re done: within a minute your FPP downloads it and sets up the playlists by itself. Not happy? Change a line or the music and build again. Each build uses about 100 ElevenLabs credits."
 msgstr ""
 
 #: plugin/marquee/inc/break.php:265 plugin/marquee/inc/themes.php:193
@@ -1167,12 +996,7 @@ msgid "Why do the full, 2-name and 1-name versions sound the same?"
 msgstr ""
 
 #: plugin/marquee/inc/break.php:266
-msgid ""
-"Because the names aren’t in them: your FPP plays each kid’s name live, in "
-"its own sound slot, over the soft music. The three versions are the same "
-"intro, music and outro, just with a shorter soft part for fewer names, so "
-"the outro comes sooner. Listen to the end of each and you’ll hear the "
-"difference."
+msgid "Because the names aren’t in them: your FPP plays each kid’s name live, in its own sound slot, over the soft music. The three versions are the same intro, music and outro, just with a shorter soft part for fewer names, so the outro comes sooner. Listen to the end of each and you’ll hear the difference."
 msgstr ""
 
 #: plugin/marquee/inc/break.php:267
@@ -1180,9 +1004,7 @@ msgid "Do I have to change my xLights sequence?"
 msgstr ""
 
 #: plugin/marquee/inc/break.php:267
-msgid ""
-"No. Only the sound changes. Marquee times the names to fit your sequence’s "
-"length."
+msgid "No. Only the sound changes. Marquee times the names to fit your sequence’s length."
 msgstr ""
 
 #: plugin/marquee/inc/break.php:268
@@ -1190,10 +1012,7 @@ msgid "I already made my own break audio. Do I need this?"
 msgstr ""
 
 #: plugin/marquee/inc/break.php:268
-msgid ""
-"No. Nothing changes on your FPP until you click Build. Just make sure your "
-"audio has a quiet part for the names, and set “When the first name appears” "
-"and “Time between names” in Connect your FPP to match it."
+msgid "No. Nothing changes on your FPP until you click Build. Just make sure your audio has a quiet part for the names, and set “When the first name appears” and “Time between names” in Connect your FPP to match it."
 msgstr ""
 
 #: plugin/marquee/inc/break.php:269
@@ -1201,11 +1020,7 @@ msgid "What exactly changes on my FPP?"
 msgstr ""
 
 #: plugin/marquee/inc/break.php:269
-msgid ""
-"Three sound files are added (marquee-break-full.wav, -2 and -1). Your “%1$s”"
-" playlist is set to play the full one with your names sequence, and two "
-"playlists are added for the short breaks: “%1$s 2” and “%1$s 1”. Keep all "
-"three playlists. A copy of your original playlist is kept on the FPP."
+msgid "Three sound files are added (marquee-break-full.wav, -2 and -1). Your “%1$s” playlist is set to play the full one with your names sequence, and two playlists are added for the short breaks: “%1$s 2” and “%1$s 1”. Keep all three playlists. A copy of your original playlist is kept on the FPP."
 msgstr ""
 
 #: plugin/marquee/inc/break.php:270
@@ -1213,9 +1028,7 @@ msgid "Can I use Santa?"
 msgstr ""
 
 #: plugin/marquee/inc/break.php:270
-msgid ""
-"Yes. Pick a Santa voice above and tick “My voice is Santa”. The example "
-"lines change to Santa ones."
+msgid "Yes. Pick a Santa voice above and tick “My voice is Santa”. The example lines change to Santa ones."
 msgstr ""
 
 #: plugin/marquee/inc/break.php:271
@@ -1223,9 +1036,7 @@ msgid "The names start too early or too late."
 msgstr ""
 
 #: plugin/marquee/inc/break.php:271
-msgid ""
-"Make the intro shorter or longer and build again. The timing is set from how"
-" long the intro and outro take to say."
+msgid "Make the intro shorter or longer and build again. The timing is set from how long the intro and outro take to say."
 msgstr ""
 
 #: plugin/marquee/inc/break.php:284
@@ -1252,15 +1063,12 @@ msgstr ""
 msgid "Play the one you built"
 msgstr ""
 
-#: plugin/marquee/inc/break.php:297 plugin/marquee/inc/support.php:350
-#: plugin/marquee/inc/tour.php:54
+#: plugin/marquee/inc/break.php:297 plugin/marquee/inc/support.php:350 plugin/marquee/inc/tour.php:54
 msgid "Your screens"
 msgstr ""
 
 #: plugin/marquee/inc/break.php:299
-msgid ""
-"The music plays soft while names are said, and louder under the intro and "
-"outro. Everything is at the loudness of your songs."
+msgid "The music plays soft while names are said, and louder under the intro and outro. Everything is at the loudness of your songs."
 msgstr ""
 
 #: plugin/marquee/inc/photos.php:119
@@ -1268,13 +1076,10 @@ msgid "Kids’ pictures on your screens"
 msgstr ""
 
 #: plugin/marquee/inc/photos.php:119
-msgid ""
-"Kids can add a picture of themselves (or a cartoon of it) to their name. You"
-" approve every picture before it goes up."
+msgid "Kids can add a picture of themselves (or a cartoon of it) to their name. You approve every picture before it goes up."
 msgstr ""
 
-#: plugin/marquee/inc/photos.php:120 plugin/marquee/inc/social.php:677
-#: plugin/marquee/inc/support.php:370
+#: plugin/marquee/inc/photos.php:120 plugin/marquee/inc/social.php:677 plugin/marquee/inc/support.php:370
 msgid "On"
 msgstr ""
 
@@ -1283,64 +1088,35 @@ msgid "Please read before turning this on"
 msgstr ""
 
 #: plugin/marquee/inc/photos.php:127
-msgid ""
-"These are pictures of children, shown in public at your show. You are "
-"responsible for what goes up on your screens and for following the laws "
-"where you live."
+msgid "These are pictures of children, shown in public at your show. You are responsible for what goes up on your screens and for following the laws where you live."
 msgstr ""
 
 #: plugin/marquee/inc/photos.php:128
-msgid ""
-"In the United States, collecting a picture from a child under 13 online is "
-"covered by COPPA, which requires a parent’s permission. Marquee asks a "
-"parent or guardian to tick a box before any picture is sent, but it can’t "
-"check who ticked it. Other countries have their own rules (in Europe, the "
-"GDPR)."
+msgid "In the United States, collecting a picture from a child under 13 online is covered by COPPA, which requires a parent’s permission. Marquee asks a parent or guardian to tick a box before any picture is sent, but it can’t check who ticked it. Other countries have their own rules (in Europe, the GDPR)."
 msgstr ""
 
 #: plugin/marquee/inc/photos.php:129
-msgid ""
-"Every picture waits for you or a Show helper to approve it in Show Control "
-"or the Show Manager, unless you turn on the automatic check below: then only"
-" the pictures it isn’t sure about wait for you. A name whose picture isn’t "
-"approved within 10 minutes goes up without the picture."
+msgid "Every picture waits for you or a Show helper to approve it in Show Control or the Show Manager, unless you turn on the automatic check below: then only the pictures it isn’t sure about wait for you. A name whose picture isn’t approved within 10 minutes goes up without the picture."
 msgstr ""
 
 #: plugin/marquee/inc/photos.php:130
-msgid ""
-"The phone shrinks the picture to a small square before sending it. Marquee "
-"keeps it in a private folder (never in your Media Library, never on a page) "
-"and deletes it as soon as it’s been shown, removed or turned down, and "
-"always within 2 hours."
+msgid "The phone shrinks the picture to a small square before sending it. Marquee keeps it in a private folder (never in your Media Library, never on a page) and deletes it as soon as it’s been shown, removed or turned down, and always within 2 hours."
 msgstr ""
 
 #: plugin/marquee/inc/photos.php:131
-msgid ""
-"The cartoon version is made on the kid’s own phone: they frame their face, "
-"pick Cartoon Me, an elf, a snowman or one of Santa’s helpers, and see how it"
-" will look on your screen. Only the finished picture is sent, never the "
-"photo. It’s the safer choice and looks better on pixel screens."
+msgid "The cartoon version is made on the kid’s own phone: they frame their face, pick Cartoon Me, an elf, a snowman or one of Santa’s helpers, and see how it will look on your screen. Only the finished picture is sent, never the photo. It’s the safer choice and looks better on pixel screens."
 msgstr ""
 
 #: plugin/marquee/inc/photos.php:132
-msgid ""
-"To cut the kid out of the background, the phone downloads a free tool "
-"(Google’s MediaPipe) from the jsDelivr code library the first time. Only the"
-" tool is downloaded; the picture stays on the phone. If it can’t load, a "
-"soft oval around the face is used instead."
+msgid "To cut the kid out of the background, the phone downloads a free tool (Google’s MediaPipe) from the jsDelivr code library the first time. Only the tool is downloaded; the picture stays on the phone. If it can’t load, a soft oval around the face is used instead."
 msgstr ""
 
 #: plugin/marquee/inc/photos.php:133
-msgid ""
-"Pictures need FPP 10 or newer on the FPP that runs each screen, and the "
-"Marquee names script 3.14 or newer. On a small pixel matrix a face is only a"
-" few dozen pixels tall; it looks best on a TV or projector."
+msgid "Pictures need FPP 10 or newer on the FPP that runs each screen, and the Marquee names script 3.14 or newer. On a small pixel matrix a face is only a few dozen pixels tall; it looks best on a TV or projector."
 msgstr ""
 
 #: plugin/marquee/inc/photos.php:135
-msgid ""
-"This isn’t legal advice. If you’re unsure, ask someone who knows the rules "
-"where you live, or leave this off."
+msgid "This isn’t legal advice. If you’re unsure, ask someone who knows the rules where you live, or leave this off."
 msgstr ""
 
 #: plugin/marquee/inc/photos.php:137
@@ -1372,37 +1148,23 @@ msgid "Let the kid pick: cartoon or real photo"
 msgstr ""
 
 #: plugin/marquee/inc/photos.php:146
-msgid ""
-"Switched off for now in Show Control (Kids’ pictures). Turn it back on there"
-" or in the Show Manager."
+msgid "Switched off for now in Show Control (Kids’ pictures). Turn it back on there or in the Show Manager."
 msgstr ""
 
 #: plugin/marquee/inc/photos.php:148
-msgid ""
-"A kid with a picture gets two turns in the names break: first their picture "
-"(while the voice says their name), then their name. In “During songs” mode "
-"the picture shows first, then the name."
+msgid "A kid with a picture gets two turns in the names break: first their picture (while the voice says their name), then their name. In “During songs” mode the picture shows first, then the name."
 msgstr ""
 
 #: plugin/marquee/inc/photos.php:155
-msgid ""
-"Your FPP is running names script %s. Pictures need 3.14 or newer: update the"
-" Marquee plugin on your FPP (Content Setup → Plugin Manager), or upload the "
-"new marquee_names.py, then restart FPP. Until then names go up without their"
-" pictures."
+msgid "Your FPP is running names script %s. Pictures need 3.14 or newer: update the Marquee plugin on your FPP (Content Setup → Plugin Manager), or upload the new marquee_names.py, then restart FPP. Until then names go up without their pictures."
 msgstr ""
 
 #: plugin/marquee/inc/photos.php:159
-msgid ""
-"Your FPP is version %s. Pictures need FPP 10 or newer; names still go up "
-"without them."
+msgid "Your FPP is version %s. Pictures need FPP 10 or newer; names still go up without them."
 msgstr ""
 
 #: plugin/marquee/inc/photos.php:162
-msgid ""
-"Names go up during songs (Names in Lights, How names go up), so they aren’t "
-"spoken: the voice would talk over your music. The picture shows first, then "
-"the name. Pick “Between songs: a names break” to have names said out loud."
+msgid "Names go up during songs (Names in Lights, How names go up), so they aren’t spoken: the voice would talk over your music. The picture shows first, then the name. Pick “Between songs: a names break” to have names said out loud."
 msgstr ""
 
 #: plugin/marquee/inc/photos.php:167
@@ -1414,11 +1176,7 @@ msgid "Check pictures automatically"
 msgstr ""
 
 #: plugin/marquee/inc/photos.php:173
-msgid ""
-"Google Cloud Vision looks at each picture first. One that’s clean, shows "
-"exactly one face and has no words in it goes up without waiting for you. "
-"Anything else still waits for you in Show Control, with the reason. You can "
-"still remove any name and its picture at any time."
+msgid "Google Cloud Vision looks at each picture first. One that’s clean, shows exactly one face and has no words in it goes up without waiting for you. Anything else still waits for you in Show Control, with the reason. You can still remove any name and its picture at any time."
 msgstr ""
 
 #: plugin/marquee/inc/photos.php:174
@@ -1438,22 +1196,15 @@ msgid "How to get a free key (about 5 minutes)"
 msgstr ""
 
 #: plugin/marquee/inc/photos.php:181
-msgid ""
-"Go to <a href=\"https://console.cloud.google.com/\" target=\"_blank\" "
-"rel=\"noopener\">console.cloud.google.com</a> and sign in with a Google "
-"account. Make a new project (any name, like “My light show”)."
+msgid "Go to <a href=\"https://console.cloud.google.com/\" target=\"_blank\" rel=\"noopener\">console.cloud.google.com</a> and sign in with a Google account. Make a new project (any name, like “My light show”)."
 msgstr ""
 
 #: plugin/marquee/inc/photos.php:182
-msgid ""
-"Search for “Cloud Vision API” at the top, open it and click Enable. Google "
-"asks you to set up billing (a card on file) even for the free checks."
+msgid "Search for “Cloud Vision API” at the top, open it and click Enable. Google asks you to set up billing (a card on file) even for the free checks."
 msgstr ""
 
 #: plugin/marquee/inc/photos.php:183
-msgid ""
-"Go to APIs & Services → Credentials → Create credentials → API key. Copy the"
-" key and paste it above, then click Test the key and Save."
+msgid "Go to APIs & Services → Credentials → Create credentials → API key. Copy the key and paste it above, then click Test the key and Save."
 msgstr ""
 
 #: plugin/marquee/inc/photos.php:184
@@ -1461,11 +1212,7 @@ msgid "Recommended: on the key, choose Restrict key → Cloud Vision API only."
 msgstr ""
 
 #: plugin/marquee/inc/photos.php:186
-msgid ""
-"Each picture uses 3 checks (safe, faces, words). Google gives 1,000 checks a"
-" month free, about 330 pictures; after that it’s about $1.50 per 1,000 "
-"checks (Google’s price, it may change). The picture is sent to Google only "
-"to be checked."
+msgid "Each picture uses 3 checks (safe, faces, words). Google gives 1,000 checks a month free, about 330 pictures; after that it’s about $1.50 per 1,000 checks (Google’s price, it may change). The picture is sent to Google only to be checked."
 msgstr ""
 
 #: plugin/marquee/inc/photos.php:188
@@ -1552,8 +1299,7 @@ msgstr ""
 msgid "Theme"
 msgstr ""
 
-#: plugin/marquee/inc/themes.php:126 plugin/marquee/inc/themes.php:154
-#: plugin/marquee/inc/themes.php:155
+#: plugin/marquee/inc/themes.php:126 plugin/marquee/inc/themes.php:154 plugin/marquee/inc/themes.php:155
 msgid "Classic"
 msgstr ""
 
@@ -1562,9 +1308,7 @@ msgid "Don’t have themed sequences yet?"
 msgstr ""
 
 #: plugin/marquee/inc/themes.php:139
-msgid ""
-"Marquee can make them from your xLights layout: pick Candy Cane Swirl, "
-"Snowfall… or describe your own and the AI designs it."
+msgid "Marquee can make them from your xLights layout: pick Candy Cane Swirl, Snowfall… or describe your own and the AI designs it."
 msgstr ""
 
 #: plugin/marquee/inc/themes.php:140
@@ -1572,10 +1316,7 @@ msgid "Make them for me"
 msgstr ""
 
 #: plugin/marquee/inc/themes.php:142
-msgid ""
-"Give kids a choice: when they send their name, they also pick the show it "
-"goes up in. Between songs, your FPP plays the sequence they picked, with "
-"their name on your screens (and said out loud, if that’s on)."
+msgid "Give kids a choice: when they send their name, they also pick the show it goes up in. Between songs, your FPP plays the sequence they picked, with their name on your screens (and said out loud, if that’s on)."
 msgstr ""
 
 #: plugin/marquee/inc/themes.php:144
@@ -1583,9 +1324,7 @@ msgid "1. You make them"
 msgstr ""
 
 #: plugin/marquee/inc/themes.php:144
-msgid ""
-"A few short sequences in xLights (about 30 seconds), like your names break: "
-"screens dark where the names go. Each one in its own FPP playlist."
+msgid "A few short sequences in xLights (about 30 seconds), like your names break: screens dark where the names go. Each one in its own FPP playlist."
 msgstr ""
 
 #: plugin/marquee/inc/themes.php:145
@@ -1593,9 +1332,7 @@ msgid "2. Kids pick one"
 msgstr ""
 
 #: plugin/marquee/inc/themes.php:145
-msgid ""
-"On your website they type their name and tap a picture: Candy Cane Swirl, "
-"Snowfall, Rainbow Party…"
+msgid "On your website they type their name and tap a picture: Candy Cane Swirl, Snowfall, Rainbow Party…"
 msgstr ""
 
 #: plugin/marquee/inc/themes.php:146
@@ -1603,10 +1340,7 @@ msgid "3. It plays"
 msgstr ""
 
 #: plugin/marquee/inc/themes.php:146
-msgid ""
-"After the current song, the theme the longest-waiting kid picked plays. Kids"
-" who picked the same one go up together; nobody waits more than one extra "
-"break."
+msgid "After the current song, the theme the longest-waiting kid picked plays. Kids who picked the same one go up together; nobody waits more than one extra break."
 msgstr ""
 
 #: plugin/marquee/inc/themes.php:148 plugin/marquee/inc/support.php:354
@@ -1618,18 +1352,14 @@ msgid "Your regular “%s” break stays as the “Classic” choice."
 msgstr ""
 
 #: plugin/marquee/inc/themes.php:150
-msgid ""
-"Each card on the right is what kids see when they pick. Without a picture "
-"it’s a little animated house in that theme’s colors; add a picture (a photo "
-"of your house during that sequence works great) to use it instead."
+msgid "Each card on the right is what kids see when they pick. Without a picture it’s a little animated house in that theme’s colors; add a picture (a photo of your house during that sequence works great) to use it instead."
 msgstr ""
 
 #: plugin/marquee/inc/themes.php:154
 msgid "Your regular names break (“%s”). Always there for kids to pick."
 msgstr ""
 
-#: plugin/marquee/inc/themes.php:156 plugin/marquee/inc/themes.php:176
-#: plugin/marquee/inc/social.php:700
+#: plugin/marquee/inc/themes.php:156 plugin/marquee/inc/themes.php:176 plugin/marquee/inc/social.php:700
 msgid "Picture"
 msgstr ""
 
@@ -1645,15 +1375,12 @@ msgstr ""
 msgid "First name appears at"
 msgstr ""
 
-#: plugin/marquee/inc/themes.php:175 plugin/marquee/inc/support.php:349
-#: plugin/marquee/inc/admin.php:571
+#: plugin/marquee/inc/themes.php:175 plugin/marquee/inc/support.php:349 plugin/marquee/inc/admin.php:571
 msgid "Time between names"
 msgstr ""
 
 #: plugin/marquee/inc/themes.php:179
-msgid ""
-"Made with the Sequence maker? These two numbers were filled in for you: "
-"leave them as they are."
+msgid "Made with the Sequence maker? These two numbers were filled in for you: leave them as they are."
 msgstr ""
 
 #: plugin/marquee/inc/themes.php:180
@@ -1673,13 +1400,7 @@ msgid "How do I make a themed sequence?"
 msgstr ""
 
 #: plugin/marquee/inc/themes.php:194
-msgid ""
-"Copy your names break sequence in xLights and change the effects on your "
-"house to fit the theme (red and white swirls for Candy Cane, white twinkles "
-"for Snowfall…). Keep your screens dark where the names go: FPP draws the "
-"names on top. Give it soft music with no singing so the spoken names can be "
-"heard. Upload it to FPP and put it in its own playlist, named like the "
-"examples."
+msgid "Copy your names break sequence in xLights and change the effects on your house to fit the theme (red and white swirls for Candy Cane, white twinkles for Snowfall…). Keep your screens dark where the names go: FPP draws the names on top. Give it soft music with no singing so the spoken names can be heard. Upload it to FPP and put it in its own playlist, named like the examples."
 msgstr ""
 
 #: plugin/marquee/inc/themes.php:195
@@ -1687,12 +1408,7 @@ msgid "What are “First name appears at” and “Time between names”?"
 msgstr ""
 
 #: plugin/marquee/inc/themes.php:195
-msgid ""
-"While the themed sequence plays, the first name shows up this many seconds "
-"in, then a new one every “time between names” seconds, up to 6. The little "
-"timeline under each theme shows exactly where they land. If the theme was "
-"made by the Sequence maker from your names break, use the same numbers as "
-"your names break (“Use it” fills them in)."
+msgid "While the themed sequence plays, the first name shows up this many seconds in, then a new one every “time between names” seconds, up to 6. The little timeline under each theme shows exactly where they land. If the theme was made by the Sequence maker from your names break, use the same numbers as your names break (“Use it” fills them in)."
 msgstr ""
 
 #: plugin/marquee/inc/themes.php:196
@@ -1700,9 +1416,7 @@ msgid "What if a playlist is missing on my FPP?"
 msgstr ""
 
 #: plugin/marquee/inc/themes.php:196
-msgid ""
-"Names for that theme go up in your Classic break instead, and the setup "
-"check on this page tells you which playlist it couldn’t find."
+msgid "Names for that theme go up in your Classic break instead, and the setup check on this page tells you which playlist it couldn’t find."
 msgstr ""
 
 #: plugin/marquee/inc/themes.php:197
@@ -1710,16 +1424,11 @@ msgid "Do I need pictures?"
 msgstr ""
 
 #: plugin/marquee/inc/themes.php:197
-msgid ""
-"No. Without one, kids see a little animated picture of a lit-up house in "
-"that theme’s colors (pick the look under each theme). A photo or short clip "
-"of your own house during that sequence is even better."
+msgid "No. Without one, kids see a little animated picture of a lit-up house in that theme’s colors (pick the look under each theme). A photo or short clip of your own house during that sequence is even better."
 msgstr ""
 
 #: plugin/marquee/inc/updates.php:173
-msgid ""
-"Couldn’t check GitHub for Marquee updates (%1$s ago): %2$s. It tries again "
-"every 15 minutes, or click “Check again”."
+msgid "Couldn’t check GitHub for Marquee updates (%1$s ago): %2$s. It tries again every 15 minutes, or click “Check again”."
 msgstr ""
 
 #: plugin/marquee/inc/updates.php:189
@@ -1743,9 +1452,7 @@ msgid "You can’t check for updates."
 msgstr ""
 
 #: plugin/marquee/inc/updates.php:229
-msgid ""
-"Marquee %1$s is available (you have %2$s). Click “update now” under Marquee "
-"below, or go to Dashboard → Updates."
+msgid "Marquee %1$s is available (you have %2$s). Click “update now” under Marquee below, or go to Dashboard → Updates."
 msgstr ""
 
 #: plugin/marquee/inc/updates.php:233
@@ -1753,10 +1460,7 @@ msgid "You have the latest Marquee (%s)."
 msgstr ""
 
 #: plugin/marquee/inc/updates.php:236
-msgid ""
-"Marquee couldn’t reach GitHub just now. Try again in a few minutes, or "
-"download the newest zip from the Releases page and upload it (Plugins → Add "
-"New → Upload Plugin)."
+msgid "Marquee couldn’t reach GitHub just now. Try again in a few minutes, or download the newest zip from the Releases page and upload it (Plugins → Add New → Upload Plugin)."
 msgstr ""
 
 #: plugin/marquee/inc/social.php:75
@@ -1776,9 +1480,7 @@ msgid "Unexpected answer from Facebook."
 msgstr ""
 
 #: plugin/marquee/inc/social.php:142
-msgid ""
-"Facebook no longer accepts the saved connection (the password was changed or"
-" the app was removed). Connect your Page again under Social posts."
+msgid "Facebook no longer accepts the saved connection (the password was changed or the app was removed). Connect your Page again under Social posts."
 msgstr ""
 
 #: plugin/marquee/inc/social.php:156
@@ -1786,9 +1488,7 @@ msgid "Couldn’t reach Threads: "
 msgstr ""
 
 #: plugin/marquee/inc/social.php:162
-msgid ""
-"Threads no longer accepts the saved connection. Connect Threads again under "
-"Social posts."
+msgid "Threads no longer accepts the saved connection. Connect Threads again under Social posts."
 msgstr ""
 
 #: plugin/marquee/inc/social.php:164
@@ -1832,24 +1532,18 @@ msgid "Fill in all three: App ID, App secret and the token."
 msgstr ""
 
 #: plugin/marquee/inc/social.php:436
-msgid ""
-"Facebook didn’t accept that: %s. Check the App ID and secret, and make a new"
-" token in the Graph API Explorer (they only last about an hour)."
+msgid "Facebook didn’t accept that: %s. Check the App ID and secret, and make a new token in the Graph API Explorer (they only last about an hour)."
 msgstr ""
 
 #: plugin/marquee/inc/social.php:456
-msgid ""
-"Facebook didn’t list any Pages. In the Graph API Explorer, make sure you "
-"picked your Page when it asked, and added pages_show_list and "
-"pages_manage_posts."
+msgid "Facebook didn’t list any Pages. In the Graph API Explorer, make sure you picked your Page when it asked, and added pages_show_list and pages_manage_posts."
 msgstr ""
 
 #: plugin/marquee/inc/social.php:480 plugin/marquee/inc/social.php:629
 msgid "Connected to %s."
 msgstr ""
 
-#: plugin/marquee/inc/social.php:480 plugin/marquee/inc/social.php:538
-#: plugin/marquee/inc/social.php:629
+#: plugin/marquee/inc/social.php:480 plugin/marquee/inc/social.php:538 plugin/marquee/inc/social.php:629
 msgid "Instagram: @%s."
 msgstr ""
 
@@ -1862,9 +1556,7 @@ msgid "Paste the Threads token first."
 msgstr ""
 
 #: plugin/marquee/inc/social.php:511
-msgid ""
-"Threads didn’t accept that token%s. Make a new one with the User Token "
-"Generator (step 2) and paste it right away."
+msgid "Threads didn’t accept that token%s. Make a new one with the User Token Generator (step 2) and paste it right away."
 msgstr ""
 
 #: plugin/marquee/inc/social.php:519
@@ -1931,16 +1623,12 @@ msgstr ""
 msgid "And the Instagram account linked to it, if you have one"
 msgstr ""
 
-#: plugin/marquee/inc/social.php:625 plugin/marquee/inc/social.php:653
-#: plugin/marquee/inc/admin.php:1127
+#: plugin/marquee/inc/social.php:625 plugin/marquee/inc/social.php:653 plugin/marquee/inc/admin.php:1127
 msgid "Not connected"
 msgstr ""
 
 #: plugin/marquee/inc/social.php:629
-msgid ""
-"No Instagram account is linked to this Page (in Instagram: Settings → "
-"Account type → Business or Creator, then link it to your Facebook Page, and "
-"connect again)."
+msgid "No Instagram account is linked to this Page (in Instagram: Settings → Account type → Business or Creator, then link it to your Facebook Page, and connect again)."
 msgstr ""
 
 #: plugin/marquee/inc/social.php:630
@@ -1960,11 +1648,7 @@ msgid "Make a free Meta app (one time, about 5 minutes)"
 msgstr ""
 
 #: plugin/marquee/inc/social.php:635
-msgid ""
-"Go to developers.facebook.com, log in with the Facebook account that runs "
-"your Page, and choose My Apps → Create app. Name it after your show (only "
-"you see it). If it asks what it’s for, pick managing your Page / “Other” → "
-"Business. No app review is needed: it only posts on your own Page."
+msgid "Go to developers.facebook.com, log in with the Facebook account that runs your Page, and choose My Apps → Create app. Name it after your show (only you see it). If it asks what it’s for, pick managing your Page / “Other” → Business. No app review is needed: it only posts on your own Page."
 msgstr ""
 
 #: plugin/marquee/inc/social.php:635 plugin/marquee/inc/social.php:661
@@ -1992,12 +1676,7 @@ msgid "Get a token from the Graph API Explorer"
 msgstr ""
 
 #: plugin/marquee/inc/social.php:638
-msgid ""
-"Tools → Graph API Explorer. Pick your app at the top right, then add these "
-"permissions: pages_show_list, pages_read_engagement, pages_manage_posts (for"
-" Instagram also: instagram_basic, instagram_content_publish, "
-"business_management). Click Generate Access Token, choose your Page (and "
-"Instagram account) when it asks, and copy the token."
+msgid "Tools → Graph API Explorer. Pick your app at the top right, then add these permissions: pages_show_list, pages_read_engagement, pages_manage_posts (for Instagram also: instagram_basic, instagram_content_publish, business_management). Click Generate Access Token, choose your Page (and Instagram account) when it asks, and copy the token."
 msgstr ""
 
 #: plugin/marquee/inc/social.php:638
@@ -2013,9 +1692,7 @@ msgid "Connect and pick your Page"
 msgstr ""
 
 #: plugin/marquee/inc/social.php:640
-msgid ""
-"Marquee swaps that token for a Page connection that doesn’t expire. Your App"
-" secret is only used for that and isn’t saved."
+msgid "Marquee swaps that token for a Page connection that doesn’t expire. Your App secret is only used for that and isn’t saved."
 msgstr ""
 
 #: plugin/marquee/inc/social.php:641 plugin/marquee/inc/social.php:664
@@ -2035,9 +1712,7 @@ msgid "Connect again"
 msgstr ""
 
 #: plugin/marquee/inc/social.php:657
-msgid ""
-"Connected to Threads: @%s. Marquee renews the connection every week by "
-"itself (Threads connections last 60 days)."
+msgid "Connected to Threads: @%s. Marquee renews the connection every week by itself (Threads connections last 60 days)."
 msgstr ""
 
 #: plugin/marquee/inc/social.php:658
@@ -2049,10 +1724,7 @@ msgid "Add Threads to your Meta app"
 msgstr ""
 
 #: plugin/marquee/inc/social.php:661
-msgid ""
-"In the same app as Facebook (developers.facebook.com → My Apps → your app): "
-"Use cases → Add use case → “Access the Threads API”. Under its Permissions, "
-"turn on threads_basic and threads_content_publish."
+msgid "In the same app as Facebook (developers.facebook.com → My Apps → your app): Use cases → Add use case → “Access the Threads API”. Under its Permissions, turn on threads_basic and threads_content_publish."
 msgstr ""
 
 #: plugin/marquee/inc/social.php:662
@@ -2060,12 +1732,7 @@ msgid "Let the app post as you"
 msgstr ""
 
 #: plugin/marquee/inc/social.php:662
-msgid ""
-"In the Threads use case settings, add your Threads username as a Threads "
-"tester. Then in the Threads app: Settings → Account → Website permissions → "
-"Invites, and accept. Back in the settings, the User Token Generator now "
-"shows your account: click Generate and copy the token. The Threads app "
-"secret is on the same page."
+msgid "In the Threads use case settings, add your Threads username as a Threads tester. Then in the Threads app: Settings → Account → Website permissions → Invites, and accept. Back in the settings, the User Token Generator now shows your account: click Generate and copy the token. The Threads app secret is on the same page."
 msgstr ""
 
 #: plugin/marquee/inc/social.php:663
@@ -2077,9 +1744,7 @@ msgid "Threads app secret (optional)"
 msgstr ""
 
 #: plugin/marquee/inc/social.php:664
-msgid ""
-"With the secret, a short token is swapped for a 60-day one; Marquee keeps "
-"renewing it. The secret isn’t saved."
+msgid "With the secret, a short token is swapped for a 60-day one; Marquee keeps renewing it. The secret isn’t saved."
 msgstr ""
 
 #: plugin/marquee/inc/social.php:671
@@ -2119,9 +1784,7 @@ msgid "Also post on Threads"
 msgstr ""
 
 #: plugin/marquee/inc/social.php:683
-msgid ""
-"Up to 500 characters (a longer post is shortened), with your picture if "
-"there is one."
+msgid "Up to 500 characters (a longer post is shortened), with your picture if there is one."
 msgstr ""
 
 #: plugin/marquee/inc/social.php:685
@@ -2129,8 +1792,7 @@ msgid "Post “We’re back on” when I undo a cancel"
 msgstr ""
 
 #: plugin/marquee/inc/social.php:685
-msgid ""
-"Only if tonight’s cancel was posted, so followers aren’t left confused."
+msgid "Only if tonight’s cancel was posted, so followers aren’t left confused."
 msgstr ""
 
 #: plugin/marquee/inc/social.php:688
@@ -2138,9 +1800,7 @@ msgid "The post"
 msgstr ""
 
 #: plugin/marquee/inc/social.php:690
-msgid ""
-"These fill in for you: {show} {city} {site} {radio} {tagline} {date}. A line"
-" whose fill-in is empty (no city set, say) is left out."
+msgid "These fill in for you: {show} {city} {site} {radio} {tagline} {date}. A line whose fill-in is empty (no city set, say) is left out."
 msgstr ""
 
 #: plugin/marquee/inc/social.php:692
@@ -2152,9 +1812,7 @@ msgid "Just now"
 msgstr ""
 
 #: plugin/marquee/inc/social.php:700
-msgid ""
-"Your “Show canceled tonight” graphic. Square or 4:5 pictures look best on "
-"both. Without one, Facebook gets a text post with a link to your website."
+msgid "Your “Show canceled tonight” graphic. Square or 4:5 pictures look best on both. Without one, Facebook gets a text post with a link to your website."
 msgstr ""
 
 #: plugin/marquee/inc/social.php:702
@@ -2218,39 +1876,27 @@ msgid "Open the Account tab."
 msgstr ""
 
 #: plugin/marquee/inc/walk.php:22 plugin/marquee/inc/tour.php:21
-msgid ""
-"Click Request API Access (only the first time). Once it’s approved, the API "
-"Access Token shows up here."
+msgid "Click Request API Access (only the first time). Once it’s approved, the API Access Token shows up here."
 msgstr ""
 
 #: plugin/marquee/inc/walk.php:23 plugin/marquee/inc/tour.php:22
-msgid ""
-"Copy the API Access Token (the copy icon). Then click Refresh Secret and "
-"copy the secret key it shows you."
+msgid "Copy the API Access Token (the copy icon). Then click Refresh Secret and copy the secret key it shows you."
 msgstr ""
 
 #: plugin/marquee/inc/walk.php:24
-msgid ""
-"Paste both here, in Marquee → Remote Falcon, click Test connection, then "
-"Save settings."
+msgid "Paste both here, in Marquee → Remote Falcon, click Test connection, then Save settings."
 msgstr ""
 
 #: plugin/marquee/inc/walk.php:25
-msgid ""
-"On your FPP: Content Setup → Plugin Manager. Install the Remote Falcon "
-"plugin."
+msgid "On your FPP: Content Setup → Plugin Manager. Install the Remote Falcon plugin."
 msgstr ""
 
 #: plugin/marquee/inc/walk.php:26 plugin/marquee/inc/tour.php:26
-msgid ""
-"Open the plugin, paste your Show Token (Remote Falcon → Account Settings → "
-"Account → Show Token) and pick the playlist with your show."
+msgid "Open the plugin, paste your Show Token (Remote Falcon → Account Settings → Account → Show Token) and pick the playlist with your show."
 msgstr ""
 
 #: plugin/marquee/inc/walk.php:27 plugin/marquee/inc/tour.php:27
-msgid ""
-"Back on the Remote Falcon dashboard, FPP Plugin says Connected. Now Playing "
-"and voting work on your site."
+msgid "Back on the Remote Falcon dashboard, FPP Plugin says Connected. Now Playing and voting work on your site."
 msgstr ""
 
 #: plugin/marquee/inc/walk.php:31
@@ -2258,22 +1904,15 @@ msgid "Connect your FPP, step by step"
 msgstr ""
 
 #: plugin/marquee/inc/walk.php:33
-msgid ""
-"Find your screen’s name: FPP → Input/Output Setup → Pixel Overlay Models (a "
-"matrix like GARAGE_DOOR, or the HDMI model for a projector or TV)."
+msgid "Find your screen’s name: FPP → Input/Output Setup → Pixel Overlay Models (a matrix like GARAGE_DOOR, or the HDMI model for a projector or TV)."
 msgstr ""
 
 #: plugin/marquee/inc/walk.php:34
-msgid ""
-"Type each screen here with its FPP’s address and that model name, then Save "
-"settings."
+msgid "Type each screen here with its FPP’s address and that model name, then Save settings."
 msgstr ""
 
 #: plugin/marquee/inc/walk.php:35
-msgid ""
-"Running a static or background playlist too? Tick your show playlist under "
-"Only during these playlists, so names wait for it. Leave it empty to put "
-"names up during any playlist."
+msgid "Running a static or background playlist too? Tick your show playlist under Only during these playlists, so names wait for it. Leave it empty to put names up during any playlist."
 msgstr ""
 
 #: plugin/marquee/inc/walk.php:36
@@ -2281,37 +1920,23 @@ msgid "Under Put it on your FPP, copy the plugin address."
 msgstr ""
 
 #: plugin/marquee/inc/walk.php:37
-msgid ""
-"On your FPP: Status/Control → Settings → UI → User Interface Level: "
-"Developer. Then Content Setup → Plugin Manager, paste the address in Find a "
-"Plugin and click Install. Marquee shows under Installed."
+msgid "On your FPP: Status/Control → Settings → UI → User Interface Level: Developer. Then Content Setup → Plugin Manager, paste the address in Find a Plugin and click Install. Marquee shows under Installed."
 msgstr ""
 
 #: plugin/marquee/inc/walk.php:38
-msgid ""
-"Back here, copy your connection code. It holds your private key, so keep it "
-"private."
+msgid "Back here, copy your connection code. It holds your private key, so keep it private."
 msgstr ""
 
 #: plugin/marquee/inc/walk.php:39
-msgid ""
-"On your FPP: Content Setup → Marquee. Paste the code and click Connect."
+msgid "On your FPP: Content Setup → Marquee. Paste the code and click Connect."
 msgstr ""
 
 #: plugin/marquee/inc/walk.php:40
-msgid ""
-"It says RUNNING and Connected to your website. Within a minute this card "
-"shows the setup check with green ticks. No files to upload and nothing to "
-"start by hand."
+msgid "It says RUNNING and Connected to your website. Within a minute this card shows the setup check with green ticks. No files to upload and nothing to start by hand."
 msgstr ""
 
 #: plugin/marquee/inc/walk.php:41
-msgid ""
-"Start your show as a playlist: your own show playlist, whatever you named it"
-" (this one is called 2026 Playlist). Names go up only while it plays on this"
-" FPP, the one running the script; a single sequence or Play Media won’t "
-"bring the names break. More than one FPP? Put the script on the one that "
-"plays the show."
+msgid "Start your show as a playlist: your own show playlist, whatever you named it (this one is called 2026 Playlist). Names go up only while it plays on this FPP, the one running the script; a single sequence or Play Media won’t bring the names break. More than one FPP? Put the script on the one that plays the show."
 msgstr ""
 
 #: plugin/marquee/inc/walk.php:45
@@ -2323,16 +1948,11 @@ msgid "At elevenlabs.io: Developers → API Keys → Create Key."
 msgstr ""
 
 #: plugin/marquee/inc/walk.php:48 plugin/marquee/inc/tour.php:34
-msgid ""
-"Turn on Restrict Key, set Text to Speech to Access and Voices to Read, then "
-"Create Key. Copy the key right away: it starts with sk_ and is only shown "
-"once."
+msgid "Turn on Restrict Key, set Text to Speech to Access and Voices to Read, then Create Key. Copy the key right away: it starts with sk_ and is only shown once."
 msgstr ""
 
 #: plugin/marquee/inc/walk.php:49
-msgid ""
-"Paste it here, click Load my voices, pick a voice and click Test voice. Turn"
-" on Speak the names and Save settings."
+msgid "Paste it here, click Load my voices, pick a voice and click Test voice. Turn on Speak the names and Save settings."
 msgstr ""
 
 #: plugin/marquee/inc/walk.php:64
@@ -2362,24 +1982,15 @@ msgid "Type your show’s address first."
 msgstr ""
 
 #: plugin/marquee/inc/lookup.php:53
-msgid ""
-"Couldn’t find that place. Try “Town, State ZIP”, or paste a Google Maps link"
-" to your house."
+msgid "Couldn’t find that place. Try “Town, State ZIP”, or paste a Google Maps link to your house."
 msgstr ""
 
 #: plugin/marquee/inc/support.php:141
-msgid ""
-"Your request was sent to Marquee Support with a support report (your "
-"settings without any keys or passwords, and your FPP’s setup check). Marquee"
-" Support can sign in to this site for 24 hours to help; you’ll see "
-"everything they change right here."
+msgid "Your request was sent to Marquee Support with a support report (your settings without any keys or passwords, and your FPP’s setup check). Marquee Support can sign in to this site for 24 hours to help; you’ll see everything they change right here."
 msgstr ""
 
 #: plugin/marquee/inc/support.php:142
-msgid ""
-"Your request was sent to Marquee Support with a support report (your "
-"settings without any keys or passwords, and your FPP’s setup check). They’ll"
-" answer here."
+msgid "Your request was sent to Marquee Support with a support report (your settings without any keys or passwords, and your FPP’s setup check). They’ll answer here."
 msgstr ""
 
 #: plugin/marquee/inc/support.php:194
@@ -2411,9 +2022,7 @@ msgid "Too many tries. Please wait a few minutes."
 msgstr ""
 
 #: plugin/marquee/inc/support.php:246
-msgid ""
-"This support link has ended. The site owner can start a new request from "
-"Marquee → Get help."
+msgid "This support link has ended. The site owner can start a new request from Marquee → Get help."
 msgstr ""
 
 #: plugin/marquee/inc/support.php:246
@@ -2500,8 +2109,7 @@ msgstr ""
 msgid "Start at sunset"
 msgstr ""
 
-#: plugin/marquee/inc/support.php:348 plugin/marquee/inc/admin.php:372
-#: plugin/marquee/inc/admin.php:402
+#: plugin/marquee/inc/support.php:348 plugin/marquee/inc/admin.php:372 plugin/marquee/inc/admin.php:402
 msgid "How names go up"
 msgstr ""
 
@@ -2521,8 +2129,7 @@ msgstr ""
 msgid "Speak the names"
 msgstr ""
 
-#: plugin/marquee/inc/support.php:351 plugin/marquee/inc/support.php:351
-#: plugin/marquee/inc/admin.php:376
+#: plugin/marquee/inc/support.php:351 plugin/marquee/inc/support.php:351 plugin/marquee/inc/admin.php:376
 msgid "Voice"
 msgstr ""
 
@@ -2554,8 +2161,7 @@ msgstr ""
 msgid "Names sequence length"
 msgstr ""
 
-#: plugin/marquee/inc/support.php:354 plugin/marquee/inc/admin.php:619
-#: plugin/marquee/inc/tour.php:99
+#: plugin/marquee/inc/support.php:354 plugin/marquee/inc/admin.php:619 plugin/marquee/inc/tour.php:99
 msgid "Themes kids can pick"
 msgstr ""
 
@@ -2785,8 +2391,7 @@ msgstr ""
 msgid "Marquee Support sent a test name to your screens: %s"
 msgstr ""
 
-#: plugin/marquee/inc/support.php:717 plugin/marquee/inc/support.php:717
-#: plugin/marquee/inc/support.php:717
+#: plugin/marquee/inc/support.php:717 plugin/marquee/inc/support.php:717 plugin/marquee/inc/support.php:717
 msgid "Get help"
 msgstr ""
 
@@ -2795,9 +2400,7 @@ msgid "End the support session? Marquee Support is signed out right away."
 msgstr ""
 
 #: plugin/marquee/inc/support.php:745
-msgid ""
-"Support session for %1$s, until %2$s. Every setting you change is shown to "
-"the owner in the chat."
+msgid "Support session for %1$s, until %2$s. Every setting you change is shown to the owner in the chat."
 msgstr ""
 
 #: plugin/marquee/inc/support.php:745 plugin/marquee/inc/support.php:750
@@ -2805,9 +2408,7 @@ msgid "Open the chat"
 msgstr ""
 
 #: plugin/marquee/inc/support.php:749
-msgid ""
-"Marquee Support is helping you (until %s). Everything they change shows in "
-"the chat."
+msgid "Marquee Support is helping you (until %s). Everything they change shows in the chat."
 msgstr ""
 
 #: plugin/marquee/inc/support.php:750
@@ -2827,9 +2428,7 @@ msgid "Get help from Marquee Support"
 msgstr ""
 
 #: plugin/marquee/inc/support.php:768
-msgid ""
-"Stuck? Tell Marquee Support what’s going on. They get a support report so "
-"they can see your setup right away, and can sign in to fix it with you."
+msgid "Stuck? Tell Marquee Support what’s going on. They get a support report so they can see your setup right away, and can sign in to fix it with you."
 msgstr ""
 
 #: plugin/marquee/inc/support.php:769
@@ -2837,9 +2436,7 @@ msgid "What’s wrong?"
 msgstr ""
 
 #: plugin/marquee/inc/support.php:770
-msgid ""
-"For example: kids can send names and it says they’re in the queue, but they "
-"never show up on my matrix."
+msgid "For example: kids can send names and it says they’re in the queue, but they never show up on my matrix."
 msgstr ""
 
 #: plugin/marquee/inc/support.php:771
@@ -2847,11 +2444,7 @@ msgid "Let Marquee Support sign in to fix it"
 msgstr ""
 
 #: plugin/marquee/inc/support.php:771
-msgid ""
-"For 24 hours, or until you end it. They can use Marquee’s pages and your "
-"media library only (no plugins, themes or users), and see your FPP’s status,"
-" playlists and log through the names script. Every change shows up in the "
-"chat."
+msgid "For 24 hours, or until you end it. They can use Marquee’s pages and your media library only (no plugins, themes or users), and see your FPP’s status, playlists and log through the names script. Every change shows up in the chat."
 msgstr ""
 
 #: plugin/marquee/inc/support.php:772
@@ -2919,8 +2512,7 @@ msgid "Your FPP right now"
 msgstr ""
 
 #: plugin/marquee/inc/support.php:803
-msgid ""
-"Waiting for your FPP to check in (the names script needs to be running)…"
+msgid "Waiting for your FPP to check in (the names script needs to be running)…"
 msgstr ""
 
 #: plugin/marquee/inc/support.php:805
@@ -2964,9 +2556,7 @@ msgid "Couldn’t reach ElevenLabs: "
 msgstr ""
 
 #: plugin/marquee/inc/voice.php:155
-msgid ""
-"ElevenLabs didn’t accept the API key. Copy it again from ElevenLabs → "
-"Developers → API Keys."
+msgid "ElevenLabs didn’t accept the API key. Copy it again from ElevenLabs → Developers → API Keys."
 msgstr ""
 
 #: plugin/marquee/inc/voice.php:157
@@ -2974,9 +2564,7 @@ msgid "Your ElevenLabs account is out of credits for this month."
 msgstr ""
 
 #: plugin/marquee/inc/voice.php:159
-msgid ""
-"This API key isn’t allowed to do that. In ElevenLabs → Developers → API "
-"Keys, give it Text to Speech access (and Voices: Read to list your voices)."
+msgid "This API key isn’t allowed to do that. In ElevenLabs → Developers → API Keys, give it Text to Speech access (and Voices: Read to list your voices)."
 msgstr ""
 
 #: plugin/marquee/inc/voice.php:161
@@ -3016,10 +2604,7 @@ msgid "Paste your ElevenLabs API key first."
 msgstr ""
 
 #: plugin/marquee/inc/voice.php:375
-msgid ""
-"When you send a first name for “Your Name in Lights”, the name and the "
-"greeting you picked are sent to ElevenLabs (elevenlabs.io) to make the "
-"spoken version that plays during the show. Nothing else about you is sent."
+msgid "When you send a first name for “Your Name in Lights”, the name and the greeting you picked are sent to ElevenLabs (elevenlabs.io) to make the spoken version that plays during the show. Nothing else about you is sent."
 msgstr ""
 
 #: plugin/marquee/inc/blocks.php:18
@@ -3027,9 +2612,7 @@ msgid "Show Home Page"
 msgstr ""
 
 #: plugin/marquee/inc/blocks.php:18
-msgid ""
-"The whole show page in one block: status, countdown, tonight’s show, "
-"weather, playlist, tips, guestbook, donate and social."
+msgid "The whole show page in one block: status, countdown, tonight’s show, weather, playlist, tips, guestbook, donate and social."
 msgstr ""
 
 #: plugin/marquee/inc/blocks.php:19
@@ -3037,9 +2620,7 @@ msgid "Show Status"
 msgstr ""
 
 #: plugin/marquee/inc/blocks.php:19
-msgid ""
-"Big banner: show tonight, starting soon, canceled or off season. Updates by "
-"itself."
+msgid "Big banner: show tonight, starting soon, canceled or off season. Updates by itself."
 msgstr ""
 
 #: plugin/marquee/inc/blocks.php:20 plugin/marquee/inc/admin.php:307
@@ -3063,8 +2644,7 @@ msgid "Tonight’s Show"
 msgstr ""
 
 #: plugin/marquee/inc/blocks.php:22
-msgid ""
-"Radio station, show hours, Now Playing from Remote Falcon and directions."
+msgid "Radio station, show hours, Now Playing from Remote Falcon and directions."
 msgstr ""
 
 #: plugin/marquee/inc/blocks.php:23
@@ -3112,9 +2692,7 @@ msgid "Kids’ Show Wall"
 msgstr ""
 
 #: plugin/marquee/inc/blocks.php:28
-msgid ""
-"The newest kids’ light shows from the contest, with their hearts (shows only"
-" when the contest has approved shows)."
+msgid "The newest kids’ light shows from the contest, with their hearts (shows only when the contest has approved shows)."
 msgstr ""
 
 #: plugin/marquee/inc/blocks.php:29
@@ -3150,14 +2728,11 @@ msgid "Get the App"
 msgstr ""
 
 #: plugin/marquee/inc/blocks.php:33
-msgid ""
-"Install-the-app and show alerts card (shows only on phones that can use it)."
+msgid "Install-the-app and show alerts card (shows only on phones that can use it)."
 msgstr ""
 
 #: plugin/marquee/inc/blocks.php:34
-msgid ""
-"Your Name in Lights, Make a Light Show (and the contest), coloring pages and"
-" games."
+msgid "Your Name in Lights, Make a Light Show (and the contest), coloring pages and games."
 msgstr ""
 
 #: plugin/marquee/inc/blocks.php:35
@@ -3173,10 +2748,7 @@ msgid "The Kids’ Corner is resting right now — check back soon!"
 msgstr ""
 
 #: plugin/marquee/inc/blocks.php:151
-msgid ""
-"Marquee: “%s” has nothing to show right now (turned off, or not set up yet "
-"in Marquee → Settings or Appearance → Customize). Only editors see this "
-"note."
+msgid "Marquee: “%s” has nothing to show right now (turned off, or not set up yet in Marquee → Settings or Appearance → Customize). Only editors see this note."
 msgstr ""
 
 #: plugin/marquee/inc/blocks.php:183
@@ -3214,8 +2786,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: plugin/marquee/inc/admin.php:106
-msgid ""
-"Visitors leave messages; each one waits for your OK in WordPress → Comments"
+msgid "Visitors leave messages; each one waits for your OK in WordPress → Comments"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:107
@@ -3223,8 +2794,7 @@ msgid "The Kids’ Corner page. Turn each part on or off below."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:108
-msgid ""
-"Kids send a name to your matrix, projector or TV (needs the FPP script)"
+msgid "Kids send a name to your matrix, projector or TV (needs the FPP script)"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:109
@@ -3240,8 +2810,7 @@ msgid "Coloring Pages"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:111
-msgid ""
-"Pages to print and color (pick which ones under Artwork & Kids’ Corner)"
+msgid "Pages to print and color (pick which ones under Artwork & Kids’ Corner)"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:113
@@ -3256,8 +2825,7 @@ msgstr ""
 msgid "Snowflakes on every page (size and amount in Show Control)"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:119 plugin/marquee/inc/admin.php:213
-#: plugin/marquee/inc/admin.php:325
+#: plugin/marquee/inc/admin.php:119 plugin/marquee/inc/admin.php:213 plugin/marquee/inc/admin.php:325
 msgid "Get set up"
 msgstr ""
 
@@ -3269,8 +2837,7 @@ msgstr ""
 msgid "Your next step"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:121 plugin/marquee/inc/admin.php:214
-#: plugin/marquee/inc/admin.php:1006
+#: plugin/marquee/inc/admin.php:121 plugin/marquee/inc/admin.php:214 plugin/marquee/inc/admin.php:1006
 msgid "Website basics"
 msgstr ""
 
@@ -3278,8 +2845,7 @@ msgstr ""
 msgid "Name, location, schedule"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:122 plugin/marquee/inc/admin.php:326
-#: plugin/marquee/inc/admin.php:1018
+#: plugin/marquee/inc/admin.php:122 plugin/marquee/inc/admin.php:326 plugin/marquee/inc/admin.php:1018
 msgid "Features & pages"
 msgstr ""
 
@@ -3287,8 +2853,7 @@ msgstr ""
 msgid "What visitors see"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:124 plugin/marquee/inc/admin.php:350
-#: plugin/marquee/inc/admin.php:739
+#: plugin/marquee/inc/admin.php:124 plugin/marquee/inc/admin.php:350 plugin/marquee/inc/admin.php:739
 msgid "Add to your show"
 msgstr ""
 
@@ -3296,8 +2861,7 @@ msgstr ""
 msgid "Names on your screens"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:126 plugin/marquee/inc/admin.php:740
-#: plugin/marquee/inc/admin.php:1005
+#: plugin/marquee/inc/admin.php:126 plugin/marquee/inc/admin.php:740 plugin/marquee/inc/admin.php:1005
 msgid "Remote Falcon"
 msgstr ""
 
@@ -3305,8 +2869,7 @@ msgstr ""
 msgid "Now Playing and song picks"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:127 plugin/marquee/inc/admin.php:772
-#: plugin/marquee/inc/admin.php:1009
+#: plugin/marquee/inc/admin.php:127 plugin/marquee/inc/admin.php:772 plugin/marquee/inc/admin.php:1009
 msgid "Artwork & Kids’ Corner"
 msgstr ""
 
@@ -3314,8 +2877,7 @@ msgstr ""
 msgid "Coloring pages, songs, pictures"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:128 plugin/marquee/inc/admin.php:852
-#: plugin/marquee/inc/admin.php:1007
+#: plugin/marquee/inc/admin.php:128 plugin/marquee/inc/admin.php:852 plugin/marquee/inc/admin.php:1007
 msgid "Sharing & donations"
 msgstr ""
 
@@ -3340,13 +2902,10 @@ msgid "Marquee"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:144
-msgid ""
-"Answer a few questions and your show’s website is ready. You can change any "
-"of this later."
+msgid "Answer a few questions and your show’s website is ready. You can change any of this later."
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:148 plugin/marquee/inc/admin.php:165
-#: plugin/marquee/inc/admin.php:172
+#: plugin/marquee/inc/admin.php:148 plugin/marquee/inc/admin.php:165 plugin/marquee/inc/admin.php:172
 msgid "View your site"
 msgstr ""
 
@@ -3359,9 +2918,7 @@ msgid "Your show’s website is ready!"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:167
-msgid ""
-"A few more things make it shine. Do them now or any time; this list stays at"
-" the top of Marquee → Settings until they’re done."
+msgid "A few more things make it shine. Do them now or any time; this list stays at the top of Marquee → Settings until they’re done."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:172
@@ -3373,14 +2930,11 @@ msgid "Settings sections"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:201
-msgid ""
-"Night-of switches are in Show Control, or on your phone in the Show Manager."
+msgid "Night-of switches are in Show Control, or on your phone in the Show Manager."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:215
-msgid ""
-"Who you are, where you are and when the lights are on. This is all your "
-"website needs to go live."
+msgid "Who you are, where you are and when the lights are on. This is all your website needs to go live."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:219
@@ -3420,9 +2974,7 @@ msgid "App icon: not set yet."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:251
-msgid ""
-"Phones and Google show a plain star until you add one. Pick a square "
-"picture, 512 × 512 pixels."
+msgid "Phones and Google show a plain star until you add one. Pick a square picture, 512 × 512 pixels."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:251
@@ -3430,15 +2982,11 @@ msgid "Choose the icon"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:253
-msgid ""
-"Your app icon is only %1$d × %1$d pixels, so it looks blurry on phones and "
-"in Google."
+msgid "Your app icon is only %1$d × %1$d pixels, so it looks blurry on phones and in Google."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:253
-msgid ""
-"Pick a square picture 512 × 512 pixels (WordPress makes the small sizes from"
-" it)."
+msgid "Pick a square picture 512 × 512 pixels (WordPress makes the small sizes from it)."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:253
@@ -3482,9 +3030,7 @@ msgid "Radar station"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:269
-msgid ""
-"US only, filled in by Find. Outside the US a Windy.com radar map is used "
-"instead."
+msgid "US only, filled in by Find. Outside the US a Windy.com radar map is used instead."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:273
@@ -3504,16 +3050,11 @@ msgid "Two-letter code, filled in by Find."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:288
-msgid ""
-"Weather: forecast from Open-Meteo, radar and forecast links from the "
-"National Weather Service."
+msgid "Weather: forecast from Open-Meteo, radar and forecast links from the National Weather Service."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:289
-msgid ""
-"Weather: forecast from Open-Meteo, plus a live Windy.com radar map and “View"
-" Full Weather Forecast” button for your location. Pick °C, km/h above for "
-"metric."
+msgid "Weather: forecast from Open-Meteo, plus a live Windy.com radar map and “View Full Weather Forecast” button for your location. Pick °C, km/h above for metric."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:293 plugin/marquee/inc/admin.php:1035
@@ -3556,8 +3097,7 @@ msgstr ""
 msgid "Count down to"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:311 plugin/marquee/inc/admin.php:538
-#: plugin/marquee/inc/admin.php:539
+#: plugin/marquee/inc/admin.php:311 plugin/marquee/inc/admin.php:538 plugin/marquee/inc/admin.php:539
 msgid "Automatic"
 msgstr ""
 
@@ -3574,10 +3114,7 @@ msgid "A date I pick"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:315
-msgid ""
-"Automatic: Halloween if your last night is in August, September or October, "
-"otherwise Christmas. Shown under the countdown on your home page (“12 days "
-"until Halloween”)."
+msgid "Automatic: Halloween if your last night is in August, September or October, otherwise Christmas. Shown under the countdown on your home page (“12 days until Halloween”)."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:316
@@ -3597,9 +3134,7 @@ msgid "It repeats every year, so the year doesn’t matter."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:327
-msgid ""
-"Turn on the parts of your website you want visitors to see. You can change "
-"these any time."
+msgid "Turn on the parts of your website you want visitors to see. You can change these any time."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:343
@@ -3611,17 +3146,11 @@ msgid "Make my show pages"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:344
-msgid ""
-"Creates Home (the whole show, made your front page), Kids’ Corner and Songs "
-"& Videos with the show sections in them. Pages that already have content are"
-" left alone. You can edit them like any page."
+msgid "Creates Home (the whole show, made your front page), Kids’ Corner and Songs & Videos with the show sections in them. Pages that already have content are left alone. You can edit them like any page."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:352
-msgid ""
-"Kids type their first name on your website and your show puts it up on your "
-"screens. Go through the steps in order; the panel below tells you what’s "
-"left."
+msgid "Kids type their first name on your website and your show puts it up on your screens. Go through the steps in order; the panel below tells you what’s left."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:356
@@ -3629,13 +3158,10 @@ msgid "Your Name in Lights isn’t available with this theme."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:364
-msgid ""
-"Your Name in Lights is switched off, so kids can’t send names yet. Turn it "
-"on under Features & pages when you’re ready."
+msgid "Your Name in Lights is switched off, so kids can’t send names yet. Turn it on under Features & pages when you’re ready."
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:374 plugin/marquee/inc/admin.php:508
-#: plugin/marquee/inc/admin.php:511
+#: plugin/marquee/inc/admin.php:374 plugin/marquee/inc/admin.php:508 plugin/marquee/inc/admin.php:511
 msgid "Screens"
 msgstr ""
 
@@ -3680,13 +3206,7 @@ msgid "Next song"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:408
-msgid ""
-"When kids have sent names, your FPP slips a short “names break” sequence in "
-"after the current song: the names go up on your screens one by one (and a "
-"voice can say them), then your playlist carries on. No names waiting? "
-"Nothing changes. Your show needs to be playing as a playlist on the FPP that"
-" runs the names script. You need one short extra sequence for the break; "
-"Marquee can make it for you (step 4, Names break)."
+msgid "When kids have sent names, your FPP slips a short “names break” sequence in after the current song: the names go up on your screens one by one (and a voice can say them), then your playlist carries on. No names waiting? Nothing changes. Your show needs to be playing as a playlist on the FPP that runs the names script. You need one short extra sequence for the break; Marquee can make it for you (step 4, Names break)."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:414
@@ -3702,16 +3222,11 @@ msgid "+ names on a spare TV or projector"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:416
-msgid ""
-"For a TV or projector your sequences don’t use: names appear on it while "
-"your show plays. No extra sequence to make. Names aren’t spoken (it would "
-"talk over your music) and kids don’t pick a themed sequence."
+msgid "For a TV or projector your sequences don’t use: names appear on it while your show plays. No extra sequence to make. Names aren’t spoken (it would talk over your music) and kids don’t pick a themed sequence."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:422
-msgid ""
-"Names go up one after another while your show plays, within about 20 seconds"
-" of being sent."
+msgid "Names go up one after another while your show plays, within about 20 seconds of being sent."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:438 plugin/marquee/inc/tour.php:47
@@ -3731,22 +3246,15 @@ msgid "e.g. Show"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:447
-msgid ""
-"Leave everything blank to put names up during any playlist. Pick your main "
-"show playlist if you also run something like a static or background "
-"playlist: names then wait until the show playlist plays."
+msgid "Leave everything blank to put names up during any playlist. Pick your main show playlist if you also run something like a static or background playlist: names then wait until the show playlist plays."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:447
-msgid ""
-"Your FPP playlists show up here as checkboxes once the names script has "
-"checked in."
+msgid "Your FPP playlists show up here as checkboxes once the names script has checked in."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:453
-msgid ""
-"Put the Marquee plugin on your FPP and paste your connection code (below). "
-"Your website never connects into your house: the FPP checks in with it."
+msgid "Put the Marquee plugin on your FPP and paste your connection code (below). Your website never connects into your house: the FPP checks in with it."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:458
@@ -3754,11 +3262,7 @@ msgid "Put it on your FPP: the Marquee plugin (easiest)"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:460
-msgid ""
-"On the FPP that plays your show: Status/Control → Settings → UI → User "
-"Interface Level: Developer (FPP only takes a plugin address at that level). "
-"Then Content Setup → Plugin Manager, paste this address in the Find a Plugin"
-" box and click Install:"
+msgid "On the FPP that plays your show: Status/Control → Settings → UI → User Interface Level: Developer (FPP only takes a plugin address at that level). Then Content Setup → Plugin Manager, paste this address in the Find a Plugin box and click Install:"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:461
@@ -3770,9 +3274,7 @@ msgid "Copy"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:462
-msgid ""
-"Click Install. Then open Content Setup → Marquee and paste your connection "
-"code:"
+msgid "Click Install. Then open Content Setup → Marquee and paste your connection code:"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:464
@@ -3784,10 +3286,7 @@ msgid "Connection code"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:468
-msgid ""
-"Click Connect. Within a minute the setup check shows here. No Command "
-"Presets, no files to upload, and when you change your screens here the FPP "
-"picks it up by itself."
+msgid "Click Connect. Within a minute the setup check shows here. No Command Presets, no files to upload, and when you change your screens here the FPP picks it up by itself."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:470
@@ -3811,15 +3310,11 @@ msgid "Setup guide"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:479
-msgid ""
-"Save first if you changed anything above; the settings file is made from the"
-" saved values. It contains your private key, so keep it private."
+msgid "Save first if you changed anything above; the settings file is made from the saved values. It contains your private key, so keep it private."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:485
-msgid ""
-"One row per screen the names go on: your matrix, TV or projector. Save when "
-"you’re done; your FPP picks up the change by itself."
+msgid "One row per screen the names go on: your matrix, TV or projector. Save when you’re done; your FPP picks up the change by itself."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:488
@@ -3923,44 +3418,23 @@ msgid "About how many pixels tall the letters are"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:561
-msgid ""
-"Pick your screen from the list: those are the Pixel Overlay Models on the "
-"FPP running the plugin. For a screen on a different FPP, type that FPP’s "
-"address and the model name. Not in the list? Upload your models to the FPP "
-"with FPP Connect (Models ticked)."
+msgid "Pick your screen from the list: those are the Pixel Overlay Models on the FPP running the plugin. For a screen on a different FPP, type that FPP’s address and the model name. Not in the list? Upload your models to the FPP with FPP Connect (Models ticked)."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:561
-msgid ""
-"FPP address: the FPP that drives that screen (127.0.0.1 means the FPP "
-"running the script). Overlay model: its name under FPP → Input/Output Setup "
-"→ Pixel Overlay Models."
+msgid "FPP address: the FPP that drives that screen (127.0.0.1 means the FPP running the script). Overlay model: its name under FPP → Input/Output Setup → Pixel Overlay Models."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:562
-msgid ""
-"Text and Size: Automatic works for most screens. Small pixel matrices (64 "
-"pixels tall or less) get one big line that scrolls across when the message "
-"won’t fit; TVs and projectors get still text with the name on its own line. "
-"Scrolling text always crosses the screen in the time each name is up; Slow "
-"may not quite finish on long messages. Custom size: the font size FPP uses, "
-"about how many pixels tall the letters are (a 10-pixel-tall matrix looks "
-"good at 8 or 9). Still text goes on one, two or three centered lines (the "
-"name on its own line after the comma), whichever lets the letters be biggest"
-" without going over that size; scrolling text keeps it."
+msgid "Text and Size: Automatic works for most screens. Small pixel matrices (64 pixels tall or less) get one big line that scrolls across when the message won’t fit; TVs and projectors get still text with the name on its own line. Scrolling text always crosses the screen in the time each name is up; Slow may not quite finish on long messages. Custom size: the font size FPP uses, about how many pixels tall the letters are (a 10-pixel-tall matrix looks good at 8 or 9). Still text goes on one, two or three centered lines (the name on its own line after the comma), whichever lets the letters be biggest without going over that size; scrolling text keeps it."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:567 plugin/marquee/inc/admin.php:631
-msgid ""
-"Spoken names, the names break audio and themed sequences work with the names"
-" break. Pick “Between songs” above to use them."
+msgid "Spoken names, the names break audio and themed sequences work with the names break. Pick “Between songs” above to use them."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:569
-msgid ""
-"A short sequence (about 30 seconds) in its own playlist, with your screens "
-"left dark where the names go. Don’t have one? The Sequence maker (below) "
-"makes it for you, or leave “Make a simple names break for me” on."
+msgid "A short sequence (about 30 seconds) in its own playlist, with your screens left dark where the names go. Don’t have one? The Sequence maker (below) makes it for you, or leave “Make a simple names break for me” on."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:570
@@ -3968,15 +3442,11 @@ msgid "seconds into the break"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:570
-msgid ""
-"Usually right after the announcer’s intro ends (“It’s time for Names in "
-"Lights!”)."
+msgid "Usually right after the announcer’s intro ends (“It’s time for Names in Lights!”)."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:571
-msgid ""
-"How long each name gets before the next one goes up (up to 6 names per "
-"break)."
+msgid "How long each name gets before the next one goes up (up to 6 names per break)."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:572
@@ -3988,11 +3458,7 @@ msgid "6 (standard)"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:576
-msgid ""
-"Fewer names, each up longer: at 3, every name gets twice the time, so a "
-"scrolling message can move half as fast and is easier to read. The names "
-"still fit the same part of your break audio. Any extra names go up in the "
-"next break."
+msgid "Fewer names, each up longer: at 3, every name gets twice the time, so a scrolling message can move half as fast and is easier to read. The names still fit the same part of your break audio. Any extra names go up in the next break."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:579
@@ -4000,10 +3466,7 @@ msgid "song (standard)"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:581
-msgid ""
-"Names collect while your show plays and go up together after that many "
-"songs, so a busy night doesn’t put a break between every song. If 6 names "
-"are waiting, the break comes sooner."
+msgid "Names collect while your show plays and go up together after that many songs, so a busy night doesn’t put a break between every song. If 6 names are waiting, the break comes sooner."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:583
@@ -4021,9 +3484,7 @@ msgid "(standard)"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:587
-msgid ""
-"So one family can’t fill a whole names break. You skip this limit while "
-"you’re logged in, for testing."
+msgid "So one family can’t fill a whole names break. You skip this limit while you’re logged in, for testing."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:588
@@ -4031,24 +3492,15 @@ msgid "Make a simple names break for me"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:588
-msgid ""
-"If your FPP has no names break playlist yet, Marquee makes one: the show "
-"pauses, the names go up on your screens (with the names break audio below, "
-"if you build it), then your show carries on. No sequence needed. A names "
-"break playlist you already have is never touched."
+msgid "If your FPP has no names break playlist yet, Marquee makes one: the show pauses, the names go up on your screens (with the names break audio below, if you build it), then your show carries on. No sequence needed. A names break playlist you already have is never touched."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:590
-msgid ""
-"You don’t normally need to touch these: building the names break audio "
-"(below) sets both to match your intro and outro. Change them only if you "
-"made your own break audio; then match them to where your audio goes quiet."
+msgid "You don’t normally need to touch these: building the names break audio (below) sets both to match your intro and outro. Change them only if you made your own break audio; then match them to where your audio goes quiet."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:594
-msgid ""
-"What your radio plays during the names break: an intro, soft music under the"
-" names, and an outro, made for you"
+msgid "What your radio plays during the names break: an intro, soft music under the names, and an outro, made for you"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:595
@@ -4064,9 +3516,7 @@ msgid "Sequence maker"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:606
-msgid ""
-"Makes the xLights files for your names break and themes, from your layout. "
-"Then render them and send them to your FPP."
+msgid "Makes the xLights files for your names break and themes, from your layout. Then render them and send them to your FPP."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:607
@@ -4074,9 +3524,7 @@ msgid "Optional"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:619
-msgid ""
-"Which themes kids see on your website (Candy Cane Swirl, Snowfall…) and the "
-"FPP playlist for each. Make the sequences first with the Sequence maker."
+msgid "Which themes kids see on your website (Candy Cane Swirl, Snowfall…) and the FPP playlist for each. Make the sequences first with the Sequence maker."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:620
@@ -4090,16 +3538,11 @@ msgid "Say each name out loud"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:634
-msgid ""
-"An ElevenLabs voice (Santa, if you like) reads each name on your radio "
-"station"
+msgid "An ElevenLabs voice (Santa, if you like) reads each name on your radio station"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:637
-msgid ""
-"An ElevenLabs voice reads each name over your radio station as it goes up on"
-" the screens: “Merry Christmas, Emma!”. Use the same voice as your show "
-"announcer and it sounds like part of the show."
+msgid "An ElevenLabs voice reads each name over your radio station as it goes up on the screens: “Merry Christmas, Emma!”. Use the same voice as your show announcer and it sounds like part of the show."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:644
@@ -4107,8 +3550,7 @@ msgid "The last spoken name didn’t work (%1$s ago): %2$s"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:647
-msgid ""
-"Needs an ElevenLabs account and the names script 3.1 or newer on your FPP."
+msgid "Needs an ElevenLabs account and the names script 3.1 or newer on your FPP."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:649
@@ -4116,9 +3558,7 @@ msgid "ElevenLabs API key"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:649
-msgid ""
-"ElevenLabs → Developers → API Keys. Give it Text to Speech access, plus "
-"Voices: Read so the list below works. It stays on this server."
+msgid "ElevenLabs → Developers → API Keys. Give it Text to Speech access, plus Voices: Read so the list below works. It stays on this server."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:662
@@ -4150,9 +3590,7 @@ msgid "Quick"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:677
-msgid ""
-"Then “Hi Santa! Love, Mia” is answered “Ho ho ho! Hi Mia, Santa loves you "
-"too!” (the screens still show the kid’s message)."
+msgid "Then “Hi Santa! Love, Mia” is answered “Ho ho ho! Hi Mia, Santa loves you too!” (the screens still show the kid’s message)."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:680
@@ -4164,18 +3602,11 @@ msgid "Names Talking"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:680
-msgid ""
-"The name of an FPP effect (.eseq) that moves your singing faces’ mouths "
-"(several with commas). It plays while each name is spoken. Leave empty for "
-"voice only. The setup guide shows how to make one."
+msgid "The name of an FPP effect (.eseq) that moves your singing faces’ mouths (several with commas). It plays while each name is spoken. Leave empty for voice only. The setup guide shows how to make one."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:681
-msgid ""
-"Cost: about 25 ElevenLabs credits per name, and a name that was already said"
-" is free after that (the clip is saved on your website). Kids’ first names "
-"are sent to ElevenLabs to make the audio; Settings → Privacy has a line you "
-"can add to your privacy page."
+msgid "Cost: about 25 ElevenLabs credits per name, and a name that was already said is free after that (the clip is saved on your website). Kids’ first names are sent to ElevenLabs to make the audio; Settings → Privacy has a line you can add to your privacy page."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:682
@@ -4183,26 +3614,19 @@ msgid "Remove my ElevenLabs key"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:695
-msgid ""
-"The messages under “Pick your message” on your website, like “Merry "
-"Christmas, Emma!”. Write your own if you like."
+msgid "The messages under “Pick your message” on your website, like “Merry Christmas, Emma!”. Write your own if you like."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:696
 msgid "Your own"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:696 plugin/marquee/inc/admin.php:914
-#: plugin/marquee/inc/i18n-js.php:34
+#: plugin/marquee/inc/admin.php:696 plugin/marquee/inc/admin.php:914 plugin/marquee/inc/i18n-js.php:34
 msgid "Standard"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:700
-msgid ""
-"Type <b>NAME</b> where the kid’s name goes. Kids pick one of these when they"
-" send their name; it goes up on your screens in capital letters (and the "
-"voice says it, if you set that up). Up to 6 messages, 34 letters each. Leave"
-" a box empty to drop it."
+msgid "Type <b>NAME</b> where the kid’s name goes. Kids pick one of these when they send their name; it goes up on your screens in capital letters (and the voice says it, if you set that up). Up to 6 messages, 34 letters each. Leave a box empty to drop it."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:703
@@ -4222,16 +3646,11 @@ msgid "Put back the standard messages"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:708
-msgid ""
-"Ideas: “Feliz Navidad, NAME!”, “Happy Hanukkah, NAME!”, “Thanks for "
-"visiting, NAME!”, “Go team, NAME!”. Kids can’t type their own message: only "
-"these, so nothing unexpected goes up on your screens. Save when you’re done."
+msgid "Ideas: “Feliz Navidad, NAME!”, “Happy Hanukkah, NAME!”, “Thanks for visiting, NAME!”, “Go team, NAME!”. Kids can’t type their own message: only these, so nothing unexpected goes up on your screens. Save when you’re done."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:720
-msgid ""
-"Names you blocked, and your own words to keep off your screens. Bad words "
-"are always blocked for you."
+msgid "Names you blocked, and your own words to keep off your screens. Bad words are always blocked for you."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:721
@@ -4241,11 +3660,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: plugin/marquee/inc/admin.php:726
-msgid ""
-"Marquee already stops bad words, rude names and tricks like swapping letters"
-" for numbers (“b4d”). You don’t need to set anything up. Every name also "
-"shows in Show Control and the Show Manager, where “Block word” takes it off "
-"the screens and adds it here."
+msgid "Marquee already stops bad words, rude names and tricks like swapping letters for numbers (“b4d”). You don’t need to set anything up. Every name also shows in Show Control and the Show Manager, where “Block word” takes it off the screens and adds it here."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:728
@@ -4265,17 +3680,11 @@ msgid "Block it"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:730
-msgid ""
-"Blocked one by mistake? Click × next to it and Save, and that name can be "
-"sent again. A blocked word is stopped when it’s the whole name (blocking "
-"“Bob” doesn’t block “Bobby”)."
+msgid "Blocked one by mistake? Click × next to it and Save, and that name can be sent again. A blocked word is stopped when it’s the whole name (blocking “Bob” doesn’t block “Bobby”)."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:741
-msgid ""
-"Optional. Connect it and your site shows what’s playing now, your playlist, "
-"and song voting. Without it the site still shows hours, weather and the "
-"Kids’ Corner."
+msgid "Optional. Connect it and your site shows what’s playing now, your playlist, and song voting. Without it the site still shows hours, weather and the Kids’ Corner."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:745
@@ -4291,12 +3700,7 @@ msgid "Your Remote Falcon viewer page (optional)"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:748
-msgid ""
-"Adds a “Pick the Next Song” button to Tonight’s Show while the show is "
-"running. Visitors pick right on your website: Marquee shows your Remote "
-"Falcon songs and sends their vote or request to Remote Falcon, with your "
-"Remote Falcon rules (one pick each, queue size, location check). Copy the "
-"address from Remote Falcon → Control Panel → View Viewer Page."
+msgid "Adds a “Pick the Next Song” button to Tonight’s Show while the show is running. Visitors pick right on your website: Marquee shows your Remote Falcon songs and sends their vote or request to Remote Falcon, with your Remote Falcon rules (one pick each, queue size, location check). Copy the address from Remote Falcon → Control Panel → View Viewer Page."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:749
@@ -4304,15 +3708,11 @@ msgid "Test connection"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:750
-msgid ""
-"Both are on Remote Falcon → Account → API Access. They turn on Now Playing, "
-"the playlist and song voting, and never leave this server."
+msgid "Both are on Remote Falcon → Account → API Access. They turn on Now Playing, the playlist and song voting, and never leave this server."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:750
-msgid ""
-"Your FPP also needs the Remote Falcon plugin installed and running (FPP → "
-"Content Setup → Plugin Manager), or Now Playing stays empty."
+msgid "Your FPP also needs the Remote Falcon plugin installed and running (FPP → Content Setup → Plugin Manager), or Now Playing stays empty."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:751
@@ -4320,21 +3720,15 @@ msgid "Leave out of song voting"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:757
-msgid ""
-"Tick anything that isn’t really a song, like your intro or an announcement. "
-"It stays in your show; people just can’t vote for it."
+msgid "Tick anything that isn’t really a song, like your intro or an announcement. It stays in your show; people just can’t vote for it."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:764 plugin/marquee/inc/covers.php:185
-msgid ""
-"Your songs show up here once Remote Falcon is connected (save this page "
-"after a successful test)."
+msgid "Your songs show up here once Remote Falcon is connected (save this page after a successful test)."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:773
-msgid ""
-"Pictures, coloring pages and songs for the Kids’ Corner. All optional: "
-"anything left empty uses the standard pictures."
+msgid "Pictures, coloring pages and songs for the Kids’ Corner. All optional: anything left empty uses the standard pictures."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:778
@@ -4342,9 +3736,7 @@ msgid "Your logo is printed in the corner of every standard coloring page."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:778
-msgid ""
-"Your show name is printed in the corner of every standard coloring page (or "
-"your logo, once you add one in Website basics)."
+msgid "Your show name is printed in the corner of every standard coloring page (or your logo, once you add one in Website basics)."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:780
@@ -4352,9 +3744,7 @@ msgid "Your house or display"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:780
-msgid ""
-"A black-and-white line drawing of your house, shown first as “Our light "
-"show”."
+msgid "A black-and-white line drawing of your house, shown first as “Our light show”."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:786
@@ -4362,18 +3752,14 @@ msgid "Coloring pages that come with Marquee"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:787
-msgid ""
-"Untick any you want off for now, or click Remove to take it out of this "
-"list. If every page is off and you add none of your own, the Coloring Pages "
-"door is hidden."
+msgid "Untick any you want off for now, or click Remove to take it out of this list. If every page is off and you add none of your own, the Coloring Pages door is hidden."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:796 plugin/marquee/inc/i18n-js.php:25
 msgid "Restore"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:796 plugin/marquee/inc/admin.php:912
-#: plugin/marquee/inc/admin.php:919
+#: plugin/marquee/inc/admin.php:796 plugin/marquee/inc/admin.php:912 plugin/marquee/inc/admin.php:919
 msgid "Remove"
 msgstr ""
 
@@ -4390,9 +3776,7 @@ msgid "More coloring pages"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:825
-msgid ""
-"Up to 12. Black-and-white line drawings print best. The picture’s title in "
-"the Media Library is the name kids see."
+msgid "Up to 12. Black-and-white line drawings print best. The picture’s title in the Media Library is the name kids see."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:829
@@ -4400,10 +3784,7 @@ msgid "Songs kids can pick in Make a Light Show"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:829
-msgid ""
-"MP3 files, up to 12. Use songs you have the right to share on your website. "
-"The song’s title in the Media Library is the name kids see. With no songs, "
-"the lights play on their own for a minute."
+msgid "MP3 files, up to 12. Use songs you have the right to share on your website. The song’s title in the Media Library is the name kids see. With no songs, the lights play on their own for a minute."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:831
@@ -4411,15 +3792,11 @@ msgid "Kids’ Corner door pictures"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:832
-msgid ""
-"Replace any of the four big pictures kids tap. Tall pictures work best (490 "
-"× 685 or bigger, same shape)."
+msgid "Replace any of the four big pictures kids tap. Tall pictures work best (490 × 685 or bigger, same shape)."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:853
-msgid ""
-"Your donation link, your social pages, and posting to Facebook and Instagram"
-" when you cancel a night."
+msgid "Your donation link, your social pages, and posting to Facebook and Instagram when you cancel a night."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:857
@@ -4439,9 +3816,7 @@ msgid "Social links"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:863
-msgid ""
-"Buttons in Stay Connected and small icons at the bottom of every page. A "
-"button shows when it is turned on and has a link."
+msgid "Buttons in Stay Connected and small icons at the bottom of every page. A button shows when it is turned on and has a link."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:867
@@ -4457,10 +3832,7 @@ msgid "Social posts"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:878
-msgid ""
-"When you cancel tonight’s show (in Show Control or on your phone in the Show"
-" Manager), Marquee can post it on your Facebook Page and Instagram for you, "
-"with your picture. Once per night, so it never posts twice."
+msgid "When you cancel tonight’s show (in Show Control or on your phone in the Show Manager), Marquee can post it on your Facebook Page and Instagram for you, with your picture. Once per night, so it never posts twice."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:890
@@ -4491,8 +3863,7 @@ msgstr ""
 msgid "Add pictures"
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:918 plugin/marquee/inc/covers.php:204
-#: plugin/marquee/inc/ai.php:369
+#: plugin/marquee/inc/admin.php:918 plugin/marquee/inc/covers.php:204 plugin/marquee/inc/ai.php:369
 msgid "Change"
 msgstr ""
 
@@ -4533,9 +3904,7 @@ msgid "Your show pages:"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:992
-msgid ""
-"Your front page already had content, so it was left alone. To add the show "
-"to it, edit it and add the “Show Home Page” block from the Marquee group."
+msgid "Your front page already had content, so it was left alone. To add the show to it, edit it and add the “Show Home Page” block from the Marquee group."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:1005 plugin/marquee/inc/tour.php:17
@@ -4603,9 +3972,7 @@ msgid "Use https for the app and alerts"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:1021
-msgid ""
-"Phones only install the app and allow alerts on a secure (https) site. Most "
-"hosts turn it on for free."
+msgid "Phones only install the app and allow alerts on a secure (https) site. Most hosts turn it on for free."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:1033
@@ -4641,9 +4008,7 @@ msgid "Your show’s website is ready"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:1056
-msgid ""
-"Everything on the list is done. Changes you make here show on your website "
-"right away."
+msgid "Everything on the list is done. Changes you make here show on your website right away."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:1067
@@ -4663,9 +4028,7 @@ msgid "Your website’s look and words"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:1082
-msgid ""
-"Each one opens the live preview of your website, right at that spot, so you "
-"see every change as you make it."
+msgid "Each one opens the live preview of your website, right at that spot, so you see every change as you make it."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:1090
@@ -4724,8 +4087,7 @@ msgstr ""
 msgid "Turned off under Features & pages. Kids can’t send names yet."
 msgstr ""
 
-#: plugin/marquee/inc/admin.php:1116 plugin/marquee/inc/admin.php:1127
-#: plugin/marquee/inc/admin.php:1128
+#: plugin/marquee/inc/admin.php:1116 plugin/marquee/inc/admin.php:1127 plugin/marquee/inc/admin.php:1128
 msgid "Connected"
 msgstr ""
 
@@ -4770,9 +4132,7 @@ msgid "Help and your phone"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:1148
-msgid ""
-"Stuck on something? Marquee Support can look at your setup with you. And on "
-"show nights, run everything from your phone."
+msgid "Stuck on something? Marquee Support can look at your setup with you. And on show nights, run everything from your phone."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:1154
@@ -4828,10 +4188,7 @@ msgid "QR code for the Show Manager"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:1257
-msgid ""
-"Cancel the show, approve names, contest entries and guestbook messages, and "
-"send alerts, all from a page on your own website. Scan the code with your "
-"phone, sign in, then add it to your home screen."
+msgid "Cancel the show, approve names, contest entries and guestbook messages, and send alerts, all from a page on your own website. Scan the code with your phone, sign in, then add it to your home screen."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:1259
@@ -4839,9 +4196,7 @@ msgid "Helpers:"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:1259
-msgid ""
-"give a family member or friend their own account with the role “Show "
-"helper”. They can use the Show Manager, and nothing else in WordPress."
+msgid "give a family member or friend their own account with the role “Show helper”. They can use the Show Manager, and nothing else in WordPress."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:1259
@@ -4869,10 +4224,7 @@ msgid "of your show"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:1279
-msgid ""
-"When a kid sends a name, the phone asks to share its location. It is only "
-"compared with your show’s address and never saved. You and your Show helpers"
-" can still send test names from anywhere."
+msgid "When a kid sends a name, the phone asks to share its location. It is only compared with your show’s address and never saved. You and your Show helpers can still send test names from anywhere."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:1279
@@ -4884,9 +4236,7 @@ msgid "0.5 mile suits most shows; phones can be off by a few hundred feet."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:1280
-msgid ""
-"Set your show’s address in Website basics first: without it, names can be "
-"sent from anywhere."
+msgid "Set your show’s address in Website basics first: without it, names can be sent from anywhere."
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:1301
@@ -4902,9 +4252,7 @@ msgid "Your show: names go up on your matrix and TV"
 msgstr ""
 
 #: plugin/marquee/inc/admin.php:1312
-msgid ""
-"The 🔊 line is what you hear on your radio station with “Say each name out "
-"loud” on."
+msgid "The 🔊 line is what you hear on your radio station with “Say each name out loud” on."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:19
@@ -4944,9 +4292,7 @@ msgid "The plugin on your FPP"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:25
-msgid ""
-"On your FPP: Content Setup → Plugin Manager. Install the Remote Falcon "
-"plugin. Without it, Now Playing stays empty."
+msgid "On your FPP: Content Setup → Plugin Manager. Install the Remote Falcon plugin. Without it, Now Playing stays empty."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:26
@@ -4978,9 +4324,7 @@ msgid "Load your voices"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:36
-msgid ""
-"Click Load my voices, then pick one in the list. Using a Santa voice? Tick "
-"“My voice is Santa” too."
+msgid "Click Load my voices, then pick one in the list. Using a Santa voice? Tick “My voice is Santa” too."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:37
@@ -4996,16 +4340,11 @@ msgid "Turn it on and Save"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:38
-msgid ""
-"Switch on Speak the names and click Save settings. Your FPP plays each name "
-"over the radio as it goes up (names script 3.1 or newer)."
+msgid "Switch on Speak the names and click Save settings. Your FPP plays each name over the radio as it goes up (names script 3.1 or newer)."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:44
-msgid ""
-"First pick one: between songs in a short names break (most shows), or during"
-" songs on a spare TV or projector your show doesn’t use. The steps below "
-"follow your choice."
+msgid "First pick one: between songs in a short names break (most shows), or during songs on a spare TV or projector your show doesn’t use. The steps below follow your choice."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:45
@@ -5013,9 +4352,7 @@ msgid "Turn names on"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:45
-msgid ""
-"Under Features, switch on Your Name in Lights. Kids can send names only "
-"while your show is on (your hours in Schedule)."
+msgid "Under Features, switch on Your Name in Lights. Kids can send names only while your show is on (your hours in Schedule)."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:46
@@ -5023,17 +4360,11 @@ msgid "How long each name stays up"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:46
-msgid ""
-"Names go up on your spare screen one after another while your show plays. 6 "
-"seconds is a good start."
+msgid "Names go up on your spare screen one after another while your show plays. 6 seconds is a good start."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:47
-msgid ""
-"Running a static or background playlist alongside your show? Tick your show "
-"playlist here and names wait for it. Leave it empty to put names up during "
-"any playlist. Your FPP’s playlists show up as checkboxes once it has checked"
-" in."
+msgid "Running a static or background playlist alongside your show? Tick your show playlist here and names wait for it. Leave it empty to put names up during any playlist. Your FPP’s playlists show up as checkboxes once it has checked in."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:48
@@ -5041,8 +4372,7 @@ msgid "The Marquee plugin for FPP"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:48
-msgid ""
-"Copy the plugin address. You’ll paste it into FPP’s Plugin Manager next."
+msgid "Copy the plugin address. You’ll paste it into FPP’s Plugin Manager next."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:49
@@ -5050,11 +4380,7 @@ msgid "Install it on your FPP"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:49
-msgid ""
-"On the FPP that plays your show: Status/Control → Settings → UI → User "
-"Interface Level: Developer (FPP only takes a plugin address at that level). "
-"Then Content Setup → Plugin Manager, paste the address in Find a Plugin and "
-"click Install. It shows under Installed."
+msgid "On the FPP that plays your show: Status/Control → Settings → UI → User Interface Level: Developer (FPP only takes a plugin address at that level). Then Content Setup → Plugin Manager, paste the address in Find a Plugin and click Install. It shows under Installed."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:50
@@ -5062,9 +4388,7 @@ msgid "Copy your connection code"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:50
-msgid ""
-"The second box is your connection code: your website’s address and private "
-"key in one line. Copy it and keep it private."
+msgid "The second box is your connection code: your website’s address and private key in one line. Copy it and keep it private."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:51
@@ -5072,17 +4396,11 @@ msgid "Connect it"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:51
-msgid ""
-"On your FPP: Content Setup → Marquee. Paste the code and click Connect. It "
-"says RUNNING and Connected to your website. No files to upload and nothing "
-"to start by hand: it starts with FPP from now on."
+msgid "On your FPP: Content Setup → Marquee. Paste the code and click Connect. It says RUNNING and Connected to your website. No files to upload and nothing to start by hand: it starts with FPP from now on."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:52
-msgid ""
-"Within a minute this says “FPP last checked in” with a setup check: a green "
-"tick for each part, or a red line that says what to fix. Fix it and restart "
-"FPPD again."
+msgid "Within a minute this says “FPP last checked in” with a setup check: a green tick for each part, or a red line that says what to fix. Fix it and restart FPPD again."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:53
@@ -5090,17 +4408,11 @@ msgid "Find your screen’s name"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:53
-msgid ""
-"On your FPP: Input/Output Setup → Pixel Overlay Models. Note the name of "
-"each screen that shows names: a matrix (like GARAGE_DOOR), or the HDMI model"
-" for a projector or TV."
+msgid "On your FPP: Input/Output Setup → Pixel Overlay Models. Note the name of each screen that shows names: a matrix (like GARAGE_DOOR), or the HDMI model for a projector or TV."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:54
-msgid ""
-"One row per screen: any name, the address of the FPP that drives it "
-"(127.0.0.1 = the FPP running the script), and the overlay model name exactly"
-" as FPP shows it."
+msgid "One row per screen: any name, the address of the FPP that drives it (127.0.0.1 = the FPP running the script), and the overlay model name exactly as FPP shows it."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:55 plugin/marquee/inc/tour.php:108
@@ -5108,9 +4420,7 @@ msgid "Save"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:55
-msgid ""
-"Click Save settings. Your FPP picks up your screens and settings from here "
-"by itself."
+msgid "Click Save settings. Your FPP picks up your screens and settings from here by itself."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:56
@@ -5118,10 +4428,7 @@ msgid "Your names break playlist"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:56
-msgid ""
-"The FPP playlist that plays your names break. It must exist on your FPP with"
-" your names break sequence in it. Don’t have one yet? The Sequence maker "
-"below makes the sequence, and its Show me how covers making the playlist."
+msgid "The FPP playlist that plays your names break. It must exist on your FPP with your names break sequence in it. Don’t have one yet? The Sequence maker below makes the sequence, and its Show me how covers making the playlist."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:57 plugin/marquee/inc/tour.php:105
@@ -5129,9 +4436,7 @@ msgid "When the names appear"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:57
-msgid ""
-"Usually nothing to do: the Sequence maker and the names break audio fill "
-"these in. Change them only if you made your own break audio."
+msgid "Usually nothing to do: the Sequence maker and the names break audio fill these in. Change them only if you made your own break audio."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:58 plugin/marquee/inc/tour.php:59
@@ -5139,28 +4444,15 @@ msgid "Play your show as a playlist"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:58
-msgid ""
-"Start your own show playlist (whatever you named it; this one is “2026 "
-"Playlist”) from the Status page or your schedule. Names go up only while it "
-"plays on this FPP: after the current song, the names break slips in, then "
-"your playlist carries on. A single sequence or Play Media won’t bring the "
-"names break."
+msgid "Start your own show playlist (whatever you named it; this one is “2026 Playlist”) from the Status page or your schedule. Names go up only while it plays on this FPP: after the current song, the names break slips in, then your playlist carries on. A single sequence or Play Media won’t bring the names break."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:59
-msgid ""
-"Start your own show playlist (whatever you named it) from the Status page or"
-" your schedule. Names go up on your spare screen only while it plays on this"
-" FPP, within about 20 seconds of being sent."
+msgid "Start your own show playlist (whatever you named it) from the Status page or your schedule. Names go up on your spare screen only while it plays on this FPP, within about 20 seconds of being sent."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:60
-msgid ""
-"During show hours, open your website’s Kids’ Corner and send your own first "
-"name. It goes up after the current song (or right away during songs). "
-"Nothing? FPP → File Manager → Logs → marquee_names.log says why. Using "
-"Remote Falcon jukebox or voting? It also picks what plays next, so test once"
-" with viewer control off."
+msgid "During show hours, open your website’s Kids’ Corner and send your own first name. It goes up after the current song (or right away during songs). Nothing? FPP → File Manager → Logs → marquee_names.log says why. Using Remote Falcon jukebox or voting? It also picks what plays next, so test once with viewer control off."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:66
@@ -5168,10 +4460,7 @@ msgid "Choose your layout"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:66
-msgid ""
-"Click this box (or drag the file onto it) and pick xlights_rgbeffects.xml "
-"from your xLights show folder. It stays on your computer: Marquee reads it "
-"right here."
+msgid "Click this box (or drag the file onto it) and pick xlights_rgbeffects.xml from your xLights show folder. It stays on your computer: Marquee reads it right here."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:67
@@ -5179,10 +4468,7 @@ msgid "Your names break (optional)"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:67
-msgid ""
-"Already have a names break sequence? Drop its .xsq here and the themes are "
-"made from it, keeping its music, timing and singing faces. No names break "
-"yet? Leave it empty and Marquee makes one."
+msgid "Already have a names break sequence? Drop its .xsq here and the themes are made from it, keeping its music, timing and singing faces. No names break yet? Leave it empty and Marquee makes one."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:68
@@ -5190,9 +4476,7 @@ msgid "Pick what to make"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:68
-msgid ""
-"Tick the themes you want. 3 or 4 is plenty: kids pick faster, and each one "
-"is a sequence to render."
+msgid "Tick the themes you want. 3 or 4 is plenty: kids pick faster, and each one is a sequence to render."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:69
@@ -5200,9 +4484,7 @@ msgid "Or describe your own"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:69
-msgid ""
-"Type an idea, like “purple and gold Mardi Gras”, and click Add it. The AI "
-"picks the colors and effects; add as many as you like, one at a time."
+msgid "Type an idea, like “purple and gold Mardi Gras”, and click Add it. The AI picks the colors and effects; add as many as you like, one at a time."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:70
@@ -5210,10 +4492,7 @@ msgid "No timing to set"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:70
-msgid ""
-"The tricky part is done for you: Marquee makes sure each name shows up right"
-" after the intro and then every few seconds, lined up with the music. “Use "
-"it” fills in the numbers later."
+msgid "The tricky part is done for you: Marquee makes sure each name shows up right after the intro and then every few seconds, lined up with the music. “Use it” fills in the numbers later."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:71
@@ -5229,10 +4508,7 @@ msgid "Download each one"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:72
-msgid ""
-"Each sequence gets a Download .xsq button. Save them into your xLights show "
-"folder (the one with xlights_rgbeffects.xml in it). Download the music too, "
-"with the button at the bottom here."
+msgid "Each sequence gets a Download .xsq button. Save them into your xLights show folder (the one with xlights_rgbeffects.xml in it). Download the music too, with the button at the bottom here."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:73
@@ -5240,9 +4516,7 @@ msgid "Open it in xLights"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:73
-msgid ""
-"In xLights: File → Open Sequence and pick the new .xsq. If it asks for the "
-"music, choose the music file you downloaded."
+msgid "In xLights: File → Open Sequence and pick the new .xsq. If it asks for the music, choose the music file you downloaded."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:74
@@ -5250,10 +4524,7 @@ msgid "Render it and Save"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:74
-msgid ""
-"Click Render All, play it in the house preview and change anything you like."
-" Then Save: that writes the .fseq file, which is what FPP plays. FPP can’t "
-"play the .xsq itself."
+msgid "Click Render All, play it in the house preview and change anything you like. Then Save: that writes the .fseq file, which is what FPP plays. FPP can’t play the .xsq itself."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:75
@@ -5261,10 +4532,7 @@ msgid "Send it to your FPP"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:75
-msgid ""
-"Easiest: Tools → FPP Connect, tick your FPP and the new sequences, and click"
-" Upload. It sends the .fseq and the music together. (Or upload them by hand "
-"in FPP → File Manager.)"
+msgid "Easiest: Tools → FPP Connect, tick your FPP and the new sequences, and click Upload. It sends the .fseq and the music together. (Or upload them by hand in FPP → File Manager.)"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:76
@@ -5272,9 +4540,7 @@ msgid "Check it arrived"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:76
-msgid ""
-"On your FPP: Content Setup → File Manager → Sequences. The new .fseq is in "
-"the list."
+msgid "On your FPP: Content Setup → File Manager → Sequences. The new .fseq is in the list."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:77
@@ -5282,12 +4548,7 @@ msgid "Make a playlist for each one"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:77
-msgid ""
-"Content Setup → Playlists → New Playlist, one per sequence. Your names break"
-" goes in a playlist named exactly “%s” (the name set in the Names break "
-"step). Each theme gets its own, named the way Marquee shows it, for example "
-"“Names - Candy Cane Swirl”. Don’t add them to your show schedule: Marquee "
-"plays them between songs."
+msgid "Content Setup → Playlists → New Playlist, one per sequence. Your names break goes in a playlist named exactly “%s” (the name set in the Names break step). Each theme gets its own, named the way Marquee shows it, for example “Names - Candy Cane Swirl”. Don’t add them to your show schedule: Marquee plays them between songs."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:78
@@ -5303,9 +4564,7 @@ msgid "Sequence and its music"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:79
-msgid ""
-"Type: Sequence and Media. Pick the new sequence; its music is picked for "
-"you. Click Add, then Save Playlist."
+msgid "Type: Sequence and Media. Pick the new sequence; its music is picked for you. Click Add, then Save Playlist."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:80
@@ -5313,18 +4572,11 @@ msgid "Back here: use it"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:80
-msgid ""
-"For each theme, click “Use it” next to its Download button, then Save "
-"settings. The setup check at the top of Names in Lights tells you within a "
-"minute if FPP can’t find a playlist."
+msgid "For each theme, click “Use it” next to its Download button, then Save settings. The setup check at the top of Names in Lights tells you within a minute if FPP can’t find a playlist."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:86
-msgid ""
-"You need three things first: a voice set up in the Voice step, the names "
-"script running on your FPP (the Connect your FPP step), and a playlist on "
-"your FPP named “%s” with your names break sequence in it (the Sequence maker"
-" makes it). Marquee puts the new sound into that playlist."
+msgid "You need three things first: a voice set up in the Voice step, the names script running on your FPP (the Connect your FPP step), and a playlist on your FPP named “%s” with your names break sequence in it (the Sequence maker makes it). Marquee puts the new sound into that playlist."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:87
@@ -5332,9 +4584,7 @@ msgid "What you’re making"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:87
-msgid ""
-"The sound your radio plays during the names break: an intro, soft music "
-"while the names go up (your FPP says each name live over it), and an outro."
+msgid "The sound your radio plays during the names break: an intro, soft music while the names go up (your FPP says each name live over it), and an outro."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:88
@@ -5342,9 +4592,7 @@ msgid "Write the intro"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:88
-msgid ""
-"What the announcer says before the names. Click one of the ideas under it to"
-" start from one. Keep it short: about one breath."
+msgid "What the announcer says before the names. Click one of the ideas under it to start from one. Keep it short: about one breath."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:89
@@ -5352,9 +4600,7 @@ msgid "Write the outro"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:89
-msgid ""
-"What comes after the names, like how to send a name. Write your website the "
-"way people say it: “lights on main street dot com”."
+msgid "What comes after the names, like how to send a name. Write your website the way people say it: “lights on main street dot com”."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:90
@@ -5362,9 +4608,7 @@ msgid "Your sequence length"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:90
-msgid ""
-"How long your names break sequence is, in seconds. Marquee fits the intro, 6"
-" names and the outro into it."
+msgid "How long your names break sequence is, in seconds. Marquee fits the intro, 6 names and the outro into it."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:91
@@ -5372,9 +4616,7 @@ msgid "Music (optional)"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:91
-msgid ""
-"Your own soft instrumental: no singing or talking, or it covers the names. "
-"Leave it empty for the soft music box that comes with Marquee."
+msgid "Your own soft instrumental: no singing or talking, or it covers the names. Leave it empty for the soft music box that comes with Marquee."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:92
@@ -5382,10 +4624,7 @@ msgid "Build it"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:92
-msgid ""
-"Click Build. Your voice reads the lines, and Marquee mixes three versions at"
-" song loudness: the full break, and shorter ones for when only 1 or 2 names "
-"are waiting."
+msgid "Click Build. Your voice reads the lines, and Marquee mixes three versions at song loudness: the full break, and shorter ones for when only 1 or 2 names are waiting."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:93
@@ -5393,10 +4632,7 @@ msgid "Listen"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:93
-msgid ""
-"Three players appear. They sound alike on purpose: the names aren’t in them,"
-" because your FPP says each name live. The short ones just reach the outro "
-"sooner."
+msgid "Three players appear. They sound alike on purpose: the names aren’t in them, because your FPP says each name live. The short ones just reach the outro sooner."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:94
@@ -5404,9 +4640,7 @@ msgid "Timing is set for you"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:94
-msgid ""
-"“When the first name appears” and “Time between names” are filled in to "
-"match your intro. The timeline shows where each name lands."
+msgid "“When the first name appears” and “Time between names” are filled in to match your intro. The timeline shows where each name lands."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:95
@@ -5414,10 +4648,7 @@ msgid "Your FPP does the rest"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:95
-msgid ""
-"Within a minute your FPP downloads the three files and sets up the playlists"
-" by itself (“%1$s”, “%1$s 2” and “%1$s 1”). The setup check at the top shows"
-" a green tick when it’s done."
+msgid "Within a minute your FPP downloads the three files and sets up the playlists by itself (“%1$s”, “%1$s 2” and “%1$s 1”). The setup check at the top shows a green tick when it’s done."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:101
@@ -5425,10 +4656,7 @@ msgid "First, the sequences"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:101
-msgid ""
-"Each theme is its own short sequence on your FPP. Don’t have them yet? “Make"
-" them for me” makes them from your layout (the Sequence maker), with its own"
-" walkthrough."
+msgid "Each theme is its own short sequence on your FPP. Don’t have them yet? “Make them for me” makes them from your layout (the Sequence maker), with its own walkthrough."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:102
@@ -5436,9 +4664,7 @@ msgid "Turn it on"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:102
-msgid ""
-"Switch on “Let kids pick a themed sequence”. Your regular names break stays "
-"as the “Classic” choice."
+msgid "Switch on “Let kids pick a themed sequence”. Your regular names break stays as the “Classic” choice."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:103
@@ -5454,17 +4680,11 @@ msgid "Its playlist on your FPP"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:104
-msgid ""
-"Exactly the name of the playlist you made on your FPP, for example “Names - "
-"Candy Cane Swirl”. A typo means names for this theme go up in the Classic "
-"break instead."
+msgid "Exactly the name of the playlist you made on your FPP, for example “Names - Candy Cane Swirl”. A typo means names for this theme go up in the Classic break instead."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:105
-msgid ""
-"When the names appear in this sequence. If it was made by the Sequence "
-"maker, “Use it” already filled these in to match: leave them. The bar shows "
-"where each name lands."
+msgid "When the names appear in this sequence. If it was made by the Sequence maker, “Use it” already filled these in to match: leave them. The bar shows where each name lands."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:106
@@ -5472,9 +4692,7 @@ msgid "A picture, or a look"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:106
-msgid ""
-"A photo of your house during that sequence works great. No picture? Pick a "
-"look and kids see a little animated house in those colors."
+msgid "A photo of your house during that sequence works great. No picture? Pick a look and kids see a little animated house in those colors."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:107
@@ -5482,8 +4700,7 @@ msgid "What kids see"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:107
-msgid ""
-"This card is exactly what kids tap on your website. It updates as you type."
+msgid "This card is exactly what kids tap on your website. It updates as you type."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:108
@@ -5495,9 +4712,7 @@ msgid "Check your FPP found them"
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:109
-msgid ""
-"Within a minute, the setup check at the top lists each theme’s playlist with"
-" a green tick, or tells you which one it can’t find."
+msgid "Within a minute, the setup check at the top lists each theme’s playlist with a green tick, or tells you which one it can’t find."
 msgstr ""
 
 #: plugin/marquee/inc/tour.php:125
@@ -5513,10 +4728,7 @@ msgid "Show cover pictures"
 msgstr ""
 
 #: plugin/marquee/inc/covers.php:182
-msgid ""
-"A small cover next to each song in Tonight’s Playlist and Vote for Your "
-"Favorite Song. It uses the artwork you set in Remote Falcon, or your own "
-"picture below."
+msgid "A small cover next to each song in Tonight’s Playlist and Vote for Your Favorite Song. It uses the artwork you set in Remote Falcon, or your own picture below."
 msgstr ""
 
 #: plugin/marquee/inc/covers.php:183
@@ -5524,16 +4736,11 @@ msgid "Find album covers automatically"
 msgstr ""
 
 #: plugin/marquee/inc/covers.php:183
-msgid ""
-"For songs without artwork, Marquee looks up the album cover by song and "
-"artist (Apple’s free music search) and saves a copy on your site. It only "
-"uses a cover when the song matches; change any that are wrong below."
+msgid "For songs without artwork, Marquee looks up the album cover by song and artist (Apple’s free music search) and saves a copy on your site. It only uses a cover when the song matches; change any that are wrong below."
 msgstr ""
 
 #: plugin/marquee/inc/covers.php:188
-msgid ""
-"Looking for covers again. It takes a minute or two; reload this page to see "
-"them."
+msgid "Looking for covers again. It takes a minute or two; reload this page to see them."
 msgstr ""
 
 #: plugin/marquee/inc/covers.php:197
@@ -5569,9 +4776,7 @@ msgid "Couldn’t reach Claude: "
 msgstr ""
 
 #: plugin/marquee/inc/ai.php:208
-msgid ""
-"Claude didn’t accept the API key. Check it in the Anthropic Console "
-"(console.anthropic.com → API Keys)."
+msgid "Claude didn’t accept the API key. Check it in the Anthropic Console (console.anthropic.com → API Keys)."
 msgstr ""
 
 #: plugin/marquee/inc/ai.php:211
@@ -5595,15 +4800,11 @@ msgid "ChatGPT didn’t send an answer. Try asking again."
 msgstr ""
 
 #: plugin/marquee/inc/ai.php:275
-msgid ""
-"ChatGPT didn’t accept the API key. Check it at platform.openai.com → API "
-"keys."
+msgid "ChatGPT didn’t accept the API key. Check it at platform.openai.com → API keys."
 msgstr ""
 
 #: plugin/marquee/inc/ai.php:278
-msgid ""
-"The OpenAI account for this key is out of credit. Add credit at "
-"platform.openai.com → Billing."
+msgid "The OpenAI account for this key is out of credit. Add credit at platform.openai.com → Billing."
 msgstr ""
 
 #: plugin/marquee/inc/ai.php:281
@@ -5623,9 +4824,7 @@ msgid "Add a ChatGPT or Claude API key first."
 msgstr ""
 
 #: plugin/marquee/inc/ai.php:302
-msgid ""
-"That’s all the questions for today. Try again tomorrow, or use Send "
-"feedback."
+msgid "That’s all the questions for today. Try again tomorrow, or use Send feedback."
 msgstr ""
 
 #: plugin/marquee/inc/ai.php:335
@@ -5633,9 +4832,7 @@ msgid "Add a key for that one first."
 msgstr ""
 
 #: plugin/marquee/inc/ai.php:351
-msgid ""
-"That doesn’t look like an API key. A ChatGPT key starts with sk-, a Claude "
-"key starts with sk-ant-."
+msgid "That doesn’t look like an API key. A ChatGPT key starts with sk-, a Claude key starts with sk-ant-."
 msgstr ""
 
 #: plugin/marquee/inc/ai.php:365
@@ -5647,9 +4844,7 @@ msgid "Marquee help"
 msgstr ""
 
 #: plugin/marquee/inc/ai.php:368
-msgid ""
-"Ask anything about setting up your show. It already knows your setup, so you"
-" don’t have to explain it."
+msgid "Ask anything about setting up your show. It already knows your setup, so you don’t have to explain it."
 msgstr ""
 
 #: plugin/marquee/inc/ai.php:369
@@ -5665,9 +4860,7 @@ msgid "Pick the AI that answers."
 msgstr ""
 
 #: plugin/marquee/inc/ai.php:374
-msgid ""
-"Both work the same way and both know your setup. Use whichever account you "
-"already have (pay as you go, a question costs about a cent or less)."
+msgid "Both work the same way and both know your setup. Use whichever account you already have (pay as you go, a question costs about a cent or less)."
 msgstr ""
 
 #: plugin/marquee/inc/ai.php:379
@@ -5691,9 +4884,7 @@ msgid "Marquee tells which one it is from the key."
 msgstr ""
 
 #: plugin/marquee/inc/ai.php:388
-msgid ""
-"Hi! I know how Marquee works and I can already see your setup and your FPP’s"
-" setup check, so just ask. What can I help with?"
+msgid "Hi! I know how Marquee works and I can already see your setup and your FPP’s setup check, so just ask. What can I help with?"
 msgstr ""
 
 #: plugin/marquee/inc/ai.php:391
@@ -5721,8 +4912,7 @@ msgid "Ask"
 msgstr ""
 
 #: plugin/marquee/inc/ai.php:401
-msgid ""
-"Your question and your site’s setup (never passwords or keys) are sent to"
+msgid "Your question and your site’s setup (never passwords or keys) are sent to"
 msgstr ""
 
 #: plugin/marquee/inc/ai.php:401 plugin/marquee/inc/i18n-js.php:266
@@ -5730,8 +4920,7 @@ msgid "the AI you pick"
 msgstr ""
 
 #: plugin/marquee/inc/ai.php:401
-msgid ""
-"to answer. Answers can be wrong; double-check before changing your show."
+msgid "to answer. Answers can be wrong; double-check before changing your show."
 msgstr ""
 
 #: plugin/marquee/inc/ai.php:402
@@ -5743,15 +4932,11 @@ msgid "Included with your hosting."
 msgstr ""
 
 #: plugin/marquee/inc/ai.php:418
-msgid ""
-"Describing your own theme uses the Need help assistant: add a ChatGPT or "
-"Claude key there first (the ready-made themes work without one)."
+msgid "Describing your own theme uses the Need help assistant: add a ChatGPT or Claude key there first (the ready-made themes work without one)."
 msgstr ""
 
 #: plugin/marquee/inc/ai.php:423
-msgid ""
-"That’s all the AI questions for today. Try again tomorrow, or pick a ready-"
-"made theme."
+msgid "That’s all the AI questions for today. Try again tomorrow, or pick a ready-made theme."
 msgstr ""
 
 #: plugin/marquee/inc/ai.php:428
@@ -5759,8 +4944,7 @@ msgid "Describe the theme first, like “purple and gold Mardi Gras”."
 msgstr ""
 
 #: plugin/marquee/inc/ai.php:455
-msgid ""
-"The AI’s answer didn’t make sense. Try describing it a little differently."
+msgid "The AI’s answer didn’t make sense. Try describing it a little differently."
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:14
@@ -5800,9 +4984,7 @@ msgid "Test failed."
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:26
-msgid ""
-"That’s the key ID, not the key. The API key starts with sk_ and ElevenLabs "
-"shows it only once, when you create the key."
+msgid "That’s the key ID, not the key. The API key starts with sk_ and ElevenLabs shows it only once, when you create the key."
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:27
@@ -5890,9 +5072,7 @@ msgid "Names go up at %1$s. Each one stays up about %2$s s."
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:53
-msgid ""
-"The 6th name ends at %1$s s, after your %2$s s break: lower one of the "
-"numbers."
+msgid "The 6th name ends at %1$s s, after your %2$s s break: lower one of the numbers."
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:54
@@ -5996,9 +5176,7 @@ msgid "%s in the Kids’ Corner"
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:84
-msgid ""
-"Names only from phones within %s of your show. You can still send test names"
-" from anywhere."
+msgid "Names only from phones within %s of your show. You can still send test names from anywhere."
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:85
@@ -6358,9 +5536,7 @@ msgid "%1$s: %2$s props found (%3$s)"
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:191
-msgid ""
-"That doesn’t look like xlights_rgbeffects.xml. Pick the file with that name "
-"from your xLights show folder."
+msgid "That doesn’t look like xlights_rgbeffects.xml. Pick the file with that name from your xLights show folder."
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:193
@@ -6384,27 +5560,19 @@ msgid "That isn’t an xLights sequence (.xsq)."
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:198
-msgid ""
-"%1$s of %2$s themes picked. 3 or 4 is plenty: kids pick faster, and each one"
-" is a sequence to render."
+msgid "%1$s of %2$s themes picked. 3 or 4 is plenty: kids pick faster, and each one is a sequence to render."
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:199
-msgid ""
-"%1$s of %2$s themes picked, the most kids can choose from. Untick one to "
-"pick another."
+msgid "%1$s of %2$s themes picked, the most kids can choose from. Untick one to pick another."
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:200
-msgid ""
-"You already have %1$s theme set up under Themes kids can pick, so “Use it” "
-"only has room for %2$s more."
+msgid "You already have %1$s theme set up under Themes kids can pick, so “Use it” only has room for %2$s more."
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:201
-msgid ""
-"You already have %1$s themes set up under Themes kids can pick, so “Use it” "
-"only has room for %2$s more."
+msgid "You already have %1$s themes set up under Themes kids can pick, so “Use it” only has room for %2$s more."
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:202
@@ -6416,9 +5584,7 @@ msgid "You already have %s themes set up under Themes kids can pick."
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:204
-msgid ""
-"Choose your xlights_rgbeffects.xml first (step 1), so the AI knows which "
-"props you have."
+msgid "Choose your xlights_rgbeffects.xml first (step 1), so the AI knows which props you have."
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:205
@@ -6430,9 +5596,7 @@ msgid "Added “%s”. Add another, or make your sequences when you’re ready."
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:207
-msgid ""
-"Added “%s”, but not ticked: 6 themes are already picked. Untick one to use "
-"it."
+msgid "Added “%s”, but not ticked: 6 themes are already picked. Untick one to use it."
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:208
@@ -6492,9 +5656,7 @@ msgid "Use it: add to the themes kids pick from"
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:222
-msgid ""
-"No screens are filled in under Screens yet, so nothing was left dark for the"
-" names. Add your screens, Save, and make them again."
+msgid "No screens are filled in under Screens yet, so nothing was left dark for the names. Add your screens, Save, and make them again."
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:223
@@ -6606,9 +5768,7 @@ msgid "Mixing…"
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:252
-msgid ""
-"The intro and outro are too long for a %s second sequence (each name needs "
-"about 3 seconds). Shorten the lines and build again."
+msgid "The intro and outro are too long for a %s second sequence (each name needs about 3 seconds). Shorten the lines and build again."
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:253
@@ -6620,17 +5780,11 @@ msgid "Mixing the short breaks…"
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:256
-msgid ""
-"Done! Names start at %1$s s, one every %2$s s. Your FPP picks it up within a"
-" minute."
+msgid "Done! Names start at %1$s s, one every %2$s s. Your FPP picks it up within a minute."
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:257
-msgid ""
-"Why do they sound alike? The names aren’t in these files: your FPP says each"
-" name live, over the soft music, the moment it goes up on your screens. The "
-"three only differ in how long the soft music lasts before the outro. Your "
-"FPP picks the right one by itself, depending on how many names are waiting."
+msgid "Why do they sound alike? The names aren’t in these files: your FPP says each name live, over the soft music, the moment it goes up on your screens. The three only differ in how long the soft music lasts before the outro. Your FPP picks the right one by itself, depending on how many names are waiting."
 msgstr ""
 
 #: plugin/marquee/inc/i18n-js.php:258
@@ -6756,44 +5910,25 @@ msgstr ""
 msgid "Listen on your phone link (optional)"
 msgstr ""
 
-msgid ""
-"Adds a “Listen on Your Phone” button under your radio station, for people "
-"who would rather hear the music on their phone. Use your PulseMesh link. "
-"Leave empty to hide it."
+msgid "Adds a “Listen on Your Phone” button under your radio station, for people who would rather hear the music on their phone. Use your PulseMesh link. Leave empty to hide it."
 msgstr ""
 
 msgid "Timing (you don’t normally need these)"
 msgstr ""
 
-msgid ""
-"Building the names break audio sets these for you, and with the simple names"
-" break each name gets the time it needs by itself. Change them only for your"
-" own names sequence, to match where its audio goes quiet."
+msgid "Building the names break audio sets these for you, and with the simple names break each name gets the time it needs by itself. Change them only for your own names sequence, to match where its audio goes quiet."
 msgstr ""
 
 msgid "Most names per break"
 msgstr ""
 
-msgid ""
-"Names that need longer to read already get fewer, longer turns by "
-"themselves. Pick a lower number to keep breaks short; any extra names go up "
-"in the next break."
+msgid "Names that need longer to read already get fewer, longer turns by themselves. Pick a lower number to keep breaks short; any extra names go up in the next break."
 msgstr ""
 
-msgid ""
-"With the simple names break Marquee makes for you, your FPP plays the break "
-"itself: the intro, then each name for as long as it takes to read and say, "
-"then the outro. One name makes a short break, six a longer one. With your "
-"own names sequence, a shorter break plays when only 1 or 2 names are "
-"waiting. Everything is set to the same loudness as your songs, so nobody has"
-" to touch the radio volume."
+msgid "With the simple names break Marquee makes for you, your FPP plays the break itself: the intro, then each name for as long as it takes to read and say, then the outro. One name makes a short break, six a longer one. With your own names sequence, a shorter break plays when only 1 or 2 names are waiting. Everything is set to the same loudness as your songs, so nobody has to touch the radio volume."
 msgstr ""
 
-msgid ""
-"Your names break playlists already play audio you made, with your own "
-"announcer. Marquee leaves it alone. Enter when your intro talking ends and "
-"when the announcer starts again (below): names are only said in between, "
-"never over your announcer. Turn this off to use the audio built here."
+msgid "Your names break playlists already play audio you made, with your own announcer. Marquee leaves it alone. Enter when your intro talking ends and when the announcer starts again (below): names are only said in between, never over your announcer. Turn this off to use the audio built here."
 msgstr ""
 
 msgid "First name at"
@@ -6805,9 +5940,7 @@ msgstr ""
 msgid "Closing starts at"
 msgstr ""
 
-msgid ""
-"When your announcer starts talking again. In xLights, the timing track shows"
-" where the words end and start. About 3.3 seconds fit one name."
+msgid "When your announcer starts talking again. In xLights, the timing track shows where the words end and start. About 3.3 seconds fit one name."
 msgstr ""
 
 msgid "Last names breaks"
@@ -6840,9 +5973,7 @@ msgstr ""
 msgid "on the screens, %s"
 msgstr ""
 
-msgid ""
-"not said: your website had no voice clip for it (Voice step: is there an "
-"error at the top?)"
+msgid "not said: your website had no voice clip for it (Voice step: is there an error at the top?)"
 msgstr ""
 
 msgid "not said: the FPP couldn’t download its voice clip from your website"
@@ -6854,10 +5985,7 @@ msgstr ""
 msgid "not said: %s"
 msgstr ""
 
-msgid ""
-"Built with an older Marquee. Build it again once: with the simple names "
-"break, your FPP then gives each name the time it needs instead of fixed "
-"turns."
+msgid "Built with an older Marquee. Build it again once: with the simple names break, your FPP then gives each name the time it needs instead of fixed turns."
 msgstr ""
 
 #: inc/names-setup.php:536
@@ -6885,19 +6013,13 @@ msgstr ""
 msgid "Sponsors “Get in touch” link"
 msgstr ""
 
-msgid ""
-"Thank You to Our Sponsors: the logos of local businesses that support your "
-"show."
+msgid "Thank You to Our Sponsors: the logos of local businesses that support your show."
 msgstr ""
 
-msgid ""
-"Thank local businesses that support your show, with their logos (add them "
-"under Sharing & donations)"
+msgid "Thank local businesses that support your show, with their logos (add them under Sharing & donations)"
 msgstr ""
 
-msgid ""
-"The whole show page in one block: status, countdown, tonight’s show, "
-"weather, playlist, tips, guestbook, sponsors, donate and social."
+msgid "The whole show page in one block: status, countdown, tonight’s show, weather, playlist, tips, guestbook, sponsors, donate and social."
 msgstr ""
 
 msgid "Hot cocoa for visitors on Friday nights"
@@ -6915,18 +6037,13 @@ msgstr ""
 msgid "Also under Features & pages."
 msgstr ""
 
-msgid ""
-"An email address or a web page. Adds “Want to sponsor the show? Get in "
-"touch” under the logos. Leave it empty to hide it."
+msgid "An email address or a web page. Adds “Want to sponsor the show? Get in touch” under the logos. Leave it empty to hide it."
 msgstr ""
 
 msgid "Business name"
 msgstr ""
 
-msgid ""
-"Local businesses that support your show, in a “Thank You to Our Sponsors” "
-"box on your home page between the guestbook and Donate. Clicking a logo "
-"opens the sponsor’s website."
+msgid "Local businesses that support your show, in a “Thank You to Our Sponsors” box on your home page between the guestbook and Donate. Clicking a logo opens the sponsor’s website."
 msgstr ""
 
 msgid "No sponsors yet. The box stays hidden until you add one."
@@ -6950,9 +6067,7 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-msgid ""
-"Your donation link, your sponsors, your social pages, and posting to "
-"Facebook and Instagram when you cancel a night."
+msgid "Your donation link, your sponsors, your social pages, and posting to Facebook and Instagram when you cancel a night."
 msgstr ""
 
 msgid "“Want to sponsor the show?” link (optional)"
@@ -6979,10 +6094,7 @@ msgstr ""
 msgid "Sponsors box color"
 msgstr ""
 
-msgid ""
-"Green sits nicely between the guestbook and the red Donate box. If Box "
-"colors (Appearance → Customize → Look) is set to one color for every box, "
-"that color is used here too."
+msgid "Green sits nicely between the guestbook and the red Donate box. If Box colors (Appearance → Customize → Look) is set to one color for every box, that color is used here too."
 msgstr ""
 
 msgid "A new feature"
@@ -7003,18 +6115,13 @@ msgstr ""
 msgid "Every idea gets read. Ideas that help a lot of shows get built first."
 msgstr ""
 
-msgid ""
-"Your website couldn’t send the email. Your idea is still in the box below. "
-"You can try again, or email it to %s."
+msgid "Your website couldn’t send the email. Your idea is still in the box below. You can try again, or email it to %s."
 msgstr ""
 
 msgid "Write your idea in the box first."
 msgstr ""
 
-msgid ""
-"Got an idea for Marquee? A feature you wish it had, something that could "
-"work better, or anything else? Tell us here. Many of Marquee’s features "
-"started as a show owner’s idea."
+msgid "Got an idea for Marquee? A feature you wish it had, something that could work better, or anything else? Tell us here. Many of Marquee’s features started as a show owner’s idea."
 msgstr ""
 
 msgid "What kind of idea?"
@@ -7038,17 +6145,13 @@ msgstr ""
 msgid "Leave it empty if you don’t need one."
 msgstr ""
 
-msgid ""
-"Along with your idea, we get your website’s address and which versions of "
-"Marquee, your theme and WordPress you have. Nothing else."
+msgid "Along with your idea, we get your website’s address and which versions of Marquee, your theme and WordPress you have. Nothing else."
 msgstr ""
 
 msgid "Send my idea"
 msgstr ""
 
-msgid ""
-"Something not working? Use %s instead, so Marquee Support can see your "
-"setup."
+msgid "Something not working? Use %s instead, so Marquee Support can see your setup."
 msgstr ""
 
 msgid "Ideas you’ve sent"
@@ -7069,8 +6172,7 @@ msgstr ""
 msgid "A PNG with see-through edges blends into your page best."
 msgstr ""
 
-msgid ""
-"That’s all the questions for today. Try again tomorrow, or use Get help."
+msgid "That’s all the questions for today. Try again tomorrow, or use Get help."
 msgstr ""
 
 msgid "Your email"
@@ -7097,17 +6199,13 @@ msgstr ""
 msgid "The Show Facts page and its button"
 msgstr ""
 
-msgid ""
-"A page about your show with its own button at the top: your photo and "
-"numbers, fact cards and fan favorites (fill it in under Sharing & donations)"
+msgid "A page about your show with its own button at the top: your photo and numbers, fact cards and fan favorites (fill it in under Sharing & donations)"
 msgstr ""
 
 msgid "Donations, sponsors, show facts, social links"
 msgstr ""
 
-msgid ""
-"A page about your show, with its own button at the top next to Kids’ Corner."
-" It has three parts; show the ones you like."
+msgid "A page about your show, with its own button at the top next to Kids’ Corner. It has three parts; show the ones you like."
 msgstr ""
 
 msgid "Show the Show Facts page"
@@ -7137,9 +6235,7 @@ msgstr ""
 msgid "Line under the headline (optional)"
 msgstr ""
 
-msgid ""
-"The numbers under the photo are your Behind the Lights numbers (Appearance →"
-" Customize → Behind the Lights). They count up when the page opens."
+msgid "The numbers under the photo are your Behind the Lights numbers (Appearance → Customize → Behind the Lights). They count up when the page opens."
 msgstr ""
 
 msgid "Did You Know? fact cards"
@@ -7166,9 +6262,7 @@ msgstr ""
 msgid "Fan Favorites by year"
 msgstr ""
 
-msgid ""
-"Years with song voting fill in by themselves, with the top 5 songs and their"
-" votes. For years before you had voting, type the top songs here."
+msgid "Years with song voting fill in by themselves, with the top 5 songs and their votes. For years before you had voting, type the top songs here."
 msgstr ""
 
 msgid "Year"
@@ -7180,9 +6274,7 @@ msgstr ""
 msgid "Add a past year"
 msgstr ""
 
-msgid ""
-"Your show photo and numbers, Did You Know? fact cards, and fan favorites by "
-"year."
+msgid "Your show photo and numbers, Did You Know? fact cards, and fan favorites by year."
 msgstr ""
 
 msgid "Page style"
@@ -7194,40 +6286,28 @@ msgstr ""
 msgid "Boxes"
 msgstr ""
 
-msgid ""
-"A big photo of your show with your numbers under it, fact cards with big "
-"words, and each year’s favorites as light strings."
+msgid "A big photo of your show with your numbers under it, fact cards with big words, and each year’s favorites as light strings."
 msgstr ""
 
-msgid ""
-"Your numbers in boxes like Behind the Lights, small fact cards together in "
-"one box, and the favorites of each year side by side."
+msgid "Your numbers in boxes like Behind the Lights, small fact cards together in one box, and the favorites of each year side by side."
 msgstr ""
 
 msgid "A long list gets its own scroll bar, so it never takes over the page."
 msgstr ""
 
-msgid ""
-"A page about your show with its own button at the top: your photo and "
-"numbers, fact cards and fan favorites (fill it in later under Show Facts)"
+msgid "A page about your show with its own button at the top: your photo and numbers, fact cards and fan favorites (fill it in later under Show Facts)"
 msgstr ""
 
-msgid ""
-"A page just for kids. Turn on the parts you want; open one to change its "
-"pictures and words. Anything left empty uses the standard pictures."
+msgid "A page just for kids. Turn on the parts you want; open one to change its pictures and words. Anything left empty uses the standard pictures."
 msgstr ""
 
-msgid ""
-"A page with this year’s show videos and favorite song voting. It shows when "
-"either part is on and has something in it."
+msgid "A page with this year’s show videos and favorite song voting. It shows when either part is on and has something in it."
 msgstr ""
 
 msgid "Add or change videos"
 msgstr ""
 
-msgid ""
-"At the top of this page, switch on Your Name in Lights. Kids can send names "
-"only while your show is on (your hours in Schedule)."
+msgid "At the top of this page, switch on Your Name in Lights. Kids can send names only while your show is on (your hours in Schedule)."
 msgstr ""
 
 msgid "Bottom of the page"
@@ -7239,9 +6319,7 @@ msgstr ""
 msgid "Change the numbers"
 msgstr ""
 
-msgid ""
-"Classic, Christmas Village or Santa’s North Pole, colors, snow and your "
-"background."
+msgid "Classic, Christmas Village or Santa’s North Pole, colors, snow and your background."
 msgstr ""
 
 msgid "Coloring, Light Lab, contest, games"
@@ -7259,8 +6337,7 @@ msgstr ""
 msgid "Entries, the Show Wall and hearts (needs Make a Light Show)"
 msgstr ""
 
-msgid ""
-"Every box on your home page, with its words, under Your pages → Home page."
+msgid "Every box on your home page, with its words, under Your pages → Home page."
 msgstr ""
 
 msgid "Every box, top to bottom"
@@ -7272,16 +6349,13 @@ msgstr ""
 msgid "Home page"
 msgstr ""
 
-msgid ""
-"Its own button at the top of your website, and a big link on your home page."
+msgid "Its own button at the top of your website, and a big link on your home page."
 msgstr ""
 
 msgid "Its own button at the top of your website."
 msgstr ""
 
-msgid ""
-"Kids send a name to your matrix, projector or TV (needs the FPP script). Its"
-" door shows in the Kids’ Corner."
+msgid "Kids send a name to your matrix, projector or TV (needs the FPP script). Its door shows in the Kids’ Corner."
 msgstr ""
 
 msgid "Leave empty to use the words above."
@@ -7293,14 +6367,10 @@ msgstr ""
 msgid "Look & colors"
 msgstr ""
 
-msgid ""
-"Look & colors opens the live preview of your website. The others open that "
-"box of your page here."
+msgid "Look & colors opens the live preview of your website. The others open that box of your page here."
 msgstr ""
 
-msgid ""
-"Marquee: “%s” has nothing to show right now (turned off, or not set up yet "
-"in Marquee → Settings). Only editors see this note."
+msgid "Marquee: “%s” has nothing to show right now (turned off, or not set up yet in Marquee → Settings). Only editors see this note."
 msgstr ""
 
 msgid "Name, place, dates, hours"
@@ -7318,9 +6388,7 @@ msgstr ""
 msgid "Opens Customize"
 msgstr ""
 
-msgid ""
-"Optional. Remote Falcon puts what’s playing, your playlist and song voting "
-"on your website. Facebook and Instagram get a post when you cancel a night."
+msgid "Optional. Remote Falcon puts what’s playing, your playlist and song voting on your website. Facebook and Instagram get a post when you cancel a night."
 msgstr ""
 
 msgid "Other languages: %s"
@@ -7332,9 +6400,7 @@ msgstr ""
 msgid "Pages to print and color (pick which ones later under Kids’ Corner)"
 msgstr ""
 
-msgid ""
-"Paste both here, in Marquee → Settings → Connections, click Test connection,"
-" then Save settings."
+msgid "Paste both here, in Marquee → Settings → Connections, click Test connection, then Save settings."
 msgstr ""
 
 msgid "Photo, fun facts, fan favorites"
@@ -7346,9 +6412,7 @@ msgstr ""
 msgid "Remote Falcon, Facebook, Instagram"
 msgstr ""
 
-msgid ""
-"Set your show’s address in Show details first: without it, names can be sent"
-" from anywhere."
+msgid "Set your show’s address in Show details first: without it, names can be sent from anywhere."
 msgstr ""
 
 msgid "Show %s"
@@ -7384,13 +6448,10 @@ msgstr ""
 msgid "Thank local businesses that support your show, with their logos"
 msgstr ""
 
-msgid ""
-"Thank local businesses that support your show, with their logos (add them "
-"later under Home page)"
+msgid "Thank local businesses that support your show, with their logos (add them later under Home page)"
 msgstr ""
 
-msgid ""
-"The Show Facts page uses these numbers too. A number left empty is hidden."
+msgid "The Show Facts page uses these numbers too. A number left empty is hidden."
 msgstr ""
 
 msgid "The big pictures kids tap"
@@ -7402,9 +6463,7 @@ msgstr ""
 msgid "The lines under your logo and your welcome."
 msgstr ""
 
-msgid ""
-"The numbers under the photo are your Behind the Lights numbers. They count "
-"up when the page opens."
+msgid "The numbers under the photo are your Behind the Lights numbers. They count up when the page opens."
 msgstr ""
 
 msgid "The small line at the very bottom"
@@ -7413,18 +6472,13 @@ msgstr ""
 msgid "The weather is for your show’s address in Show details."
 msgstr ""
 
-msgid ""
-"This box is made from your Show details (radio, hours, address, parking) "
-"and, once it’s connected, Remote Falcon (Now Playing and Pick the Next "
-"Song)."
+msgid "This box is made from your Show details (radio, hours, address, parking) and, once it’s connected, Remote Falcon (Now Playing and Pick the Next Song)."
 msgstr ""
 
 msgid "Tip %d"
 msgstr ""
 
-msgid ""
-"Turn on Your Name in Lights (Names in Lights, at the top) and Marquee makes "
-"a simple names break on your FPP for you."
+msgid "Turn on Your Name in Lights (Names in Lights, at the top) and Marquee makes a simple names break on your FPP for you."
 msgstr ""
 
 msgid "Turned off. Kids can’t send names yet."
@@ -7445,40 +6499,28 @@ msgstr ""
 msgid "Website words and tips"
 msgstr ""
 
-msgid ""
-"Who you are, where you are and when the lights are on. Every page of your "
-"website uses these."
+msgid "Who you are, where you are and when the lights are on. Every page of your website uses these."
 msgstr ""
 
 msgid "Words & page settings"
 msgstr ""
 
-msgid ""
-"Words you typed yourself (your banner messages, tips and button words) show "
-"the way you wrote them. With two or more languages ticked, each text box in "
-"your page settings gets “Other languages” under it: fill it in and visitors "
-"who pick that language see those words instead."
+msgid "Words you typed yourself (your banner messages, tips and button words) show the way you wrote them. With two or more languages ticked, each text box in your page settings gets “Other languages” under it: fill it in and visitors who pick that language see those words instead."
 msgstr ""
 
 msgid "Your MP4 videos, one for each song"
 msgstr ""
 
-msgid ""
-"Your Name in Lights is switched off, so kids can’t send names yet. Turn it "
-"on above when you’re ready."
+msgid "Your Name in Lights is switched off, so kids can’t send names yet. Turn it on above when you’re ready."
 msgstr ""
 
 msgid "Your Remote Falcon song list, with the song playing now lit up"
 msgstr ""
 
-msgid ""
-"Your YouTube live stream (set it in Marquee → Settings → Home page → Live "
-"camera)."
+msgid "Your YouTube live stream (set it in Marquee → Settings → Home page → Live camera)."
 msgstr ""
 
-msgid ""
-"Your home page, box by box from top to bottom. Use a box’s switch to show or"
-" hide it; open it to change its words."
+msgid "Your home page, box by box from top to bottom. Use a box’s switch to show or hide it; open it to change its words."
 msgstr ""
 
 msgid "Your pages"
@@ -7487,34 +6529,25 @@ msgstr ""
 msgid "Your show"
 msgstr ""
 
-msgid ""
-"Your show name is printed in the corner of every standard coloring page (or "
-"your logo, once you add one in Show details)."
+msgid "Your show name is printed in the corner of every standard coloring page (or your logo, once you add one in Show details)."
 msgstr ""
 
 msgid "Your show’s numbers: lights, channels, songs…"
 msgstr ""
 
-msgid ""
-"Your show’s words, boxes and switches are in Marquee → Settings now, one "
-"page at a time: Home page, Songs & Videos, Kids’ Corner, Names in Lights and"
-" Show Facts."
+msgid "Your show’s words, boxes and switches are in Marquee → Settings now, one page at a time: Home page, Songs & Videos, Kids’ Corner, Names in Lights and Show Facts."
 msgstr ""
 
 msgid "Your social buttons, a hashtag and Share the Show"
 msgstr ""
 
-msgid ""
-"Falling snow and your own background photo are in Appearance → Customize → "
-"Show Website → Snow & background."
+msgid "Falling snow and your own background photo are in Appearance → Customize → Show Website → Snow & background."
 msgstr ""
 
 msgid "Snow & background"
 msgstr ""
 
-msgid ""
-"A box in your show’s colors, with snow on top and lights around it. Put "
-"anything inside."
+msgid "A box in your show’s colors, with snow on top and lights around it. Put anything inside."
 msgstr ""
 
 msgid "A grid of your photos. Visitors can tap one to see it big."
@@ -7523,8 +6556,7 @@ msgstr ""
 msgid "A photo next to a few lines of words."
 msgstr ""
 
-msgid ""
-"About six weekends in the fall, plus a lot of evenings at the computer."
+msgid "About six weekends in the fall, plus a lot of evenings at the computer."
 msgstr ""
 
 msgid "Add a YouTube link in the block settings"
@@ -7581,10 +6613,7 @@ msgstr ""
 msgid "How long does it take to set up?"
 msgstr ""
 
-msgid ""
-"It began with one strand of lights on the porch and a kid who wanted “more.”"
-" Every year since, we’ve added a little more, and a lot more extension "
-"cords."
+msgid "It began with one strand of lights on the porch and a kid who wanted “more.” Every year since, we’ve added a little more, and a lot more extension cords."
 msgstr ""
 
 msgid "LIVE CAM"
@@ -7605,9 +6634,7 @@ msgstr ""
 msgid "Live from your show"
 msgstr ""
 
-msgid ""
-"Marquee: the Live Camera needs a YouTube link (in this block, or Marquee → "
-"Settings → Home page → Live camera). Only editors see this note."
+msgid "Marquee: the Live Camera needs a YouTube link (in this block, or Marquee → Settings → Home page → Live camera). Only editors see this note."
 msgstr ""
 
 msgid "Meet the Family"
@@ -7619,16 +6646,13 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-msgid ""
-"Next to Kids’ Corner and Show Facts. On phones, extra buttons go under More."
+msgid "Next to Kids’ Corner and Show Facts. On phones, extra buttons go under More."
 msgstr ""
 
 msgid "Night"
 msgstr ""
 
-msgid ""
-"No live camera link yet. Add it in Marquee → Settings → Home page → Live "
-"camera."
+msgid "No live camera link yet. Add it in Marquee → Settings → Home page → Live camera."
 msgstr ""
 
 msgid "Only during show hours"
@@ -7655,9 +6679,7 @@ msgstr ""
 msgid "Picks the songs"
 msgstr ""
 
-msgid ""
-"Pull over on the right side of the street and keep driveways clear for our "
-"neighbors."
+msgid "Pull over on the right side of the street and keep driveways clear for our neighbors."
 msgstr ""
 
 msgid "Questions & Answers"
@@ -7708,9 +6730,7 @@ msgstr ""
 msgid "Tap to watch & listen"
 msgstr ""
 
-msgid ""
-"Tell visitors who builds the show, how long it takes and what everyone’s "
-"favorite part is."
+msgid "Tell visitors who builds the show, how long it takes and what everyone’s favorite part is."
 msgstr ""
 
 msgid "Tell your friends! The more visitors, the more we raise."
@@ -7719,9 +6739,7 @@ msgstr ""
 msgid "Tell your story here."
 msgstr ""
 
-msgid ""
-"The box changes with your look: Classic, Christmas Village or Santa’s North "
-"Pole."
+msgid "The box changes with your look: Classic, Christmas Village or Santa’s North Pole."
 msgstr ""
 
 msgid "The charity you support and how to help"
@@ -7730,9 +6748,7 @@ msgstr ""
 msgid "The people (and pets) behind the lights"
 msgstr ""
 
-msgid ""
-"The show is free. If you’d like to help, there’s a donation link on our home"
-" page."
+msgid "The show is free. If you’d like to help, there’s a donation link on our home page."
 msgstr ""
 
 msgid "Then & Now"
@@ -7747,17 +6763,13 @@ msgstr ""
 msgid "This year"
 msgstr ""
 
-msgid ""
-"Today the whole yard dances to music on the radio, and every bit of it is "
-"planned, built and programmed right here at home."
+msgid "Today the whole yard dances to music on the radio, and every bit of it is planned, built and programmed right here at home."
 msgstr ""
 
 msgid "Top of your website"
 msgstr ""
 
-msgid ""
-"Tune your car radio to our station. You can also listen on your phone from "
-"our home page."
+msgid "Tune your car radio to our station. You can also listen on your phone from our home page."
 msgstr ""
 
 msgid "Two photos side by side, like your first year and this year."
@@ -7778,8 +6790,7 @@ msgstr ""
 msgid "Use my website’s setting"
 msgstr ""
 
-msgid ""
-"Use the donation link on our home page. Every dollar goes to the charity."
+msgid "Use the donation link on our home page. Every dollar goes to the charity."
 msgstr ""
 
 msgid "Ways to Help"
@@ -7797,14 +6808,10 @@ msgstr ""
 msgid "Words"
 msgstr ""
 
-msgid ""
-"Write a few lines about the charity you support and why it matters to your "
-"family."
+msgid "Write a few lines about the charity you support and why it matters to your family."
 msgstr ""
 
-msgid ""
-"Year one: a few hundred lights. This year: thousands, all dancing to the "
-"music."
+msgid "Year one: a few hundred lights. This year: thousands, all dancing to the music."
 msgstr ""
 
 msgid "Year one: a few hundred lights. This year: thousands."
@@ -7813,13 +6820,10 @@ msgstr ""
 msgid "Yes! Please stay on the sidewalk and don’t touch the lights."
 msgstr ""
 
-msgid ""
-"Your YouTube live stream in a show box. Visitors tap to watch and listen."
+msgid "Your YouTube live stream in a show box. Visitors tap to watch and listen."
 msgstr ""
 
-msgid ""
-"Your background shows through this box only. The rest of your site keeps its"
-" own setting (Look & colors)."
+msgid "Your background shows through this box only. The rest of your site keeps its own setting (Look & colors)."
 msgstr ""
 
 msgid "Your best pictures, year by year"
@@ -7828,9 +6832,7 @@ msgstr ""
 msgid "Your name"
 msgstr ""
 
-msgid ""
-"Your website’s Box colors setting (Look & colors) shows every box in one "
-"color."
+msgid "Your website’s Box colors setting (Look & colors) shows every box in one color."
 msgstr ""
 
 msgid "Your website’s boxes are set to"
@@ -7857,17 +6859,13 @@ msgstr ""
 msgid "Make a new page"
 msgstr ""
 
-msgid ""
-"Our Story, Questions & Answers, a photo gallery… Start from a layout in your"
-" show’s colors."
+msgid "Our Story, Questions & Answers, a photo gallery… Start from a layout in your show’s colors."
 msgstr ""
 
 msgid "Start your page"
 msgstr ""
 
-msgid ""
-"Pick a layout to start from. It’s already in your show’s colors; change the "
-"words and photos, move boxes around, or add more."
+msgid "Pick a layout to start from. It’s already in your show’s colors; change the words and photos, move boxes around, or add more."
 msgstr ""
 
 msgid "Blank page"
@@ -7918,44 +6916,22 @@ msgstr ""
 msgid "Title of this part"
 msgstr ""
 
-msgid ""
-"Text and Size: Automatic works for most screens. Pixel matrices (up to 256 "
-"pixels tall) get one big line that scrolls across when the message won’t "
-"fit; TVs and projectors get still text with the name on its own line. Bigger"
-" or smaller makes the letters bigger or smaller than that, but still text "
-"never goes past the edges of the screen (for even bigger letters, use "
-"Scrolling). Scrolling text always crosses the screen in the time each name "
-"is up; Slow may not quite finish on long messages. Custom size: the font "
-"size FPP uses, about how many pixels tall the letters are (a 10-pixel-tall "
-"matrix looks good at 8 or 9). Still text goes on one, two or three centered "
-"lines (the name on its own line after the comma), whichever lets the letters"
-" be biggest without going over that size; scrolling text keeps it."
+msgid "Text and Size: Automatic works for most screens. Pixel matrices (up to 256 pixels tall) get one big line that scrolls across when the message won’t fit; TVs and projectors get still text with the name on its own line. Bigger or smaller makes the letters bigger or smaller than that, but still text never goes past the edges of the screen (for even bigger letters, use Scrolling). Scrolling text always crosses the screen in the time each name is up; Slow may not quite finish on long messages. Custom size: the font size FPP uses, about how many pixels tall the letters are (a 10-pixel-tall matrix looks good at 8 or 9). Still text goes on one, two or three centered lines (the name on its own line after the comma), whichever lets the letters be biggest without going over that size; scrolling text keeps it."
 msgstr ""
 
 msgid "Show the Now Playing box"
 msgstr ""
 
-msgid ""
-"The song playing now and the one up next, from Remote Falcon. Without Remote"
-" Falcon it shows when the lights come on instead."
+msgid "The song playing now and the one up next, from Remote Falcon. Without Remote Falcon it shows when the lights come on instead."
 msgstr ""
 
-msgid ""
-"Your show’s location is only the middle of your ZIP code or town, so people "
-"at your show may be told they’re too far away. Set the exact spot in Show "
-"details → Location & weather."
+msgid "Your show’s location is only the middle of your ZIP code or town, so people at your show may be told they’re too far away. Set the exact spot in Show details → Location & weather."
 msgstr ""
 
-msgid ""
-"This pin is the middle of your ZIP code or town, not your house. Weather and"
-" sunset are fine, but directions and “Only at the show” need the exact spot."
-" Type your full street address above and click Find. If your house still "
-"isn’t found, paste a Google Maps link to it instead."
+msgid "This pin is the middle of your ZIP code or town, not your house. Weather and sunset are fine, but directions and “Only at the show” need the exact spot. Type your full street address above and click Find. If your house still isn’t found, paste a Google Maps link to it instead."
 msgstr ""
 
-msgid ""
-"Type your full street address and your house is found for you. Used for "
-"sunset, weather, radar and directions."
+msgid "Type your full street address and your house is found for you. Used for sunset, weather, radar and directions."
 msgstr ""
 
 msgid "Couldn’t find your house at that address, only the town."
@@ -7976,21 +6952,71 @@ msgstr ""
 msgid "Show it with my message and the song list"
 msgstr ""
 
-msgid ""
-"Pick the Next Song shows this message and your song list, without the pick "
-"buttons. Leave empty for the standard message."
+msgid "Pick the Next Song shows this message and your song list, without the pick buttons. Leave empty for the standard message."
 msgstr ""
 
-msgid ""
-"Song picking is off when Viewer Control is turned off in Remote Falcon. "
-"Hidden, the button comes back by itself within about 30 seconds of turning "
-"Viewer Control on."
+msgid "Song picking is off when Viewer Control is turned off in Remote Falcon. Hidden, the button comes back by itself within about 30 seconds of turning Viewer Control on."
 msgstr ""
 
 msgid "Repeat names to fill the break"
 msgstr ""
 
-msgid ""
-"With fewer names waiting than your names break has room for, they go up "
-"again so your screens aren’t empty. Turn off to show each name once."
+msgid "With fewer names waiting than your names break has room for, they go up again so your screens aren’t empty. Turn off to show each name once."
+msgstr ""
+
+msgid "Then they wait"
+msgstr ""
+
+#, php-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "How long a phone waits after sending its names before it can send more. You can also change both in the Show Manager."
+msgstr ""
+
+msgid "So one family can’t fill a whole break"
+msgstr ""
+
+msgid "Before that phone can send more names"
+msgstr ""
+
+msgid "In your guestbook"
+msgstr ""
+
+msgid "From the last 3 days. Your reply shows under their message."
+msgstr ""
+
+msgid "Reply"
+msgstr ""
+
+msgid "Change reply"
+msgstr ""
+
+msgid "Your reply"
+msgstr ""
+
+msgid "Thanks for coming out! Merry Christmas!"
+msgstr ""
+
+msgid "Their phone gets a buzz with your reply."
+msgstr ""
+
+msgid "Shows under their message in your guestbook."
+msgstr ""
+
+msgid "Save reply"
+msgstr ""
+
+msgid "Approve and reply"
+msgstr ""
+
+msgid "Send reply"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Reply posted in your guestbook"
 msgstr ""

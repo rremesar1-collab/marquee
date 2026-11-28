@@ -602,9 +602,14 @@ marquee_geo_row( $s );
 					</div>
 					<p><label for="mq-npp"><?php esc_html_e( 'Names each phone can send', 'marquee' ); ?></label><select id="mq-npp" name="names_per_phone">
 						<?php foreach ( array( 1, 2, 3, 4, 5 ) as $mq_n ) : ?>
-							<option value="<?php echo (int) $mq_n; ?>" <?php selected( (int) ( $s['names_per_phone'] ?? 3 ), $mq_n ); ?>><?php echo esc_html( sprintf( /* translators: %d: names */ _n( '%d an hour', '%d an hour', $mq_n, 'marquee' ), $mq_n ) . ( 3 === $mq_n ? ' ' . __( '(standard)', 'marquee' ) : '' ) ); ?></option>
+							<option value="<?php echo (int) $mq_n; ?>" <?php selected( (int) ( $s['names_per_phone'] ?? 3 ), $mq_n ); ?>><?php echo esc_html( (string) $mq_n . ( 3 === $mq_n ? ' ' . __( '(standard)', 'marquee' ) : '' ) ); ?></option>
 						<?php endforeach; ?>
 					</select><small><?php esc_html_e( 'So one family can’t fill a whole names break. You skip this limit while you’re logged in, for testing.', 'marquee' ); ?></small></p>
+					<p><label for="mq-nwait"><?php esc_html_e( 'Then they wait', 'marquee' ); ?></label><select id="mq-nwait" name="names_wait">
+						<?php foreach ( marquee_wait_choices() as $mq_n ) : ?>
+							<option value="<?php echo (int) $mq_n; ?>" <?php selected( marquee_wait_hours( $s['names_wait'] ?? 1 ), $mq_n ); ?>><?php echo esc_html( sprintf( /* translators: %d: hours */ _n( '%d hour', '%d hours', $mq_n, 'marquee' ), $mq_n ) . ( 1 === $mq_n ? ' ' . __( '(standard)', 'marquee' ) : '' ) ); ?></option>
+						<?php endforeach; ?>
+					</select><small><?php esc_html_e( 'How long a phone waits after sending its names before it can send more. You can also change both in the Show Manager.', 'marquee' ); ?></small></p>
 					<label class="mq__feat mq-only-break"><span><b><?php esc_html_e( 'Make a simple names break for me', 'marquee' ); ?></b><small><?php esc_html_e( 'If your FPP has no names break playlist yet, Marquee makes one: the show pauses, the names go up on your screens (with the names break audio below, if you build it), then your show carries on. No sequence needed. A names break playlist you already have is never touched.', 'marquee' ); ?></small></span><input type="checkbox" name="names_simple" value="1" <?php checked( ! empty( $s['names_simple'] ) ); ?>></label>
 					<label class="mq__feat mq-only-break"><span><b><?php esc_html_e( 'Repeat names to fill the break', 'marquee' ); ?></b><small><?php esc_html_e( 'With fewer names waiting than your names break has room for, they go up again so your screens aren’t empty. Turn off to show each name once.', 'marquee' ); ?></small></span><input type="checkbox" name="names_repeat" value="1" <?php checked( ! isset( $s['names_repeat'] ) || ! empty( $s['names_repeat'] ) ); ?>></label>
 					<details class="mq__adv mq-only-break">

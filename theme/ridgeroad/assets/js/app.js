@@ -88,7 +88,9 @@
 				return post('rr_push_buzz', d);
 			}).then(function (j) { if (!j || !j.success) { throw new Error('server'); } return true; });
 		},
-		why: whyText
+		why: whyText,
+		// the phone's alerts address when it already has the show's alerts on (never asks): a guestbook reply can buzz it
+		endpoint: function () { return currentSub().then(function (s) { return s ? s.endpoint : ''; }); }
 	};
 
 	/* ---------- install steps sheet ---------- */

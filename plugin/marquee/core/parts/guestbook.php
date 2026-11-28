@@ -33,6 +33,12 @@ if ( ridgeroad_mod( 'gb_show' ) && ( ridgeroad_gb_wp() || $gb_key ) ) : // WordP
 							<li class="rr-gbl__item"<?php echo $i >= 5 ? ' hidden' : ''; ?>>
 								<p class="rr-gbl__msg"><?php echo nl2br( esc_html( wp_trim_words( preg_replace( '/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i', '[email hidden]', $c->comment_content ), 90 ) ) ); ?></p>
 								<p class="rr-gbl__meta"><b><?php echo esc_html( ridgeroad_gb_name( $c->comment_author ) ); ?></b><span><?php echo esc_html( sprintf( __( '%s ago', 'ridgeroad' ), human_time_diff( strtotime( $c->comment_date_gmt . ' UTC' ) ) ) ); ?></span></p>
+								<?php $gb_r = ridgeroad_gb_reply_of( $c->comment_ID ); if ( $gb_r ) : ?>
+									<div class="rr-gbl__reply">
+										<p class="rr-gbl__rby"><?php echo esc_html( sprintf( /* translators: %s: the show's name */ __( 'Reply from %s', 'ridgeroad' ), $gb_r->comment_author ) ); ?></p>
+										<p class="rr-gbl__rmsg"><?php echo nl2br( esc_html( $gb_r->comment_content ) ); ?></p>
+									</div>
+								<?php endif; ?>
 							</li>
 						<?php endforeach; ?>
 					</ul>
@@ -68,13 +74,14 @@ if ( ridgeroad_mod( 'gb_show' ) && ( ridgeroad_gb_wp() || $gb_key ) ) : // WordP
 				<textarea id="gb-message" maxlength="500" name="comment" placeholder="<?php esc_attr_e( 'Leave a message...', 'ridgeroad' ); ?>" required rows="5"></textarea>
 				<input name="gb_t" type="hidden" value="<?php echo esc_attr( ridgeroad_gb_stamp() ); ?>">
 				<input name="gb_h" type="hidden" value="" data-rr-gb-h>
+				<input name="gb_ep" type="hidden" value="" data-rr-gb-ep>
 				<?php $gb_ts = ridgeroad_gb_turnstile(); if ( $gb_ts ) : ?>
 					<div class="cf-turnstile rr-gb-ts" data-sitekey="<?php echo esc_attr( $gb_ts[0] ); ?>" data-theme="dark" data-size="flexible"></div>
 					<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 				<?php endif; ?>
 				<button class="rr-btn rr-btn--red" type="submit"><?php esc_html_e( 'Sign Guestbook', 'ridgeroad' ); ?></button>
 				<p class="rr-gb-fine"><?php esc_html_e( 'Messages appear after we review them.', 'ridgeroad' ); ?></p>
-				<script>(function(f){if(!f)return;var k=0,p=0,h=f.querySelector('[data-rr-gb-h]');function s(){h.value='k'+k+'.p'+p;}f.addEventListener('keydown',function(){k++;s();});f.addEventListener('input',function(){k++;s();});f.addEventListener('pointerdown',function(){p++;s();});f.addEventListener('focusin',function(){p++;s();});}(document.currentScript&&document.currentScript.closest('form')));</script>
+				<script>(function(f){if(!f)return;var k=0,p=0,h=f.querySelector('[data-rr-gb-h]');function s(){h.value='k'+k+'.p'+p;}f.addEventListener('keydown',function(){k++;s();});f.addEventListener('input',function(){k++;s();});f.addEventListener('pointerdown',function(){p++;s();});f.addEventListener('focusin',function(){p++;s();});f.addEventListener('focusin',function(){var a=window.RRAppAPI,e=f.querySelector('[data-rr-gb-ep]');if(a&&a.endpoint&&e&&!e.value){a.endpoint().then(function(v){if(v){e.value=v;}});}});}(document.currentScript&&document.currentScript.closest('form')));</script>
 			</form>
 			<?php else : ?>
 			<form action="https://rfpagebuilder.com/api/guestbook/submit" method="POST">

@@ -320,6 +320,10 @@ function marquee_manager_app() {
 				?>
 				<div class="mm-sw"><div><b><?php esc_html_e( 'Names break after every', 'marquee' ); ?></b><small><?php esc_html_e( 'Busy night? Names collect and go up together', 'marquee' ); ?></small></div>
 					<select data-mm-set="names_every" aria-label="<?php esc_attr_e( 'Names break after every', 'marquee' ); ?>"><?php for ( $mq_i = 1; $mq_i <= 6; $mq_i++ ) : ?><option value="<?php echo (int) $mq_i; ?>"><?php echo esc_html( 1 === $mq_i ? __( 'song', 'marquee' ) : sprintf( /* translators: %d: songs */ __( '%d songs', 'marquee' ), $mq_i ) ); ?></option><?php endfor; ?></select></div>
+				<div class="mm-sw"><div><b><?php esc_html_e( 'Names each phone can send', 'marquee' ); ?></b><small><?php esc_html_e( 'So one family can’t fill a whole break', 'marquee' ); ?></small></div>
+					<select data-mm-set="names_per_phone" aria-label="<?php esc_attr_e( 'Names each phone can send', 'marquee' ); ?>"><?php for ( $mq_i = 1; $mq_i <= 5; $mq_i++ ) : ?><option value="<?php echo (int) $mq_i; ?>"><?php echo (int) $mq_i; ?></option><?php endfor; ?></select></div>
+				<div class="mm-sw"><div><b><?php esc_html_e( 'Then they wait', 'marquee' ); ?></b><small><?php esc_html_e( 'Before that phone can send more names', 'marquee' ); ?></small></div>
+					<select data-mm-set="names_wait" aria-label="<?php esc_attr_e( 'Then they wait', 'marquee' ); ?>"><?php foreach ( marquee_wait_choices() as $mq_i ) : ?><option value="<?php echo (int) $mq_i; ?>"><?php echo esc_html( sprintf( /* translators: %d: hours */ _n( '%d hour', '%d hours', $mq_i, 'marquee' ), $mq_i ) ); ?></option><?php endforeach; ?></select></div>
 			</div>
 			<div class="mm-card">
 				<h2><?php esc_html_e( 'Waiting for the next break', 'marquee' ); ?></h2>
@@ -340,6 +344,11 @@ function marquee_manager_app() {
 			<div class="mm-card" data-mm-gb-card>
 				<h2><?php esc_html_e( 'Guestbook messages', 'marquee' ); ?></h2>
 				<ul class="mm-list mm-list--gb" data-mm-list="gb"></ul>
+			</div>
+			<div class="mm-card" data-mm-gbok-card hidden>
+				<h2><?php esc_html_e( 'In your guestbook', 'marquee' ); ?></h2>
+				<p class="mm-fine mm-fine--top"><?php esc_html_e( 'From the last 3 days. Your reply shows under their message.', 'marquee' ); ?></p>
+				<ul class="mm-list mm-list--gb" data-mm-list="gbok"></ul>
 			</div>
 		</section>
 

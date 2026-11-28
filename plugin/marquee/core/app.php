@@ -333,7 +333,26 @@ function ridgeroad_push_buzz_ajax() {
 	$s = ridgeroad_push_read_sub();
 	ridgeroad_push_save( $s, null );
 	update_post_meta( $id, '_rr_buzz', $s['h'] );
-	wp_send_json_success();
+	// a name that's a few songs away: a buzz now says it worked, so a long wait doesn't look broken
+	// (a name up after this song gets its "get ready" buzz right away instead)
+	$songs = function_exists( 'ridgeroad_name_songs_ahead' ) ? ridgeroad_name_songs_ahead( $id ) : 0;
+	if ( $songs >= 2 ) {
+		$h = $s['h'];
+		ridgeroad_push_later( function () use ( $id, $h, $songs ) {
+			$row = ridgeroad_push_row( $h );
+			if ( $row ) {
+				ridgeroad_push_send( array( $row ), array(
+					'title' => __( 'Got it! ⭐', 'ridgeroad' ),
+					/* translators: %d: number of songs */
+					'body'  => sprintf( __( 'Your name goes up in about %d songs. We’ll buzz you again right before.', 'ridgeroad' ), $songs ),
+					'tag'   => 'name-' . $id,
+					'url'   => function_exists( 'ridgeroad_kids_url' ) ? ridgeroad_kids_url() . '#names' : home_url( '/' ),
+					'ttl'   => 30 * MINUTE_IN_SECONDS,
+				) );
+			}
+		} );
+	}
+	wp_send_json_success( array( 'songs' => $songs ) );
 }
 
 /* -------------------------------------------------------------------------
@@ -600,35 +619,67 @@ function ridgeroad_app_fpp_checkin( $status, $playlist ) {
 	} );
 }
 
-/** Called when FPP picks up names for the next break: buzz the phones that asked. */
-function ridgeroad_app_buzz_names( $ids, $now = false ) {
+/**
+ * Buzz the phones that asked, for the names going up next. $stage (from ridgeroad_names_buzz_due()):
+ * 'soon' = the last song before the names break is playing ("Get ready!"), 'now' = the break has started
+ * ("Look at the screens!"), 'old' = an older names script, one buzz only ("after this song").
+ * Each phone gets each buzz once. A name that got "look now" but didn't fit in that break (more names than
+ * spots) gets told at its next "get ready" that it's in this break instead.
+ */
+function ridgeroad_app_buzz_names( $ids, $stage = 'now' ) {
 	if ( ! ridgeroad_mod( 'app_buzz_on' ) ) {
 		return;
 	}
+	if ( true === $stage || false === $stage ) {
+		$stage = $stage ? 'now' : 'old';
+	}
+	$f    = get_option( 'ridgeroad_fpp' );
+	$end  = is_array( $f ) ? (int) ( $f['break_end'] ?? 0 ) : 0;
 	$todo = array();
 	foreach ( $ids as $id ) {
 		$h = get_post_meta( $id, '_rr_buzz', true );
-		if ( $h && ! get_post_meta( $id, '_rr_buzzed', true ) ) {
-			update_post_meta( $id, '_rr_buzzed', time() );
-			$todo[ $id ] = $h;
+		if ( ! $h ) {
+			continue;
+		}
+		$buzzed = (int) get_post_meta( $id, '_rr_buzzed', true );
+		$text   = get_post_meta( $id, '_rr_text', true );
+		$body   = '';
+		if ( 'now' === $stage || 'old' === $stage ) {
+			if ( ! $buzzed ) {
+				update_post_meta( $id, '_rr_buzzed', time() );
+				$body = 'now' === $stage
+					/* translators: %s: the name text, e.g. MERRY CHRISTMAS, LIAM! */
+					? sprintf( __( 'Look at the screens! Your name goes up in a moment: %s', 'ridgeroad' ), $text )
+					/* translators: %s: the name text, e.g. MERRY CHRISTMAS, LIAM! */
+					: sprintf( __( 'Watch for your name after this song: %s', 'ridgeroad' ), $text );
+			}
+		} elseif ( $buzzed && $end && $buzzed < $end && time() > $end + 45 ) {
+			// told "look now", but that break filled up before this name: it's in the next one
+			delete_post_meta( $id, '_rr_buzzed' );
+			update_post_meta( $id, '_rr_buzz_soon', time() );
+			/* translators: %s: the name text, e.g. MERRY CHRISTMAS, LIAM! */
+			$body = sprintf( __( 'Lots of names last time! Yours is up after this song: %s', 'ridgeroad' ), $text );
+		} elseif ( ! $buzzed && ! get_post_meta( $id, '_rr_buzz_soon', true ) ) {
+			update_post_meta( $id, '_rr_buzz_soon', time() );
+			/* translators: %s: the name text, e.g. MERRY CHRISTMAS, LIAM! */
+			$body = sprintf( __( 'Get ready! Your name is up after this song: %s', 'ridgeroad' ), $text );
+		}
+		if ( '' !== $body ) {
+			$todo[ $id ] = array( $h, $body );
 		}
 	}
 	if ( ! $todo ) {
 		return;
 	}
-	ridgeroad_push_later( function () use ( $todo, $now ) {
-		foreach ( $todo as $id => $h ) {
-			$row = ridgeroad_push_row( $h );
+	ridgeroad_push_later( function () use ( $todo ) {
+		foreach ( $todo as $id => $t ) {
+			$row = ridgeroad_push_row( $t[0] );
 			if ( ! $row ) {
 				continue;
 			}
 			$res = ridgeroad_push_send( array( $row ), array(
 				'title' => __( 'Your name is up next! ⭐', 'ridgeroad' ),
-				/* translators: %s: the name text, e.g. MERRY CHRISTMAS, LIAM! */
-				'body'  => $now
-					/* translators: %s: the name text, e.g. MERRY CHRISTMAS, LIAM! */
-					? sprintf( __( 'Look at the screens! Your name goes up in a moment: %s', 'ridgeroad' ), get_post_meta( $id, '_rr_text', true ) )
-					: sprintf( __( 'Watch for your name after this song: %s', 'ridgeroad' ), get_post_meta( $id, '_rr_text', true ) ),
+				'body'  => $t[1],
 				'tag'   => 'name-' . $id,
 				'url'   => function_exists( 'ridgeroad_kids_url' ) ? ridgeroad_kids_url() . '#names' : home_url( '/' ),
 				'ttl'   => 10 * MINUTE_IN_SECONDS,

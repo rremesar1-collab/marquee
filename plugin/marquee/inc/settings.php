@@ -57,7 +57,8 @@ function marquee_defaults() {
 		'names_slot'   => 3.75,              // seconds from one name to the next
 		'names_per_break' => 6,              // names in one break (fewer = each is up longer, so scrolling can be slower)
 		'names_every'  => 1,                 // a names break after every this many songs (names collect in between)
-		'names_per_phone' => 3,              // names one phone can send in an hour
+		'names_per_phone' => 3,              // names one phone can send, then it waits names_wait hours
+		'names_wait'   => 1,                 // hours a phone waits after sending its names (1, 2, 3, 4, 6, 8, 12 or 24)
 		'break_intro'  => '',                // names break builder: announcer lines (empty = example)
 		'break_outro'  => '',
 		'break_seq'    => 29.6,              // length of the names sequence (seconds)
@@ -163,6 +164,7 @@ function marquee_save( $in ) {
 		'names_per_break' => isset( $in['names_per_break'] ) ? max( 1, min( 6, (int) $in['names_per_break'] ) ) : $cur['names_per_break'],
 		'names_every'  => isset( $in['names_every'] ) ? max( 1, min( 6, (int) $in['names_every'] ) ) : $cur['names_every'],
 		'names_per_phone' => isset( $in['names_per_phone'] ) ? max( 1, min( 5, (int) $in['names_per_phone'] ) ) : (int) ( $cur['names_per_phone'] ?? 3 ),
+		'names_wait'   => isset( $in['names_wait'] ) ? marquee_wait_hours( $in['names_wait'] ) : marquee_wait_hours( $cur['names_wait'] ?? 1 ),
 		'names_start'  => isset( $in['names_start'] ) && '' !== trim( (string) $in['names_start'] ) ? max( 0, min( 120, round( (float) $in['names_start'], 2 ) ) ) : $cur['names_start'],
 		'covers_on'  => isset( $in['covers_sent'] ) ? (int) ! empty( $in['covers_on'] ) : $cur['covers_on'],
 		'covers_auto' => isset( $in['covers_sent'] ) ? (int) ! empty( $in['covers_auto'] ) : $cur['covers_auto'],
@@ -578,22 +580,43 @@ add_filter( 'ridgeroad_name_greetings', function ( $std ) {
 	return $out;
 } );
 
-/* Names one phone can send in an hour (Names in Lights → Names break). */
+/** The waits a show can pick, in hours, for "Then they wait" (names from one phone). */
+function marquee_wait_choices() {
+	return array( 1, 2, 3, 4, 6, 8, 12, 24 );
+}
+function marquee_wait_hours( $v ) {
+	$v = (int) $v;
+	return in_array( $v, marquee_wait_choices(), true ) ? $v : 1;
+}
+
+/* Names one phone can send, and how many hours it then waits (Names in Lights, and the Show Manager). */
 add_filter( 'ridgeroad_names_per_phone', function () {
 	return max( 1, min( 5, (int) ( marquee_get()['names_per_phone'] ?? 3 ) ) );
 } );
+add_filter( 'ridgeroad_names_wait_hours', function () {
+	return marquee_wait_hours( marquee_get()['names_wait'] ?? 1 );
+} );
 
-/* "Names break after every" in Show Control and the Show Manager, so it can change during a busy night. */
+/* "Names break after every", names per phone and the wait in Show Control and the Show Manager, so they can change during a busy night. */
 add_filter( 'ridgeroad_ctl_switches', function ( $sw ) {
-	$sw['names_every'] = (string) max( 1, min( 6, (int) ( marquee_get()['names_every'] ?? 1 ) ) );
+	$m                     = marquee_get();
+	$sw['names_every']     = (string) max( 1, min( 6, (int) ( $m['names_every'] ?? 1 ) ) );
+	$sw['names_per_phone'] = (string) max( 1, min( 5, (int) ( $m['names_per_phone'] ?? 3 ) ) );
+	$sw['names_wait']      = (string) marquee_wait_hours( $m['names_wait'] ?? 1 );
 	return $sw;
 } );
 add_filter( 'ridgeroad_ctl_set', function ( $done, $k, $on, $v = '' ) {
-	if ( 'names_every' !== $k ) {
+	if ( ! in_array( $k, array( 'names_every', 'names_per_phone', 'names_wait' ), true ) ) {
 		return $done;
 	}
-	$s                = get_option( 'marquee', array() );
-	$s['names_every'] = max( 1, min( 6, (int) $v ) );
+	$s = get_option( 'marquee', array() );
+	if ( 'names_every' === $k ) {
+		$s['names_every'] = max( 1, min( 6, (int) $v ) );
+	} elseif ( 'names_per_phone' === $k ) {
+		$s['names_per_phone'] = max( 1, min( 5, (int) $v ) );
+	} else {
+		$s['names_wait'] = marquee_wait_hours( $v );
+	}
 	update_option( 'marquee', $s, false );
 	return true;
 }, 10, 4 );

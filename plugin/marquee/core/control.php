@@ -361,10 +361,16 @@ function ridgeroad_control_state() {
 	}
 	$counts = wp_count_posts( 'rr_lightshow' );
 
-	$gb = array();
+	$gb    = array();
+	$gb_ok = array();
 	if ( function_exists( 'ridgeroad_gb_wp' ) && ridgeroad_gb_wp() ) {
-		foreach ( get_comments( array( 'post_id' => (int) get_option( 'ridgeroad_gb_page' ), 'status' => 'hold', 'type' => 'comment', 'number' => 30, 'orderby' => 'comment_date_gmt', 'order' => 'ASC' ) ) as $c ) {
-			$gb[] = array( 'id' => (int) $c->comment_ID, 'name' => $c->comment_author, 'text' => wp_strip_all_tags( $c->comment_content ), 'when' => wp_date( __( 'M j, g:i A', 'ridgeroad' ), strtotime( $c->comment_date_gmt . ' UTC' ), ridgeroad_tz() ) );
+		foreach ( get_comments( array( 'post_id' => (int) get_option( 'ridgeroad_gb_page' ), 'status' => 'hold', 'type' => 'comment', 'parent' => 0, 'number' => 30, 'orderby' => 'comment_date_gmt', 'order' => 'ASC' ) ) as $c ) {
+			$gb[] = array( 'id' => (int) $c->comment_ID, 'name' => $c->comment_author, 'text' => wp_strip_all_tags( $c->comment_content ), 'when' => wp_date( __( 'M j, g:i A', 'ridgeroad' ), strtotime( $c->comment_date_gmt . ' UTC' ), ridgeroad_tz() ), 'buzz' => (bool) get_comment_meta( $c->comment_ID, '_rr_gb_push', true ), 'approved' => false );
+		}
+		// approved in the last 3 days: they can still get a reply (or have their reply changed)
+		foreach ( get_comments( array( 'post_id' => (int) get_option( 'ridgeroad_gb_page' ), 'status' => 'approve', 'type' => 'comment', 'parent' => 0, 'number' => 10, 'orderby' => 'comment_date_gmt', 'order' => 'DESC', 'date_query' => array( array( 'after' => '3 days ago' ) ) ) ) as $c ) {
+			$r      = function_exists( 'ridgeroad_gb_reply_of' ) ? ridgeroad_gb_reply_of( $c->comment_ID ) : null;
+			$gb_ok[] = array( 'id' => (int) $c->comment_ID, 'name' => $c->comment_author, 'text' => wp_strip_all_tags( $c->comment_content ), 'when' => wp_date( __( 'M j, g:i A', 'ridgeroad' ), strtotime( $c->comment_date_gmt . ' UTC' ), ridgeroad_tz() ), 'reply' => $r ? wp_strip_all_tags( $r->comment_content ) : '', 'buzz' => (bool) get_comment_meta( $c->comment_ID, '_rr_gb_push', true ) );
 		}
 	}
 
@@ -454,6 +460,7 @@ function ridgeroad_control_state() {
 			'prizes'  => sprintf( __( 'Judges’ Pick: %1$s · People’s Choice: %2$s · Pick-up by %3$s', 'ridgeroad' ), ridgeroad_mod( 'contest_prize1' ), ridgeroad_mod( 'contest_prize2' ), ridgeroad_contest_date( 'contest_pickup' ) ),
 		),
 		'guestbook' => $gb,
+		'gb_recent' => $gb_ok,
 		'people'   => array( 'now' => count( $pres ), 'kids' => $kids ),
 		'weather'  => ( function () {
 			$w = function_exists( 'ridgeroad_weather' ) ? ridgeroad_weather() : array();
@@ -643,6 +650,23 @@ add_action( 'wp_ajax_rr_ctl_gb', function () {
 	wp_set_comment_status( $id, ! empty( $_POST['approve'] ) ? 'approve' : 'trash' );
 	if ( function_exists( 'ridgeroad_flush_cache' ) ) {
 		ridgeroad_flush_cache();
+	}
+	wp_send_json_success( ridgeroad_control_state() );
+} );
+
+/* Reply to a guestbook message as the show (Show Manager). Approves it too, if it was waiting. */
+add_action( 'wp_ajax_rr_ctl_gb_reply', function () {
+	check_ajax_referer( 'rr_ctl', 'nonce' );
+	if ( ! ridgeroad_ctl_can() ) {
+		wp_send_json_error( null, 403 );
+	}
+	$id   = isset( $_POST['id'] ) ? (int) $_POST['id'] : 0;
+	$text = isset( $_POST['text'] ) ? sanitize_textarea_field( wp_unslash( $_POST['text'] ) ) : '';
+	if ( '' === trim( $text ) || mb_strlen( $text ) > 300 ) {
+		wp_send_json_error( array( 'message' => __( 'Type a reply of up to 300 characters.', 'ridgeroad' ) ), 400 );
+	}
+	if ( ! function_exists( 'ridgeroad_gb_reply' ) || ! ridgeroad_gb_reply( $id, $text ) ) {
+		wp_send_json_error( null, 404 );
 	}
 	wp_send_json_success( ridgeroad_control_state() );
 } );

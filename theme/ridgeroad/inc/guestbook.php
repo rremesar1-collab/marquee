@@ -84,17 +84,93 @@ add_filter( 'wp_die_handler', function ( $h ) {
 	return $h;
 } );
 
-/** Approved messages, newest first. */
+/** Approved messages, newest first (the show's replies are shown under them, not as messages). */
 function ridgeroad_gb_messages( $limit = 50 ) {
 	return get_comments( array(
 		'post_id' => ridgeroad_gb_page_id(),
 		'status'  => 'approve',
 		'type'    => 'comment',
+		'parent'  => 0,
 		'number'  => $limit,
 		'orderby' => 'comment_date_gmt',
 		'order'   => 'DESC',
 	) );
 }
+
+/** The show's reply to a guestbook message (from the Show Manager), or null. */
+function ridgeroad_gb_reply_of( $cid ) {
+	$r = get_comments( array( 'parent' => (int) $cid, 'status' => 'approve', 'number' => 1, 'orderby' => 'comment_date_gmt', 'order' => 'DESC' ) );
+	return $r ? $r[0] : null;
+}
+
+/**
+ * Reply to a guestbook message as the show. Approves the message if it was waiting, and buzzes the phone
+ * that sent it when that phone has the show's alerts on. Returns the reply's ID, or 0.
+ */
+function ridgeroad_gb_reply( $cid, $text ) {
+	$c    = get_comment( (int) $cid );
+	$text = trim( preg_replace( '/[ \t]+/', ' ', (string) $text ) );
+	if ( ! $c || (int) $c->comment_post_ID !== (int) get_option( 'ridgeroad_gb_page' ) || '' === $text ) {
+		return 0;
+	}
+	if ( '1' !== (string) $c->comment_approved ) {
+		wp_set_comment_status( $c->comment_ID, 'approve' );
+	}
+	// one reply per message: a new one replaces the last
+	$old = ridgeroad_gb_reply_of( $c->comment_ID );
+	if ( $old ) {
+		wp_update_comment( array( 'comment_ID' => $old->comment_ID, 'comment_content' => $text ) );
+		$rid = (int) $old->comment_ID;
+	} else {
+		$u   = wp_get_current_user();
+		$rid = (int) wp_insert_comment( array(
+			'comment_post_ID'  => $c->comment_post_ID,
+			'comment_parent'   => $c->comment_ID,
+			'comment_author'   => wp_specialchars_decode( get_bloginfo( 'name' ), ENT_QUOTES ),
+			'comment_content'  => $text,
+			'comment_approved' => 1,
+			'comment_type'     => 'comment',
+			'user_id'          => $u ? (int) $u->ID : 0,
+		) );
+		if ( $rid ) {
+			add_comment_meta( $rid, '_rr_gb_reply', 1, true );
+		}
+	}
+	$h = get_comment_meta( $c->comment_ID, '_rr_gb_push', true );
+	if ( $rid && $h && ! $old && function_exists( 'ridgeroad_push_row' ) && function_exists( 'ridgeroad_push_later' ) ) {
+		$show = wp_specialchars_decode( get_bloginfo( 'name' ), ENT_QUOTES );
+		ridgeroad_push_later( function () use ( $h, $show, $text, $cid ) {
+			$row = ridgeroad_push_row( $h );
+			if ( $row ) {
+				ridgeroad_push_send( array( $row ), array(
+					/* translators: %s: the show's name */
+					'title' => sprintf( __( '%s replied to you', 'ridgeroad' ), $show ),
+					'body'  => mb_substr( $text, 0, 170 ),
+					'tag'   => 'gb-' . (int) $cid,
+					'url'   => home_url( '/' ) . '#guestbook',
+					'ttl'   => DAY_IN_SECONDS,
+				) );
+			}
+		} );
+	}
+	if ( function_exists( 'ridgeroad_flush_cache' ) ) {
+		ridgeroad_flush_cache();
+	}
+	return $rid;
+}
+
+/* A visitor whose phone already has the show's alerts on: remember that phone, so a reply can buzz it. */
+add_action( 'comment_post', function ( $id ) {
+	$ep = isset( $_POST['gb_ep'] ) ? esc_url_raw( wp_unslash( $_POST['gb_ep'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification
+	$c  = get_comment( $id );
+	if ( '' === $ep || ! $c || (int) $c->comment_post_ID !== (int) get_option( 'ridgeroad_gb_page' ) || ! function_exists( 'ridgeroad_push_row' ) ) {
+		return;
+	}
+	$h = sha1( $ep );
+	if ( ridgeroad_push_row( $h ) ) {
+		add_comment_meta( $id, '_rr_gb_push', $h, true );
+	}
+} );
 
 /* Count pending messages in the admin bar so you notice new ones. */
 add_action( 'admin_bar_menu', function ( $bar ) {

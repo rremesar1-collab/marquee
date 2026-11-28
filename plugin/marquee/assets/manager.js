@@ -61,6 +61,38 @@
 		}
 	}
 
+	/* guestbook: one message, with the show's reply under it */
+	var replyOpen = 0;
+	function gbItem(m) {
+		var li = el('li'), t = el('span', 'mm-t');
+		t.appendChild(el('b', '', m.name)); t.appendChild(el('q', '', m.text)); t.appendChild(el('small', '', m.when));
+		if (m.reply) { var r = el('span', 'mm-reply'); r.appendChild(el('small', '', tr('Your reply'))); r.appendChild(el('span', '', m.reply)); t.appendChild(r); }
+		li.appendChild(t);
+		return li;
+	}
+	function replyBox(li, m) {
+		if (replyOpen) { return; }
+		replyOpen = m.id;
+		var act0 = li.querySelector('.mm-act'); if (act0) { act0.hidden = true; }
+		var box = el('div', 'mm-replybox');
+		var ta = el('textarea'); ta.rows = 3; ta.maxLength = 300; ta.value = m.reply || ''; ta.placeholder = tr('Thanks for coming out! Merry Christmas!');
+		ta.setAttribute('aria-label', tr('Your reply'));
+		var bar = el('div', 'mm-sendbar'), note = el('small', '', m.buzz ? tr('Their phone gets a buzz with your reply.') : tr('Shows under their message in your guestbook.')), cnt = el('span', '', ta.value.length + ' / 300');
+		ta.addEventListener('input', function () { cnt.textContent = ta.value.length + ' / 300'; });
+		bar.appendChild(note); bar.appendChild(cnt);
+		var row = el('p', 'mm-btns');
+		function close() { replyOpen = 0; if (state) { render(state); } }
+		row.appendChild(btn(m.reply ? tr('Save reply') : (m.approved === false ? tr('Approve and reply') : tr('Send reply')), 'pri', function () {
+			var v = ta.value.trim();
+			if (!v) { ta.focus(); return; }
+			replyOpen = 0;
+			act('rr_ctl_gb_reply', { id: m.id, text: v }, tr('Reply posted in your guestbook'));
+		}));
+		row.appendChild(btn(tr('Cancel'), '', close));
+		box.appendChild(ta); box.appendChild(bar); box.appendChild(row);
+		li.appendChild(box); ta.focus();
+	}
+
 	function render(d) {
 		state = d;
 		var sw = d.switches;
@@ -91,7 +123,7 @@
 			var gt = $('[data-mm-tog="names_geo"]'), gs = gt && gt.parentNode.querySelector('small');
 			if (gs) { var gm = parseFloat(sw.names_geo_mi || '0.5'); gs.textContent = tr('Names only from phones within %s of your show. You can still send test names from anywhere.').replace('%s', function () { return sw.names_geo_km ? (Math.round(gm * 16.09344) / 10) + ' km' : gm + ' mi'; }); }
 			var sn = $('[data-mm-set="snow_amount"]'); if (document.activeElement !== sn) { sn.value = sw.snow_amount || 'off'; }
-			var ne = $('[data-mm-set="names_every"]'); if (ne && sw.names_every && document.activeElement !== ne) { ne.value = sw.names_every; }
+			['names_every', 'names_per_phone', 'names_wait'].forEach(function (k) { var e = $('[data-mm-set="' + k + '"]'); if (e && sw[k] && document.activeElement !== e) { e.value = sw[k]; } });
 		}
 
 		/* tonight tiles */
@@ -139,17 +171,26 @@
 			li.appendChild(a); pd.appendChild(li);
 		});
 
-		/* approve: guestbook */
-		var gb = d.guestbook || [], gl = $('[data-mm-list="gb"]'); gl.innerHTML = '';
-		if (!gb.length) { empty(gl, tr('No new messages.')); }
-		gb.forEach(function (m) {
-			var li = el('li'), t = el('span', 'mm-t');
-			t.appendChild(el('b', '', m.name)); t.appendChild(el('q', '', m.text)); t.appendChild(el('small', '', m.when)); li.appendChild(t);
-			var a = el('span', 'mm-act');
-			a.appendChild(btn(tr('Approve'), 'pri', function () { act('rr_ctl_gb', { id: m.id, approve: 1 }, tr('Approved: now in the guestbook')); }));
-			a.appendChild(btn(tr('Delete'), 'del', function () { act('rr_ctl_gb', { id: m.id }, tr('Deleted')); }));
-			li.appendChild(a); gl.appendChild(li);
-		});
+		/* approve: guestbook (not redrawn while you're typing a reply, so the refresh doesn't wipe it) */
+		var gb = d.guestbook || [], gok = d.gb_recent || [];
+		if (!replyOpen) {
+			var gl = $('[data-mm-list="gb"]'); gl.innerHTML = '';
+			if (!gb.length) { empty(gl, tr('No new messages.')); }
+			gb.forEach(function (m) {
+				var li = gbItem(m), a = el('span', 'mm-act');
+				a.appendChild(btn(tr('Approve'), 'pri', function () { act('rr_ctl_gb', { id: m.id, approve: 1 }, tr('Approved: now in the guestbook')); }));
+				a.appendChild(btn(tr('Reply'), '', function () { replyBox(li, m); }));
+				a.appendChild(btn(tr('Delete'), 'del', function () { act('rr_ctl_gb', { id: m.id }, tr('Deleted')); }));
+				li.appendChild(a); gl.appendChild(li);
+			});
+			var ol = $('[data-mm-list="gbok"]'); ol.innerHTML = '';
+			$('[data-mm-gbok-card]').hidden = !gok.length;
+			gok.forEach(function (m) {
+				var li = gbItem(m), a = el('span', 'mm-act');
+				a.appendChild(btn(m.reply ? tr('Change reply') : tr('Reply'), m.reply ? '' : 'pri', function () { replyBox(li, m); }));
+				li.appendChild(a); ol.appendChild(li);
+			});
+		}
 
 		/* badges */
 		badge('names', d.names.waiting.length);

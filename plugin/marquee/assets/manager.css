@@ -116,6 +116,12 @@ select { flex: none; min-height: 40px; padding: 6px 10px; border-radius: 10px; b
 .mm-list--entries .mm-act, .mm-list--gb .mm-act { width: 100%; }
 .mm-list--names .mm-act { width: 100%; padding-left: 40px; }
 .mm-list--entries .mm-act .mm-btn, .mm-list--gb .mm-act .mm-btn, .mm-list--names .mm-act .mm-btn { flex: 1; }
+.mm-reply { display: block; margin: 8px 0 2px; padding: 6px 10px; border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; background: var(--bg-2); overflow-wrap: anywhere; }
+.mm-reply small { display: block; color: var(--gold); font-weight: 700; }
+.mm-replybox { width: 100%; }
+.mm-replybox .mm-btns { display: flex; gap: 8px; margin: 10px 0 0; }
+.mm-replybox .mm-btns .mm-btn { flex: 1; }
+.mm-fine--top { margin: -4px 0 12px; }
 
 /* alerts */
 textarea { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--line-2); background: var(--bg-2); resize: vertical; }
